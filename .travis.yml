@@ -1,0 +1,30 @@
+
+language: node_js
+
+os: 
+  - linux
+  - windows
+
+matrix:
+  allow_failures:
+    - os: windows
+
+node_js:
+  - "lts/*"
+  - "node"
+
+# safelist
+branches:
+  only:
+  - master
+  - develop
+  - /^greenkeeper/.*$/
+  - /^version/.*$/
+
+script: echo "Running tests against $(node -v)..."
+
+jobs:
+  include:
+    - stage: Produce Coverage
+      node_js: node
+script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

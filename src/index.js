@@ -18,8 +18,8 @@ class Poppler {
 					popplerPath = path.join(
 						__dirname,
 						'lib',
-						'win',
-						'poppler-0.68.0_x86',
+						'win32',
+						'poppler-0.68.0',
 						'bin'
 					);
 					break;

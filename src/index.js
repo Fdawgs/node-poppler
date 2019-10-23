@@ -39,19 +39,60 @@ class Poppler {
 		}
 	}
 
+	/**
+	 * @author Frazer Smith
+	 * @description Converts PDF to HTML.
+	 * @param {String} file
+	 * @param {Object} options
+	 * @returns {Promise}
+	 */
 	pdfToHtml(file, options) {
 		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				complexOutput: { arg: '-c', type: 'boolean' },
+				encoding: { arg: '-enc', type: 'string' },
+				exchangePdfLinks: { arg: '-p', type: 'boolean' },
+				extractHidden: { arg: '', type: 'boolean' },
+				firstPageToPrint: { arg: '-f', type: 'number' },
+				fontFullName: { arg: '-fontfullname', type: 'boolean' },
+				ignoreImages: { arg: '-i', type: 'boolean' },
+				imageFormat: { arg: '-fmt', type: 'number' },
+				lastPageToPrint: { arg: '-l', type: 'number' },
+				noDrm: { arg: '-nodrm', type: 'boolean' },
+				noFrames: { arg: '-noframes', type: 'boolean' },
+				noMergeParagraph: { arg: '-nomerge', type: 'number' },
+				noRoundedCoordinates: { arg: '-noRoundedCoordinates' },
+				ownerPassword: { arg: '', type: 'string' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				quiet: { arg: '-q', type: 'boolean' },
+				singlePage: { arg: '-s', type: 'boolean' },
+				stdout: { arg: '-stdout', type: 'boolean' },
+				userPassword: { arg: '', type: 'string' },
+				wordBreakThreshold: { arg: '-wb', type: 'number' },
+				xmlOutput: { arg: '-xml', type: 'boolean' },
+				zoom: { arg: '-zoom', type: 'number' }
+			};
+
+			// Build array of args based on options passed
 			const args = [];
-
-			// Build array of arguments based on options passed
-			if (options.quiet) {
-				args.push('-q');
-			}
-			if (options.version) {
-				args.push('-v');
-			}
-
 			args.push(file);
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			Object.keys(options).forEach((key) => {
+				if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
+					// eslint-disable-next-line valid-typeof
+					if (typeof options[key] === acceptedOptions[key].type) {
+						args.push(acceptedOptions[key].arg);
+					} else {
+						reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type}`));
+					}
+				} else {
+					reject(new Error(`Invalid option provided '${key}'`));
+				}
+			});
 
 			console.log(path.join(this.popplerPath, 'pdftohtml'));
 

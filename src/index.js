@@ -86,15 +86,16 @@ class Poppler {
 					// eslint-disable-next-line valid-typeof
 					if (typeof options[key] === acceptedOptions[key].type) {
 						args.push(acceptedOptions[key].arg);
+						if (typeof options[key] !== 'boolean') {
+							args.push(options[key]);
+						}
 					} else {
-						reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type}`));
+						reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
 					}
 				} else {
 					reject(new Error(`Invalid option provided '${key}'`));
 				}
 			});
-
-			console.log(path.join(this.popplerPath, 'pdftohtml'));
 
 			execFile(path.join(this.popplerPath, 'pdftohtml'), args, (err, stdout) => {
 				if (err) {

@@ -50,7 +50,6 @@ class Poppler {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				complexOutput: { arg: '-c', type: 'boolean' },
-				encoding: { arg: '-enc', type: 'string' },
 				exchangePdfLinks: { arg: '-p', type: 'boolean' },
 				extractHidden: { arg: '', type: 'boolean' },
 				firstPageToPrint: { arg: '-f', type: 'number' },
@@ -62,6 +61,7 @@ class Poppler {
 				noFrames: { arg: '-noframes', type: 'boolean' },
 				noMergeParagraph: { arg: '-nomerge', type: 'number' },
 				noRoundedCoordinates: { arg: '-noRoundedCoordinates' },
+				outputEncoding: { arg: '-enc', type: 'string' },
 				ownerPassword: { arg: '', type: 'string' },
 				printVersionInfo: { arg: '-v', type: 'boolean' },
 				quiet: { arg: '-q', type: 'boolean' },

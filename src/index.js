@@ -26,7 +26,13 @@ class Poppler {
 
 				// macOS
 				case 'darwin':
-					popplerPath = __dirname;
+					popplerPath = path.join(
+						__dirname,
+						'lib',
+						'darwin',
+						'poppler-0.66.0',
+						'bin'
+					);
 					break;
 
 				default:

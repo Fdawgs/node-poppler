@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/Fdawgs/node-poppler.git"
   },
-  "author": "Frazer Smith <frazer.smith@ydh.nhs.uk>",
+  "author": "Frazer Smith",
   "license": "MIT",
   "devDependencies": {
     "coveralls": "^3.0.6",

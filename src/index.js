@@ -113,7 +113,6 @@ class Poppler {
 		});
 	}
 }
-};
 
 module.exports = {
 	Poppler

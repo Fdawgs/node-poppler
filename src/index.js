@@ -52,7 +52,7 @@ class Poppler {
 	 * of the original file and append '-html' to the end of the filename.
 	 * @param {Object} options
 	 * @param {String} file
-	 * @param {Object} outputFile
+	 * @param {String} outputFile
 	 * @returns {Promise}
 	 */
 	pdfToHtml(options, file, outputFile) {
@@ -126,7 +126,7 @@ class Poppler {
 	 * or sends to system printer (Windows only).
 	 * @param {Object} options
 	 * @param {String} file
-	 * @param {Object} outputFile
+	 * @param {String} outputFile
 	 * @returns {Promise}
 	 */
 	pdfToCairo(options, file, outputFile) {

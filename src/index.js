@@ -48,11 +48,14 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts PDF to HTML.
-	 * @param {String} file
+	 * If outputFile is not specified then Poppler will use the directory and name
+	 * of the original file and append '-html' to the end of the filename.
 	 * @param {Object} options
+	 * @param {String} file
+	 * @param {Object} outputFile
 	 * @returns {Promise}
 	 */
-	pdfToHtml(file, options) {
+	pdfToHtml(options, file, outputFile) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				complexOutput: { arg: '-c', type: 'boolean' },
@@ -81,7 +84,6 @@ class Poppler {
 
 			// Build array of args based on options passed
 			const args = [];
-			args.push(file);
 
 			/**
 			 * Check each option provided is valid and of the correct type,
@@ -103,7 +105,63 @@ class Poppler {
 				}
 			});
 
+			args.push(file);
+			if (outputFile) {
+				args.push(outputFile);
+			}
+
 			execFile(path.join(this.popplerPath, 'pdftohtml'), args, (err, stdout) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(stdout);
+				}
+			});
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG
+	 * or sends to system printer (Windows only).
+	 * @param {Object} options
+	 * @param {String} file
+	 * @param {Object} outputFile
+	 * @returns {Promise}
+	 */
+	pdfToCairo(options, file, outputFile) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			Object.keys(options).forEach((key) => {
+				if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
+					// eslint-disable-next-line valid-typeof
+					if (typeof options[key] === acceptedOptions[key].type) {
+						args.push(acceptedOptions[key].arg);
+						if (typeof options[key] !== 'boolean') {
+							args.push(options[key]);
+						}
+					} else {
+						reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
+					}
+				} else {
+					reject(new Error(`Invalid option provided '${key}'`));
+				}
+			});
+
+			args.push(file);
+			if (outputFile) {
+				args.push(outputFile);
+			}
+
+			execFile(path.join(this.popplerPath, 'pdftocairo'), args, (err, stdout) => {
 				if (err) {
 					reject(err);
 				} else {

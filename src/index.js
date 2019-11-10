@@ -48,9 +48,36 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts PDF to HTML.
-	 * If outputFile is not specified then Poppler will use the directory and name
-	 * of the original file and append '-html' to the end of the filename.
-	 * @param {Object} options
+	 * Poppler will use the directory and name of the original file
+	 * and append '-html' to the end of the filename.
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.complexOutput - Generate complex output.
+	 * @param {Boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
+	 * @param {Boolean=} options.extractHidden - Force hidden text extraction.
+	 * @param {Number=} options.firstPageToPrint - First page to print.
+	 * @param {Boolean=} options.fontFullName - Outputs the font name without any substitutions.
+	 * @param {Boolean=} options.ignoreImages - Ignore images.
+	 * @param {String=} options.imageFormat - Image file format for Splash output (PNG or JPG).
+	 * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
+	 * @param {Number=} options.lastPageToPrint - Last page to print.
+	 * @param {Boolean=} options.noDrm - Override document DRM settings.
+	 * @param {Boolean=} options.noFrames - Generate no frames. Not supported in complex output mode.
+	 * @param {Boolean=} options.noMergeParagraph - Do not merge paragraphs.
+	 * @param {Boolean=} options.noRoundedCoordinates - Do not round coordinates
+	 * (with XML output only).
+	 * @param {String=} options.outputEncoding - Output text encoding name.
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {Boolean=} options.quiet - Do not print any messages or errors.
+	 * @param {Boolean=} options.singlePage - generate single HTML that includes all pages.
+	 * @param {Boolean=} options.stdout - Use standard output.
+	 * @param {String=} options.userPassword - User password (for encrypted files).
+	 * @param {Number=} options.wordBreakThreshold - Adjust the word break threshold percent.
+	 * Default is 10. Word break occurs when distance between two adjacent characters is greater
+	 * than this percent of character height.
+	 * @param {Boolean=} options.xmlOutput - Output for XML post-processing.
+	 * @param {Number=} options.zoom - Zoom the PDF document (default 1.5).
 	 * @param {String} file
 	 * @returns {Promise}
 	 */
@@ -63,11 +90,11 @@ class Poppler {
 				firstPageToPrint: { arg: '-f', type: 'number' },
 				fontFullName: { arg: '-fontfullname', type: 'boolean' },
 				ignoreImages: { arg: '-i', type: 'boolean' },
-				imageFormat: { arg: '-fmt', type: 'number' },
+				imageFormat: { arg: '-fmt', type: 'string' },
 				lastPageToPrint: { arg: '-l', type: 'number' },
 				noDrm: { arg: '-nodrm', type: 'boolean' },
 				noFrames: { arg: '-noframes', type: 'boolean' },
-				noMergeParagraph: { arg: '-nomerge', type: 'number' },
+				noMergeParagraph: { arg: '-nomerge', type: 'boolean' },
 				noRoundedCoordinates: { arg: '-noRoundedCoordinates', type: 'boolean' },
 				outputEncoding: { arg: '-enc', type: 'string' },
 				ownerPassword: { arg: '', type: 'string' },
@@ -88,21 +115,23 @@ class Poppler {
 			 * Check each option provided is valid and of the correct type,
 			 * before adding it to argument list.
 			 */
-			Object.keys(options).forEach((key) => {
-				if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
-					// eslint-disable-next-line valid-typeof
-					if (typeof options[key] === acceptedOptions[key].type) {
-						args.push(acceptedOptions[key].arg);
-						if (typeof options[key] !== 'boolean') {
-							args.push(options[key]);
+			if (options) {
+				Object.keys(options).forEach((key) => {
+					if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
+						// eslint-disable-next-line valid-typeof
+						if (typeof options[key] === acceptedOptions[key].type) {
+							args.push(acceptedOptions[key].arg);
+							if (typeof options[key] !== 'boolean') {
+								args.push(options[key]);
+							}
+						} else {
+							reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
 						}
 					} else {
-						reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
+						reject(new Error(`Invalid option provided '${key}'`));
 					}
-				} else {
-					reject(new Error(`Invalid option provided '${key}'`));
-				}
-			});
+				});
+			}
 
 			args.push(file);
 

@@ -68,7 +68,7 @@ class Poppler {
 				noDrm: { arg: '-nodrm', type: 'boolean' },
 				noFrames: { arg: '-noframes', type: 'boolean' },
 				noMergeParagraph: { arg: '-nomerge', type: 'number' },
-				noRoundedCoordinates: { arg: '-noRoundedCoordinates' },
+				noRoundedCoordinates: { arg: '-noRoundedCoordinates', type: 'boolean' },
 				outputEncoding: { arg: '-enc', type: 'string' },
 				ownerPassword: { arg: '', type: 'string' },
 				printVersionInfo: { arg: '-v', type: 'boolean' },

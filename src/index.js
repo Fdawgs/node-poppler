@@ -127,7 +127,57 @@ class Poppler {
 	 */
 	pdfToCairo(options, file, outputFile) {
 		return new Promise((resolve, reject) => {
-			const acceptedOptions = {};
+			const acceptedOptions = {
+				antialias: { arg: '-antialias', type: 'string' },
+				cropBox: { arg: '-cropbox', type: 'boolean' },
+				cropHeight: { arg: '-H', type: 'number' },
+				cropSize: { arg: '-sz', type: 'number' },
+				cropWidth: { arg: '-W', type: 'number' },
+				cropXAxis: { arg: '-x', type: 'number' },
+				cropYAxis: { arg: '-y', type: 'number' },
+				duplex: { arg: '-duplex', type: 'boolean' },
+				epsFile: { arg: '-eps', type: 'boolean' },
+				evenPagesOnly: { arg: '-e', type: 'boolean' },
+				fillPage: { arg: '-expand', type: 'boolean' },
+				firstPageToPrint: { arg: '-f', type: 'number' },
+				grayscaleFile: { arg: '-gray', type: 'boolean' },
+				iccFile: { arg: '-icc', type: 'string' },
+				jpegFile: { arg: '-jpeg', type: 'boolean' },
+				jpegOptions: { arg: '-jpegopt', type: 'string' },
+				lastPageToPrint: { arg: '-l', type: 'number' },
+				monochromeFile: { arg: '-mono', type: 'boolean' },
+				noCenter: { arg: '-nocenter', type: 'boolean' },
+				noCrop: { arg: '-nocrop', type: 'boolean' },
+				noShrink: { arg: '-noshrink', type: 'boolean' },
+				oddPagesOnly: { arg: '-o', type: 'boolean' },
+				originalPageSizes: { arg: '-origpagesizes', type: 'boolean' },
+				ownerPassword: { arg: '', type: 'string' },
+				paperHeight: { arg: '-paperh', type: 'number' },
+				paperSize: { arg: '-paper', type: 'string' },
+				paperWidth: { arg: '-paperw', type: 'number' },
+				pdfFile: { arg: '-pdf', type: 'boolean' },
+				pngFile: { arg: '-png', type: 'boolean' },
+				print: { arg: '-print', type: 'boolean' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				printdlg: { arg: '-printdlg', type: 'boolean' },
+				printer: { arg: '-printer', type: 'string' },
+				printerOptions: { arg: '-printopt', type: 'string' },
+				psFile: { arg: '-ps', type: 'boolean' },
+				psLevel2: { arg: '-level2', type: 'boolean' },
+				psLevel3: { arg: '-level3', type: 'boolean' },
+				quiet: { arg: '-q', type: 'boolean' },
+				resolutionXAxis: { arg: '-rx', type: 'number' },
+				resolutionXYAxis: { arg: '-r', type: 'number' },
+				resolutionYAxis: { arg: '-ry', type: 'number' },
+				scalePageTo: { arg: '-scale-to', type: 'number' },
+				scalePageToXAxis: { arg: '-scale-to-x', type: 'number' },
+				scalePageToYAxis: { arg: '-scale-to-y', type: 'number' },
+				setupdlg: { arg: '-setupdlg', type: 'boolean' },
+				svgFile: { arg: '-svg', type: 'boolean' },
+				tiffFile: { arg: '-tiff', type: 'boolean' },
+				transparentPageColor: { arg: '-transp', type: 'boolean' },
+				userPassword: { arg: '', type: 'string' }
+			};
 
 			// Build array of args based on options passed
 			const args = [];

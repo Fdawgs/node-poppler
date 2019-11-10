@@ -52,10 +52,9 @@ class Poppler {
 	 * of the original file and append '-html' to the end of the filename.
 	 * @param {Object} options
 	 * @param {String} file
-	 * @param {String} outputFile
 	 * @returns {Promise}
 	 */
-	pdfToHtml(options, file, outputFile) {
+	pdfToHtml(options, file) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				complexOutput: { arg: '-c', type: 'boolean' },
@@ -106,9 +105,6 @@ class Poppler {
 			});
 
 			args.push(file);
-			if (outputFile) {
-				args.push(outputFile);
-			}
 
 			execFile(path.join(this.popplerPath, 'pdftohtml'), args, (err, stdout) => {
 				if (err) {

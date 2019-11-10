@@ -88,21 +88,23 @@ class Poppler {
 			 * Check each option provided is valid and of the correct type,
 			 * before adding it to argument list.
 			 */
-			Object.keys(options).forEach((key) => {
-				if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
-					// eslint-disable-next-line valid-typeof
-					if (typeof options[key] === acceptedOptions[key].type) {
-						args.push(acceptedOptions[key].arg);
-						if (typeof options[key] !== 'boolean') {
-							args.push(options[key]);
+			if (options) {
+				Object.keys(options).forEach((key) => {
+					if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
+						// eslint-disable-next-line valid-typeof
+						if (typeof options[key] === acceptedOptions[key].type) {
+							args.push(acceptedOptions[key].arg);
+							if (typeof options[key] !== 'boolean') {
+								args.push(options[key]);
+							}
+						} else {
+							reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
 						}
 					} else {
-						reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
+						reject(new Error(`Invalid option provided '${key}'`));
 					}
-				} else {
-					reject(new Error(`Invalid option provided '${key}'`));
-				}
-			});
+				});
+			}
 
 			args.push(file);
 

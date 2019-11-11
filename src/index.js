@@ -150,7 +150,9 @@ class Poppler {
 	 * @description Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 	 *
 	 * @param {Object=} options
-	 * @param {String=} options.antialias
+	 * @param {String=} options.antialias Set the cairo antialias option used for text
+	 * and drawing in image files (or rasterized regions in vector output).
+	 * Options are: default; none; gray; subpixel; fast; good; best
 	 * @param {Boolean=} options.cropBox - Uses the crop box rather than media box when
 	 * generating the files (PNG/JPEG/TIFF only).
 	 * @param {Number=} options.cropHeight - Specifies the height of crop area in pixels
@@ -167,8 +169,8 @@ class Poppler {
 	 * comment to the PostScript file (PS only). This tells the print manager to enable duplexing.
 	 * @param {Boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
 	 * so if you use this option with a multi-page PDF file, you must use -f and -l to specify
-	 * a single page. The page size options (-origpagesizes, -paper, -paperw, -paperh) can not
-	 * be used with this option.
+	 * a single page. The page size options (originalPageSize, paperSize, paperWidth,
+	 * paperHeight) can not be used with this option.
 	 * @param {Boolean=} options.evenPagesOnly - Generates only the even numbered pages.
 	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
 	 * paper (PS,PDF,SVG only). By default, these pages are not scaled.
@@ -177,7 +179,6 @@ class Poppler {
 	 * @param {Boolean=} options.iccFile - Use the specified ICC file as the output profile
 	 * (PNG only). The profile will be embedded in the PNG file.
 	 * @param {Boolean=} options.jpegFile - Generates a JPEG file(s).
-	 * @param {String=} options.jpegOptions
 	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {Boolean=} options.monochromeFile - Generate a monochrome file (PNG and TIFF only).
 	 * @param {Boolean=} options.noCenter - By default, PDF pages smaller than the paper
@@ -195,8 +196,8 @@ class Poppler {
 	 * @param {Number=} options.paperHeight - Set the paper height, in points (PS,PDF,SVG only).
 	 * @param {String=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
 	 * or "A3" (PS,PDF,SVG only). This can also be set to "match", which will set the paper size
-	 * of each page to match the size specified in the PDF file. If none the -paper, -paperw, or
-	 * -paperh options are specified the default is to match the paper size.
+	 * of each page to match the size specified in the PDF file. If none of the paperSize, 
+	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
 	 * @param {Number=} options.paperWidth - Set the paper width, in points (PS,PDF,SVG only).
 	 * @param {Boolean=} options.pdfFile - Generates a PDF file.
 	 * @param {Boolean=} options.pngFile - Generates a PNG file(s).
@@ -221,15 +222,12 @@ class Poppler {
 	 * @param {Number=} options.scalePageToYAxis - Scales each page vertically to fit in scale-to-y
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page (PNG/JPEG/TIFF only).
-	 * @param {Boolean=} options.setupDialogue
 	 * @param {Boolean=} options.singleFile - Writes only the first page and does not add digits.
 	 * @param {Boolean=} options.svgFile - Generate a SVG (Scalable Vector Graphics) file.
 	 * @param {Boolean=} options.tiffFile - Generates a TIFF file(s).
 	 * @param {Boolean=} options.transparentPageColor - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
 	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
-	 * 
-	 * 
 	 * @param {String} file
 	 * @param {String=} outputFile
 	 * @returns {Promise}
@@ -252,7 +250,6 @@ class Poppler {
 				grayscaleFile: { arg: '-gray', type: 'boolean' },
 				iccFile: { arg: '-icc', type: 'string' },
 				jpegFile: { arg: '-jpeg', type: 'boolean' },
-				jpegOptions: { arg: '-jpegopt', type: 'string' },
 				lastPageToConvert: { arg: '-l', type: 'number' },
 				monochromeFile: { arg: '-mono', type: 'boolean' },
 				noCenter: { arg: '-nocenter', type: 'boolean' },
@@ -277,7 +274,6 @@ class Poppler {
 				scalePageTo: { arg: '-scale-to', type: 'number' },
 				scalePageToXAxis: { arg: '-scale-to-x', type: 'number' },
 				scalePageToYAxis: { arg: '-scale-to-y', type: 'number' },
-				setupDialogue: { arg: '-setupdlg', type: 'boolean' },
 				singleFile: { arg: '-singlefile', type: 'boolean' },
 				svgFile: { arg: '-svg', type: 'boolean' },
 				tiffFile: { arg: '-tiff', type: 'boolean' },

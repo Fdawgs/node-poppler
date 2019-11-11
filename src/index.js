@@ -78,7 +78,7 @@ class Poppler {
 	 * than this percent of character height.
 	 * @param {Boolean=} options.xmlOutput - Output for XML post-processing.
 	 * @param {Number=} options.zoom - Zoom the PDF document (default 1.5).
-	 * @param {String} file
+	 * @param {String} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
 	pdfToHtml(options, file) {
@@ -196,7 +196,7 @@ class Poppler {
 	 * @param {Number=} options.paperHeight - Set the paper height, in points (PS,PDF,SVG only).
 	 * @param {String=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
 	 * or "A3" (PS,PDF,SVG only). This can also be set to "match", which will set the paper size
-	 * of each page to match the size specified in the PDF file. If none of the paperSize, 
+	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
 	 * @param {Number=} options.paperWidth - Set the paper width, in points (PS,PDF,SVG only).
 	 * @param {Boolean=} options.pdfFile - Generates a PDF file.
@@ -228,8 +228,8 @@ class Poppler {
 	 * @param {Boolean=} options.transparentPageColor - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
 	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
-	 * @param {String} file
-	 * @param {String=} outputFile
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {String=} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
 	pdfToCairo(options, file, outputFile) {

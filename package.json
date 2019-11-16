@@ -4,7 +4,7 @@
   "description": "Node.js wrapper for the Poppler PDF rendering library",
   "main": "src/index.js",
   "scripts": {
-    "jest": "jest src --detectOpenHandles --coverage",
+    "jest": "jest src --coverage",
     "lint": "eslint src/index.js",
     "test": "npm run lint"
   },

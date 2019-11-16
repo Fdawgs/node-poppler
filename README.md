@@ -4,3 +4,23 @@ node-poppler
 
 # What is Poppler?
 Poppler is an open-source software utility library for rendering PDF documents; poppler-utils, are a collection of binaries built on Poppler for manipulating, extracting from, and converting PDF documents to a variety of formats including HTML/PNG/JPEG/TIFF/PDF/PS/EPS/SVG/BMP and plain text.
+
+# Usage
+``
+const { Poppler } = require('node-poppler');
+
+const file = 'test_document.pdf';
+const poppler = new Poppler();
+const options = {
+	firstPageToPrint: 1,
+	lastPageToPrint: 2
+};
+
+await poppler.pdfToHtml(options, file)
+	.then((res) => {
+		console.log(res);
+	});
+``
+
+# License
+`node-poppler` is licensed under the [MIT](https://github.com/Fdawgs/node-poppler/blob/master/LICENSE) license.

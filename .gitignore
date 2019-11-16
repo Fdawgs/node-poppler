@@ -61,4 +61,6 @@ typings/
 .next
 
 # Converted test files
-test_pdfs/*.html
+test_docs/*
+!test_docs/*.pdf
+!test_docs/*.txt

@@ -5,13 +5,8 @@ node_js:
   - "node"
 
 os: 
-  - linux
+  - osx
   - windows
-
-matrix:
-  allow_failures:
-    - os: windows
-
 
 # safelist
 branches:

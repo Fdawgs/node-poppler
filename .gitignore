@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+
+# Converted test files
+test_docs/*
+!test_docs/*.pdf
+!test_docs/*.txt

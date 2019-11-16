@@ -4,6 +4,32 @@ const { execFile } = require('child_process');
 
 const platform = os.platform();
 
+/**
+ * @param {Object} options
+ * @param {Object} acceptedOptions
+ * @param {Array} args
+ */
+function parseOptions(options, acceptedOptions, args) {
+	return new Promise((resolve, reject) => {
+		Object.keys(options).forEach((key) => {
+			if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
+				// eslint-disable-next-line valid-typeof
+				if (typeof options[key] === acceptedOptions[key].type) {
+					args.push(acceptedOptions[key].arg);
+					if (typeof options[key] !== 'boolean') {
+						args.push(options[key]);
+					}
+				} else {
+					reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
+				}
+			} else {
+				reject(new Error(`Invalid option provided '${key}'`));
+			}
+		});
+		resolve(args);
+	});
+}
+
 class Poppler {
 	constructor(binPath) {
 		if (binPath) {
@@ -116,21 +142,10 @@ class Poppler {
 			 * before adding it to argument list.
 			 */
 			if (options) {
-				Object.keys(options).forEach((key) => {
-					if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
-						// eslint-disable-next-line valid-typeof
-						if (typeof options[key] === acceptedOptions[key].type) {
-							args.push(acceptedOptions[key].arg);
-							if (typeof options[key] !== 'boolean') {
-								args.push(options[key]);
-							}
-						} else {
-							reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
-						}
-					} else {
-						reject(new Error(`Invalid option provided '${key}'`));
-					}
-				});
+				parseOptions(options, acceptedOptions, args)
+					.catch((err) => {
+						reject(err);
+					});
 			}
 
 			args.push(file);
@@ -289,21 +304,10 @@ class Poppler {
 			 * before adding it to argument list.
 			 */
 			if (options) {
-				Object.keys(options).forEach((key) => {
-					if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
-						// eslint-disable-next-line valid-typeof
-						if (typeof options[key] === acceptedOptions[key].type) {
-							args.push(acceptedOptions[key].arg);
-							if (typeof options[key] !== 'boolean') {
-								args.push(options[key]);
-							}
-						} else {
-							reject(new Error(`Invalid value type provided for option '${key}', expected ${acceptedOptions[key].type} but recieved ${typeof options[key]}`));
-						}
-					} else {
-						reject(new Error(`Invalid option provided '${key}'`));
-					}
-				});
+				parseOptions(options, acceptedOptions, args)
+					.catch((err) => {
+						reject(err);
+					});
 			}
 
 			args.push(file);

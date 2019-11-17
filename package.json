@@ -1,6 +1,6 @@
 {
   "name": "node-poppler",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Node.js wrapper for the Poppler PDF rendering library",
   "main": "src/index.js",
   "scripts": {

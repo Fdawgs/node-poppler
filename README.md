@@ -45,7 +45,7 @@ await poppler.pdfToHtml(options, file)
 ## poppler.pdfToCairo
 `Poppler.pdfToCairo(options: any, file: string, outputFile?: string): Promise<any>`
 
-`jpegFile`, `pdfFile`, `pngFile`, `psFile`, `svgFile`, `tiffFile` 
+`options` object requires any of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
 
 
 Example of calling poppler.pdfToHtml with a promise:

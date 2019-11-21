@@ -15,8 +15,18 @@ Poppler is an open-source software utility library for rendering PDF documents; 
 
 `npm install node-poppler`
 
-# Usage
-``
+# API
+
+## constructor
+
+## poppler.pdfToHtml
+`Poppler.pdfToHtml(options?: any, file: string): Promise<any>`
+
+Every field of the `options` object is entirely optional.
+
+Example of calling poppler.pdfToHtml with a promise:
+
+```js
 const { Poppler } = require('node-poppler');
 
 const file = 'test_document.pdf';
@@ -30,7 +40,32 @@ await poppler.pdfToHtml(options, file)
 	.then((res) => {
 		console.log(res);
 	});
-``
+```
+
+## poppler.pdfToCairo
+`Poppler.pdfToCairo(options: any, file: string, outputFile?: string): Promise<any>`
+
+`jpegFile`, `pdfFile`, `pngFile`, `psFile`, `svgFile`, `tiffFile` 
+
+
+Example of calling poppler.pdfToHtml with a promise:
+
+```js
+const { Poppler } = require('node-poppler');
+
+const file = 'test_document.pdf';
+const poppler = new Poppler();
+const options = {
+	firstPageToPrint: 1,
+	lastPageToPrint: 2
+};
+
+await poppler.pdfToHtml(options, file)
+	.then((res) => {
+		console.log(res);
+	});
+```
+
 
 # License
 `node-poppler` is licensed under the [MIT](https://github.com/Fdawgs/node-poppler/blob/master/LICENSE) license.

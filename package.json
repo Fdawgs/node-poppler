@@ -1,6 +1,6 @@
 {
   "name": "node-poppler",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "description": "Node.js wrapper for the Poppler PDF rendering library",
   "main": "src/index.js",
   "scripts": {
@@ -15,15 +15,14 @@
   "author": "Frazer Smith",
   "license": "MIT",
   "devDependencies": {
-    "coveralls": "^3.0.6",
-    "eslint": "^6.6.0",
+    "coveralls": "^3.0.8",
+    "eslint": "^6.7.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-nhsuk": "^1.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-json": "^2.0.1",
-    "jest": "^24.9.0",
-    "nodemon": "^1.19.4"
+    "jest": "^24.9.0"
   },
   "bugs": {
     "url": "https://github.com/Fdawgs/node-poppler/issues"

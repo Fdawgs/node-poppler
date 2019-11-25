@@ -164,7 +164,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 	 *
-	 * @param {Object=} options
+	 * @param {Object} options
 	 * @param {String=} options.antialias Set the cairo antialias option used for text
 	 * and drawing in image files (or rasterized regions in vector output).
 	 * Options are: default; none; gray; subpixel; fast; good; best

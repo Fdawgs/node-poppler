@@ -9,15 +9,9 @@ This allows the documents to be dispatched electronically via the NHS MESH syste
 There are a number of other Poppler wrapped modules available but the majority are no longer maintained or did not provide full interfacing with the Poppler binaries (i.e. only provided an interface to the PDF-to-Cairo binary but not to HTML).
 
 ## What is Poppler?
-Poppler is an open-source software utility library for rendering PDF documents; poppler-utils, are a collection of binaries built on Poppler for manipulating, extracting from, and converting PDF documents to a variety of formats including HTML/PNG/JPEG/TIFF/PDF/PS/EPS/SVG/BMP and plain text.
-
-# Install
-
-`npm install node-poppler`
+[Poppler](https://poppler.freedesktop.org/) is an open-source software utility library for rendering PDF documents; poppler-utils, are a collection of binaries built on Poppler for manipulating, extracting from, and converting PDF documents to a variety of formats including HTML/PNG/JPEG/TIFF/PDF/PS/EPS/SVG/BMP and plain text.
 
 # API
-
-## constructor
 
 ## poppler.pdfToHtml
 `Poppler.pdfToHtml(options?: any, file: string): Promise<any>`
@@ -48,7 +42,7 @@ await poppler.pdfToHtml(options, file)
 `options` object requires any of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
 
 
-Example of calling poppler.pdfToHtml with a promise:
+Example of calling poppler.pdfToCairo with a promise:
 
 ```js
 const { Poppler } = require('node-poppler');
@@ -57,10 +51,11 @@ const file = 'test_document.pdf';
 const poppler = new Poppler();
 const options = {
 	firstPageToPrint: 1,
-	lastPageToPrint: 2
+	lastPageToPrint: 2,
+	pngFile: true
 };
 
-await poppler.pdfToHtml(options, file)
+await poppler.pdfToCairo(options, file)
 	.then((res) => {
 		console.log(res);
 	});

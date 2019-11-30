@@ -122,12 +122,12 @@ class Poppler {
 				noMergeParagraph: { arg: '-nomerge', type: 'boolean' },
 				noRoundedCoordinates: { arg: '-noRoundedCoordinates', type: 'boolean' },
 				outputEncoding: { arg: '-enc', type: 'string' },
-				ownerPassword: { arg: '', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
 				printVersionInfo: { arg: '-v', type: 'boolean' },
 				quiet: { arg: '-q', type: 'boolean' },
 				singlePage: { arg: '-s', type: 'boolean' },
 				stdout: { arg: '-stdout', type: 'boolean' },
-				userPassword: { arg: '', type: 'string' },
+				userPassword: { arg: '-upw', type: 'string' },
 				wordBreakThreshold: { arg: '-wb', type: 'number' },
 				xmlOutput: { arg: '-xml', type: 'boolean' },
 				zoom: { arg: '-zoom', type: 'number' }
@@ -271,7 +271,7 @@ class Poppler {
 				noShrink: { arg: '-noshrink', type: 'boolean' },
 				oddPagesOnly: { arg: '-o', type: 'boolean' },
 				originalPageSizes: { arg: '-origpagesizes', type: 'boolean' },
-				ownerPassword: { arg: '', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
 				paperHeight: { arg: '-paperh', type: 'number' },
 				paperSize: { arg: '-paper', type: 'string' },
 				paperWidth: { arg: '-paperw', type: 'number' },
@@ -292,7 +292,7 @@ class Poppler {
 				svgFile: { arg: '-svg', type: 'boolean' },
 				tiffFile: { arg: '-tiff', type: 'boolean' },
 				transparentPageColor: { arg: '-transp', type: 'boolean' },
-				userPassword: { arg: '', type: 'string' }
+				userPassword: { arg: '-upw', type: 'string' }
 			};
 
 			// Build array of args based on options passed
@@ -357,10 +357,12 @@ class Poppler {
 	 * between pages.
 	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
 	 * This defaults to "UTF-8".
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
 	 * @param {Boolean=} options.rawLayout - Keep the text in content stream order. This is a
 	 * hack which often "undoes" column formatting, etc. Use of raw mode is no longer recommended.
+	 * @param {String=} options.userPassword - User password (for encrypted files).
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @param {String=} outputFile - Filepath of the file to output the results to.
 	 */
@@ -382,10 +384,12 @@ class Poppler {
 				maintainLayout: { arg: '-layout', type: 'boolean' },
 				noPageBreaks: { arg: '-nopgbrk', type: 'boolean' },
 				outputEncoding: { arg: '-enc', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
 				printVersionInfo: { arg: '-v', type: 'boolean' },
 				quiet: { arg: '-q', type: 'boolean' },
 				rawLayout: { arg: '-raw', type: 'boolean' },
-				resolution: { arg: '-r', type: 'number' }
+				resolution: { arg: '-r', type: 'number' },
+				userPassword: { arg: '-upw', type: 'string' }
 			};
 
 			// Build array of args based on options passed

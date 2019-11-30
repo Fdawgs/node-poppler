@@ -90,7 +90,8 @@ class Poppler {
 	 * @param {Boolean=} options.noMergeParagraph - Do not merge paragraphs.
 	 * @param {Boolean=} options.noRoundedCoordinates - Do not round coordinates
 	 * (with XML output only).
-	 * @param {String=} options.outputEncoding - Output text encoding name.
+	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * This defaults to "UTF-8".
 	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {Boolean=} options.quiet - Do not print any messages or errors.
@@ -198,7 +199,7 @@ class Poppler {
 	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
 	 * the lower-left corner of the paper instead (PS,PDF,SVG only).
 	 * @param {Boolean=} options.noCrop - By default, printing output is cropped to the CropBox
-	 * specified in the PDF file.  This option disables cropping (PS,PDF,SVG only).
+	 * specified in the PDF file. This option disables cropping (PS, PDF, SVG only).
 	 * @param {Boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper
 	 * (PS,PDF,SVG only). By default, pages larger than the paper are shrunk to fit.
 	 * @param {Boolean=} options.oddPagesOnly - Generates only the odd numbered pages.
@@ -206,7 +207,7 @@ class Poppler {
 	 * the size specified in the PDF file.
 	 * @param {String=} options.ownerPassword - Specify the owner password for the PDF file.
 	 * Providing this will bypass all security restrictions.
-	 * @param {Number=} options.paperHeight - Set the paper height, in points (PS,PDF,SVG only).
+	 * @param {Number=} options.paperHeight - Set the paper height, in points (PS, PDF, SVG only).
 	 * @param {String=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
 	 * or "A3" (PS,PDF,SVG only). This can also be set to "match", which will set the paper size
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,

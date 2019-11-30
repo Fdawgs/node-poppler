@@ -62,9 +62,7 @@ class Poppler {
 					break;
 
 				default:
-					console.error(`${platform} is NOT supported.`);
-					process.exit(1);
-					break;
+					return new Error(`${platform} is NOT supported.`);
 			}
 
 			this.popplerPath = popplerPath;
@@ -81,18 +79,19 @@ class Poppler {
 	 * @param {Boolean=} options.complexOutput - Generate complex output.
 	 * @param {Boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
 	 * @param {Boolean=} options.extractHidden - Force hidden text extraction.
-	 * @param {Number=} options.firstPageToPrint - First page to print.
+	 * @param {Number=} options.firstPageToConvert - First page to print.
 	 * @param {Boolean=} options.fontFullName - Outputs the font name without any substitutions.
 	 * @param {Boolean=} options.ignoreImages - Ignore images.
 	 * @param {String=} options.imageFormat - Image file format for Splash output (PNG or JPG).
 	 * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
-	 * @param {Number=} options.lastPageToPrint - Last page to print.
+	 * @param {Number=} options.lastPageToConvert - Last page to print.
 	 * @param {Boolean=} options.noDrm - Override document DRM settings.
 	 * @param {Boolean=} options.noFrames - Generate no frames. Not supported in complex output mode.
 	 * @param {Boolean=} options.noMergeParagraph - Do not merge paragraphs.
 	 * @param {Boolean=} options.noRoundedCoordinates - Do not round coordinates
 	 * (with XML output only).
-	 * @param {String=} options.outputEncoding - Output text encoding name.
+	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * This defaults to "UTF-8".
 	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {Boolean=} options.quiet - Do not print any messages or errors.
@@ -113,22 +112,22 @@ class Poppler {
 				complexOutput: { arg: '-c', type: 'boolean' },
 				exchangePdfLinks: { arg: '-p', type: 'boolean' },
 				extractHidden: { arg: '', type: 'boolean' },
-				firstPageToPrint: { arg: '-f', type: 'number' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
 				fontFullName: { arg: '-fontfullname', type: 'boolean' },
 				ignoreImages: { arg: '-i', type: 'boolean' },
 				imageFormat: { arg: '-fmt', type: 'string' },
-				lastPageToPrint: { arg: '-l', type: 'number' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
 				noDrm: { arg: '-nodrm', type: 'boolean' },
 				noFrames: { arg: '-noframes', type: 'boolean' },
 				noMergeParagraph: { arg: '-nomerge', type: 'boolean' },
 				noRoundedCoordinates: { arg: '-noRoundedCoordinates', type: 'boolean' },
 				outputEncoding: { arg: '-enc', type: 'string' },
-				ownerPassword: { arg: '', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
 				printVersionInfo: { arg: '-v', type: 'boolean' },
 				quiet: { arg: '-q', type: 'boolean' },
 				singlePage: { arg: '-s', type: 'boolean' },
 				stdout: { arg: '-stdout', type: 'boolean' },
-				userPassword: { arg: '', type: 'string' },
+				userPassword: { arg: '-upw', type: 'string' },
 				wordBreakThreshold: { arg: '-wb', type: 'number' },
 				xmlOutput: { arg: '-xml', type: 'boolean' },
 				zoom: { arg: '-zoom', type: 'number' }
@@ -189,7 +188,7 @@ class Poppler {
 	 * @param {Boolean=} options.evenPagesOnly - Generates only the even numbered pages.
 	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
 	 * paper (PS,PDF,SVG only). By default, these pages are not scaled.
-	 * @param {Number=} options.firstPagetoConvert - Specifies the first page to convert.
+	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {Boolean=} options.grayscaleFile - Generate a grayscale file (PNG, JPEG, and TIFF only).
 	 * @param {Boolean=} options.iccFile - Use the specified ICC file as the output profile
 	 * (PNG only). The profile will be embedded in the PNG file.
@@ -200,7 +199,7 @@ class Poppler {
 	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
 	 * the lower-left corner of the paper instead (PS,PDF,SVG only).
 	 * @param {Boolean=} options.noCrop - By default, printing output is cropped to the CropBox
-	 * specified in the PDF file.  This option disables cropping (PS,PDF,SVG only).
+	 * specified in the PDF file. This option disables cropping (PS, PDF, SVG only).
 	 * @param {Boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper
 	 * (PS,PDF,SVG only). By default, pages larger than the paper are shrunk to fit.
 	 * @param {Boolean=} options.oddPagesOnly - Generates only the odd numbered pages.
@@ -208,7 +207,7 @@ class Poppler {
 	 * the size specified in the PDF file.
 	 * @param {String=} options.ownerPassword - Specify the owner password for the PDF file.
 	 * Providing this will bypass all security restrictions.
-	 * @param {Number=} options.paperHeight - Set the paper height, in points (PS,PDF,SVG only).
+	 * @param {Number=} options.paperHeight - Set the paper height, in points (PS, PDF, SVG only).
 	 * @param {String=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
 	 * or "A3" (PS,PDF,SVG only). This can also be set to "match", which will set the paper size
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
@@ -261,7 +260,7 @@ class Poppler {
 				epsFile: { arg: '-eps', type: 'boolean' },
 				evenPagesOnly: { arg: '-e', type: 'boolean' },
 				fillPage: { arg: '-expand', type: 'boolean' },
-				firstPagetoConvert: { arg: '-f', type: 'number' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
 				grayscaleFile: { arg: '-gray', type: 'boolean' },
 				iccFile: { arg: '-icc', type: 'string' },
 				jpegFile: { arg: '-jpeg', type: 'boolean' },
@@ -272,7 +271,7 @@ class Poppler {
 				noShrink: { arg: '-noshrink', type: 'boolean' },
 				oddPagesOnly: { arg: '-o', type: 'boolean' },
 				originalPageSizes: { arg: '-origpagesizes', type: 'boolean' },
-				ownerPassword: { arg: '', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
 				paperHeight: { arg: '-paperh', type: 'number' },
 				paperSize: { arg: '-paper', type: 'string' },
 				paperWidth: { arg: '-paperw', type: 'number' },
@@ -293,7 +292,7 @@ class Poppler {
 				svgFile: { arg: '-svg', type: 'boolean' },
 				tiffFile: { arg: '-tiff', type: 'boolean' },
 				transparentPageColor: { arg: '-transp', type: 'boolean' },
-				userPassword: { arg: '', type: 'string' }
+				userPassword: { arg: '-upw', type: 'string' }
 			};
 
 			// Build array of args based on options passed
@@ -316,6 +315,103 @@ class Poppler {
 			}
 
 			execFile(path.join(this.popplerPath, 'pdftocairo'), args, (err, stdout) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(stdout);
+				}
+			});
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Converts PDF to TXT.
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.boundingBoxXhtml Generate an XHTML file containing bounding
+	 * box information for each word in the file.
+	 * @param {Boolean=} options.boundingBoxXhtmlLayout Generate an XHTML file containing
+	 * bounding box information for each block, line, and word in the file.
+	 * @param {Number=} options.cropHeight - Specifies the height of crop area in pixels
+	 * (image output) or points (vector output).
+	 * @param {Number=} options.cropWidth - Specifies the width of crop area in pixels
+	 * (image output) or points (vector output).
+	 * @param {Number=} options.cropXAxis - Specifies the x-coordinate of the crop area top left
+	 * corner in pixels (image output) or points (vector output).
+	 * @param {Number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
+	 * corner in pixels (image output) or points (vector output).
+	 * @param {String=} options.eolConvention - Sets the end-of-line convention to use for
+	 * text output: unix | dos | mac.
+	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {Number=} options.fixedWidthLayout - Assume fixed-pitch (or tabular) text, with the
+	 * specified character width (in points). This forces physical layout mode.
+	 * @param {Boolean=} options.generateHtmlMetaFile Generate a simple HTML file, including the
+	 * meta information. This simply wraps the text in <pre> and </pre> and prepends the meta headers.
+	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {Boolean=} options.listEncodingOptions - List the available encodings.
+	 * @param {Boolean=} options.maintainLayout - Maintain (as best as possible) the original physical
+	 * layout of the text. The default is to ´undo' physical layout (columns, hyphenation, etc.) and
+	 * output the text in reading order.
+	 * @param {Boolean=} options.noPageBreaks - Don't insert page breaks (form feed characters)
+	 * between pages.
+	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * This defaults to "UTF-8".
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {Boolean=} options.rawLayout - Keep the text in content stream order. This is a
+	 * hack which often "undoes" column formatting, etc. Use of raw mode is no longer recommended.
+	 * @param {String=} options.userPassword - User password (for encrypted files).
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {String=} outputFile - Filepath of the file to output the results to.
+	 */
+	pdfToText(options, file, outputFile) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				boundingBoxXhtml: { arg: '-bbox', type: 'boolean' },
+				boundingBoxXhtmlLayout: { arg: '-bbox-layout', type: 'boolean' },
+				cropHeight: { arg: '-H', type: 'number' },
+				cropWidth: { arg: '-W', type: 'number' },
+				cropXAxis: { arg: '-x', type: 'number' },
+				cropYAxis: { arg: '-y', type: 'number' },
+				eolConvention: { arg: '-eol', type: 'string' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
+				fixedWidthLayout: { arg: '-fixed', type: 'number' },
+				generateHtmlMetaFile: { arg: '-htmlmeta', type: 'boolean' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
+				listEncodingOptions: { arg: '-listenc', type: 'boolean' },
+				maintainLayout: { arg: '-layout', type: 'boolean' },
+				noPageBreaks: { arg: '-nopgbrk', type: 'boolean' },
+				outputEncoding: { arg: '-enc', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				quiet: { arg: '-q', type: 'boolean' },
+				rawLayout: { arg: '-raw', type: 'boolean' },
+				resolution: { arg: '-r', type: 'number' },
+				userPassword: { arg: '-upw', type: 'string' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args)
+					.catch((err) => {
+						reject(err);
+					});
+			}
+
+			args.push(file);
+			if (outputFile) {
+				args.push(outputFile);
+			}
+
+			execFile(path.join(this.popplerPath, 'pdftotext'), args, (err, stdout) => {
 				if (err) {
 					reject(err);
 				} else {

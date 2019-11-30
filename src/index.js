@@ -323,6 +323,99 @@ class Poppler {
 			});
 		});
 	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Converts PDF to TXT.
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.boundingBoxXhtml Generate an XHTML file containing bounding
+	 * box information for each word in the file.
+	 * @param {Boolean=} options.boundingBoxXhtmlLayout Generate an XHTML file containing
+	 * bounding box information for each block, line, and word in the file.
+	 * @param {Number=} options.cropHeight - Specifies the height of crop area in pixels
+	 * (image output) or points (vector output).
+	 * @param {Number=} options.cropWidth - Specifies the width of crop area in pixels
+	 * (image output) or points (vector output).
+	 * @param {Number=} options.cropXAxis - Specifies the x-coordinate of the crop area top left
+	 * corner in pixels (image output) or points (vector output).
+	 * @param {Number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
+	 * corner in pixels (image output) or points (vector output).
+	 * @param {String=} options.eolConvention - Sets the end-of-line convention to use for
+	 * text output: unix | dos | mac.
+	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {Number=} options.fixedWidthLayout - Assume fixed-pitch (or tabular) text, with the
+	 * specified character width (in points). This forces physical layout mode.
+	 * @param {Boolean=} options.generateHtmlMetaFile Generate a simple HTML file, including the
+	 * meta information. This simply wraps the text in <pre> and </pre> and prepends the meta headers.
+	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {Boolean=} options.listEncodingOptions - List the available encodings.
+	 * @param {Boolean=} options.maintainLayout - Maintain (as best as possible) the original physical
+	 * layout of the text. The default is to ´undo' physical layout (columns, hyphenation, etc.) and
+	 * output the text in reading order.
+	 * @param {Boolean=} options.noPageBreaks - Don't insert page breaks (form feed characters)
+	 * between pages.
+	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * This defaults to "UTF-8".
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {Boolean=} options.rawLayout - Keep the text in content stream order. This is a
+	 * hack which often "undoes" column formatting, etc. Use of raw mode is no longer recommended.
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {String=} outputFile - Filepath of the file to output the results to.
+	 */
+	pdfToText(options, file, outputFile) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				boundingBoxXhtml: { arg: '-bbox', type: 'boolean' },
+				boundingBoxXhtmlLayout: { arg: '-bbox-layout', type: 'boolean' },
+				cropHeight: { arg: '-H', type: 'number' },
+				cropWidth: { arg: '-W', type: 'number' },
+				cropXAxis: { arg: '-x', type: 'number' },
+				cropYAxis: { arg: '-y', type: 'number' },
+				eolConvention: { arg: '-eol', type: 'string' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
+				fixedWidthLayout: { arg: '-fixed', type: 'number' },
+				generateHtmlMetaFile: { arg: '-htmlmeta', type: 'boolean' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
+				listEncodingOptions: { arg: '-listenc', type: 'boolean' },
+				maintainLayout: { arg: '-layout', type: 'boolean' },
+				noPageBreaks: { arg: '-nopgbrk', type: 'boolean' },
+				outputEncoding: { arg: '-enc', type: 'string' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				quiet: { arg: '-q', type: 'boolean' },
+				rawLayout: { arg: '-raw', type: 'boolean' },
+				resolution: { arg: '-r', type: 'number' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args)
+					.catch((err) => {
+						reject(err);
+					});
+			}
+
+			args.push(file);
+			if (outputFile) {
+				args.push(outputFile);
+			}
+
+			execFile(path.join(this.popplerPath, 'pdftotext'), args, (err, stdout) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(stdout);
+				}
+			});
+		});
+	}
 }
 
 module.exports = {

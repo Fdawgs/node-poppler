@@ -15,12 +15,12 @@
   "author": "Frazer Smith",
   "license": "MIT",
   "devDependencies": {
-    "coveralls": "^3.0.8",
+    "coveralls": "^3.0.9",
     "eslint": "^6.7.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-nhsuk": "^1.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.4",
+    "eslint-plugin-jest": "^23.1.0",
     "eslint-plugin-json": "^2.0.1",
     "jest": "^24.9.0"
   },

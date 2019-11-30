@@ -15,12 +15,6 @@
         "jest"
     ],
     "rules": {
-        "no-tabs": [
-            "error",
-            {
-                "allowIndentationTabs": true
-            }
-        ],
         "comma-dangle": [
             "error",
             "never"
@@ -32,6 +26,16 @@
                 "SwitchCase": 1
             }
         ],
+        "no-console": [
+            "off"
+        ],
+        "no-tabs": [
+            "error",
+            {
+                "allowIndentationTabs": true
+            }
+        ],
+
         "quotes": [
             "error",
             "single"
@@ -39,9 +43,6 @@
         "semi": [
             "error",
             "always"
-        ],
-        "no-console": [
-            "off"
         ]
     }
 }

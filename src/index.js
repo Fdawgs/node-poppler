@@ -79,12 +79,12 @@ class Poppler {
 	 * @param {Boolean=} options.complexOutput - Generate complex output.
 	 * @param {Boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
 	 * @param {Boolean=} options.extractHidden - Force hidden text extraction.
-	 * @param {Number=} options.firstPageToPrint - First page to print.
+	 * @param {Number=} options.firstPageToConvert - First page to print.
 	 * @param {Boolean=} options.fontFullName - Outputs the font name without any substitutions.
 	 * @param {Boolean=} options.ignoreImages - Ignore images.
 	 * @param {String=} options.imageFormat - Image file format for Splash output (PNG or JPG).
 	 * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
-	 * @param {Number=} options.lastPageToPrint - Last page to print.
+	 * @param {Number=} options.lastPageToConvert - Last page to print.
 	 * @param {Boolean=} options.noDrm - Override document DRM settings.
 	 * @param {Boolean=} options.noFrames - Generate no frames. Not supported in complex output mode.
 	 * @param {Boolean=} options.noMergeParagraph - Do not merge paragraphs.
@@ -111,11 +111,11 @@ class Poppler {
 				complexOutput: { arg: '-c', type: 'boolean' },
 				exchangePdfLinks: { arg: '-p', type: 'boolean' },
 				extractHidden: { arg: '', type: 'boolean' },
-				firstPageToPrint: { arg: '-f', type: 'number' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
 				fontFullName: { arg: '-fontfullname', type: 'boolean' },
 				ignoreImages: { arg: '-i', type: 'boolean' },
 				imageFormat: { arg: '-fmt', type: 'string' },
-				lastPageToPrint: { arg: '-l', type: 'number' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
 				noDrm: { arg: '-nodrm', type: 'boolean' },
 				noFrames: { arg: '-noframes', type: 'boolean' },
 				noMergeParagraph: { arg: '-nomerge', type: 'boolean' },
@@ -187,7 +187,7 @@ class Poppler {
 	 * @param {Boolean=} options.evenPagesOnly - Generates only the even numbered pages.
 	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
 	 * paper (PS,PDF,SVG only). By default, these pages are not scaled.
-	 * @param {Number=} options.firstPagetoConvert - Specifies the first page to convert.
+	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {Boolean=} options.grayscaleFile - Generate a grayscale file (PNG, JPEG, and TIFF only).
 	 * @param {Boolean=} options.iccFile - Use the specified ICC file as the output profile
 	 * (PNG only). The profile will be embedded in the PNG file.
@@ -259,7 +259,7 @@ class Poppler {
 				epsFile: { arg: '-eps', type: 'boolean' },
 				evenPagesOnly: { arg: '-e', type: 'boolean' },
 				fillPage: { arg: '-expand', type: 'boolean' },
-				firstPagetoConvert: { arg: '-f', type: 'number' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
 				grayscaleFile: { arg: '-gray', type: 'boolean' },
 				iccFile: { arg: '-icc', type: 'string' },
 				jpegFile: { arg: '-jpeg', type: 'boolean' },

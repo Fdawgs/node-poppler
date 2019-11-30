@@ -16,7 +16,7 @@ There are a number of other Poppler wrapper modules available but the majority a
 ## poppler.pdfToCairo
 `Poppler.pdfToCairo(options: any, file: string, outputFile?: string): Promise<any>`
 
-`options` object requires any of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
+`options` object requires atleast one of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
 
 
 Example of calling poppler.pdfToCairo with a promise:

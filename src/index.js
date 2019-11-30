@@ -62,9 +62,7 @@ class Poppler {
 					break;
 
 				default:
-					console.error(`${platform} is NOT supported.`);
-					process.exit(1);
-					break;
+					return new Error(`${platform} is NOT supported.`);
 			}
 
 			this.popplerPath = popplerPath;

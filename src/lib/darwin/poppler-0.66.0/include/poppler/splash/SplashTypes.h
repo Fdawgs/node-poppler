@@ -70,16 +70,16 @@ enum SplashColorMode {
   ,
   splashModeCMYK8,	// 1 byte per component, 4 bytes per pixel:
 				//   CMYKCMYK...
-  splashModeDeviceN8		// 1 byte per component, 
+  splashModeDeviceN8		// 1 byte per component,
                         // 4 bytes + n bytes spot colors per pixel:
 				                // CMYKSSSSCMYKSSSS...
 #endif
 };
 
 enum SplashThinLineMode {
-  splashThinLineDefault,  // if SA on: draw solid if requested line width, transformed into 
+  splashThinLineDefault,  // if SA on: draw solid if requested line width, transformed into
                           // device space, is less than half a pixel and a shaped line else
-  splashThinLineSolid,     // draw line solid at least with 1 pixel 
+  splashThinLineSolid,     // draw line solid at least with 1 pixel
   splashThinLineShape     // draw line shaped at least with 1 pixel
 };
 // number of components in each color mode

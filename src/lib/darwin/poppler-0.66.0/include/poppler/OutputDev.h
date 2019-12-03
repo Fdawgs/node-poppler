@@ -20,11 +20,11 @@
 // Copyright (C) 2009-2013, 2015 Thomas Freitag <Thomas.Freitag@alfa.de>
 // Copyright (C) 2009, 2011 Carlos Garcia Campos <carlosgc@gnome.org>
 // Copyright (C) 2009, 2012, 2013 Albert Astals Cid <aacid@kde.org>
-// Copyright (C) 2010 Christian Feuersänger <cfeuersaenger@googlemail.com>
+// Copyright (C) 2010 Christian Feuersï¿½nger <cfeuersaenger@googlemail.com>
 // Copyright (C) 2012 Fabio D'Urso <fabiodurso@hotmail.it>
 // Copyright (C) 2012 William Bader <williambader@hotmail.com>
 // Copyright (C) 2017, 2018 Oliver Sander <oliver.sander@tu-dresden.de>
-// Copyright (C) 2018 Klarälvdalens Datakonsult AB, a KDAB Group company, <info@kdab.com>. Work sponsored by the LiMux project of the city of Munich
+// Copyright (C) 2018 Klarï¿½lvdalens Datakonsult AB, a KDAB Group company, <info@kdab.com>. Work sponsored by the LiMux project of the city of Munich
 // Copyright (C) 2018 Adam Reichold <adam.reichold@t-online.de>
 //
 // To see a description of the changes please see the Changelog file that
@@ -79,7 +79,7 @@ class OutputDev {
 public:
 
   // Constructor.
-  OutputDev() 
+  OutputDev()
 #ifdef USE_CMS
  : iccColorSpaceCache(5)
 #endif
@@ -124,7 +124,7 @@ public:
   // Does this device require incCharCount to be called for text on
   // non-shown layers?
   virtual GBool needCharCount() { return gFalse; }
-  
+
   // Does this device need to clip pages to the crop box even when the
   // box is the crop box?
   virtual GBool needClipToCropBox() { return gFalse; }

@@ -48,7 +48,7 @@ public:
     CIDTrueType,
     CIDTrueTypeOT
   };
-    
+
   // Constructor.
   FontInfo(GfxFont *fontA, XRef *xrefA);
   // Copy constructor

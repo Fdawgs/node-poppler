@@ -151,28 +151,28 @@ public:
 class GfxFont {
 public:
 
-  enum Stretch { 
-	StretchNotDefined, 
-	UltraCondensed, 
-	ExtraCondensed, 
-	Condensed, 
-	SemiCondensed, 
-	Normal, 
-	SemiExpanded, 
-	Expanded, 
-	ExtraExpanded, 
+  enum Stretch {
+	StretchNotDefined,
+	UltraCondensed,
+	ExtraCondensed,
+	Condensed,
+	SemiCondensed,
+	Normal,
+	SemiExpanded,
+	Expanded,
+	ExtraExpanded,
 	UltraExpanded };
 
-  enum Weight { 
-	WeightNotDefined, 
-	W100, 
-	W200, 
-	W300, 
+  enum Weight {
+	WeightNotDefined,
+	W100,
+	W200,
+	W300,
 	W400, // Normal
-	W500, 
-	W600, 
+	W500,
+	W600,
 	W700, // Bold
-	W800, 
+	W800,
 	W900 };
 
   // Build a GfxFont object.
@@ -200,10 +200,10 @@ public:
 
   // Get font family name.
   GooString *getFamily() { return family; }
-  
+
   // Get font stretch.
   Stretch getStretch() const { return stretch; }
-  
+
   // Get font weight.
   Weight getWeight() const { return weight; }
 

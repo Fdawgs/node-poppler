@@ -187,7 +187,7 @@ static inline SplashCoord splashAvg(SplashCoord x, SplashCoord y) {
   return 0.5 * (x + y);
 #endif
 }
- 
+
 static inline SplashCoord splashSqrt(SplashCoord x) {
 #if defined(USE_FIXEDPOINT)
   return FixedPoint::sqrt(x);

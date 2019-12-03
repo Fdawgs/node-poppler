@@ -91,7 +91,7 @@ public:
   GBool isRectangular() { return rectangular; }
 
 private:
-  
+
   PageTransitionType type;           // transition style
   double duration;                   // duration of the effect in seconds
   PageTransitionAlignment alignment; // dimension of the effect

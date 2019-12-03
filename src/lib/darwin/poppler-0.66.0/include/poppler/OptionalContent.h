@@ -40,7 +40,7 @@ public:
 
   // Is OCGS valid?
   GBool isOk() const { return ok; }
-  
+
   bool hasOCGs() const;
   GooList *getOCGs() const { return optionalContentGroups; }
 
@@ -50,9 +50,9 @@ public:
   // (which does not necessarily include all of the OCGs).
   OCDisplayNode *getDisplayRoot();
 
-  Array* getOrderArray() 
+  Array* getOrderArray()
     { return (order.isArray() && order.arrayGetLength() > 0) ? order.getArray() : NULL; }
-  Array* getRBGroupsArray() 
+  Array* getRBGroupsArray()
     { return (rbgroups.isArray() && rbgroups.arrayGetLength()) ? rbgroups.getArray() : NULL; }
 
   bool optContentIsVisible( Object *dictRef );

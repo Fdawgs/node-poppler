@@ -41,28 +41,28 @@ class PopplerCache
   public:
     PopplerCache(int cacheSizeA);
     ~PopplerCache();
-    
+
     PopplerCache(const PopplerCache &) = delete;
     PopplerCache& operator=(const PopplerCache &other) = delete;
 
     /* The item returned is owned by the cache */
     PopplerCacheItem *lookup(const PopplerCacheKey &key);
-    
+
     /* The key and item pointers ownership is taken by the cache */
     void put(PopplerCacheKey *key, PopplerCacheItem *item);
-    
+
     /* The max size of the cache */
     int size();
-    
+
     /* The number of items in the cache */
     int numberOfItems();
-    
+
     /* The n-th item in the cache */
     PopplerCacheItem *item(int index);
-    
+
     /* The n-th key in the cache */
     PopplerCacheKey *key(int index);
-  
+
   private:
     PopplerCacheKey **keys;
     PopplerCacheItem **items;

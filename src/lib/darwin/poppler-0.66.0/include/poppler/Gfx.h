@@ -211,7 +211,7 @@ private:
 
   PDFDoc *doc;
   XRef *xref;			// the xref table for this PDF file
-  Catalog *catalog;		// the Catalog for this PDF file  
+  Catalog *catalog;		// the Catalog for this PDF file
   OutputDev *out;		// output device
   GBool subPage;		// is this a sub-page object?
   GBool printCommands;		// print the drawing commands (for debugging)
@@ -235,7 +235,7 @@ private:
   MarkedContentStack *mcStack;	// current BMC/EMC stack
 
   Parser *parser;		// parser for page content stream(s)
-  
+
   std::set<int> formsDrawing;	// the forms that are being drawn
   std::set<int> charProcDrawing;	// the charProc that are being drawn
 

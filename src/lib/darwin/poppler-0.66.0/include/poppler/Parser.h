@@ -56,7 +56,7 @@ public:
 		 CryptAlgorithm encAlgorithm = cryptRC4, int keyLength = 0,
 		 int objNum = 0, int objGen = 0, int recursion = 0,
 		 GBool strict = gFalse);
-  
+
   Object getObj(int recursion);
   template<typename T> Object getObj(T) = delete;
 

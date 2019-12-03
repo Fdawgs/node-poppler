@@ -140,7 +140,7 @@ public:
       s->append((const char *)readBuf, readChars);
     }
   }
-  
+
   inline Guchar *toUnsignedChars(int *length, int initialSize = 4096, int sizeIncrement = 4096)
   {
     int readChars;
@@ -182,7 +182,7 @@ public:
   virtual int getUnfilteredChar () = 0;
 
   // Resets the stream without reading anything (even not the headers)
-  // WARNING: Reading the stream with something else than getUnfilteredChar 
+  // WARNING: Reading the stream with something else than getUnfilteredChar
   // may lead to unexcepted behaviour until you call reset ()
   virtual void unfilteredReset () = 0;
 
@@ -480,7 +480,7 @@ public:
 private:
 
   GBool fillBuf();
-  
+
   GBool hasGetChars() override { return true; }
   int getChars(int nChars, Guchar *buffer) override
     {
@@ -636,7 +636,7 @@ public:
 
   int getUnfilteredChar () override { return getChar(); }
 
-  void unfilteredReset () override { reset (); } 
+  void unfilteredReset () override { reset (); }
 
 protected:
   T *buf;
@@ -986,7 +986,7 @@ public:
 
 private:
 
-  void dctReset(GBool unfiltered);  
+  void dctReset(GBool unfiltered);
   GBool progressive;		// set if in progressive mode
   GBool interleaved;		// set if in interleaved mode
   int width, height;		// image size

@@ -91,9 +91,9 @@ public:
   // trailer dictionary, which is read before the xref table is
   // parsed.
   void setXRef(XRef *xrefA) { xref = xrefA; }
-  
+
   XRef *getXRef() const { return xref; }
-  
+
   GBool hasKey(const char *key) const;
 
 private:

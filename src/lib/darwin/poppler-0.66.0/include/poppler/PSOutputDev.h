@@ -91,7 +91,7 @@ enum PSOutCustomCodeLocation {
 typedef void (*PSOutputFunc)(void *stream, const char *data, int len);
 
 typedef GooString *(*PSOutCustomCodeCbk)(PSOutputDev *psOut,
-				       PSOutCustomCodeLocation loc, int n, 
+				       PSOutCustomCodeLocation loc, int n,
 				       void *data);
 
 class PSOutputDev: public OutputDev {
@@ -161,7 +161,7 @@ public:
   // Does this device use beginType3Char/endType3Char?  Otherwise,
   // text in Type 3 fonts will be drawn with drawChar/drawString.
   GBool interpretType3Chars() override { return gFalse; }
-  
+
   GBool needClipToCropBox() override { return mode == psModeEPS; }
 
   //----- header/trailer (used only if manualCtrl is true)
@@ -467,7 +467,7 @@ private:
   void (*overlayCbk)(PSOutputDev *psOut, void *data);
   void *overlayCbkData;
   GooString *(*customCodeCbk)(PSOutputDev *psOut,
-			    PSOutCustomCodeLocation loc, int n, 
+			    PSOutCustomCodeLocation loc, int n,
 			    void *data);
   void *customCodeCbkData;
 

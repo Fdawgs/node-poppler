@@ -662,10 +662,10 @@ public:
 #endif
 
 private:
-  
+
   // Destructor.
   ~TextPage();
-  
+
   void clear();
   void assignColumns(TextLineFrag *frags, int nFrags, GBool rot);
   int dumpFragment(Unicode *text, int len, UnicodeMap *uMap, GooString *s);
@@ -746,7 +746,7 @@ private:
   double actualTextY1;
   int actualTextNBytes;
 };
-  
+
 
 //------------------------------------------------------------------------
 // TextOutputDev

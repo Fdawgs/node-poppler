@@ -1,7 +1,7 @@
 //*********************************************************************************
 //                               Rendition.h
 //---------------------------------------------------------------------------------
-// 
+//
 //---------------------------------------------------------------------------------
 // Hugo Mercier <hmercier31[at]gmail.com> (c) 2008
 // Carlos Garcia Campos <carlosgc@gnome.org> (c) 2010
@@ -52,11 +52,11 @@ struct MediaWindowParameters {
                                          // DEFAULT VALUE
 
   MediaWindowType type;                  // movieWindowEmbedded
-  
+
 
   int width;                             // -1
   int height;                            // -1
-  
+
   // floating window position
   MediaWindowRelativeTo relativeTo;      // windowRelativeToDocument (or to desktop)
   double XPosition;                      // 0.5
@@ -106,10 +106,10 @@ struct MediaParameters {
 
   // background color                      // black = (0.0 0.0 0.0)
   Color bgColor;
-  
+
   // opacity in [0.0 1.0]
   double opacity;                          // 1.0
-  
+
 
   GBool showControls;                      // false
 

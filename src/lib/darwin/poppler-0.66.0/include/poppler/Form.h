@@ -160,7 +160,7 @@ protected:
   (encoding) id = (pageNum << 4*sizeof(unsigned)) + fieldNum;
   (decoding) pageNum = id >> 4*sizeof(unsigned); fieldNum = (id << 4*sizeof(unsigned)) >> 4*sizeof(unsigned);
   */
-  unsigned ID; 
+  unsigned ID;
 };
 
 //------------------------------------------------------------------------
@@ -173,7 +173,7 @@ public:
   ~FormWidgetButton ();
 
   FormButtonType getButtonType() const;
-  
+
   void setState (GBool state);
   GBool getState ();
 
@@ -203,12 +203,12 @@ public:
 
   void updateWidgetAppearance() override;
 
-  bool isMultiline () const; 
-  bool isPassword () const; 
-  bool isFileSelect () const; 
-  bool noSpellCheck () const; 
-  bool noScroll () const; 
-  bool isComb () const; 
+  bool isMultiline () const;
+  bool isPassword () const;
+  bool isFileSelect () const;
+  bool noSpellCheck () const;
+  bool noScroll () const;
+  bool isComb () const;
   bool isRichText () const;
   int getMaxLen () const;
   //return the font size of the field's text
@@ -233,7 +233,7 @@ public:
   //return the display name of the i-th choice (UTF16BE)
   const GooString* getChoice(int i) const;
   //select the i-th choice
-  void select (int i); 
+  void select (int i);
 
   //toggle selection of the i-th choice
   void toggle (int i);
@@ -250,11 +250,11 @@ public:
   void updateWidgetAppearance() override;
   bool isSelected (int i) const;
 
-  bool isCombo () const; 
-  bool hasEdit () const; 
-  bool isMultiSelect () const; 
-  bool noSpellCheck () const; 
-  bool commitOnSelChange () const; 
+  bool isCombo () const;
+  bool hasEdit () const;
+  bool isMultiSelect () const;
+  bool noSpellCheck () const;
+  bool commitOnSelChange () const;
   bool isListBox () const;
 protected:
   bool _checkRange (int i) const;
@@ -383,7 +383,7 @@ public:
   const char *getAppearanceState() const { return appearanceState.isName() ? appearanceState.getName() : nullptr; }
 
   void fillChildrenSiblingsID () override;
-  
+
   void setNumSiblings (int num);
   void setSibling (int i, FormFieldButton *id) { siblings[i] = id; }
 
@@ -417,7 +417,7 @@ protected:
 class FormFieldText: public FormField {
 public:
   FormFieldText(PDFDoc *docA, Object *dict, const Ref& ref, FormField *parent, std::set<int> *usedParents);
-  
+
   const GooString* getContent () const { return content; }
   GooString* getContentCopy ();
   void setContentCopy (GooString* new_content);
@@ -475,7 +475,7 @@ public:
   const GooString* getSelectedChoice() const;
 
   //select the i-th choice
-  void select (int i); 
+  void select (int i);
 
   //toggle selection of the i-th choice
   void toggle (int i);
@@ -574,7 +574,7 @@ public:
 
   // Look up an inheritable field dictionary entry.
   static Object fieldLookup(Dict *field, const char *key);
-  
+
   /* Creates a new Field of the type specified in obj's dict.
      used in Form::Form and FormField::FormField */
   static FormField *createFieldFromDict (Object* obj, PDFDoc *docA, const Ref& aref, FormField *parent, std::set<int> *usedParents);
@@ -619,7 +619,7 @@ class FormPageWidgets {
 public:
   FormPageWidgets (Annots* annots, unsigned int page, Form *form);
   ~FormPageWidgets();
-  
+
   FormPageWidgets(const FormPageWidgets &) = delete;
   FormPageWidgets& operator=(const FormPageWidgets &) = delete;
 

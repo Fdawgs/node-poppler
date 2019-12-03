@@ -153,7 +153,7 @@ public:
   void reset() override;
   int lookChar() override;
 };
- 
+
 //------------------------------------------------------------------------
 
 extern void md5(Guchar *msg, int msgLen, Guchar *digest);

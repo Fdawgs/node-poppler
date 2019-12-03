@@ -134,7 +134,7 @@ public:
   GooString *findFontFile(GooString *fontName);
   GooString *findBase14FontFile(GooString *base14Name, GfxFont *font);
   GooString *findSystemFontFile(GfxFont *font, SysFontType *type,
-			      int *fontNum, GooString *substituteFontName = NULL, 
+			      int *fontNum, GooString *substituteFontName = NULL,
 		              GooString *base14Name = NULL);
   GBool getPSExpandSmaller();
   GBool getPSShrinkLarger();
@@ -238,7 +238,7 @@ private:
   CharCodeToUnicodeCache *unicodeToUnicodeCache;
   UnicodeMapCache *unicodeMapCache;
   CMapCache *cMapCache;
-  
+
 #ifdef ENABLE_PLUGINS
   GooList *plugins;		// list of plugins [Plugin]
   GooList *securityHandlers;	// list of loaded security handlers

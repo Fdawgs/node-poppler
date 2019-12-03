@@ -75,7 +75,7 @@ public:
 //------------------------------------------------------------------------
 // GfxBlendMode
 //------------------------------------------------------------------------
- 
+
 enum GfxBlendMode {
   gfxBlendNormal,
   gfxBlendMultiply,
@@ -277,12 +277,12 @@ public:
 
 #ifdef USE_CMS
   static int setupColorProfiles();
-  // displayProfileA should be a cmsHPROFILE 
+  // displayProfileA should be a cmsHPROFILE
   static void setDisplayProfile(void *displayProfileA);
   static void setDisplayProfileName(GooString *name);
-  // result will be a cmsHPROFILE 
+  // result will be a cmsHPROFILE
   static void *getRGBProfile();
-  // result will be a cmsHPROFILE 
+  // result will be a cmsHPROFILE
   static void *getDisplayProfile();
 #endif
 protected:
@@ -1208,7 +1208,7 @@ public:
   // Get decode table.
   double getDecodeLow(int i) { return decodeLow[i]; }
   double getDecodeHigh(int i) { return decodeLow[i] + decodeRange[i]; }
-  
+
   bool useRGBLine() { return (colorSpace2 && colorSpace2->useGetRGBLine ()) || (!colorSpace2 && colorSpace->useGetRGBLine ()); }
   bool useCMYKLine() { return (colorSpace2 && colorSpace2->useGetCMYKLine ()) || (!colorSpace2 && colorSpace->useGetCMYKLine ()); }
   bool useDeviceNLine() { return (colorSpace2 && colorSpace2->useGetDeviceNLine ()) || (!colorSpace2 && colorSpace->useGetDeviceNLine ()); }

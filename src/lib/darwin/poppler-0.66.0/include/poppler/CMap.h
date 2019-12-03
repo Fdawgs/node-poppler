@@ -63,7 +63,7 @@ public:
 
   // Create the CMap specified by <collection> and <cMapName>.  Sets
   // the initial reference count to 1.
-  // Stream is a stream containing the CMap, can be NULL and 
+  // Stream is a stream containing the CMap, can be NULL and
   // this means the CMap will be searched in the CMap files
   // Returns NULL on failure.
   static CMap *parse(CMapCache *cache, GooString *collectionA,
@@ -138,7 +138,7 @@ public:
   // Get the <cMapName> CMap for the specified character collection.
   // Increments its reference count; there will be one reference for
   // the cache plus one for the caller of this function.
-  // Stream is a stream containing the CMap, can be NULL and 
+  // Stream is a stream containing the CMap, can be NULL and
   // this means the CMap will be searched in the CMap files
   // Returns NULL on failure.
   CMap *getCMap(GooString *collection, GooString *cMapName, Stream *stream);

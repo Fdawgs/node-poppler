@@ -104,7 +104,7 @@ private:
   int *inter;			// indexes into <allInter> for each y value
   int interY;			// current y value - used by getNextSpan
   int interIdx;			// current index into <inter> - used by
-				//   getNextSpan 
+				//   getNextSpan
   int interCount;		// current EO/NZWN counter - used by
 				//   getNextSpan
 };

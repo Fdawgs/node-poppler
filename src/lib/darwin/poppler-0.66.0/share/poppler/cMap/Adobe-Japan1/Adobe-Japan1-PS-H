@@ -19,12 +19,12 @@
 %%Copyright: Redistributions in binary form must reproduce the above
 %%Copyright: copyright notice, this list of conditions and the following
 %%Copyright: disclaimer in the documentation and/or other materials
-%%Copyright: provided with the distribution. 
+%%Copyright: provided with the distribution.
 %%Copyright:
 %%Copyright: Neither the name of Adobe Systems Incorporated nor the names
 %%Copyright: of its contributors may be used to endorse or promote
 %%Copyright: products derived from this software without specific prior
-%%Copyright: written permission. 
+%%Copyright: written permission.
 %%Copyright:
 %%Copyright: THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND
 %%Copyright: CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
@@ -86,7 +86,7 @@ endbfrange
 0 usefont % Common RKSJ font
 
 % Max CID: 7632 0x1dd0
-% Range Count: 389 
+% Range Count: 389
 100 beginbfrange
 <0000> <0000> <8140>
 <0146> <0185> <a0>
@@ -496,7 +496,7 @@ endbfrange
 0 usefont
 
 % Max CID: 8285 0x205d
-% Range Count: 317 
+% Range Count: 317
 95 beginbfrange
 <0145> <0145> <859e>
 <02c1> <02c1> <8189>
@@ -823,7 +823,7 @@ endbfrange
 2 usefont
 
 % Max CID: 8717 0x220d
-% Range Count: 264 
+% Range Count: 264
 98 beginbfrange
 <00e7> <00ff> <20>
 <0100> <0144> <39>

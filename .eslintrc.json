@@ -35,7 +35,6 @@
                 "allowIndentationTabs": true
             }
         ],
-
         "quotes": [
             "error",
             "single"

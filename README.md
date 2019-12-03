@@ -12,12 +12,13 @@ There are a number of other Poppler wrapper modules available but the majority a
 [Poppler](https://poppler.freedesktop.org/) is an open-source software utility library for rendering PDF documents; poppler-utils, are a collection of binaries built on Poppler for manipulating, extracting from, and converting PDF documents to a variety of formats including HTML, PNG, JPEG, TIFF, PDF, PS, EPS, SVG, BMP, and TXT.
 
 # API
+[API Documentation can be found here](https://github.com/Fdawgs/node-poppler/blob/master/API.md)
+
+
+# Example uses
 
 ## poppler.pdfToCairo
-`Poppler.pdfToCairo(options: any, file: string, outputFile?: string): Promise<any>`
-
 `options` object requires atleast one of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
-
 
 Example of calling poppler.pdfToCairo with a promise:
 
@@ -39,8 +40,6 @@ await poppler.pdfToCairo(options, file)
 ```
 
 ## poppler.pdfToHtml
-`Poppler.pdfToHtml(options?: any, file: string): Promise<any>`
-
 Every field of the `options` object is entirely optional.
 
 Example of calling poppler.pdfToHtml with a promise:
@@ -62,8 +61,6 @@ await poppler.pdfToHtml(options, file)
 ```
 
 ## poppler.pdfToText
-`Poppler.pdfToText(options?: any, file: string, outputFile?: string): Promise<any>`
-
 Every field of the `options` object is entirely optional.
 
 Example of calling poppler.pdfToText with a promise:

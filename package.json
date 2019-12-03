@@ -4,6 +4,7 @@
   "description": "Node.js wrapper for the Poppler PDF rendering library",
   "main": "src/index.js",
   "scripts": {
+    "doc": "jsdoc2md src/index.js > API.md",
     "jest": "jest src --coverage",
     "lint": "eslint src/index.js",
     "test": "npm run lint; npm run jest;"
@@ -22,7 +23,8 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^23.1.0",
     "eslint-plugin-json": "^2.0.1",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "jsdoc-to-markdown": "^5.0.3"
   },
   "bugs": {
     "url": "https://github.com/Fdawgs/node-poppler/issues"

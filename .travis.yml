@@ -14,7 +14,7 @@ branches:
   - master
   - develop
   - hotfix
-  - /^greenkeeper/.*$/
+  - /^dependabot/.*$/
 
 script: echo "Running tests against $(node -v)..."
 
@@ -22,5 +22,4 @@ jobs:
   include:
     - stage: Produce Coverage
       node_js: node
-      # script: chmod -R 755 /Users/travis/build/Fdawgs/node-poppler/src/lib/darwin/poppler-0.66.0/bin/
       script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

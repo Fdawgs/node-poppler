@@ -369,6 +369,7 @@ class Poppler {
 	 * @param {String=} options.userPassword - User password (for encrypted files).
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @param {String=} outputFile - Filepath of the file to output the results to.
+	 * @returns {Promise}
 	 */
 	pdfToText(options, file, outputFile) {
 		return new Promise((resolve, reject) => {

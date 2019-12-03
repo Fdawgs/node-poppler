@@ -144,17 +144,17 @@ public:
 
   int read(char *buf, int n, Goffset offset) const;
   Goffset size() const;
-  
+
   static GooFile *open(const GooString *fileName);
-  
+
 #ifdef _WIN32
   static GooFile *open(const wchar_t *fileName);
-  
+
   ~GooFile() { CloseHandle(handle); }
 
   // Asuming than on windows you can't change files that are already open
   bool modificationTimeChangedSinceOpen() const;
-  
+
 private:
   GooFile(HANDLE handleA);
   HANDLE handle;
@@ -163,7 +163,7 @@ private:
   ~GooFile() { close(fd); }
 
   bool modificationTimeChangedSinceOpen() const;
-    
+
 private:
   GooFile(int fdA);
   int fd;

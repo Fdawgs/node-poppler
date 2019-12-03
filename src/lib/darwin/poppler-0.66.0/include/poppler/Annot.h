@@ -91,7 +91,7 @@ public:
 
   double getX() const { return x; }
   double getY() const { return y; }
-  
+
 protected:
 
   double x, y;
@@ -121,7 +121,7 @@ protected:
 
   void parsePathArray(Array *array);
 };
-  
+
 //------------------------------------------------------------------------
 // AnnotCalloutLine
 //------------------------------------------------------------------------
@@ -139,7 +139,7 @@ public:
   double getY1() const { return coord1.getY(); }
   double getX2() const { return coord2.getX(); }
   double getY2() const { return coord2.getY(); }
-  
+
 protected:
 
   AnnotCoord coord1, coord2;
@@ -648,7 +648,7 @@ public:
   void setBorder(AnnotBorder *new_border); // Takes ownership
 
   // The annotation takes the ownership of
-  // new_color. 
+  // new_color.
   void setColor(AnnotColor *new_color);
 
   void setAppearanceState(const char *state);
@@ -708,7 +708,7 @@ protected:
   Object annotObj;
 
   int refCnt;
-  
+
   // required data
   AnnotSubtype type;                // Annotation type
   PDFRectangle *rect;               // Rect
@@ -1074,7 +1074,7 @@ protected:
 
   // required
   AnnotCoord *coord1, *coord2;
-  
+
   // optional
   // inherited  from Annot
   // AnnotBorderBS border;          // BS
@@ -1115,7 +1115,7 @@ public:
 protected:
 
   void initialize(PDFDoc *docA, Dict *dict);
-  
+
   AnnotQuadrilaterals *quadrilaterals; // QuadPoints
 };
 
@@ -1426,7 +1426,7 @@ class Annot3D: public Annot {
 
     Activation(Dict *dict);
   private:
-    
+
     ActivationATrigger aTrigger;  // A   (Default XA)
     ActivationAState aState;      // AIS (Default L)
     ActivationDTrigger dTrigger;  // D   (Default PI)

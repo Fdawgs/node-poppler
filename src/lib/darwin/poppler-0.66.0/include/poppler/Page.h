@@ -64,7 +64,7 @@ public:
   GBool isValid() { return x1 != 0 || y1 != 0 || x2 != 0 || y2 != 0; }
   GBool contains(double x, double y) { return x1 <= x && x <= x2 && y1 <= y && y <= y2; }
   void clipTo(PDFRectangle *rect);
-  
+
   bool operator==(const PDFRectangle &rect) const { return x1 == rect.x1 && y1 == rect.y1 && x2 == rect.x2 && y2 == rect.y2; }
 };
 
@@ -159,11 +159,11 @@ public:
   PDFRectangle *getMediaBox() { return attrs->getMediaBox(); }
   PDFRectangle *getCropBox() { return attrs->getCropBox(); }
   GBool isCropped() { return attrs->isCropped(); }
-  double getMediaWidth() 
+  double getMediaWidth()
     { return attrs->getMediaBox()->x2 - attrs->getMediaBox()->x1; }
   double getMediaHeight()
     { return attrs->getMediaBox()->y2 - attrs->getMediaBox()->y1; }
-  double getCropWidth() 
+  double getCropWidth()
     { return attrs->getCropBox()->x2 - attrs->getCropBox()->x1; }
   double getCropHeight()
     { return attrs->getCropBox()->y2 - attrs->getCropBox()->y1; }

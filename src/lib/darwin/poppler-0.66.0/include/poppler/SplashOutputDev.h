@@ -16,7 +16,7 @@
 // Copyright (C) 2005 Takashi Iwai <tiwai@suse.de>
 // Copyright (C) 2009-2016 Thomas Freitag <Thomas.Freitag@alfa.de>
 // Copyright (C) 2009 Carlos Garcia Campos <carlosgc@gnome.org>
-// Copyright (C) 2010 Christian Feuersänger <cfeuersaenger@googlemail.com>
+// Copyright (C) 2010 Christian Feuersï¿½nger <cfeuersaenger@googlemail.com>
 // Copyright (C) 2011 Andreas Hartmetz <ahartmetz@gmail.com>
 // Copyright (C) 2011 Andrea Canciani <ranma42@gmail.com>
 // Copyright (C) 2011, 2017 Adrian Johnson <ajohnson@redneon.com>
@@ -347,7 +347,7 @@ public:
 
   // Called to indicate that a new PDF document has been loaded.
   void startDoc(PDFDoc *docA);
- 
+
   void setPaperColor(SplashColorPtr paperColorA);
 
   GBool isReverseVideo() { return reverseVideo; }

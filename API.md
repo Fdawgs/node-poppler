@@ -15,13 +15,13 @@
 <a name="Poppler"></a>
 
 ## Poppler
-**Kind**: global class  
+**Kind**: global class
 
 * [Poppler](#Poppler)
     * [new Poppler([binPath])](#new_Poppler_new)
-    * [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ÔçÆ <code>Promise</code>
-    * [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ÔçÆ <code>Promise</code>
-    * [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText)
+    * [.pdfToHtml([options], file)](#Poppler+pdfToHtml) &rarr; <code>Promise</code>
+    * [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) &rarr; <code>Promise</code>
+    * [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) &rarr; <code>Promise</code>
 
 <a name="new_Poppler_new"></a>
 
@@ -33,13 +33,13 @@
 
 <a name="Poppler+pdfToHtml"></a>
 
-### poppler.pdfToHtml([options], file) ÔçÆ <code>Promise</code>
+### poppler.pdfToHtml([options], file) &rarr; <code>Promise</code>
 Converts PDF to HTML.
 Poppler will use the directory and name of the original file
 and append '-html' to the end of the filename.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Author**: Frazer Smith  
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Author**: Frazer Smith
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -70,11 +70,11 @@ and append '-html' to the end of the filename.
 
 <a name="Poppler+pdfToCairo"></a>
 
-### poppler.pdfToCairo(options, file, [outputFile]) ÔçÆ <code>Promise</code>
+### poppler.pdfToCairo(options, file, [outputFile]) &rarr; <code>Promise</code>
 Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Author**: Frazer Smith  
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Author**: Frazer Smith
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -128,11 +128,11 @@ Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 <a name="Poppler+pdfToText"></a>
 
-### poppler.pdfToText([options], file, [outputFile])
+### poppler.pdfToText([options], file, [outputFile]) &rarr; <code>Promise</code>
 Converts PDF to TXT.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Author**: Frazer Smith  
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Author**: Frazer Smith
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -163,11 +163,11 @@ Converts PDF to TXT.
 <a name="parseOptions"></a>
 
 ## parseOptions(options, acceptedOptions, args)
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type |
 | --- | --- |
-| options | <code>Object</code> | 
-| acceptedOptions | <code>Object</code> | 
-| args | <code>Array</code> | 
+| options | <code>Object</code> |
+| acceptedOptions | <code>Object</code> |
+| args | <code>Array</code> |
 

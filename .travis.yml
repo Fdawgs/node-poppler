@@ -12,7 +12,7 @@ os:
 branches:
   only:
   - master
-  - /^feature/.*$/
+  - /^feat/.*$/
   - /^dependabot/.*$/
 
 script: echo "Running tests against $(node -v)..."

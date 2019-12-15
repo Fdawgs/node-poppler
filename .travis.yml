@@ -10,6 +10,11 @@ os:
   - windows
   - osx
 
+
+# See https://travis-ci.community/t/build-doesnt-finish-after-completing-tests/288/9
+env:
+  - YARN_GPG=no
+
 # safelist
 branches:
   only:

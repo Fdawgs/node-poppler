@@ -4,6 +4,7 @@
         "node": true
     },
     "extends": [
+        "airbnb-base",
         "plugin:jest/recommended"
     ],
     "parserOptions": {
@@ -11,7 +12,9 @@
         "sourceType": "module"
     },
     "plugins": [
-        "jest"
+        "import",
+        "jest",
+        "json"
     ],
     "rules": {
         "comma-dangle": [
@@ -44,6 +47,24 @@
         "semi": [
             "error",
             "always"
+        ],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "lines-between-class-members": [
+            "error",
+            "always"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 0,
+                "maxEOF": 0
+            }
         ]
     }
 }

@@ -75,6 +75,22 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
+	 * @description lists or extracts embedded files (attachments) from a PDF.
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.list - List all of the embedded files in the PDF file.
+	 * @param {String} path - Set the file name used when saving an embedded file with
+	 * the save option enabled, or the directory if the 'saveall' option is used.
+	 * @returns {Promise}
+	 */
+	pdfDetatch(options, file) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {};
+		})
+	}
+
+	/**
+	 * @author Frazer Smith
 	 * @description Converts PDF to HTML.
 	 * Poppler will use the directory and name of the original file
 	 * and append '-html' to the end of the filename.

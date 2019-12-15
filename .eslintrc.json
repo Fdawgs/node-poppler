@@ -21,6 +21,12 @@
             "error",
             "never"
         ],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
         "indent": [
             "error",
             "tab",
@@ -28,8 +34,20 @@
                 "SwitchCase": 1
             }
         ],
+        "lines-between-class-members": [
+            "error",
+            "always"
+        ],
         "no-console": [
             "off"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 0,
+                "maxEOF": 0
+            }
         ],
         "no-tabs": [
             "error",
@@ -47,24 +65,6 @@
         "semi": [
             "error",
             "always"
-        ],
-        "import/no-extraneous-dependencies": [
-            "error",
-            {
-                "devDependencies": true
-            }
-        ],
-        "lines-between-class-members": [
-            "error",
-            "always"
-        ],
-        "no-multiple-empty-lines": [
-            "error",
-            {
-                "max": 1,
-                "maxBOF": 0,
-                "maxEOF": 0
-            }
         ]
     }
 }

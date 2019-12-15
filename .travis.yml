@@ -1,5 +1,7 @@
 language: node_js
 
+cache: yarn
+
 node_js:
   - "lts/*"
   - "node"
@@ -7,6 +9,11 @@ node_js:
 os:
   - windows
   - osx
+
+
+# See https://travis-ci.community/t/build-doesnt-finish-after-completing-tests/288/9
+env:
+  - YARN_GPG=no
 
 # safelist
 branches:

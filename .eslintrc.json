@@ -4,7 +4,6 @@
         "node": true
     },
     "extends": [
-        "nhsuk",
         "plugin:jest/recommended"
     ],
     "parserOptions": {
@@ -34,6 +33,9 @@
             {
                 "allowIndentationTabs": true
             }
+        ],
+        "prefer-destructuring": [
+            "off"
         ],
         "quotes": [
             "error",

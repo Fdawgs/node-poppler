@@ -100,7 +100,7 @@ class Poppler {
 	pdfDetach(options, file) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
-				listEmbedded: { arg: '-list', type: 'string' },
+				listEmbedded: { arg: '-list', type: 'boolean' },
 				ownerPassword: { arg: '-opw', type: 'string' },
 				outputEncoding: { arg: '-enc', type: 'string' },
 				outputPath: { arg: '-o', type: 'string' },

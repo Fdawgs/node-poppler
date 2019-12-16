@@ -75,18 +75,65 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description lists or extracts embedded files (attachments) from a PDF.
+	 * @description Lists or extracts embedded files (attachments) from a PDF.
 	 *
 	 * @param {Object=} options
-	 * @param {Boolean=} options.list - List all of the embedded files in the PDF file.
-	 * @param {String} path - Set the file name used when saving an embedded file with
+	 * @param {Boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
+	 * File names are converted to the text encoding specified by the 'outputEncoding' option.
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * This defaults to "UTF-8".
+	 * @param {String=} options.outputPath - Set the file name used when saving an embedded file with
 	 * the save option enabled, or the directory if the 'saveall' option is used.
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {Boolean=} options.saveAllFiles - Save all of the embedded files. This uses the file
+	 * names associated with the embedded files (as printed by the 'listEmbedded' option).
+	 * By default, the files are saved in the current directory; this can be changed
+	 * with the 'outputPath' option.
+	 * @param {Number=} options.saveSpecificFile - Save the specified embedded file.
+	 * By default, this uses the file name associated with the embedded file (as printed by the
+	 * 'listEmbedded' option); the file name can be changed with the 'outputPath' option.
+	 * @param {String=} options.userPassword - User password (for encrypted files).
+	 * @param {String} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
-	pdfDetatch(options, file) {
+	pdfDetach(options, file) {
 		return new Promise((resolve, reject) => {
-			const acceptedOptions = {};
-		})
+			const acceptedOptions = {
+				listEmbedded: { arg: '-list', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
+				outputEncoding: { arg: '-enc', type: 'string' },
+				outputPath: { arg: '-o', type: 'string' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				saveAllFiles: { arg: '-saveall', type: 'boolean' },
+				saveSpecificFile: { arg: '-save', type: 'number' },
+				userPassword: { arg: '-upw', type: 'string' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args)
+					.catch((err) => {
+						reject(err);
+					});
+			}
+
+			args.push(file);
+
+			execFile(path.join(this.popplerPath, 'pdfdetach'), args, (err, stdout) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(stdout);
+				}
+			});
+		});
 	}
 
 	/**

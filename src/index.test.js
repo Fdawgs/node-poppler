@@ -54,6 +54,49 @@ describe('Constructor', () => {
 	});
 });
 
+describe('pdfDetach function', () => {
+	afterAll(async () => {
+		await clean();
+	});
+
+	test('Should return an Error object if file passed not PDF format', async () => {
+		const poppler = new Poppler();
+		const testTxtFile = `${testDirectory}test.txt`;
+
+		expect.assertions(1);
+		await poppler.pdfDetach(undefined, testTxtFile)
+			.catch((err) => {
+				expect(err.message.substring(0, 15)).toBe('Command failed:');
+			});
+	});
+
+	test('Should return an Error object if invalid value types provided for an option are passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			listEmbedded: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfDetach(options, file)
+			.catch((err) => {
+				expect(err.message).toEqual('Invalid value type provided for option \'listEmbedded\', expected boolean but recieved string');
+			});
+	});
+
+	test('Should return an Error object if invalid option is passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			wordFile: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfDetach(options, file)
+			.catch((err) => {
+				expect(err.message).toEqual('Invalid option provided \'wordFile\'');
+			});
+	});
+});
+
 describe('pdfToCairo function', () => {
 	afterAll(async () => {
 		await clean();

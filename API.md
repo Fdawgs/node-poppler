@@ -19,9 +19,10 @@
 
 * [Poppler](#Poppler)
     * [new Poppler([binPath])](#new_Poppler_new)
-    * [.pdfToHtml([options], file)](#Poppler+pdfToHtml) &rarr; <code>Promise</code>
-    * [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) &rarr; <code>Promise</code>
-    * [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) &rarr; <code>Promise</code>
+    * [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise</code>
+    * [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
+    * [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
+    * [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise</code>
 
 <a name="new_Poppler_new"></a>
 
@@ -31,9 +32,30 @@
 | --- | --- | --- |
 | [binPath] | <code>String</code> | Path of poppler-utils binaries. Useful for Linux users who have poppler-utils binaries already installed. |
 
+<a name="Poppler+pdfDetach"></a>
+
+### poppler.pdfDetach([options], file) ⇒ <code>Promise</code>
+Lists or extracts embedded files (attachments) from a PDF.
+
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Author**: Frazer Smith
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [options] | <code>Object</code> |  |
+| [options.listEmbedded] | <code>Boolean</code> | List all of the embedded files in the PDF file. File names are converted to the text encoding specified by the 'outputEncoding' option. |
+| [options.ownerPassword] | <code>String</code> | Owner password (for encrypted files). |
+| [options.outputEncoding] | <code>String</code> | Sets the encoding to use for text output. This defaults to "UTF-8". |
+| [options.outputPath] | <code>String</code> | Set the file name used when saving an embedded file with the save option enabled, or the directory if the 'saveall' option is used. |
+| [options.printVersionInfo] | <code>Boolean</code> | Print copyright and version info. |
+| [options.saveAllFiles] | <code>Boolean</code> | Save all of the embedded files. This uses the file names associated with the embedded files (as printed by the 'listEmbedded' option). By default, the files are saved in the current directory; this can be changed with the 'outputPath' option. |
+| [options.saveSpecificFile] | <code>Number</code> | Save the specified embedded file. By default, this uses the file name associated with the embedded file (as printed by the 'listEmbedded' option); the file name can be changed with the 'outputPath' option. |
+| [options.userPassword] | <code>String</code> | User password (for encrypted files). |
+| file | <code>String</code> | Filepath of the PDF file to read. |
+
 <a name="Poppler+pdfToHtml"></a>
 
-### poppler.pdfToHtml([options], file) &rarr; <code>Promise</code>
+### poppler.pdfToHtml([options], file) ⇒ <code>Promise</code>
 Converts PDF to HTML.
 Poppler will use the directory and name of the original file
 and append '-html' to the end of the filename.
@@ -70,7 +92,7 @@ and append '-html' to the end of the filename.
 
 <a name="Poppler+pdfToCairo"></a>
 
-### poppler.pdfToCairo(options, file, [outputFile]) &rarr; <code>Promise</code>
+### poppler.pdfToCairo(options, file, [outputFile]) ⇒ <code>Promise</code>
 Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)
@@ -128,7 +150,7 @@ Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 <a name="Poppler+pdfToText"></a>
 
-### poppler.pdfToText([options], file, [outputFile]) &rarr; <code>Promise</code>
+### poppler.pdfToText([options], file, [outputFile]) ⇒ <code>Promise</code>
 Converts PDF to TXT.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)
@@ -149,7 +171,7 @@ Converts PDF to TXT.
 | [options.generateHtmlMetaFile] | <code>Boolean</code> | Generate a simple HTML file, including the meta information. This simply wraps the text in <pre> and </pre> and prepends the meta headers. |
 | [options.lastPageToConvert] | <code>Number</code> | Specifies the last page to convert. |
 | [options.listEncodingOptions] | <code>Boolean</code> | List the available encodings. |
-| [options.maintainLayout] | <code>Boolean</code> | Maintain (as best as possible) the original physical layout of the text. The default is to ┬┤undo' physical layout (columns, hyphenation, etc.) and output the text in reading order. |
+| [options.maintainLayout] | <code>Boolean</code> | Maintain (as best as possible) the original physical layout of the text. The default is to ´undo' physical layout (columns, hyphenation, etc.) and output the text in reading order. |
 | [options.noPageBreaks] | <code>Boolean</code> | Don't insert page breaks (form feed characters) between pages. |
 | [options.outputEncoding] | <code>String</code> | Sets the encoding to use for text output. This defaults to "UTF-8". |
 | [options.ownerPassword] | <code>String</code> | Owner password (for encrypted files). |

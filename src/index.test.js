@@ -123,8 +123,9 @@ describe('pdfToCairo function', () => {
 			lastPageToConvert: 2,
 			svgFile: true
 		};
+		const outPutFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
 
-		await poppler.pdfToCairo(options, file)
+		await poppler.pdfToCairo(options, file, outPutFile)
 			.then((res) => {
 				expect(typeof res).toBe('string');
 				expect(fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)).toBe(true);

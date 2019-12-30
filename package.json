@@ -13,6 +13,11 @@
     "test-coverage": "jest --coverage --verbose",
     "test-only": "jest --verbose"
   },
+  "jest": {
+    "clearMocks": true,
+    "testEnvironment": "node",
+    "testTimeout": 10000
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Fdawgs/node-poppler.git"

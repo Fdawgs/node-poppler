@@ -22,7 +22,15 @@ function clean() {
 		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)) {
 			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`);
 		}
-
+		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-1.pdf`)) {
+			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-1.pdf`);
+		}
+		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-2.pdf`)) {
+			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-2.pdf`);
+		}
+		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`)) {
+			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`);
+		}
 		resolve('done');
 	});
 }
@@ -44,9 +52,9 @@ describe('Constructor', () => {
 		const options = {
 			svgFile: true
 		};
-		const outPutFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
 
-		await poppler.pdfToCairo(options, file, outPutFile)
+		await poppler.pdfToCairo(options, file, outputFile)
 			.then((res) => {
 				expect(typeof res).toBe('string');
 				expect(fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)).toBe(true);
@@ -97,6 +105,66 @@ describe('pdfDetach function', () => {
 	});
 });
 
+describe('pdfSeparate function', () => {
+	afterAll(async () => {
+		await clean();
+	});
+
+	test('Should extract 3 pages from PDF file to new files', async () => {
+		const poppler = new Poppler();
+		const options = {
+			firstPageToExtract: 1,
+			lastPageToExtract: 3
+		};
+		const outputPattern = `${testDirectory}pdf_1.3_NHS_Constitution-extract-%d.pdf`;
+
+		await poppler.pdfSeparate(options, file, outputPattern)
+			.then((res) => {
+				expect(typeof res).toBe('string');
+				expect(fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-1.pdf`)).toBe(true);
+				expect(fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-2.pdf`)).toBe(true);
+				expect(fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`)).toBe(true);
+			});
+	});
+
+	test('Should return an Error object if file passed not PDF format', async () => {
+		const poppler = new Poppler();
+		const testTxtFile = `${testDirectory}test.txt`;
+
+		expect.assertions(1);
+		await poppler.pdfSeparate(undefined, testTxtFile)
+			.catch((err) => {
+				expect(err.message.substring(0, 15)).toBe('Command failed:');
+			});
+	});
+
+	test('Should return an Error object if invalid value types provided for an option are passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			firstPageToExtract: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfSeparate(options, file)
+			.catch((err) => {
+				expect(err.message).toEqual('Invalid value type provided for option \'firstPageToExtract\', expected number but recieved string');
+			});
+	});
+
+	test('Should return an Error object if invalid option is passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			wordFile: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfSeparate(options, file)
+			.catch((err) => {
+				expect(err.message).toEqual('Invalid option provided \'wordFile\'');
+			});
+	});
+});
+
 describe('pdfToCairo function', () => {
 	afterAll(async () => {
 		await clean();
@@ -107,9 +175,9 @@ describe('pdfToCairo function', () => {
 		const options = {
 			svgFile: true
 		};
-		const outPutFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
 
-		await poppler.pdfToCairo(options, file, outPutFile)
+		await poppler.pdfToCairo(options, file, outputFile)
 			.then((res) => {
 				expect(typeof res).toBe('string');
 				expect(fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)).toBe(true);
@@ -123,9 +191,9 @@ describe('pdfToCairo function', () => {
 			lastPageToConvert: 2,
 			svgFile: true
 		};
-		const outPutFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
 
-		await poppler.pdfToCairo(options, file, outPutFile)
+		await poppler.pdfToCairo(options, file, outputFile)
 			.then((res) => {
 				expect(typeof res).toBe('string');
 				expect(fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)).toBe(true);
@@ -265,9 +333,9 @@ describe('pdfToText function', () => {
 
 	test('Should convert PDF file to Text file', async () => {
 		const poppler = new Poppler();
-		const outPutFile = `${testDirectory}pdf_1.3_NHS_Constitution.txt`;
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.txt`;
 
-		await poppler.pdfToText(undefined, file, outPutFile)
+		await poppler.pdfToText(undefined, file, outputFile)
 			.then((res) => {
 				expect(typeof res).toBe('string');
 				expect(fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)).toBe(true);

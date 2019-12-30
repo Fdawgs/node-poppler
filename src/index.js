@@ -596,6 +596,56 @@ class Poppler {
 			});
 		});
 	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Merges several PDF files in order of their occurrence in the files array to
+	 * one PDF result file.
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {Array} files - Filepaths of the PDF files to merge.
+	 * An entire directory of PDF files can be merged like so: 'path/to/directory/*.pdf'.
+	 * @param {String=} outputFile - Filepath of the file to output the resulting merged PDF to.
+	 * @returns {Promise}
+	 */
+	pdfUnite(options, files, outputFile) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				printVersionInfo: { arg: '-v', type: 'boolean' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args)
+					.catch((err) => {
+						reject(err);
+					});
+			}
+
+			files.forEach((element) => {
+				args.push(element);
+			});
+
+			if (outputFile) {
+				args.push(outputFile);
+			}
+
+			execFile(path.join(this.popplerPath, 'pdfunite'), args, (err, stdout) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(stdout);
+				}
+			});
+		});
+	}
 }
 
 module.exports = {

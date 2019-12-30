@@ -31,6 +31,9 @@ function clean() {
 		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`)) {
 			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`);
 		}
+		if (fs.existsSync(`${testDirectory}united.pdf`)) {
+			fs.unlinkSync(`${testDirectory}united.pdf`);
+		}
 		resolve('done');
 	});
 }
@@ -456,6 +459,51 @@ describe('pdfToText function', () => {
 		await poppler.pdfToText(options, file)
 			.catch((err) => {
 				expect(err.message).toEqual('Invalid option provided \'middlePageToConvert\'');
+			});
+	});
+});
+
+describe('pdfUnite function', () => {
+	afterAll(async () => {
+		await clean();
+	});
+
+	test('Should merge two separate PDF files into a new single PDF file', async () => {
+		const poppler = new Poppler();
+		const files = [file, `${testDirectory}pdf_1.7_NHS_Constitution_Handbook.pdf`];
+		const outputFile = `${testDirectory}united.pdf`;
+		await poppler.pdfUnite(undefined, files, outputFile)
+			.then((res) => {
+				expect(typeof res).toBe('string');
+				expect(fs.existsSync(`${testDirectory}united.pdf`)).toBe(true);
+			});
+	});
+
+	test('Should return an Error object if invalid value types provided for an option are passed to function', async () => {
+		const poppler = new Poppler();
+		const files = [file, `${testDirectory}pdf_1.7_NHS_Constitution_Handbook.pdf`];
+		const options = {
+			printVersionInfo: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfUnite(options, files)
+			.catch((err) => {
+				expect(err.message).toEqual('Invalid value type provided for option \'printVersionInfo\', expected boolean but recieved string');
+			});
+	});
+
+	test('Should return an Error object if invalid option is passed to function', async () => {
+		const poppler = new Poppler();
+		const files = [file, `${testDirectory}pdf_1.7_NHS_Constitution_Handbook.pdf`];
+		const options = {
+			wordFile: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfUnite(options, files)
+			.catch((err) => {
+				expect(err.message).toEqual('Invalid option provided \'wordFile\'');
 			});
 	});
 });

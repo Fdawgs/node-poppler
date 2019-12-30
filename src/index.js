@@ -240,7 +240,7 @@ class Poppler {
 				noDrm: { arg: '-nodrm', type: 'boolean' },
 				noFrames: { arg: '-noframes', type: 'boolean' },
 				noMergeParagraph: { arg: '-nomerge', type: 'boolean' },
-				noRoundedCoordinates: { arg: '-noRoundedCoordinates', type: 'boolean' },
+				noRoundedCoordinates: { arg: '-noroundcoord', type: 'boolean' },
 				outputEncoding: { arg: '-enc', type: 'string' },
 				ownerPassword: { arg: '-opw', type: 'string' },
 				printVersionInfo: { arg: '-v', type: 'boolean' },
@@ -248,7 +248,7 @@ class Poppler {
 				singlePage: { arg: '-s', type: 'boolean' },
 				stdout: { arg: '-stdout', type: 'boolean' },
 				userPassword: { arg: '-upw', type: 'string' },
-				wordBreakThreshold: { arg: '-wb', type: 'number' },
+				wordBreakThreshold: { arg: '-wbt', type: 'number' },
 				xmlOutput: { arg: '-xml', type: 'boolean' },
 				zoom: { arg: '-zoom', type: 'number' }
 			};

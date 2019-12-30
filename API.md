@@ -20,6 +20,7 @@
 * [Poppler](#Poppler)
     * [new Poppler([binPath])](#new_Poppler_new)
     * [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise</code>
+    * [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise</code>
     * [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
     * [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
     * [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
@@ -36,7 +37,7 @@
 <a name="Poppler+pdfDetach"></a>
 
 ### poppler.pdfDetach([options], file) ⇒ <code>Promise</code>
-Lists or extracts embedded files (attachments) from a PDF.
+Lists or extracts embedded files (attachments) from a PDF file.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)
 **Author**: Frazer Smith
@@ -54,10 +55,29 @@ Lists or extracts embedded files (attachments) from a PDF.
 | [options.userPassword] | <code>String</code> | User password (for encrypted files). |
 | file | <code>String</code> | Filepath of the PDF file to read. |
 
+<a name="Poppler+pdfFonts"></a>
+
+### poppler.pdfFonts([options], file) ⇒ <code>Promise</code>
+Lists the fonts used in a PDF file along with various information for each font.
+
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Author**: Frazer Smith
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [options] | <code>Object</code> |  |
+| [options.firstPageToExamine] | <code>Number</code> | Specifies the first page to examine. |
+| [options.lastPageToExamine] | <code>Number</code> | Specifies the last page to examine. |
+| [options.listSubstitutes] | <code>Boolean</code> | List the substitute fonts that poppler will use for non-embedded fonts. |
+| [options.ownerPassword] | <code>String</code> | Owner password (for encrypted files). |
+| [options.printVersionInfo] | <code>Boolean</code> | Print copyright and version info. |
+| [options.userPassword] | <code>String</code> | User password (for encrypted files). |
+| file | <code>String</code> | Filepath of the PDF file to read. |
+
 <a name="Poppler+pdfSeparate"></a>
 
 ### poppler.pdfSeparate([options], file, outputPattern) ⇒ <code>Promise</code>
-Extract single pages from a Portable Document Format (PDF),
+Extract single pages from a PDF file,
 and writes one PDF file for each page to outputPattern.
 This will not work if the file is encrypted.
 
@@ -68,7 +88,7 @@ This will not work if the file is encrypted.
 | --- | --- | --- |
 | [options] | <code>Object</code> |  |
 | [options.firstPageToExtract] | <code>Number</code> | Specifies the first page to extract. This defaults to page 1. |
-| [options.lastPageToExtract] | <code>Number</code> | Specifies the last page to extract. This defaults to the last page of the PDF. |
+| [options.lastPageToExtract] | <code>Number</code> | Specifies the last page to extract. This defaults to the last page of the PDF file. |
 | [options.printVersionInfo] | <code>Boolean</code> | Print copyright and version info. |
 | file | <code>String</code> | Filepath of the PDF file to read. |
 | outputPattern | <code>String</code> | Should contain %d (or any variant respecting printf format), since %d is replaced by the page number. As an example, 'sample-%d.pdf' will produce 'sample-1.pdf' for a single page document. |
@@ -76,7 +96,7 @@ This will not work if the file is encrypted.
 <a name="Poppler+pdfToHtml"></a>
 
 ### poppler.pdfToHtml([options], file) ⇒ <code>Promise</code>
-Converts PDF to HTML.
+Converts PDF file to HTML.
 Poppler will use the directory and name of the original file
 and append '-html' to the end of the filename.
 

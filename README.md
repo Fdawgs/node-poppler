@@ -10,7 +10,24 @@ This allows the documents to be dispatched electronically via the [NHS MESH syst
 There are a number of other Poppler wrapper modules available but the majority are no longer maintained or did not provide full interfacing with the Poppler binaries (i.e. only provided an interface to the PDF-to-Cairo binary but not to HTML).
 
 ## What is Poppler?
-[Poppler](https://poppler.freedesktop.org/) is an open-source software utility library for rendering PDF documents; poppler-utils, are a collection of binaries built on Poppler for manipulating, extracting from, and converting PDF documents to a variety of formats including HTML, PNG, JPEG, TIFF, PDF, PS, EPS, SVG, BMP, and TXT.
+[Poppler](https://poppler.freedesktop.org/) is an open-source software utility library for rendering PDF documents; poppler-utils are a collection of binaries built on Poppler for manipulating, extracting from, and converting PDF documents to a variety of formats including HTML, PNG, JPEG, TIFF, PDF, PS, EPS, SVG, BMP, and TXT.
+
+# Installation
+
+Install using [`yarn`](https://yarnpkg.com/en/package/node-poppler):
+
+```bash
+yarn add node-poppler
+```
+
+Or [`npm`](https://www.npmjs.com/package/node-poppler):
+
+```bash
+npm install node-poppler
+```
+
+node-poppler's test scripts use yarn commands.
+
 
 # API
 [API Documentation can be found here](https://github.com/Fdawgs/node-poppler/blob/master/API.md)

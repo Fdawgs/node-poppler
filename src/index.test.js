@@ -105,6 +105,61 @@ describe('pdfDetach function', () => {
 	});
 });
 
+describe('pdfFonts function', () => {
+	afterAll(async () => {
+		await clean();
+	});
+
+	test('Should examine 3 pages of PDF file', async () => {
+		const poppler = new Poppler();
+		const options = {
+			firstPageToExamine: 1,
+			lastPageToExamine: 3
+		};
+		await poppler.pdfFonts(options, file)
+			.then((res) => {
+				expect(typeof res).toBe('string');
+			});
+	});
+
+	test('Should return an Error object if file passed not PDF format', async () => {
+		const poppler = new Poppler();
+		const testTxtFile = `${testDirectory}test.txt`;
+
+		expect.assertions(1);
+		await poppler.pdfFonts(undefined, testTxtFile)
+			.catch((err) => {
+				expect(err.message.substring(0, 15)).toBe('Command failed:');
+			});
+	});
+
+	test('Should return an Error object if invalid value types provided for an option are passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			firstPageToExamine: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfFonts(options, file)
+			.catch((err) => {
+				expect(err.message).toEqual('Invalid value type provided for option \'firstPageToExamine\', expected number but recieved string');
+			});
+	});
+
+	test('Should return an Error object if invalid option is passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			wordFile: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfFonts(options, file)
+			.catch((err) => {
+				expect(err.message).toEqual('Invalid option provided \'wordFile\'');
+			});
+	});
+});
+
 describe('pdfSeparate function', () => {
 	afterAll(async () => {
 		await clean();

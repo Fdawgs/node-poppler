@@ -162,6 +162,7 @@ Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 | [options.scalePageToYAxis] | <code>Number</code> | Scales each page vertically to fit in scale-to-y pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of the page (PNG/JPEG/TIFF only). |
 | [options.singleFile] | <code>Boolean</code> | Writes only the first page and does not add digits. |
 | [options.svgFile] | <code>Boolean</code> | Generate a SVG (Scalable Vector Graphics) file. |
+| [options.tiffCompression] | <code>String</code> | Set TIFF compression to one of "none", "packbits", "jpeg", "lzw", or "deflate". |
 | [options.tiffFile] | <code>Boolean</code> | Generates a TIFF file(s). |
 | [options.transparentPageColor] | <code>Boolean</code> | Use a transparent page color instead of white (PNG and TIFF only). |
 | [options.userPassword] | <code>String</code> | Specify the user password for the PDF file. |

@@ -358,6 +358,8 @@ class Poppler {
 	 * the page (PNG/JPEG/TIFF only).
 	 * @param {Boolean=} options.singleFile - Writes only the first page and does not add digits.
 	 * @param {Boolean=} options.svgFile - Generate a SVG (Scalable Vector Graphics) file.
+	 * @param {String=} options.tiffCompression - Set TIFF compression to one of "none", "packbits",
+	 * "jpeg", "lzw", or "deflate".
 	 * @param {Boolean=} options.tiffFile - Generates a TIFF file(s).
 	 * @param {Boolean=} options.transparentPageColor - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
@@ -410,6 +412,7 @@ class Poppler {
 				scalePageToYAxis: { arg: '-scale-to-y', type: 'number' },
 				singleFile: { arg: '-singlefile', type: 'boolean' },
 				svgFile: { arg: '-svg', type: 'boolean' },
+				tiffCompression: { arg: '-tiffcompression', type: 'string' },
 				tiffFile: { arg: '-tiff', type: 'boolean' },
 				transparentPageColor: { arg: '-transp', type: 'boolean' },
 				userPassword: { arg: '-upw', type: 'string' }

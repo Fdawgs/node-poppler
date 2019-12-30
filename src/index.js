@@ -138,6 +138,59 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
+	 * @description Extract single pages from a Portable Document Format (PDF),
+	 * and writes one PDF file for each page to outputPattern.
+	 * This will not work if the file is encrypted.
+	 *
+	 * @param {Object=} options
+	 * @param {Number=} options.firstPageToExtract - Specifies the first page to extract.
+	 * This defaults to page 1.
+	 * @param {Number=} options.lastPageToExtract - Specifies the last page to extract.
+	 * This defaults to the last page of the PDF.
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {String} outputPattern - Should contain %d (or any variant respecting printf format),
+	 * since %d is replaced by the page number.
+	 * As an example, 'sample-%d.pdf' will produce 'sample-1.pdf' for a single page document.
+	 * @returns {Promise}
+	 */
+	pdfSeparate(options, file, outputPattern) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				firstPageToExtract: { arg: '-f', type: 'number' },
+				lastPageToExtract: { arg: '-l', type: 'number' },
+				printVersionInfo: { arg: '-v', type: 'boolean' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args)
+					.catch((err) => {
+						reject(err);
+					});
+			}
+
+			args.push(file);
+			args.push(outputPattern);
+
+			execFile(path.join(this.popplerPath, 'pdfseparate'), args, (err, stdout) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(stdout);
+				}
+			});
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
 	 * @description Converts PDF to HTML.
 	 * Poppler will use the directory and name of the original file
 	 * and append '-html' to the end of the filename.

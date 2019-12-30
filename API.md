@@ -25,6 +25,7 @@
     * [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
     * [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
     * [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise</code>
+    * [.pdfUnite([options], files, [outputFile])](#Poppler+pdfUnite) ⇒ <code>Promise</code>
 
 <a name="new_Poppler_new"></a>
 
@@ -222,6 +223,22 @@ Converts PDF to TXT.
 | [options.userPassword] | <code>String</code> | User password (for encrypted files). |
 | file | <code>String</code> | Filepath of the PDF file to read. |
 | [outputFile] | <code>String</code> | Filepath of the file to output the results to. |
+
+<a name="Poppler+pdfUnite"></a>
+
+### poppler.pdfUnite([options], files, [outputFile]) ⇒ <code>Promise</code>
+Merges several PDF files in order of their occurrence in the files array to
+one PDF result file.
+
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Author**: Frazer Smith
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [options] | <code>Object</code> |  |
+| [options.printVersionInfo] | <code>Boolean</code> | Print copyright and version information. |
+| files | <code>Array</code> | Filepaths of the PDF files to merge. An entire directory of PDF files can be merged like so: 'path/to/directory/*.pdf'. |
+| [outputFile] | <code>String</code> | Filepath of the file to output the resulting merged PDF to. |
 
 <a name="parseOptions"></a>
 

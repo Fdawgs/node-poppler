@@ -629,7 +629,10 @@ class Poppler {
 					});
 			}
 
-			args.push(files);
+			files.forEach((element) => {
+				args.push(element);
+			});
+
 			if (outputFile) {
 				args.push(outputFile);
 			}

@@ -20,6 +20,7 @@
 * [Poppler](#Poppler)
     * [new Poppler([binPath])](#new_Poppler_new)
     * [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise</code>
+    * [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
     * [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
     * [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
     * [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise</code>
@@ -52,6 +53,25 @@ Lists or extracts embedded files (attachments) from a PDF.
 | [options.saveSpecificFile] | <code>Number</code> | Save the specified embedded file. By default, this uses the file name associated with the embedded file (as printed by the 'listEmbedded' option); the file name can be changed with the 'outputPath' option. |
 | [options.userPassword] | <code>String</code> | User password (for encrypted files). |
 | file | <code>String</code> | Filepath of the PDF file to read. |
+
+<a name="Poppler+pdfSeparate"></a>
+
+### poppler.pdfSeparate([options], file, outputPattern) ⇒ <code>Promise</code>
+Extract single pages from a Portable Document Format (PDF),
+and writes one PDF file for each page to outputPattern.
+This will not work if the file is encrypted.
+
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Author**: Frazer Smith
+
+| Param | Type | Description |
+| --- | --- | --- |
+| [options] | <code>Object</code> |  |
+| [options.firstPageToExtract] | <code>Number</code> | Specifies the first page to extract. This defaults to page 1. |
+| [options.lastPageToExtract] | <code>Number</code> | Specifies the last page to extract. This defaults to the last page of the PDF. |
+| [options.printVersionInfo] | <code>Boolean</code> | Print copyright and version info. |
+| file | <code>String</code> | Filepath of the PDF file to read. |
+| outputPattern | <code>String</code> | Should contain %d (or any variant respecting printf format), since %d is replaced by the page number. As an example, 'sample-%d.pdf' will produce 'sample-1.pdf' for a single page document. |
 
 <a name="Poppler+pdfToHtml"></a>
 

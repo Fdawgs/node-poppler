@@ -75,7 +75,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Lists or extracts embedded files (attachments) from a PDF.
+	 * @description Lists or extracts embedded files (attachments) from a PDF file.
 	 *
 	 * @param {Object=} options
 	 * @param {Boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
@@ -138,7 +138,59 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Extract single pages from a Portable Document Format (PDF),
+	 * @description Lists the fonts used in a PDF file along with various information for each font.
+	 *
+	 * @param {Object=} options
+	 * @param {Number=} options.firstPageToExamine - Specifies the first page to examine.
+	 * @param {Number=} options.lastPageToExamine - Specifies the last page to examine.
+	 * @param {Boolean=} options.listSubstitutes - List the substitute fonts that poppler
+	 * will use for non-embedded fonts.
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {String=} options.userPassword - User password (for encrypted files).
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @returns {Promise}
+	 */
+	pdfFonts(options, file) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				firstPageToExamine: { arg: '-f', type: 'number' },
+				lastPageToExamine: { arg: '-l', type: 'number' },
+				listSubstitutes: { arg: '-subst', type: 'boolean' },
+				ownerPassword: { arg: '-opw', type: 'string' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				userPassword: { arg: '-upw', type: 'string' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args)
+					.catch((err) => {
+						reject(err);
+					});
+			}
+
+			args.push(file);
+
+			execFile(path.join(this.popplerPath, 'pdffonts'), args, (err, stdout) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(stdout);
+				}
+			});
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Extract single pages from a PDF file,
 	 * and writes one PDF file for each page to outputPattern.
 	 * This will not work if the file is encrypted.
 	 *
@@ -146,7 +198,7 @@ class Poppler {
 	 * @param {Number=} options.firstPageToExtract - Specifies the first page to extract.
 	 * This defaults to page 1.
 	 * @param {Number=} options.lastPageToExtract - Specifies the last page to extract.
-	 * This defaults to the last page of the PDF.
+	 * This defaults to the last page of the PDF file.
 	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @param {String} outputPattern - Should contain %d (or any variant respecting printf format),
@@ -191,7 +243,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts PDF to HTML.
+	 * @description Converts PDF file to HTML.
 	 * Poppler will use the directory and name of the original file
 	 * and append '-html' to the end of the filename.
 	 *

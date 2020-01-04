@@ -23,7 +23,6 @@
     * [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise</code>
     * [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
     * [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
-    * [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
     * [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise</code>
     * [.pdfUnite([options], files, [outputFile])](#Poppler+pdfUnite) ⇒ <code>Promise</code>
 
@@ -130,65 +129,6 @@ and append '-html' to the end of the filename.
 | [options.xmlOutput] | <code>Boolean</code> | Output for XML post-processing. |
 | [options.zoom] | <code>Number</code> | Zoom the PDF document (default 1.5). |
 | file | <code>String</code> | Filepath of the PDF file to read. |
-
-<a name="Poppler+pdfToCairo"></a>
-
-### poppler.pdfToCairo(options, file, [outputFile]) ⇒ <code>Promise</code>
-Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
-
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)
-**Author**: Frazer Smith
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> |  |
-| [options.antialias] | <code>String</code> | Set the cairo antialias option used for text and drawing in image files (or rasterized regions in vector output). Options are: default; none; gray; subpixel; fast; good; best |
-| [options.cropBox] | <code>Boolean</code> | Uses the crop box rather than media box when generating the files (PNG/JPEG/TIFF only). |
-| [options.cropHeight] | <code>Number</code> | Specifies the height of crop area in pixels (image output) or points (vector output). |
-| [options.cropSize] | <code>Number</code> | Specifies the size of crop square in pixels (image output) or points (vector output). |
-| [options.cropWidth] | <code>Number</code> | Specifies the width of crop area in pixels (image output) or points (vector output). |
-| [options.cropXAxis] | <code>Number</code> | Specifies the x-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |
-| [options.cropYAxis] | <code>Number</code> | Specifies the y-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |
-| [options.duplex] | <code>Boolean</code> | Adds the %%IncludeFeature: *Duplex DuplexNoTumble DSC comment to the PostScript file (PS only). This tells the print manager to enable duplexing. |
-| [options.epsFile] | <code>Boolean</code> | Generate an EPS file. An EPS file contains a single image, so if you use this option with a multi-page PDF file, you must use -f and -l to specify a single page. The page size options (originalPageSize, paperSize, paperWidth, paperHeight) can not be used with this option. |
-| [options.evenPagesOnly] | <code>Boolean</code> | Generates only the even numbered pages. |
-| [options.fillPage] | <code>Boolean</code> | Expand PDF pages smaller than the paper to fill the paper (PS,PDF,SVG only). By default, these pages are not scaled. |
-| [options.firstPageToConvert] | <code>Number</code> | Specifies the first page to convert. |
-| [options.grayscaleFile] | <code>Boolean</code> | Generate a grayscale file (PNG, JPEG, and TIFF only). |
-| [options.iccFile] | <code>Boolean</code> | Use the specified ICC file as the output profile (PNG only). The profile will be embedded in the PNG file. |
-| [options.jpegFile] | <code>Boolean</code> | Generates a JPEG file(s). |
-| [options.lastPageToConvert] | <code>Number</code> | Specifies the last page to convert. |
-| [options.monochromeFile] | <code>Boolean</code> | Generate a monochrome file (PNG and TIFF only). |
-| [options.noCenter] | <code>Boolean</code> | By default, PDF pages smaller than the paper (after any scaling) are centered on the paper. This option causes them to be aligned to the lower-left corner of the paper instead (PS,PDF,SVG only). |
-| [options.noCrop] | <code>Boolean</code> | By default, printing output is cropped to the CropBox specified in the PDF file. This option disables cropping (PS, PDF, SVG only). |
-| [options.noShrink] | <code>Boolean</code> | Don't scale PDF pages which are larger than the paper (PS,PDF,SVG only). By default, pages larger than the paper are shrunk to fit. |
-| [options.oddPagesOnly] | <code>Boolean</code> | Generates only the odd numbered pages. |
-| [options.originalPageSizes] | <code>Boolean</code> | Set the paper size of each page to match the size specified in the PDF file. |
-| [options.ownerPassword] | <code>String</code> | Specify the owner password for the PDF file. Providing this will bypass all security restrictions. |
-| [options.paperHeight] | <code>Number</code> | Set the paper height, in points (PS, PDF, SVG only). |
-| [options.paperSize] | <code>String</code> | Set the paper size to one of "letter", "legal", "A4", or "A3" (PS,PDF,SVG only). This can also be set to "match", which will set the paper size of each page to match the size specified in the PDF file. If none of the paperSize, paperWidth, or paperHeight options are specified the default is to match the paper size. |
-| [options.paperWidth] | <code>Number</code> | Set the paper width, in points (PS,PDF,SVG only). |
-| [options.pdfFile] | <code>Boolean</code> | Generates a PDF file. |
-| [options.pngFile] | <code>Boolean</code> | Generates a PNG file(s). |
-| [options.printVersionInfo] | <code>Boolean</code> | Print copyright and version information. |
-| [options.psFile] | <code>Boolean</code> | Generate a PS file. |
-| [options.psLevel2] | <code>Boolean</code> | Generate Level 2 PostScript (PS only). |
-| [options.psLevel3] | <code>Boolean</code> | Generate Level 3 PostScript (PS only). This enables all Level 2 features plus shading patterns and masked images. This is the default setting. |
-| [options.quiet] | <code>Boolean</code> | Don't print any messages or errors. |
-| [options.resolutionXAxis] | <code>Number</code> | Specifies the X resolution, in pixels per inch of image files (or rasterized regions in vector output). The default is 150 PPI. |
-| [options.resolutionXYAxis] | <code>Number</code> | Specifies the X and Y resolution, in pixels per inch of image files (or rasterized regions in vector output). The default is 150 PPI. |
-| [options.resolutionYAxis] | <code>Number</code> | Specifies the Y resolution, in pixels per inch of image files (or rasterized regions in vector output). The default is 150 PPI. |
-| [options.scalePageTo] | <code>Number</code> | Scales the long side of each page (width for landscape pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will be determined by the aspect ratio of the page (PNG/JPEG/TIFF only). |
-| [options.scalePageToXAxis] | <code>Number</code> | Scales each page horizontally to fit in scale-to-x pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of the page (PNG/JPEG/TIFF only). |
-| [options.scalePageToYAxis] | <code>Number</code> | Scales each page vertically to fit in scale-to-y pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of the page (PNG/JPEG/TIFF only). |
-| [options.singleFile] | <code>Boolean</code> | Writes only the first page and does not add digits. |
-| [options.svgFile] | <code>Boolean</code> | Generate a SVG (Scalable Vector Graphics) file. |
-| [options.tiffCompression] | <code>String</code> | Set TIFF compression to one of "none", "packbits", "jpeg", "lzw", or "deflate". |
-| [options.tiffFile] | <code>Boolean</code> | Generates a TIFF file(s). |
-| [options.transparentPageColor] | <code>Boolean</code> | Use a transparent page color instead of white (PNG and TIFF only). |
-| [options.userPassword] | <code>String</code> | Specify the user password for the PDF file. |
-| file | <code>String</code> | Filepath of the PDF file to read. |
-| [outputFile] | <code>String</code> | Filepath of the file to output the results to. |
 
 <a name="Poppler+pdfToText"></a>
 

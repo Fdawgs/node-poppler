@@ -1,0 +1,10 @@
+prefix=C:/Users/fraze/Anaconda3/envs/snowflakes/Library
+libdir=C:/Users/fraze/Anaconda3/envs/snowflakes/Library/lib
+includedir=C:/Users/fraze/Anaconda3/envs/snowflakes/Library/include
+
+Name: poppler
+Description: PDF rendering library
+Version: 0.84.0
+
+Libs: -L${libdir} -lpoppler
+Cflags: -I${includedir}/poppler

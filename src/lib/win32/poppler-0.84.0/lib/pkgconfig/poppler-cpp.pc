@@ -1,6 +1,6 @@
-prefix=C:/Users/fraze/Anaconda3/envs/snowflakes/Library
-libdir=C:/Users/fraze/Anaconda3/envs/snowflakes/Library/lib
-includedir=C:/Users/fraze/Anaconda3/envs/snowflakes/Library/include
+prefix=C:/temp/poppler_install_dir/Library
+libdir=C:/temp/poppler_install_dir/Library/lib
+includedir=C:/temp/poppler_install_dir/Library/include
 
 Name: poppler-cpp
 Description: cpp backend for Poppler PDF rendering library

@@ -1,0 +1,8 @@
+prefix=C:/Users/fraze/Anaconda3/envs/snowflakes/Library
+libdir=C:/Users/fraze/Anaconda3/envs/snowflakes/Library/lib
+includedir=C:/Users/fraze/Anaconda3/envs/snowflakes/Library/include
+
+Name: poppler-splash
+Description: Splash backend for Poppler PDF rendering library
+Version: 0.84.0
+Requires: poppler = 0.84.0

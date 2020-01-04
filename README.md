@@ -35,28 +35,6 @@ node-poppler's test scripts use yarn commands.
 
 # Example uses
 
-## poppler.pdfToCairo
-`options` object requires atleast one of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
-
-Example of calling poppler.pdfToCairo with a promise:
-
-```js
-const { Poppler } = require('node-poppler');
-
-const file = 'test_document.pdf';
-const poppler = new Poppler();
-const options = {
-	firstPageToConvert: 1,
-	lastPageToConvert: 2,
-	pngFile: true
-};
-
-await poppler.pdfToCairo(options, file)
-	.then((res) => {
-		console.log(res);
-	});
-```
-
 ## poppler.pdfToHtml
 Every field of the `options` object is entirely optional.
 

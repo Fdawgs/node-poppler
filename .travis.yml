@@ -3,13 +3,12 @@ language: node_js
 cache: yarn
 
 node_js:
-  - "lts/*"
-  - "node"
+  - 'lts/*'
+  - 'node'
 
 os:
   - windows
   - osx
-
 
 # See https://travis-ci.community/t/build-doesnt-finish-after-completing-tests/288/9
 env:
@@ -18,10 +17,10 @@ env:
 # safelist
 branches:
   only:
-  - master
-  - /^feat/.*$/
-  - /^fix/.*$/
-  - /^dependabot/.*$/
+    - master
+    - /^feat/.*$/
+    - /^fix/.*$/
+    - /^dependabot/.*$/
 
 script: echo "Running tests against $(node -v)..."
 

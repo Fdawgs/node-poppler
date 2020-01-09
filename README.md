@@ -48,13 +48,13 @@ const { Poppler } = require('node-poppler');
 const file = 'test_document.pdf';
 const poppler = new Poppler();
 const options = {
-  firstPageToConvert: 1,
-  lastPageToConvert: 2,
-  pngFile: true
+	firstPageToConvert: 1,
+	lastPageToConvert: 2,
+	pngFile: true
 };
 
 await poppler.pdfToCairo(options, file).then((res) => {
-  console.log(res);
+	console.log(res);
 });
 ```
 
@@ -70,12 +70,12 @@ const { Poppler } = require('node-poppler');
 const file = 'test_document.pdf';
 const poppler = new Poppler();
 const options = {
-  firstPageToConvert: 1,
-  lastPageToConvert: 2
+	firstPageToConvert: 1,
+	lastPageToConvert: 2
 };
 
 await poppler.pdfToHtml(options, file).then((res) => {
-  console.log(res);
+	console.log(res);
 });
 ```
 
@@ -91,12 +91,12 @@ const { Poppler } = require('node-poppler');
 const file = 'test_document.pdf';
 const poppler = new Poppler();
 const options = {
-  firstPageToConvert: 1,
-  lastPageToConvert: 2
+	firstPageToConvert: 1,
+	lastPageToConvert: 2
 };
 
 await poppler.pdfToText(options, file).then((res) => {
-  console.log(res);
+	console.log(res);
 });
 ```
 

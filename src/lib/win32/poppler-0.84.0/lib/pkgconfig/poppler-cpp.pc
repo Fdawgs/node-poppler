@@ -1,0 +1,12 @@
+prefix=C:/temp/poppler_install_dir/Library
+libdir=C:/temp/poppler_install_dir/Library/lib
+includedir=C:/temp/poppler_install_dir/Library/include
+
+Name: poppler-cpp
+Description: cpp backend for Poppler PDF rendering library
+Version: 0.84.0
+Requires:
+Requires.private: poppler = 0.84.0
+
+Libs: -L${libdir} -lpoppler-cpp
+Cflags: -I${includedir}/poppler/cpp

@@ -1,58 +1,59 @@
 {
-  "name": "node-poppler",
-  "version": "1.3.0",
-  "description": "Node.js wrapper for the Poppler PDF rendering library",
-  "keywords": [
-    "poppler",
-    "pdf-to-html",
-    "pdf"
-  ],
-  "main": "src/index.js",
-  "scripts": {
-    "doc": "jsdoc2md src/index.js > API.md",
-    "dupe-check": "yarn jsinspect .",
-    "jest": "jest src --coverage",
-    "lint": "eslint .",
-    "prettier": "prettier src/*.js --write",
-    "test": "yarn lint && yarn test-coverage",
-    "test-coverage": "jest --coverage --verbose",
-    "test-only": "jest --verbose"
-  },
-  "jest": {
-    "clearMocks": true,
-    "testEnvironment": "node",
-    "testTimeout": 18000
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Fdawgs/node-poppler.git"
-  },
-  "author": "Frazer Smith",
-  "license": "MIT",
-  "prettier": {
-    "arrowParens": "always",
-    "bracketSpacing": true,
-    "endOfLine": "lf",
-    "printWidth": 120,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "none"
-  },
-  "devDependencies": {
-    "coveralls": "^3.0.9",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jest": "^23.1.1",
-    "eslint-plugin-json": "^2.0.1",
-    "jest": "^24.9.0",
-    "jsdoc-to-markdown": "^5.0.3",
-    "jsinspect": "^0.12.7",
-    "prettier": "1.19.1",
-    "typescript": "^3.7.4"
-  },
-  "bugs": {
-    "url": "https://github.com/Fdawgs/node-poppler/issues"
-  },
-  "homepage": "https://github.com/Fdawgs/node-poppler#readme"
+	"name": "node-poppler",
+	"version": "1.3.0",
+	"description": "Node.js wrapper for the Poppler PDF rendering library",
+	"keywords": [
+		"poppler",
+		"pdf-to-html",
+		"pdf"
+	],
+	"main": "src/index.js",
+	"scripts": {
+		"doc": "jsdoc2md src/index.js > API.md",
+		"dupe-check": "yarn jsinspect .",
+		"jest": "jest src --coverage",
+		"lint": "eslint .",
+		"prettier": "prettier src/*.js --write",
+		"test": "yarn lint && yarn test-coverage",
+		"test-coverage": "jest --coverage --verbose",
+		"test-only": "jest --verbose"
+	},
+	"jest": {
+		"clearMocks": true,
+		"testEnvironment": "node",
+		"testTimeout": 18000
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Fdawgs/node-poppler.git"
+	},
+	"author": "Frazer Smith",
+	"license": "MIT",
+	"prettier": {
+		"arrowParens": "always",
+		"bracketSpacing": true,
+		"endOfLine": "lf",
+		"semi": true,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "none",
+		"useTabs": true
+	},
+	"devDependencies": {
+		"coveralls": "^3.0.9",
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.9.0",
+		"eslint-plugin-import": "^2.19.1",
+		"eslint-plugin-jest": "^23.1.1",
+		"eslint-plugin-json": "^2.0.1",
+		"jest": "^24.9.0",
+		"jsdoc-to-markdown": "^5.0.3",
+		"jsinspect": "^0.12.7",
+		"prettier": "1.19.1",
+		"typescript": "^3.7.4"
+	},
+	"bugs": {
+		"url": "https://github.com/Fdawgs/node-poppler/issues"
+	},
+	"homepage": "https://github.com/Fdawgs/node-poppler#readme"
 }

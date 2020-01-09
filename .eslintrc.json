@@ -1,22 +1,33 @@
 {
-  "env": {
-    "es6": true,
-    "node": true
-  },
-  "extends": ["eslint:recommended", "plugin:jest/recommended", "prettier"],
-  "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
-  "plugins": ["import", "jest", "json"],
-  "rules": {
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true
-      }
-    ],
-    "no-console": ["off"],
-    "prefer-destructuring": ["off"]
-  }
+	"env": {
+		"es6": true,
+		"node": true
+	},
+	"extends": ["eslint:recommended", "plugin:jest/recommended", "prettier"],
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module"
+	},
+	"plugins": ["import", "jest", "json"],
+	"rules": {
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": true
+			}
+		],
+		"lines-between-class-members": "error",
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 1,
+				"maxBOF": 0,
+				"maxEOF": 0
+			}
+		],
+		"no-console": "off",
+		"prefer-destructuring": "off",
+		"prefer-const": "error",
+		"no-var": "error"
+	}
 }

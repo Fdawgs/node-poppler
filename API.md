@@ -18,15 +18,15 @@
 
 **Kind**: global class
 
-- [Poppler](#Poppler)
-  - [new Poppler([binPath])](#new_Poppler_new)
-  - [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise</code>
-  - [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise</code>
-  - [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
-  - [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
-  - [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
-  - [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise</code>
-  - [.pdfUnite([options], files, [outputFile])](#Poppler+pdfUnite) ⇒ <code>Promise</code>
+-   [Poppler](#Poppler)
+    -   [new Poppler([binPath])](#new_Poppler_new)
+    -   [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise</code>
+    -   [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise</code>
+    -   [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
+    -   [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
+    -   [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
+    -   [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise</code>
+    -   [.pdfUnite([options], files, [outputFile])](#Poppler+pdfUnite) ⇒ <code>Promise</code>
 
 <a name="new_Poppler_new"></a>
 

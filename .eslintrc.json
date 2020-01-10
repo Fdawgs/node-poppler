@@ -3,7 +3,7 @@
 		"es6": true,
 		"node": true
 	},
-	"extends": ["eslint:recommended", "plugin:jest/recommended", "prettier"],
+	"extends": ["airbnb-base", "plugin:jest/recommended", "prettier"],
 	"parserOptions": {
 		"ecmaVersion": 2020,
 		"sourceType": "module"
@@ -26,8 +26,6 @@
 			}
 		],
 		"no-console": "off",
-		"prefer-destructuring": "off",
-		"prefer-const": "error",
-		"no-var": "error"
+		"prefer-destructuring": "off"
 	}
 }

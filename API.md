@@ -22,6 +22,7 @@
     -   [new Poppler([binPath])](#new_Poppler_new)
     -   [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise</code>
     -   [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise</code>
+    -   [.pdfInfo([options], file)](#Poppler+pdfInfo) ⇒ <code>Promise</code>
     -   [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
     -   [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
     -   [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
@@ -42,7 +43,7 @@
 
 Lists or extracts embedded files (attachments) from a PDF file.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Author**: Frazer Smith
 
 | Param                      | Type                 | Description                                                                                                                                                                                                                                        |
@@ -64,7 +65,7 @@ Lists or extracts embedded files (attachments) from a PDF file.
 
 Lists the fonts used in a PDF file along with various information for each font.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Author**: Frazer Smith
 
 | Param                        | Type                 | Description                                                             |
@@ -78,6 +79,35 @@ Lists the fonts used in a PDF file along with various information for each font.
 | [options.userPassword]       | <code>String</code>  | User password (for encrypted files).                                    |
 | file                         | <code>String</code>  | Filepath of the PDF file to read.                                       |
 
+<a name="Poppler+pdfInfo"></a>
+
+### poppler.pdfInfo([options], file) ⇒ <code>Promise</code>
+
+prints the contents of the ´Info' dictionary from a PDF file.
+
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
+**Author**: Frazer Smith
+
+| Param                         | Type                 | Description                                                                                                                                                                          |
+| ----------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [options]                     | <code>Object</code>  |                                                                                                                                                                                      |
+| [options.firstPageToConvert]  | <code>Number</code>  | First page to print.                                                                                                                                                                 |
+| [options.lastPageToConvert]   | <code>Number</code>  | Last page to print.                                                                                                                                                                  |
+| [options.listEncodingOptions] | <code>Boolean</code> | List the available encodings.                                                                                                                                                        |
+| [options.outputEncoding]      | <code>String</code>  | Sets the encoding to use for text output. This defaults to "UTF-8".                                                                                                                  |
+| [options.ownerPassword]       | <code>String</code>  | Owner password (for encrypted files).                                                                                                                                                |
+| [options.printBoundingBoxes]  | <code>Boolean</code> | Prints the page box bounding boxes: MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.                                                                                                |
+| [options.printDocStruct]      | <code>Boolean</code> | Prints the logical document structure of a Tagged-PDF file.                                                                                                                          |
+| [options.printDocStructText]  | <code>Boolean</code> | Print the textual content along with the document structure of a Tagged-PDF file. Note that extracting text this way might be slow for big PDF files.                                |
+| [options.printIsoDates]       | <code>Boolean</code> | Prints dates in ISO-8601 format (including the time zone).                                                                                                                           |
+| [options.printJS]             | <code>Boolean</code> | Prints all JavaScript in the PDF file.                                                                                                                                               |
+| [options.printMetadata]       | <code>Boolean</code> | Prints document-level metadata. (This is the "Metadata" stream from the PDF file's Catalog object).                                                                                  |
+| [options.printNamedDests]     | <code>Boolean</code> | Print a list of all named destinations. If a page range is specified using the 'firstPageToConvert' and 'lastPageToConvert' options, only destinations in the page range are listed. |
+| [options.printRawDates]       | <code>Boolean</code> | Prints the raw (undecoded) date strings, directly from the PDF file.                                                                                                                 |
+| [options.printVersionInfo]    | <code>Boolean</code> | Print copyright and version info.                                                                                                                                                    |
+| [options.userPassword]        | <code>String</code>  | User password (for encrypted files).                                                                                                                                                 |
+| file                          | <code>String</code>  | Filepath of the PDF file to read.                                                                                                                                                    |
+
 <a name="Poppler+pdfSeparate"></a>
 
 ### poppler.pdfSeparate([options], file, outputPattern) ⇒ <code>Promise</code>
@@ -86,7 +116,7 @@ Extract single pages from a PDF file,
 and writes one PDF file for each page to outputPattern.
 This will not work if the file is encrypted.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Author**: Frazer Smith
 
 | Param                        | Type                 | Description                                                                                                                                                                                  |
@@ -106,7 +136,7 @@ Converts PDF file to HTML.
 Poppler will use the directory and name of the original file
 and append '-html' to the end of the filename.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Author**: Frazer Smith
 
 | Param                          | Type                 | Description                                                                                                                                                               |
@@ -142,7 +172,7 @@ and append '-html' to the end of the filename.
 
 Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Author**: Frazer Smith
 
 | Param                          | Type                 | Description                                                                                                                                                                                                                                                                                                                  |
@@ -202,7 +232,7 @@ Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 Converts PDF to TXT.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Author**: Frazer Smith
 
 | Param                            | Type                 | Description                                                                                                                                                                          |
@@ -238,7 +268,7 @@ Converts PDF to TXT.
 Merges several PDF files in order of their occurrence in the files array to
 one PDF result file.
 
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Author**: Frazer Smith
 
 | Param                      | Type                 | Description                                                                                                              |

@@ -68,7 +68,7 @@ describe('Constructor', () => {
 			__dirname,
 			'lib',
 			'win32',
-			'poppler-0.68.0',
+			'poppler-0.84.0',
 			'bin'
 		);
 		const poppler = new Poppler(testPath);

@@ -607,6 +607,7 @@ class Poppler {
 	 * @description Converts PDF to PostScript (PS).
 	 *
 	 * @param {Object=} options
+	 * @param {String=} options.antialias - Enable anti-aliasing on rasterization, accepts "yes" or "no".
 	 * @param {Boolean=} options.binary - Write binary data in Level 1 PostScript. By default,
 	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
 	 * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
@@ -691,7 +692,7 @@ class Poppler {
 	pdfToPS(options, file, outputFile) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
-				// aaRaster: { arg: '-aaRaster', type: 'boolean' },
+				antialias: { arg: '-aaRaster', type: 'string' },
 				binary: { arg: '-binary', type: 'boolean' },
 				duplex: { arg: '-duplex', type: 'boolean' },
 				epsFile: { arg: '-eps', type: 'boolean' },

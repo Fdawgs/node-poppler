@@ -22,6 +22,10 @@ branches:
         - /^fix/.*$/
         - /^dependabot/.*$/
 
+matrix:
+    allow_failures:
+        - os: osx
+
 script: echo "Running tests against $(node -v)..."
 
 jobs:

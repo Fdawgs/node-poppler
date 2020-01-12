@@ -339,99 +339,6 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts PDF file to HTML.
-	 * Poppler will use the directory and name of the original file
-	 * and append '-html' to the end of the filename.
-	 *
-	 * @param {Object=} options
-	 * @param {Boolean=} options.complexOutput - Generate complex output.
-	 * @param {Boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
-	 * @param {Boolean=} options.extractHidden - Force hidden text extraction.
-	 * @param {Number=} options.firstPageToConvert - First page to print.
-	 * @param {Boolean=} options.fontFullName - Outputs the font name without any substitutions.
-	 * @param {Boolean=} options.ignoreImages - Ignore images.
-	 * @param {String=} options.imageFormat - Image file format for Splash output (PNG or JPG).
-	 * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
-	 * @param {Number=} options.lastPageToConvert - Last page to print.
-	 * @param {Boolean=} options.noDrm - Override document DRM settings.
-	 * @param {Boolean=} options.noFrames - Generate no frames. Not supported in complex output mode.
-	 * @param {Boolean=} options.noMergeParagraph - Do not merge paragraphs.
-	 * @param {Boolean=} options.noRoundedCoordinates - Do not round coordinates
-	 * (with XML output only).
-	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
-	 * This defaults to "UTF-8".
-	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {Boolean=} options.quiet - Do not print any messages or errors.
-	 * @param {Boolean=} options.singlePage - generate single HTML that includes all pages.
-	 * @param {Boolean=} options.stdout - Use standard output.
-	 * @param {String=} options.userPassword - User password (for encrypted files).
-	 * @param {Number=} options.wordBreakThreshold - Adjust the word break threshold percent.
-	 * Default is 10. Word break occurs when distance between two adjacent characters is greater
-	 * than this percent of character height.
-	 * @param {Boolean=} options.xmlOutput - Output for XML post-processing.
-	 * @param {Number=} options.zoom - Zoom the PDF document (default 1.5).
-	 * @param {String} file - Filepath of the PDF file to read.
-	 * @returns {Promise}
-	 */
-	pdfToHtml(options, file) {
-		return new Promise((resolve, reject) => {
-			const acceptedOptions = {
-				complexOutput: { arg: '-c', type: 'boolean' },
-				exchangePdfLinks: { arg: '-p', type: 'boolean' },
-				extractHidden: { arg: '-hidden', type: 'boolean' },
-				firstPageToConvert: { arg: '-f', type: 'number' },
-				fontFullName: { arg: '-fontfullname', type: 'boolean' },
-				ignoreImages: { arg: '-i', type: 'boolean' },
-				imageFormat: { arg: '-fmt', type: 'string' },
-				lastPageToConvert: { arg: '-l', type: 'number' },
-				noDrm: { arg: '-nodrm', type: 'boolean' },
-				noFrames: { arg: '-noframes', type: 'boolean' },
-				noMergeParagraph: { arg: '-nomerge', type: 'boolean' },
-				noRoundedCoordinates: { arg: '-noroundcoord', type: 'boolean' },
-				outputEncoding: { arg: '-enc', type: 'string' },
-				ownerPassword: { arg: '-opw', type: 'string' },
-				printVersionInfo: { arg: '-v', type: 'boolean' },
-				quiet: { arg: '-q', type: 'boolean' },
-				singlePage: { arg: '-s', type: 'boolean' },
-				stdout: { arg: '-stdout', type: 'boolean' },
-				userPassword: { arg: '-upw', type: 'string' },
-				wordBreakThreshold: { arg: '-wbt', type: 'number' },
-				xmlOutput: { arg: '-xml', type: 'boolean' },
-				zoom: { arg: '-zoom', type: 'number' }
-			};
-
-			// Build array of args based on options passed
-			const args = [];
-
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
-
-			args.push(file);
-
-			execFile(
-				path.join(this.popplerPath, 'pdftohtml'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
-				}
-			);
-		});
-	}
-
-	/**
-	 * @author Frazer Smith
 	 * @description Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 	 *
 	 * @param {Object} options
@@ -590,6 +497,99 @@ class Poppler {
 
 			execFile(
 				path.join(this.popplerPath, 'pdftocairo'),
+				args,
+				(err, stdout) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(stdout);
+					}
+				}
+			);
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Converts PDF file to HTML.
+	 * Poppler will use the directory and name of the original file
+	 * and append '-html' to the end of the filename.
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.complexOutput - Generate complex output.
+	 * @param {Boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
+	 * @param {Boolean=} options.extractHidden - Force hidden text extraction.
+	 * @param {Number=} options.firstPageToConvert - First page to print.
+	 * @param {Boolean=} options.fontFullName - Outputs the font name without any substitutions.
+	 * @param {Boolean=} options.ignoreImages - Ignore images.
+	 * @param {String=} options.imageFormat - Image file format for Splash output (PNG or JPG).
+	 * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
+	 * @param {Number=} options.lastPageToConvert - Last page to print.
+	 * @param {Boolean=} options.noDrm - Override document DRM settings.
+	 * @param {Boolean=} options.noFrames - Generate no frames. Not supported in complex output mode.
+	 * @param {Boolean=} options.noMergeParagraph - Do not merge paragraphs.
+	 * @param {Boolean=} options.noRoundedCoordinates - Do not round coordinates
+	 * (with XML output only).
+	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * This defaults to "UTF-8".
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {Boolean=} options.quiet - Do not print any messages or errors.
+	 * @param {Boolean=} options.singlePage - generate single HTML that includes all pages.
+	 * @param {Boolean=} options.stdout - Use standard output.
+	 * @param {String=} options.userPassword - User password (for encrypted files).
+	 * @param {Number=} options.wordBreakThreshold - Adjust the word break threshold percent.
+	 * Default is 10. Word break occurs when distance between two adjacent characters is greater
+	 * than this percent of character height.
+	 * @param {Boolean=} options.xmlOutput - Output for XML post-processing.
+	 * @param {Number=} options.zoom - Zoom the PDF document (default 1.5).
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @returns {Promise}
+	 */
+	pdfToHtml(options, file) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				complexOutput: { arg: '-c', type: 'boolean' },
+				exchangePdfLinks: { arg: '-p', type: 'boolean' },
+				extractHidden: { arg: '-hidden', type: 'boolean' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
+				fontFullName: { arg: '-fontfullname', type: 'boolean' },
+				ignoreImages: { arg: '-i', type: 'boolean' },
+				imageFormat: { arg: '-fmt', type: 'string' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
+				noDrm: { arg: '-nodrm', type: 'boolean' },
+				noFrames: { arg: '-noframes', type: 'boolean' },
+				noMergeParagraph: { arg: '-nomerge', type: 'boolean' },
+				noRoundedCoordinates: { arg: '-noroundcoord', type: 'boolean' },
+				outputEncoding: { arg: '-enc', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				quiet: { arg: '-q', type: 'boolean' },
+				singlePage: { arg: '-s', type: 'boolean' },
+				stdout: { arg: '-stdout', type: 'boolean' },
+				userPassword: { arg: '-upw', type: 'string' },
+				wordBreakThreshold: { arg: '-wbt', type: 'number' },
+				xmlOutput: { arg: '-xml', type: 'boolean' },
+				zoom: { arg: '-zoom', type: 'number' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args).catch((err) => {
+					reject(err);
+				});
+			}
+
+			args.push(file);
+
+			execFile(
+				path.join(this.popplerPath, 'pdftohtml'),
 				args,
 				(err, stdout) => {
 					if (err) {

@@ -689,7 +689,7 @@ class Poppler {
 	 * @param {String=} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
-	pdfToPS(options, file, outputFile) {
+	pdfToPs(options, file, outputFile) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				antialias: { arg: '-aaRaster', type: 'string' },

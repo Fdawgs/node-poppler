@@ -549,6 +549,7 @@ class Poppler {
 	 * @param {Boolean=} options.maintainLayout - Maintain (as best as possible) the original physical
 	 * layout of the text. The default is to ´undo' physical layout (columns, hyphenation, etc.) and
 	 * output the text in reading order.
+	 * @param {Boolean=} options.noDiagonalText - Discard diagonal text.
 	 * @param {Boolean=} options.noPageBreaks - Don't insert page breaks (form feed characters)
 	 * between pages.
 	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
@@ -582,6 +583,7 @@ class Poppler {
 				lastPageToConvert: { arg: '-l', type: 'number' },
 				listEncodingOptions: { arg: '-listenc', type: 'boolean' },
 				maintainLayout: { arg: '-layout', type: 'boolean' },
+				noDiagonalText: { arg: '-nodiag', type: 'boolean' },
 				noPageBreaks: { arg: '-nopgbrk', type: 'boolean' },
 				outputEncoding: { arg: '-enc', type: 'string' },
 				ownerPassword: { arg: '-opw', type: 'string' },

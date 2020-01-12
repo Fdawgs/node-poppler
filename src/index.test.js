@@ -571,7 +571,7 @@ describe('pdfToPpm function', () => {
 		};
 
 		expect.assertions(1);
-		await poppler.pdfToPpm(options, file).catch((err) => {
+		await poppler.pdfToPpm(options, undefined).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
 			);
@@ -585,7 +585,7 @@ describe('pdfToPpm function', () => {
 		};
 
 		expect.assertions(1);
-		await poppler.pdfToPpm(options, file).catch((err) => {
+		await poppler.pdfToPpm(options, undefined).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
 			);

@@ -634,7 +634,7 @@ class Poppler {
 	 * This also converts all images to black and white.
 	 * @param {Boolean=} options.level1Sep - Generate Level 1 separable PostScript.
 	 * All colors are converted to CMYK. Images are written with separate stream data for the four components.
-	 * @param {Boolean=} options.level2 - Generate Level 2 PostScript. 
+	 * @param {Boolean=} options.level2 - Generate Level 2 PostScript.
 	 * Level 2 supports color images and image compression. This is the default setting.
 	 * @param {Boolean=} options.level2Sep - Generate Level 2 separable PostScript. All colors are
 	 * converted to CMYK. The PostScript separation convention operators are used to handle custom (spot) colors.

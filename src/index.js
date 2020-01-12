@@ -216,7 +216,7 @@ class Poppler {
 	 * @param {Boolean=} options.printDocStruct - Prints the logical document structure
 	 * of a Tagged-PDF file.
 	 * @param {Boolean=} options.printDocStructText - Print the textual content along with the
-	 * document structure of a Tagged-PDF file.  Note that extracting text this way might be slow
+	 * document structure of a Tagged-PDF file. Note that extracting text this way might be slow
 	 *
 	 * for big PDF files.
 	 * @param {Boolean=} options.printIsoDates - Prints dates in ISO-8601 format (including the time zone).
@@ -453,9 +453,10 @@ class Poppler {
 	 * @param {Boolean=} options.duplex - Adds the %%IncludeFeature: *Duplex DuplexNoTumble DSC
 	 * comment to the PostScript file (PS only). This tells the print manager to enable duplexing.
 	 * @param {Boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
-	 * so if you use this option with a multi-page PDF file, you must use -f and -l to specify
-	 * a single page. The page size options (originalPageSize, paperSize, paperWidth,
-	 * paperHeight) can not be used with this option.
+	 * so if you use this option with a multi-page PDF file, you must use 'firstPageToConvert' and
+	 * 'lastPageToConvert' to specify a single page.
+	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
+	 * with this option.
 	 * @param {Boolean=} options.evenPagesOnly - Generates only the even numbered pages.
 	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
 	 * paper (PS,PDF,SVG only). By default, these pages are not scaled.

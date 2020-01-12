@@ -662,7 +662,7 @@ class Poppler {
 	 * @param {Boolean=} options.tiffFile - Generates a TIFF file instead a PPM file.
 	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String=} outputPath - Filepath to output the results to.
+	 * @param {String} outputPath - Filepath to output the results to.
 	 * @returns {Promise}
 	 */
 	pdfToPpm(options, file, outputPath) {
@@ -819,7 +819,7 @@ class Poppler {
 	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
 	 * @param {String=} options.userPassword - User password (for encrypted files).
 	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String=} outputFile - Filepath of the file to output the results to.
+	 * @param {String} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
 	pdfToPs(options, file, outputFile) {

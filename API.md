@@ -26,8 +26,8 @@
     -   [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
     -   [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
     -   [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
-    -   [.pdfToPpm(options, file, [outputPath])](#Poppler+pdfToPpm) ⇒ <code>Promise</code>
-    -   [.pdfToPs([options], file, [outputFile])](#Poppler+pdfToPs) ⇒ <code>Promise</code>
+    -   [.pdfToPpm(options, file, outputPath)](#Poppler+pdfToPpm) ⇒ <code>Promise</code>
+    -   [.pdfToPs([options], file, outputFile)](#Poppler+pdfToPs) ⇒ <code>Promise</code>
     -   [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise</code>
     -   [.pdfUnite([options], files, [outputFile])](#Poppler+pdfUnite) ⇒ <code>Promise</code>
 
@@ -230,7 +230,7 @@ and append '-html' to the end of the filename.
 
 <a name="Poppler+pdfToPpm"></a>
 
-### poppler.pdfToPpm(options, file, [outputPath]) ⇒ <code>Promise</code>
+### poppler.pdfToPpm(options, file, outputPath) ⇒ <code>Promise</code>
 
 Converts PDF to to colour image files in Portable Pixmap (PPM) format,
 grayscale image files in Portable Graymap (PGM) format, or monochrome image files
@@ -274,11 +274,11 @@ in Portable Bitmap (PBM) format.
 | [options.tiffFile]           | <code>Boolean</code> | Generates a TIFF file instead a PPM file.                                                                                                                                                          |
 | [options.userPassword]       | <code>String</code>  | Specify the user password for the PDF file.                                                                                                                                                        |
 | file                         | <code>String</code>  | Filepath of the PDF file to read.                                                                                                                                                                  |
-| [outputPath]                 | <code>String</code>  | Filepath to output the results to.                                                                                                                                                                 |
+| outputPath                   | <code>String</code>  | Filepath to output the results to.                                                                                                                                                                 |
 
 <a name="Poppler+pdfToPs"></a>
 
-### poppler.pdfToPs([options], file, [outputFile]) ⇒ <code>Promise</code>
+### poppler.pdfToPs([options], file, outputFile) ⇒ <code>Promise</code>
 
 Converts PDF to PostScript (PS).
 
@@ -324,7 +324,7 @@ Converts PDF to PostScript (PS).
 | [options.resolutionXYAxis]        | <code>Number</code>  | Specifies the X and Y resolution, in pixels per inch of image files (or rasterized regions in vector output). The default is 300 PPI.                                                                                                                                                                                                                                              |
 | [options.userPassword]            | <code>String</code>  | User password (for encrypted files).                                                                                                                                                                                                                                                                                                                                               |
 | file                              | <code>String</code>  | Filepath of the PDF file to read.                                                                                                                                                                                                                                                                                                                                                  |
-| [outputFile]                      | <code>String</code>  | Filepath of the file to output the results to.                                                                                                                                                                                                                                                                                                                                     |
+| outputFile                        | <code>String</code>  | Filepath of the file to output the results to.                                                                                                                                                                                                                                                                                                                                     |
 
 <a name="Poppler+pdfToText"></a>
 

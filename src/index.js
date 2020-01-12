@@ -232,7 +232,6 @@ class Poppler {
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
-
 	pdfInfo(options, file) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {

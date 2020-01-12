@@ -24,9 +24,9 @@
     -   [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise</code>
     -   [.pdfInfo([options], file)](#Poppler+pdfInfo) ⇒ <code>Promise</code>
     -   [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
-    -   [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
     -   [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
-    -   [.pdfToPS([options], file, [outputFile])](#Poppler+pdfToPS) ⇒ <code>Promise</code>
+    -   [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise</code>
+    -   [.pdfToPs([options], file, [outputFile])](#Poppler+pdfToPs) ⇒ <code>Promise</code>
     -   [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise</code>
     -   [.pdfUnite([options], files, [outputFile])](#Poppler+pdfUnite) ⇒ <code>Promise</code>
 
@@ -129,44 +129,6 @@ This will not work if the file is encrypted.
 | file                         | <code>String</code>  | Filepath of the PDF file to read.                                                                                                                                                            |
 | outputPattern                | <code>String</code>  | Should contain %d (or any variant respecting printf format), since %d is replaced by the page number. As an example, 'sample-%d.pdf' will produce 'sample-1.pdf' for a single page document. |
 
-<a name="Poppler+pdfToHtml"></a>
-
-### poppler.pdfToHtml([options], file) ⇒ <code>Promise</code>
-
-Converts PDF file to HTML.
-Poppler will use the directory and name of the original file
-and append '-html' to the end of the filename.
-
-**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Author**: Frazer Smith
-
-| Param                          | Type                 | Description                                                                                                                                                               |
-| ------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [options]                      | <code>Object</code>  |                                                                                                                                                                           |
-| [options.complexOutput]        | <code>Boolean</code> | Generate complex output.                                                                                                                                                  |
-| [options.exchangePdfLinks]     | <code>Boolean</code> | Exchange .pdf links with .html.                                                                                                                                           |
-| [options.extractHidden]        | <code>Boolean</code> | Force hidden text extraction.                                                                                                                                             |
-| [options.firstPageToConvert]   | <code>Number</code>  | First page to print.                                                                                                                                                      |
-| [options.fontFullName]         | <code>Boolean</code> | Outputs the font name without any substitutions.                                                                                                                          |
-| [options.ignoreImages]         | <code>Boolean</code> | Ignore images.                                                                                                                                                            |
-| [options.imageFormat]          | <code>String</code>  | Image file format for Splash output (PNG or JPG). If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.                                    |
-| [options.lastPageToConvert]    | <code>Number</code>  | Last page to print.                                                                                                                                                       |
-| [options.noDrm]                | <code>Boolean</code> | Override document DRM settings.                                                                                                                                           |
-| [options.noFrames]             | <code>Boolean</code> | Generate no frames. Not supported in complex output mode.                                                                                                                 |
-| [options.noMergeParagraph]     | <code>Boolean</code> | Do not merge paragraphs.                                                                                                                                                  |
-| [options.noRoundedCoordinates] | <code>Boolean</code> | Do not round coordinates (with XML output only).                                                                                                                          |
-| [options.outputEncoding]       | <code>String</code>  | Sets the encoding to use for text output. This defaults to "UTF-8".                                                                                                       |
-| [options.ownerPassword]        | <code>String</code>  | Owner password (for encrypted files).                                                                                                                                     |
-| [options.printVersionInfo]     | <code>Boolean</code> | Print copyright and version info.                                                                                                                                         |
-| [options.quiet]                | <code>Boolean</code> | Do not print any messages or errors.                                                                                                                                      |
-| [options.singlePage]           | <code>Boolean</code> | generate single HTML that includes all pages.                                                                                                                             |
-| [options.stdout]               | <code>Boolean</code> | Use standard output.                                                                                                                                                      |
-| [options.userPassword]         | <code>String</code>  | User password (for encrypted files).                                                                                                                                      |
-| [options.wordBreakThreshold]   | <code>Number</code>  | Adjust the word break threshold percent. Default is 10. Word break occurs when distance between two adjacent characters is greater than this percent of character height. |
-| [options.xmlOutput]            | <code>Boolean</code> | Output for XML post-processing.                                                                                                                                           |
-| [options.zoom]                 | <code>Number</code>  | Zoom the PDF document (default 1.5).                                                                                                                                      |
-| file                           | <code>String</code>  | Filepath of the PDF file to read.                                                                                                                                         |
-
 <a name="Poppler+pdfToCairo"></a>
 
 ### poppler.pdfToCairo(options, file, [outputFile]) ⇒ <code>Promise</code>
@@ -227,9 +189,47 @@ Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 | file                           | <code>String</code>  | Filepath of the PDF file to read.                                                                                                                                                                                                                                                                                            |
 | [outputFile]                   | <code>String</code>  | Filepath of the file to output the results to.                                                                                                                                                                                                                                                                               |
 
-<a name="Poppler+pdfToPS"></a>
+<a name="Poppler+pdfToHtml"></a>
 
-### poppler.pdfToPS([options], file, [outputFile]) ⇒ <code>Promise</code>
+### poppler.pdfToHtml([options], file) ⇒ <code>Promise</code>
+
+Converts PDF file to HTML.
+Poppler will use the directory and name of the original file
+and append '-html' to the end of the filename.
+
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
+**Author**: Frazer Smith
+
+| Param                          | Type                 | Description                                                                                                                                                               |
+| ------------------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [options]                      | <code>Object</code>  |                                                                                                                                                                           |
+| [options.complexOutput]        | <code>Boolean</code> | Generate complex output.                                                                                                                                                  |
+| [options.exchangePdfLinks]     | <code>Boolean</code> | Exchange .pdf links with .html.                                                                                                                                           |
+| [options.extractHidden]        | <code>Boolean</code> | Force hidden text extraction.                                                                                                                                             |
+| [options.firstPageToConvert]   | <code>Number</code>  | First page to print.                                                                                                                                                      |
+| [options.fontFullName]         | <code>Boolean</code> | Outputs the font name without any substitutions.                                                                                                                          |
+| [options.ignoreImages]         | <code>Boolean</code> | Ignore images.                                                                                                                                                            |
+| [options.imageFormat]          | <code>String</code>  | Image file format for Splash output (PNG or JPG). If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.                                    |
+| [options.lastPageToConvert]    | <code>Number</code>  | Last page to print.                                                                                                                                                       |
+| [options.noDrm]                | <code>Boolean</code> | Override document DRM settings.                                                                                                                                           |
+| [options.noFrames]             | <code>Boolean</code> | Generate no frames. Not supported in complex output mode.                                                                                                                 |
+| [options.noMergeParagraph]     | <code>Boolean</code> | Do not merge paragraphs.                                                                                                                                                  |
+| [options.noRoundedCoordinates] | <code>Boolean</code> | Do not round coordinates (with XML output only).                                                                                                                          |
+| [options.outputEncoding]       | <code>String</code>  | Sets the encoding to use for text output. This defaults to "UTF-8".                                                                                                       |
+| [options.ownerPassword]        | <code>String</code>  | Owner password (for encrypted files).                                                                                                                                     |
+| [options.printVersionInfo]     | <code>Boolean</code> | Print copyright and version info.                                                                                                                                         |
+| [options.quiet]                | <code>Boolean</code> | Do not print any messages or errors.                                                                                                                                      |
+| [options.singlePage]           | <code>Boolean</code> | generate single HTML that includes all pages.                                                                                                                             |
+| [options.stdout]               | <code>Boolean</code> | Use standard output.                                                                                                                                                      |
+| [options.userPassword]         | <code>String</code>  | User password (for encrypted files).                                                                                                                                      |
+| [options.wordBreakThreshold]   | <code>Number</code>  | Adjust the word break threshold percent. Default is 10. Word break occurs when distance between two adjacent characters is greater than this percent of character height. |
+| [options.xmlOutput]            | <code>Boolean</code> | Output for XML post-processing.                                                                                                                                           |
+| [options.zoom]                 | <code>Number</code>  | Zoom the PDF document (default 1.5).                                                                                                                                      |
+| file                           | <code>String</code>  | Filepath of the PDF file to read.                                                                                                                                         |
+
+<a name="Poppler+pdfToPs"></a>
+
+### poppler.pdfToPs([options], file, [outputFile]) ⇒ <code>Promise</code>
 
 Converts PDF to PostScript (PS).
 
@@ -268,8 +268,8 @@ Converts PDF to PostScript (PS).
 | [options.paperHeight]             | <code>Number</code>  | Set the paper height, in points.                                                                                                                                                                                                                                                                                                                                                   |
 | [options.paperSize]               | <code>String</code>  | Set the paper size to one of "letter", "legal", "A4", or "A3". This can also be set to "match", which will set the paper size of each page to match the size specified in the PDF file. If none of the paperSize, paperWidth, or paperHeight options are specified the default is to match the paper size.                                                                         |
 | [options.paperWidth]              | <code>Number</code>  | Set the paper width, in points.                                                                                                                                                                                                                                                                                                                                                    |
-| [options.passfonts]               | <code>Boolean</code> |                                                                                                                                                                                                                                                                                                                                                                                    |
-| [options.preload]                 | <code>Boolean</code> |                                                                                                                                                                                                                                                                                                                                                                                    |
+| [options.passfonts]               | <code>Boolean</code> | By default, references to non-embedded 8-bit fonts in the PDF file are substituted with the closest "Helvetica", "Times-Roman", or "Courier" font. This option passes references to non-embedded fonts through to the PostScript file.                                                                                                                                             |
+| [options.preload]                 | <code>Boolean</code> | Preload images and forms.                                                                                                                                                                                                                                                                                                                                                          |
 | [options.printVersionInfo]        | <code>Boolean</code> | Print copyright and version information.                                                                                                                                                                                                                                                                                                                                           |
 | [options.quiet]                   | <code>Boolean</code> | Don't print any messages or errors.                                                                                                                                                                                                                                                                                                                                                |
 | [options.resolutionXYAxis]        | <code>Number</code>  | Specifies the X and Y resolution, in pixels per inch of image files (or rasterized regions in vector output). The default is 300 PPI.                                                                                                                                                                                                                                              |

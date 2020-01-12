@@ -678,8 +678,10 @@ class Poppler {
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
 	 * @param {Number=} options.paperWidth - Set the paper width, in points.
-	 * @param {Boolean=} options.passfonts
-	 * @param {Boolean=} options.preload
+	 * @param {Boolean=} options.passfonts - By default, references to non-embedded 8-bit fonts
+	 * in the PDF file are substituted with the closest "Helvetica", "Times-Roman", or "Courier" font.
+	 * This option passes references to non-embedded fonts through to the PostScript file.
+	 * @param {Boolean=} options.preload - Preload images and forms.
 	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
 	 * @param {Number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per

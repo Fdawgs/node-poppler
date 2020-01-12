@@ -10,6 +10,9 @@ function clean() {
 		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)) {
 			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`);
 		}
+		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)) {
+			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`);
+		}
 		if (
 			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution_ind.html`)
 		) {
@@ -449,6 +452,87 @@ describe('pdfToHtml function', () => {
 
 		expect.assertions(1);
 		await poppler.pdfToHtml(options, file).catch((err) => {
+			expect(err.message).toEqual(
+				"Invalid option provided 'middlePageToConvert'"
+			);
+		});
+	});
+});
+
+describe('pdfToPs function', () => {
+	afterAll(async () => {
+		await clean();
+	});
+
+	test('Should convert PDF file to PS file', async () => {
+		const poppler = new Poppler();
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
+
+		await poppler.pdfToPs(undefined, file, outputFile).then((res) => {
+			expect(typeof res).toBe('string');
+			expect(
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
+			).toBe(true);
+		});
+	});
+
+	test('Should accept options and only process 2 pages of PDF file', async () => {
+		const poppler = new Poppler();
+		const options = {
+			firstPageToConvert: 1,
+			lastPageToConvert: 2
+		};
+
+		await poppler.pdfToPs(options, file).then((res) => {
+			expect(typeof res).toBe('string');
+			expect(
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
+			).toBe(true);
+		});
+	});
+
+	test('Should return an Error object if file passed not PDF format', async () => {
+		const poppler = new Poppler();
+		const testTxtFile = `${testDirectory}test.txt`;
+
+		expect.assertions(1);
+		await poppler.pdfToPs(undefined, testTxtFile).catch((err) => {
+			expect(err.message.substring(0, 15)).toBe('Command failed:');
+		});
+	});
+
+	test('Should return an Error object if PDF file missing', async () => {
+		const poppler = new Poppler();
+
+		expect.assertions(1);
+		await poppler.pdfToPs(undefined, undefined).catch((err) => {
+			expect(err.message.substring(0, 15)).toBe('Command failed:');
+		});
+	});
+
+	test('Should return an Error object if invalid value types provided for an option are passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			firstPageToConvert: 'test',
+			lastPageToConvert: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfToPs(options, file).catch((err) => {
+			expect(err.message).toEqual(
+				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
+			);
+		});
+	});
+
+	test('Should return an Error object if invalid option is passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			middlePageToConvert: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfToPs(options, file).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
 			);

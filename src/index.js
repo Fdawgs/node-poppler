@@ -603,6 +603,170 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
+	 * @description Converts PDF to PostScript (PS).
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.binary - Write binary data in Level 1 PostScript. By default,
+	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
+	 * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
+	 * only for its restricted use of PostScript operators.
+	 * @param {Boolean=} options.duplex - Set the Duplex pagedevice entry in the PostScript file.
+	 * This tells duplex-capable printers to enable duplexing.
+	 * @param {Boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
+	 * so if you use this option with a multi-page PDF file, you must use 'firstPageToConvert' and
+	 * 'lastPageToConvert' to specify a single page.
+	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
+	 * with this option.
+	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
+	 * paper. By default, these pages are not scaled.
+	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {Number=} options.form - Generate a PostScript form which can be imported by software
+	 * that understands forms.
+	 * A form contains a single page, so if you use this option with a multi-page PDF file,
+	 * you must use 'firstPageToConvert' and 'lastPageToConvert to specify a single page.
+	 * The 'level1' option cannot be used with -form.
+	 * No more than one of the mode options ('epsFile', 'form') may be given.
+	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {Boolean=} options.level1 - Generate Level 1 PostScript. The resulting PostScript
+	 * files will be significantly larger (if they contain images), but will print on Level 1 printers.
+	 * This also converts all images to black and white.
+	 * @param {Boolean=} options.level1Sep - Generate Level 1 separable PostScript.
+	 * All colors are converted to CMYK. Images are written with separate stream data for the four components.
+	 * @param {Boolean=} options.level2 - Generate Level 2 PostScript. 
+	 * Level 2 supports color images and image compression. This is the default setting.
+	 * @param {Boolean=} options.level2Sep - Generate Level 2 separable PostScript. All colors are
+	 * converted to CMYK. The PostScript separation convention operators are used to handle custom (spot) colors.
+	 * @param {Boolean=} options.level3 - Generate Level 3 PostScript.
+	 * This enables all Level 2 featuresplus CID font embedding.
+	 * @param {Boolean=} options.level3Sep - Generate Level 3 separable PostScript.
+	 * The separation handling is the same as for 'level2Sep'.
+	 * @param {Boolean=} options.noEmbedCIDFonts - By default, any CID PostScript fonts which are
+	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
+	 * No attempt is made to substitute for non-embedded CID PostScript fonts.
+	 * @param {Boolean=} options.noEmbedCIDTrueTypeFonts - By default, any CID TrueType fonts which are
+	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
+	 * No attempt is made to substitute for non-embedded CID TrueType fonts.
+	 * @param {Boolean=} options.noEmbedTrueTypeFonts - By default, any TrueType fonts which are embedded
+	 * in the PDF file are copied into the PostScript file. This option causes pdftops to substitute base fonts instead.
+	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
+	 * Also, some PostScript interpreters do not have TrueType rasterizers.
+	 * @param {Boolean=} options.noEmbedType1Fonts - By default, any Type 1 fonts which are embedded in the PDF file
+	 * are copied into the PostScript file. This option causes pdftops to substitute base fonts instead.
+	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
+	 * @param {Boolean=} options.noCenter - By default, PDF pages smaller than the paper
+	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
+	 * the lower-left corner of the paper instead.
+	 * @param {Boolean=} options.noCrop - By default, printing output is cropped to the CropBox
+	 * specified in the PDF file. This option disables cropping.
+	 * @param {Boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper.
+	 * By default, pages larger than the paper are shrunk to fit.
+	 * @param {Boolean=} options.opi - Generate OPI comments for all images and forms which have OPI information.
+	 * @param {Boolean=} options.optimizecolorspace - By default, bitmap images in the PDF pass through to the
+	 * output PostScript in their original color space, which produces predictable results.
+	 * This option converts RGB and CMYK images into Gray images if every pixel of the image has equal components.
+	 * This can fix problems when doing color separations of PDFs that contain embedded black and
+	 * white images encoded as RGB.
+	 * @param {Boolean=} options.originalPageSizes - Set the paper size of each page to match
+	 * the size specified in the PDF file.
+	 * @param {Boolean=} options.overprint - Enable overprinting.
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {Number=} options.paperHeight - Set the paper height, in points.
+	 * @param {String=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
+	 * or "A3". This can also be set to "match", which will set the paper size
+	 * of each page to match the size specified in the PDF file. If none of the paperSize,
+	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
+	 * @param {Number=} options.paperWidth - Set the paper width, in points.
+	 * @param {Boolean=} options.passfonts
+	 * @param {Boolean=} options.preload
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {Number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
+	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
+	 * @param {String=} options.userPassword - User password (for encrypted files).
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {String=} outputFile - Filepath of the file to output the results to.
+	 * @returns {Promise}
+	 */
+	pdfToPS(options, file, outputFile) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				// aaRaster: { arg: '-aaRaster', type: 'boolean' },
+				binary: { arg: '-binary', type: 'boolean' },
+				duplex: { arg: '-duplex', type: 'boolean' },
+				epsFile: { arg: '-eps', type: 'boolean' },
+				fillPage: { arg: '-expand', type: 'boolean' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
+				form: { arg: '-form', type: 'boolean' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
+				level1: { arg: '-level1', type: 'boolean' },
+				level1Sep: { arg: '-level1sep', type: 'boolean' },
+				level2: { arg: '-level2', type: 'boolean' },
+				level2Sep: { arg: '-level2sep', type: 'boolean' },
+				level3: { arg: '-level3', type: 'boolean' },
+				level3Sep: { arg: '-level3sep', type: 'boolean' },
+				noEmbedCIDFonts: { arg: '-noembcidps', type: 'boolean' },
+				noEmbedCIDTrueTypeFonts: {
+					arg: '-noembcidtt',
+					type: 'boolean'
+				},
+				noEmbedTrueTypeFonts: { arg: '-noembtt', type: 'boolean' },
+				noEmbedType1Fonts: { arg: '-noembt1', type: 'boolean' },
+				noCenter: { arg: '-nocenter', type: 'boolean' },
+				noCrop: { arg: '-nocrop', type: 'boolean' },
+				noShrink: { arg: '-noshrink', type: 'boolean' },
+				opi: { arg: '-opi', type: 'boolean' },
+				optimizecolorspace: {
+					arg: '-optimizecolorspace',
+					type: 'boolean'
+				},
+				originalPageSizes: { arg: '-origpagesizes', type: 'boolean' },
+				overprint: { arg: '-overprint', type: 'boolean' },
+				ownerPassword: { arg: '-opw', type: 'string' },
+				paperHeight: { arg: '-paperh', type: 'number' },
+				paperSize: { arg: '-paper', type: 'string' },
+				paperWidth: { arg: '-paperw', type: 'number' },
+				passfonts: { arg: '-passfonts', type: 'boolean' },
+				preload: { arg: '-preload', type: 'boolean' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				quiet: { arg: '-q', type: 'boolean' },
+				resolutionXYAxis: { arg: '-r', type: 'number' },
+				userPassword: { arg: '-upw', type: 'string' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args).catch((err) => {
+					reject(err);
+				});
+			}
+
+			args.push(file);
+			if (outputFile) {
+				args.push(outputFile);
+			}
+
+			execFile(
+				path.join(this.popplerPath, 'pdftops'),
+				args,
+				(err, stdout) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(stdout);
+					}
+				}
+			);
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
 	 * @description Converts PDF to TXT.
 	 *
 	 * @param {Object=} options

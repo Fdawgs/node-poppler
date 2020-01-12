@@ -13,6 +13,18 @@ function clean() {
 		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)) {
 			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`);
 		}
+		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)) {
+			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`);
+		}
+		if (
+			fs.existsSync(
+				`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
+			)
+		) {
+			fs.unlinkSync(
+				`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
+			);
+		}
 		if (
 			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution_ind.html`)
 		) {
@@ -85,6 +97,65 @@ describe('Constructor', () => {
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
 			).toBe(true);
+		});
+	});
+});
+
+describe('pdfAttach function', () => {
+	afterAll(async () => {
+		await clean();
+	});
+
+	test('Should attach file to PDF file', async () => {
+		const poppler = new Poppler();
+		const attachmentFile = `${testDirectory}test.txt`;
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`;
+
+		await poppler
+			.pdfAttach(undefined, file, attachmentFile, outputFile)
+			.then((res) => {
+				expect(typeof res).toBe('string');
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
+					)
+				).toBe(true);
+			});
+	});
+
+	test('Should return an Error object if file passed not PDF format', async () => {
+		const poppler = new Poppler();
+		const testTxtFile = `${testDirectory}test.txt`;
+
+		expect.assertions(1);
+		await poppler.pdfAttach(undefined, testTxtFile).catch((err) => {
+			expect(err.message.substring(0, 15)).toBe('Command failed:');
+		});
+	});
+
+	test('Should return an Error object if invalid value types provided for an option are passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			replace: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfAttach(options, file).catch((err) => {
+			expect(err.message).toEqual(
+				"Invalid value type provided for option 'replace', expected boolean but recieved string"
+			);
+		});
+	});
+
+	test('Should return an Error object if invalid option is passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			wordFile: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfAttach(options, file).catch((err) => {
+			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
 	});
 });
@@ -510,7 +581,7 @@ describe('pdfToPpm function', () => {
 		};
 
 		expect.assertions(1);
-		await poppler.pdfToPpm(options, file).catch((err) => {
+		await poppler.pdfToPpm(options, undefined).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
 			);
@@ -524,7 +595,7 @@ describe('pdfToPpm function', () => {
 		};
 
 		expect.assertions(1);
-		await poppler.pdfToPpm(options, file).catch((err) => {
+		await poppler.pdfToPpm(options, undefined).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
 			);

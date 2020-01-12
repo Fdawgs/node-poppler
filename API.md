@@ -20,6 +20,7 @@
 
 -   [Poppler](#Poppler)
     -   [new Poppler([binPath])](#new_Poppler_new)
+    -   [.pdfAttach([options], file, fileToAttach, outputFile)](#Poppler+pdfAttach) ⇒ <code>Promise</code>
     -   [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise</code>
     -   [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise</code>
     -   [.pdfInfo([options], file)](#Poppler+pdfInfo) ⇒ <code>Promise</code>
@@ -38,6 +39,24 @@
 | Param     | Type                | Description                                                                                               |
 | --------- | ------------------- | --------------------------------------------------------------------------------------------------------- |
 | [binPath] | <code>String</code> | Path of poppler-utils binaries. Useful for Linux users who have poppler-utils binaries already installed. |
+
+<a name="Poppler+pdfAttach"></a>
+
+### poppler.pdfAttach([options], file, fileToAttach, outputFile) ⇒ <code>Promise</code>
+
+Embeds files (attachments) into a PDF file.
+
+**Kind**: instance method of [<code>Poppler</code>](#Poppler)  
+**Author**: Frazer Smith
+
+| Param                      | Type                 | Description                                                  |
+| -------------------------- | -------------------- | ------------------------------------------------------------ |
+| [options]                  | <code>Object</code>  |                                                              |
+| [options.printVersionInfo] | <code>Boolean</code> | Print copyright and version info.                            |
+| [options.replace]          | <code>Boolean</code> | Replace embedded file with same name (if it exists).         |
+| file                       | <code>String</code>  | Filepath of the PDF file to read.                            |
+| fileToAttach               | <code>String</code>  | Filepath of the attachment to be embedded into the PDF file. |
+| outputFile                 | <code>String</code>  | Filepath of the file to output the results to.               |
 
 <a name="Poppler+pdfDetach"></a>
 

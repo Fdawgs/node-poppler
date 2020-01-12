@@ -16,8 +16,14 @@ function clean() {
 		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)) {
 			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`);
 		}
-		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`)) {
-			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`);
+		if (
+			fs.existsSync(
+				`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
+			)
+		) {
+			fs.unlinkSync(
+				`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
+			);
 		}
 		if (
 			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution_ind.html`)
@@ -105,12 +111,16 @@ describe('pdfAttach function', () => {
 		const attachmentFile = `${testDirectory}test.txt`;
 		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`;
 
-		await poppler.pdfAttach(undefined, file, attachmentFile, outputFile).then((res) => {
-			expect(typeof res).toBe('string');
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`)
-			).toBe(true);
-		});
+		await poppler
+			.pdfAttach(undefined, file, attachmentFile, outputFile)
+			.then((res) => {
+				expect(typeof res).toBe('string');
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
+					)
+				).toBe(true);
+			});
 	});
 
 	test('Should return an Error object if file passed not PDF format', async () => {
@@ -137,7 +147,7 @@ describe('pdfAttach function', () => {
 		});
 	});
 
-	test('Should return an Error object if invalid option is passed to function', async() => {
+	test('Should return an Error object if invalid option is passed to function', async () => {
 		const poppler = new Poppler();
 		const options = {
 			wordFile: 'test'

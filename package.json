@@ -12,8 +12,8 @@
 		"doc": "jsdoc2md src/index.js > API.md",
 		"dupe-check": "yarn jsinspect .",
 		"jest": "jest src --coverage",
-		"lint": "eslint .",
-		"prettier": "prettier src/*.js --write",
+		"lint": "eslint src/**/*.js",
+		"prettier": "prettier src/**/*.js --write",
 		"test": "yarn lint && yarn test-coverage",
 		"test-coverage": "jest --coverage --verbose",
 		"test-only": "jest --verbose"
@@ -42,6 +42,7 @@
 	"devDependencies": {
 		"coveralls": "^3.0.9",
 		"eslint": "^6.8.0",
+		"eslint-config-airbnb-base": "^14.0.0",
 		"eslint-config-prettier": "^6.9.0",
 		"eslint-plugin-import": "^2.19.1",
 		"eslint-plugin-jest": "^23.1.1",

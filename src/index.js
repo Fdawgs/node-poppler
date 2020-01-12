@@ -298,7 +298,7 @@ class Poppler {
 			const acceptedOptions = {
 				complexOutput: { arg: '-c', type: 'boolean' },
 				exchangePdfLinks: { arg: '-p', type: 'boolean' },
-				extractHidden: { arg: '', type: 'boolean' },
+				extractHidden: { arg: '-hidden', type: 'boolean' },
 				firstPageToConvert: { arg: '-f', type: 'number' },
 				fontFullName: { arg: '-fontfullname', type: 'boolean' },
 				ignoreImages: { arg: '-i', type: 'boolean' },

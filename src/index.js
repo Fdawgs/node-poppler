@@ -81,6 +81,55 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
+	 * @description Embeds files (attachments) into a PDF file.
+	 * @param {Object=} options
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {Boolean=} options.replace - Replace embedded file with same name (if it exists).
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {String} fileToAttach - Filepath of the attachment to be embedded into the PDF file.
+	 * @param {String} outputFile - Filepath of the file to output the results to.
+	 * @returns {Promise}
+	 */
+	pdfAttach(options, file, fileToAttach, outputFile) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				replace: { arg: '-replace', type: 'boolean' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args).catch((err) => {
+					reject(err);
+				});
+			}
+
+			args.push(file);
+			args.push(fileToAttach);
+			args.push(outputFile);
+
+			execFile(
+				path.join(this.popplerPath, 'pdfattach'),
+				args,
+				(err, stdout) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(stdout);
+					}
+				}
+			);
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
 	 *
 	 * @param {Object=} options
@@ -715,9 +764,7 @@ class Poppler {
 			}
 
 			args.push(file);
-			if (outputPath) {
-				args.push(outputPath);
-			}
+			args.push(outputPath);
 
 			execFile(
 				path.join(this.popplerPath, 'pdftoppm'),
@@ -882,9 +929,7 @@ class Poppler {
 			}
 
 			args.push(file);
-			if (outputFile) {
-				args.push(outputFile);
-			}
+			args.push(outputFile);
 
 			execFile(
 				path.join(this.popplerPath, 'pdftops'),

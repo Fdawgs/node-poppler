@@ -202,6 +202,88 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
+	 * @description prints the contents of the ´Info' dictionary from a PDF file.
+	 *
+	 * @param {Object=} options
+	 * @param {Number=} options.firstPageToConvert - First page to print.
+	 * @param {Number=} options.lastPageToConvert - Last page to print.
+	 * @param {Boolean=} options.listEncodingOptions - List the available encodings.
+	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * This defaults to "UTF-8".
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {Boolean=} options.printBoundingBoxes - Prints the page box bounding boxes:
+	 * MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.
+	 * @param {Boolean=} options.printDocStruct - Prints the logical document structure
+	 * of a Tagged-PDF file.
+	 * @param {Boolean=} options.printDocStructText - Print the textual content along with the
+	 * document structure of a Tagged-PDF file.  Note that extracting text this way might be slow
+	 *
+	 * for big PDF files.
+	 * @param {Boolean=} options.printIsoDates - Prints dates in ISO-8601 format (including the time zone).
+	 * @param {Boolean=} options.printJS - Prints all JavaScript in the PDF file.
+	 * @param {Boolean=} options.printMetadata - Prints document-level metadata. (This is the "Metadata"
+	 * stream from the PDF file's Catalog object).
+	 * @param {Boolean=} options.printNamedDests - Print a list of all named destinations. If a page range
+	 * is specified using the 'firstPageToConvert' and 'lastPageToConvert' options, only destinations
+	 * in the page range are listed.
+	 * @param {Boolean=} options.printRawDates - Prints the raw (undecoded) date strings, directly from the PDF file.
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {String=} options.userPassword - User password (for encrypted files).
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @returns {Promise}
+	 */
+
+	pdfInfo(options, file) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				firstPageToConvert: { arg: '-f', type: 'number' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
+				listEncodingOptions: { arg: '-listenc', type: 'boolean' },
+				outputEncoding: { arg: '-enc', type: 'string' },
+				ownerPassword: { arg: '-opw', type: 'string' },
+				printBoundingBoxes: { arg: '-box', type: 'boolean' },
+				printDocStruct: { arg: '-struct', type: 'boolean' },
+				printDocStructText: { arg: '-struct-text', type: 'boolean' },
+				printIsoDates: { arg: '-isodates', type: 'boolean' },
+				printJS: { arg: '-js', type: 'boolean' },
+				printMetadata: { arg: '-meta', type: 'boolean' },
+				printNamedDests: { arg: '-dests', type: 'boolean' },
+				printRawDates: { arg: '-rawdates', type: 'boolean' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				userPassword: { arg: '-upw', type: 'string' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args).catch((err) => {
+					reject(err);
+				});
+			}
+
+			args.push(file);
+
+			execFile(
+				path.join(this.popplerPath, 'pdfinfo'),
+				args,
+				(err, stdout) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(stdout);
+					}
+				}
+			);
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
 	 * @description Extract single pages from a PDF file,
 	 * and writes one PDF file for each page to outputPattern.
 	 * This will not work if the file is encrypted.

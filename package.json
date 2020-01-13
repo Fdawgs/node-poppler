@@ -21,7 +21,7 @@
 	"jest": {
 		"clearMocks": true,
 		"testEnvironment": "node",
-		"testTimeout": 18000
+		"testTimeout": 10000
 	},
 	"repository": {
 		"type": "git",

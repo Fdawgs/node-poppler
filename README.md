@@ -30,6 +30,24 @@ npm install node-poppler
 
 node-poppler's test scripts use yarn commands.
 
+## Linux support
+Windows and OSX/Darwin binaries are provided with this repository.
+For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries seperately.
+
+An example of downloading the binaries on a Debian system:
+```
+sudo apt-get install poppler-data
+sudo apt-get install poppler-utils
+```
+
+Once they have been installed you will need to pass their installation directory in as parameters to an instance of the Poppler class:
+
+```js
+const { Poppler } = require('node-poppler');
+const poppler = new Poppler('./usr/bin');
+```
+
+
 # API
 
 [API Documentation can be found here](https://github.com/Fdawgs/node-poppler/blob/master/API.md)

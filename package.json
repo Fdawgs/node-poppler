@@ -9,6 +9,7 @@
 	],
 	"main": "src/index.js",
 	"scripts": {
+		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md",
 		"doc": "jsdoc2md src/index.js > API.md",
 		"dupe-check": "yarn jsinspect .",
 		"jest": "jest src --coverage",
@@ -40,6 +41,8 @@
 		"useTabs": true
 	},
 	"devDependencies": {
+		"@commitlint/config-conventional": "^8.3.4",
+		"conventional-changelog-cli": "^2.0.31",
 		"coveralls": "^3.0.9",
 		"eslint": "^6.8.0",
 		"eslint-config-airbnb-base": "^14.0.0",

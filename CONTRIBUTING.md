@@ -53,4 +53,4 @@ When cutting a release, the following steps need to be performed:
 
 ## Issues
 
-Please file your issues [here](https://github.com/Fdawgs/ydh-sider-authentication-service/issues) and try to provide as much information in the template as possible/relevant.
+Please file your issues [here](https://github.com/Fdawgs/node-poppler/issues) and try to provide as much information in the template as possible/relevant.

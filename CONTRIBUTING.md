@@ -15,7 +15,7 @@ Other processes and specifications that are in use in this repository are:
 
 ## Getting Started
 
-As noted in the prerequisites section of the readme file, this project requires that you have Node.js and Yarn installed.
+This repository requires that you have [Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com) installed.
 
 With those in place you can fork the repo and clone it, and then run `yarn install` to install all dependencies.
 

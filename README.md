@@ -118,6 +118,10 @@ await poppler.pdfToText(options, file).then((res) => {
 });
 ```
 
+# Contributing
+
+Please see [CONTRIBUTING.md](https://github.com/Fdawgs/node-poppler/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
+
 # License
 
 `node-poppler` is licensed under the [MIT](https://github.com/Fdawgs/node-poppler/blob/master/LICENSE) license.

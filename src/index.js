@@ -251,7 +251,79 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description prints the contents of the ´Info' dictionary from a PDF file.
+	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.allFiles - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
+	 * CMYK files are written as TIFF files. All other images are written as PNG files.
+	 * @param {Boolean=} options.ccittFile - Generate CCITT images as CCITT files.
+	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {Boolean=} options.list - Instead of writing the images, list the
+	 * images along with various information for each image. Do not specify the
+	 * outputPath with this option.
+	 * @param {Boolean=} options.jbig2File - Generate JBIG2 images as JBIG2 files.
+	 * @param {Boolean=} options.jpeg2000File - Generate JPEG2000 images at JP2 files.
+	 * @param {Boolean=} options.jpegFile - Generate JPEG images as JPEG files.
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {Boolean=} options.pngFile - Change the default output format to PNG.
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {Boolean=} options.tiffFile - Change the default output format to TIFF.
+	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {String} outputPath - Filepath to output the results to.
+	 */
+	pdfImages(options, file, outputPath) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				allFiles: { arg: '-all', type: 'boolean' },
+				ccittFile: { arg: '-ccitt', type: 'boolean' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
+				list: { arg: '-list', type: 'boolean' },
+				jbig2File: { arg: '-jbig2', type: 'boolean' },
+				jpeg2000File: { arg: '-jp2', type: 'boolean' },
+				jpegFile: { arg: '-j', type: 'boolean' },
+				ownerPassword: { arg: '-opw', type: 'string' },
+				pngFile: { arg: '-png', type: 'boolean' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				tiffFile: { arg: '-tiff', type: 'boolean' },
+				userPassword: { arg: '-upw', type: 'string' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args).catch((err) => {
+					reject(err);
+				});
+			}
+
+			args.push(file);
+			args.push(outputPath);
+
+			execFile(
+				path.join(this.popplerPath, 'pdfimages'),
+				args,
+				(err, stdout) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(stdout);
+					}
+				}
+			);
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Prints the contents of the ´Info' dictionary from a PDF file.
 	 *
 	 * @param {Object=} options
 	 * @param {Number=} options.firstPageToConvert - First page to print.

@@ -251,7 +251,81 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description prints the contents of the ´Info' dictionary from a PDF file.
+	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
+	 *
+	 * @param {Object=} options
+	 * @param {Boolean=} options.allFiles - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
+	 * CMYK files are written as TIFF files. All other images are written as PNG files.
+	 * @param {Boolean=} options.ccittFile - Generate CCITT images as CCITT files.
+	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {Boolean=} options.list - Instead of writing the images, list the
+	 * images along with various information for each image.
+	 * NOTE: Do not specify the outputPath with this option.
+	 * @param {Boolean=} options.jbig2File - Generate JBIG2 images as JBIG2 files.
+	 * @param {Boolean=} options.jpeg2000File - Generate JPEG2000 images at JP2 files.
+	 * @param {Boolean=} options.jpegFile - Generate JPEG images as JPEG files.
+	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {Boolean=} options.pngFile - Change the default output format to PNG.
+	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {Boolean=} options.tiffFile - Change the default output format to TIFF.
+	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
+	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {String} outputPath - Filepath to output the results to.
+	 */
+	pdfImages(options, file, outputPath) {
+		return new Promise((resolve, reject) => {
+			const acceptedOptions = {
+				allFiles: { arg: '-all', type: 'boolean' },
+				ccittFile: { arg: '-ccitt', type: 'boolean' },
+				firstPageToConvert: { arg: '-f', type: 'number' },
+				lastPageToConvert: { arg: '-l', type: 'number' },
+				list: { arg: '-list', type: 'boolean' },
+				jbig2File: { arg: '-jbig2', type: 'boolean' },
+				jpeg2000File: { arg: '-jp2', type: 'boolean' },
+				jpegFile: { arg: '-j', type: 'boolean' },
+				ownerPassword: { arg: '-opw', type: 'string' },
+				pngFile: { arg: '-png', type: 'boolean' },
+				printVersionInfo: { arg: '-v', type: 'boolean' },
+				tiffFile: { arg: '-tiff', type: 'boolean' },
+				userPassword: { arg: '-upw', type: 'string' }
+			};
+
+			// Build array of args based on options passed
+			const args = [];
+
+			/**
+			 * Check each option provided is valid and of the correct type,
+			 * before adding it to argument list.
+			 */
+			if (options) {
+				parseOptions(options, acceptedOptions, args).catch((err) => {
+					reject(err);
+				});
+			}
+
+			args.push(file);
+			if (outputPath) {
+				args.push(outputPath);
+			}
+
+			execFile(
+				path.join(this.popplerPath, 'pdfimages'),
+				args,
+				(err, stdout) => {
+					if (err) {
+						reject(err);
+					} else {
+						resolve(stdout);
+					}
+				}
+			);
+		});
+	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Prints the contents of the ´Info' dictionary from a PDF file.
 	 *
 	 * @param {Object=} options
 	 * @param {Number=} options.firstPageToConvert - First page to print.
@@ -417,12 +491,12 @@ class Poppler {
 	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
 	 * paper (PS,PDF,SVG only). By default, these pages are not scaled.
 	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
-	 * @param {Boolean=} options.grayscaleFile - Generate a grayscale file (PNG, JPEG, and TIFF only).
+	 * @param {Boolean=} options.grayscaleFile - Generate grayscale file (PNG, JPEG, and TIFF only).
 	 * @param {Boolean=} options.iccFile - Use the specified ICC file as the output profile
 	 * (PNG only). The profile will be embedded in the PNG file.
-	 * @param {Boolean=} options.jpegFile - Generates a JPEG file(s).
+	 * @param {Boolean=} options.jpegFile - Generate JPEG file(s).
 	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
-	 * @param {Boolean=} options.monochromeFile - Generate a monochrome file (PNG and TIFF only).
+	 * @param {Boolean=} options.monochromeFile - Generate monochrome file (PNG and TIFF only).
 	 * @param {Boolean=} options.noCenter - By default, PDF pages smaller than the paper
 	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
 	 * the lower-left corner of the paper instead (PS,PDF,SVG only).
@@ -441,10 +515,10 @@ class Poppler {
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
 	 * @param {Number=} options.paperWidth - Set the paper width, in points (PS,PDF,SVG only).
-	 * @param {Boolean=} options.pdfFile - Generates a PDF file.
-	 * @param {Boolean=} options.pngFile - Generates a PNG file(s).
+	 * @param {Boolean=} options.pdfFile - Generate PDF file.
+	 * @param {Boolean=} options.pngFile - Generate PNG file(s).
 	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @param {Boolean=} options.psFile - Generate a PS file.
+	 * @param {Boolean=} options.psFile - Generate PS file.
 	 * @param {Boolean=} options.psLevel2 - Generate Level 2 PostScript (PS only).
 	 * @param {Boolean=} options.psLevel3 - Generate Level 3 PostScript (PS only). This enables all
 	 * Level 2 features plus shading patterns and masked images. This is the default setting.
@@ -465,10 +539,10 @@ class Poppler {
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page (PNG/JPEG/TIFF only).
 	 * @param {Boolean=} options.singleFile - Writes only the first page and does not add digits.
-	 * @param {Boolean=} options.svgFile - Generate a SVG (Scalable Vector Graphics) file.
+	 * @param {Boolean=} options.svgFile - Generate SVG (Scalable Vector Graphics) file.
 	 * @param {String=} options.tiffCompression - Set TIFF compression to one of "none", "packbits",
 	 * "jpeg", "lzw", or "deflate".
-	 * @param {Boolean=} options.tiffFile - Generates a TIFF file(s).
+	 * @param {Boolean=} options.tiffFile - Generate TIFF file(s).
 	 * @param {Boolean=} options.transparentPageColor - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
 	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
@@ -678,14 +752,14 @@ class Poppler {
 	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {String=} options.freetype - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
 	 * This defaults to "yes".
-	 * @param {Boolean=} options.grayscaleFile - Generate a grayscale PGM file (instead of a color PPM file).
-	 * @param {Boolean=} options.jpegFile - Generates a JPEG file instead a PPM file.
+	 * @param {Boolean=} options.grayscaleFile - Generate grayscale PGM file (instead of a color PPM file).
+	 * @param {Boolean=} options.jpegFile - Generate JPEG file instead a PPM file.
 	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
-	 * @param {Boolean=} options.monochromeFile - Generate a monochrome PBM file (instead of a color PPM file).
+	 * @param {Boolean=} options.monochromeFile - Generate monochrome PBM file (instead of a color PPM file).
 	 * @param {Boolean=} options.oddPagesOnly - Generates only the odd numbered pages.
 	 * @param {String=} options.ownerPassword - Specify the owner password for the PDF file.
 	 * Providing this will bypass all security restrictions.
-	 * @param {Boolean=} options.pngFile - Generates a PNG file instead a PPM file.
+	 * @param {Boolean=} options.pngFile - Generate PNG file instead a PPM file.
 	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
 	 * @param {Number=} options.resolutionXAxis - Specifies the X resolution, in pixels per inch of
@@ -708,7 +782,7 @@ class Poppler {
 	 * Options are: none; solid; shape.
 	 * @param {String=} options.tiffCompression - Set TIFF compression to one of "none", "packbits",
 	 * "jpeg", "lzw", or "deflate".
-	 * @param {Boolean=} options.tiffFile - Generates a TIFF file instead a PPM file.
+	 * @param {Boolean=} options.tiffFile - Generate TIFF file instead a PPM file.
 	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @param {String} outputPath - Filepath to output the results to.
@@ -800,7 +874,7 @@ class Poppler {
 	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
 	 * paper. By default, these pages are not scaled.
 	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
-	 * @param {Number=} options.form - Generate a PostScript form which can be imported by software
+	 * @param {Number=} options.form - Generate PostScript form which can be imported by software
 	 * that understands forms.
 	 * A form contains a single page, so if you use this option with a multi-page PDF file,
 	 * you must use 'firstPageToConvert' and 'lastPageToConvert to specify a single page.
@@ -967,7 +1041,7 @@ class Poppler {
 	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {Number=} options.fixedWidthLayout - Assume fixed-pitch (or tabular) text, with the
 	 * specified character width (in points). This forces physical layout mode.
-	 * @param {Boolean=} options.generateHtmlMetaFile Generate a simple HTML file, including the
+	 * @param {Boolean=} options.generateHtmlMetaFile Generate simple HTML file, including the
 	 * meta information. This simply wraps the text in <pre> and </pre> and prepends the meta headers.
 	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {Boolean=} options.listEncodingOptions - List the available encodings.

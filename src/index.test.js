@@ -255,6 +255,73 @@ describe('pdfFonts function', () => {
 	});
 });
 
+describe('pdfImages function', () => {
+	afterAll(async () => {
+		await clean();
+	});
+
+	test('Should accept options and list all images in file', async () => {
+		const poppler = new Poppler();
+		const options = {
+		 	list: true
+		};
+
+		await poppler
+			.pdfImages(options, file)
+			.then((res) => {
+				expect(typeof res).toBe('string');
+			});
+	});
+
+	test('Should return an Error object if file passed not PDF format', async () => {
+		const poppler = new Poppler();
+		const testTxtFile = `${testDirectory}test.txt`;
+
+		expect.assertions(1);
+		await poppler.pdfImages(undefined, testTxtFile).catch((err) => {
+			expect(err.message.substring(0, 15)).toBe('Command failed:');
+		});
+	});
+
+	test('Should return an Error object if PDF file missing', async () => {
+		const poppler = new Poppler();
+
+		expect.assertions(1);
+		await poppler.pdfImages(undefined, undefined).catch((err) => {
+			expect(err.message.substring(0, 15)).toBe('Command failed:');
+		});
+	});
+
+	test('Should return an Error object if invalid value types provided for an option are passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			firstPageToConvert: 'test',
+			lastPageToConvert: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfImages(options, undefined).catch((err) => {
+			expect(err.message).toEqual(
+				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
+			);
+		});
+	});
+
+	test('Should return an Error object if invalid option is passed to function', async () => {
+		const poppler = new Poppler();
+		const options = {
+			middlePageToConvert: 'test'
+		};
+
+		expect.assertions(1);
+		await poppler.pdfImages(options, undefined).catch((err) => {
+			expect(err.message).toEqual(
+				"Invalid option provided 'middlePageToConvert'"
+			);
+		});
+	});
+});
+
 describe('pdfInfo function', () => {
 	afterAll(async () => {
 		await clean();

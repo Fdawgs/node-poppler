@@ -5,7 +5,7 @@
 
 # Intro
 
-The node-poppler module was created out of a need for a PDF-to-HTML conversion tool at [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/) to convert clinical documents to HTML.
+The node-poppler module was created out of a need for a PDF-to-HTML conversion module at [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/) to convert clinical documents in PDF format to HTML.
 This allows the documents to be dispatched electronically via the [NHS MESH system](https://digital.nhs.uk/services/message-exchange-for-social-care-and-health-mesh) to other NHS bodies.
 
 There are a number of other Poppler wrapper modules available but the majority are no longer maintained or did not provide full interfacing with the Poppler binaries (i.e. only provided an interface to the PDF-to-Cairo binary but not to HTML).
@@ -59,7 +59,7 @@ const poppler = new Poppler('./usr/bin');
 
 `options` object requires atleast one of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
 
-Example of calling poppler.pdfToCairo with a promise:
+Example of calling poppler.pdfToCairo with a promise, to convert only the first and second page of a PDF file to PNG:
 
 ```js
 const { Poppler } = require('node-poppler');

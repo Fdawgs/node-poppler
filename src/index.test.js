@@ -263,14 +263,12 @@ describe('pdfImages function', () => {
 	test('Should accept options and list all images in file', async () => {
 		const poppler = new Poppler();
 		const options = {
-		 	list: true
+			list: true
 		};
 
-		await poppler
-			.pdfImages(options, file)
-			.then((res) => {
-				expect(typeof res).toBe('string');
-			});
+		await poppler.pdfImages(options, file).then((res) => {
+			expect(typeof res).toBe('string');
+		});
 	});
 
 	test('Should return an Error object if file passed not PDF format', async () => {

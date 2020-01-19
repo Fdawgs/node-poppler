@@ -260,8 +260,8 @@ class Poppler {
 	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {Boolean=} options.list - Instead of writing the images, list the
-	 * images along with various information for each image. Do not specify the
-	 * outputPath with this option.
+	 * images along with various information for each image.
+	 * NOTE: Do not specify the outputPath with this option.
 	 * @param {Boolean=} options.jbig2File - Generate JBIG2 images as JBIG2 files.
 	 * @param {Boolean=} options.jpeg2000File - Generate JPEG2000 images at JP2 files.
 	 * @param {Boolean=} options.jpegFile - Generate JPEG images as JPEG files.

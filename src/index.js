@@ -305,7 +305,9 @@ class Poppler {
 			}
 
 			args.push(file);
-			args.push(outputPath);
+			if (outputPath) {
+				args.push(outputPath);
+			}
 
 			execFile(
 				path.join(this.popplerPath, 'pdfimages'),

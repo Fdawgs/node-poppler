@@ -50,7 +50,7 @@
 		"eslint-plugin-import": "^2.19.1",
 		"eslint-plugin-jest": "^23.1.1",
 		"eslint-plugin-json": "^2.0.1",
-		"jest": "^24.9.0",
+		"jest": "^25.1.0",
 		"jsdoc-to-markdown": "^5.0.3",
 		"jsinspect": "^0.12.7",
 		"prettier": "1.19.1",

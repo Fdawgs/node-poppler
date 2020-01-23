@@ -22,13 +22,11 @@ branches:
         - /^fix/.*$/
         - /^dependabot/.*$/
 
-matrix:
-    allow_failures:
-        - os: osx
-
 script: echo "Running tests against $(node -v)..."
 
 jobs:
+    allow_failures:
+        - os: osx
     include:
         - stage: Produce Coverage
           node_js: node

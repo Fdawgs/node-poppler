@@ -2,12 +2,10 @@
 	"name": "node-poppler",
 	"version": "1.5.0",
 	"description": "Node.js wrapper for the Poppler PDF rendering library",
-	"keywords": [
-		"poppler",
-		"pdf-to-html",
-		"pdf"
-	],
 	"main": "src/index.js",
+	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
+	"author": "Frazer Smith",
+	"license": "MIT",
 	"scripts": {
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md",
 		"doc": "jsdoc2md src/index.js > API.md",
@@ -24,12 +22,6 @@
 		"testEnvironment": "node",
 		"testTimeout": 10000
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Fdawgs/node-poppler.git"
-	},
-	"author": "Frazer Smith",
-	"license": "MIT",
 	"prettier": {
 		"arrowParens": "always",
 		"bracketSpacing": true,
@@ -55,9 +47,5 @@
 		"jsinspect": "^0.12.7",
 		"prettier": "1.19.1",
 		"typescript": "^3.7.4"
-	},
-	"bugs": {
-		"url": "https://github.com/Fdawgs/node-poppler/issues"
-	},
-	"homepage": "https://github.com/Fdawgs/node-poppler#readme"
+	}
 }

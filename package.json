@@ -1,6 +1,6 @@
 {
 	"name": "node-poppler",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"description": "Node.js wrapper for the Poppler PDF rendering library",
 	"main": "src/index.js",
 	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
@@ -12,7 +12,7 @@
 		"dupe-check": "yarn jsinspect .",
 		"jest": "jest src --coverage",
 		"lint": "eslint src/**/*.js",
-		"prettier": "prettier src/**/*.js --write",
+		"prettier": "prettier ** --write",
 		"test": "yarn lint && yarn test-coverage",
 		"test-coverage": "jest --coverage --verbose",
 		"test-only": "jest --verbose"

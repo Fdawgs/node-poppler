@@ -12,7 +12,7 @@
 		"dupe-check": "yarn jsinspect .",
 		"jest": "jest src --coverage",
 		"lint": "eslint src/**/*.js",
-		"prettier": "prettier src/**/*.js --write",
+		"prettier": "prettier ** --write",
 		"test": "yarn lint && yarn test-coverage",
 		"test-coverage": "jest --coverage --verbose",
 		"test-only": "jest --verbose"

@@ -45,7 +45,7 @@
 		"jest": "^25.1.0",
 		"jsdoc-to-markdown": "^5.0.3",
 		"jsinspect": "^0.12.7",
-		"prettier": "1.19.1",
+		"prettier": "2.0.1",
 		"typescript": "^3.8.3"
 	}
 }

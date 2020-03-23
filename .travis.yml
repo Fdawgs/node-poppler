@@ -19,7 +19,7 @@ branches:
     only:
         - master
         - /^feat/.*$/
-        - /^fix/.*$/
+        - /^v\d*\.\d*\.\d*$/
         - /^dependabot/.*$/
 
 script: echo "Running tests against $(node -v)..."

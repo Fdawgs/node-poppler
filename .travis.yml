@@ -34,3 +34,11 @@ jobs:
         - stage: Check for Code Duplication
           node_js: node
           script: yarn dupe-check
+        - stage: NPM release
+          deploy:
+            provider: npm
+            email: devfrazs@outlook.com
+            api_key:
+                secure: Af6cKtJZzkGkWWCnfAlHC+XrOYDuB8sSjkJNkWnQAJqc4bBCoZtBPgCcEGwHkDDrvqUUgcsVTD3ovRpZaDnRuhL1XaMenBM7tg2r9S9OqNzlqIWsGidg18oP59G7kaBNYBimKr4VJtPtw3dB6oiIZNE4WmK4PdtN5kOFt/2x1yx5uHDBoTj8XjJ1Sd5IbfWHTMlBGXLmvDFAg6GNwZawq2raH822o5qUqUciAimRKWSgIP0FvCGLSM17a7lzpzxhbFuLY3xKGN7jbuyjEQKn2YMA6yCfG8jFIcTUkqRmoy6SVPUcfSgC38anMbfbR+gIuPk8iCzDbZJ2nIyC9eOdfBnvnkx/zp8+HoXv/0p9/JP1yoL+nNEHOwGlytTnLFWMoczoSueKkcZmicotcHLotlrgT5qYTyrQ2o9rA3MX4uZHX84sMNcsG0yNYhAK8zenXjXK+YD3Cx6DBbPgB9A19VqwcYsrYHjHNDwoOq9TgRpHj0J3e6ehPnWPYIkqKiUyNu06z+XQCyvlIHHXbn3ZtoN2YjnkfZM+1Sac+phKq1H9Xn4Aby7T/iO191t9USew/G6tFFFDlYZoac/3FwuG8KMrY0iQrJEVd6HkngO6PUUlClqe2CYA+HW1Sv9Lg/m/zy5b/7/c0FxbrnO+JLzjQdnxrHZQl5wUh8IQ9E4FdvA=
+            on:
+                tags: true

@@ -39,6 +39,6 @@ jobs:
             provider: npm
             email: devfrazs@outlook.com
             api_key:
-                secure: Af6cKtJZzkGkWWCnfAlHC+XrOYDuB8sSjkJNkWnQAJqc4bBCoZtBPgCcEGwHkDDrvqUUgcsVTD3ovRpZaDnRuhL1XaMenBM7tg2r9S9OqNzlqIWsGidg18oP59G7kaBNYBimKr4VJtPtw3dB6oiIZNE4WmK4PdtN5kOFt/2x1yx5uHDBoTj8XjJ1Sd5IbfWHTMlBGXLmvDFAg6GNwZawq2raH822o5qUqUciAimRKWSgIP0FvCGLSM17a7lzpzxhbFuLY3xKGN7jbuyjEQKn2YMA6yCfG8jFIcTUkqRmoy6SVPUcfSgC38anMbfbR+gIuPk8iCzDbZJ2nIyC9eOdfBnvnkx/zp8+HoXv/0p9/JP1yoL+nNEHOwGlytTnLFWMoczoSueKkcZmicotcHLotlrgT5qYTyrQ2o9rA3MX4uZHX84sMNcsG0yNYhAK8zenXjXK+YD3Cx6DBbPgB9A19VqwcYsrYHjHNDwoOq9TgRpHj0J3e6ehPnWPYIkqKiUyNu06z+XQCyvlIHHXbn3ZtoN2YjnkfZM+1Sac+phKq1H9Xn4Aby7T/iO191t9USew/G6tFFFDlYZoac/3FwuG8KMrY0iQrJEVd6HkngO6PUUlClqe2CYA+HW1Sv9Lg/m/zy5b/7/c0FxbrnO+JLzjQdnxrHZQl5wUh8IQ9E4FdvA=
+                secure: dQvO0/mBJxWJrd6r5XJYA/4ugeD3ZYH68ZsRaCZJm6woft9AR7Zs8d4bd/7n6TFCzEMwU++Qep9dE9qEvkX9Fi3NBU5AU+txzu1fjKobSiPNbr3Bd5Wl6GMndQrWtRJkxyRR4DI14VovgkgWmgzWwA9DkeyF8/48C1N8nvWsV2yF/ROzvsF4Mr81V7ZLF6dFJzZPEQAvppdGRRvaKb6IbDt+mamrG5CtHWQwfCueDRFQxbJyNg+dftDeLMN2/044j7BuckgQHIBqSH/zNmUFIk2qOG/xpJ0jew7Km+pMnqxHmWcO7BjQt5Aqs3/mj2b8mWqp8kcIy/t5pva4BS/Y/zCCVOmkugiUSCFjmu7ucPbKEq8OmmUSNkysbhAkq2M8yxqM/d4+o5rH2f+EsznmFF4SIT1BMhe5VZyNkA4GmnbdBhbVUf3btx8CZ9tLg0FbZ+Y7sUnVhTvtfjDY//fiJlJ2lFXp3qL2tNMLFipKERaJxnqspf7+28TWZE80QeIGsd9jMmbLlPUFBO/+XiJVAzO4verNMhzYo1iH6YUeytxc+xbwNr7q7DS+HP8NG+9x1rUa3VsL9ZtVDhwu76yheMLJrmm9iTQG35M5EnnwFg59S/bnqx/p5HcF2spVcqHdR9NhXrR98GcQaQvoJYD5SKy31+lWJeD0VRwiMzkmyzI=
             on:
                 tags: true

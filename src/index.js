@@ -5,9 +5,12 @@ const { execFile } = require('child_process');
 const platform = os.platform();
 
 /**
+ * @author Frazer Smith
+ * @description Check each option provided is valid and of the correct type.
  * @param {Object} options
  * @param {Object} acceptedOptions
  * @param {Array} args
+ * @returns {Promise}
  */
 function parseOptions(options, acceptedOptions, args) {
 	return new Promise((resolve, reject) => {
@@ -100,10 +103,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -166,10 +165,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -219,10 +214,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -288,10 +279,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -370,10 +357,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -423,10 +406,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -589,10 +568,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -683,10 +658,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -807,10 +778,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -970,10 +937,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -1072,10 +1035,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});
@@ -1120,10 +1079,6 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
 			parseOptions(options, acceptedOptions, args).catch((err) => {
 				reject(err);
 			});

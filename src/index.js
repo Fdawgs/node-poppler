@@ -261,7 +261,7 @@ class Poppler {
 	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {Boolean=} options.list - Instead of writing the images, list the
 	 * images along with various information for each image.
-	 * NOTE: Do not specify the outputPath with this option.
+	 * NOTE: Do not specify the outputPrefix with this option.
 	 * @param {Boolean=} options.jbig2File - Generate JBIG2 images as JBIG2 files.
 	 * @param {Boolean=} options.jpeg2000File - Generate JPEG2000 images at JP2 files.
 	 * @param {Boolean=} options.jpegFile - Generate JPEG images as JPEG files.
@@ -271,9 +271,9 @@ class Poppler {
 	 * @param {Boolean=} options.tiffFile - Change the default output format to TIFF.
 	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String} outputPath - Filepath to output the results to.
+	 * @param {String} outputPrefix - Filename prefix of output files.
 	 */
-	pdfImages(options, file, outputPath) {
+	pdfImages(options, file, outputPrefix) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				allFiles: { arg: '-all', type: 'boolean' },
@@ -305,8 +305,8 @@ class Poppler {
 			}
 
 			args.push(file);
-			if (outputPath) {
-				args.push(outputPath);
+			if (outputPrefix) {
+				args.push(outputPrefix);
 			}
 
 			execFile(

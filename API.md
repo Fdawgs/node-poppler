@@ -8,8 +8,9 @@
 ## Functions
 
 <dl>
-<dt><a href="#parseOptions">parseOptions(options, acceptedOptions, args)</a></dt>
-<dd></dd>
+<dt><a href="#parseOptions">parseOptions(options, acceptedOptions, args)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Check each option provided is valid and of the correct type.</p>
+</dd>
 </dl>
 
 <a name="Poppler"></a>
@@ -23,7 +24,7 @@
     -   [.pdfAttach([options], file, fileToAttach, outputFile)](#Poppler+pdfAttach) ⇒ <code>Promise</code>
     -   [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise</code>
     -   [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise</code>
-    -   [.pdfImages([options], file, outputPath)](#Poppler+pdfImages)
+    -   [.pdfImages([options], file, outputPrefix)](#Poppler+pdfImages)
     -   [.pdfInfo([options], file)](#Poppler+pdfInfo) ⇒ <code>Promise</code>
     -   [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise</code>
     -   [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise</code>
@@ -103,7 +104,7 @@ Lists the fonts used in a PDF file along with various information for each font.
 
 <a name="Poppler+pdfImages"></a>
 
-### poppler.pdfImages([options], file, outputPath)
+### poppler.pdfImages([options], file, outputPrefix)
 
 Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 
@@ -117,7 +118,7 @@ Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 fi
 | [options.ccittFile]          | <code>Boolean</code> | Generate CCITT images as CCITT files.                                                                                                                  |
 | [options.firstPageToConvert] | <code>Number</code>  | Specifies the first page to convert.                                                                                                                   |
 | [options.lastPageToConvert]  | <code>Number</code>  | Specifies the last page to convert.                                                                                                                    |
-| [options.list]               | <code>Boolean</code> | Instead of writing the images, list the images along with various information for each image. NOTE: Do not specify the outputPath with this option.    |
+| [options.list]               | <code>Boolean</code> | Instead of writing the images, list the images along with various information for each image. NOTE: Do not specify the outputPrefix with this option.  |
 | [options.jbig2File]          | <code>Boolean</code> | Generate JBIG2 images as JBIG2 files.                                                                                                                  |
 | [options.jpeg2000File]       | <code>Boolean</code> | Generate JPEG2000 images at JP2 files.                                                                                                                 |
 | [options.jpegFile]           | <code>Boolean</code> | Generate JPEG images as JPEG files.                                                                                                                    |
@@ -127,7 +128,7 @@ Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 fi
 | [options.tiffFile]           | <code>Boolean</code> | Change the default output format to TIFF.                                                                                                              |
 | [options.userPassword]       | <code>String</code>  | Specify the user password for the PDF file.                                                                                                            |
 | file                         | <code>String</code>  | Filepath of the PDF file to read.                                                                                                                      |
-| outputPath                   | <code>String</code>  | Filepath to output the results to.                                                                                                                     |
+| outputPrefix                 | <code>String</code>  | Filename prefix of output files.                                                                                                                       |
 
 <a name="Poppler+pdfInfo"></a>
 
@@ -429,9 +430,12 @@ one PDF result file.
 
 <a name="parseOptions"></a>
 
-## parseOptions(options, acceptedOptions, args)
+## parseOptions(options, acceptedOptions, args) ⇒ <code>Promise</code>
 
-**Kind**: global function
+Check each option provided is valid and of the correct type.
+
+**Kind**: global function  
+**Author**: Frazer Smith
 
 | Param           | Type                |
 | --------------- | ------------------- |

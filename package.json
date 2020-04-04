@@ -1,6 +1,6 @@
 {
 	"name": "node-poppler",
-	"version": "1.5.2",
+	"version": "1.5.3",
 	"description": "Node.js wrapper for the Poppler PDF rendering library",
 	"main": "src/index.js",
 	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
@@ -14,8 +14,8 @@
 		"lint": "eslint src/**/*.js",
 		"prettier": "prettier ** --write",
 		"test": "yarn lint && yarn test-only",
-		"test-coverage": "jest --coverage --verbose",
-		"test-only": "jest --verbose"
+		"test-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
+		"test-only": "cross-env NODE_ENV=test jest --detectOpenHandles"
 	},
 	"jest": {
 		"clearMocks": true,
@@ -35,14 +35,14 @@
 	"devDependencies": {
 		"@commitlint/config-conventional": "^8.3.4",
 		"conventional-changelog-cli": "^2.0.31",
-		"coveralls": "^3.0.9",
+		"coveralls": "^3.0.11",
 		"eslint": "^6.8.0",
 		"eslint-config-airbnb-base": "^14.1.0",
-		"eslint-config-prettier": "^6.10.0",
-		"eslint-plugin-import": "^2.20.1",
+		"eslint-config-prettier": "^6.10.1",
+		"eslint-plugin-import": "^2.20.2",
 		"eslint-plugin-jest": "^23.8.2",
 		"eslint-plugin-json": "^2.1.1",
-		"jest": "^25.1.0",
+		"jest": "^25.2.7",
 		"jsdoc-to-markdown": "^5.0.3",
 		"jsinspect": "^0.12.7",
 		"prettier": "2.0.2",

@@ -5,9 +5,12 @@ const { execFile } = require('child_process');
 const platform = os.platform();
 
 /**
+ * @author Frazer Smith
+ * @description Check each option provided is valid and of the correct type.
  * @param {Object} options
  * @param {Object} acceptedOptions
  * @param {Array} args
+ * @returns {Promise}
  */
 function parseOptions(options, acceptedOptions, args) {
 	return new Promise((resolve, reject) => {
@@ -90,7 +93,7 @@ class Poppler {
 	 * @param {String} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
-	pdfAttach(options, file, fileToAttach, outputFile) {
+	pdfAttach(options = {}, file, fileToAttach, outputFile) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				printVersionInfo: { arg: '-v', type: 'boolean' },
@@ -100,15 +103,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 			args.push(fileToAttach);
@@ -152,7 +149,7 @@ class Poppler {
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
-	pdfDetach(options, file) {
+	pdfDetach(options = {}, file) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				listEmbedded: { arg: '-list', type: 'boolean' },
@@ -168,15 +165,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 
@@ -209,7 +200,7 @@ class Poppler {
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
-	pdfFonts(options, file) {
+	pdfFonts(options = {}, file) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				firstPageToExamine: { arg: '-f', type: 'number' },
@@ -223,15 +214,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 
@@ -261,7 +246,7 @@ class Poppler {
 	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {Boolean=} options.list - Instead of writing the images, list the
 	 * images along with various information for each image.
-	 * NOTE: Do not specify the outputPath with this option.
+	 * NOTE: Do not specify the outputPrefix with this option.
 	 * @param {Boolean=} options.jbig2File - Generate JBIG2 images as JBIG2 files.
 	 * @param {Boolean=} options.jpeg2000File - Generate JPEG2000 images at JP2 files.
 	 * @param {Boolean=} options.jpegFile - Generate JPEG images as JPEG files.
@@ -271,9 +256,9 @@ class Poppler {
 	 * @param {Boolean=} options.tiffFile - Change the default output format to TIFF.
 	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String} outputPath - Filepath to output the results to.
+	 * @param {String} outputPrefix - Filename prefix of output files.
 	 */
-	pdfImages(options, file, outputPath) {
+	pdfImages(options = {}, file, outputPrefix) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				allFiles: { arg: '-all', type: 'boolean' },
@@ -294,19 +279,13 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
-			if (outputPath) {
-				args.push(outputPath);
+			if (outputPrefix) {
+				args.push(outputPrefix);
 			}
 
 			execFile(
@@ -355,7 +334,7 @@ class Poppler {
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
-	pdfInfo(options, file) {
+	pdfInfo(options = {}, file) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				firstPageToConvert: { arg: '-f', type: 'number' },
@@ -378,15 +357,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 
@@ -422,7 +395,7 @@ class Poppler {
 	 * As an example, 'sample-%d.pdf' will produce 'sample-1.pdf' for a single page document.
 	 * @returns {Promise}
 	 */
-	pdfSeparate(options, file, outputPattern) {
+	pdfSeparate(options = {}, file, outputPattern) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				firstPageToExtract: { arg: '-f', type: 'number' },
@@ -433,15 +406,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 			args.push(outputPattern);
@@ -548,7 +515,7 @@ class Poppler {
 	 * @param {String=} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
-	pdfToCairo(options, file, outputFile) {
+	pdfToCairo(options = {}, file, outputFile) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				antialias: { arg: '-antialias', type: 'string' },
@@ -601,15 +568,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 			if (outputFile) {
@@ -667,7 +628,7 @@ class Poppler {
 	 * @param {String} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
-	pdfToHtml(options, file) {
+	pdfToHtml(options = {}, file) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				complexOutput: { arg: '-c', type: 'boolean' },
@@ -697,15 +658,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 
@@ -784,7 +739,7 @@ class Poppler {
 	 * @param {String} outputPath - Filepath to output the results to.
 	 * @returns {Promise}
 	 */
-	pdfToPpm(options, file, outputPath) {
+	pdfToPpm(options = {}, file, outputPath) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				antialiasFonts: { arg: '-aa', type: 'string' },
@@ -823,15 +778,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 			args.push(outputPath);
@@ -939,7 +888,7 @@ class Poppler {
 	 * @param {String} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
-	pdfToPs(options, file, outputFile) {
+	pdfToPs(options = {}, file, outputFile) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				antialias: { arg: '-aaRaster', type: 'string' },
@@ -988,15 +937,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 			args.push(outputFile);
@@ -1059,7 +1002,7 @@ class Poppler {
 	 * @param {String=} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
-	pdfToText(options, file, outputFile) {
+	pdfToText(options = {}, file, outputFile) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				boundingBoxXhtml: { arg: '-bbox', type: 'boolean' },
@@ -1092,15 +1035,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			args.push(file);
 			if (outputFile) {
@@ -1133,7 +1070,7 @@ class Poppler {
 	 * @param {String=} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @returns {Promise}
 	 */
-	pdfUnite(options, files, outputFile) {
+	pdfUnite(options = {}, files, outputFile) {
 		return new Promise((resolve, reject) => {
 			const acceptedOptions = {
 				printVersionInfo: { arg: '-v', type: 'boolean' }
@@ -1142,15 +1079,9 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			/**
-			 * Check each option provided is valid and of the correct type,
-			 * before adding it to argument list.
-			 */
-			if (options) {
-				parseOptions(options, acceptedOptions, args).catch((err) => {
-					reject(err);
-				});
-			}
+			parseOptions(options, acceptedOptions, args).catch((err) => {
+				reject(err);
+			});
 
 			files.forEach((element) => {
 				args.push(element);

@@ -38,7 +38,7 @@ jobs:
           script: yarn dupe-check
         - stage: NPM release
           node_js: node
-          os: windows
+          os: linux
           deploy:
             provider: npm
             email: devfrazs@outlook.com

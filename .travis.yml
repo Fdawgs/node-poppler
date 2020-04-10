@@ -32,10 +32,6 @@ jobs:
           node_js: node
           os: windows
           script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-        - stage: Check for Code Duplication
-          node_js: node
-          os: linux
-          script: yarn dupe-check
         - stage: NPM release
           node_js: node
           os: linux

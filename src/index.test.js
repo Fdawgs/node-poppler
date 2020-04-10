@@ -1,4 +1,5 @@
 const fs = require('fs');
+const glob = require('glob');
 const path = require('path');
 const { Poppler } = require('./index');
 
@@ -7,68 +8,12 @@ const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
 function clean() {
 	return new Promise((resolve) => {
-		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)) {
-			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`);
-		}
-		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)) {
-			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`);
-		}
-		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)) {
-			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`);
-		}
-		if (
-			fs.existsSync(
-				`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
-			)
-		) {
-			fs.unlinkSync(
-				`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
-			);
-		}
-		if (
-			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution_ind.html`)
-		) {
-			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution_ind.html`);
-		}
-		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitutions.html`)) {
-			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitutions.html`);
-		}
-		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)) {
-			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`);
-		}
-		if (fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)) {
-			fs.unlinkSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`);
-		}
-		if (
-			fs.existsSync(
-				`${testDirectory}pdf_1.3_NHS_Constitution-extract-1.pdf`
-			)
-		) {
-			fs.unlinkSync(
-				`${testDirectory}pdf_1.3_NHS_Constitution-extract-1.pdf`
-			);
-		}
-		if (
-			fs.existsSync(
-				`${testDirectory}pdf_1.3_NHS_Constitution-extract-2.pdf`
-			)
-		) {
-			fs.unlinkSync(
-				`${testDirectory}pdf_1.3_NHS_Constitution-extract-2.pdf`
-			);
-		}
-		if (
-			fs.existsSync(
-				`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`
-			)
-		) {
-			fs.unlinkSync(
-				`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`
-			);
-		}
-		if (fs.existsSync(`${testDirectory}united.pdf`)) {
-			fs.unlinkSync(`${testDirectory}united.pdf`);
-		}
+		const files = glob.GlobSync(
+			`${testDirectory}!(test.txt|pdf_1.3_NHS_Constitution.pdf|pdf_1.3_NHS_Constitution_attached_detach.pdf|pdf_1.7_NHS_Constitution_Handbook.pdf)`
+		).found;
+		files.forEach((foundFile) => {
+			fs.unlinkSync(foundFile);
+		});
 		resolve('done');
 	});
 }

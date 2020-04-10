@@ -114,14 +114,12 @@ describe('pdfDetach function', () => {
 		const poppler = new Poppler();
 		const options = {
 			listEmbedded: true
-		}
+		};
 		const attachmentFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`;
 
-		await poppler
-			.pdfDetach(options, attachmentFile)
-			.then((res) => {
-				expect(typeof res).toBe('string');
-			});
+		await poppler.pdfDetach(options, attachmentFile).then((res) => {
+			expect(typeof res).toBe('string');
+		});
 	});
 
 	test('Should return an Error object if file passed not PDF format', async () => {
@@ -288,11 +286,9 @@ describe('pdfInfo function', () => {
 		const poppler = new Poppler();
 		const attachmentFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`;
 
-		await poppler
-			.pdfInfo(undefined, attachmentFile)
-			.then((res) => {
-				expect(typeof res).toBe('string');
-			});
+		await poppler.pdfInfo(undefined, attachmentFile).then((res) => {
+			expect(typeof res).toBe('string');
+		});
 	});
 
 	test('Should return an Error object if file passed not PDF format', async () => {

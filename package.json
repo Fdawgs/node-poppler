@@ -2,6 +2,12 @@
 	"name": "node-poppler",
 	"version": "1.5.3",
 	"description": "Node.js wrapper for the Poppler PDF rendering library",
+	"keywords": [
+		"poppler",
+		"pdf",
+		"pdf-converter",
+		"pdf-to-html"
+	],
 	"main": "src/index.js",
 	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
 	"author": "Frazer Smith",

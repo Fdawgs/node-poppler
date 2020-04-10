@@ -165,6 +165,20 @@ describe('pdfDetach function', () => {
 		await clean();
 	});
 
+	test('Should list embedded files', async () => {
+		const poppler = new Poppler();
+		const options = {
+			listEmbedded: true
+		}
+		const attachmentFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`;
+
+		await poppler
+			.pdfDetach(options, attachmentFile)
+			.then((res) => {
+				expect(typeof res).toBe('string');
+			});
+	});
+
 	test('Should return an Error object if file passed not PDF format', async () => {
 		const poppler = new Poppler();
 		const testTxtFile = `${testDirectory}test.txt`;
@@ -323,6 +337,17 @@ describe('pdfImages function', () => {
 describe('pdfInfo function', () => {
 	afterAll(async () => {
 		await clean();
+	});
+
+	test('Should list info of PDF file', async () => {
+		const poppler = new Poppler();
+		const attachmentFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`;
+
+		await poppler
+			.pdfInfo(undefined, attachmentFile)
+			.then((res) => {
+				expect(typeof res).toBe('string');
+			});
 	});
 
 	test('Should return an Error object if file passed not PDF format', async () => {
@@ -687,12 +712,13 @@ describe('pdfToPs function', () => {
 
 	test('Should accept options and only process 2 pages of PDF file', async () => {
 		const poppler = new Poppler();
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
 		const options = {
 			firstPageToConvert: 1,
 			lastPageToConvert: 2
 		};
 
-		await poppler.pdfToPs(options, file).then((res) => {
+		await poppler.pdfToPs(options, file, outputFile).then((res) => {
 			expect(typeof res).toBe('string');
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
@@ -845,6 +871,19 @@ describe('pdfUnite function', () => {
 		await poppler.pdfUnite(undefined, files, outputFile).then((res) => {
 			expect(typeof res).toBe('string');
 			expect(fs.existsSync(`${testDirectory}united.pdf`)).toBe(true);
+		});
+	});
+
+	test('Should return an Error object if a PDF file and non-PDF file are attempted to be merged', async () => {
+		const poppler = new Poppler();
+		const files = [
+			`${testDirectory}test.txt`,
+			`${testDirectory}pdf_1.7_NHS_Constitution_Handbook.pdf`
+		];
+
+		expect.assertions(1);
+		await poppler.pdfUnite(undefined, files).catch((err) => {
+			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
 	});
 

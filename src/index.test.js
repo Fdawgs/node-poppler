@@ -687,12 +687,13 @@ describe('pdfToPs function', () => {
 
 	test('Should accept options and only process 2 pages of PDF file', async () => {
 		const poppler = new Poppler();
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
 		const options = {
 			firstPageToConvert: 1,
 			lastPageToConvert: 2
 		};
 
-		await poppler.pdfToPs(options, file).then((res) => {
+		await poppler.pdfToPs(options, file, outputFile).then((res) => {
 			expect(typeof res).toBe('string');
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)

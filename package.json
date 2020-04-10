@@ -2,6 +2,12 @@
 	"name": "node-poppler",
 	"version": "1.5.3",
 	"description": "Node.js wrapper for the Poppler PDF rendering library",
+	"keywords": [
+		"poppler",
+		"pdf",
+		"pdf-converter",
+		"pdf-to-html"
+	],
 	"main": "src/index.js",
 	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
 	"author": "Frazer Smith",
@@ -9,7 +15,7 @@
 	"scripts": {
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"doc": "jsdoc2md src/index.js > API.md",
-		"dupe-check": "yarn jsinspect .",
+		"dupe-check": "yarn jsinspect ./src",
 		"jest": "jest src --coverage",
 		"lint": "eslint src/**/*.js",
 		"prettier": "prettier ** --write",
@@ -36,6 +42,7 @@
 		"@commitlint/config-conventional": "^8.3.4",
 		"conventional-changelog-cli": "^2.0.31",
 		"coveralls": "^3.0.11",
+		"cross-env": "^7.0.2",
 		"eslint": "^6.8.0",
 		"eslint-config-airbnb-base": "^14.1.0",
 		"eslint-config-prettier": "^6.10.1",

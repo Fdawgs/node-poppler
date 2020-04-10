@@ -15,7 +15,7 @@
 	"scripts": {
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"doc": "jsdoc2md src/index.js > API.md",
-		"dupe-check": "yarn jsinspect .",
+		"dupe-check": "yarn jsinspect ./src",
 		"jest": "jest src --coverage",
 		"lint": "eslint src/**/*.js",
 		"prettier": "prettier ** --write",

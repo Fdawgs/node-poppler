@@ -103,23 +103,26 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
+					args.push(fileToAttach);
+					args.push(outputFile);
 
-			args.push(file);
-			args.push(fileToAttach);
-			args.push(outputFile);
-
-			execFile(
-				path.join(this.popplerPath, 'pdfattach'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
+					execFile(
+						path.join(this.popplerPath, 'pdfattach'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -165,21 +168,24 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
 
-			args.push(file);
-
-			execFile(
-				path.join(this.popplerPath, 'pdfdetach'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
+					execFile(
+						path.join(this.popplerPath, 'pdfdetach'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -214,21 +220,24 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
 
-			args.push(file);
-
-			execFile(
-				path.join(this.popplerPath, 'pdffonts'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
+					execFile(
+						path.join(this.popplerPath, 'pdffonts'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -279,24 +288,27 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
-
-			args.push(file);
-			if (outputPrefix) {
-				args.push(outputPrefix);
-			}
-
-			execFile(
-				path.join(this.popplerPath, 'pdfimages'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
+					if (outputPrefix) {
+						args.push(outputPrefix);
 					}
+
+					execFile(
+						path.join(this.popplerPath, 'pdfimages'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -357,21 +369,24 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
 
-			args.push(file);
-
-			execFile(
-				path.join(this.popplerPath, 'pdfinfo'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
+					execFile(
+						path.join(this.popplerPath, 'pdfinfo'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -406,22 +421,26 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
+					args.push(outputPattern);
 
-			args.push(file);
-			args.push(outputPattern);
+					execFile(
+						path.join(this.popplerPath, 'pdfseparate'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
 
-			execFile(
-				path.join(this.popplerPath, 'pdfseparate'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -568,24 +587,27 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
-
-			args.push(file);
-			if (outputFile) {
-				args.push(outputFile);
-			}
-
-			execFile(
-				path.join(this.popplerPath, 'pdftocairo'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
+					if (outputFile) {
+						args.push(outputFile);
 					}
+
+					execFile(
+						path.join(this.popplerPath, 'pdftocairo'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -658,21 +680,24 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
 
-			args.push(file);
-
-			execFile(
-				path.join(this.popplerPath, 'pdftohtml'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
+					execFile(
+						path.join(this.popplerPath, 'pdftohtml'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -778,22 +803,26 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
+					args.push(outputPath);
 
-			args.push(file);
-			args.push(outputPath);
+					execFile(
+						path.join(this.popplerPath, 'pdftoppm'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
 
-			execFile(
-				path.join(this.popplerPath, 'pdftoppm'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -937,22 +966,25 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
+					args.push(outputFile);
 
-			args.push(file);
-			args.push(outputFile);
-
-			execFile(
-				path.join(this.popplerPath, 'pdftops'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
-					}
+					execFile(
+						path.join(this.popplerPath, 'pdftops'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -1035,24 +1067,27 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
-
-			args.push(file);
-			if (outputFile) {
-				args.push(outputFile);
-			}
-
-			execFile(
-				path.join(this.popplerPath, 'pdftotext'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					args.push(file);
+					if (outputFile) {
+						args.push(outputFile);
 					}
+
+					execFile(
+						path.join(this.popplerPath, 'pdftotext'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});
@@ -1079,27 +1114,30 @@ class Poppler {
 			// Build array of args based on options passed
 			const args = [];
 
-			parseOptions(options, acceptedOptions, args).catch((err) => {
-				reject(err);
-			});
+			parseOptions(options, acceptedOptions, args).then(
+				() => {
+					files.forEach((element) => {
+						args.push(element);
+					});
 
-			files.forEach((element) => {
-				args.push(element);
-			});
-
-			if (outputFile) {
-				args.push(outputFile);
-			}
-
-			execFile(
-				path.join(this.popplerPath, 'pdfunite'),
-				args,
-				(err, stdout) => {
-					if (err) {
-						reject(err);
-					} else {
-						resolve(stdout);
+					if (outputFile) {
+						args.push(outputFile);
 					}
+
+					execFile(
+						path.join(this.popplerPath, 'pdfunite'),
+						args,
+						(err, stdout) => {
+							if (err) {
+								reject(err);
+							} else {
+								resolve(stdout);
+							}
+						}
+					);
+				},
+				(err) => {
+					reject(err);
 				}
 			);
 		});

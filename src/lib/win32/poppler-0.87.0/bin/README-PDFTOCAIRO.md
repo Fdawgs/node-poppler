@@ -1,4 +1,4 @@
-pdftocairo.exe is currently on v0.68.0 due to issues compiling v0.84.0 of it.
+pdftocairo.exe is currently on v0.68.0 due to issues compiling v0.87.0 of it.
 
 It depends on the following files:
 

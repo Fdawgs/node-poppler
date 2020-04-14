@@ -58,7 +58,7 @@ class Poppler {
 						__dirname,
 						'lib',
 						'win32',
-						'poppler-0.84.0',
+						'poppler-0.87.0',
 						'bin'
 					);
 					break;
@@ -145,6 +145,9 @@ class Poppler {
 	 * names associated with the embedded files (as printed by the 'listEmbedded' option).
 	 * By default, the files are saved in the current directory; this can be changed
 	 * with the 'outputPath' option.
+	 * @param {String=} options.saveFile - Save the specified embedded file.
+	 * By default, this uses the file name associated with the embedded file (as printed by the
+	 * 'listEmbedded' option); the file name can be changed with the 'outputPath' option.
 	 * @param {Number=} options.saveSpecificFile - Save the specified embedded file.
 	 * By default, this uses the file name associated with the embedded file (as printed by the
 	 * 'listEmbedded' option); the file name can be changed with the 'outputPath' option.
@@ -160,6 +163,7 @@ class Poppler {
 				outputEncoding: { arg: '-enc', type: 'string' },
 				outputPath: { arg: '-o', type: 'string' },
 				printVersionInfo: { arg: '-v', type: 'boolean' },
+				saveFile: { arg: '-savefile', type: 'string' },
 				saveAllFiles: { arg: '-saveall', type: 'boolean' },
 				saveSpecificFile: { arg: '-save', type: 'number' },
 				userPassword: { arg: '-upw', type: 'string' }

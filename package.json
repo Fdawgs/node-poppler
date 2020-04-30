@@ -20,7 +20,7 @@
 		"lint": "eslint src/**/*.js",
 		"prettier": "prettier ** --write",
 		"test": "yarn lint && yarn test-only",
-		"test-coverage": "cross-env NODE_ENV=test jest --coverage",
+		"test-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
 		"test-only": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand"
 	},
 	"jest": {

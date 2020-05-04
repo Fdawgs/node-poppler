@@ -1,6 +1,6 @@
 {
 	"name": "node-poppler",
-	"version": "1.6.0",
+	"version": "1.7.0",
 	"description": "Node.js wrapper for the Poppler PDF rendering library",
 	"keywords": [
 		"poppler",
@@ -41,16 +41,16 @@
 	"devDependencies": {
 		"@commitlint/config-conventional": "^8.3.4",
 		"conventional-changelog-cli": "^2.0.31",
-		"coveralls": "^3.0.11",
+		"coveralls": "^3.1.0",
 		"cross-env": "^7.0.2",
 		"eslint": "^6.8.0",
 		"eslint-config-airbnb-base": "^14.1.0",
-		"eslint-config-prettier": "^6.10.1",
+		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-import": "^2.20.2",
-		"eslint-plugin-jest": "^23.8.2",
+		"eslint-plugin-jest": "^23.9.0",
 		"eslint-plugin-json": "^2.1.1",
 		"glob": "^7.1.6",
-		"jest": "^25.3.0",
+		"jest": "^25.5.4",
 		"jsdoc-to-markdown": "^5.0.3",
 		"jsinspect": "^0.12.7",
 		"prettier": "2.0.5",

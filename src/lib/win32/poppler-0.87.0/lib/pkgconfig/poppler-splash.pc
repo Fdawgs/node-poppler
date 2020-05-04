@@ -1,8 +1,0 @@
-prefix=C:/temp/poppler_install_dir/Library
-libdir=C:/temp/poppler_install_dir/Library/lib
-includedir=C:/temp/poppler_install_dir/Library/include
-
-Name: poppler-splash
-Description: Splash backend for Poppler PDF rendering library
-Version: 0.87.0
-Requires: poppler = 0.87.0

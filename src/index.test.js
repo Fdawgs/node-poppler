@@ -28,19 +28,15 @@ describe('Constructor', () => {
 			__dirname,
 			'lib',
 			'win32',
-			'poppler-0.87.0',
+			'poppler-0.88.0',
 			'bin'
 		);
 		const poppler = new Poppler(testPath);
-		const options = {
-			svgFile: true
-		};
-		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
 
-		await poppler.pdfToCairo(options, file, outputFile).then((res) => {
+		await poppler.pdfToHtml(undefined, file).then((res) => {
 			expect(typeof res).toBe('string');
 			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
 			).toBe(true);
 		});
 	});
@@ -393,89 +389,6 @@ describe('pdfSeparate function', () => {
 
 		expect.assertions(1);
 		await poppler.pdfSeparate(options, file).catch((err) => {
-			expect(err.message).toEqual("Invalid option provided 'wordFile'");
-		});
-	});
-});
-
-describe('pdfToCairo function', () => {
-	afterAll(async () => {
-		await clean();
-	});
-
-	test('Should convert PDF file to SVG file', async () => {
-		const poppler = new Poppler();
-		const options = {
-			svgFile: true
-		};
-		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
-
-		await poppler.pdfToCairo(options, file, outputFile).then((res) => {
-			expect(typeof res).toBe('string');
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
-			).toBe(true);
-		});
-	});
-
-	test('Should accept options and only process 2 pages of PDF file', async () => {
-		const poppler = new Poppler();
-		const options = {
-			firstPageToConvert: 1,
-			lastPageToConvert: 2,
-			svgFile: true
-		};
-		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
-
-		await poppler.pdfToCairo(options, file, outputFile).then((res) => {
-			expect(typeof res).toBe('string');
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
-			).toBe(true);
-		});
-	});
-
-	test('Should return an Error object if file passed not PDF format', async () => {
-		const poppler = new Poppler();
-		const testTxtFile = `${testDirectory}test.txt`;
-
-		expect.assertions(1);
-		await poppler.pdfToCairo(undefined, testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe('Command failed:');
-		});
-	});
-
-	test('Should return an Error object if no format option is passed to function', async () => {
-		const poppler = new Poppler();
-
-		expect.assertions(1);
-		await poppler.pdfToCairo(undefined, file).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe('Command failed:');
-		});
-	});
-
-	test('Should return an Error object if invalid value types provided for an option are passed to function', async () => {
-		const poppler = new Poppler();
-		const options = {
-			pdfFile: 'test'
-		};
-
-		expect.assertions(1);
-		await poppler.pdfToCairo(options, file).catch((err) => {
-			expect(err.message).toEqual(
-				"Invalid value type provided for option 'pdfFile', expected boolean but recieved string"
-			);
-		});
-	});
-
-	test('Should return an Error object if invalid option is passed to function', async () => {
-		const poppler = new Poppler();
-		const options = {
-			wordFile: 'test'
-		};
-
-		expect.assertions(1);
-		await poppler.pdfToCairo(options, file).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
 	});

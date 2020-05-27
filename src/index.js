@@ -270,6 +270,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} outputPrefix - Filename prefix of output files.
+	 * @returns {Promise}
 	 */
 	pdfImages(options = {}, file, outputPrefix) {
 		return new Promise((resolve, reject) => {

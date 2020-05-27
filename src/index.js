@@ -10,7 +10,7 @@ const platform = os.platform();
  * @param {object} options
  * @param {object} acceptedOptions
  * @param {Array} args
- * @returns {Promise}
+ * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
  */
 function parseOptions(options, acceptedOptions, args) {
 	return new Promise((resolve, reject) => {
@@ -91,7 +91,7 @@ class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} fileToAttach - Filepath of the attachment to be embedded into the PDF file.
 	 * @param {string} outputFile - Filepath of the file to output the results to.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfAttach(options = {}, file, fileToAttach, outputFile) {
 		return new Promise((resolve, reject) => {
@@ -153,7 +153,7 @@ class Poppler {
 	 * 'listEmbedded' option); the file name can be changed with the 'outputPath' option.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfDetach(options = {}, file) {
 		return new Promise((resolve, reject) => {
@@ -208,7 +208,7 @@ class Poppler {
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfFonts(options = {}, file) {
 		return new Promise((resolve, reject) => {
@@ -270,7 +270,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} outputPrefix - Filename prefix of output files.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfImages(options = {}, file, outputPrefix) {
 		return new Promise((resolve, reject) => {
@@ -349,7 +349,7 @@ class Poppler {
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfInfo(options = {}, file) {
 		return new Promise((resolve, reject) => {
@@ -413,7 +413,7 @@ class Poppler {
 	 * @param {string} outputPattern - Should contain %d (or any variant respecting printf format),
 	 * since %d is replaced by the page number.
 	 * As an example, 'sample-%d.pdf' will produce 'sample-1.pdf' for a single page document.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfSeparate(options = {}, file, outputPattern) {
 		return new Promise((resolve, reject) => {
@@ -537,7 +537,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToCairo(options = {}, file, outputFile) {
 		return new Promise((resolve, reject) => {
@@ -653,7 +653,7 @@ class Poppler {
 	 * @param {boolean=} options.xmlOutput - Output for XML post-processing.
 	 * @param {number=} options.zoom - Zoom the PDF document (default 1.5).
 	 * @param {string} file - Filepath of the PDF file to read.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToHtml(options = {}, file) {
 		return new Promise((resolve, reject) => {
@@ -767,7 +767,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} outputPath - Filepath to output the results to.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToPpm(options = {}, file, outputPath) {
 		return new Promise((resolve, reject) => {
@@ -920,7 +920,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} outputFile - Filepath of the file to output the results to.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToPs(options = {}, file, outputFile) {
 		return new Promise((resolve, reject) => {
@@ -1037,7 +1037,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToText(options = {}, file, outputFile) {
 		return new Promise((resolve, reject) => {
@@ -1108,7 +1108,7 @@ class Poppler {
 	 * @param {Array} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: 'path/to/directory/*.pdf'.
 	 * @param {string=} outputFile - Filepath of the file to output the resulting merged PDF to.
-	 * @returns {Promise}
+	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfUnite(options = {}, files, outputFile) {
 		return new Promise((resolve, reject) => {

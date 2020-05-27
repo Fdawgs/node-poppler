@@ -7,8 +7,8 @@ const platform = os.platform();
 /**
  * @author Frazer Smith
  * @description Check each option provided is valid and of the correct type.
- * @param {Object} options
- * @param {Object} acceptedOptions
+ * @param {object} options
+ * @param {object} acceptedOptions
  * @param {Array} args
  * @returns {Promise}
  */
@@ -41,7 +41,7 @@ function parseOptions(options, acceptedOptions, args) {
 
 class Poppler {
 	/**
-	 * @param {String=} binPath - Path of poppler-utils binaries.
+	 * @param {string=} binPath - Path of poppler-utils binaries.
 	 * Useful for Linux users who have poppler-utils binaries already installed.
 	 */
 	constructor(binPath) {
@@ -85,12 +85,12 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Embeds files (attachments) into a PDF file.
-	 * @param {Object=} options
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {Boolean=} options.replace - Replace embedded file with same name (if it exists).
-	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String} fileToAttach - Filepath of the attachment to be embedded into the PDF file.
-	 * @param {String} outputFile - Filepath of the file to output the results to.
+	 * @param {object=} options
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {boolean=} options.replace - Replace embedded file with same name (if it exists).
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string} fileToAttach - Filepath of the attachment to be embedded into the PDF file.
+	 * @param {string} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
 	pdfAttach(options = {}, file, fileToAttach, outputFile) {
@@ -132,27 +132,27 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
 	 *
-	 * @param {Object=} options
-	 * @param {Boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
+	 * @param {object=} options
+	 * @param {boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
 	 * File names are converted to the text encoding specified by the 'outputEncoding' option.
-	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
-	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
 	 * This defaults to "UTF-8".
-	 * @param {String=} options.outputPath - Set the file name used when saving an embedded file with
+	 * @param {string=} options.outputPath - Set the file name used when saving an embedded file with
 	 * the save option enabled, or the directory if the 'saveall' option is used.
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {Boolean=} options.saveAllFiles - Save all of the embedded files. This uses the file
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {boolean=} options.saveAllFiles - Save all of the embedded files. This uses the file
 	 * names associated with the embedded files (as printed by the 'listEmbedded' option).
 	 * By default, the files are saved in the current directory; this can be changed
 	 * with the 'outputPath' option.
-	 * @param {String=} options.saveFile - Save the specified embedded file.
+	 * @param {string=} options.saveFile - Save the specified embedded file.
 	 * By default, this uses the file name associated with the embedded file (as printed by the
 	 * 'listEmbedded' option); the file name can be changed with the 'outputPath' option.
-	 * @param {Number=} options.saveSpecificFile - Save the specified embedded file.
+	 * @param {number=} options.saveSpecificFile - Save the specified embedded file.
 	 * By default, this uses the file name associated with the embedded file (as printed by the
 	 * 'listEmbedded' option); the file name can be changed with the 'outputPath' option.
-	 * @param {String=} options.userPassword - User password (for encrypted files).
-	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {string=} options.userPassword - User password (for encrypted files).
+	 * @param {string} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
 	pdfDetach(options = {}, file) {
@@ -199,15 +199,15 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
 	 *
-	 * @param {Object=} options
-	 * @param {Number=} options.firstPageToExamine - Specifies the first page to examine.
-	 * @param {Number=} options.lastPageToExamine - Specifies the last page to examine.
-	 * @param {Boolean=} options.listSubstitutes - List the substitute fonts that poppler
+	 * @param {object=} options
+	 * @param {number=} options.firstPageToExamine - Specifies the first page to examine.
+	 * @param {number=} options.lastPageToExamine - Specifies the last page to examine.
+	 * @param {boolean=} options.listSubstitutes - List the substitute fonts that poppler
 	 * will use for non-embedded fonts.
-	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {String=} options.userPassword - User password (for encrypted files).
-	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {string=} options.userPassword - User password (for encrypted files).
+	 * @param {string} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
 	pdfFonts(options = {}, file) {
@@ -251,25 +251,25 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 	 *
-	 * @param {Object=} options
-	 * @param {Boolean=} options.allFiles - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
+	 * @param {object=} options
+	 * @param {boolean=} options.allFiles - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
 	 * CMYK files are written as TIFF files. All other images are written as PNG files.
-	 * @param {Boolean=} options.ccittFile - Generate CCITT images as CCITT files.
-	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
-	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
-	 * @param {Boolean=} options.list - Instead of writing the images, list the
+	 * @param {boolean=} options.ccittFile - Generate CCITT images as CCITT files.
+	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {boolean=} options.list - Instead of writing the images, list the
 	 * images along with various information for each image.
 	 * NOTE: Do not specify the outputPrefix with this option.
-	 * @param {Boolean=} options.jbig2File - Generate JBIG2 images as JBIG2 files.
-	 * @param {Boolean=} options.jpeg2000File - Generate JPEG2000 images at JP2 files.
-	 * @param {Boolean=} options.jpegFile - Generate JPEG images as JPEG files.
-	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
-	 * @param {Boolean=} options.pngFile - Change the default output format to PNG.
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {Boolean=} options.tiffFile - Change the default output format to TIFF.
-	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
-	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String} outputPrefix - Filename prefix of output files.
+	 * @param {boolean=} options.jbig2File - Generate JBIG2 images as JBIG2 files.
+	 * @param {boolean=} options.jpeg2000File - Generate JPEG2000 images at JP2 files.
+	 * @param {boolean=} options.jpegFile - Generate JPEG images as JPEG files.
+	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {boolean=} options.pngFile - Change the default output format to PNG.
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {boolean=} options.tiffFile - Change the default output format to TIFF.
+	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string} outputPrefix - Filename prefix of output files.
 	 */
 	pdfImages(options = {}, file, outputPrefix) {
 		return new Promise((resolve, reject) => {
@@ -322,32 +322,32 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Prints the contents of the ´Info' dictionary from a PDF file.
 	 *
-	 * @param {Object=} options
-	 * @param {Number=} options.firstPageToConvert - First page to print.
-	 * @param {Number=} options.lastPageToConvert - Last page to print.
-	 * @param {Boolean=} options.listEncodingOptions - List the available encodings.
-	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * @param {object=} options
+	 * @param {number=} options.firstPageToConvert - First page to print.
+	 * @param {number=} options.lastPageToConvert - Last page to print.
+	 * @param {boolean=} options.listEncodingOptions - List the available encodings.
+	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
 	 * This defaults to "UTF-8".
-	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
-	 * @param {Boolean=} options.printBoundingBoxes - Prints the page box bounding boxes:
+	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {boolean=} options.printBoundingBoxes - Prints the page box bounding boxes:
 	 * MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.
-	 * @param {Boolean=} options.printDocStruct - Prints the logical document structure
+	 * @param {boolean=} options.printDocStruct - Prints the logical document structure
 	 * of a Tagged-PDF file.
-	 * @param {Boolean=} options.printDocStructText - Print the textual content along with the
+	 * @param {boolean=} options.printDocStructText - Print the textual content along with the
 	 * document structure of a Tagged-PDF file. Note that extracting text this way might be slow
 	 *
 	 * for big PDF files.
-	 * @param {Boolean=} options.printIsoDates - Prints dates in ISO-8601 format (including the time zone).
-	 * @param {Boolean=} options.printJS - Prints all JavaScript in the PDF file.
-	 * @param {Boolean=} options.printMetadata - Prints document-level metadata. (This is the "Metadata"
+	 * @param {boolean=} options.printIsoDates - Prints dates in ISO-8601 format (including the time zone).
+	 * @param {boolean=} options.printJS - Prints all JavaScript in the PDF file.
+	 * @param {boolean=} options.printMetadata - Prints document-level metadata. (This is the "Metadata"
 	 * stream from the PDF file's Catalog object).
-	 * @param {Boolean=} options.printNamedDests - Print a list of all named destinations. If a page range
+	 * @param {boolean=} options.printNamedDests - Print a list of all named destinations. If a page range
 	 * is specified using the 'firstPageToConvert' and 'lastPageToConvert' options, only destinations
 	 * in the page range are listed.
-	 * @param {Boolean=} options.printRawDates - Prints the raw (undecoded) date strings, directly from the PDF file.
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {String=} options.userPassword - User password (for encrypted files).
-	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {boolean=} options.printRawDates - Prints the raw (undecoded) date strings, directly from the PDF file.
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {string=} options.userPassword - User password (for encrypted files).
+	 * @param {string} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
 	pdfInfo(options = {}, file) {
@@ -402,14 +402,14 @@ class Poppler {
 	 * and writes one PDF file for each page to outputPattern.
 	 * This will not work if the file is encrypted.
 	 *
-	 * @param {Object=} options
-	 * @param {Number=} options.firstPageToExtract - Specifies the first page to extract.
+	 * @param {object=} options
+	 * @param {number=} options.firstPageToExtract - Specifies the first page to extract.
 	 * This defaults to page 1.
-	 * @param {Number=} options.lastPageToExtract - Specifies the last page to extract.
+	 * @param {number=} options.lastPageToExtract - Specifies the last page to extract.
 	 * This defaults to the last page of the PDF file.
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String} outputPattern - Should contain %d (or any variant respecting printf format),
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string} outputPattern - Should contain %d (or any variant respecting printf format),
 	 * since %d is replaced by the page number.
 	 * As an example, 'sample-%d.pdf' will produce 'sample-1.pdf' for a single page document.
 	 * @returns {Promise}
@@ -454,88 +454,88 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 	 *
-	 * @param {Object} options
+	 * @param {object} options
 	 * @param {('default'|'none'|'gray'|'subpixel'|'fast'|'good'|'best')=} options.antialias Set the cairo
 	 * antialias option used for text and drawing in image files (or rasterized regions in vector output).
-	 * @param {Boolean=} options.cropBox - Uses the crop box rather than media box when
+	 * @param {boolean=} options.cropBox - Uses the crop box rather than media box when
 	 * generating the files (PNG/JPEG/TIFF only).
-	 * @param {Number=} options.cropHeight - Specifies the height of crop area in pixels
+	 * @param {number=} options.cropHeight - Specifies the height of crop area in pixels
 	 * (image output) or points (vector output).
-	 * @param {Number=} options.cropSize - Specifies the size of crop square in pixels
+	 * @param {number=} options.cropSize - Specifies the size of crop square in pixels
 	 * (image output) or points (vector output).
-	 * @param {Number=} options.cropWidth - Specifies the width of crop area in pixels
+	 * @param {number=} options.cropWidth - Specifies the width of crop area in pixels
 	 * (image output) or points (vector output).
-	 * @param {Number=} options.cropXAxis - Specifies the x-coordinate of the crop area top left
+	 * @param {number=} options.cropXAxis - Specifies the x-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
-	 * @param {Number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
+	 * @param {number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
-	 * @param {Boolean=} options.duplex - Adds the %%IncludeFeature: *Duplex DuplexNoTumble DSC
+	 * @param {boolean=} options.duplex - Adds the %%IncludeFeature: *Duplex DuplexNoTumble DSC
 	 * comment to the PostScript file (PS only). This tells the print manager to enable duplexing.
-	 * @param {Boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
+	 * @param {boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
 	 * so if you use this option with a multi-page PDF file, you must use 'firstPageToConvert' and
 	 * 'lastPageToConvert' to specify a single page.
 	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
 	 * with this option.
-	 * @param {Boolean=} options.evenPagesOnly - Generates only the even numbered pages.
-	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
+	 * @param {boolean=} options.evenPagesOnly - Generates only the even numbered pages.
+	 * @param {boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
 	 * paper (PS,PDF,SVG only). By default, these pages are not scaled.
-	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
-	 * @param {Boolean=} options.grayscaleFile - Generate grayscale file (PNG, JPEG, and TIFF only).
-	 * @param {Boolean=} options.iccFile - Use the specified ICC file as the output profile
+	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {boolean=} options.grayscaleFile - Generate grayscale file (PNG, JPEG, and TIFF only).
+	 * @param {boolean=} options.iccFile - Use the specified ICC file as the output profile
 	 * (PNG only). The profile will be embedded in the PNG file.
-	 * @param {Boolean=} options.jpegFile - Generate JPEG file(s).
-	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
-	 * @param {Boolean=} options.monochromeFile - Generate monochrome file (PNG and TIFF only).
-	 * @param {Boolean=} options.noCenter - By default, PDF pages smaller than the paper
+	 * @param {boolean=} options.jpegFile - Generate JPEG file(s).
+	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {boolean=} options.monochromeFile - Generate monochrome file (PNG and TIFF only).
+	 * @param {boolean=} options.noCenter - By default, PDF pages smaller than the paper
 	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
 	 * the lower-left corner of the paper instead (PS,PDF,SVG only).
-	 * @param {Boolean=} options.noCrop - By default, printing output is cropped to the CropBox
+	 * @param {boolean=} options.noCrop - By default, printing output is cropped to the CropBox
 	 * specified in the PDF file. This option disables cropping (PS, PDF, SVG only).
-	 * @param {Boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper
+	 * @param {boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper
 	 * (PS,PDF,SVG only). By default, pages larger than the paper are shrunk to fit.
-	 * @param {Boolean=} options.oddPagesOnly - Generates only the odd numbered pages.
-	 * @param {Boolean=} options.originalPageSizes - Set the paper size of each page to match
+	 * @param {boolean=} options.oddPagesOnly - Generates only the odd numbered pages.
+	 * @param {boolean=} options.originalPageSizes - Set the paper size of each page to match
 	 * the size specified in the PDF file.
-	 * @param {String=} options.ownerPassword - Specify the owner password for the PDF file.
+	 * @param {string=} options.ownerPassword - Specify the owner password for the PDF file.
 	 * Providing this will bypass all security restrictions.
-	 * @param {Number=} options.paperHeight - Set the paper height, in points (PS, PDF, SVG only).
+	 * @param {number=} options.paperHeight - Set the paper height, in points (PS, PDF, SVG only).
 	 * @param {('letter'|'legal'|'A4'|'A3'|'match')=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
 	 * or "A3" (PS,PDF,SVG only). This can also be set to "match", which will set the paper size
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
-	 * @param {Number=} options.paperWidth - Set the paper width, in points (PS,PDF,SVG only).
-	 * @param {Boolean=} options.pdfFile - Generate PDF file.
-	 * @param {Boolean=} options.pngFile - Generate PNG file(s).
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @param {Boolean=} options.psFile - Generate PS file.
-	 * @param {Boolean=} options.psLevel2 - Generate Level 2 PostScript (PS only).
-	 * @param {Boolean=} options.psLevel3 - Generate Level 3 PostScript (PS only). This enables all
+	 * @param {number=} options.paperWidth - Set the paper width, in points (PS,PDF,SVG only).
+	 * @param {boolean=} options.pdfFile - Generate PDF file.
+	 * @param {boolean=} options.pngFile - Generate PNG file(s).
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {boolean=} options.psFile - Generate PS file.
+	 * @param {boolean=} options.psLevel2 - Generate Level 2 PostScript (PS only).
+	 * @param {boolean=} options.psLevel3 - Generate Level 3 PostScript (PS only). This enables all
 	 * Level 2 features plus shading patterns and masked images. This is the default setting.
-	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
-	 * @param {Number=} options.resolutionXAxis - Specifies the X resolution, in pixels per inch of
+	 * @param {boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {number=} options.resolutionXAxis - Specifies the X resolution, in pixels per inch of
 	 * image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {Number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
+	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
 	 * inch of image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {Number=} options.resolutionYAxis - Specifies the Y resolution, in pixels per inch of
+	 * @param {number=} options.resolutionYAxis - Specifies the Y resolution, in pixels per inch of
 	 * image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {Number=} options.scalePageTo - Scales the long side of each page (width for landscape
+	 * @param {number=} options.scalePageTo - Scales the long side of each page (width for landscape
 	 * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
 	 * be determined by the aspect ratio of the page (PNG/JPEG/TIFF only).
-	 * @param {Number=} options.scalePageToXAxis - Scales each page horizontally to fit in scale-to-x
+	 * @param {number=} options.scalePageToXAxis - Scales each page horizontally to fit in scale-to-x
 	 * pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of
 	 * the page (PNG/JPEG/TIFF only).
-	 * @param {Number=} options.scalePageToYAxis - Scales each page vertically to fit in scale-to-y
+	 * @param {number=} options.scalePageToYAxis - Scales each page vertically to fit in scale-to-y
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page (PNG/JPEG/TIFF only).
-	 * @param {Boolean=} options.singleFile - Writes only the first page and does not add digits.
-	 * @param {Boolean=} options.svgFile - Generate SVG (Scalable Vector Graphics) file.
+	 * @param {boolean=} options.singleFile - Writes only the first page and does not add digits.
+	 * @param {boolean=} options.svgFile - Generate SVG (Scalable Vector Graphics) file.
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
-	 * @param {Boolean=} options.tiffFile - Generate TIFF file(s).
-	 * @param {Boolean=} options.transparentPageColor - Use a transparent page color
+	 * @param {boolean=} options.tiffFile - Generate TIFF file(s).
+	 * @param {boolean=} options.transparentPageColor - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
-	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
-	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String=} outputFile - Filepath of the file to output the results to.
+	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
 	pdfToCairo(options = {}, file, outputFile) {
@@ -623,35 +623,35 @@ class Poppler {
 	 * Poppler will use the directory and name of the original file
 	 * and append '-html' to the end of the filename.
 	 *
-	 * @param {Object=} options
-	 * @param {Boolean=} options.complexOutput - Generate complex output.
-	 * @param {Boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
-	 * @param {Boolean=} options.extractHidden - Force hidden text extraction.
-	 * @param {Number=} options.firstPageToConvert - First page to print.
-	 * @param {Boolean=} options.fontFullName - Outputs the font name without any substitutions.
-	 * @param {Boolean=} options.ignoreImages - Ignore images.
+	 * @param {object=} options
+	 * @param {boolean=} options.complexOutput - Generate complex output.
+	 * @param {boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
+	 * @param {boolean=} options.extractHidden - Force hidden text extraction.
+	 * @param {number=} options.firstPageToConvert - First page to print.
+	 * @param {boolean=} options.fontFullName - Outputs the font name without any substitutions.
+	 * @param {boolean=} options.ignoreImages - Ignore images.
 	 * @param {('PNG'|'JPG')=} options.imageFormat - Image file format for Splash output (PNG or JPG).
 	 * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
-	 * @param {Number=} options.lastPageToConvert - Last page to print.
-	 * @param {Boolean=} options.noDrm - Override document DRM settings.
-	 * @param {Boolean=} options.noFrames - Generate no frames. Not supported in complex output mode.
-	 * @param {Boolean=} options.noMergeParagraph - Do not merge paragraphs.
-	 * @param {Boolean=} options.noRoundedCoordinates - Do not round coordinates
+	 * @param {number=} options.lastPageToConvert - Last page to print.
+	 * @param {boolean=} options.noDrm - Override document DRM settings.
+	 * @param {boolean=} options.noFrames - Generate no frames. Not supported in complex output mode.
+	 * @param {boolean=} options.noMergeParagraph - Do not merge paragraphs.
+	 * @param {boolean=} options.noRoundedCoordinates - Do not round coordinates
 	 * (with XML output only).
-	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
 	 * This defaults to "UTF-8".
-	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {Boolean=} options.quiet - Do not print any messages or errors.
-	 * @param {Boolean=} options.singlePage - generate single HTML that includes all pages.
-	 * @param {Boolean=} options.stdout - Use standard output.
-	 * @param {String=} options.userPassword - User password (for encrypted files).
-	 * @param {Number=} options.wordBreakThreshold - Adjust the word break threshold percent.
+	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {boolean=} options.quiet - Do not print any messages or errors.
+	 * @param {boolean=} options.singlePage - generate single HTML that includes all pages.
+	 * @param {boolean=} options.stdout - Use standard output.
+	 * @param {string=} options.userPassword - User password (for encrypted files).
+	 * @param {number=} options.wordBreakThreshold - Adjust the word break threshold percent.
 	 * Default is 10. Word break occurs when distance between two adjacent characters is greater
 	 * than this percent of character height.
-	 * @param {Boolean=} options.xmlOutput - Output for XML post-processing.
-	 * @param {Number=} options.zoom - Zoom the PDF document (default 1.5).
-	 * @param {String} file - Filepath of the PDF file to read.
+	 * @param {boolean=} options.xmlOutput - Output for XML post-processing.
+	 * @param {number=} options.zoom - Zoom the PDF document (default 1.5).
+	 * @param {string} file - Filepath of the PDF file to read.
 	 * @returns {Promise}
 	 */
 	pdfToHtml(options = {}, file) {
@@ -713,59 +713,59 @@ class Poppler {
 	 * grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 	 * in Portable Bitmap (PBM) format.
 	 *
-	 * @param {Object} options
+	 * @param {object} options
 	 * @param {('yes'|'no')=} options.antialiasFonts - Enable or disable font anti-aliasing.
 	 * This defaults to "yes".
 	 * @param {('yes'|'no')=} options.antialiasVectors - Enable or disable vector anti-aliasing.
 	 * This defaults to "yes".
-	 * @param {Boolean=} options.cropBox - Uses the crop box rather than media box when
+	 * @param {boolean=} options.cropBox - Uses the crop box rather than media box when
 	 * generating the files (PNG/JPEG/TIFF only).
-	 * @param {Number=} options.cropHeight - Specifies the height of crop area in pixels
+	 * @param {number=} options.cropHeight - Specifies the height of crop area in pixels
 	 * (image output) or points (vector output).
-	 * @param {Number=} options.cropSize - Specifies the size of crop square in pixels
+	 * @param {number=} options.cropSize - Specifies the size of crop square in pixels
 	 * (image output) or points (vector output).
-	 * @param {Number=} options.cropWidth - Specifies the width of crop area in pixels
+	 * @param {number=} options.cropWidth - Specifies the width of crop area in pixels
 	 * (image output) or points (vector output).
-	 * @param {Number=} options.cropXAxis - Specifies the x-coordinate of the crop area top left
+	 * @param {number=} options.cropXAxis - Specifies the x-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
-	 * @param {Number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
+	 * @param {number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
-	 * @param {Boolean=} options.evenPagesOnly - Generates only the even numbered pages.
-	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {boolean=} options.evenPagesOnly - Generates only the even numbered pages.
+	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {('yes'|'no')=} options.freetype - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
 	 * This defaults to "yes".
-	 * @param {Boolean=} options.grayscaleFile - Generate grayscale PGM file (instead of a color PPM file).
-	 * @param {Boolean=} options.jpegFile - Generate JPEG file instead a PPM file.
-	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
-	 * @param {Boolean=} options.monochromeFile - Generate monochrome PBM file (instead of a color PPM file).
-	 * @param {Boolean=} options.oddPagesOnly - Generates only the odd numbered pages.
-	 * @param {String=} options.ownerPassword - Specify the owner password for the PDF file.
+	 * @param {boolean=} options.grayscaleFile - Generate grayscale PGM file (instead of a color PPM file).
+	 * @param {boolean=} options.jpegFile - Generate JPEG file instead a PPM file.
+	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {boolean=} options.monochromeFile - Generate monochrome PBM file (instead of a color PPM file).
+	 * @param {boolean=} options.oddPagesOnly - Generates only the odd numbered pages.
+	 * @param {string=} options.ownerPassword - Specify the owner password for the PDF file.
 	 * Providing this will bypass all security restrictions.
-	 * @param {Boolean=} options.pngFile - Generate PNG file instead a PPM file.
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
-	 * @param {Number=} options.resolutionXAxis - Specifies the X resolution, in pixels per inch of
+	 * @param {boolean=} options.pngFile - Generate PNG file instead a PPM file.
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {number=} options.resolutionXAxis - Specifies the X resolution, in pixels per inch of
 	 * image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {Number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
+	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
 	 * inch of image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {Number=} options.resolutionYAxis - Specifies the Y resolution, in pixels per inch of
+	 * @param {number=} options.resolutionYAxis - Specifies the Y resolution, in pixels per inch of
 	 * image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {Number=} options.scalePageTo - Scales the long side of each page (width for landscape
+	 * @param {number=} options.scalePageTo - Scales the long side of each page (width for landscape
 	 * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
 	 * be determined by the aspect ratio of the page.
-	 * @param {Number=} options.scalePageToXAxis - Scales each page horizontally to fit in scale-to-x
+	 * @param {number=} options.scalePageToXAxis - Scales each page horizontally to fit in scale-to-x
 	 * pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of
 	 * the page.
-	 * @param {Number=} options.scalePageToYAxis - Scales each page vertically to fit in scale-to-y
+	 * @param {number=} options.scalePageToYAxis - Scales each page vertically to fit in scale-to-y
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page.
-	 * @param {Boolean=} options.singleFile - Writes only the first page and does not add digits.
+	 * @param {boolean=} options.singleFile - Writes only the first page and does not add digits.
 	 * @param {('none'|'solid'|'shape')=} options.thinLineMode - Specifies the thin line mode. This defaults to "none".
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
-	 * @param {Boolean=} options.tiffFile - Generate TIFF file instead a PPM file.
-	 * @param {String=} options.userPassword - Specify the user password for the PDF file.
-	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String} outputPath - Filepath to output the results to.
+	 * @param {boolean=} options.tiffFile - Generate TIFF file instead a PPM file.
+	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string} outputPath - Filepath to output the results to.
 	 * @returns {Promise}
 	 */
 	pdfToPpm(options = {}, file, outputPath) {
@@ -836,89 +836,89 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts PDF to PostScript (PS).
 	 *
-	 * @param {Object=} options
+	 * @param {object=} options
 	 * @param {('yes'|'no')=} options.antialias - Enable anti-aliasing on rasterization, accepts "yes" or "no".
-	 * @param {Boolean=} options.binary - Write binary data in Level 1 PostScript. By default,
+	 * @param {boolean=} options.binary - Write binary data in Level 1 PostScript. By default,
 	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
 	 * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
 	 * only for its restricted use of PostScript operators.
-	 * @param {Boolean=} options.duplex - Set the Duplex pagedevice entry in the PostScript file.
+	 * @param {boolean=} options.duplex - Set the Duplex pagedevice entry in the PostScript file.
 	 * This tells duplex-capable printers to enable duplexing.
-	 * @param {Boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
+	 * @param {boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
 	 * so if you use this option with a multi-page PDF file, you must use 'firstPageToConvert' and
 	 * 'lastPageToConvert' to specify a single page.
 	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
 	 * with this option.
-	 * @param {Boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
+	 * @param {boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
 	 * paper. By default, these pages are not scaled.
-	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
-	 * @param {Number=} options.form - Generate PostScript form which can be imported by software
+	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {number=} options.form - Generate PostScript form which can be imported by software
 	 * that understands forms.
 	 * A form contains a single page, so if you use this option with a multi-page PDF file,
 	 * you must use 'firstPageToConvert' and 'lastPageToConvert to specify a single page.
 	 * The 'level1' option cannot be used with -form.
 	 * No more than one of the mode options ('epsFile', 'form') may be given.
-	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
-	 * @param {Boolean=} options.level1 - Generate Level 1 PostScript. The resulting PostScript
+	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {boolean=} options.level1 - Generate Level 1 PostScript. The resulting PostScript
 	 * files will be significantly larger (if they contain images), but will print on Level 1 printers.
 	 * This also converts all images to black and white.
-	 * @param {Boolean=} options.level1Sep - Generate Level 1 separable PostScript.
+	 * @param {boolean=} options.level1Sep - Generate Level 1 separable PostScript.
 	 * All colors are converted to CMYK. Images are written with separate stream data for the four components.
-	 * @param {Boolean=} options.level2 - Generate Level 2 PostScript.
+	 * @param {boolean=} options.level2 - Generate Level 2 PostScript.
 	 * Level 2 supports color images and image compression. This is the default setting.
-	 * @param {Boolean=} options.level2Sep - Generate Level 2 separable PostScript. All colors are
+	 * @param {boolean=} options.level2Sep - Generate Level 2 separable PostScript. All colors are
 	 * converted to CMYK. The PostScript separation convention operators are used to handle custom (spot) colors.
-	 * @param {Boolean=} options.level3 - Generate Level 3 PostScript.
+	 * @param {boolean=} options.level3 - Generate Level 3 PostScript.
 	 * This enables all Level 2 featuresplus CID font embedding.
-	 * @param {Boolean=} options.level3Sep - Generate Level 3 separable PostScript.
+	 * @param {boolean=} options.level3Sep - Generate Level 3 separable PostScript.
 	 * The separation handling is the same as for 'level2Sep'.
-	 * @param {Boolean=} options.noEmbedCIDFonts - By default, any CID PostScript fonts which are
+	 * @param {boolean=} options.noEmbedCIDFonts - By default, any CID PostScript fonts which are
 	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
 	 * No attempt is made to substitute for non-embedded CID PostScript fonts.
-	 * @param {Boolean=} options.noEmbedCIDTrueTypeFonts - By default, any CID TrueType fonts which are
+	 * @param {boolean=} options.noEmbedCIDTrueTypeFonts - By default, any CID TrueType fonts which are
 	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
 	 * No attempt is made to substitute for non-embedded CID TrueType fonts.
-	 * @param {Boolean=} options.noEmbedTrueTypeFonts - By default, any TrueType fonts which are embedded
+	 * @param {boolean=} options.noEmbedTrueTypeFonts - By default, any TrueType fonts which are embedded
 	 * in the PDF file are copied into the PostScript file. This option causes pdftops to substitute base fonts instead.
 	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
 	 * Also, some PostScript interpreters do not have TrueType rasterizers.
-	 * @param {Boolean=} options.noEmbedType1Fonts - By default, any Type 1 fonts which are embedded in the PDF file
+	 * @param {boolean=} options.noEmbedType1Fonts - By default, any Type 1 fonts which are embedded in the PDF file
 	 * are copied into the PostScript file. This option causes pdftops to substitute base fonts instead.
 	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
-	 * @param {Boolean=} options.noCenter - By default, PDF pages smaller than the paper
+	 * @param {boolean=} options.noCenter - By default, PDF pages smaller than the paper
 	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
 	 * the lower-left corner of the paper instead.
-	 * @param {Boolean=} options.noCrop - By default, printing output is cropped to the CropBox
+	 * @param {boolean=} options.noCrop - By default, printing output is cropped to the CropBox
 	 * specified in the PDF file. This option disables cropping.
-	 * @param {Boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper.
+	 * @param {boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper.
 	 * By default, pages larger than the paper are shrunk to fit.
-	 * @param {Boolean=} options.opi - Generate OPI comments for all images and forms which have OPI information.
-	 * @param {Boolean=} options.optimizecolorspace - By default, bitmap images in the PDF pass through to the
+	 * @param {boolean=} options.opi - Generate OPI comments for all images and forms which have OPI information.
+	 * @param {boolean=} options.optimizecolorspace - By default, bitmap images in the PDF pass through to the
 	 * output PostScript in their original color space, which produces predictable results.
 	 * This option converts RGB and CMYK images into Gray images if every pixel of the image has equal components.
 	 * This can fix problems when doing color separations of PDFs that contain embedded black and
 	 * white images encoded as RGB.
-	 * @param {Boolean=} options.originalPageSizes - Set the paper size of each page to match
+	 * @param {boolean=} options.originalPageSizes - Set the paper size of each page to match
 	 * the size specified in the PDF file.
-	 * @param {Boolean=} options.overprint - Enable overprinting.
-	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
-	 * @param {Number=} options.paperHeight - Set the paper height, in points.
+	 * @param {boolean=} options.overprint - Enable overprinting.
+	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {number=} options.paperHeight - Set the paper height, in points.
 	 * @param {('letter'|'legal'|'A4'|'A3'|'match')=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
 	 * or "A3". This can also be set to "match", which will set the paper size
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
-	 * @param {Number=} options.paperWidth - Set the paper width, in points.
-	 * @param {Boolean=} options.passfonts - By default, references to non-embedded 8-bit fonts
+	 * @param {number=} options.paperWidth - Set the paper width, in points.
+	 * @param {boolean=} options.passfonts - By default, references to non-embedded 8-bit fonts
 	 * in the PDF file are substituted with the closest "Helvetica", "Times-Roman", or "Courier" font.
 	 * This option passes references to non-embedded fonts through to the PostScript file.
-	 * @param {Boolean=} options.preload - Preload images and forms.
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
-	 * @param {Number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
+	 * @param {boolean=} options.preload - Preload images and forms.
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
 	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
-	 * @param {String=} options.userPassword - User password (for encrypted files).
-	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String} outputFile - Filepath of the file to output the results to.
+	 * @param {string=} options.userPassword - User password (for encrypted files).
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
 	pdfToPs(options = {}, file, outputFile) {
@@ -998,44 +998,44 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts PDF to TXT.
 	 *
-	 * @param {Object=} options
-	 * @param {Boolean=} options.boundingBoxXhtml Generate an XHTML file containing bounding
+	 * @param {object=} options
+	 * @param {boolean=} options.boundingBoxXhtml Generate an XHTML file containing bounding
 	 * box information for each word in the file.
-	 * @param {Boolean=} options.boundingBoxXhtmlLayout Generate an XHTML file containing
+	 * @param {boolean=} options.boundingBoxXhtmlLayout Generate an XHTML file containing
 	 * bounding box information for each block, line, and word in the file.
-	 * @param {Number=} options.cropHeight - Specifies the height of crop area in pixels
+	 * @param {number=} options.cropHeight - Specifies the height of crop area in pixels
 	 * (image output) or points (vector output).
-	 * @param {Number=} options.cropWidth - Specifies the width of crop area in pixels
+	 * @param {number=} options.cropWidth - Specifies the width of crop area in pixels
 	 * (image output) or points (vector output).
-	 * @param {Number=} options.cropXAxis - Specifies the x-coordinate of the crop area top left
+	 * @param {number=} options.cropXAxis - Specifies the x-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
-	 * @param {Number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
+	 * @param {number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
 	 * @param {('unix'|'dos'|'mac')=} options.eolConvention - Sets the end-of-line convention to use for
 	 * text output: unix; dos; mac.
-	 * @param {Number=} options.firstPageToConvert - Specifies the first page to convert.
-	 * @param {Number=} options.fixedWidthLayout - Assume fixed-pitch (or tabular) text, with the
+	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
+	 * @param {number=} options.fixedWidthLayout - Assume fixed-pitch (or tabular) text, with the
 	 * specified character width (in points). This forces physical layout mode.
-	 * @param {Boolean=} options.generateHtmlMetaFile Generate simple HTML file, including the
+	 * @param {boolean=} options.generateHtmlMetaFile Generate simple HTML file, including the
 	 * meta information. This simply wraps the text in <pre> and </pre> and prepends the meta headers.
-	 * @param {Number=} options.lastPageToConvert - Specifies the last page to convert.
-	 * @param {Boolean=} options.listEncodingOptions - List the available encodings.
-	 * @param {Boolean=} options.maintainLayout - Maintain (as best as possible) the original physical
+	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
+	 * @param {boolean=} options.listEncodingOptions - List the available encodings.
+	 * @param {boolean=} options.maintainLayout - Maintain (as best as possible) the original physical
 	 * layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and
 	 * output the text in reading order.
-	 * @param {Boolean=} options.noDiagonalText - Discard diagonal text.
-	 * @param {Boolean=} options.noPageBreaks - Don't insert page breaks (form feed characters)
+	 * @param {boolean=} options.noDiagonalText - Discard diagonal text.
+	 * @param {boolean=} options.noPageBreaks - Don't insert page breaks (form feed characters)
 	 * between pages.
-	 * @param {String=} options.outputEncoding - Sets the encoding to use for text output.
+	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
 	 * This defaults to "UTF-8".
-	 * @param {String=} options.ownerPassword - Owner password (for encrypted files).
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @param {Boolean=} options.quiet - Don't print any messages or errors.
-	 * @param {Boolean=} options.rawLayout - Keep the text in content stream order. This is a
+	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {boolean=} options.rawLayout - Keep the text in content stream order. This is a
 	 * hack which often "undoes" column formatting, etc. Use of raw mode is no longer recommended.
-	 * @param {String=} options.userPassword - User password (for encrypted files).
-	 * @param {String} file - Filepath of the PDF file to read.
-	 * @param {String=} outputFile - Filepath of the file to output the results to.
+	 * @param {string=} options.userPassword - User password (for encrypted files).
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise}
 	 */
 	pdfToText(options = {}, file, outputFile) {
@@ -1102,11 +1102,11 @@ class Poppler {
 	 * @description Merges several PDF files in order of their occurrence in the files array to
 	 * one PDF result file.
 	 *
-	 * @param {Object=} options
-	 * @param {Boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {object=} options
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {Array} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: 'path/to/directory/*.pdf'.
-	 * @param {String=} outputFile - Filepath of the file to output the resulting merged PDF to.
+	 * @param {string=} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @returns {Promise}
 	 */
 	pdfUnite(options = {}, files, outputFile) {

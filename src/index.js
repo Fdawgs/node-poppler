@@ -85,7 +85,7 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Embeds files (attachments) into a PDF file.
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.replace - Replace embedded file with same name (if it exists).
 	 * @param {string} file - Filepath of the PDF file to read.
@@ -132,7 +132,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
 	 * File names are converted to the text encoding specified by the 'outputEncoding' option.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
@@ -199,7 +199,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToExamine - Specifies the first page to examine.
 	 * @param {number=} options.lastPageToExamine - Specifies the last page to examine.
 	 * @param {boolean=} options.listSubstitutes - List the substitute fonts that poppler
@@ -251,7 +251,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.allFiles - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
 	 * CMYK files are written as TIFF files. All other images are written as PNG files.
 	 * @param {boolean=} options.ccittFile - Generate CCITT images as CCITT files.
@@ -323,7 +323,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Prints the contents of the ´Info' dictionary from a PDF file.
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToConvert - First page to print.
 	 * @param {number=} options.lastPageToConvert - Last page to print.
 	 * @param {boolean=} options.listEncodingOptions - List the available encodings.
@@ -403,7 +403,7 @@ class Poppler {
 	 * and writes one PDF file for each page to outputPattern.
 	 * This will not work if the file is encrypted.
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToExtract - Specifies the first page to extract.
 	 * This defaults to page 1.
 	 * @param {number=} options.lastPageToExtract - Specifies the last page to extract.
@@ -455,7 +455,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 	 *
-	 * @param {object} options
+	 * @param {object} options - Object containing options to pass to binary.
 	 * @param {('default'|'none'|'gray'|'subpixel'|'fast'|'good'|'best')=} options.antialias Set the cairo
 	 * antialias option used for text and drawing in image files (or rasterized regions in vector output).
 	 * @param {boolean=} options.cropBox - Uses the crop box rather than media box when
@@ -624,7 +624,7 @@ class Poppler {
 	 * Poppler will use the directory and name of the original file
 	 * and append '-html' to the end of the filename.
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
 	 * @param {boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
 	 * @param {boolean=} options.extractHidden - Force hidden text extraction.
@@ -714,7 +714,7 @@ class Poppler {
 	 * grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 	 * in Portable Bitmap (PBM) format.
 	 *
-	 * @param {object} options
+	 * @param {object} options - Object containing options to pass to binary.
 	 * @param {('yes'|'no')=} options.antialiasFonts - Enable or disable font anti-aliasing.
 	 * This defaults to "yes".
 	 * @param {('yes'|'no')=} options.antialiasVectors - Enable or disable vector anti-aliasing.
@@ -837,7 +837,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts PDF to PostScript (PS).
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {('yes'|'no')=} options.antialias - Enable anti-aliasing on rasterization, accepts "yes" or "no".
 	 * @param {boolean=} options.binary - Write binary data in Level 1 PostScript. By default,
 	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
@@ -999,7 +999,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts PDF to TXT.
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.boundingBoxXhtml Generate an XHTML file containing bounding
 	 * box information for each word in the file.
 	 * @param {boolean=} options.boundingBoxXhtmlLayout Generate an XHTML file containing
@@ -1103,7 +1103,7 @@ class Poppler {
 	 * @description Merges several PDF files in order of their occurrence in the files array to
 	 * one PDF result file.
 	 *
-	 * @param {object=} options
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {Array} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: 'path/to/directory/*.pdf'.

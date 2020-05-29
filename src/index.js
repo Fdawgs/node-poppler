@@ -1,3 +1,5 @@
+/* eslint-disable promise/always-return */
+/* eslint-disable promise/catch-or-return */
 const os = require('os');
 const path = require('path');
 const { execFile } = require('child_process');

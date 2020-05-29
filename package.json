@@ -12,6 +12,9 @@
 	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
 	"author": "Frazer Smith",
 	"license": "MIT",
+	"engines": {
+		"node": ">=12.16.3"
+	},
 	"scripts": {
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"doc": "jsdoc2md src/index.js > API.md && prettier API.md --write",
@@ -48,12 +51,15 @@
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-import": "^2.20.2",
 		"eslint-plugin-jest": "^23.9.0",
+		"eslint-plugin-jsdoc": "^25.4.3",
 		"eslint-plugin-json": "^2.1.1",
+		"eslint-plugin-promise": "^4.2.1",
 		"glob": "^7.1.6",
 		"jest": "^25.5.4",
 		"jsdoc-to-markdown": "^5.0.3",
 		"jsinspect": "^0.12.7",
 		"prettier": "2.0.5",
 		"typescript": "^3.8.3"
-	}
+	},
+	"dependencies": {}
 }

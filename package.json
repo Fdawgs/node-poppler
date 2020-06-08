@@ -59,7 +59,7 @@
 		"jsdoc-to-markdown": "^6.0.1",
 		"jsinspect": "^0.12.7",
 		"prettier": "2.0.5",
-		"typescript": "^3.9.3"
+		"typescript": "^3.9.5"
 	},
 	"dependencies": {}
 }

@@ -1,6 +1,6 @@
-prefix=C:/tools/Anaconda3/envs/snow/Library
-libdir=C:/tools/Anaconda3/envs/snow/Library/lib
-includedir=C:/tools/Anaconda3/envs/snow/Library/include
+prefix=C:/tools/Poppler
+libdir=C:/tools/Poppler/lib
+includedir=C:/tools/Poppler/include
 
 Name: poppler-cpp
 Description: cpp backend for Poppler PDF rendering library

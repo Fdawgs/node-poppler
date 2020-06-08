@@ -1,0 +1,10 @@
+prefix=C:/tools/Anaconda3/envs/snow/Library
+libdir=C:/tools/Anaconda3/envs/snow/Library/lib
+includedir=C:/tools/Anaconda3/envs/snow/Library/include
+
+Name: poppler
+Description: PDF rendering library
+Version: 0.89.0
+
+Libs: -L${libdir} -lpoppler
+Cflags: -I${includedir}/poppler

@@ -71,7 +71,7 @@ class Poppler {
 						__dirname,
 						'lib',
 						'darwin',
-						'poppler-0.66.0',
+						'poppler-0.89.0',
 						'bin'
 					);
 					break;

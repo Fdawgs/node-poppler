@@ -1,0 +1,8 @@
+prefix=/Users/chetanverma/projects/poppler/poppler-0.89.0/build/poppler-0.89-build
+libdir=/Users/chetanverma/projects/poppler/poppler-0.89.0/build/poppler-0.89-build/lib
+includedir=/Users/chetanverma/projects/poppler/poppler-0.89.0/build/poppler-0.89-build/include
+
+Name: poppler-cairo
+Description: Cairo backend for Poppler PDF rendering library
+Version: 0.89.0
+Requires: poppler = 0.89.0 cairo >= 1.10.0

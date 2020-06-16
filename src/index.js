@@ -12,8 +12,9 @@ const platform = os.platform();
  * @param {Array} args
  * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
  */
-function parseOptions(options, acceptedOptions, args) {
+function parseOptions(options, acceptedOptions) {
 	return new Promise((resolve, reject) => {
+		const args = [];
 		Object.keys(options).forEach((key) => {
 			if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
 				// eslint-disable-next-line valid-typeof
@@ -100,11 +101,8 @@ class Poppler {
 				replace: { arg: '-replace', type: 'boolean' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 					args.push(fileToAttach);
 					args.push(outputFile);
@@ -169,11 +167,8 @@ class Poppler {
 				userPassword: { arg: '-upw', type: 'string' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 
 					execFile(
@@ -221,11 +216,8 @@ class Poppler {
 				userPassword: { arg: '-upw', type: 'string' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 
 					execFile(
@@ -290,11 +282,8 @@ class Poppler {
 				userPassword: { arg: '-upw', type: 'string' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 					if (outputPrefix) {
 						args.push(outputPrefix);
@@ -371,11 +360,8 @@ class Poppler {
 				userPassword: { arg: '-upw', type: 'string' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 
 					execFile(
@@ -423,11 +409,8 @@ class Poppler {
 				printVersionInfo: { arg: '-v', type: 'boolean' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 					args.push(outputPattern);
 
@@ -589,11 +572,8 @@ class Poppler {
 				userPassword: { arg: '-upw', type: 'string' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 					if (outputFile) {
 						args.push(outputFile);
@@ -682,11 +662,8 @@ class Poppler {
 				zoom: { arg: '-zoom', type: 'number' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 
 					execFile(
@@ -805,11 +782,8 @@ class Poppler {
 				userPassword: { arg: '-upw', type: 'string' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 					args.push(outputPath);
 
@@ -968,11 +942,8 @@ class Poppler {
 				userPassword: { arg: '-upw', type: 'string' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 					args.push(outputFile);
 
@@ -1069,11 +1040,8 @@ class Poppler {
 				userPassword: { arg: '-upw', type: 'string' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					args.push(file);
 					if (outputFile) {
 						args.push(outputFile);
@@ -1116,11 +1084,8 @@ class Poppler {
 				printVersionInfo: { arg: '-v', type: 'boolean' }
 			};
 
-			// Build array of args based on options passed
-			const args = [];
-
-			parseOptions(options, acceptedOptions, args).then(
-				() => {
+			parseOptions(options, acceptedOptions).then(
+				(args) => {
 					files.forEach((element) => {
 						args.push(element);
 					});

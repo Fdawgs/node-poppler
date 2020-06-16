@@ -6,6 +6,10 @@ const { Poppler } = require('./index');
 const testDirectory = `${__dirname}/../test_docs/`;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
+/**
+ * @description Removes leftover test files.
+ * @returns {Promise<string>} 'done' on resolve. 
+ */
 function clean() {
 	return new Promise((resolve) => {
 		const files = glob.GlobSync(

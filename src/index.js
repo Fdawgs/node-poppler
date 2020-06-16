@@ -7,9 +7,8 @@ const platform = os.platform();
 /**
  * @author Frazer Smith
  * @description Check each option provided is valid and of the correct type.
- * @param {object} options
- * @param {object} acceptedOptions
- * @param {Array} args
+ * @param {object} options - Object containing options to pass to binary.
+ * @param {object} acceptedOptions - Object containing options that a binary accepts.
  * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
  */
 function parseOptions(options, acceptedOptions) {

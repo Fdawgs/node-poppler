@@ -32,15 +32,6 @@ module.exports = {
 				maxEOF: 0
 			}
 		],
-		'prefer-destructuring': 'off',
-		'promise/always-return': 'off',
-		'promise/catch-or-return': [
-			'error',
-			{
-				allowThen: true
-			}
-		],
-		'promise/prefer-await-to-then': 'warn',
-		'promise/prefer-await-to-callbacks': 'warn'
+		'prefer-destructuring': 'off'
 	}
 };

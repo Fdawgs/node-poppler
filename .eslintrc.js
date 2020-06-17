@@ -32,6 +32,8 @@ module.exports = {
 				maxEOF: 0
 			}
 		],
-		'prefer-destructuring': 'off'
+		'prefer-destructuring': 'off',
+		'promise/prefer-await-to-callbacks': 'warn',
+		'promise/prefer-await-to-then': 'warn'
 	}
 };

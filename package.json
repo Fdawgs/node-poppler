@@ -42,7 +42,7 @@
 		"useTabs": true
 	},
 	"devDependencies": {
-		"@commitlint/config-conventional": "^8.3.4",
+		"@commitlint/config-conventional": "^9.0.1",
 		"conventional-changelog-cli": "^2.0.34",
 		"coveralls": "^3.1.0",
 		"cross-env": "^7.0.2",

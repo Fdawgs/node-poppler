@@ -21,7 +21,7 @@
 		"dupe-check": "yarn jsinspect ./src",
 		"jest": "jest src --coverage",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx",
-		"prettier": "prettier . --write --ignore-path .gitignore",
+		"prettier": "prettier . --write",
 		"test": "yarn lint && yarn test-only",
 		"test-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
 		"test-only": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand"
@@ -61,5 +61,7 @@
 		"prettier": "2.0.5",
 		"typescript": "^3.9.5"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"execa": "^4.0.2"
+	}
 }

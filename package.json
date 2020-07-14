@@ -22,8 +22,8 @@
 		"doc": "jsdoc2md src/index.js > API.md && prettier API.md --write",
 		"dupe-check": "yarn jsinspect ./src",
 		"jest": "jest src --coverage",
-		"lint": "eslint . --cache --ext js,jsx,ts,tsx",
-		"prettier": "prettier . --write",
+		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
+		"prettier": "prettier . --write --ignore-path .gitignore",
 		"test": "yarn lint && yarn test-only",
 		"test-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
 		"test-only": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand"

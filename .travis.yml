@@ -2,6 +2,8 @@ language: node_js
 
 cache: yarn
 
+dist: bionic
+
 node_js:
     - 'lts/*'
     - 'node'
@@ -34,9 +36,9 @@ jobs:
           node_js: lts/*
           os: linux
           deploy:
-            provider: npm
-            email: devfrazs@outlook.com
-            api_token:
-                secure: nqrKpbaiRCy6XvkFQFWnx50PQ51CSvZN+u+Je7SZS9qKQproXTgdfrrui+jHuasuWJzJsKzbTy2Q+WglDvYxpS/O5kyHV2MiDj/4+wEMNUNZZRpbiBOPBvp5Y8laCC6OP+sWGPBTEhyNSvEvT9O27CgQRv/cilZRrYfNPEjNWyZ65srXAHHAu8DdX0kJpnVHlSitqUgrx5pEo/DUV3S7mAfSDueRlvbcM/bgzPAsmochKmN5rFD7rSRfTRGPLa0wZ073tz2RkS/21DlRNCfeqZKleq4kUf8ZhJQx2yi/OdE4rUVeT8pyCxFSDQJ63G6kIdyl5nCqaueiBHiV/xSseQBi6yhC67q1jFjeM6bJMdUYESkiK0T3L8QMbE5p2iK3EkC9A423R5QCXM7B/5Pjc2P8Mf934VJVx40Nl78wxPEteYf1CJcyfkDPGJ8Wbw2C2w7V0NVw7gceYnd9T1MlG9qZOi9ksfv1VD6O060SZZnD1iYc1v82lEfHcTBq+XVax/RjmVgrd6HKipV6oJa1TEpC82FwQWFS2XtNewi7UlvFEnQHmVTrm3nPGoMUS9p1AeFH61QPSl90ijmIKYme9z+zQ9g4/S7kmmE2Ozhet6r4eWtwlmIZ6PGo/k32Z/kHAMHgslokpc8OCuGhKIcxUZ23FkM43Ef6Ow7Hy/GspS4=
-            on:
-                tags: true
+              provider: npm
+              email: devfrazs@outlook.com
+              api_token:
+                  secure: nqrKpbaiRCy6XvkFQFWnx50PQ51CSvZN+u+Je7SZS9qKQproXTgdfrrui+jHuasuWJzJsKzbTy2Q+WglDvYxpS/O5kyHV2MiDj/4+wEMNUNZZRpbiBOPBvp5Y8laCC6OP+sWGPBTEhyNSvEvT9O27CgQRv/cilZRrYfNPEjNWyZ65srXAHHAu8DdX0kJpnVHlSitqUgrx5pEo/DUV3S7mAfSDueRlvbcM/bgzPAsmochKmN5rFD7rSRfTRGPLa0wZ073tz2RkS/21DlRNCfeqZKleq4kUf8ZhJQx2yi/OdE4rUVeT8pyCxFSDQJ63G6kIdyl5nCqaueiBHiV/xSseQBi6yhC67q1jFjeM6bJMdUYESkiK0T3L8QMbE5p2iK3EkC9A423R5QCXM7B/5Pjc2P8Mf934VJVx40Nl78wxPEteYf1CJcyfkDPGJ8Wbw2C2w7V0NVw7gceYnd9T1MlG9qZOi9ksfv1VD6O060SZZnD1iYc1v82lEfHcTBq+XVax/RjmVgrd6HKipV6oJa1TEpC82FwQWFS2XtNewi7UlvFEnQHmVTrm3nPGoMUS9p1AeFH61QPSl90ijmIKYme9z+zQ9g4/S7kmmE2Ozhet6r4eWtwlmIZ6PGo/k32Z/kHAMHgslokpc8OCuGhKIcxUZ23FkM43Ef6Ow7Hy/GspS4=
+              on:
+                  tags: true

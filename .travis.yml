@@ -4,6 +4,9 @@ cache: yarn
 
 dist: bionic
 
+git:
+    quiet: true
+
 node_js:
     - 'lts/*'
     - 'node'
@@ -28,13 +31,16 @@ script: echo "Running tests against $(node -v)..." && yarn test
 
 jobs:
     include:
-        - stage: Produce Coverage
+        - stage: test
+          name: produce coverage
           node_js: lts/*
           os: windows
           script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-        - stage: NPM release
+        - stage: deploy
+          name: NPM release
           node_js: lts/*
           os: linux
+          script: skip
           deploy:
               provider: npm
               email: devfrazs@outlook.com

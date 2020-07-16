@@ -1,5 +1,6 @@
 const fs = require('fs');
 const glob = require('glob');
+const os = require('os');
 const path = require('path');
 const { Poppler } = require('./index');
 
@@ -28,13 +29,34 @@ describe('Constructor', () => {
 	});
 
 	test('Should convert PDF file to SVG file with binary path set', async () => {
-		const testPath = path.join(
-			__dirname,
-			'lib',
-			'win32',
-			'poppler-0.89.0',
-			'bin'
-		);
+		const platform = os.platform();
+		let testPath;
+
+		switch (platform) {
+			// Windows OS
+			case 'win32':
+			default:
+				testPath = path.join(
+					__dirname,
+					'lib',
+					'win32',
+					'poppler-0.89.0',
+					'bin'
+				);
+				break;
+
+			// macOS
+			case 'darwin':
+				testPath = path.join(
+					__dirname,
+					'lib',
+					'darwin',
+					'poppler-0.89.0',
+					'bin'
+				);
+				break;
+		}
+
 		const poppler = new Poppler(testPath);
 		const options = {
 			svgFile: true

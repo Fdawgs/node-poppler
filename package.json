@@ -60,8 +60,7 @@
 		"jest": "^26.1.0",
 		"jsdoc-to-markdown": "^6.0.1",
 		"jsinspect": "^0.12.7",
-		"prettier": "2.0.5",
-		"typescript": "^3.9.5"
+		"prettier": "2.0.5"
 	},
 	"dependencies": {
 		"execa": "^4.0.2"

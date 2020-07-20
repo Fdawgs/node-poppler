@@ -873,9 +873,9 @@ class Poppler {
 	 * @description Converts PDF to TXT.
 	 *
 	 * @param {object=} options - Object containing options to pass to binary.
-	 * @param {boolean=} options.boundingBoxXhtml Generate an XHTML file containing bounding
+	 * @param {boolean=} options.boundingBoxXhtml - Generate an XHTML file containing bounding
 	 * box information for each word in the file.
-	 * @param {boolean=} options.boundingBoxXhtmlLayout Generate an XHTML file containing
+	 * @param {boolean=} options.boundingBoxXhtmlLayout - Generate an XHTML file containing
 	 * bounding box information for each block, line, and word in the file.
 	 * @param {number=} options.cropHeight - Specifies the height of crop area in pixels
 	 * (image output) or points (vector output).

@@ -40,7 +40,7 @@ describe('Constructor', () => {
 					__dirname,
 					'lib',
 					'win32',
-					'poppler-0.89.0',
+					'poppler-0.90.0',
 					'bin'
 				);
 				break;

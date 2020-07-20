@@ -58,7 +58,7 @@ class Poppler {
 						__dirname,
 						'lib',
 						'win32',
-						'poppler-0.89.0',
+						'poppler-0.90.0',
 						'bin'
 					);
 					break;
@@ -627,6 +627,8 @@ class Poppler {
 	 * corner in pixels (image output) or points (vector output).
 	 * @param {number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
+	 * @param {string=} options.displayProfile - If Poppler is compiled with colour management support, this option
+	 * sets the display profile to the ICC profile stored in the display profile file passed.
 	 * @param {boolean=} options.evenPagesOnly - Generates only the even numbered pages.
 	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {('yes'|'no')=} options.freetype - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
@@ -675,6 +677,7 @@ class Poppler {
 			cropWidth: { arg: '-W', type: 'number' },
 			cropXAxis: { arg: '-x', type: 'number' },
 			cropYAxis: { arg: '-y', type: 'number' },
+			displayProfile: { arg: '-displayprofile', type: 'string' },
 			evenPagesOnly: { arg: '-e', type: 'boolean' },
 			firstPageToConvert: { arg: '-f', type: 'number' },
 			freetype: { arg: '-freetype', type: 'string' },
@@ -762,11 +765,11 @@ class Poppler {
 	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
 	 * No attempt is made to substitute for non-embedded CID TrueType fonts.
 	 * @param {boolean=} options.noEmbedTrueTypeFonts - By default, any TrueType fonts which are embedded
-	 * in the PDF file are copied into the PostScript file. This option causes pdftops to substitute base fonts instead.
+	 * in the PDF file are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead.
 	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
 	 * Also, some PostScript interpreters do not have TrueType rasterizers.
 	 * @param {boolean=} options.noEmbedType1Fonts - By default, any Type 1 fonts which are embedded in the PDF file
-	 * are copied into the PostScript file. This option causes pdftops to substitute base fonts instead.
+	 * are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead.
 	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
 	 * @param {boolean=} options.noCenter - By default, PDF pages smaller than the paper
 	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
@@ -797,6 +800,11 @@ class Poppler {
 	 * @param {boolean=} options.preload - Preload images and forms.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {boolean=} options.quiet - Do not print any messages or errors.
+	 * @param {('always'|'never'|'whenneeded')=} options.rasterize - By default, pdfToPs rasterizes pages as needed,
+	 * for example, if they contain transparencies. To force rasterization, set `rasterize` to `always`.
+	 * Use this to eliminate fonts.
+	 * To prevent rasterization, set `rasterize` to `never`.
+	 * This may produce files that display incorrectly.
 	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
 	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
@@ -845,6 +853,7 @@ class Poppler {
 			preload: { arg: '-preload', type: 'boolean' },
 			printVersionInfo: { arg: '-v', type: 'boolean' },
 			quiet: { arg: '-q', type: 'boolean' },
+			rasterize: { args: '-rasterize', type: 'string' },
 			resolutionXYAxis: { arg: '-r', type: 'number' },
 			userPassword: { arg: '-upw', type: 'string' }
 		};

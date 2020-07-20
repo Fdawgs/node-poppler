@@ -121,23 +121,23 @@ class Poppler {
 	 *
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
-	 * File names are converted to the text encoding specified by the 'outputEncoding' option.
+	 * File names are converted to the text encoding specified by the `outputEncoding` option.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
-	 * This defaults to "UTF-8".
+	 * This defaults to `UTF-8`.
 	 * @param {string=} options.outputPath - Set the file name used when saving an embedded file with
-	 * the save option enabled, or the directory if the 'saveall' option is used.
+	 * the save option enabled, or the directory if the `saveall` option is used.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.saveAllFiles - Save all of the embedded files. This uses the file
-	 * names associated with the embedded files (as printed by the 'listEmbedded' option).
+	 * names associated with the embedded files (as printed by the `listEmbedded` option).
 	 * By default, the files are saved in the current directory; this can be changed
-	 * with the 'outputPath' option.
+	 * with the `outputPath` option.
 	 * @param {string=} options.saveFile - Save the specified embedded file.
 	 * By default, this uses the file name associated with the embedded file (as printed by the
-	 * 'listEmbedded' option); the file name can be changed with the 'outputPath' option.
+	 * `listEmbedded` option); the file name can be changed with the `outputPath` option.
 	 * @param {number=} options.saveSpecificFile - Save the specified embedded file.
 	 * By default, this uses the file name associated with the embedded file (as printed by the
-	 * 'listEmbedded' option); the file name can be changed with the 'outputPath' option.
+	 * `listEmbedded` option); the file name can be changed with the `outputPath` option.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
@@ -269,14 +269,14 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Prints the contents of the ´Info' dictionary from a PDF file.
+	 * @description Prints the contents of the `Info` dictionary from a PDF file.
 	 *
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToConvert - First page to print.
 	 * @param {number=} options.lastPageToConvert - Last page to print.
 	 * @param {boolean=} options.listEncodingOptions - List the available encodings.
 	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
-	 * This defaults to "UTF-8".
+	 * This defaults to `UTF-8`.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {boolean=} options.printBoundingBoxes - Prints the page box bounding boxes:
 	 * MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.
@@ -288,10 +288,10 @@ class Poppler {
 	 * for big PDF files.
 	 * @param {boolean=} options.printIsoDates - Prints dates in ISO-8601 format (including the time zone).
 	 * @param {boolean=} options.printJS - Prints all JavaScript in the PDF file.
-	 * @param {boolean=} options.printMetadata - Prints document-level metadata. (This is the "Metadata"
+	 * @param {boolean=} options.printMetadata - Prints document-level metadata. (This is the `Metadata`
 	 * stream from the PDF file's Catalog object).
 	 * @param {boolean=} options.printNamedDests - Print a list of all named destinations. If a page range
-	 * is specified using the 'firstPageToConvert' and 'lastPageToConvert' options, only destinations
+	 * is specified using the `firstPageToConvert` and `lastPageToConvert` options, only destinations
 	 * in the page range are listed.
 	 * @param {boolean=} options.printRawDates - Prints the raw (undecoded) date strings, directly from the PDF file.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
@@ -347,7 +347,7 @@ class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} outputPattern - Should contain %d (or any variant respecting printf format),
 	 * since %d is replaced by the page number.
-	 * As an example, 'sample-%d.pdf' will produce 'sample-1.pdf' for a single page document.
+	 * As an example, `sample-%d.pdf` will produce `sample-1.pdf` for a single page document.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfSeparate(options = {}, file, outputPattern) {
@@ -394,8 +394,8 @@ class Poppler {
 	 * @param {boolean=} options.duplex - Adds the %%IncludeFeature: *Duplex DuplexNoTumble DSC
 	 * comment to the PostScript file (PS only). This tells the print manager to enable duplexing.
 	 * @param {boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
-	 * so if you use this option with a multi-page PDF file, you must use 'firstPageToConvert' and
-	 * 'lastPageToConvert' to specify a single page.
+	 * so if you use this option with a multi-page PDF file, you must use `firstPageToConvert` and
+	 * `lastPageToConvert` to specify a single page.
 	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
 	 * with this option.
 	 * @param {boolean=} options.evenPagesOnly - Generates only the even numbered pages.
@@ -413,7 +413,7 @@ class Poppler {
 	 * the lower-left corner of the paper instead (PS,PDF,SVG only).
 	 * @param {boolean=} options.noCrop - By default, printing output is cropped to the CropBox
 	 * specified in the PDF file. This option disables cropping (PS, PDF, SVG only).
-	 * @param {boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper
+	 * @param {boolean=} options.noShrink - Do not scale PDF pages which are larger than the paper
 	 * (PS,PDF,SVG only). By default, pages larger than the paper are shrunk to fit.
 	 * @param {boolean=} options.oddPagesOnly - Generates only the odd numbered pages.
 	 * @param {boolean=} options.originalPageSizes - Set the paper size of each page to match
@@ -421,8 +421,8 @@ class Poppler {
 	 * @param {string=} options.ownerPassword - Specify the owner password for the PDF file.
 	 * Providing this will bypass all security restrictions.
 	 * @param {number=} options.paperHeight - Set the paper height, in points (PS, PDF, SVG only).
-	 * @param {('letter'|'legal'|'A4'|'A3'|'match')=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
-	 * or "A3" (PS,PDF,SVG only). This can also be set to "match", which will set the paper size
+	 * @param {('letter'|'legal'|'A4'|'A3'|'match')=} options.paperSize - Set the paper size to one of `letter`, `legal`, `A4`,
+	 * or `A3` (PS,PDF,SVG only). This can also be set to `match`, which will set the paper size
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
 	 * @param {number=} options.paperWidth - Set the paper width, in points (PS,PDF,SVG only).
@@ -433,7 +433,7 @@ class Poppler {
 	 * @param {boolean=} options.psLevel2 - Generate Level 2 PostScript (PS only).
 	 * @param {boolean=} options.psLevel3 - Generate Level 3 PostScript (PS only). This enables all
 	 * Level 2 features plus shading patterns and masked images. This is the default setting.
-	 * @param {boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {boolean=} options.quiet - Do not print any messages or errors.
 	 * @param {number=} options.resolutionXAxis - Specifies the X resolution, in pixels per inch of
 	 * image files (or rasterized regions in vector output). The default is 150 PPI.
 	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
@@ -531,7 +531,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts PDF file to HTML.
 	 * Poppler will use the directory and name of the original file
-	 * and append '-html' to the end of the filename.
+	 * and append `-html` to the end of the filename.
 	 *
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
@@ -549,7 +549,7 @@ class Poppler {
 	 * @param {boolean=} options.noRoundedCoordinates - Do not round coordinates
 	 * (with XML output only).
 	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
-	 * This defaults to "UTF-8".
+	 * This defaults to `UTF-8`.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.quiet - Do not print any messages or errors.
@@ -612,9 +612,9 @@ class Poppler {
 	 *
 	 * @param {object} options - Object containing options to pass to binary.
 	 * @param {('yes'|'no')=} options.antialiasFonts - Enable or disable font anti-aliasing.
-	 * This defaults to "yes".
+	 * This defaults to `yes`.
 	 * @param {('yes'|'no')=} options.antialiasVectors - Enable or disable vector anti-aliasing.
-	 * This defaults to "yes".
+	 * This defaults to `yes`.
 	 * @param {boolean=} options.cropBox - Uses the crop box rather than media box when
 	 * generating the files (PNG/JPEG/TIFF only).
 	 * @param {number=} options.cropHeight - Specifies the height of crop area in pixels
@@ -630,7 +630,7 @@ class Poppler {
 	 * @param {boolean=} options.evenPagesOnly - Generates only the even numbered pages.
 	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {('yes'|'no')=} options.freetype - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
-	 * This defaults to "yes".
+	 * This defaults to `yes`.
 	 * @param {boolean=} options.grayscaleFile - Generate grayscale PGM file (instead of a color PPM file).
 	 * @param {boolean=} options.jpegFile - Generate JPEG file instead a PPM file.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
@@ -640,7 +640,7 @@ class Poppler {
 	 * Providing this will bypass all security restrictions.
 	 * @param {boolean=} options.pngFile - Generate PNG file instead a PPM file.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @param {boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {boolean=} options.quiet - Do not print any messages or errors.
 	 * @param {number=} options.resolutionXAxis - Specifies the X resolution, in pixels per inch of
 	 * image files (or rasterized regions in vector output). The default is 150 PPI.
 	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
@@ -657,7 +657,7 @@ class Poppler {
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page.
 	 * @param {boolean=} options.singleFile - Writes only the first page and does not add digits.
-	 * @param {('none'|'solid'|'shape')=} options.thinLineMode - Specifies the thin line mode. This defaults to "none".
+	 * @param {('none'|'solid'|'shape')=} options.thinLineMode - Specifies the thin line mode. This defaults to `none`.
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
 	 * @param {boolean=} options.tiffFile - Generate TIFF file instead a PPM file.
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
@@ -720,7 +720,7 @@ class Poppler {
 	 * @description Converts PDF to PostScript (PS).
 	 *
 	 * @param {object=} options - Object containing options to pass to binary.
-	 * @param {('yes'|'no')=} options.antialias - Enable anti-aliasing on rasterization, accepts "yes" or "no".
+	 * @param {('yes'|'no')=} options.antialias - Enable anti-aliasing on rasterization, accepts `yes` or `no`.
 	 * @param {boolean=} options.binary - Write binary data in Level 1 PostScript. By default,
 	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
 	 * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
@@ -728,8 +728,8 @@ class Poppler {
 	 * @param {boolean=} options.duplex - Set the Duplex pagedevice entry in the PostScript file.
 	 * This tells duplex-capable printers to enable duplexing.
 	 * @param {boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
-	 * so if you use this option with a multi-page PDF file, you must use 'firstPageToConvert' and
-	 * 'lastPageToConvert' to specify a single page.
+	 * so if you use this option with a multi-page PDF file, you must use `firstPageToConvert` and
+	 * `lastPageToConvert` to specify a single page.
 	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
 	 * with this option.
 	 * @param {boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
@@ -738,9 +738,9 @@ class Poppler {
 	 * @param {number=} options.form - Generate PostScript form which can be imported by software
 	 * that understands forms.
 	 * A form contains a single page, so if you use this option with a multi-page PDF file,
-	 * you must use 'firstPageToConvert' and 'lastPageToConvert to specify a single page.
-	 * The 'level1' option cannot be used with -form.
-	 * No more than one of the mode options ('epsFile', 'form') may be given.
+	 * you must use `firstPageToConvert` and `lastPageToConvert` to specify a single page.
+	 * The `level1` option cannot be used with `form`.
+	 * No more than one of the mode options (`epsFile`, `form`) may be given.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {boolean=} options.level1 - Generate Level 1 PostScript. The resulting PostScript
 	 * files will be significantly larger (if they contain images), but will print on Level 1 printers.
@@ -754,7 +754,7 @@ class Poppler {
 	 * @param {boolean=} options.level3 - Generate Level 3 PostScript.
 	 * This enables all Level 2 featuresplus CID font embedding.
 	 * @param {boolean=} options.level3Sep - Generate Level 3 separable PostScript.
-	 * The separation handling is the same as for 'level2Sep'.
+	 * The separation handling is the same as for `level2Sep`.
 	 * @param {boolean=} options.noEmbedCIDFonts - By default, any CID PostScript fonts which are
 	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
 	 * No attempt is made to substitute for non-embedded CID PostScript fonts.
@@ -773,7 +773,7 @@ class Poppler {
 	 * the lower-left corner of the paper instead.
 	 * @param {boolean=} options.noCrop - By default, printing output is cropped to the CropBox
 	 * specified in the PDF file. This option disables cropping.
-	 * @param {boolean=} options.noShrink - Don't scale PDF pages which are larger than the paper.
+	 * @param {boolean=} options.noShrink - Do not scale PDF pages which are larger than the paper.
 	 * By default, pages larger than the paper are shrunk to fit.
 	 * @param {boolean=} options.opi - Generate OPI comments for all images and forms which have OPI information.
 	 * @param {boolean=} options.optimizecolorspace - By default, bitmap images in the PDF pass through to the
@@ -786,17 +786,17 @@ class Poppler {
 	 * @param {boolean=} options.overprint - Enable overprinting.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {number=} options.paperHeight - Set the paper height, in points.
-	 * @param {('letter'|'legal'|'A4'|'A3'|'match')=} options.paperSize - Set the paper size to one of "letter", "legal", "A4",
-	 * or "A3". This can also be set to "match", which will set the paper size
+	 * @param {('letter'|'legal'|'A4'|'A3'|'match')=} options.paperSize - Set the paper size to one of `letter`, `legal`, `A4`,
+	 * or `A3`. This can also be set to `match`, which will set the paper size
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
 	 * @param {number=} options.paperWidth - Set the paper width, in points.
 	 * @param {boolean=} options.passfonts - By default, references to non-embedded 8-bit fonts
-	 * in the PDF file are substituted with the closest "Helvetica", "Times-Roman", or "Courier" font.
+	 * in the PDF file are substituted with the closest `Helvetica`, `Times-Roman`, or `Courier` font.
 	 * This option passes references to non-embedded fonts through to the PostScript file.
 	 * @param {boolean=} options.preload - Preload images and forms.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @param {boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {boolean=} options.quiet - Do not print any messages or errors.
 	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
 	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
@@ -891,22 +891,22 @@ class Poppler {
 	 * @param {number=} options.fixedWidthLayout - Assume fixed-pitch (or tabular) text, with the
 	 * specified character width (in points). This forces physical layout mode.
 	 * @param {boolean=} options.generateHtmlMetaFile Generate simple HTML file, including the
-	 * meta information. This simply wraps the text in <pre> and </pre> and prepends the meta headers.
+	 * meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {boolean=} options.listEncodingOptions - List the available encodings.
 	 * @param {boolean=} options.maintainLayout - Maintain (as best as possible) the original physical
 	 * layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and
 	 * output the text in reading order.
 	 * @param {boolean=} options.noDiagonalText - Discard diagonal text.
-	 * @param {boolean=} options.noPageBreaks - Don't insert page breaks (form feed characters)
+	 * @param {boolean=} options.noPageBreaks - Do not insert page breaks (form feed characters)
 	 * between pages.
 	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
-	 * This defaults to "UTF-8".
+	 * This defaults to `UTF-8`.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @param {boolean=} options.quiet - Don't print any messages or errors.
+	 * @param {boolean=} options.quiet - Do not print any messages or errors.
 	 * @param {boolean=} options.rawLayout - Keep the text in content stream order. This is a
-	 * hack which often "undoes" column formatting, etc. Use of raw mode is no longer recommended.
+	 * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
@@ -968,7 +968,7 @@ class Poppler {
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {Array} files - Filepaths of the PDF files to merge.
-	 * An entire directory of PDF files can be merged like so: 'path/to/directory/*.pdf'.
+	 * An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`.
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */

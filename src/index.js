@@ -512,8 +512,11 @@ class Poppler {
 		try {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
-			args.push(outputFile);
-
+			if (outputFile) {
+				args.push(outputFile);
+			} else {
+				args.push('-');
+			}
 			const { stdout } = await execa(
 				path.join(this.popplerPath, 'pdftocairo'),
 				args
@@ -798,7 +801,7 @@ class Poppler {
 	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string} outputFile - Filepath of the file to output the results to.
+	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfToPs(options = {}, file, outputFile) {
@@ -849,7 +852,11 @@ class Poppler {
 		try {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
-			args.push(outputFile);
+			if (outputFile) {
+				args.push(outputFile);
+			} else {
+				args.push('-');
+			}
 
 			const { stdout } = await execa(
 				path.join(this.popplerPath, 'pdftops'),
@@ -939,6 +946,8 @@ class Poppler {
 			args.push(file);
 			if (outputFile) {
 				args.push(outputFile);
+			} else {
+				args.push('-');
 			}
 
 			const { stdout } = await execa(
@@ -960,7 +969,7 @@ class Poppler {
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {Array} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: 'path/to/directory/*.pdf'.
-	 * @param {string=} outputFile - Filepath of the file to output the resulting merged PDF to.
+	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfUnite(options = {}, files, outputFile) {
@@ -973,9 +982,7 @@ class Poppler {
 			files.forEach((element) => {
 				args.push(element);
 			});
-			if (outputFile) {
-				args.push(outputFile);
-			}
+			args.push(outputFile);
 
 			const { stdout } = await execa(
 				path.join(this.popplerPath, 'pdfunite'),

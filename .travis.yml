@@ -30,7 +30,9 @@ branches:
         - /^v\d*\.\d*\.\d*$/
         - /^dependabot/.*$/
 
-script: echo "Running tests against $(node -v)..." && yarn test
+script: 
+    - echo "Running tests against $(node -v)..."
+    - yarn test
 
 jobs:
     include:
@@ -38,7 +40,10 @@ jobs:
           name: produce coverage
           node_js: lts/*
           os: windows
-          script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+          script:
+            - jest --coverage
+            - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+            - rm -rf ./coverage
         - stage: deploy
           name: NPM release
           node_js: lts/*

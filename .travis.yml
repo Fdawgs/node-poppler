@@ -13,8 +13,8 @@ node_js:
 dist: focal
 
 os:
-    - windows
     - osx
+    - windows
 
 osx_image: xcode12
 

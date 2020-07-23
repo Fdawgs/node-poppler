@@ -10,11 +10,11 @@ node_js:
     - 'node'
 
 # os
-dist: bionic
+dist: focal
 
 os:
-    - windows
     - osx
+    - windows
 
 osx_image: xcode12
 
@@ -30,15 +30,28 @@ branches:
         - /^v\d*\.\d*\.\d*$/
         - /^dependabot/.*$/
 
-script: echo "Running tests against $(node -v)..." && yarn test
+script:
+    - echo "Running tests against $(node -v)..."
+    - yarn test
 
 jobs:
     include:
         - stage: test
+          name: linux deployment
+          node_js: lts/*
+          os: linux
+          script:
+              - sudo apt-get update
+              - sudo apt-get -y install poppler-data poppler-utils
+              - yarn test
+        - stage: test
           name: produce coverage
           node_js: lts/*
           os: windows
-          script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+          script:
+              - jest --coverage
+              - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+              - rm -rf ./coverage
         - stage: deploy
           name: NPM release
           node_js: lts/*

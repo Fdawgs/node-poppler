@@ -1,0 +1,10 @@
+prefix=C:/tools/Poppler
+libdir=C:/tools/Poppler/lib
+includedir=C:/tools/Poppler/include
+
+Name: poppler
+Description: PDF rendering library
+Version: 0.90.1
+
+Libs: -L${libdir} -lpoppler
+Cflags: -I${includedir}/poppler

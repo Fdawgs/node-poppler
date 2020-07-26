@@ -1,6 +1,6 @@
 {
 	"name": "node-poppler",
-	"version": "1.8.0",
+	"version": "1.8.1",
 	"description": "Asynchronous node.js wrapper for the Poppler PDF rendering library",
 	"keywords": [
 		"async",
@@ -52,9 +52,9 @@
 		"eslint-config-airbnb-base": "^14.2.0",
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-import": "^2.22.0",
-		"eslint-plugin-jest": "^23.18.0",
-		"eslint-plugin-jsdoc": "^30.0.2",
-		"eslint-plugin-json": "^2.1.1",
+		"eslint-plugin-jest": "^23.18.2",
+		"eslint-plugin-jsdoc": "^30.0.3",
+		"eslint-plugin-json": "^2.1.2",
 		"eslint-plugin-promise": "^4.2.1",
 		"glob": "^7.1.6",
 		"jest": "^26.1.0",

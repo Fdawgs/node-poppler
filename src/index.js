@@ -374,7 +374,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
+	 * @description Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 	 *
 	 * @param {object} options - Object containing options to pass to binary.
 	 * @param {('default'|'none'|'gray'|'subpixel'|'fast'|'good'|'best')=} options.antialias Set the cairo
@@ -529,7 +529,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts PDF file to HTML.
+	 * @description Converts a PDF file to HTML.
 	 * Poppler will use the directory and name of the original file
 	 * and append `-html` to the end of the filename.
 	 *
@@ -606,7 +606,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts PDF to to colour image files in Portable Pixmap (PPM) format,
+	 * @description Converts a PDF file to colour image files in Portable Pixmap (PPM) format,
 	 * grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 	 * in Portable Bitmap (PBM) format.
 	 *
@@ -720,7 +720,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts PDF to PostScript (PS).
+	 * @description Converts a PDF file to PostScript (PS).
 	 *
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {('yes'|'no')=} options.antialias - Enable anti-aliasing on rasterization, accepts `yes` or `no`.
@@ -879,7 +879,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts PDF to TXT.
+	 * @description Converts a PDF file to TXT.
 	 *
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.boundingBoxXhtml - Generate an XHTML file containing bounding

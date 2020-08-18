@@ -190,7 +190,7 @@ This will not work if the file is encrypted.
 
 ### poppler.pdfToCairo(options, file, [outputFile]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
-Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
+Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
@@ -251,7 +251,7 @@ Converts PDF to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 ### poppler.pdfToHtml([options], file) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
-Converts PDF file to HTML.
+Converts a PDF file to HTML.
 Poppler will use the directory and name of the original file
 and append `-html` to the end of the filename.
 
@@ -290,7 +290,7 @@ and append `-html` to the end of the filename.
 
 ### poppler.pdfToPpm(options, file, outputPath) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
-Converts PDF to to colour image files in Portable Pixmap (PPM) format,
+Converts a PDF file to colour image files in Portable Pixmap (PPM) format,
 grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 in Portable Bitmap (PBM) format.
 
@@ -340,7 +340,7 @@ in Portable Bitmap (PBM) format.
 
 ### poppler.pdfToPs([options], file, [outputFile]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
-Converts PDF to PostScript (PS).
+Converts a PDF file to PostScript (PS).
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
@@ -392,7 +392,7 @@ Converts PDF to PostScript (PS).
 
 ### poppler.pdfToText([options], file, [outputFile]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
-Converts PDF to TXT.
+Converts a PDF file to TXT.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  

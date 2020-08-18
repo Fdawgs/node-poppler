@@ -6,8 +6,9 @@ git:
     quiet: true
 
 node_js:
-    - 'lts/*'
-    - 'node'
+    - '10'
+    - '12'
+    - '14'
 
 # os
 dist: focal

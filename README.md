@@ -58,7 +58,7 @@ const { Poppler } = require('node-poppler');
 
 `options` object requires atleast one of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
 
-Example of calling poppler.pdfToCairo with a promise, to convert only the first and second page of a PDF file to PNG:
+Example of an async await call poppler.pdfToCairo, to convert only the first and second page of a PDF file to PNG:
 
 ```js
 const { Poppler } = require('node-poppler');
@@ -70,8 +70,9 @@ const options = {
 	lastPageToConvert: 2,
 	pngFile: true
 };
+const outputFile = `test_document.png`;
 
-const res = await poppler.pdfToCairo(options, file);
+const res = await poppler.pdfToCairo(options, file, outputFile);
 console.log(res);
 ```
 

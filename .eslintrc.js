@@ -8,6 +8,7 @@ module.exports = {
 		'plugin:promise/recommended',
 		'plugin:jest/recommended',
 		'plugin:jsdoc/recommended',
+		'plugin:security/recommended',
 		'prettier'
 	],
 	parserOptions: {

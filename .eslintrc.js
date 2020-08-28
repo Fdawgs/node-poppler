@@ -15,7 +15,7 @@ module.exports = {
 		ecmaVersion: 2020,
 		sourceType: 'module'
 	},
-	plugins: ['import', 'jest', 'jsdoc', 'json', 'promise'],
+	plugins: ['import', 'jest', 'jsdoc', 'json', 'promise', 'security'],
 	rules: {
 		'import/no-extraneous-dependencies': [
 			'error',

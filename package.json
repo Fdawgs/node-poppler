@@ -53,14 +53,14 @@
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-import": "^2.22.0",
 		"eslint-plugin-jest": "^23.20.0",
-		"eslint-plugin-jsdoc": "^30.2.4",
+		"eslint-plugin-jsdoc": "^30.3.0",
 		"eslint-plugin-json": "^2.1.2",
 		"eslint-plugin-promise": "^4.2.1",
 		"glob": "^7.1.6",
-		"jest": "^26.4.0",
+		"jest": "^26.4.2",
 		"jsdoc-to-markdown": "^6.0.1",
 		"jsinspect": "^0.12.7",
-		"prettier": "2.0.5"
+		"prettier": "2.1.1"
 	},
 	"dependencies": {
 		"execa": "^4.0.3"

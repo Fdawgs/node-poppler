@@ -1,7 +1,9 @@
 const os = require('os');
 const path = require('path');
-const execa = require('execa');
+const { execFile } = require('child_process');
+const util = require('util');
 
+const exec = util.promisify(execFile);
 const platform = os.platform();
 
 /**
@@ -105,7 +107,7 @@ class Poppler {
 			args.push(fileToAttach);
 			args.push(outputFile);
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdfattach'),
 				args
 			);
@@ -159,7 +161,7 @@ class Poppler {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdfdetach'),
 				args
 			);
@@ -198,7 +200,7 @@ class Poppler {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdffonts'),
 				args
 			);
@@ -257,7 +259,7 @@ class Poppler {
 				args.push(outputPrefix);
 			}
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdfimages'),
 				args
 			);
@@ -322,7 +324,7 @@ class Poppler {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdfinfo'),
 				args
 			);
@@ -362,7 +364,7 @@ class Poppler {
 			args.push(file);
 			args.push(outputPattern);
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdfseparate'),
 				args
 			);
@@ -517,7 +519,7 @@ class Poppler {
 			} else {
 				args.push('-');
 			}
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdftocairo'),
 				args
 			);
@@ -594,7 +596,7 @@ class Poppler {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdftohtml'),
 				args
 			);
@@ -708,7 +710,7 @@ class Poppler {
 			args.push(file);
 			args.push(outputPath);
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdftoppm'),
 				args
 			);
@@ -867,7 +869,7 @@ class Poppler {
 				args.push('-');
 			}
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdftops'),
 				args
 			);
@@ -959,7 +961,7 @@ class Poppler {
 				args.push('-');
 			}
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdftotext'),
 				args
 			);
@@ -993,7 +995,7 @@ class Poppler {
 			});
 			args.push(outputFile);
 
-			const { stdout } = await execa(
+			const { stdout } = await exec(
 				path.join(this.popplerPath, 'pdfunite'),
 				args
 			);

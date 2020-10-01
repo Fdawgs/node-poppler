@@ -1,0 +1,8 @@
+prefix=C:/tools/Anaconda3/envs/snow/Library
+libdir=C:/tools/Anaconda3/envs/snow/Library/lib
+includedir=C:/tools/Anaconda3/envs/snow/Library/include
+
+Name: poppler-splash
+Description: Splash backend for Poppler PDF rendering library
+Version: 20.09.0
+Requires: poppler = 20.09.0

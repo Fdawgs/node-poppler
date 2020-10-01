@@ -32,7 +32,7 @@ switch (platform) {
 			__dirname,
 			'lib',
 			'win32',
-			'poppler-0.90.1',
+			'poppler-20.09.0',
 			'bin'
 		);
 		break;

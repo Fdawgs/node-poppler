@@ -43,10 +43,10 @@ Prior to submitting a pull request back to the main repository, please make sure
 
 When cutting a release, the following steps need to be performed:
 
-1. `package.json` needs to have a version update based on the content being released, remembering to adhere to semantic versioning
-2. Generate the API docs if any changes have been made with `yarn doc`
-3. Generate the changelog with `yarn changelog`
-4. Create a release branch with the convention `release/x.x.x`
+1. Create a release branch with the convention `release/x.x.x`
+2. `package.json` needs to have a version update based on the content being released, remembering to adhere to semantic versioning
+3. Generate the API docs if any changes have been made with `yarn doc`
+4. Generate the changelog with `yarn changelog`
 5. Create a tag for the version; the naming convention is the version (vx.x.x)
 6. Push the tag to the repository
 7. Draft a release in the release tab with release notes, copying the notes from the changelog

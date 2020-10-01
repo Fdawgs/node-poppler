@@ -62,8 +62,5 @@
 		"jsdoc-to-markdown": "^6.0.1",
 		"jsinspect": "^0.12.7",
 		"prettier": "2.1.1"
-	},
-	"dependencies": {
-		"execa": "^4.0.3"
 	}
 }

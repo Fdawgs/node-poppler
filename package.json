@@ -52,7 +52,7 @@
 		"eslint-config-airbnb-base": "^14.2.0",
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-plugin-import": "^2.22.0",
-		"eslint-plugin-jest": "^23.20.0",
+		"eslint-plugin-jest": "^24.0.2",
 		"eslint-plugin-jsdoc": "^30.3.0",
 		"eslint-plugin-json": "^2.1.2",
 		"eslint-plugin-promise": "^4.2.1",

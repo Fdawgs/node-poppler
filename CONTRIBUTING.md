@@ -4,7 +4,7 @@ Contributions are welcome and any help that can be offered is greatly appreciate
 Please take a moment to read the entire contributing guide.
 
 This repository uses the [Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow),
-meaning that development should take place in `feat/` branches, with the `master` branch being kept in a stable state.
+meaning that development should take place in `feat/` branches, with the `master` branch kept in a stable state.
 When you submit pull requests, please make sure to fork from and submit back to `master`.
 
 Other processes and specifications that are in use in this repository are:

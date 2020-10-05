@@ -28,7 +28,7 @@ node-poppler's test scripts use yarn commands.
 ### Linux support
 
 Windows and OSX/Darwin binaries are provided with this repository.
-For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries seperately.
+For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries separately.
 
 An example of downloading the binaries on a Debian system:
 
@@ -37,7 +37,7 @@ sudo apt-get install poppler-data
 sudo apt-get install poppler-utils
 ```
 
-Once they have been installed you will need to pass the `poppler-utils` installation directory in as parameters to an instance of the Poppler class:
+Once they have been installed, you will need to pass the `poppler-utils` installation directory in as parameters to an instance of the Poppler class:
 
 ```js
 const { Poppler } = require('node-poppler');
@@ -56,7 +56,7 @@ const { Poppler } = require('node-poppler');
 
 ### poppler.pdfToCairo
 
-`options` object requires atleast one of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
+`options` object requires at least one of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
 
 Example of an async await call poppler.pdfToCairo, to convert only the first and second page of a PDF file to PNG:
 
@@ -78,7 +78,7 @@ console.log(res);
 
 ### poppler.pdfToHtml
 
-Every field of the `options` object is entirely optional.
+Every field of the `options` object is optional.
 
 Example of calling poppler.pdfToHtml with a promise:
 

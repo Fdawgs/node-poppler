@@ -25,7 +25,7 @@ After cloning and installing all the dependencies, there are several commands av
 
 -   `yarn lint` - Lints everything in src directory
 -   `yarn test-only` - Runs Jest over all tests in src directory
--   `yarn test` - Runs `yarn lint` and `yarn jest` together
+-   `yarn test` - Runs `yarn lint` and `yarn test-only` together
 
 ### Production Workflow
 

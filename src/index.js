@@ -60,7 +60,7 @@ class Poppler {
 						__dirname,
 						'lib',
 						'win32',
-						'poppler-20.09.0',
+						'poppler-20.10.0',
 						'bin'
 					);
 					break;

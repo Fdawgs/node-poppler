@@ -460,6 +460,11 @@ class Poppler {
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 *
+	 * Can be set to  `'-'` to write output to stdout. Using stdout is not valid with image formats
+	 * unless `options.singleFile` is set to `true`.
+	 *
+	 * If not set then the output filename will be derived from the PDF file name.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfToCairo(options = {}, file, outputFile) {
@@ -812,6 +817,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 * Can be set to `'-'` to write output to stdout.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfToPs(options = {}, file, outputFile) {
@@ -921,6 +927,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 * Can be set to `'-'` to write output to stdout.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfToText(options = {}, file, outputFile) {

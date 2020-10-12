@@ -3,7 +3,7 @@ const path = require('path');
 const { execFile } = require('child_process');
 const util = require('util');
 
-const exec = util.promisify(execFile);
+const execFileSync = util.promisify(execFile);
 const platform = os.platform();
 
 /**
@@ -60,7 +60,7 @@ class Poppler {
 						__dirname,
 						'lib',
 						'win32',
-						'poppler-20.09.0',
+						'poppler-20.10.0',
 						'bin'
 					);
 					break;
@@ -107,7 +107,7 @@ class Poppler {
 			args.push(fileToAttach);
 			args.push(outputFile);
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdfattach'),
 				args
 			);
@@ -161,7 +161,7 @@ class Poppler {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdfdetach'),
 				args
 			);
@@ -200,7 +200,7 @@ class Poppler {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdffonts'),
 				args
 			);
@@ -259,7 +259,7 @@ class Poppler {
 				args.push(outputPrefix);
 			}
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdfimages'),
 				args
 			);
@@ -324,7 +324,7 @@ class Poppler {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdfinfo'),
 				args
 			);
@@ -364,7 +364,7 @@ class Poppler {
 			args.push(file);
 			args.push(outputPattern);
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdfseparate'),
 				args
 			);
@@ -460,6 +460,11 @@ class Poppler {
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 *
+	 * Can be set to  `'-'` to write output to stdout. Using stdout is not valid with image formats
+	 * unless `options.singleFile` is set to `true`.
+	 *
+	 * If not set then the output filename will be derived from the PDF file name.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfToCairo(options = {}, file, outputFile) {
@@ -519,7 +524,7 @@ class Poppler {
 			} else {
 				args.push('-');
 			}
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdftocairo'),
 				args
 			);
@@ -596,7 +601,7 @@ class Poppler {
 			const args = await parseOptions(options, acceptedOptions);
 			args.push(file);
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdftohtml'),
 				args
 			);
@@ -710,7 +715,7 @@ class Poppler {
 			args.push(file);
 			args.push(outputPath);
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdftoppm'),
 				args
 			);
@@ -812,6 +817,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 * Can be set to `'-'` to write output to stdout.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfToPs(options = {}, file, outputFile) {
@@ -869,7 +875,7 @@ class Poppler {
 				args.push('-');
 			}
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdftops'),
 				args
 			);
@@ -921,6 +927,7 @@ class Poppler {
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 * Can be set to `'-'` to write output to stdout.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfToText(options = {}, file, outputFile) {
@@ -961,7 +968,7 @@ class Poppler {
 				args.push('-');
 			}
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdftotext'),
 				args
 			);
@@ -995,7 +1002,7 @@ class Poppler {
 			});
 			args.push(outputFile);
 
-			const { stdout } = await exec(
+			const { stdout } = await execFileSync(
 				path.join(this.popplerPath, 'pdfunite'),
 				args
 			);

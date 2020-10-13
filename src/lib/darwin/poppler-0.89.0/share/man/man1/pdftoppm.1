@@ -20,7 +20,9 @@ and writes one PPM file for each page,
 .IR PPM-root - number .ppm,
 where
 .I number
-is the page number.
+is the page number.  If
+.I PDF-file
+is \'-', it reads the PDF file from stdin.
 .SH OPTIONS
 .TP
 .BI \-f " number"
@@ -91,6 +93,10 @@ Generate a monochrome PBM file (instead of a color PPM file).
 .TP
 .B \-gray
 Generate a grayscale PGM file (instead of a color PPM file).
+.TP
+.BI \-displayprofile " displayprofilefile"
+If poppler is compiled with colour management support, this option sets the display profile
+to the ICC profile stored in displayprofilefile.
 .TP
 .B \-png
 Generates a PNG file instead a PPM file.

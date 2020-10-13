@@ -29,9 +29,9 @@
 
 G_BEGIN_DECLS
 
-#define POPPLER_TYPE_DOCUMENT             (poppler_document_get_type ())
-#define POPPLER_DOCUMENT(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), POPPLER_TYPE_DOCUMENT, PopplerDocument))
-#define POPPLER_IS_DOCUMENT(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), POPPLER_TYPE_DOCUMENT))
+#define POPPLER_TYPE_DOCUMENT (poppler_document_get_type())
+#define POPPLER_DOCUMENT(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), POPPLER_TYPE_DOCUMENT, PopplerDocument))
+#define POPPLER_IS_DOCUMENT(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), POPPLER_TYPE_DOCUMENT))
 
 /**
  * PopplerPageLayout:
@@ -47,13 +47,13 @@ G_BEGIN_DECLS
  */
 typedef enum
 {
-  POPPLER_PAGE_LAYOUT_UNSET,
-  POPPLER_PAGE_LAYOUT_SINGLE_PAGE,
-  POPPLER_PAGE_LAYOUT_ONE_COLUMN,
-  POPPLER_PAGE_LAYOUT_TWO_COLUMN_LEFT,
-  POPPLER_PAGE_LAYOUT_TWO_COLUMN_RIGHT,
-  POPPLER_PAGE_LAYOUT_TWO_PAGE_LEFT,
-  POPPLER_PAGE_LAYOUT_TWO_PAGE_RIGHT
+    POPPLER_PAGE_LAYOUT_UNSET,
+    POPPLER_PAGE_LAYOUT_SINGLE_PAGE,
+    POPPLER_PAGE_LAYOUT_ONE_COLUMN,
+    POPPLER_PAGE_LAYOUT_TWO_COLUMN_LEFT,
+    POPPLER_PAGE_LAYOUT_TWO_COLUMN_RIGHT,
+    POPPLER_PAGE_LAYOUT_TWO_PAGE_LEFT,
+    POPPLER_PAGE_LAYOUT_TWO_PAGE_RIGHT
 } PopplerPageLayout;
 
 /**
@@ -70,13 +70,13 @@ typedef enum
  */
 typedef enum
 {
-  POPPLER_PAGE_MODE_UNSET,
-  POPPLER_PAGE_MODE_NONE,
-  POPPLER_PAGE_MODE_USE_OUTLINES,
-  POPPLER_PAGE_MODE_USE_THUMBS,
-  POPPLER_PAGE_MODE_FULL_SCREEN,
-  POPPLER_PAGE_MODE_USE_OC,
-  POPPLER_PAGE_MODE_USE_ATTACHMENTS
+    POPPLER_PAGE_MODE_UNSET,
+    POPPLER_PAGE_MODE_NONE,
+    POPPLER_PAGE_MODE_USE_OUTLINES,
+    POPPLER_PAGE_MODE_USE_THUMBS,
+    POPPLER_PAGE_MODE_FULL_SCREEN,
+    POPPLER_PAGE_MODE_USE_OC,
+    POPPLER_PAGE_MODE_USE_ATTACHMENTS
 } PopplerPageMode;
 
 /**
@@ -98,18 +98,18 @@ typedef enum
  */
 typedef enum
 {
-  POPPLER_FONT_TYPE_UNKNOWN,
-  POPPLER_FONT_TYPE_TYPE1,
-  POPPLER_FONT_TYPE_TYPE1C,
-  POPPLER_FONT_TYPE_TYPE1COT,
-  POPPLER_FONT_TYPE_TYPE3,
-  POPPLER_FONT_TYPE_TRUETYPE,
-  POPPLER_FONT_TYPE_TRUETYPEOT,
-  POPPLER_FONT_TYPE_CID_TYPE0,
-  POPPLER_FONT_TYPE_CID_TYPE0C,
-  POPPLER_FONT_TYPE_CID_TYPE0COT,
-  POPPLER_FONT_TYPE_CID_TYPE2,
-  POPPLER_FONT_TYPE_CID_TYPE2OT
+    POPPLER_FONT_TYPE_UNKNOWN,
+    POPPLER_FONT_TYPE_TYPE1,
+    POPPLER_FONT_TYPE_TYPE1C,
+    POPPLER_FONT_TYPE_TYPE1COT,
+    POPPLER_FONT_TYPE_TYPE3,
+    POPPLER_FONT_TYPE_TRUETYPE,
+    POPPLER_FONT_TYPE_TRUETYPEOT,
+    POPPLER_FONT_TYPE_CID_TYPE0,
+    POPPLER_FONT_TYPE_CID_TYPE0C,
+    POPPLER_FONT_TYPE_CID_TYPE0COT,
+    POPPLER_FONT_TYPE_CID_TYPE2,
+    POPPLER_FONT_TYPE_CID_TYPE2OT
 } PopplerFontType;
 
 /**
@@ -127,14 +127,14 @@ typedef enum
  */
 typedef enum /*< flags >*/
 {
-  POPPLER_VIEWER_PREFERENCES_UNSET = 0,
-  POPPLER_VIEWER_PREFERENCES_HIDE_TOOLBAR = 1 << 0,
-  POPPLER_VIEWER_PREFERENCES_HIDE_MENUBAR = 1 << 1,
-  POPPLER_VIEWER_PREFERENCES_HIDE_WINDOWUI = 1 << 2,
-  POPPLER_VIEWER_PREFERENCES_FIT_WINDOW = 1 << 3,
-  POPPLER_VIEWER_PREFERENCES_CENTER_WINDOW = 1 << 4,
-  POPPLER_VIEWER_PREFERENCES_DISPLAY_DOC_TITLE = 1 << 5,
-  POPPLER_VIEWER_PREFERENCES_DIRECTION_RTL = 1 << 6
+    POPPLER_VIEWER_PREFERENCES_UNSET = 0,
+    POPPLER_VIEWER_PREFERENCES_HIDE_TOOLBAR = 1 << 0,
+    POPPLER_VIEWER_PREFERENCES_HIDE_MENUBAR = 1 << 1,
+    POPPLER_VIEWER_PREFERENCES_HIDE_WINDOWUI = 1 << 2,
+    POPPLER_VIEWER_PREFERENCES_FIT_WINDOW = 1 << 3,
+    POPPLER_VIEWER_PREFERENCES_CENTER_WINDOW = 1 << 4,
+    POPPLER_VIEWER_PREFERENCES_DISPLAY_DOC_TITLE = 1 << 5,
+    POPPLER_VIEWER_PREFERENCES_DIRECTION_RTL = 1 << 6
 } PopplerViewerPreferences;
 
 /**
@@ -148,8 +148,8 @@ typedef enum /*< flags >*/
  */
 typedef enum
 {
-  POPPLER_PRINT_SCALING_APP_DEFAULT,
-  POPPLER_PRINT_SCALING_NONE
+    POPPLER_PRINT_SCALING_APP_DEFAULT,
+    POPPLER_PRINT_SCALING_NONE
 } PopplerPrintScaling;
 
 /**
@@ -165,10 +165,10 @@ typedef enum
  */
 typedef enum
 {
-  POPPLER_PRINT_DUPLEX_NONE,
-  POPPLER_PRINT_DUPLEX_SIMPLEX,
-  POPPLER_PRINT_DUPLEX_DUPLEX_FLIP_SHORT_EDGE,
-  POPPLER_PRINT_DUPLEX_DUPLEX_FLIP_LONG_EDGE
+    POPPLER_PRINT_DUPLEX_NONE,
+    POPPLER_PRINT_DUPLEX_SIMPLEX,
+    POPPLER_PRINT_DUPLEX_DUPLEX_FLIP_SHORT_EDGE,
+    POPPLER_PRINT_DUPLEX_DUPLEX_FLIP_LONG_EDGE
 } PopplerPrintDuplex;
 
 /**
@@ -187,6 +187,7 @@ typedef enum
  *
  * Permissions
  */
+/* clang-format off */
 typedef enum /*< flags >*/
 {
   POPPLER_PERMISSIONS_OK_TO_PRINT = 1 << 0,
@@ -200,6 +201,7 @@ typedef enum /*< flags >*/
   POPPLER_PERMISSIONS_FULL = (POPPLER_PERMISSIONS_OK_TO_PRINT | POPPLER_PERMISSIONS_OK_TO_MODIFY | POPPLER_PERMISSIONS_OK_TO_COPY | POPPLER_PERMISSIONS_OK_TO_ADD_NOTES | POPPLER_PERMISSIONS_OK_TO_FILL_FORM | POPPLER_PERMISSIONS_OK_TO_EXTRACT_CONTENTS | POPPLER_PERMISSIONS_OK_TO_ASSEMBLE | POPPLER_PERMISSIONS_OK_TO_PRINT_HIGH_RESOLUTION)
 
 } PopplerPermissions;
+/* clang-format on */
 
 /**
  * PopplerPDFSubtype:
@@ -217,13 +219,13 @@ typedef enum /*< flags >*/
  */
 typedef enum
 {
-  POPPLER_PDF_SUBTYPE_UNSET,
-  POPPLER_PDF_SUBTYPE_PDF_A,
-  POPPLER_PDF_SUBTYPE_PDF_E,
-  POPPLER_PDF_SUBTYPE_PDF_UA,
-  POPPLER_PDF_SUBTYPE_PDF_VT,
-  POPPLER_PDF_SUBTYPE_PDF_X,
-  POPPLER_PDF_SUBTYPE_NONE
+    POPPLER_PDF_SUBTYPE_UNSET,
+    POPPLER_PDF_SUBTYPE_PDF_A,
+    POPPLER_PDF_SUBTYPE_PDF_E,
+    POPPLER_PDF_SUBTYPE_PDF_UA,
+    POPPLER_PDF_SUBTYPE_PDF_VT,
+    POPPLER_PDF_SUBTYPE_PDF_X,
+    POPPLER_PDF_SUBTYPE_NONE
 } PopplerPDFSubtype;
 
 /**
@@ -245,16 +247,16 @@ typedef enum
  */
 typedef enum
 {
-  POPPLER_PDF_SUBTYPE_PART_UNSET,
-  POPPLER_PDF_SUBTYPE_PART_1,
-  POPPLER_PDF_SUBTYPE_PART_2,
-  POPPLER_PDF_SUBTYPE_PART_3,
-  POPPLER_PDF_SUBTYPE_PART_4,
-  POPPLER_PDF_SUBTYPE_PART_5,
-  POPPLER_PDF_SUBTYPE_PART_6,
-  POPPLER_PDF_SUBTYPE_PART_7,
-  POPPLER_PDF_SUBTYPE_PART_8,
-  POPPLER_PDF_SUBTYPE_PART_NONE
+    POPPLER_PDF_SUBTYPE_PART_UNSET,
+    POPPLER_PDF_SUBTYPE_PART_1,
+    POPPLER_PDF_SUBTYPE_PART_2,
+    POPPLER_PDF_SUBTYPE_PART_3,
+    POPPLER_PDF_SUBTYPE_PART_4,
+    POPPLER_PDF_SUBTYPE_PART_5,
+    POPPLER_PDF_SUBTYPE_PART_6,
+    POPPLER_PDF_SUBTYPE_PART_7,
+    POPPLER_PDF_SUBTYPE_PART_8,
+    POPPLER_PDF_SUBTYPE_PART_NONE
 } PopplerPDFPart;
 
 /**
@@ -275,258 +277,229 @@ typedef enum
  */
 typedef enum
 {
-  POPPLER_PDF_SUBTYPE_CONF_UNSET,
-  POPPLER_PDF_SUBTYPE_CONF_A,
-  POPPLER_PDF_SUBTYPE_CONF_B,
-  POPPLER_PDF_SUBTYPE_CONF_G,
-  POPPLER_PDF_SUBTYPE_CONF_N,
-  POPPLER_PDF_SUBTYPE_CONF_P,
-  POPPLER_PDF_SUBTYPE_CONF_PG,
-  POPPLER_PDF_SUBTYPE_CONF_U,
-  POPPLER_PDF_SUBTYPE_CONF_NONE
+    POPPLER_PDF_SUBTYPE_CONF_UNSET,
+    POPPLER_PDF_SUBTYPE_CONF_A,
+    POPPLER_PDF_SUBTYPE_CONF_B,
+    POPPLER_PDF_SUBTYPE_CONF_G,
+    POPPLER_PDF_SUBTYPE_CONF_N,
+    POPPLER_PDF_SUBTYPE_CONF_P,
+    POPPLER_PDF_SUBTYPE_CONF_PG,
+    POPPLER_PDF_SUBTYPE_CONF_U,
+    POPPLER_PDF_SUBTYPE_CONF_NONE
 } PopplerPDFConformance;
 
 POPPLER_PUBLIC
-GType              poppler_document_get_type               (void) G_GNUC_CONST;
+GType poppler_document_get_type(void) G_GNUC_CONST;
 POPPLER_PUBLIC
-PopplerDocument   *poppler_document_new_from_file          (const char      *uri,
-							    const char      *password,
-							    GError         **error);
+PopplerDocument *poppler_document_new_from_file(const char *uri, const char *password, GError **error);
 POPPLER_PUBLIC
-PopplerDocument   *poppler_document_new_from_data          (char            *data,
-							    int              length,
-							    const char      *password,
-							    GError         **error);
+PopplerDocument *poppler_document_new_from_data(char *data, int length, const char *password, GError **error);
 POPPLER_PUBLIC
-PopplerDocument   *poppler_document_new_from_bytes         (GBytes          *bytes,
-							    const char      *password,
-							    GError         **error);
+PopplerDocument *poppler_document_new_from_bytes(GBytes *bytes, const char *password, GError **error);
 POPPLER_PUBLIC
-PopplerDocument   *poppler_document_new_from_stream        (GInputStream    *stream,
-                                                            goffset          length,
-                                                            const char      *password,
-                                                            GCancellable    *cancellable,
-                                                            GError         **error);
+PopplerDocument *poppler_document_new_from_stream(GInputStream *stream, goffset length, const char *password, GCancellable *cancellable, GError **error);
 POPPLER_PUBLIC
-PopplerDocument   *poppler_document_new_from_gfile         (GFile           *file,
-                                                            const char      *password,
-                                                            GCancellable    *cancellable,
-                                                            GError         **error);
+PopplerDocument *poppler_document_new_from_gfile(GFile *file, const char *password, GCancellable *cancellable, GError **error);
 POPPLER_PUBLIC
-gboolean           poppler_document_save                   (PopplerDocument *document,
-							    const char      *uri,
-							    GError         **error);
+gboolean poppler_document_save(PopplerDocument *document, const char *uri, GError **error);
 POPPLER_PUBLIC
-gboolean           poppler_document_save_a_copy            (PopplerDocument *document,
-							    const char      *uri,
-							    GError         **error);
+gboolean poppler_document_save_a_copy(PopplerDocument *document, const char *uri, GError **error);
 POPPLER_PUBLIC
-gboolean           poppler_document_get_id                 (PopplerDocument *document,
-							    gchar          **permanent_id,
-							    gchar          **update_id);
+gboolean poppler_document_get_id(PopplerDocument *document, gchar **permanent_id, gchar **update_id);
 POPPLER_PUBLIC
-int                poppler_document_get_n_pages            (PopplerDocument *document);
+int poppler_document_get_n_pages(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPage       *poppler_document_get_page               (PopplerDocument *document,
-							    int              index);
+PopplerPage *poppler_document_get_page(PopplerDocument *document, int index);
 POPPLER_PUBLIC
-PopplerPage       *poppler_document_get_page_by_label      (PopplerDocument *document,
-							    const char      *label);
+PopplerPage *poppler_document_get_page_by_label(PopplerDocument *document, const char *label);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_pdf_version_string (PopplerDocument *document);
+gchar *poppler_document_get_pdf_version_string(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_get_pdf_version        (PopplerDocument *document,
-							    guint           *major_version,
-							    guint           *minor_version);
+void poppler_document_get_pdf_version(PopplerDocument *document, guint *major_version, guint *minor_version);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_title              (PopplerDocument *document);
+gchar *poppler_document_get_title(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_set_title              (PopplerDocument *document,
-							    const gchar     *title);
+void poppler_document_set_title(PopplerDocument *document, const gchar *title);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_author             (PopplerDocument *document);
+gchar *poppler_document_get_author(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_set_author             (PopplerDocument *document,
-							    const gchar     *author);
+void poppler_document_set_author(PopplerDocument *document, const gchar *author);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_subject            (PopplerDocument *document);
+gchar *poppler_document_get_subject(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_set_subject            (PopplerDocument *document,
-							    const gchar     *subject);
+void poppler_document_set_subject(PopplerDocument *document, const gchar *subject);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_keywords           (PopplerDocument *document);
+gchar *poppler_document_get_keywords(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_set_keywords           (PopplerDocument *document,
-                                                            const gchar     *keywords);
+void poppler_document_set_keywords(PopplerDocument *document, const gchar *keywords);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_creator            (PopplerDocument *document);
+gchar *poppler_document_get_creator(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_set_creator            (PopplerDocument *document,
-                                                            const gchar     *creator);
+void poppler_document_set_creator(PopplerDocument *document, const gchar *creator);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_producer           (PopplerDocument *document);
+gchar *poppler_document_get_producer(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_set_producer           (PopplerDocument *document,
-                                                            const gchar     *producer);
+void poppler_document_set_producer(PopplerDocument *document, const gchar *producer);
 POPPLER_PUBLIC
-time_t             poppler_document_get_creation_date      (PopplerDocument *document);
+time_t poppler_document_get_creation_date(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_set_creation_date      (PopplerDocument *document,
-                                                            time_t           creation_date);
+void poppler_document_set_creation_date(PopplerDocument *document, time_t creation_date);
 POPPLER_PUBLIC
-time_t             poppler_document_get_modification_date  (PopplerDocument *document);
+GDateTime *poppler_document_get_creation_date_time(PopplerDocument *document);
 POPPLER_PUBLIC
-void               poppler_document_set_modification_date  (PopplerDocument *document,
-                                                            time_t           modification_date);
+void poppler_document_set_creation_date_time(PopplerDocument *document, GDateTime *creation_datetime);
 POPPLER_PUBLIC
-gboolean           poppler_document_is_linearized          (PopplerDocument *document);
+time_t poppler_document_get_modification_date(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPageLayout  poppler_document_get_page_layout        (PopplerDocument *document);
+void poppler_document_set_modification_date(PopplerDocument *document, time_t modification_date);
 POPPLER_PUBLIC
-PopplerPageMode    poppler_document_get_page_mode          (PopplerDocument *document);
+GDateTime *poppler_document_get_modification_date_time(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPermissions poppler_document_get_permissions        (PopplerDocument *document);
+void poppler_document_set_modification_date_time(PopplerDocument *document, GDateTime *modification_datetime);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_pdf_subtype_string (PopplerDocument *document);
+gboolean poppler_document_is_linearized(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPDFSubtype  poppler_document_get_pdf_subtype        (PopplerDocument *document);
+PopplerPageLayout poppler_document_get_page_layout(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPDFPart     poppler_document_get_pdf_part           (PopplerDocument *document);
+PopplerPageMode poppler_document_get_page_mode(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPDFConformance poppler_document_get_pdf_conformance (PopplerDocument *document);
+PopplerPermissions poppler_document_get_permissions(PopplerDocument *document);
 POPPLER_PUBLIC
-gchar             *poppler_document_get_metadata           (PopplerDocument *document);
+gchar *poppler_document_get_pdf_subtype_string(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPrintScaling poppler_document_get_print_scaling     (PopplerDocument *document);
+PopplerPDFSubtype poppler_document_get_pdf_subtype(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPrintDuplex poppler_document_get_print_duplex       (PopplerDocument *document);
+PopplerPDFPart poppler_document_get_pdf_part(PopplerDocument *document);
 POPPLER_PUBLIC
-gint               poppler_document_get_print_n_copies     (PopplerDocument *document);
+PopplerPDFConformance poppler_document_get_pdf_conformance(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerPageRange  *poppler_document_get_print_page_ranges  (PopplerDocument *document,
-                                                            int             *n_ranges) G_GNUC_MALLOC;
+gchar *poppler_document_get_metadata(PopplerDocument *document);
+POPPLER_PUBLIC
+PopplerPrintScaling poppler_document_get_print_scaling(PopplerDocument *document);
+POPPLER_PUBLIC
+PopplerPrintDuplex poppler_document_get_print_duplex(PopplerDocument *document);
+POPPLER_PUBLIC
+gint poppler_document_get_print_n_copies(PopplerDocument *document);
+POPPLER_PUBLIC
+PopplerPageRange *poppler_document_get_print_page_ranges(PopplerDocument *document, int *n_ranges) G_GNUC_MALLOC;
 
 /* Attachments */
 POPPLER_PUBLIC
-guint              poppler_document_get_n_attachments      (PopplerDocument  *document);
+guint poppler_document_get_n_attachments(PopplerDocument *document);
 POPPLER_PUBLIC
-gboolean           poppler_document_has_attachments        (PopplerDocument  *document);
+gboolean poppler_document_has_attachments(PopplerDocument *document);
 POPPLER_PUBLIC
-GList             *poppler_document_get_attachments        (PopplerDocument  *document);
+GList *poppler_document_get_attachments(PopplerDocument *document);
 
 /* Links */
 POPPLER_PUBLIC
-PopplerDest       *poppler_document_find_dest              (PopplerDocument  *document,
-							    const gchar      *link_name);
+PopplerDest *poppler_document_find_dest(PopplerDocument *document, const gchar *link_name);
 POPPLER_PUBLIC
-GTree             *poppler_document_create_dests_tree      (PopplerDocument  *document);
+GTree *poppler_document_create_dests_tree(PopplerDocument *document);
 
 /* Form */
 POPPLER_PUBLIC
-PopplerFormField  *poppler_document_get_form_field         (PopplerDocument  *document,
-							    gint              id);
+PopplerFormField *poppler_document_get_form_field(PopplerDocument *document, gint id);
+
+POPPLER_PUBLIC
+void poppler_document_reset_form(PopplerDocument *document, GList *fields, gboolean exclude_fields);
+/* Javascript */
+POPPLER_PUBLIC
+gboolean poppler_document_has_javascript(PopplerDocument *document);
 
 /* Interface for getting the Index of a poppler_document */
-#define POPPLER_TYPE_INDEX_ITER                 (poppler_index_iter_get_type ())
+#define POPPLER_TYPE_INDEX_ITER (poppler_index_iter_get_type())
 POPPLER_PUBLIC
-GType             poppler_index_iter_get_type   (void) G_GNUC_CONST;
+GType poppler_index_iter_get_type(void) G_GNUC_CONST;
 POPPLER_PUBLIC
-PopplerIndexIter *poppler_index_iter_new        (PopplerDocument   *document);
+PopplerIndexIter *poppler_index_iter_new(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerIndexIter *poppler_index_iter_copy       (PopplerIndexIter  *iter);
+PopplerIndexIter *poppler_index_iter_copy(PopplerIndexIter *iter);
 POPPLER_PUBLIC
-void              poppler_index_iter_free       (PopplerIndexIter  *iter);
+void poppler_index_iter_free(PopplerIndexIter *iter);
 
 POPPLER_PUBLIC
-PopplerIndexIter *poppler_index_iter_get_child  (PopplerIndexIter  *parent);
+PopplerIndexIter *poppler_index_iter_get_child(PopplerIndexIter *parent);
 POPPLER_PUBLIC
-gboolean	  poppler_index_iter_is_open    (PopplerIndexIter  *iter);
+gboolean poppler_index_iter_is_open(PopplerIndexIter *iter);
 POPPLER_PUBLIC
-PopplerAction    *poppler_index_iter_get_action (PopplerIndexIter  *iter);
+PopplerAction *poppler_index_iter_get_action(PopplerIndexIter *iter);
 POPPLER_PUBLIC
-gboolean          poppler_index_iter_next       (PopplerIndexIter  *iter);
+gboolean poppler_index_iter_next(PopplerIndexIter *iter);
 
 /* Interface for getting the Fonts of a poppler_document */
-#define POPPLER_TYPE_FONT_INFO             (poppler_font_info_get_type ())
-#define POPPLER_FONT_INFO(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), POPPLER_TYPE_FONT_INFO, PopplerFontInfo))
-#define POPPLER_IS_FONT_INFO(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), POPPLER_TYPE_FONT_INFO))
+#define POPPLER_TYPE_FONT_INFO (poppler_font_info_get_type())
+#define POPPLER_FONT_INFO(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), POPPLER_TYPE_FONT_INFO, PopplerFontInfo))
+#define POPPLER_IS_FONT_INFO(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), POPPLER_TYPE_FONT_INFO))
 POPPLER_PUBLIC
-GType             poppler_font_info_get_type       (void) G_GNUC_CONST;
+GType poppler_font_info_get_type(void) G_GNUC_CONST;
 POPPLER_PUBLIC
-PopplerFontInfo  *poppler_font_info_new            (PopplerDocument   *document);
+PopplerFontInfo *poppler_font_info_new(PopplerDocument *document);
 POPPLER_PUBLIC
-gboolean          poppler_font_info_scan           (PopplerFontInfo   *font_info,
-						    int                n_pages,
-						    PopplerFontsIter **iter);
+gboolean poppler_font_info_scan(PopplerFontInfo *font_info, int n_pages, PopplerFontsIter **iter);
 POPPLER_PUBLIC
-void             poppler_font_info_free            (PopplerFontInfo   *font_info);
+void poppler_font_info_free(PopplerFontInfo *font_info);
 
-#define POPPLER_TYPE_FONTS_ITER                    (poppler_fonts_iter_get_type ())
+#define POPPLER_TYPE_FONTS_ITER (poppler_fonts_iter_get_type())
 POPPLER_PUBLIC
-GType             poppler_fonts_iter_get_type      (void) G_GNUC_CONST;
+GType poppler_fonts_iter_get_type(void) G_GNUC_CONST;
 POPPLER_PUBLIC
-PopplerFontsIter *poppler_fonts_iter_copy          (PopplerFontsIter  *iter);
+PopplerFontsIter *poppler_fonts_iter_copy(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-void              poppler_fonts_iter_free          (PopplerFontsIter  *iter);
+void poppler_fonts_iter_free(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-const char       *poppler_fonts_iter_get_name      (PopplerFontsIter  *iter);
+const char *poppler_fonts_iter_get_name(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-const char       *poppler_fonts_iter_get_full_name (PopplerFontsIter  *iter);
+const char *poppler_fonts_iter_get_full_name(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-const char       *poppler_fonts_iter_get_substitute_name (PopplerFontsIter *iter);
+const char *poppler_fonts_iter_get_substitute_name(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-const char       *poppler_fonts_iter_get_file_name (PopplerFontsIter  *iter);
+const char *poppler_fonts_iter_get_file_name(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-PopplerFontType   poppler_fonts_iter_get_font_type (PopplerFontsIter  *iter);
+PopplerFontType poppler_fonts_iter_get_font_type(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-const char       *poppler_fonts_iter_get_encoding  (PopplerFontsIter *iter);
+const char *poppler_fonts_iter_get_encoding(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-gboolean	  poppler_fonts_iter_is_embedded   (PopplerFontsIter  *iter);
+gboolean poppler_fonts_iter_is_embedded(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-gboolean	  poppler_fonts_iter_is_subset     (PopplerFontsIter  *iter);
+gboolean poppler_fonts_iter_is_subset(PopplerFontsIter *iter);
 POPPLER_PUBLIC
-gboolean          poppler_fonts_iter_next          (PopplerFontsIter  *iter);
+gboolean poppler_fonts_iter_next(PopplerFontsIter *iter);
 
 /* Interface for getting the Layers of a poppler_document */
-#define POPPLER_TYPE_LAYERS_ITER                   (poppler_layers_iter_get_type ())
+#define POPPLER_TYPE_LAYERS_ITER (poppler_layers_iter_get_type())
 POPPLER_PUBLIC
-GType              poppler_layers_iter_get_type    (void) G_GNUC_CONST;
+GType poppler_layers_iter_get_type(void) G_GNUC_CONST;
 POPPLER_PUBLIC
-PopplerLayersIter *poppler_layers_iter_new         (PopplerDocument   *document);
+PopplerLayersIter *poppler_layers_iter_new(PopplerDocument *document);
 POPPLER_PUBLIC
-PopplerLayersIter *poppler_layers_iter_copy        (PopplerLayersIter *iter);
+PopplerLayersIter *poppler_layers_iter_copy(PopplerLayersIter *iter);
 POPPLER_PUBLIC
-void               poppler_layers_iter_free        (PopplerLayersIter *iter);
+void poppler_layers_iter_free(PopplerLayersIter *iter);
 
 POPPLER_PUBLIC
-PopplerLayersIter *poppler_layers_iter_get_child   (PopplerLayersIter *parent);
+PopplerLayersIter *poppler_layers_iter_get_child(PopplerLayersIter *parent);
 POPPLER_PUBLIC
-gchar             *poppler_layers_iter_get_title   (PopplerLayersIter *iter);
+gchar *poppler_layers_iter_get_title(PopplerLayersIter *iter);
 POPPLER_PUBLIC
-PopplerLayer      *poppler_layers_iter_get_layer   (PopplerLayersIter *iter);
+PopplerLayer *poppler_layers_iter_get_layer(PopplerLayersIter *iter);
 POPPLER_PUBLIC
-gboolean           poppler_layers_iter_next        (PopplerLayersIter *iter);
+gboolean poppler_layers_iter_next(PopplerLayersIter *iter);
 
 /* Export to ps */
-#define POPPLER_TYPE_PS_FILE             (poppler_ps_file_get_type ())
-#define POPPLER_PS_FILE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), POPPLER_TYPE_PS_FILE, PopplerPSFile))
-#define POPPLER_IS_PS_FILE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), POPPLER_TYPE_PS_FILE))
+#define POPPLER_TYPE_PS_FILE (poppler_ps_file_get_type())
+#define POPPLER_PS_FILE(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), POPPLER_TYPE_PS_FILE, PopplerPSFile))
+#define POPPLER_IS_PS_FILE(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), POPPLER_TYPE_PS_FILE))
 POPPLER_PUBLIC
-GType          poppler_ps_file_get_type       (void) G_GNUC_CONST;
+GType poppler_ps_file_get_type(void) G_GNUC_CONST;
 POPPLER_PUBLIC
-PopplerPSFile *poppler_ps_file_new            (PopplerDocument *document,
-                                               const char      *filename,
-                                               int              first_page,
-                                               int              n_pages);
+PopplerPSFile *poppler_ps_file_new(PopplerDocument *document, const char *filename, int first_page, int n_pages);
 POPPLER_PUBLIC
-void           poppler_ps_file_set_paper_size (PopplerPSFile   *ps_file,
-                                               double           width,
-                                               double           height);
+void poppler_ps_file_set_paper_size(PopplerPSFile *ps_file, double width, double height);
 POPPLER_PUBLIC
-void           poppler_ps_file_set_duplex     (PopplerPSFile   *ps_file,
-                                               gboolean         duplex);
+void poppler_ps_file_set_duplex(PopplerPSFile *ps_file, gboolean duplex);
 POPPLER_PUBLIC
-void           poppler_ps_file_free           (PopplerPSFile   *ps_file);
+void poppler_ps_file_free(PopplerPSFile *ps_file);
 
 /**
  * PopplerPageRange:
@@ -539,8 +512,8 @@ void           poppler_ps_file_free           (PopplerPSFile   *ps_file);
  */
 struct _PopplerPageRange
 {
-  gint start_page;
-  gint end_page;
+    gint start_page;
+    gint end_page;
 };
 
 G_END_DECLS

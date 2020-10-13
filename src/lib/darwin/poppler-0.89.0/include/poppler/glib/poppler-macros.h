@@ -23,11 +23,11 @@
  * POPPLER_PUBLIC:
  */
 #if defined(_WIN32)
-#  define POPPLER_PUBLIC __declspec(dllexport)
+#    define POPPLER_PUBLIC __declspec(dllexport)
 #elif defined(__GNUC__)
-#  define POPPLER_PUBLIC __attribute__((visibility("default"))) extern
+#    define POPPLER_PUBLIC __attribute__((visibility("default"))) extern
 #else
-#  define POPPLER_PUBLIC
+#    define POPPLER_PUBLIC
 #endif
 
 #endif /* __POPPLER_MACROS_H__ */

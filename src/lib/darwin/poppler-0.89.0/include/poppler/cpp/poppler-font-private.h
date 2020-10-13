@@ -31,16 +31,8 @@ using namespace poppler;
 class poppler::font_info_private
 {
 public:
-    font_info_private()
-        : type(font_info::unknown)
-        , is_embedded(false)
-        , is_subset(false)
-    {
-    }
-    font_info_private(FontInfo *fi)
-        : type((font_info::type_enum)fi->getType())
-        , is_embedded(fi->getEmbedded())
-        , is_subset(fi->getSubset())
+    font_info_private() : type(font_info::unknown), is_embedded(false), is_subset(false) { }
+    font_info_private(FontInfo *fi) : type((font_info::type_enum)fi->getType()), is_embedded(fi->getEmbedded()), is_subset(fi->getSubset())
     {
         if (fi->getName()) {
             font_name = fi->getName()->c_str();
@@ -63,19 +55,11 @@ public:
     Ref emb_ref;
 };
 
-
 class poppler::font_iterator_private
 {
 public:
-    font_iterator_private(int start_page, document_private *dd)
-        : font_info_scanner(dd->doc, start_page)
-        , total_pages(dd->doc->getNumPages())
-        , current_page((std::max)(start_page, 0))
-    {
-    }
-    ~font_iterator_private()
-    {
-    }
+    font_iterator_private(int start_page, document_private *dd) : font_info_scanner(dd->doc, start_page), total_pages(dd->doc->getNumPages()), current_page((std::max)(start_page, 0)) { }
+    ~font_iterator_private() { }
 
     FontInfoScanner font_info_scanner;
     int total_pages;

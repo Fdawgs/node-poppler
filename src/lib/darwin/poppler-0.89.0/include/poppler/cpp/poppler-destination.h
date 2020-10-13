@@ -22,14 +22,14 @@
 
 #include "poppler-global.h"
 
-namespace poppler
-{
+namespace poppler {
 class destination_private;
 
 class POPPLER_CPP_EXPORT destination : public poppler::noncopyable
 {
 public:
-    enum type_enum {
+    enum type_enum
+    {
         unknown,
         xyz,
         fit,
@@ -55,7 +55,7 @@ public:
     bool is_change_top() const;
     bool is_change_zoom() const;
 
-    destination& operator=(destination &&other) noexcept;
+    destination &operator=(destination &&other) noexcept;
 
 private:
     destination(destination_private *dd);

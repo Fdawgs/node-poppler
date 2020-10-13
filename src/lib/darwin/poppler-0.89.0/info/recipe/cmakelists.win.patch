@@ -1,0 +1,71 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 36f6587..83470e9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -292,21 +292,10 @@ if(ENABLE_SPLASH)
+   endif()
+ endif()
+ 
+-# Recent versions of poppler-data install a .pc file.
+-# Use it to determine the encoding data path, if available.
+-# Default to the same prefix otherwise.
+-pkg_check_modules(POPPLER_DATA poppler-data)
+-if(POPPLER_DATA_FOUND)
+-  execute_process(COMMAND "${PKG_CONFIG_EXECUTABLE}" --variable=poppler_datadir poppler-data
+-                  RESULT_VARIABLE _result_var
+-                  OUTPUT_VARIABLE _output_var OUTPUT_STRIP_TRAILING_WHITESPACE)
+-  if(_result_var STREQUAL "0" AND NOT _output_var STREQUAL "")
+-    set(POPPLER_DATADIR "${_output_var}")
+-  endif()
+-endif()
+-if(NOT DEFINED POPPLER_DATADIR)
+-  set(POPPLER_DATADIR "${CMAKE_INSTALL_PREFIX}/share/poppler")
+-endif()
++# poppler-data is a noarch package that installs in %PREFIX%
++# rather than %LIBRARY_PREFIX% so won't be found. Hardcode
++# location for now
++set(POPPLER_DATADIR "$ENV{PREFIX}/share/poppler")
+ 
+ if(EXTRA_WARN)
+   set(CMAKE_C_FLAGS "-Wall ${CMAKE_C_FLAGS}")
+@@ -493,7 +482,10 @@ endif()
+ 
+ if(MSVC)
+ add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+-add_library(poppler STATIC ${poppler_SRCS})
++add_library(poppler SHARED ${poppler_SRCS})
++# so we can determine if to import/export symbols
++target_compile_definitions(poppler PRIVATE _COMPILING_POPPLER=1)
++set_target_properties(poppler PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS true)
+ else()
+ add_library(poppler ${poppler_SRCS})
+ endif()
+
+diff --git a/glib/CMakeLists.txt b/glib/CMakeLists.txt
+index 75402cc..374ce69 100644
+--- a/glib/CMakeLists.txt
++++ b/glib/CMakeLists.txt
+@@ -43,9 +43,9 @@ find_program(GLIB2_MKENUMS glib-mkenums)
+ 
+ add_custom_command(
+   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
+-  COMMAND ${GLIB2_MKENUMS}
++  COMMAND $ENV{PREFIX}/python.exe
+   ARGS
+-    --template poppler-enums.h.template
++    ${GLIB2_MKENUMS} --template poppler-enums.h.template
+     ${poppler_glib_public_headers} > ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+   DEPENDS ${poppler_glib_public_headers}
+@@ -54,9 +54,9 @@ add_custom_command(
+ 
+ add_custom_command(
+   OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.c
+-  COMMAND ${GLIB2_MKENUMS}
++  COMMAND $ENV{PREFIX}/python.exe
+   ARGS
+-    --template poppler-enums.c.template
++    ${GLIB2_MKENUMS} --template poppler-enums.c.template
+     ${poppler_glib_public_headers} > ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.c
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+   DEPENDS ${poppler_glib_public_headers} ${CMAKE_CURRENT_BINARY_DIR}/poppler-enums.h

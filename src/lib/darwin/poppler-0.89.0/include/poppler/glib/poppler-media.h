@@ -25,9 +25,9 @@
 
 G_BEGIN_DECLS
 
-#define POPPLER_TYPE_MEDIA                   (poppler_media_get_type ())
-#define POPPLER_MEDIA(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), POPPLER_TYPE_MEDIA, PopplerMedia))
-#define POPPLER_IS_MEDIA(obj)                (G_TYPE_CHECK_INSTANCE_TYPE ((obj), POPPLER_TYPE_MEDIA))
+#define POPPLER_TYPE_MEDIA (poppler_media_get_type())
+#define POPPLER_MEDIA(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), POPPLER_TYPE_MEDIA, PopplerMedia))
+#define POPPLER_IS_MEDIA(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), POPPLER_TYPE_MEDIA))
 
 /* FIXME: this should be generic (PopplerSaveToCallbackFunc) */
 
@@ -50,30 +50,21 @@ G_BEGIN_DECLS
  *
  * Since: 0.14
  */
-typedef gboolean (*PopplerMediaSaveFunc) (const gchar  *buf,
-					  gsize         count,
-					  gpointer      data,
-					  GError      **error);
+typedef gboolean (*PopplerMediaSaveFunc)(const gchar *buf, gsize count, gpointer data, GError **error);
 
 POPPLER_PUBLIC
-GType        poppler_media_get_type         (void) G_GNUC_CONST;
+GType poppler_media_get_type(void) G_GNUC_CONST;
 POPPLER_PUBLIC
-gboolean     poppler_media_is_embedded      (PopplerMedia        *poppler_media);
+gboolean poppler_media_is_embedded(PopplerMedia *poppler_media);
 POPPLER_PUBLIC
-const gchar *poppler_media_get_filename     (PopplerMedia        *poppler_media);
+const gchar *poppler_media_get_filename(PopplerMedia *poppler_media);
 POPPLER_PUBLIC
-const gchar *poppler_media_get_mime_type    (PopplerMedia        *poppler_media);
+const gchar *poppler_media_get_mime_type(PopplerMedia *poppler_media);
 POPPLER_PUBLIC
-gboolean     poppler_media_save             (PopplerMedia        *poppler_media,
-					     const char          *filename,
-					     GError             **error);
+gboolean poppler_media_save(PopplerMedia *poppler_media, const char *filename, GError **error);
 POPPLER_PUBLIC
-gboolean     poppler_media_save_to_callback (PopplerMedia        *poppler_media,
-					     PopplerMediaSaveFunc save_func,
-					     gpointer             user_data,
-					     GError             **error);
+gboolean poppler_media_save_to_callback(PopplerMedia *poppler_media, PopplerMediaSaveFunc save_func, gpointer user_data, GError **error);
 
 G_END_DECLS
 
 #endif /* __POPPLER_MEDIA_H__ */
-

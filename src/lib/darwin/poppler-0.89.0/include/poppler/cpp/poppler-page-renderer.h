@@ -23,8 +23,7 @@
 #include "poppler-global.h"
 #include "poppler-image.h"
 
-namespace poppler
-{
+namespace poppler {
 
 typedef unsigned int argb;
 
@@ -34,13 +33,15 @@ class page_renderer_private;
 class POPPLER_CPP_EXPORT page_renderer : public poppler::noncopyable
 {
 public:
-    enum render_hint {
+    enum render_hint
+    {
         antialiasing = 0x00000001,
         text_antialiasing = 0x00000002,
         text_hinting = 0x00000004
     };
 
-    enum line_mode_enum {
+    enum line_mode_enum
+    {
         line_default,
         line_solid,
         line_shape
@@ -62,10 +63,7 @@ public:
     line_mode_enum line_mode() const;
     void set_line_mode(line_mode_enum mode);
 
-    image render_page(const page *p,
-                      double xres = 72.0, double yres = 72.0,
-                      int x = -1, int y = -1, int w = -1, int h = -1,
-                      rotation_enum rotate = rotate_0) const;
+    image render_page(const page *p, double xres = 72.0, double yres = 72.0, int x = -1, int y = -1, int w = -1, int h = -1, rotation_enum rotate = rotate_0) const;
 
     static bool can_render();
 

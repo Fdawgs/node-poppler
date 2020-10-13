@@ -1,0 +1,15 @@
+{
+  "c_compiler_version": "10",
+  "libtiff": "4.1.0",
+  "freetype": "2.9.1",
+  "openjpeg": "2.3",
+  "curl": "7",
+  "cxx_compiler": "clangxx",
+  "cxx_compiler_version": "10",
+  "c_compiler": "clang",
+  "glib": "2.58",
+  "libpng": "1.6",
+  "cairo": "1.16",
+  "zlib": "1.2",
+  "jpeg": "9"
+}

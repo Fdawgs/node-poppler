@@ -1,0 +1,19 @@
+diff --git a/goo/JpegWriter.cc b/goo/JpegWriter.cc
+index e5a4a3f..f122c27 100644
+--- a/goo/JpegWriter.cc
++++ b/goo/JpegWriter.cc
+@@ -19,12 +19,12 @@
+ 
+ #ifdef ENABLE_LIBJPEG
+ 
++#    include "poppler/Error.h"
++
+ extern "C" {
+ #    include <jpeglib.h>
+ }
+ 
+-#    include "poppler/Error.h"
+-
+ struct JpegWriterPrivate
+ {
+     bool progressive;

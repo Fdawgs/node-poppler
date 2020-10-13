@@ -23,15 +23,15 @@
 #include "poppler-global.h"
 #include "poppler-rectangle.h"
 
-namespace poppler
-{
+namespace poppler {
 
 class image_private;
 
 class POPPLER_CPP_EXPORT image
 {
 public:
-    enum format_enum {
+    enum format_enum
+    {
         format_invalid,
         format_mono,
         format_rgb24,
@@ -60,7 +60,7 @@ public:
 
     static std::vector<std::string> supported_image_formats();
 
-    image& operator=(const image &img);
+    image &operator=(const image &img);
 
 private:
     void detach();

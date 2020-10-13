@@ -27,9 +27,9 @@
 
 G_BEGIN_DECLS
 
-#define POPPLER_TYPE_MOVIE                   (poppler_movie_get_type ())
-#define POPPLER_MOVIE(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), POPPLER_TYPE_MOVIE, PopplerMovie))
-#define POPPLER_IS_MOVIE(obj)                (G_TYPE_CHECK_INSTANCE_TYPE ((obj), POPPLER_TYPE_MOVIE))
+#define POPPLER_TYPE_MOVIE (poppler_movie_get_type())
+#define POPPLER_MOVIE(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), POPPLER_TYPE_MOVIE, PopplerMovie))
+#define POPPLER_IS_MOVIE(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), POPPLER_TYPE_MOVIE))
 
 /**
  * PopplerMoviePlayMode:
@@ -45,38 +45,37 @@ G_BEGIN_DECLS
  */
 typedef enum
 {
-  POPPLER_MOVIE_PLAY_MODE_ONCE,
-  POPPLER_MOVIE_PLAY_MODE_OPEN,
-  POPPLER_MOVIE_PLAY_MODE_REPEAT,
-  POPPLER_MOVIE_PLAY_MODE_PALINDROME
+    POPPLER_MOVIE_PLAY_MODE_ONCE,
+    POPPLER_MOVIE_PLAY_MODE_OPEN,
+    POPPLER_MOVIE_PLAY_MODE_REPEAT,
+    POPPLER_MOVIE_PLAY_MODE_PALINDROME
 } PopplerMoviePlayMode;
 
 POPPLER_PUBLIC
-GType                poppler_movie_get_type      (void) G_GNUC_CONST;
+GType poppler_movie_get_type(void) G_GNUC_CONST;
 POPPLER_PUBLIC
-const gchar         *poppler_movie_get_filename  (PopplerMovie *poppler_movie);
+const gchar *poppler_movie_get_filename(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-gboolean             poppler_movie_need_poster   (PopplerMovie *poppler_movie);
+gboolean poppler_movie_need_poster(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-gboolean             poppler_movie_show_controls (PopplerMovie *poppler_movie);
+gboolean poppler_movie_show_controls(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-PopplerMoviePlayMode poppler_movie_get_play_mode (PopplerMovie *poppler_movie);
+PopplerMoviePlayMode poppler_movie_get_play_mode(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-gboolean             poppler_movie_is_synchronous (PopplerMovie *poppler_movie);
+gboolean poppler_movie_is_synchronous(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-gdouble              poppler_movie_get_volume (PopplerMovie *poppler_movie);
+gdouble poppler_movie_get_volume(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-gdouble              poppler_movie_get_rate (PopplerMovie *poppler_movie);
+gdouble poppler_movie_get_rate(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-gushort              poppler_movie_get_rotation_angle (PopplerMovie *poppler_movie);
+gushort poppler_movie_get_rotation_angle(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-guint64              poppler_movie_get_start (PopplerMovie *poppler_movie);
+guint64 poppler_movie_get_start(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-guint64              poppler_movie_get_duration (PopplerMovie *poppler_movie);
+guint64 poppler_movie_get_duration(PopplerMovie *poppler_movie);
 POPPLER_PUBLIC
-void                 poppler_movie_get_aspect (PopplerMovie *poppler_movie, gint *width, gint *height);
+void poppler_movie_get_aspect(PopplerMovie *poppler_movie, gint *width, gint *height);
 
 G_END_DECLS
 
 #endif /* __POPPLER_MOVIE_H__ */
-

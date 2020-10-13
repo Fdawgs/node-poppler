@@ -1,0 +1,36 @@
+diff --git a/poppler/GlobalParams.h b/poppler/GlobalParams.h
+index c782452..fb9e6cd 100644
+--- a/poppler/GlobalParams.h
++++ b/poppler/GlobalParams.h
+@@ -64,7 +64,13 @@ class SysFontList;
+ //------------------------------------------------------------------------
+ 
+ // The global parameters object.
+-extern std::unique_ptr<GlobalParams> globalParams;
++#ifdef _COMPILING_POPPLER
++// cmake's WINDOWS_EXPORT_ALL_SYMBOLS doesn't extend to data unfortunately
++// so we must to this by hand
++extern __declspec(dllexport) std::unique_ptr<GlobalParams> globalParams;
++#else
++extern __declspec(dllimport) std::unique_ptr<GlobalParams> globalParams;
++#endif
+ 
+ //------------------------------------------------------------------------
+ 
+diff --git a/poppler/PDFDocEncoding.h b/poppler/PDFDocEncoding.h
+index 1d6080e..61b9c07 100644
+--- a/poppler/PDFDocEncoding.h
++++ b/poppler/PDFDocEncoding.h
+@@ -28,7 +28,11 @@
+ 
+ class GooString;
+ 
+-extern const Unicode pdfDocEncoding[256];
++#ifdef _COMPILING_POPPLER
++extern __declspec(dllexport) const Unicode pdfDocEncoding[256];
++#else
++extern __declspec(dllimport) const Unicode pdfDocEncoding[256];
++#endif
+ 
+ char* pdfDocEncodingToUTF16 (const GooString* orig, int* length);
+ 

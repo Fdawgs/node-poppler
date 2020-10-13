@@ -27,8 +27,7 @@
 
 #include <map>
 
-namespace poppler
-{
+namespace poppler {
 
 class destination;
 class document_private;
@@ -39,7 +38,8 @@ class toc;
 class POPPLER_CPP_EXPORT document : public poppler::noncopyable
 {
 public:
-    enum page_mode_enum {
+    enum page_mode_enum
+    {
         use_none,
         use_outlines,
         use_thumbs,
@@ -48,7 +48,8 @@ public:
         use_attach
     };
 
-    enum page_layout_enum {
+    enum page_layout_enum
+    {
         no_layout,
         single_page,
         one_column,
@@ -100,13 +101,13 @@ public:
     bool get_pdf_id(std::string *permanent_id, std::string *update_id) const;
 
     int pages() const;
-    page* create_page(const ustring &label) const;
-    page* create_page(int index) const;
+    page *create_page(const ustring &label) const;
+    page *create_page(int index) const;
 
     std::vector<font_info> fonts() const;
-    font_iterator* create_font_iterator(int start_page = 0) const;
+    font_iterator *create_font_iterator(int start_page = 0) const;
 
-    toc* create_toc() const;
+    toc *create_toc() const;
 
     bool has_embedded_files() const;
     std::vector<embedded_file *> embedded_files() const;
@@ -118,16 +119,9 @@ public:
     bool save(const std::string &file_name) const;
     bool save_a_copy(const std::string &file_name) const;
 
-    static document* load_from_file(const std::string &file_name,
-                                    const std::string &owner_password = std::string(),
-                                    const std::string &user_password = std::string());
-    static document* load_from_data(byte_array *file_data,
-                                    const std::string &owner_password = std::string(),
-                                    const std::string &user_password = std::string());
-    static document* load_from_raw_data(const char *file_data,
-                                        int file_data_length,
-                                        const std::string &owner_password = std::string(),
-                                        const std::string &user_password = std::string());
+    static document *load_from_file(const std::string &file_name, const std::string &owner_password = std::string(), const std::string &user_password = std::string());
+    static document *load_from_data(byte_array *file_data, const std::string &owner_password = std::string(), const std::string &user_password = std::string());
+    static document *load_from_raw_data(const char *file_data, int file_data_length, const std::string &owner_password = std::string(), const std::string &user_password = std::string());
 
 private:
     document(document_private &dd);

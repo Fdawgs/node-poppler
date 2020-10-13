@@ -30,26 +30,26 @@
 
 #include <memory>
 
-namespace poppler
-{
+namespace poppler {
 
 struct text_box_data;
 class POPPLER_CPP_EXPORT text_box
 {
     friend class page;
+
 public:
-    text_box(text_box&&) noexcept;
-    text_box& operator=(text_box&&) noexcept;
+    text_box(text_box &&) noexcept;
+    text_box &operator=(text_box &&) noexcept;
 
     ~text_box();
 
-    ustring   text() const;
-    rectf     bbox() const;
+    ustring text() const;
+    rectf bbox() const;
 
     /**
       \since 0.68
     */
-    int       rotation() const;
+    int rotation() const;
 
     /**
        Get a bbox for the i-th glyph
@@ -64,14 +64,13 @@ public:
        is returned. The number of the glyphs and ustring
        codepoints might be different in some complex scripts.
      */
-    rectf     char_bbox(size_t i) const;
-    bool      has_space_after() const;
-
+    rectf char_bbox(size_t i) const;
+    bool has_space_after() const;
 
     /**
       \since 0.89
      */
-    bool      has_font_info() const;
+    bool has_font_info() const;
 
     /**
        Get a writing mode for the i-th glyph
@@ -83,7 +82,8 @@ public:
        same writing mode. Thus the default value of the
        glyph index is 0.
      */
-    enum writing_mode_enum {
+    enum writing_mode_enum
+    {
         invalid_wmode = -1,
         horizontal_wmode = 0,
         vertical_wmode = 1
@@ -104,7 +104,7 @@ public:
     /**
       \since 0.89
      */
-    double     get_font_size() const;
+    double get_font_size() const;
 
     /**
        Get a font name for the i-th glyph
@@ -142,18 +142,21 @@ class page_transition;
 class POPPLER_CPP_EXPORT page : public poppler::noncopyable
 {
 public:
-    enum orientation_enum {
+    enum orientation_enum
+    {
         landscape,
         portrait,
         seascape,
         upside_down
     };
-    enum search_direction_enum {
+    enum search_direction_enum
+    {
         search_from_top,
         search_next_result,
         search_previous_result
     };
-    enum text_layout_enum {
+    enum text_layout_enum
+    {
         physical_layout,
         raw_order_layout,
         non_raw_non_physical_layout ///< \since 0.88
@@ -166,10 +169,9 @@ public:
     rectf page_rect(page_box_enum box = crop_box) const;
     ustring label() const;
 
-    page_transition* transition() const;
+    page_transition *transition() const;
 
-    bool search(const ustring &text, rectf &r, search_direction_enum direction,
-                case_sensitivity_enum case_sensitivity, rotation_enum rotation = rotate_0) const;
+    bool search(const ustring &text, rectf &r, search_direction_enum direction, case_sensitivity_enum case_sensitivity, rotation_enum rotation = rotate_0) const;
     ustring text(const rectf &rect = rectf()) const;
     ustring text(const rectf &rect, text_layout_enum layout_mode) const;
 
@@ -197,7 +199,8 @@ public:
      * text_list_option_enum is a bitmask-style flags for text_list(),
      * 0 means the default & simplest behaviour.
      */
-    enum text_list_option_enum {
+    enum text_list_option_enum
+    {
         text_list_include_font = 1 // \since 0.89
     };
 

@@ -27,7 +27,9 @@ to
 .I file.eps
 with the \-eps option).  If
 .I PS-file
-is \'-', the PostScript is sent to stdout.
+is \'-', the PostScript is sent to stdout.  If
+.I PDF-file
+is \'-', Pdftops reads the PDF file from stdin.
 .SH OPTIONS
 .TP
 .BI \-f " number"
@@ -133,6 +135,11 @@ Enable or disable raster anti-aliasing.  This defaults to "no".
 pdftops may need to rasterize transparencies and pattern image masks in the PDF.
 If the PostScript will be printed, leave \-aaRaster disabled and set \-r to the resolution of the printer.
 If the PostScript will be viewed, enabling \-aaRaster may make rasterized text easier to read.
+.TP
+.BI \-rasterize " always | never | whenneeded"
+By default, pdftops rasterizes pages as needed, for example, if they contain transparencies.
+To force rasterization, set \-rasterize to "always". Use this to eliminate fonts.
+To prevent rasterization, set \-rasterize to "never". This may produce files that display incorrectly.
 .TP
 .B \-optimizecolorspace
 By default, bitmap images in the PDF pass through to the output PostScript

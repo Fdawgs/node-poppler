@@ -1,12 +1,12 @@
-prefix=/Users/chetanverma/projects/poppler/poppler-0.89.0/build/poppler-0.89-build
-libdir=/Users/chetanverma/projects/poppler/poppler-0.89.0/build/poppler-0.89-build/lib
-includedir=/Users/chetanverma/projects/poppler/poppler-0.89.0/build/poppler-0.89-build/include
+prefix=/Users/runner/miniforge3/conda-bld/poppler_1601593479779/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p
+libdir=/Users/runner/miniforge3/conda-bld/poppler_1601593479779/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/lib
+includedir=/Users/runner/miniforge3/conda-bld/poppler_1601593479779/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_p/include
 
 Name: poppler-cpp
 Description: cpp backend for Poppler PDF rendering library
-Version: 0.89.0
+Version: 20.10.0
 Requires: 
-Requires.private: poppler = 0.89.0
+Requires.private: poppler = 20.10.0
 
 Libs: -L${libdir} -lpoppler-cpp
 Cflags: -I${includedir}/poppler/cpp

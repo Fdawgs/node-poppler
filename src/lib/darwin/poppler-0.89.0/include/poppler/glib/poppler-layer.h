@@ -25,25 +25,25 @@
 
 G_BEGIN_DECLS
 
-#define POPPLER_TYPE_LAYER    (poppler_layer_get_type ())
-#define POPPLER_LAYER(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), POPPLER_TYPE_LAYER, PopplerLayer))
-#define POPPLER_IS_LAYER(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), POPPLER_TYPE_LAYER))
+#define POPPLER_TYPE_LAYER (poppler_layer_get_type())
+#define POPPLER_LAYER(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), POPPLER_TYPE_LAYER, PopplerLayer))
+#define POPPLER_IS_LAYER(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), POPPLER_TYPE_LAYER))
 
 POPPLER_PUBLIC
-GType        poppler_layer_get_type                  (void) G_GNUC_CONST;
+GType poppler_layer_get_type(void) G_GNUC_CONST;
 
 POPPLER_PUBLIC
-const gchar *poppler_layer_get_title                 (PopplerLayer *layer);
+const gchar *poppler_layer_get_title(PopplerLayer *layer);
 POPPLER_PUBLIC
-gboolean     poppler_layer_is_visible                (PopplerLayer *layer);
+gboolean poppler_layer_is_visible(PopplerLayer *layer);
 POPPLER_PUBLIC
-void         poppler_layer_show                      (PopplerLayer *layer);
+void poppler_layer_show(PopplerLayer *layer);
 POPPLER_PUBLIC
-void         poppler_layer_hide                      (PopplerLayer *layer);
+void poppler_layer_hide(PopplerLayer *layer);
 POPPLER_PUBLIC
-gboolean     poppler_layer_is_parent                 (PopplerLayer *layer);
+gboolean poppler_layer_is_parent(PopplerLayer *layer);
 POPPLER_PUBLIC
-gint         poppler_layer_get_radio_button_group_id (PopplerLayer *layer);
+gint poppler_layer_get_radio_button_group_id(PopplerLayer *layer);
 
 G_END_DECLS
 

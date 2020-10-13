@@ -1,0 +1,61 @@
+CI: azure
+CONDA_BUILD_SYSROOT: /Applications/Xcode_11.7.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk
+MACOSX_DEPLOYMENT_TARGET: '10.9'
+c_compiler: clang
+c_compiler_version: '10'
+cairo: '1.16'
+channel_sources: conda-forge,defaults
+channel_targets: conda-forge main
+cpu_optimization_target: nocona
+cran_mirror: https://cran.r-project.org
+curl: '7'
+cxx_compiler: clangxx
+cxx_compiler_version: '10'
+extend_keys:
+- extend_keys
+- ignore_version
+- pin_run_as_build
+- ignore_build_only_deps
+fortran_compiler: gfortran
+freetype: 2.9.1
+glib: '2.58'
+ignore_build_only_deps:
+- python
+- numpy
+jpeg: '9'
+libpng: '1.6'
+libtiff: 4.1.0
+lua: '5'
+macos_machine: x86_64-apple-darwin13.4.0
+numpy: '1.11'
+openjpeg: '2.3'
+perl: 5.26.2
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+  r-base:
+    min_pin: x.x
+    max_pin: x.x
+  cairo:
+    max_pin: x.x
+  curl:
+    max_pin: x
+  freetype:
+    max_pin: x
+  jpeg:
+    max_pin: x
+  libpng:
+    max_pin: x.x
+  libtiff:
+    max_pin: x
+  openjpeg:
+    max_pin: x.x
+  perl:
+    max_pin: x.x.x
+  zlib:
+    max_pin: x.x
+python: '3.8'
+r_base: '3.5'
+target_platform: osx-64
+zlib: '1.2'

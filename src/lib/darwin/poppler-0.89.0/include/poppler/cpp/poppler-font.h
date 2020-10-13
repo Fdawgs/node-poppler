@@ -24,8 +24,7 @@
 
 #include <vector>
 
-namespace poppler
-{
+namespace poppler {
 
 class document;
 class document_private;
@@ -36,7 +35,8 @@ class font_iterator_private;
 class POPPLER_CPP_EXPORT font_info
 {
 public:
-    enum type_enum {
+    enum type_enum
+    {
         unknown,
         type1,
         type1c,
@@ -61,7 +61,7 @@ public:
     bool is_subset() const;
     type_enum type() const;
 
-    font_info& operator=(const font_info &fi);
+    font_info &operator=(const font_info &fi);
 
 private:
     font_info(font_info_private &dd);
@@ -70,7 +70,6 @@ private:
     friend class font_iterator;
     friend class page;
 };
-
 
 class POPPLER_CPP_EXPORT font_iterator : public poppler::noncopyable
 {

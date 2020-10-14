@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require('fs');
 const glob = require('glob');
 const os = require('os');

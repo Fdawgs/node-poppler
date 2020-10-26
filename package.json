@@ -34,7 +34,7 @@
 	},
 	"scripts": {
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
-		"doc": "jsdoc2md src/index.js > API.md && prettier API.md --write",
+		"doc": "tsc && jsdoc2md src/index.js > API.md && prettier API.md --write",
 		"dupe-check": "yarn jsinspect ./src",
 		"lint": "eslint . --cache --ext js,jsx,ts,tsx --ignore-path .gitignore",
 		"prettier": "prettier . --write --ignore-path .gitignore",
@@ -75,6 +75,7 @@
 		"jest": "^26.5.3",
 		"jsdoc-to-markdown": "^6.0.1",
 		"jsinspect": "^0.12.7",
-		"prettier": "2.1.2"
+		"prettier": "2.1.2",
+		"typescript": "^4.0.3"
 	}
 }

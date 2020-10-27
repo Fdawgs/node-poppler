@@ -25,9 +25,8 @@ npm install node-poppler
 
 node-poppler's test scripts use yarn commands.
 
-### Linux support
-
-Windows and OSX/Darwin binaries are provided with this repository.
+### Linux and macOS/Darwin support
+Windows and macOS/Darwin binaries are provided with this repository.
 For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries separately.
 
 An example of downloading the binaries on a Debian system:
@@ -35,6 +34,12 @@ An example of downloading the binaries on a Debian system:
 ```
 sudo apt-get install poppler-data
 sudo apt-get install poppler-utils
+```
+
+If you do not wish to use the included macOS binaries, you can download the latest versions with [Homebrew](https://brew.sh/):
+
+```
+brew install poppler
 ```
 
 Once they have been installed, you will need to pass the `poppler-utils` installation directory in as parameters to an instance of the Poppler class:

@@ -9,11 +9,11 @@ const platform = os.platform();
 /**
  * @author Frazer Smith
  * @description Check each option provided is valid and of the correct type.
- * @param {object} options - Object containing options to pass to binary.
  * @param {object} acceptedOptions - Object containing options that a binary accepts.
+ * @param {object=} options - Object containing options to pass to binary.
  * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
  */
-function parseOptions(options, acceptedOptions) {
+function parseOptions(acceptedOptions, options) {
 	return new Promise((resolve, reject) => {
 		const args = [];
 		Object.keys(options).forEach((key) => {
@@ -87,22 +87,22 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Embeds files (attachments) into a PDF file.
-	 * @param {object} options - Object containing options to pass to binary.
-	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {boolean=} options.replace - Replace embedded file with same name (if it exists).
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} fileToAttach - Filepath of the attachment to be embedded into the PDF file.
 	 * @param {string} outputFile - Filepath of the file to output the results to.
+	 * @param {object=} options - Object containing options to pass to binary.
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
+	 * @param {boolean=} options.replace - Replace embedded file with same name (if it exists).
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfAttach(options = {}, file, fileToAttach, outputFile) {
+	async pdfAttach(file, fileToAttach, outputFile, options = {}) {
 		const acceptedOptions = {
 			printVersionInfo: { arg: '-v', type: 'boolean' },
 			replace: { arg: '-replace', type: 'boolean' }
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 			args.push(fileToAttach);
 			args.push(outputFile);
@@ -121,7 +121,8 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
 	 * File names are converted to the text encoding specified by the `outputEncoding` option.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
@@ -141,10 +142,9 @@ class Poppler {
 	 * By default, this uses the file name associated with the embedded file (as printed by the
 	 * `listEmbedded` option); the file name can be changed with the `outputPath` option.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @param {string} file - Filepath of the PDF file to read.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfDetach(options = {}, file) {
+	async pdfDetach(file, options = {}) {
 		const acceptedOptions = {
 			listEmbedded: { arg: '-list', type: 'boolean' },
 			ownerPassword: { arg: '-opw', type: 'string' },
@@ -158,7 +158,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 
 			const { stdout } = await execFileSync(
@@ -175,18 +175,18 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToExamine - Specifies the first page to examine.
 	 * @param {number=} options.lastPageToExamine - Specifies the last page to examine.
 	 * @param {boolean=} options.listSubstitutes - List the substitute fonts that poppler
 	 * will use for non-embedded fonts.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string=} options.userPassword - User password (for encrypted files).	 * 
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfFonts(options = {}, file) {
+	async pdfFonts(file, options = {}) {
 		const acceptedOptions = {
 			firstPageToExamine: { arg: '-f', type: 'number' },
 			lastPageToExamine: { arg: '-l', type: 'number' },
@@ -197,7 +197,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 
 			const { stdout } = await execFileSync(
@@ -214,7 +214,9 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string} outputPrefix - Filename prefix of output files.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.allFiles - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
 	 * CMYK files are written as TIFF files. All other images are written as PNG files.
 	 * @param {boolean=} options.ccittFile - Generate CCITT images as CCITT files.
@@ -231,11 +233,9 @@ class Poppler {
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.tiffFile - Change the default output format to TIFF.
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string} outputPrefix - Filename prefix of output files.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfImages(options = {}, file, outputPrefix) {
+	async pdfImages(file, outputPrefix, options = {}) {
 		const acceptedOptions = {
 			allFiles: { arg: '-all', type: 'boolean' },
 			ccittFile: { arg: '-ccitt', type: 'boolean' },
@@ -253,7 +253,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 			if (outputPrefix) {
 				args.push(outputPrefix);
@@ -273,7 +273,8 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToConvert - First page to print.
 	 * @param {number=} options.lastPageToConvert - Last page to print.
 	 * @param {boolean=} options.listEncodingOptions - List the available encodings.
@@ -298,10 +299,9 @@ class Poppler {
 	 * @param {boolean=} options.printRawDates - Prints the raw (undecoded) date strings, directly from the PDF file.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @param {string} file - Filepath of the PDF file to read.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfInfo(options = {}, file) {
+	async pdfInfo(file, options = {}) {
 		const acceptedOptions = {
 			firstPageToConvert: { arg: '-f', type: 'number' },
 			lastPageToConvert: { arg: '-l', type: 'number' },
@@ -321,7 +321,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 
 			const { stdout } = await execFileSync(
@@ -340,19 +340,19 @@ class Poppler {
 	 * and writes one PDF file for each page to outputPattern.
 	 * This will not work if the file is encrypted.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string} outputPattern - Should contain %d (or any variant respecting printf format),
+	 * since %d is replaced by the page number.
+	 * As an example, `sample-%d.pdf` will produce `sample-1.pdf` for a single page document.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToExtract - Specifies the first page to extract.
 	 * This defaults to page 1.
 	 * @param {number=} options.lastPageToExtract - Specifies the last page to extract.
 	 * This defaults to the last page of the PDF file.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string} outputPattern - Should contain %d (or any variant respecting printf format),
-	 * since %d is replaced by the page number.
-	 * As an example, `sample-%d.pdf` will produce `sample-1.pdf` for a single page document.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfSeparate(options = {}, file, outputPattern) {
+	async pdfSeparate(file, outputPattern, options = {}) {
 		const acceptedOptions = {
 			firstPageToExtract: { arg: '-f', type: 'number' },
 			lastPageToExtract: { arg: '-l', type: 'number' },
@@ -360,7 +360,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 			args.push(outputPattern);
 
@@ -378,7 +378,14 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 *
+	 * Can be set to  `'-'` to write output to stdout. Using stdout is not valid with image formats
+	 * unless `options.singleFile` is set to `true`.
+	 *
+	 * If not set then the output filename will be derived from the PDF file name.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {('default'|'none'|'gray'|'subpixel'|'fast'|'good'|'best')=} options.antialias Set the cairo
 	 * antialias option used for text and drawing in image files (or rasterized regions in vector output).
 	 * @param {boolean=} options.cropBox - Uses the crop box rather than media box when
@@ -458,16 +465,9 @@ class Poppler {
 	 * @param {boolean=} options.transparentPageColor - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string=} outputFile - Filepath of the file to output the results to.
-	 *
-	 * Can be set to  `'-'` to write output to stdout. Using stdout is not valid with image formats
-	 * unless `options.singleFile` is set to `true`.
-	 *
-	 * If not set then the output filename will be derived from the PDF file name.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfToCairo(options = {}, file, outputFile) {
+	async pdfToCairo(file, outputFile, options = {}) {
 		const acceptedOptions = {
 			antialias: { arg: '-antialias', type: 'string' },
 			cropBox: { arg: '-cropbox', type: 'boolean' },
@@ -517,7 +517,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 			if (outputFile) {
 				args.push(outputFile);
@@ -540,7 +540,8 @@ class Poppler {
 	 * Poppler will use the directory and name of the original file
 	 * and append `-html` to the end of the filename.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
 	 * @param {boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
 	 * @param {boolean=} options.extractHidden - Force hidden text extraction.
@@ -568,10 +569,9 @@ class Poppler {
 	 * than this percent of character height.
 	 * @param {boolean=} options.xmlOutput - Output for XML post-processing.
 	 * @param {number=} options.zoom - Zoom the PDF document (default 1.5).
-	 * @param {string} file - Filepath of the PDF file to read.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfToHtml(options = {}, file) {
+	async pdfToHtml(file, options = {}) {
 		const acceptedOptions = {
 			complexOutput: { arg: '-c', type: 'boolean' },
 			exchangePdfLinks: { arg: '-p', type: 'boolean' },
@@ -598,7 +598,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 
 			const { stdout } = await execFileSync(
@@ -617,7 +617,9 @@ class Poppler {
 	 * grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 	 * in Portable Bitmap (PBM) format.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string} outputPath - Filepath to output the results to.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {('yes'|'no')=} options.antialiasFonts - Enable or disable font anti-aliasing.
 	 * This defaults to `yes`.
 	 * @param {('yes'|'no')=} options.antialiasVectors - Enable or disable vector anti-aliasing.
@@ -670,11 +672,9 @@ class Poppler {
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
 	 * @param {boolean=} options.tiffFile - Generate TIFF file instead a PPM file.
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string} outputPath - Filepath to output the results to.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfToPpm(options = {}, file, outputPath) {
+	async pdfToPpm(file, outputPath, options = {}) {
 		const acceptedOptions = {
 			antialiasFonts: { arg: '-aa', type: 'string' },
 			antialiasVectors: { arg: '-aaVector', type: 'string' },
@@ -711,7 +711,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 			args.push(outputPath);
 
@@ -729,7 +729,10 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to PostScript (PS).
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 * Can be set to `'-'` to write output to stdout.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {('yes'|'no')=} options.antialias - Enable anti-aliasing on rasterization, accepts `yes` or `no`.
 	 * @param {boolean=} options.binary - Write binary data in Level 1 PostScript. By default,
 	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
@@ -815,12 +818,9 @@ class Poppler {
 	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
 	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string=} outputFile - Filepath of the file to output the results to.
-	 * Can be set to `'-'` to write output to stdout.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfToPs(options = {}, file, outputFile) {
+	async pdfToPs(file, outputFile, options = {}) {
 		const acceptedOptions = {
 			antialias: { arg: '-aaRaster', type: 'string' },
 			binary: { arg: '-binary', type: 'boolean' },
@@ -867,7 +867,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 			if (outputFile) {
 				args.push(outputFile);
@@ -889,7 +889,10 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to TXT.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
+	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 * Can be set to `'-'` to write output to stdout.
+	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.boundingBoxXhtml - Generate an XHTML file containing bounding
 	 * box information for each word in the file.
 	 * @param {boolean=} options.boundingBoxXhtmlLayout - Generate an XHTML file containing
@@ -925,12 +928,9 @@ class Poppler {
 	 * @param {boolean=} options.rawLayout - Keep the text in content stream order. This is a
 	 * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string=} outputFile - Filepath of the file to output the results to.
-	 * Can be set to `'-'` to write output to stdout.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfToText(options = {}, file, outputFile) {
+	async pdfToText(file, outputFile, options = {}) {
 		const acceptedOptions = {
 			boundingBoxXhtml: { arg: '-bbox', type: 'boolean' },
 			boundingBoxXhtmlLayout: {
@@ -960,7 +960,7 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 			if (outputFile) {
 				args.push(outputFile);
@@ -983,20 +983,20 @@ class Poppler {
 	 * @description Merges several PDF files in order of their occurrence in the files array to
 	 * one PDF result file.
 	 *
-	 * @param {object} options - Object containing options to pass to binary.
-	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {Array} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`.
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
+	 * @param {object=} options - Object containing options to pass to binary.
+	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfUnite(options = {}, files, outputFile) {
+	async pdfUnite(files, outputFile, options = {}) {
 		const acceptedOptions = {
 			printVersionInfo: { arg: '-v', type: 'boolean' }
 		};
 
 		try {
-			const args = await parseOptions(options, acceptedOptions);
+			const args = await parseOptions(acceptedOptions, options);
 			files.forEach((element) => {
 				args.push(element);
 			});

@@ -8,7 +8,7 @@
 ## Functions
 
 <dl>
-<dt><a href="#parseOptions">parseOptions(options, acceptedOptions)</a> ⇒ <code>Promise.&lt;(string|Error)&gt;</code></dt>
+<dt><a href="#parseOptions">parseOptions(acceptedOptions, [options])</a> ⇒ <code>Promise.&lt;(string|Error)&gt;</code></dt>
 <dd><p>Check each option provided is valid and of the correct type.</p>
 </dd>
 </dl>
@@ -21,18 +21,18 @@
 
 -   [Poppler](#Poppler)
     -   [new Poppler([binPath])](#new_Poppler_new)
-    -   [.pdfAttach([options], file, fileToAttach, outputFile)](#Poppler+pdfAttach) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfDetach([options], file)](#Poppler+pdfDetach) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfFonts([options], file)](#Poppler+pdfFonts) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfImages([options], file, outputPrefix)](#Poppler+pdfImages) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfInfo([options], file)](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfSeparate([options], file, outputPattern)](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfToCairo(options, file, [outputFile])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfToHtml([options], file)](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfToPpm(options, file, outputPath)](#Poppler+pdfToPpm) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfToPs([options], file, [outputFile])](#Poppler+pdfToPs) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfToText([options], file, [outputFile])](#Poppler+pdfToText) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    -   [.pdfUnite([options], files, outputFile)](#Poppler+pdfUnite) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfAttach(file, fileToAttach, outputFile, [options])](#Poppler+pdfAttach) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfDetach(file, [options])](#Poppler+pdfDetach) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfFonts(file, [options])](#Poppler+pdfFonts) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfImages(file, outputPrefix, [options])](#Poppler+pdfImages) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfSeparate(file, outputPattern, [options])](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfToCairo(file, [outputFile], [options])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfToHtml(file, [options])](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfToPpm(file, outputPath, [options])](#Poppler+pdfToPpm) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfToPs(file, [outputFile], [options])](#Poppler+pdfToPs) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfToText(file, [outputFile], [options])](#Poppler+pdfToText) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    -   [.pdfUnite(files, outputFile, [options])](#Poppler+pdfUnite) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 <a name="new_Poppler_new"></a>
 
@@ -44,7 +44,7 @@
 
 <a name="Poppler+pdfAttach"></a>
 
-### poppler.pdfAttach([options], file, fileToAttach, outputFile) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfAttach(file, fileToAttach, outputFile, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Embeds files (attachments) into a PDF file.
 
@@ -54,16 +54,16 @@ Embeds files (attachments) into a PDF file.
 
 | Param                      | Type                 | Description                                                  |
 | -------------------------- | -------------------- | ------------------------------------------------------------ |
-| [options]                  | <code>object</code>  | Object containing options to pass to binary.                 |
-| [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info.                            |
-| [options.replace]          | <code>boolean</code> | Replace embedded file with same name (if it exists).         |
 | file                       | <code>string</code>  | Filepath of the PDF file to read.                            |
 | fileToAttach               | <code>string</code>  | Filepath of the attachment to be embedded into the PDF file. |
 | outputFile                 | <code>string</code>  | Filepath of the file to output the results to.               |
+| [options]                  | <code>object</code>  | Object containing options to pass to binary.                 |
+| [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info.                            |
+| [options.replace]          | <code>boolean</code> | Replace embedded file with same name (if it exists).         |
 
 <a name="Poppler+pdfDetach"></a>
 
-### poppler.pdfDetach([options], file) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfDetach(file, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Lists or extracts embedded files (attachments) from a PDF file.
 
@@ -73,6 +73,7 @@ Lists or extracts embedded files (attachments) from a PDF file.
 
 | Param                      | Type                 | Description                                                                                                                                                                                                                                        |
 | -------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| file                       | <code>string</code>  | Filepath of the PDF file to read.                                                                                                                                                                                                                  |
 | [options]                  | <code>object</code>  | Object containing options to pass to binary.                                                                                                                                                                                                       |
 | [options.listEmbedded]     | <code>boolean</code> | List all of the embedded files in the PDF file. File names are converted to the text encoding specified by the `outputEncoding` option.                                                                                                            |
 | [options.ownerPassword]    | <code>string</code>  | Owner password (for encrypted files).                                                                                                                                                                                                              |
@@ -83,11 +84,10 @@ Lists or extracts embedded files (attachments) from a PDF file.
 | [options.saveFile]         | <code>string</code>  | Save the specified embedded file. By default, this uses the file name associated with the embedded file (as printed by the `listEmbedded` option); the file name can be changed with the `outputPath` option.                                      |
 | [options.saveSpecificFile] | <code>number</code>  | Save the specified embedded file. By default, this uses the file name associated with the embedded file (as printed by the `listEmbedded` option); the file name can be changed with the `outputPath` option.                                      |
 | [options.userPassword]     | <code>string</code>  | User password (for encrypted files).                                                                                                                                                                                                               |
-| file                       | <code>string</code>  | Filepath of the PDF file to read.                                                                                                                                                                                                                  |
 
 <a name="Poppler+pdfFonts"></a>
 
-### poppler.pdfFonts([options], file) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfFonts(file, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Lists the fonts used in a PDF file along with various information for each font.
 
@@ -97,18 +97,18 @@ Lists the fonts used in a PDF file along with various information for each font.
 
 | Param                        | Type                 | Description                                                             |
 | ---------------------------- | -------------------- | ----------------------------------------------------------------------- |
+| file                         | <code>string</code>  | Filepath of the PDF file to read.                                       |
 | [options]                    | <code>object</code>  | Object containing options to pass to binary.                            |
 | [options.firstPageToExamine] | <code>number</code>  | Specifies the first page to examine.                                    |
 | [options.lastPageToExamine]  | <code>number</code>  | Specifies the last page to examine.                                     |
 | [options.listSubstitutes]    | <code>boolean</code> | List the substitute fonts that poppler will use for non-embedded fonts. |
 | [options.ownerPassword]      | <code>string</code>  | Owner password (for encrypted files).                                   |
 | [options.printVersionInfo]   | <code>boolean</code> | Print copyright and version info.                                       |
-| [options.userPassword]       | <code>string</code>  | User password (for encrypted files).                                    |
-| file                         | <code>string</code>  | Filepath of the PDF file to read.                                       |
+| [options.userPassword]       | <code>string</code>  | User password (for encrypted files). \*                                 |
 
 <a name="Poppler+pdfImages"></a>
 
-### poppler.pdfImages([options], file, outputPrefix) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfImages(file, outputPrefix, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 
@@ -118,6 +118,8 @@ Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 fi
 
 | Param                        | Type                 | Description                                                                                                                                            |
 | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| file                         | <code>string</code>  | Filepath of the PDF file to read.                                                                                                                      |
+| outputPrefix                 | <code>string</code>  | Filename prefix of output files.                                                                                                                       |
 | [options]                    | <code>object</code>  | Object containing options to pass to binary.                                                                                                           |
 | [options.allFiles]           | <code>boolean</code> | Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format. CMYK files are written as TIFF files. All other images are written as PNG files. |
 | [options.ccittFile]          | <code>boolean</code> | Generate CCITT images as CCITT files.                                                                                                                  |
@@ -132,12 +134,10 @@ Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 fi
 | [options.printVersionInfo]   | <code>boolean</code> | Print copyright and version info.                                                                                                                      |
 | [options.tiffFile]           | <code>boolean</code> | Change the default output format to TIFF.                                                                                                              |
 | [options.userPassword]       | <code>string</code>  | Specify the user password for the PDF file.                                                                                                            |
-| file                         | <code>string</code>  | Filepath of the PDF file to read.                                                                                                                      |
-| outputPrefix                 | <code>string</code>  | Filename prefix of output files.                                                                                                                       |
 
 <a name="Poppler+pdfInfo"></a>
 
-### poppler.pdfInfo([options], file) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfInfo(file, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Prints the contents of the `Info` dictionary from a PDF file.
 
@@ -147,6 +147,7 @@ Prints the contents of the `Info` dictionary from a PDF file.
 
 | Param                         | Type                 | Description                                                                                                                                                                          |
 | ----------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| file                          | <code>string</code>  | Filepath of the PDF file to read.                                                                                                                                                    |
 | [options]                     | <code>object</code>  | Object containing options to pass to binary.                                                                                                                                         |
 | [options.firstPageToConvert]  | <code>number</code>  | First page to print.                                                                                                                                                                 |
 | [options.lastPageToConvert]   | <code>number</code>  | Last page to print.                                                                                                                                                                  |
@@ -163,11 +164,10 @@ Prints the contents of the `Info` dictionary from a PDF file.
 | [options.printRawDates]       | <code>boolean</code> | Prints the raw (undecoded) date strings, directly from the PDF file.                                                                                                                 |
 | [options.printVersionInfo]    | <code>boolean</code> | Print copyright and version info.                                                                                                                                                    |
 | [options.userPassword]        | <code>string</code>  | User password (for encrypted files).                                                                                                                                                 |
-| file                          | <code>string</code>  | Filepath of the PDF file to read.                                                                                                                                                    |
 
 <a name="Poppler+pdfSeparate"></a>
 
-### poppler.pdfSeparate([options], file, outputPattern) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfSeparate(file, outputPattern, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Extract single pages from a PDF file,
 and writes one PDF file for each page to outputPattern.
@@ -179,16 +179,16 @@ This will not work if the file is encrypted.
 
 | Param                        | Type                 | Description                                                                                                                                                                                  |
 | ---------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| file                         | <code>string</code>  | Filepath of the PDF file to read.                                                                                                                                                            |
+| outputPattern                | <code>string</code>  | Should contain %d (or any variant respecting printf format), since %d is replaced by the page number. As an example, `sample-%d.pdf` will produce `sample-1.pdf` for a single page document. |
 | [options]                    | <code>object</code>  | Object containing options to pass to binary.                                                                                                                                                 |
 | [options.firstPageToExtract] | <code>number</code>  | Specifies the first page to extract. This defaults to page 1.                                                                                                                                |
 | [options.lastPageToExtract]  | <code>number</code>  | Specifies the last page to extract. This defaults to the last page of the PDF file.                                                                                                          |
 | [options.printVersionInfo]   | <code>boolean</code> | Print copyright and version info.                                                                                                                                                            |
-| file                         | <code>string</code>  | Filepath of the PDF file to read.                                                                                                                                                            |
-| outputPattern                | <code>string</code>  | Should contain %d (or any variant respecting printf format), since %d is replaced by the page number. As an example, `sample-%d.pdf` will produce `sample-1.pdf` for a single page document. |
 
 <a name="Poppler+pdfToCairo"></a>
 
-### poppler.pdfToCairo(options, file, [outputFile]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToCairo(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
@@ -198,7 +198,9 @@ Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 | Param                          | Type                                                                                                                                                                                                                                       | Description                                                                                                                                                                                                                                                                                                                  |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options                        | <code>object</code>                                                                                                                                                                                                                        | Object containing options to pass to binary.                                                                                                                                                                                                                                                                                 |
+| file                           | <code>string</code>                                                                                                                                                                                                                        | Filepath of the PDF file to read.                                                                                                                                                                                                                                                                                            |
+| [outputFile]                   | <code>string</code>                                                                                                                                                                                                                        | Filepath of the file to output the results to. Can be set to `'-'` to write output to stdout. Using stdout is not valid with image formats unless `options.singleFile` is set to `true`. If not set then the output filename will be derived from the PDF file name.                                                         |
+| [options]                      | <code>object</code>                                                                                                                                                                                                                        | Object containing options to pass to binary.                                                                                                                                                                                                                                                                                 |
 | [options.antialias]            | <code>&#x27;default&#x27;</code> \| <code>&#x27;none&#x27;</code> \| <code>&#x27;gray&#x27;</code> \| <code>&#x27;subpixel&#x27;</code> \| <code>&#x27;fast&#x27;</code> \| <code>&#x27;good&#x27;</code> \| <code>&#x27;best&#x27;</code> | Set the cairo antialias option used for text and drawing in image files (or rasterized regions in vector output).                                                                                                                                                                                                            |
 | [options.cropBox]              | <code>boolean</code>                                                                                                                                                                                                                       | Uses the crop box rather than media box when generating the files (PNG/JPEG/TIFF only).                                                                                                                                                                                                                                      |
 | [options.cropHeight]           | <code>number</code>                                                                                                                                                                                                                        | Specifies the height of crop area in pixels (image output) or points (vector output).                                                                                                                                                                                                                                        |
@@ -244,12 +246,10 @@ Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 | [options.tiffFile]             | <code>boolean</code>                                                                                                                                                                                                                       | Generate TIFF file(s).                                                                                                                                                                                                                                                                                                       |
 | [options.transparentPageColor] | <code>boolean</code>                                                                                                                                                                                                                       | Use a transparent page color instead of white (PNG and TIFF only).                                                                                                                                                                                                                                                           |
 | [options.userPassword]         | <code>string</code>                                                                                                                                                                                                                        | Specify the user password for the PDF file.                                                                                                                                                                                                                                                                                  |
-| file                           | <code>string</code>                                                                                                                                                                                                                        | Filepath of the PDF file to read.                                                                                                                                                                                                                                                                                            |
-| [outputFile]                   | <code>string</code>                                                                                                                                                                                                                        | Filepath of the file to output the results to. Can be set to `'-'` to write output to stdout. Using stdout is not valid with image formats unless `options.singleFile` is set to `true`. If not set then the output filename will be derived from the PDF file name.                                                         |
 
 <a name="Poppler+pdfToHtml"></a>
 
-### poppler.pdfToHtml([options], file) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToHtml(file, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Converts a PDF file to HTML.
 Poppler will use the directory and name of the original file
@@ -261,6 +261,7 @@ and append `-html` to the end of the filename.
 
 | Param                          | Type                                                         | Description                                                                                                                                                               |
 | ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| file                           | <code>string</code>                                          | Filepath of the PDF file to read.                                                                                                                                         |
 | [options]                      | <code>object</code>                                          | Object containing options to pass to binary.                                                                                                                              |
 | [options.complexOutput]        | <code>boolean</code>                                         | Generate complex output.                                                                                                                                                  |
 | [options.exchangePdfLinks]     | <code>boolean</code>                                         | Exchange .pdf links with .html.                                                                                                                                           |
@@ -284,11 +285,10 @@ and append `-html` to the end of the filename.
 | [options.wordBreakThreshold]   | <code>number</code>                                          | Adjust the word break threshold percent. Default is 10. Word break occurs when distance between two adjacent characters is greater than this percent of character height. |
 | [options.xmlOutput]            | <code>boolean</code>                                         | Output for XML post-processing.                                                                                                                                           |
 | [options.zoom]                 | <code>number</code>                                          | Zoom the PDF document (default 1.5).                                                                                                                                      |
-| file                           | <code>string</code>                                          | Filepath of the PDF file to read.                                                                                                                                         |
 
 <a name="Poppler+pdfToPpm"></a>
 
-### poppler.pdfToPpm(options, file, outputPath) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToPpm(file, outputPath, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Converts a PDF file to colour image files in Portable Pixmap (PPM) format,
 grayscale image files in Portable Graymap (PGM) format, or monochrome image files
@@ -300,7 +300,9 @@ in Portable Bitmap (PBM) format.
 
 | Param                        | Type                                                                                                                                                                    | Description                                                                                                                                                                                        |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| options                      | <code>object</code>                                                                                                                                                     | Object containing options to pass to binary.                                                                                                                                                       |
+| file                         | <code>string</code>                                                                                                                                                     | Filepath of the PDF file to read.                                                                                                                                                                  |
+| outputPath                   | <code>string</code>                                                                                                                                                     | Filepath to output the results to.                                                                                                                                                                 |
+| [options]                    | <code>object</code>                                                                                                                                                     | Object containing options to pass to binary.                                                                                                                                                       |
 | [options.antialiasFonts]     | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code>                                                                                                             | Enable or disable font anti-aliasing. This defaults to `yes`.                                                                                                                                      |
 | [options.antialiasVectors]   | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code>                                                                                                             | Enable or disable vector anti-aliasing. This defaults to `yes`.                                                                                                                                    |
 | [options.cropBox]            | <code>boolean</code>                                                                                                                                                    | Uses the crop box rather than media box when generating the files (PNG/JPEG/TIFF only).                                                                                                            |
@@ -333,12 +335,10 @@ in Portable Bitmap (PBM) format.
 | [options.tiffCompression]    | <code>&#x27;none&#x27;</code> \| <code>&#x27;packbits&#x27;</code> \| <code>&#x27;jpeg&#x27;</code> \| <code>&#x27;lzw&#x27;</code> \| <code>&#x27;deflate&#x27;</code> | Set TIFF compression.                                                                                                                                                                              |
 | [options.tiffFile]           | <code>boolean</code>                                                                                                                                                    | Generate TIFF file instead a PPM file.                                                                                                                                                             |
 | [options.userPassword]       | <code>string</code>                                                                                                                                                     | Specify the user password for the PDF file.                                                                                                                                                        |
-| file                         | <code>string</code>                                                                                                                                                     | Filepath of the PDF file to read.                                                                                                                                                                  |
-| outputPath                   | <code>string</code>                                                                                                                                                     | Filepath to output the results to.                                                                                                                                                                 |
 
 <a name="Poppler+pdfToPs"></a>
 
-### poppler.pdfToPs([options], file, [outputFile]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToPs(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Converts a PDF file to PostScript (PS).
 
@@ -348,6 +348,8 @@ Converts a PDF file to PostScript (PS).
 
 | Param                             | Type                                                                                                                                                              | Description                                                                                                                                                                                                                                                                                                                                                                        |
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| file                              | <code>string</code>                                                                                                                                               | Filepath of the PDF file to read.                                                                                                                                                                                                                                                                                                                                                  |
+| [outputFile]                      | <code>string</code>                                                                                                                                               | Filepath of the file to output the results to. Can be set to `'-'` to write output to stdout.                                                                                                                                                                                                                                                                                      |
 | [options]                         | <code>object</code>                                                                                                                                               | Object containing options to pass to binary.                                                                                                                                                                                                                                                                                                                                       |
 | [options.antialias]               | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code>                                                                                                       | Enable anti-aliasing on rasterization, accepts `yes` or `no`.                                                                                                                                                                                                                                                                                                                      |
 | [options.binary]                  | <code>boolean</code>                                                                                                                                              | Write binary data in Level 1 PostScript. By default, pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1 PostScript but reduces the file size and can be useful when Level 1 PostScript is required only for its restricted use of PostScript operators.                                                                                 |
@@ -385,12 +387,10 @@ Converts a PDF file to PostScript (PS).
 | [options.rasterize]               | <code>&#x27;always&#x27;</code> \| <code>&#x27;never&#x27;</code> \| <code>&#x27;whenneeded&#x27;</code>                                                          | By default, pdfToPs rasterizes pages as needed, for example, if they contain transparencies. To force rasterization, set `rasterize` to `always`. Use this to eliminate fonts. To prevent rasterization, set `rasterize` to `never`. This may produce files that display incorrectly.                                                                                              |
 | [options.resolutionXYAxis]        | <code>number</code>                                                                                                                                               | Specifies the X and Y resolution, in pixels per inch of image files (or rasterized regions in vector output). The default is 300 PPI.                                                                                                                                                                                                                                              |
 | [options.userPassword]            | <code>string</code>                                                                                                                                               | User password (for encrypted files).                                                                                                                                                                                                                                                                                                                                               |
-| file                              | <code>string</code>                                                                                                                                               | Filepath of the PDF file to read.                                                                                                                                                                                                                                                                                                                                                  |
-| [outputFile]                      | <code>string</code>                                                                                                                                               | Filepath of the file to output the results to. Can be set to `'-'` to write output to stdout.                                                                                                                                                                                                                                                                                      |
 
 <a name="Poppler+pdfToText"></a>
 
-### poppler.pdfToText([options], file, [outputFile]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToText(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Converts a PDF file to TXT.
 
@@ -400,6 +400,8 @@ Converts a PDF file to TXT.
 
 | Param                            | Type                                                                                          | Description                                                                                                                                                                        |
 | -------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| file                             | <code>string</code>                                                                           | Filepath of the PDF file to read.                                                                                                                                                  |
+| [outputFile]                     | <code>string</code>                                                                           | Filepath of the file to output the results to. Can be set to `'-'` to write output to stdout.                                                                                      |
 | [options]                        | <code>object</code>                                                                           | Object containing options to pass to binary.                                                                                                                                       |
 | [options.boundingBoxXhtml]       | <code>boolean</code>                                                                          | Generate an XHTML file containing bounding box information for each word in the file.                                                                                              |
 | [options.boundingBoxXhtmlLayout] | <code>boolean</code>                                                                          | Generate an XHTML file containing bounding box information for each block, line, and word in the file.                                                                             |
@@ -422,12 +424,10 @@ Converts a PDF file to TXT.
 | [options.quiet]                  | <code>boolean</code>                                                                          | Do not print any messages or errors.                                                                                                                                               |
 | [options.rawLayout]              | <code>boolean</code>                                                                          | Keep the text in content stream order. This is a hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.                                         |
 | [options.userPassword]           | <code>string</code>                                                                           | User password (for encrypted files).                                                                                                                                               |
-| file                             | <code>string</code>                                                                           | Filepath of the PDF file to read.                                                                                                                                                  |
-| [outputFile]                     | <code>string</code>                                                                           | Filepath of the file to output the results to. Can be set to `'-'` to write output to stdout.                                                                                      |
 
 <a name="Poppler+pdfUnite"></a>
 
-### poppler.pdfUnite([options], files, outputFile) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfUnite(files, outputFile, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Merges several PDF files in order of their occurrence in the files array to
 one PDF result file.
@@ -438,14 +438,14 @@ one PDF result file.
 
 | Param                      | Type                 | Description                                                                                                             |
 | -------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| [options]                  | <code>object</code>  | Object containing options to pass to binary.                                                                            |
-| [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information.                                                                                |
 | files                      | <code>Array</code>   | Filepaths of the PDF files to merge. An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`. |
 | outputFile                 | <code>string</code>  | Filepath of the file to output the resulting merged PDF to.                                                             |
+| [options]                  | <code>object</code>  | Object containing options to pass to binary.                                                                            |
+| [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information.                                                                                |
 
 <a name="parseOptions"></a>
 
-## parseOptions(options, acceptedOptions) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+## parseOptions(acceptedOptions, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 
 Check each option provided is valid and of the correct type.
 
@@ -455,5 +455,5 @@ Check each option provided is valid and of the correct type.
 
 | Param           | Type                | Description                                      |
 | --------------- | ------------------- | ------------------------------------------------ |
-| options         | <code>object</code> | Object containing options to pass to binary.     |
 | acceptedOptions | <code>object</code> | Object containing options that a binary accepts. |
+| [options]       | <code>object</code> | Object containing options to pass to binary.     |

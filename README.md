@@ -77,7 +77,7 @@ const options = {
 };
 const outputFile = `test_document.png`;
 
-const res = await poppler.pdfToCairo(options, file, outputFile);
+const res = await poppler.pdfToCairo(file, outputFile, options);
 console.log(res);
 ```
 
@@ -97,7 +97,7 @@ const options = {
 	lastPageToConvert: 2
 };
 
-poppler.pdfToHtml(options, file).then((res) => {
+poppler.pdfToHtml(file, options).then((res) => {
 	console.log(res);
 });
 ```
@@ -118,7 +118,7 @@ const options = {
 	lastPageToConvert: 2
 };
 
-poppler.pdfToText(options, file).then((res) => {
+poppler.pdfToText(file, options).then((res) => {
 	console.log(res);
 });
 ```

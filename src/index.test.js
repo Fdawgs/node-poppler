@@ -33,7 +33,7 @@ switch (platform) {
 			__dirname,
 			'lib',
 			'win32',
-			'poppler-20.10.0',
+			'poppler-20.11.0',
 			'bin'
 		);
 		break;
@@ -88,11 +88,7 @@ describe('pdfAttach function', () => {
 		const attachmentFile = `${testDirectory}test.txt`;
 		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`;
 
-		const res = await poppler.pdfAttach(
-			file,
-			attachmentFile,
-			outputFile
-		);
+		const res = await poppler.pdfAttach(file, attachmentFile, outputFile);
 
 		expect(typeof res).toBe('string');
 		expect(
@@ -629,7 +625,7 @@ describe('pdfToPpm function', () => {
 			middlePageToConvert: 'test'
 		};
 
-		await poppler.pdfToPpm(undefined, undefined ,options).catch((err) => {
+		await poppler.pdfToPpm(undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
 			);

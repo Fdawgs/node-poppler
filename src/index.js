@@ -381,7 +381,7 @@ class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 *
-	 * Can be set to  `'-'` to write output to stdout. Using stdout is not valid with image formats
+	 * If `undefined` then will write output to stdout. Using stdout is not valid with image formats
 	 * unless `options.singleFile` is set to `true`.
 	 *
 	 * If not set then the output filename will be derived from the PDF file name.
@@ -731,7 +731,7 @@ class Poppler {
 	 *
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
-	 * Can be set to `'-'` to write output to stdout.
+	 * If `undefined` then will write output to stdout.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {('yes'|'no')=} options.antialias - Enable anti-aliasing on rasterization, accepts `yes` or `no`.
 	 * @param {boolean=} options.binary - Write binary data in Level 1 PostScript. By default,
@@ -891,7 +891,7 @@ class Poppler {
 	 *
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
-	 * Can be set to `'-'` to write output to stdout.
+	 * If `undefined` then will write output to stdout.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.boundingBoxXhtml - Generate an XHTML file containing bounding
 	 * box information for each word in the file.

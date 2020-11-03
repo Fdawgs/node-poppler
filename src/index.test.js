@@ -113,11 +113,13 @@ describe('pdfAttach function', () => {
 			replace: 'test'
 		};
 
-		await poppler.pdfAttach(file, undefined, undefined, options).catch((err) => {
-			expect(err.message).toEqual(
-				"Invalid value type provided for option 'replace', expected boolean but recieved string"
-			);
-		});
+		await poppler
+			.pdfAttach(file, undefined, undefined, options)
+			.catch((err) => {
+				expect(err.message).toEqual(
+					"Invalid value type provided for option 'replace', expected boolean but recieved string"
+				);
+			});
 	});
 
 	test('Should return an Error object if invalid option is passed to function', async () => {
@@ -126,9 +128,13 @@ describe('pdfAttach function', () => {
 			wordFile: 'test'
 		};
 
-		await poppler.pdfAttach(file, undefined, undefined, options).catch((err) => {
-			expect(err.message).toEqual("Invalid option provided 'wordFile'");
-		});
+		await poppler
+			.pdfAttach(file, undefined, undefined, options)
+			.catch((err) => {
+				expect(err.message).toEqual(
+					"Invalid option provided 'wordFile'"
+				);
+			});
 	});
 });
 

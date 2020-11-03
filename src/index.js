@@ -183,7 +183,7 @@ class Poppler {
 	 * will use for non-embedded fonts.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @param {string=} options.userPassword - User password (for encrypted files).	 * 
+	 * @param {string=} options.userPassword - User password (for encrypted files).	 *
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	async pdfFonts(file, options = {}) {

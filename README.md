@@ -26,6 +26,7 @@ npm install node-poppler
 node-poppler's test scripts use yarn commands.
 
 ### Linux and macOS/Darwin support
+
 Windows and macOS/Darwin binaries are provided with this repository.
 For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries separately.
 

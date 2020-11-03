@@ -113,7 +113,7 @@ describe('pdfAttach function', () => {
 			replace: 'test'
 		};
 
-		await poppler.pdfAttach(file, options).catch((err) => {
+		await poppler.pdfAttach(file, undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'replace', expected boolean but recieved string"
 			);
@@ -126,7 +126,7 @@ describe('pdfAttach function', () => {
 			wordFile: 'test'
 		};
 
-		await poppler.pdfAttach(file, options).catch((err) => {
+		await poppler.pdfAttach(file, undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
 	});
@@ -390,7 +390,7 @@ describe('pdfSeparate function', () => {
 			firstPageToExtract: 'test'
 		};
 
-		await poppler.pdfSeparate(file, options).catch((err) => {
+		await poppler.pdfSeparate(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToExtract', expected number but recieved string"
 			);
@@ -403,7 +403,7 @@ describe('pdfSeparate function', () => {
 			wordFile: 'test'
 		};
 
-		await poppler.pdfSeparate(file, options).catch((err) => {
+		await poppler.pdfSeparate(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
 	});
@@ -469,7 +469,7 @@ describe('pdfToCairo function', () => {
 			pdfFile: 'test'
 		};
 
-		await poppler.pdfToCairo(file, options).catch((err) => {
+		await poppler.pdfToCairo(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'pdfFile', expected boolean but recieved string"
 			);
@@ -482,7 +482,7 @@ describe('pdfToCairo function', () => {
 			wordFile: 'test'
 		};
 
-		await poppler.pdfToCairo(file, options).catch((err) => {
+		await poppler.pdfToCairo(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
 	});
@@ -690,7 +690,7 @@ describe('pdfToPs function', () => {
 			lastPageToConvert: 'test'
 		};
 
-		await poppler.pdfToPs(file, options).catch((err) => {
+		await poppler.pdfToPs(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
 			);
@@ -703,7 +703,7 @@ describe('pdfToPs function', () => {
 			middlePageToConvert: 'test'
 		};
 
-		await poppler.pdfToPs(file, options).catch((err) => {
+		await poppler.pdfToPs(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
 			);
@@ -735,7 +735,7 @@ describe('pdfToText function', () => {
 			lastPageToConvert: 2
 		};
 
-		const res = await poppler.pdfToText(file, options);
+		const res = await poppler.pdfToText(file, undefined, options);
 
 		expect(typeof res).toBe('string');
 		expect(
@@ -767,7 +767,7 @@ describe('pdfToText function', () => {
 			lastPageToConvert: 'test'
 		};
 
-		await poppler.pdfToText(file, options).catch((err) => {
+		await poppler.pdfToText(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
 			);
@@ -780,7 +780,7 @@ describe('pdfToText function', () => {
 			middlePageToConvert: 'test'
 		};
 
-		await poppler.pdfToText(file, options).catch((err) => {
+		await poppler.pdfToText(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
 			);
@@ -829,7 +829,7 @@ describe('pdfUnite function', () => {
 			printVersionInfo: 'test'
 		};
 
-		await poppler.pdfUnite(files, options).catch((err) => {
+		await poppler.pdfUnite(files, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'printVersionInfo', expected boolean but recieved string"
 			);
@@ -846,7 +846,7 @@ describe('pdfUnite function', () => {
 			wordFile: 'test'
 		};
 
-		await poppler.pdfUnite(files, options).catch((err) => {
+		await poppler.pdfUnite(files, undefined, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
 	});

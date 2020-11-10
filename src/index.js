@@ -3,19 +3,20 @@ const path = require('path');
 const { execFile } = require('child_process');
 const util = require('util');
 
-const execFileSync = util.promisify(execFile);
+const execFileAsync = util.promisify(execFile);
 const platform = os.platform();
 
 /**
  * @author Frazer Smith
  * @description Check each option provided is valid and of the correct type.
  * @param {object} acceptedOptions - Object containing options that a binary accepts.
- * @param {object=} options - Object containing options to pass to binary.
- * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+ * @param {object} options - Object containing options to pass to binary.
+ * @returns {Promise<Array|Error>} Promise of array of CLI arguments on resolve, or Error object on rejection.
  */
 function parseOptions(acceptedOptions, options) {
 	return new Promise((resolve, reject) => {
 		const args = [];
+		const invalidArgs = [];
 		Object.keys(options).forEach((key) => {
 			if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
 				// eslint-disable-next-line valid-typeof
@@ -25,19 +26,21 @@ function parseOptions(acceptedOptions, options) {
 						args.push(options[key]);
 					}
 				} else {
-					reject(
-						new Error(
-							`Invalid value type provided for option '${key}', expected ${
-								acceptedOptions[key].type
-							} but recieved ${typeof options[key]}`
-						)
+					invalidArgs.push(
+						`Invalid value type provided for option '${key}', expected ${
+							acceptedOptions[key].type
+						} but recieved ${typeof options[key]}`
 					);
 				}
 			} else {
-				reject(new Error(`Invalid option provided '${key}'`));
+				invalidArgs.push(`Invalid option provided '${key}'`);
 			}
 		});
-		resolve(args);
+		if (invalidArgs.length === 0) {
+			resolve(args);
+		} else {
+			reject(new Error(invalidArgs.join('; ')));
+		}
 	});
 }
 
@@ -107,13 +110,13 @@ class Poppler {
 			args.push(fileToAttach);
 			args.push(outputFile);
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdfattach'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -161,13 +164,13 @@ class Poppler {
 			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdfdetach'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -200,13 +203,13 @@ class Poppler {
 			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdffonts'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -259,13 +262,13 @@ class Poppler {
 				args.push(outputPrefix);
 			}
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdfimages'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -324,13 +327,13 @@ class Poppler {
 			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdfinfo'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -364,13 +367,13 @@ class Poppler {
 			args.push(file);
 			args.push(outputPattern);
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdfseparate'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -524,13 +527,13 @@ class Poppler {
 			} else {
 				args.push('-');
 			}
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdftocairo'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -601,13 +604,13 @@ class Poppler {
 			const args = await parseOptions(acceptedOptions, options);
 			args.push(file);
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdftohtml'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -715,13 +718,13 @@ class Poppler {
 			args.push(file);
 			args.push(outputPath);
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdftoppm'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -875,13 +878,13 @@ class Poppler {
 				args.push('-');
 			}
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdftops'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -968,13 +971,13 @@ class Poppler {
 				args.push('-');
 			}
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdftotext'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -1002,13 +1005,13 @@ class Poppler {
 			});
 			args.push(outputFile);
 
-			const { stdout } = await execFileSync(
+			const { stdout } = await execFileAsync(
 				path.join(this.popplerPath, 'pdfunite'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 }

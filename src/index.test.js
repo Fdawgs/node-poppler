@@ -102,6 +102,7 @@ describe('pdfAttach function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfAttach(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -113,6 +114,7 @@ describe('pdfAttach function', () => {
 			replace: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler
 			.pdfAttach(file, undefined, undefined, options)
 			.catch((err) => {
@@ -128,6 +130,7 @@ describe('pdfAttach function', () => {
 			wordFile: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler
 			.pdfAttach(file, undefined, undefined, options)
 			.catch((err) => {
@@ -159,6 +162,7 @@ describe('pdfDetach function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfDetach(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -170,6 +174,7 @@ describe('pdfDetach function', () => {
 			listEmbedded: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfDetach(file, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'listEmbedded', expected boolean but recieved string"
@@ -183,6 +188,7 @@ describe('pdfDetach function', () => {
 			wordFile: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfDetach(file, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
@@ -209,6 +215,7 @@ describe('pdfFonts function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfFonts(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -220,6 +227,7 @@ describe('pdfFonts function', () => {
 			firstPageToExamine: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfFonts(file, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToExamine', expected number but recieved string"
@@ -233,6 +241,7 @@ describe('pdfFonts function', () => {
 			wordFile: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfFonts(file, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
@@ -259,6 +268,7 @@ describe('pdfImages function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfImages(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -267,6 +277,7 @@ describe('pdfImages function', () => {
 	test('Should return an Error object if PDF file missing', async () => {
 		const poppler = new Poppler(testBinaryPath);
 
+		expect.assertions(1);
 		await poppler.pdfImages().catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -279,9 +290,10 @@ describe('pdfImages function', () => {
 			lastPageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfImages(undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
 			);
 		});
 	});
@@ -292,6 +304,7 @@ describe('pdfImages function', () => {
 			middlePageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfImages(undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
@@ -318,6 +331,7 @@ describe('pdfInfo function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfInfo(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -329,6 +343,7 @@ describe('pdfInfo function', () => {
 			firstPageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfInfo(file, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
@@ -342,6 +357,7 @@ describe('pdfInfo function', () => {
 			wordFile: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfInfo(file, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
@@ -385,6 +401,7 @@ describe('pdfSeparate function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfSeparate(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -396,6 +413,7 @@ describe('pdfSeparate function', () => {
 			firstPageToExtract: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfSeparate(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToExtract', expected number but recieved string"
@@ -409,6 +427,7 @@ describe('pdfSeparate function', () => {
 			wordFile: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfSeparate(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
@@ -456,6 +475,7 @@ describe('pdfToCairo function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfToCairo(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -464,6 +484,7 @@ describe('pdfToCairo function', () => {
 	test('Should return an Error object if no format option is passed to function', async () => {
 		const poppler = new Poppler(testBinaryPath);
 
+		expect.assertions(1);
 		await poppler.pdfToCairo(file).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -475,6 +496,7 @@ describe('pdfToCairo function', () => {
 			pdfFile: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToCairo(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'pdfFile', expected boolean but recieved string"
@@ -488,6 +510,7 @@ describe('pdfToCairo function', () => {
 			wordFile: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToCairo(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});
@@ -529,6 +552,7 @@ describe('pdfToHtml function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfToHtml(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -537,6 +561,7 @@ describe('pdfToHtml function', () => {
 	test('Should return an Error object if PDF file missing', async () => {
 		const poppler = new Poppler(testBinaryPath);
 
+		expect.assertions(1);
 		await poppler.pdfToHtml().catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -549,9 +574,10 @@ describe('pdfToHtml function', () => {
 			lastPageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToHtml(file, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
 			);
 		});
 	});
@@ -562,6 +588,7 @@ describe('pdfToHtml function', () => {
 			middlePageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToHtml(file, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
@@ -598,6 +625,7 @@ describe('pdfToPpm function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfToPpm(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -606,6 +634,7 @@ describe('pdfToPpm function', () => {
 	test('Should return an Error object if PDF file missing', async () => {
 		const poppler = new Poppler(testBinaryPath);
 
+		expect.assertions(1);
 		await poppler.pdfToPpm().catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -618,9 +647,10 @@ describe('pdfToPpm function', () => {
 			lastPageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToPpm(undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
 			);
 		});
 	});
@@ -631,6 +661,7 @@ describe('pdfToPpm function', () => {
 			middlePageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToPpm(undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
@@ -676,6 +707,7 @@ describe('pdfToPs function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfToPs(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -684,6 +716,7 @@ describe('pdfToPs function', () => {
 	test('Should return an Error object if PDF file missing', async () => {
 		const poppler = new Poppler(testBinaryPath);
 
+		expect.assertions(1);
 		await poppler.pdfToPs().catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -696,9 +729,10 @@ describe('pdfToPs function', () => {
 			lastPageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToPs(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
 			);
 		});
 	});
@@ -709,6 +743,7 @@ describe('pdfToPs function', () => {
 			middlePageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToPs(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
@@ -753,6 +788,7 @@ describe('pdfToText function', () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
+		expect.assertions(1);
 		await poppler.pdfToText(testTxtFile).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -761,6 +797,7 @@ describe('pdfToText function', () => {
 	test('Should return an Error object if PDF file missing', async () => {
 		const poppler = new Poppler(testBinaryPath);
 
+		expect.assertions(1);
 		await poppler.pdfToText().catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -773,9 +810,10 @@ describe('pdfToText function', () => {
 			lastPageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToText(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
 			);
 		});
 	});
@@ -786,6 +824,7 @@ describe('pdfToText function', () => {
 			middlePageToConvert: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfToText(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
@@ -820,6 +859,7 @@ describe('pdfUnite function', () => {
 			`${testDirectory}pdf_1.7_NHS_Constitution_Handbook.pdf`
 		];
 
+		expect.assertions(1);
 		await poppler.pdfUnite(files).catch((err) => {
 			expect(err.message.substring(0, 15)).toBe('Command failed:');
 		});
@@ -835,6 +875,7 @@ describe('pdfUnite function', () => {
 			printVersionInfo: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfUnite(files, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'printVersionInfo', expected boolean but recieved string"
@@ -852,6 +893,7 @@ describe('pdfUnite function', () => {
 			wordFile: 'test'
 		};
 
+		expect.assertions(1);
 		await poppler.pdfUnite(files, undefined, options).catch((err) => {
 			expect(err.message).toEqual("Invalid option provided 'wordFile'");
 		});

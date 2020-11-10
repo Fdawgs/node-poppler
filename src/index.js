@@ -114,9 +114,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdfattach'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -168,9 +168,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdfdetach'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -207,9 +207,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdffonts'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -266,9 +266,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdfimages'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -331,9 +331,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdfinfo'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -371,9 +371,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdfseparate'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -531,9 +531,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdftocairo'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -608,9 +608,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdftohtml'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -722,9 +722,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdftoppm'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -882,9 +882,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdftops'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -975,9 +975,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdftotext'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 
@@ -1009,9 +1009,9 @@ class Poppler {
 				path.join(this.popplerPath, 'pdfunite'),
 				args
 			);
-			return stdout;
+			return Promise.resolve(stdout);
 		} catch (err) {
-			return err;
+			return Promise.reject(err);
 		}
 	}
 }

@@ -16,6 +16,7 @@ const platform = os.platform();
 function parseOptions(acceptedOptions, options) {
 	return new Promise((resolve, reject) => {
 		const args = [];
+		const invalidArgs = [];
 		Object.keys(options).forEach((key) => {
 			if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
 				// eslint-disable-next-line valid-typeof
@@ -25,19 +26,21 @@ function parseOptions(acceptedOptions, options) {
 						args.push(options[key]);
 					}
 				} else {
-					reject(
-						new Error(
-							`Invalid value type provided for option '${key}', expected ${
-								acceptedOptions[key].type
-							} but recieved ${typeof options[key]}`
-						)
+					invalidArgs.push(
+						`Invalid value type provided for option '${key}', expected ${
+							acceptedOptions[key].type
+						} but recieved ${typeof options[key]}`
 					);
 				}
 			} else {
-				reject(new Error(`Invalid option provided '${key}'`));
+				invalidArgs.push(`Invalid option provided '${key}'`);
 			}
 		});
-		resolve(args);
+		if (invalidArgs.length === 0) {
+			resolve(args);
+		} else {
+			reject(new Error(invalidArgs.join('; ')));
+		}
 	});
 }
 

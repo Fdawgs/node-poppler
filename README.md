@@ -1,7 +1,6 @@
 # node-poppler
 
-[![GitHub Release](https://img.shields.io/github/release/Fdawgs/node-poppler.svg)](https://github.com/Fdawgs/node-poppler/releases/latest/) [![npm version](https://img.shields.io/npm/v/node-poppler)](https://www.npmjs.com/package/node-poppler)
-[![Build Status](https://travis-ci.com/Fdawgs/node-poppler.svg?branch=master)](https://travis-ci.com/Fdawgs/node-poppler) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/node-poppler/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/node-poppler?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/node-poppler/badge.svg)](https://snyk.io/test/github/Fdawgs/node-poppler) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![GitHub Release](https://img.shields.io/github/release/Fdawgs/node-poppler.svg)](https://github.com/Fdawgs/node-poppler/releases/latest/) [![npm version](https://img.shields.io/npm/v/node-poppler)](https://www.npmjs.com/package/node-poppler) ![Build Status](https://github.com/Fdawgs/node-poppler/workflows/CI/badge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/node-poppler/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/node-poppler?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/node-poppler/badge.svg)](https://snyk.io/test/github/Fdawgs/node-poppler) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 > Asynchronous node.js wrapper for the Poppler PDF rendering library
 

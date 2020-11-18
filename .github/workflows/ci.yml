@@ -20,22 +20,18 @@ jobs:
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
-                os: macos-latest
 
-        runs-on: ${{ matrix.os }}
+        runs-on: macos-latest
         steps:
             - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+            - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
             - run: yarn install
             - name: Run Tests
-              env:
-                  POPPLER_BINARY_PATH: /usr/local/bin
               run: |
                   brew install poppler
-                  cp .env.template .env.test
                   yarn test-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
@@ -48,22 +44,18 @@ jobs:
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
-                os: ubuntu-latest
 
-        runs-on: ${{ matrix.os }}
+        runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+            - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
             - run: yarn install
             - name: Run Tests
-              env:
-                  POPPLER_BINARY_PATH: /usr/bin
               run: |
                   sudo apt-get -y install poppler-data poppler-utils
-                  cp .env.template .env.test
                   yarn test-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
@@ -76,19 +68,17 @@ jobs:
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
-                os: windows-latest
 
-        runs-on: ${{ matrix.os }}
+        runs-on: windows-latest
         steps:
             - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+            - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
             - run: yarn install
             - name: Run Tests
               run: |
-                  cp .env.template .env.test
                   yarn test-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
@@ -104,5 +94,5 @@ jobs:
             - name: Coveralls Finished
               uses: coverallsapp/github-action@master
               with:
-                  github-token: ${{ secrets.GITHUB_TOKEN}}
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel-finished: true

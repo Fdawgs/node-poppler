@@ -415,7 +415,7 @@ class Poppler {
 	 * paper (PS,PDF,SVG only). By default, these pages are not scaled.
 	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {boolean=} options.grayscaleFile - Generate grayscale file (PNG, JPEG, and TIFF only).
-	 * @param {boolean=} options.iccFile - Use the specified ICC file as the output profile
+	 * @param {string=} options.iccFile - Use the specified ICC file as the output profile
 	 * (PNG only). The profile will be embedded in the PNG file.
 	 * @param {boolean=} options.jpegFile - Generate JPEG file(s).
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.

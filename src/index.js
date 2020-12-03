@@ -127,23 +127,23 @@ class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
-	 * File names are converted to the text encoding specified by the `outputEncoding` option.
+	 * File names are converted to the text encoding specified by `options.outputEncoding`.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
 	 * This defaults to `UTF-8`.
 	 * @param {string=} options.outputPath - Set the file name used when saving an embedded file with
-	 * the save option enabled, or the directory if the `saveall` option is used.
+	 * the save option enabled, or the directory if `options.saveall` is used.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.saveAllFiles - Save all of the embedded files. This uses the file
-	 * names associated with the embedded files (as printed by the `listEmbedded` option).
+	 * names associated with the embedded files (as printed by `options.listEmbedded`).
 	 * By default, the files are saved in the current directory; this can be changed
-	 * with the `outputPath` option.
+	 * with `options.outputPath`.
 	 * @param {string=} options.saveFile - Save the specified embedded file.
-	 * By default, this uses the file name associated with the embedded file (as printed by the
-	 * `listEmbedded` option); the file name can be changed with the `outputPath` option.
+	 * By default, this uses the file name associated with the embedded file (as printed by
+	 * `options.listEmbedded`); the file name can be changed with `options.outputPath`.
 	 * @param {number=} options.saveSpecificFile - Save the specified embedded file.
-	 * By default, this uses the file name associated with the embedded file (as printed by the
-	 * `listEmbedded` option); the file name can be changed with the `outputPath` option.
+	 * By default, this uses the file name associated with the embedded file (as printed by
+	 * `options.listEmbedded`); the file name can be changed with `options.outputPath`.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
@@ -297,7 +297,7 @@ class Poppler {
 	 * @param {boolean=} options.printMetadata - Prints document-level metadata. (This is the `Metadata`
 	 * stream from the PDF file's Catalog object).
 	 * @param {boolean=} options.printNamedDests - Print a list of all named destinations. If a page range
-	 * is specified using the `firstPageToConvert` and `lastPageToConvert` options, only destinations
+	 * is specified using the `options.firstPageToConvert` and `options.lastPageToConvert` options, only destinations
 	 * in the page range are listed.
 	 * @param {boolean=} options.printRawDates - Prints the raw (undecoded) date strings, directly from the PDF file.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
@@ -406,8 +406,8 @@ class Poppler {
 	 * @param {boolean=} options.duplex - Adds the %%IncludeFeature: *Duplex DuplexNoTumble DSC
 	 * comment to the PostScript file (PS only). This tells the print manager to enable duplexing.
 	 * @param {boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
-	 * so if you use this option with a multi-page PDF file, you must use `firstPageToConvert` and
-	 * `lastPageToConvert` to specify a single page.
+	 * so if you use this option with a multi-page PDF file, you must use `options.firstPageToConvert` and
+	 * `options.lastPageToConvert` to specify a single page.
 	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
 	 * with this option.
 	 * @param {boolean=} options.evenPagesOnly - Generates only the even numbered pages.
@@ -744,8 +744,8 @@ class Poppler {
 	 * @param {boolean=} options.duplex - Set the Duplex pagedevice entry in the PostScript file.
 	 * This tells duplex-capable printers to enable duplexing.
 	 * @param {boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
-	 * so if you use this option with a multi-page PDF file, you must use `firstPageToConvert` and
-	 * `lastPageToConvert` to specify a single page.
+	 * so if you use this option with a multi-page PDF file, you must use `options.firstPageToConvert` and
+	 * `options.lastPageToConvert` to specify a single page.
 	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
 	 * with this option.
 	 * @param {boolean=} options.fillPage - Expand PDF pages smaller than the paper to fill the
@@ -754,9 +754,9 @@ class Poppler {
 	 * @param {number=} options.form - Generate PostScript form which can be imported by software
 	 * that understands forms.
 	 * A form contains a single page, so if you use this option with a multi-page PDF file,
-	 * you must use `firstPageToConvert` and `lastPageToConvert` to specify a single page.
-	 * The `level1` option cannot be used with `form`.
-	 * No more than one of the mode options (`epsFile`, `form`) may be given.
+	 * you must use `options.firstPageToConvert` and `options.lastPageToConvert` to specify a single page.
+	 * The `options.level1` option cannot be used with `options.form`.
+	 * No more than one of the mode options (`options.epsFile`, `options.form`) may be given.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {boolean=} options.level1 - Generate Level 1 PostScript. The resulting PostScript
 	 * files will be significantly larger (if they contain images), but will print on Level 1 printers.
@@ -770,7 +770,7 @@ class Poppler {
 	 * @param {boolean=} options.level3 - Generate Level 3 PostScript.
 	 * This enables all Level 2 featuresplus CID font embedding.
 	 * @param {boolean=} options.level3Sep - Generate Level 3 separable PostScript.
-	 * The separation handling is the same as for `level2Sep`.
+	 * The separation handling is the same as for `options.level2Sep`.
 	 * @param {boolean=} options.noEmbedCIDFonts - By default, any CID PostScript fonts which are
 	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
 	 * No attempt is made to substitute for non-embedded CID PostScript fonts.

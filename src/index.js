@@ -812,6 +812,15 @@ class Poppler {
 	 * This option passes references to non-embedded fonts through to the PostScript file.
 	 * @param {boolean=} options.preload - Preload images and forms.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
+	 * @param {('CMYK8'|'MONO8'|'RGB8')=} options.processColorFormat - Sets the process color format as it is used
+	 * during rasterization and transparency reduction.
+	 *
+	 * The default depends on the other settings: For `options.level1` the default is MONO8; for `options.level1Sep`,
+	 * `options.level2Sep`, `options.level3Sep`, or `options.overprint` the default is CMYK8; in all other
+	 * cases RGB8 is the default.
+	 * If `option.processColorProfile` is set then `options.processColorFormat` is inferred from the specified ICC profile.
+	 * @param {string=} options.processColorProfile - Sets the ICC profile that is assumed during
+	 * rasterization and transparency reduction.
 	 * @param {boolean=} options.quiet - Do not print any messages or errors.
 	 * @param {('always'|'never'|'whenneeded')=} options.rasterize - By default, pdfToPs rasterizes pages as needed,
 	 * for example, if they contain transparencies. To force rasterization, set `rasterize` to `always`.
@@ -863,6 +872,11 @@ class Poppler {
 			passfonts: { arg: '-passfonts', type: 'boolean' },
 			preload: { arg: '-preload', type: 'boolean' },
 			printVersionInfo: { arg: '-v', type: 'boolean' },
+			processColorProfile: {
+				arg: '-processcolorprofile',
+				type: 'string'
+			},
+			processColorFormat: { arg: '-processcolorformat', type: 'string' },
 			quiet: { arg: '-q', type: 'boolean' },
 			rasterize: { args: '-rasterize', type: 'string' },
 			resolutionXYAxis: { arg: '-r', type: 'number' },

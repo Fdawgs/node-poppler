@@ -1,3 +1,19 @@
+## 2.1.0 (2020-12-12)
+
+-   ci: add cd action to publish to npm ([eb90059](https://github.com/Fdawgs/node-poppler/commit/eb90059))
+-   ci: change ubuntu image to 20.04 ([3bae517](https://github.com/Fdawgs/node-poppler/commit/3bae517))
+-   ci: fix builds ([a657e75](https://github.com/Fdawgs/node-poppler/commit/a657e75))
+-   ci: replace travis-ci with github actions ([2b2ac0e](https://github.com/Fdawgs/node-poppler/commit/2b2ac0e))
+-   chore: add security.md ([b02979f](https://github.com/Fdawgs/node-poppler/commit/b02979f))
+-   chore: add stale confg ([63005e2](https://github.com/Fdawgs/node-poppler/commit/63005e2))
+-   chore(lib): update poppler win32 binaries from 20.11.0 to 20.12.0 ([51b0a72](https://github.com/Fdawgs/node-poppler/commit/51b0a72))
+-   build(deps-dev): bump dev dependencies ([5c363bd](https://github.com/Fdawgs/node-poppler/commit/5c363bd))
+-   build(deps): bump ini from 1.3.5 to 1.3.8 ([123a9c0](https://github.com/Fdawgs/node-poppler/commit/123a9c0))
+-   docs(index): clarify on options usage in jsdoc tags ([577e8ce](https://github.com/Fdawgs/node-poppler/commit/577e8ce))
+-   docs(index): correct accepted type for iccfile option ([01499fa](https://github.com/Fdawgs/node-poppler/commit/01499fa))
+-   feat(index): add rasterization color space and ICC profile options ([86edf34](https://github.com/Fdawgs/node-poppler/commit/86edf34))
+-   style: format codeql.yml ([7931936](https://github.com/Fdawgs/node-poppler/commit/7931936))
+
 ## <small>2.0.1 (2020-11-10)</small>
 
 -   build(deps-dev): bump dev dependencies ([d21e32f](https://github.com/Fdawgs/node-poppler/commit/d21e32f))

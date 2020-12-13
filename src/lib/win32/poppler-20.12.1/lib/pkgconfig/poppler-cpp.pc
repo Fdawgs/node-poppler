@@ -1,0 +1,12 @@
+prefix=D:/bld/poppler_1607352248687/_h_env/Library
+libdir=D:/bld/poppler_1607352248687/_h_env/Library/lib
+includedir=D:/bld/poppler_1607352248687/_h_env/Library/include
+
+Name: poppler-cpp
+Description: cpp backend for Poppler PDF rendering library
+Version: 20.12.1
+Requires: 
+Requires.private: poppler = 20.12.1
+
+Libs: -L${libdir} -lpoppler-cpp
+Cflags: -I${includedir}/poppler/cpp

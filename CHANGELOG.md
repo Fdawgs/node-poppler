@@ -1,3 +1,8 @@
+## <small>2.1.1 (2020-12-13)</small>
+
+-   build(deps-dev): bump dev dependencies ([c8d76d9](https://github.com/Fdawgs/node-poppler/commit/c8d76d9))
+-   fix(lib): update poppler win32 binaries from 20.12.0 to 20.12.1 ([d196360](https://github.com/Fdawgs/node-poppler/commit/d196360))
+
 ## 2.1.0 (2020-12-12)
 
 -   ci: add cd action to publish to npm ([eb90059](https://github.com/Fdawgs/node-poppler/commit/eb90059))

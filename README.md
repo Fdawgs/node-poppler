@@ -6,7 +6,7 @@
 
 ## Intro
 
-The node-poppler module was created out of a need for a PDF-to-HTML conversion module at [Yeovil District Hospital NHSFT](https://yeovilhospital.co.uk/) to convert clinical documents in PDF format to HTML.
+The node-poppler module was created out of a need for a PDF-to-HTML conversion module at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/) to convert clinical documents in PDF format to HTML.
 
 ## Installation
 

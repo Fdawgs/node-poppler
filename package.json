@@ -36,11 +36,12 @@
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"doc": "tsc && jsdoc2md src/index.js > API.md && prettier API.md --write",
 		"dupe-check": "yarn jsinspect ./src",
+		"jest": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand",
+		"jest-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
-		"prettier": "prettier . --write --ignore-path .gitignore",
-		"test": "yarn lint && yarn test-only",
-		"test-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
-		"test-only": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand"
+		"lint:prettier": "prettier . --write --ignore-path .gitignore",
+		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",
+		"test": "yarn lint && yarn test-only"
 	},
 	"jest": {
 		"clearMocks": true,

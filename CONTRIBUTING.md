@@ -24,8 +24,8 @@ With those in place, you can fork the repository, clone it, and then run `yarn i
 After cloning and installing all the dependencies, there are several commands available for local development:
 
 -   `yarn lint` - Lints everything in src directory
--   `yarn test-only` - Runs Jest over all tests in src directory
--   `yarn test` - Runs `yarn lint` and `yarn test-only` together
+-   `yarn jest` - Runs Jest over all tests in src directory
+-   `yarn test` - Runs `yarn lint` and `yarn jest` together
 
 ### Production Workflow
 
@@ -36,7 +36,7 @@ After cloning and installing all the dependencies, there are several commands av
 Prior to submitting a pull request back to the main repository, please make sure you have completed the following steps:
 
 1. Pull request base branch is set to `master`. All pull requests should be forked from and merged back to `master`
-2. Run `yarn test-only` to check the code adheres to the defined style and that it passes the Jest tests
+2. Run `yarn test` to check the code adheres to the defined style and that it passes the Jest tests
 3. Run `yarn prettier` to run the Prettier code formatter over the code
 
 ## Release process

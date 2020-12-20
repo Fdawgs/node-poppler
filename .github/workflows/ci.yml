@@ -110,7 +110,7 @@ jobs:
 
     automerge:
         name: Automatically merge Dependabot pull requests
-        needs: [macos, ubuntu, windows]
+        needs: [lint, macos, ubuntu, windows]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1

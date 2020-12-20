@@ -2,19 +2,30 @@ name: CI
 
 on:
     push:
-        branches:
-            - master
-            - dependabot/**
-            - feat/**
-        tags:
-            # Wait for push events with tags matching v*, e.g. v1.0, v20.15.10, v0.3.1
-            - v*.*.*
+        paths-ignore:
+            - 'docs/**'
+            - '*.md'
     pull_request:
-        # The branches below must be a subset of the branches above
-        branches:
-            - master
+        paths-ignore:
+            - 'docs/**'
+            - '*.md'
 
 jobs:
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v2
+              with:
+                  node-version: 14.x
+            - name: Install
+              run: yarn --immutable
+            - name: Run ESLint
+              run: yarn lint
+            - name: Run Prettier
+              run: yarn lint:prettier:ci
+
     macos:
         name: macOS Build
         strategy:
@@ -25,14 +36,15 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: yarn install
+            - name: Install
+              run: yarn --immutable
             - name: Run Tests
               run: |
                   brew install poppler
-                  yarn test-coverage
+                  yarn jest-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
               with:
@@ -49,14 +61,15 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: yarn install
+            - name: Install
+              run: yarn --immutable
             - name: Run Tests
               run: |
                   sudo apt-get -y install poppler-data poppler-utils
-                  yarn test-coverage
+                  yarn jest-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
               with:
@@ -73,13 +86,14 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: yarn install
+            - name: Install
+              run: yarn --immutable
             - name: Run Tests
               run: |
-                  yarn test-coverage
+                  yarn jest-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
               with:

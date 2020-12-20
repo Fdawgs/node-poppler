@@ -110,3 +110,13 @@ jobs:
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel-finished: true
+
+    automerge:
+        name: Automatically merge Dependabot pull requests
+        needs: [macos, ubuntu, windows]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: fastify/github-action-merge-dependabot@v1
+              if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}

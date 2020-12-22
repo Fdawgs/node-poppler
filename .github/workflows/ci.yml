@@ -39,11 +39,11 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install
-              run: yarn --immutable
-            - name: Run Tests
               run: |
+                  yarn --immutable
                   brew install poppler
-                  yarn jest-coverage
+            - name: Run Tests
+              run: yarn jest-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
               with:
@@ -63,11 +63,11 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install
-              run: yarn --immutable
-            - name: Run Tests
               run: |
+                  yarn --immutable
                   sudo apt-get -y install poppler-data poppler-utils
-                  yarn jest-coverage
+            - name: Run Tests
+              run: yarn jest-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
               with:

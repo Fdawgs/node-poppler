@@ -3,6 +3,7 @@
 	"compilerOptions": {
 		"declaration": true,
 		"emitDeclarationOnly": true,
-		"allowJs": true
+		"allowJs": true,
+		"strict": true
 	}
 }

@@ -27,10 +27,6 @@ After cloning and installing all the dependencies, there are several commands av
 -   `yarn jest` - Runs Jest over all tests in src directory
 -   `yarn test` - Runs `yarn lint` and `yarn jest` together
 
-### Production Workflow
-
--   `yarn start` - Runs a production version. No live reload.
-
 ## Pull Request Checklist
 
 Prior to submitting a pull request back to the main repository, please make sure you have completed the following steps:

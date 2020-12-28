@@ -4,7 +4,7 @@ export class Poppler {
 	 * Useful for Linux users who have poppler-utils binaries already installed.
 	 */
 	constructor(binPath?: string | undefined);
-	popplerPath: string;
+	popplerPath: string | undefined;
 	/**
 	 * @author Frazer Smith
 	 * @description Embeds files (attachments) into a PDF file.

@@ -1,7 +1,7 @@
-const os = require('os');
-const path = require('path');
-const { execFile } = require('child_process');
-const util = require('util');
+const os = require("os");
+const path = require("path");
+const { execFile } = require("child_process");
+const util = require("util");
 
 const execFileAsync = util.promisify(execFile);
 const platform = os.platform();
@@ -22,7 +22,7 @@ function parseOptions(acceptedOptions, options) {
 				// eslint-disable-next-line valid-typeof
 				if (typeof options[key] === acceptedOptions[key].type) {
 					args.push(acceptedOptions[key].arg);
-					if (typeof options[key] !== 'boolean') {
+					if (typeof options[key] !== "boolean") {
 						args.push(options[key]);
 					}
 				} else {
@@ -39,7 +39,7 @@ function parseOptions(acceptedOptions, options) {
 		if (invalidArgs.length === 0) {
 			resolve(args);
 		} else {
-			reject(new Error(invalidArgs.join('; ')));
+			reject(new Error(invalidArgs.join("; ")));
 		}
 	});
 }
@@ -58,24 +58,24 @@ class Poppler {
 			// Build path to Poppler binaries based on OS
 			switch (platform) {
 				// Windows OS
-				case 'win32':
+				case "win32":
 					popplerPath = path.join(
 						__dirname,
-						'lib',
-						'win32',
-						'poppler-20.12.1',
-						'bin'
+						"lib",
+						"win32",
+						"poppler-20.12.1",
+						"bin"
 					);
 					break;
 
 				// macOS
-				case 'darwin':
+				case "darwin":
 					popplerPath = path.join(
 						__dirname,
-						'lib',
-						'darwin',
-						'poppler-0.89.0',
-						'bin'
+						"lib",
+						"darwin",
+						"poppler-0.89.0",
+						"bin"
 					);
 					break;
 
@@ -100,8 +100,8 @@ class Poppler {
 	 */
 	async pdfAttach(file, fileToAttach, outputFile, options = {}) {
 		const acceptedOptions = {
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			replace: { arg: '-replace', type: 'boolean' }
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			replace: { arg: "-replace", type: "boolean" },
 		};
 
 		try {
@@ -111,7 +111,7 @@ class Poppler {
 			args.push(outputFile);
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdfattach'),
+				path.join(this.popplerPath, "pdfattach"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -149,15 +149,15 @@ class Poppler {
 	 */
 	async pdfDetach(file, options = {}) {
 		const acceptedOptions = {
-			listEmbedded: { arg: '-list', type: 'boolean' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			outputEncoding: { arg: '-enc', type: 'string' },
-			outputPath: { arg: '-o', type: 'string' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			saveFile: { arg: '-savefile', type: 'string' },
-			saveAllFiles: { arg: '-saveall', type: 'boolean' },
-			saveSpecificFile: { arg: '-save', type: 'number' },
-			userPassword: { arg: '-upw', type: 'string' }
+			listEmbedded: { arg: "-list", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			outputEncoding: { arg: "-enc", type: "string" },
+			outputPath: { arg: "-o", type: "string" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			saveFile: { arg: "-savefile", type: "string" },
+			saveAllFiles: { arg: "-saveall", type: "boolean" },
+			saveSpecificFile: { arg: "-save", type: "number" },
+			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
@@ -165,7 +165,7 @@ class Poppler {
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdfdetach'),
+				path.join(this.popplerPath, "pdfdetach"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -191,12 +191,12 @@ class Poppler {
 	 */
 	async pdfFonts(file, options = {}) {
 		const acceptedOptions = {
-			firstPageToExamine: { arg: '-f', type: 'number' },
-			lastPageToExamine: { arg: '-l', type: 'number' },
-			listSubstitutes: { arg: '-subst', type: 'boolean' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			userPassword: { arg: '-upw', type: 'string' }
+			firstPageToExamine: { arg: "-f", type: "number" },
+			lastPageToExamine: { arg: "-l", type: "number" },
+			listSubstitutes: { arg: "-subst", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
@@ -204,7 +204,7 @@ class Poppler {
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdffonts'),
+				path.join(this.popplerPath, "pdffonts"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -240,19 +240,19 @@ class Poppler {
 	 */
 	async pdfImages(file, outputPrefix, options = {}) {
 		const acceptedOptions = {
-			allFiles: { arg: '-all', type: 'boolean' },
-			ccittFile: { arg: '-ccitt', type: 'boolean' },
-			firstPageToConvert: { arg: '-f', type: 'number' },
-			lastPageToConvert: { arg: '-l', type: 'number' },
-			list: { arg: '-list', type: 'boolean' },
-			jbig2File: { arg: '-jbig2', type: 'boolean' },
-			jpeg2000File: { arg: '-jp2', type: 'boolean' },
-			jpegFile: { arg: '-j', type: 'boolean' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			pngFile: { arg: '-png', type: 'boolean' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			tiffFile: { arg: '-tiff', type: 'boolean' },
-			userPassword: { arg: '-upw', type: 'string' }
+			allFiles: { arg: "-all", type: "boolean" },
+			ccittFile: { arg: "-ccitt", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			list: { arg: "-list", type: "boolean" },
+			jbig2File: { arg: "-jbig2", type: "boolean" },
+			jpeg2000File: { arg: "-jp2", type: "boolean" },
+			jpegFile: { arg: "-j", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			pngFile: { arg: "-png", type: "boolean" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			tiffFile: { arg: "-tiff", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
@@ -263,7 +263,7 @@ class Poppler {
 			}
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdfimages'),
+				path.join(this.popplerPath, "pdfimages"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -306,21 +306,21 @@ class Poppler {
 	 */
 	async pdfInfo(file, options = {}) {
 		const acceptedOptions = {
-			firstPageToConvert: { arg: '-f', type: 'number' },
-			lastPageToConvert: { arg: '-l', type: 'number' },
-			listEncodingOptions: { arg: '-listenc', type: 'boolean' },
-			outputEncoding: { arg: '-enc', type: 'string' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			printBoundingBoxes: { arg: '-box', type: 'boolean' },
-			printDocStruct: { arg: '-struct', type: 'boolean' },
-			printDocStructText: { arg: '-struct-text', type: 'boolean' },
-			printIsoDates: { arg: '-isodates', type: 'boolean' },
-			printJS: { arg: '-js', type: 'boolean' },
-			printMetadata: { arg: '-meta', type: 'boolean' },
-			printNamedDests: { arg: '-dests', type: 'boolean' },
-			printRawDates: { arg: '-rawdates', type: 'boolean' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			userPassword: { arg: '-upw', type: 'string' }
+			firstPageToConvert: { arg: "-f", type: "number" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			listEncodingOptions: { arg: "-listenc", type: "boolean" },
+			outputEncoding: { arg: "-enc", type: "string" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printBoundingBoxes: { arg: "-box", type: "boolean" },
+			printDocStruct: { arg: "-struct", type: "boolean" },
+			printDocStructText: { arg: "-struct-text", type: "boolean" },
+			printIsoDates: { arg: "-isodates", type: "boolean" },
+			printJS: { arg: "-js", type: "boolean" },
+			printMetadata: { arg: "-meta", type: "boolean" },
+			printNamedDests: { arg: "-dests", type: "boolean" },
+			printRawDates: { arg: "-rawdates", type: "boolean" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
@@ -328,7 +328,7 @@ class Poppler {
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdfinfo'),
+				path.join(this.popplerPath, "pdfinfo"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -357,9 +357,9 @@ class Poppler {
 	 */
 	async pdfSeparate(file, outputPattern, options = {}) {
 		const acceptedOptions = {
-			firstPageToExtract: { arg: '-f', type: 'number' },
-			lastPageToExtract: { arg: '-l', type: 'number' },
-			printVersionInfo: { arg: '-v', type: 'boolean' }
+			firstPageToExtract: { arg: "-f", type: "number" },
+			lastPageToExtract: { arg: "-l", type: "number" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
 		try {
@@ -368,7 +368,7 @@ class Poppler {
 			args.push(outputPattern);
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdfseparate'),
+				path.join(this.popplerPath, "pdfseparate"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -472,51 +472,51 @@ class Poppler {
 	 */
 	async pdfToCairo(file, outputFile, options = {}) {
 		const acceptedOptions = {
-			antialias: { arg: '-antialias', type: 'string' },
-			cropBox: { arg: '-cropbox', type: 'boolean' },
-			cropHeight: { arg: '-H', type: 'number' },
-			cropSize: { arg: '-sz', type: 'number' },
-			cropWidth: { arg: '-W', type: 'number' },
-			cropXAxis: { arg: '-x', type: 'number' },
-			cropYAxis: { arg: '-y', type: 'number' },
-			duplex: { arg: '-duplex', type: 'boolean' },
-			epsFile: { arg: '-eps', type: 'boolean' },
-			evenPagesOnly: { arg: '-e', type: 'boolean' },
-			fillPage: { arg: '-expand', type: 'boolean' },
-			firstPageToConvert: { arg: '-f', type: 'number' },
-			grayscaleFile: { arg: '-gray', type: 'boolean' },
-			iccFile: { arg: '-icc', type: 'string' },
-			jpegFile: { arg: '-jpeg', type: 'boolean' },
-			lastPageToConvert: { arg: '-l', type: 'number' },
-			monochromeFile: { arg: '-mono', type: 'boolean' },
-			noCenter: { arg: '-nocenter', type: 'boolean' },
-			noCrop: { arg: '-nocrop', type: 'boolean' },
-			noShrink: { arg: '-noshrink', type: 'boolean' },
-			oddPagesOnly: { arg: '-o', type: 'boolean' },
-			originalPageSizes: { arg: '-origpagesizes', type: 'boolean' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			paperHeight: { arg: '-paperh', type: 'number' },
-			paperSize: { arg: '-paper', type: 'string' },
-			paperWidth: { arg: '-paperw', type: 'number' },
-			pdfFile: { arg: '-pdf', type: 'boolean' },
-			pngFile: { arg: '-png', type: 'boolean' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			psFile: { arg: '-ps', type: 'boolean' },
-			psLevel2: { arg: '-level2', type: 'boolean' },
-			psLevel3: { arg: '-level3', type: 'boolean' },
-			quiet: { arg: '-q', type: 'boolean' },
-			resolutionXAxis: { arg: '-rx', type: 'number' },
-			resolutionXYAxis: { arg: '-r', type: 'number' },
-			resolutionYAxis: { arg: '-ry', type: 'number' },
-			scalePageTo: { arg: '-scale-to', type: 'number' },
-			scalePageToXAxis: { arg: '-scale-to-x', type: 'number' },
-			scalePageToYAxis: { arg: '-scale-to-y', type: 'number' },
-			singleFile: { arg: '-singlefile', type: 'boolean' },
-			svgFile: { arg: '-svg', type: 'boolean' },
-			tiffCompression: { arg: '-tiffcompression', type: 'string' },
-			tiffFile: { arg: '-tiff', type: 'boolean' },
-			transparentPageColor: { arg: '-transp', type: 'boolean' },
-			userPassword: { arg: '-upw', type: 'string' }
+			antialias: { arg: "-antialias", type: "string" },
+			cropBox: { arg: "-cropbox", type: "boolean" },
+			cropHeight: { arg: "-H", type: "number" },
+			cropSize: { arg: "-sz", type: "number" },
+			cropWidth: { arg: "-W", type: "number" },
+			cropXAxis: { arg: "-x", type: "number" },
+			cropYAxis: { arg: "-y", type: "number" },
+			duplex: { arg: "-duplex", type: "boolean" },
+			epsFile: { arg: "-eps", type: "boolean" },
+			evenPagesOnly: { arg: "-e", type: "boolean" },
+			fillPage: { arg: "-expand", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			grayscaleFile: { arg: "-gray", type: "boolean" },
+			iccFile: { arg: "-icc", type: "string" },
+			jpegFile: { arg: "-jpeg", type: "boolean" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			monochromeFile: { arg: "-mono", type: "boolean" },
+			noCenter: { arg: "-nocenter", type: "boolean" },
+			noCrop: { arg: "-nocrop", type: "boolean" },
+			noShrink: { arg: "-noshrink", type: "boolean" },
+			oddPagesOnly: { arg: "-o", type: "boolean" },
+			originalPageSizes: { arg: "-origpagesizes", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			paperHeight: { arg: "-paperh", type: "number" },
+			paperSize: { arg: "-paper", type: "string" },
+			paperWidth: { arg: "-paperw", type: "number" },
+			pdfFile: { arg: "-pdf", type: "boolean" },
+			pngFile: { arg: "-png", type: "boolean" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			psFile: { arg: "-ps", type: "boolean" },
+			psLevel2: { arg: "-level2", type: "boolean" },
+			psLevel3: { arg: "-level3", type: "boolean" },
+			quiet: { arg: "-q", type: "boolean" },
+			resolutionXAxis: { arg: "-rx", type: "number" },
+			resolutionXYAxis: { arg: "-r", type: "number" },
+			resolutionYAxis: { arg: "-ry", type: "number" },
+			scalePageTo: { arg: "-scale-to", type: "number" },
+			scalePageToXAxis: { arg: "-scale-to-x", type: "number" },
+			scalePageToYAxis: { arg: "-scale-to-y", type: "number" },
+			singleFile: { arg: "-singlefile", type: "boolean" },
+			svgFile: { arg: "-svg", type: "boolean" },
+			tiffCompression: { arg: "-tiffcompression", type: "string" },
+			tiffFile: { arg: "-tiff", type: "boolean" },
+			transparentPageColor: { arg: "-transp", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
@@ -525,10 +525,10 @@ class Poppler {
 			if (outputFile) {
 				args.push(outputFile);
 			} else {
-				args.push('-');
+				args.push("-");
 			}
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdftocairo'),
+				path.join(this.popplerPath, "pdftocairo"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -576,28 +576,28 @@ class Poppler {
 	 */
 	async pdfToHtml(file, options = {}) {
 		const acceptedOptions = {
-			complexOutput: { arg: '-c', type: 'boolean' },
-			exchangePdfLinks: { arg: '-p', type: 'boolean' },
-			extractHidden: { arg: '-hidden', type: 'boolean' },
-			firstPageToConvert: { arg: '-f', type: 'number' },
-			fontFullName: { arg: '-fontfullname', type: 'boolean' },
-			ignoreImages: { arg: '-i', type: 'boolean' },
-			imageFormat: { arg: '-fmt', type: 'string' },
-			lastPageToConvert: { arg: '-l', type: 'number' },
-			noDrm: { arg: '-nodrm', type: 'boolean' },
-			noFrames: { arg: '-noframes', type: 'boolean' },
-			noMergeParagraph: { arg: '-nomerge', type: 'boolean' },
-			noRoundedCoordinates: { arg: '-noroundcoord', type: 'boolean' },
-			outputEncoding: { arg: '-enc', type: 'string' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			quiet: { arg: '-q', type: 'boolean' },
-			singlePage: { arg: '-s', type: 'boolean' },
-			stdout: { arg: '-stdout', type: 'boolean' },
-			userPassword: { arg: '-upw', type: 'string' },
-			wordBreakThreshold: { arg: '-wbt', type: 'number' },
-			xmlOutput: { arg: '-xml', type: 'boolean' },
-			zoom: { arg: '-zoom', type: 'number' }
+			complexOutput: { arg: "-c", type: "boolean" },
+			exchangePdfLinks: { arg: "-p", type: "boolean" },
+			extractHidden: { arg: "-hidden", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			fontFullName: { arg: "-fontfullname", type: "boolean" },
+			ignoreImages: { arg: "-i", type: "boolean" },
+			imageFormat: { arg: "-fmt", type: "string" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			noDrm: { arg: "-nodrm", type: "boolean" },
+			noFrames: { arg: "-noframes", type: "boolean" },
+			noMergeParagraph: { arg: "-nomerge", type: "boolean" },
+			noRoundedCoordinates: { arg: "-noroundcoord", type: "boolean" },
+			outputEncoding: { arg: "-enc", type: "string" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			quiet: { arg: "-q", type: "boolean" },
+			singlePage: { arg: "-s", type: "boolean" },
+			stdout: { arg: "-stdout", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
+			wordBreakThreshold: { arg: "-wbt", type: "number" },
+			xmlOutput: { arg: "-xml", type: "boolean" },
+			zoom: { arg: "-zoom", type: "number" },
 		};
 
 		try {
@@ -605,7 +605,7 @@ class Poppler {
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdftohtml'),
+				path.join(this.popplerPath, "pdftohtml"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -679,38 +679,38 @@ class Poppler {
 	 */
 	async pdfToPpm(file, outputPath, options = {}) {
 		const acceptedOptions = {
-			antialiasFonts: { arg: '-aa', type: 'string' },
-			antialiasVectors: { arg: '-aaVector', type: 'string' },
-			cropBox: { arg: '-cropbox', type: 'boolean' },
-			cropHeight: { arg: '-H', type: 'number' },
-			cropSize: { arg: '-sz', type: 'number' },
-			cropWidth: { arg: '-W', type: 'number' },
-			cropXAxis: { arg: '-x', type: 'number' },
-			cropYAxis: { arg: '-y', type: 'number' },
-			displayProfile: { arg: '-displayprofile', type: 'string' },
-			evenPagesOnly: { arg: '-e', type: 'boolean' },
-			firstPageToConvert: { arg: '-f', type: 'number' },
-			freetype: { arg: '-freetype', type: 'string' },
-			grayscaleFile: { arg: '-gray', type: 'boolean' },
-			jpegFile: { arg: '-jpeg', type: 'boolean' },
-			lastPageToConvert: { arg: '-l', type: 'number' },
-			monochromeFile: { arg: '-mono', type: 'boolean' },
-			oddPagesOnly: { arg: '-o', type: 'boolean' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			pngFile: { arg: '-png', type: 'boolean' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			quiet: { arg: '-q', type: 'boolean' },
-			resolutionXAxis: { arg: '-rx', type: 'number' },
-			resolutionXYAxis: { arg: '-r', type: 'number' },
-			resolutionYAxis: { arg: '-ry', type: 'number' },
-			scalePageTo: { arg: '-scale-to', type: 'number' },
-			scalePageToXAxis: { arg: '-scale-to-x', type: 'number' },
-			scalePageToYAxis: { arg: '-scale-to-y', type: 'number' },
-			singleFile: { arg: '-singlefile', type: 'boolean' },
-			thinLineMode: { arg: '-thinlinemode', type: 'string' },
-			tiffCompression: { arg: '-tiffcompression', type: 'string' },
-			tiffFile: { arg: '-tiff', type: 'boolean' },
-			userPassword: { arg: '-upw', type: 'string' }
+			antialiasFonts: { arg: "-aa", type: "string" },
+			antialiasVectors: { arg: "-aaVector", type: "string" },
+			cropBox: { arg: "-cropbox", type: "boolean" },
+			cropHeight: { arg: "-H", type: "number" },
+			cropSize: { arg: "-sz", type: "number" },
+			cropWidth: { arg: "-W", type: "number" },
+			cropXAxis: { arg: "-x", type: "number" },
+			cropYAxis: { arg: "-y", type: "number" },
+			displayProfile: { arg: "-displayprofile", type: "string" },
+			evenPagesOnly: { arg: "-e", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			freetype: { arg: "-freetype", type: "string" },
+			grayscaleFile: { arg: "-gray", type: "boolean" },
+			jpegFile: { arg: "-jpeg", type: "boolean" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			monochromeFile: { arg: "-mono", type: "boolean" },
+			oddPagesOnly: { arg: "-o", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			pngFile: { arg: "-png", type: "boolean" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			quiet: { arg: "-q", type: "boolean" },
+			resolutionXAxis: { arg: "-rx", type: "number" },
+			resolutionXYAxis: { arg: "-r", type: "number" },
+			resolutionYAxis: { arg: "-ry", type: "number" },
+			scalePageTo: { arg: "-scale-to", type: "number" },
+			scalePageToXAxis: { arg: "-scale-to-x", type: "number" },
+			scalePageToYAxis: { arg: "-scale-to-y", type: "number" },
+			singleFile: { arg: "-singlefile", type: "boolean" },
+			thinLineMode: { arg: "-thinlinemode", type: "string" },
+			tiffCompression: { arg: "-tiffcompression", type: "string" },
+			tiffFile: { arg: "-tiff", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
@@ -719,7 +719,7 @@ class Poppler {
 			args.push(outputPath);
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdftoppm'),
+				path.join(this.popplerPath, "pdftoppm"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -834,53 +834,53 @@ class Poppler {
 	 */
 	async pdfToPs(file, outputFile, options = {}) {
 		const acceptedOptions = {
-			antialias: { arg: '-aaRaster', type: 'string' },
-			binary: { arg: '-binary', type: 'boolean' },
-			duplex: { arg: '-duplex', type: 'boolean' },
-			epsFile: { arg: '-eps', type: 'boolean' },
-			fillPage: { arg: '-expand', type: 'boolean' },
-			firstPageToConvert: { arg: '-f', type: 'number' },
-			form: { arg: '-form', type: 'boolean' },
-			lastPageToConvert: { arg: '-l', type: 'number' },
-			level1: { arg: '-level1', type: 'boolean' },
-			level1Sep: { arg: '-level1sep', type: 'boolean' },
-			level2: { arg: '-level2', type: 'boolean' },
-			level2Sep: { arg: '-level2sep', type: 'boolean' },
-			level3: { arg: '-level3', type: 'boolean' },
-			level3Sep: { arg: '-level3sep', type: 'boolean' },
-			noEmbedCIDFonts: { arg: '-noembcidps', type: 'boolean' },
+			antialias: { arg: "-aaRaster", type: "string" },
+			binary: { arg: "-binary", type: "boolean" },
+			duplex: { arg: "-duplex", type: "boolean" },
+			epsFile: { arg: "-eps", type: "boolean" },
+			fillPage: { arg: "-expand", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			form: { arg: "-form", type: "boolean" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			level1: { arg: "-level1", type: "boolean" },
+			level1Sep: { arg: "-level1sep", type: "boolean" },
+			level2: { arg: "-level2", type: "boolean" },
+			level2Sep: { arg: "-level2sep", type: "boolean" },
+			level3: { arg: "-level3", type: "boolean" },
+			level3Sep: { arg: "-level3sep", type: "boolean" },
+			noEmbedCIDFonts: { arg: "-noembcidps", type: "boolean" },
 			noEmbedCIDTrueTypeFonts: {
-				arg: '-noembcidtt',
-				type: 'boolean'
+				arg: "-noembcidtt",
+				type: "boolean",
 			},
-			noEmbedTrueTypeFonts: { arg: '-noembtt', type: 'boolean' },
-			noEmbedType1Fonts: { arg: '-noembt1', type: 'boolean' },
-			noCenter: { arg: '-nocenter', type: 'boolean' },
-			noCrop: { arg: '-nocrop', type: 'boolean' },
-			noShrink: { arg: '-noshrink', type: 'boolean' },
-			opi: { arg: '-opi', type: 'boolean' },
+			noEmbedTrueTypeFonts: { arg: "-noembtt", type: "boolean" },
+			noEmbedType1Fonts: { arg: "-noembt1", type: "boolean" },
+			noCenter: { arg: "-nocenter", type: "boolean" },
+			noCrop: { arg: "-nocrop", type: "boolean" },
+			noShrink: { arg: "-noshrink", type: "boolean" },
+			opi: { arg: "-opi", type: "boolean" },
 			optimizecolorspace: {
-				arg: '-optimizecolorspace',
-				type: 'boolean'
+				arg: "-optimizecolorspace",
+				type: "boolean",
 			},
-			originalPageSizes: { arg: '-origpagesizes', type: 'boolean' },
-			overprint: { arg: '-overprint', type: 'boolean' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			paperHeight: { arg: '-paperh', type: 'number' },
-			paperSize: { arg: '-paper', type: 'string' },
-			paperWidth: { arg: '-paperw', type: 'number' },
-			passfonts: { arg: '-passfonts', type: 'boolean' },
-			preload: { arg: '-preload', type: 'boolean' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
+			originalPageSizes: { arg: "-origpagesizes", type: "boolean" },
+			overprint: { arg: "-overprint", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			paperHeight: { arg: "-paperh", type: "number" },
+			paperSize: { arg: "-paper", type: "string" },
+			paperWidth: { arg: "-paperw", type: "number" },
+			passfonts: { arg: "-passfonts", type: "boolean" },
+			preload: { arg: "-preload", type: "boolean" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
 			processColorProfile: {
-				arg: '-processcolorprofile',
-				type: 'string'
+				arg: "-processcolorprofile",
+				type: "string",
 			},
-			processColorFormat: { arg: '-processcolorformat', type: 'string' },
-			quiet: { arg: '-q', type: 'boolean' },
-			rasterize: { args: '-rasterize', type: 'string' },
-			resolutionXYAxis: { arg: '-r', type: 'number' },
-			userPassword: { arg: '-upw', type: 'string' }
+			processColorFormat: { arg: "-processcolorformat", type: "string" },
+			quiet: { arg: "-q", type: "boolean" },
+			rasterize: { args: "-rasterize", type: "string" },
+			resolutionXYAxis: { arg: "-r", type: "number" },
+			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
@@ -889,11 +889,11 @@ class Poppler {
 			if (outputFile) {
 				args.push(outputFile);
 			} else {
-				args.push('-');
+				args.push("-");
 			}
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdftops'),
+				path.join(this.popplerPath, "pdftops"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -949,31 +949,31 @@ class Poppler {
 	 */
 	async pdfToText(file, outputFile, options = {}) {
 		const acceptedOptions = {
-			boundingBoxXhtml: { arg: '-bbox', type: 'boolean' },
+			boundingBoxXhtml: { arg: "-bbox", type: "boolean" },
 			boundingBoxXhtmlLayout: {
-				arg: '-bbox-layout',
-				type: 'boolean'
+				arg: "-bbox-layout",
+				type: "boolean",
 			},
-			cropHeight: { arg: '-H', type: 'number' },
-			cropWidth: { arg: '-W', type: 'number' },
-			cropXAxis: { arg: '-x', type: 'number' },
-			cropYAxis: { arg: '-y', type: 'number' },
-			eolConvention: { arg: '-eol', type: 'string' },
-			firstPageToConvert: { arg: '-f', type: 'number' },
-			fixedWidthLayout: { arg: '-fixed', type: 'number' },
-			generateHtmlMetaFile: { arg: '-htmlmeta', type: 'boolean' },
-			lastPageToConvert: { arg: '-l', type: 'number' },
-			listEncodingOptions: { arg: '-listenc', type: 'boolean' },
-			maintainLayout: { arg: '-layout', type: 'boolean' },
-			noDiagonalText: { arg: '-nodiag', type: 'boolean' },
-			noPageBreaks: { arg: '-nopgbrk', type: 'boolean' },
-			outputEncoding: { arg: '-enc', type: 'string' },
-			ownerPassword: { arg: '-opw', type: 'string' },
-			printVersionInfo: { arg: '-v', type: 'boolean' },
-			quiet: { arg: '-q', type: 'boolean' },
-			rawLayout: { arg: '-raw', type: 'boolean' },
-			resolution: { arg: '-r', type: 'number' },
-			userPassword: { arg: '-upw', type: 'string' }
+			cropHeight: { arg: "-H", type: "number" },
+			cropWidth: { arg: "-W", type: "number" },
+			cropXAxis: { arg: "-x", type: "number" },
+			cropYAxis: { arg: "-y", type: "number" },
+			eolConvention: { arg: "-eol", type: "string" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			fixedWidthLayout: { arg: "-fixed", type: "number" },
+			generateHtmlMetaFile: { arg: "-htmlmeta", type: "boolean" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			listEncodingOptions: { arg: "-listenc", type: "boolean" },
+			maintainLayout: { arg: "-layout", type: "boolean" },
+			noDiagonalText: { arg: "-nodiag", type: "boolean" },
+			noPageBreaks: { arg: "-nopgbrk", type: "boolean" },
+			outputEncoding: { arg: "-enc", type: "string" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			quiet: { arg: "-q", type: "boolean" },
+			rawLayout: { arg: "-raw", type: "boolean" },
+			resolution: { arg: "-r", type: "number" },
+			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
@@ -982,11 +982,11 @@ class Poppler {
 			if (outputFile) {
 				args.push(outputFile);
 			} else {
-				args.push('-');
+				args.push("-");
 			}
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdftotext'),
+				path.join(this.popplerPath, "pdftotext"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -1009,7 +1009,7 @@ class Poppler {
 	 */
 	async pdfUnite(files, outputFile, options = {}) {
 		const acceptedOptions = {
-			printVersionInfo: { arg: '-v', type: 'boolean' }
+			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
 		try {
@@ -1020,7 +1020,7 @@ class Poppler {
 			args.push(outputFile);
 
 			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, 'pdfunite'),
+				path.join(this.popplerPath, "pdfunite"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -1031,5 +1031,5 @@ class Poppler {
 }
 
 module.exports = {
-	Poppler
+	Poppler,
 };

@@ -6,8 +6,8 @@ daysUntilClose: 7
 exemptLabels:
     - bug
     - enhancement
-    - 'good first issue'
-    - 'help wanted'
+    - "good first issue"
+    - "help wanted"
 
 # Label to use when marking an issue as stale
 staleLabel: stale

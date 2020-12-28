@@ -12,7 +12,8 @@ on:
 
 jobs:
     lint:
-        name: Lint
+        name: Lint Code
+        if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
@@ -28,6 +29,7 @@ jobs:
 
     macos:
         name: macOS Build
+        if: github.event.pull_request.draft == false
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
@@ -52,6 +54,7 @@ jobs:
 
     ubuntu:
         name: Ubuntu Build
+        if: github.event.pull_request.draft == false
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
@@ -76,6 +79,7 @@ jobs:
 
     windows:
         name: Windows Build
+        if: github.event.pull_request.draft == false
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
@@ -99,6 +103,7 @@ jobs:
 
     coverage:
         name: Aggregate Coverage Calculations
+        if: github.event.pull_request.draft == false
         needs: [macos, ubuntu, windows]
         runs-on: ubuntu-latest
         steps:

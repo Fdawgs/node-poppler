@@ -21,7 +21,7 @@ jobs:
               with:
                   node-version: 14.x
             - name: Install
-              run: yarn --immutable
+              run: yarn --frozen-lockfile
             - name: Run ESLint
               run: yarn lint
             - name: Run Prettier
@@ -42,7 +42,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Install
               run: |
-                  yarn --immutable
+                  yarn --frozen-lockfile
                   brew install poppler
             - name: Run Tests
               run: yarn jest-coverage
@@ -67,7 +67,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Install
               run: |
-                  yarn --immutable
+                  yarn --frozen-lockfile
                   sudo apt-get -y install poppler-data poppler-utils
             - name: Run Tests
               run: yarn jest-coverage
@@ -91,7 +91,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install
-              run: yarn --immutable
+              run: yarn --frozen-lockfile
             - name: Run Tests
               run: |
                   yarn jest-coverage

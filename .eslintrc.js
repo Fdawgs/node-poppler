@@ -17,7 +17,7 @@ module.exports = {
 			impliedStrict: true,
 		},
 	},
-	plugins: ["import", "jest", "jsdoc", "json", "promise", "security"],
+	plugins: ["import", "jest", "jsdoc", "promise", "security"],
 	root: true,
 	rules: {
 		"import/no-extraneous-dependencies": "error",

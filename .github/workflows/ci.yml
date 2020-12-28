@@ -22,12 +22,12 @@ jobs:
                   node-version: 14.x
             - name: Install
               run: yarn --frozen-lockfile
-            - name: Compile TypeScript Definition File
-              run: yarn tsc
             - name: Run ESLint
               run: yarn lint
             - name: Run Prettier
               run: yarn lint:prettier:ci
+            - name: Compile TypeScript Definition File
+              run: yarn tsc
 
     unittests:
         name: Unit Tests

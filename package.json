@@ -49,13 +49,9 @@
 		"testTimeout": 10000
 	},
 	"prettier": {
-		"arrowParens": "always",
-		"bracketSpacing": true,
 		"endOfLine": "lf",
 		"semi": true,
-		"singleQuote": true,
 		"tabWidth": 4,
-		"trailingComma": "none",
 		"useTabs": true
 	},
 	"devDependencies": {

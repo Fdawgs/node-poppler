@@ -45,14 +45,14 @@ brew install poppler
 Once they have been installed, you will need to pass the `poppler-utils` installation directory in as parameters to an instance of the Poppler class:
 
 ```js
-const { Poppler } = require('node-poppler');
-const poppler = new Poppler('./usr/bin');
+const { Poppler } = require("node-poppler");
+const poppler = new Poppler("./usr/bin");
 ```
 
 ## API
 
 ```js
-const { Poppler } = require('node-poppler');
+const { Poppler } = require("node-poppler");
 ```
 
 [API Documentation can be found here](https://github.com/Fdawgs/node-poppler/blob/master/API.md)
@@ -66,14 +66,14 @@ const { Poppler } = require('node-poppler');
 Example of an async await call poppler.pdfToCairo, to convert only the first and second page of a PDF file to PNG:
 
 ```js
-const { Poppler } = require('node-poppler');
+const { Poppler } = require("node-poppler");
 
-const file = 'test_document.pdf';
+const file = "test_document.pdf";
 const poppler = new Poppler();
 const options = {
 	firstPageToConvert: 1,
 	lastPageToConvert: 2,
-	pngFile: true
+	pngFile: true,
 };
 const outputFile = `test_document.png`;
 
@@ -88,13 +88,13 @@ Every field of the `options` object is optional.
 Example of calling poppler.pdfToHtml with a promise:
 
 ```js
-const { Poppler } = require('node-poppler');
+const { Poppler } = require("node-poppler");
 
-const file = 'test_document.pdf';
+const file = "test_document.pdf";
 const poppler = new Poppler();
 const options = {
 	firstPageToConvert: 1,
-	lastPageToConvert: 2
+	lastPageToConvert: 2,
 };
 
 poppler.pdfToHtml(file, options).then((res) => {
@@ -109,13 +109,13 @@ Every field of the `options` object is entirely optional.
 Example of calling poppler.pdfToText with a promise:
 
 ```js
-const { Poppler } = require('node-poppler');
+const { Poppler } = require("node-poppler");
 
-const file = 'test_document.pdf';
+const file = "test_document.pdf";
 const poppler = new Poppler();
 const options = {
 	firstPageToConvert: 1,
-	lastPageToConvert: 2
+	lastPageToConvert: 2,
 };
 
 poppler.pdfToText(file, options).then((res) => {

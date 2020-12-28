@@ -23,7 +23,7 @@ jobs:
             - name: Install
               run: yarn --frozen-lockfile
             - name: Compile TypeScript Definition File
-              run: yarn tsc --strict
+              run: yarn tsc
             - name: Run ESLint
               run: yarn lint
             - name: Run Prettier

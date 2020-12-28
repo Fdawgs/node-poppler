@@ -26,6 +26,8 @@ jobs:
               run: yarn lint
             - name: Run Prettier
               run: yarn lint:prettier:ci
+            - name: Compile TypeScript Definition File
+              run: yarn tsc
 
     unittests:
         name: Unit Tests

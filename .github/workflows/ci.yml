@@ -27,63 +27,14 @@ jobs:
             - name: Run Prettier
               run: yarn lint:prettier:ci
 
-    macos:
-        name: macOS Build
+    unittests:
+        name: Unit Tests
         if: github.event.pull_request.draft == false
         strategy:
             matrix:
                 node-version: [10.x, 12.x, 14.x]
-        runs-on: macos-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
-              with:
-                  node-version: ${{ matrix.node-version }}
-            - name: Install
-              run: |
-                  yarn --frozen-lockfile
-                  brew install poppler
-            - name: Run Tests
-              run: yarn jest-coverage
-            - name: Coveralls Parallel
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  parallel: true
-
-    ubuntu:
-        name: Ubuntu Build
-        if: github.event.pull_request.draft == false
-        strategy:
-            matrix:
-                node-version: [10.x, 12.x, 14.x]
-        runs-on: ubuntu-20.04
-        steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
-              with:
-                  node-version: ${{ matrix.node-version }}
-            - name: Install
-              run: |
-                  yarn --frozen-lockfile
-                  sudo apt-get -y install poppler-data poppler-utils
-            - name: Run Tests
-              run: yarn jest-coverage
-            - name: Coveralls Parallel
-              uses: coverallsapp/github-action@master
-              with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
-                  parallel: true
-
-    windows:
-        name: Windows Build
-        if: github.event.pull_request.draft == false
-        strategy:
-            matrix:
-                node-version: [10.x, 12.x, 14.x]
-        runs-on: windows-latest
+                os: [macos-latest, ubuntu-20.04, windows-latest]
+        runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v2
             - name: Use Node.js ${{ matrix.node-version }}
@@ -92,9 +43,14 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Install
               run: yarn --frozen-lockfile
+            - name: Install macOS dependencies
+              if: matrix.os == 'macos-latest'
+              run: brew install poppler
+            - name: Install Ubuntu dependencies
+              if: matrix.os == 'ubuntu-20.04'
+              run: sudo apt-get -y install poppler-data poppler-utils
             - name: Run Tests
-              run: |
-                  yarn jest-coverage
+              run: yarn jest-coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@master
               with:
@@ -104,7 +60,7 @@ jobs:
     coverage:
         name: Aggregate Coverage Calculations
         if: github.event.pull_request.draft == false
-        needs: [macos, ubuntu, windows]
+        needs: unittests
         runs-on: ubuntu-latest
         steps:
             - name: Coveralls Finished
@@ -115,7 +71,7 @@ jobs:
 
     automerge:
         name: Automatically merge Dependabot pull requests
-        needs: [lint, macos, ubuntu, windows]
+        needs: [lint, unittests]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1

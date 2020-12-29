@@ -61,7 +61,7 @@ const { Poppler } = require("node-poppler");
 
 ### poppler.pdfToCairo
 
-Example of an `async` `await` call poppler.pdfToCairo, to convert only the first and second page of a PDF file to PNG:
+Example of an `async` `await` call to poppler.pdfToCairo, to convert only the first and second page of a PDF file to PNG:
 
 ```js
 const { Poppler } = require("node-poppler");

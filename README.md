@@ -55,15 +55,13 @@ const poppler = new Poppler("./usr/bin");
 const { Poppler } = require("node-poppler");
 ```
 
-[API Documentation can be found here](https://github.com/Fdawgs/node-poppler/blob/master/API.md)
+[**API Documentation can be found here**](https://github.com/Fdawgs/node-poppler/blob/master/API.md)
 
 ## Examples
 
 ### poppler.pdfToCairo
 
-`options` object requires at least one of the following to be set: `jpegFile`; `pdfFile`; `pngFile`; `psFile`; `svgFile`; `tiffFile`.
-
-Example of an async await call poppler.pdfToCairo, to convert only the first and second page of a PDF file to PNG:
+Example of an `async` `await` call poppler.pdfToCairo, to convert only the first and second page of a PDF file to PNG:
 
 ```js
 const { Poppler } = require("node-poppler");
@@ -83,9 +81,7 @@ console.log(res);
 
 ### poppler.pdfToHtml
 
-Every field of the `options` object is optional.
-
-Example of calling poppler.pdfToHtml with a promise:
+Example of calling poppler.pdfToHtml with a promise chain:
 
 ```js
 const { Poppler } = require("node-poppler");
@@ -104,9 +100,7 @@ poppler.pdfToHtml(file, options).then((res) => {
 
 ### poppler.pdfToText
 
-Every field of the `options` object is entirely optional.
-
-Example of calling poppler.pdfToText with a promise:
+Example of calling poppler.pdfToText with a promise chain:
 
 ```js
 const { Poppler } = require("node-poppler");

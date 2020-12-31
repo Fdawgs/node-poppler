@@ -36,12 +36,12 @@
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"doc": "tsc && jsdoc2md src/index.js > API.md && prettier API.md --write",
 		"dupe-check": "yarn jsinspect ./src",
-		"jest": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand",
-		"jest-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
+		"jest": "jest --detectOpenHandles --runInBand",
+		"jest-coverage": "jest --coverage --runInBand",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
 		"lint:prettier": "prettier . --write --ignore-path .gitignore",
 		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",
-		"test": "cross-env NODE_ENV=test yarn lint && yarn jest"
+		"test": "yarn lint && yarn jest"
 	},
 	"jest": {
 		"clearMocks": true,
@@ -58,7 +58,6 @@
 		"@commitlint/config-conventional": "^11.0.0",
 		"conventional-changelog-cli": "^2.1.1",
 		"coveralls": "^3.1.0",
-		"cross-env": "^7.0.3",
 		"eslint": "^7.16.0",
 		"eslint-config-airbnb-base": "^14.2.1",
 		"eslint-config-prettier": "^7.1.0",

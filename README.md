@@ -121,6 +121,13 @@ poppler.pdfToText(file, options).then((res) => {
 
 Please see [CONTRIBUTING.md](https://github.com/Fdawgs/node-poppler/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
 
+## Acknowledgements
+
+-   [**Albert Astals Cid**](https://github.com/albert-astals-cid-kdab) - [Poppler](https://poppler.freedesktop.org/) developer
+-   [**Filipe Fernandes**](https://github.com/ocefpaf/) - [poppler-feedstock](https://github.com/conda-forge/poppler-feedstock) maintainer
+-   [**Peter Williams**](https://github.com/pkgw/) - [poppler-feedstock](https://github.com/conda-forge/poppler-feedstock) maintainer
+-   [**Owen Schwartz**](https://github.com/oschwartz10612) - [poppler-windows](https://github.com/oschwartz10612/poppler-windows) developer
+
 ## License
 
 `node-poppler` is licensed under the [MIT](https://github.com/Fdawgs/node-poppler/blob/master/LICENSE) license.

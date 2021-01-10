@@ -1,0 +1,20 @@
+dictionaries:
+    - en
+    - en_GB
+    - javascript
+
+# Any files/folders we should ignore?
+excluded_files:
+    - ".github/.typo-ci.yml"
+    - "node_modules/**/*"
+    - "yarn.lock"
+
+# Any typos we should ignore?
+excluded_words:
+    - fastify
+    - fhir
+    - hl7
+    - nhs
+
+# Would you like filenames to also be spellchecked?
+spellcheck_filenames: true

@@ -1,7 +1,6 @@
 dictionaries:
     - en
     - en_GB
-    - javascript
 
 # Any files/folders we should ignore?
 excluded_files:

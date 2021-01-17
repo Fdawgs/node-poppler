@@ -38,7 +38,7 @@ jobs:
             - name: Run Prettier
               run: npm run lint:prettier:ci
             - name: Compile TypeScript Definition File
-              run: npm run tsc
+              run: npm run build
 
     unit-tests:
         name: Unit Tests

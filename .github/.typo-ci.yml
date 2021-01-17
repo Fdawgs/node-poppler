@@ -6,7 +6,7 @@ dictionaries:
 excluded_files:
     - ".github/.typo-ci.yml"
     - "node_modules/**/*"
-    - "yarn.lock"
+    - "package-lock.json"
 
 # Any typos we should ignore?
 excluded_words:

@@ -15,25 +15,25 @@ Other processes and specifications that are in use in this repository are:
 
 ## Getting Started
 
-This repository requires that you have [Node.js](https://nodejs.org) and [Yarn](https://classic.yarnpkg.com) installed.
+This repository requires that you have [Node.js](https://nodejs.org) installed.
 
-With those in place, you can fork the repository, clone it, and then run `yarn install` to install all development dependencies.
+With those in place, you can fork the repository, clone it, and then run `npm install` to install all development dependencies.
 
 ### Development Workflow
 
 After cloning and installing all the dependencies, there are several commands available for local development:
 
--   `yarn lint` - Lints everything in src directory
--   `yarn jest` - Runs Jest over all tests in src directory
--   `yarn test` - Runs `yarn lint` and `yarn jest` together
+-   `npm run lint` - Lints everything in src directory
+-   `npm run jest` - Runs Jest over all tests in src directory
+-   `npm test` - Runs `npm run lint` and `npm run jest` together
 
 ## Pull Request Checklist
 
 Prior to submitting a pull request back to the main repository, please make sure you have completed the following steps:
 
 1. Pull request base branch is set to `master`. All pull requests should be forked from and merged back to `master`
-2. Run `yarn test` to check the code adheres to the defined style and that it passes the Jest tests
-3. Run `yarn lint:prettier` to run the Prettier code formatter over the code
+2. Run `npm test` to check the code adheres to the defined style and that it passes the Jest tests
+3. Run `npm run lint:prettier` to run the Prettier code formatter over the code
 
 ## Release process
 
@@ -41,8 +41,8 @@ When cutting a release, the following steps need to be performed:
 
 1. Create a release branch with the convention `release/x.x.x`
 2. `package.json` needs to have a version update based on the content being released, remembering to adhere to semantic versioning
-3. Generate the API docs if any changes have been made with `yarn doc`
-4. Generate the changelog with `yarn changelog`
+3. Generate the API docs if any changes have been made with `npm run doc`
+4. Generate the changelog with `npm run changelog`
 5. Create a tag for the version; the naming convention is the version (vx.x.x)
 6. Push the tag to the repository
 7. Draft a release in the release tab with release notes, copying the notes from the changelog

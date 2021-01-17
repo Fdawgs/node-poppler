@@ -10,19 +10,19 @@ The node-poppler module was created out of a need for a PDF-to-HTML conversion m
 
 ## Installation
 
-Install using [`yarn`](https://yarnpkg.com/en/package/node-poppler):
-
-```bash
-yarn add node-poppler
-```
-
-Or [`npm`](https://www.npmjs.com/package/node-poppler):
+Install using [`npm`](https://www.npmjs.com/package/node-poppler):
 
 ```bash
 npm install node-poppler
 ```
 
-node-poppler's test scripts use yarn commands.
+Or [`yarn`](https://yarnpkg.com/en/package/node-poppler):
+
+```bash
+yarn add node-poppler
+```
+
+node-poppler's test scripts use npm commands.
 
 ### Linux and macOS/Darwin support
 

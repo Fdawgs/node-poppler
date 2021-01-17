@@ -27,8 +27,12 @@
 	],
 	"main": "src/index.js",
 	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
-	"author": "Frazer Smith <frazer.dev@outlook.com>",
+	"homepage": "https://github.com/Fdawgs/node-poppler",
+	"bugs": {
+		"url": "https://github.com/Fdawgs/node-poppler/issues"
+	},
 	"license": "MIT",
+	"author": "Frazer Smith <frazer.dev@outlook.com>",
 	"engines": {
 		"node": ">=10.22.0"
 	},

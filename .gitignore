@@ -115,6 +115,10 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# lock files
+package-lock.json
+yarn.lock
+
 # Converted test files
 test_docs/*
 !test_docs/*.pdf

@@ -47,6 +47,9 @@ jobs:
               run: npm install --ignore-scripts
             - name: Install macOS dependencies
               if: matrix.os == 'macos-latest'
+              env:
+                  HOMEBREW_NO_INSTALL_CLEANUP: 1
+                  HOMEBREW_NO_AUTO_UPDATE: 1
               run: brew install poppler
             - name: Install Ubuntu dependencies
               if: matrix.os == 'ubuntu-20.04'

@@ -325,6 +325,12 @@ export class Poppler {
 	 * corner in pixels (image output) or points (vector output).
 	 * @param {number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
+	 * @param {string=} options.defaultCmykProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed.
+	 * @param {string=} options.defaultGrayProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultGray color space to the ICC profile stored in the display profile file passed.
+	 * @param {string=} options.defaultRgbProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultRGB color space to the ICC profile stored in the display profile file passed.
 	 * @param {string=} options.displayProfile - If Poppler is compiled with colour management support, this option
 	 * sets the display profile to the ICC profile stored in the display profile file passed.
 	 * @param {boolean=} options.evenPagesOnly - Generates only the even numbered pages.
@@ -381,6 +387,12 @@ export class Poppler {
 	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
 	 * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
 	 * only for its restricted use of PostScript operators.
+	 * @param {string=} options.defaultCmykProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed.
+	 * @param {string=} options.defaultGrayProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultGray color space to the ICC profile stored in the display profile file passed.
+	 * @param {string=} options.defaultRgbProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultRGB color space to the ICC profile stored in the display profile file passed.
 	 * @param {boolean=} options.duplex - Set the Duplex pagedevice entry in the PostScript file.
 	 * This tells duplex-capable printers to enable duplexing.
 	 * @param {boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,

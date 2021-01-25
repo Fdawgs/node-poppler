@@ -1,6 +1,6 @@
 {
 	"name": "node-poppler",
-	"version": "2.1.3",
+	"version": "2.2.0",
 	"description": "Asynchronous node.js wrapper for the Poppler PDF rendering library",
 	"keywords": [
 		"async",
@@ -39,7 +39,7 @@
 	"scripts": {
 		"build": "tsc",
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
-		"doc": "tsc && jsdoc2md src/index.js > API.md && prettier API.md --write",
+		"doc": "tsc && jsdoc2md src/index.js > API.md && prettier . --write",
 		"dupe-check": "jsinspect ./src",
 		"jest": "jest --detectOpenHandles --runInBand",
 		"jest-coverage": "jest --coverage --runInBand",
@@ -71,10 +71,10 @@
 		"coveralls": "^3.1.0",
 		"eslint": "^7.16.0",
 		"eslint-config-airbnb-base": "^14.2.1",
-		"eslint-config-prettier": "^7.1.0",
+		"eslint-config-prettier": "^7.2.0",
 		"eslint-plugin-import": "^2.22.1",
 		"eslint-plugin-jest": "^24.1.3",
-		"eslint-plugin-jsdoc": "^31.0.7",
+		"eslint-plugin-jsdoc": "^31.3.3",
 		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-security": "^1.4.0",
 		"glob": "^7.1.6",

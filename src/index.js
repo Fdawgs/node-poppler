@@ -63,7 +63,8 @@ class Poppler {
 						__dirname,
 						"lib",
 						"win32",
-						"poppler-20.12.1",
+						"poppler-21.01.0",
+						"Library",
 						"bin"
 					);
 					break;
@@ -639,6 +640,12 @@ class Poppler {
 	 * corner in pixels (image output) or points (vector output).
 	 * @param {number=} options.cropYAxis - Specifies the y-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
+	 * @param {string=} options.defaultCmykProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed.
+	 * @param {string=} options.defaultGrayProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultGray color space to the ICC profile stored in the display profile file passed.
+	 * @param {string=} options.defaultRgbProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultRGB color space to the ICC profile stored in the display profile file passed.
 	 * @param {string=} options.displayProfile - If Poppler is compiled with colour management support, this option
 	 * sets the display profile to the ICC profile stored in the display profile file passed.
 	 * @param {boolean=} options.evenPagesOnly - Generates only the even numbered pages.
@@ -687,6 +694,9 @@ class Poppler {
 			cropWidth: { arg: "-W", type: "number" },
 			cropXAxis: { arg: "-x", type: "number" },
 			cropYAxis: { arg: "-y", type: "number" },
+			defaultCmykProfile: { arg: "-defaultcmykprofile", type: "string" },
+			defaultGrayProfile: { arg: "-defaultgrayprofile", type: "string" },
+			defaultRgbProfile: { arg: "-defaultrgbprofile", type: "string" },
 			displayProfile: { arg: "-displayprofile", type: "string" },
 			evenPagesOnly: { arg: "-e", type: "boolean" },
 			firstPageToConvert: { arg: "-f", type: "number" },
@@ -741,6 +751,12 @@ class Poppler {
 	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
 	 * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
 	 * only for its restricted use of PostScript operators.
+	 * @param {string=} options.defaultCmykProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed.
+	 * @param {string=} options.defaultGrayProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultGray color space to the ICC profile stored in the display profile file passed.
+	 * @param {string=} options.defaultRgbProfile - If Poppler is compiled with colour management support, this option
+	 * sets the DefaultRGB color space to the ICC profile stored in the display profile file passed.
 	 * @param {boolean=} options.duplex - Set the Duplex pagedevice entry in the PostScript file.
 	 * This tells duplex-capable printers to enable duplexing.
 	 * @param {boolean=} options.epsFile - Generate an EPS file. An EPS file contains a single image,
@@ -836,6 +852,9 @@ class Poppler {
 		const acceptedOptions = {
 			antialias: { arg: "-aaRaster", type: "string" },
 			binary: { arg: "-binary", type: "boolean" },
+			defaultCmykProfile: { arg: "-defaultcmykprofile", type: "string" },
+			defaultGrayProfile: { arg: "-defaultgrayprofile", type: "string" },
+			defaultRgbProfile: { arg: "-defaultrgbprofile", type: "string" },
 			duplex: { arg: "-duplex", type: "boolean" },
 			epsFile: { arg: "-eps", type: "boolean" },
 			fillPage: { arg: "-expand", type: "boolean" },

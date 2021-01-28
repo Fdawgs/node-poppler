@@ -55,6 +55,10 @@
 	},
 	"jest": {
 		"clearMocks": true,
+		"coverageReporters": [
+			"text",
+			"lcovonly"
+		],
 		"resetMocks": true,
 		"testEnvironment": "node",
 		"testTimeout": 10000

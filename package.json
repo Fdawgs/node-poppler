@@ -72,7 +72,6 @@
 	"devDependencies": {
 		"@commitlint/config-conventional": "^11.0.0",
 		"conventional-changelog-cli": "^2.1.1",
-		"coveralls": "^3.1.0",
 		"eslint": "^7.16.0",
 		"eslint-config-airbnb-base": "^14.2.1",
 		"eslint-config-prettier": "^7.2.0",

@@ -45,13 +45,13 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: Install
               run: npm install --ignore-scripts
-            - name: Install macOS dependencies
+            - name: Install macOS Dependencies
               if: matrix.os == 'macos-latest'
               env:
                   HOMEBREW_NO_INSTALL_CLEANUP: 1
                   HOMEBREW_NO_AUTO_UPDATE: 1
               run: brew install poppler
-            - name: Install Ubuntu dependencies
+            - name: Install Ubuntu Dependencies
               if: matrix.os == 'ubuntu-20.04'
               run: sudo apt-get -y install poppler-data poppler-utils
             - name: Run Tests
@@ -76,7 +76,7 @@ jobs:
                   parallel-finished: true
 
     automerge:
-        name: Automatically merge Dependabot pull requests
+        name: Automatically Merge Dependabot Pull Requests
         if: github.event.pull_request.draft == false
         needs: [lint, unit-tests]
         runs-on: ubuntu-latest

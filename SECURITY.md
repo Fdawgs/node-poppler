@@ -1,6 +1,6 @@
 # Security
 
-## Disclosure policy
+## Disclosure Policy
 
 Please email reports about any security related issues you find to frazer.dev@outlook.com.
 Please use a descriptive subject line in your report email, in addition to a reference or link to this repository.

@@ -35,7 +35,7 @@ Prior to submitting a pull request back to the main repository, please make sure
 2. Run `npm test` to check the code adheres to the defined style and that it passes the Jest tests
 3. Run `npm run lint:prettier` to run the Prettier code formatter over the code
 
-## Release process
+## Release Process
 
 When cutting a release, the following steps need to be performed:
 

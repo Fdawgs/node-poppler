@@ -79,7 +79,7 @@ if (platform === "win32" || platform === "darwin") {
 	});
 }
 
-describe("pdfAttach function", () => {
+describe("pdfAttach Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -142,7 +142,7 @@ describe("pdfAttach function", () => {
 	});
 });
 
-describe("pdfDetach function", () => {
+describe("pdfDetach Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -196,7 +196,7 @@ describe("pdfDetach function", () => {
 	});
 });
 
-describe("pdfFonts function", () => {
+describe("pdfFonts Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -249,7 +249,7 @@ describe("pdfFonts function", () => {
 	});
 });
 
-describe("pdfImages function", () => {
+describe("pdfImages Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -314,7 +314,7 @@ describe("pdfImages function", () => {
 	});
 });
 
-describe("pdfInfo function", () => {
+describe("pdfInfo Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -365,7 +365,7 @@ describe("pdfInfo function", () => {
 	});
 });
 
-describe("pdfSeparate function", () => {
+describe("pdfSeparate Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -435,7 +435,7 @@ describe("pdfSeparate function", () => {
 	});
 });
 
-describe("pdfToCairo function", () => {
+describe("pdfToCairo Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -518,7 +518,7 @@ describe("pdfToCairo function", () => {
 	});
 });
 
-describe("pdfToHtml function", () => {
+describe("pdfToHtml Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -598,7 +598,7 @@ describe("pdfToHtml function", () => {
 	});
 });
 
-describe("pdfToPpm function", () => {
+describe("pdfToPpm Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -671,7 +671,7 @@ describe("pdfToPpm function", () => {
 	});
 });
 
-describe("pdfToPs function", () => {
+describe("pdfToPs Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -753,7 +753,7 @@ describe("pdfToPs function", () => {
 	});
 });
 
-describe("pdfToText function", () => {
+describe("pdfToText Function", () => {
 	afterAll(async () => {
 		await clean();
 	});
@@ -834,7 +834,7 @@ describe("pdfToText function", () => {
 	});
 });
 
-describe("pdfUnite function", () => {
+describe("pdfUnite Function", () => {
 	afterAll(async () => {
 		await clean();
 	});

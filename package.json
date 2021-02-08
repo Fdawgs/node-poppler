@@ -41,7 +41,7 @@
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md && prettier CHANGELOG.md --write",
 		"doc": "tsc && jsdoc2md src/index.js > API.md && prettier . --write",
 		"jest": "jest --detectOpenHandles --runInBand",
-		"jest-coverage": "jest --coverage --runInBand",
+		"jest:coverage": "jest --coverage --runInBand",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
 		"lint:prettier": "prettier . --write --ignore-path .gitignore",
 		"lint:prettier:ci": "prettier . --check --ignore-path .gitignore",

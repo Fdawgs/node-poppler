@@ -55,7 +55,7 @@ jobs:
               if: matrix.os == 'ubuntu-20.04'
               run: sudo apt-get -y install poppler-data poppler-utils
             - name: Run Tests
-              run: npm run jest-coverage
+              run: npm run jest:coverage
             - name: Coveralls Parallel
               uses: coverallsapp/github-action@v1.1.2
               with:

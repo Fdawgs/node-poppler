@@ -1,0 +1,14 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"files.eol": "\n",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"npm.packageManager": "npm",
+	"prettier.arrowParens": "always",
+	"prettier.endOfLine": "lf",
+	"prettier.singleQuote": true,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"telemetry.enableCrashReporter": false,
+	"telemetry.enableTelemetry": false
+}

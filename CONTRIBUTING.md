@@ -27,6 +27,18 @@ After cloning and installing all the dependencies, there are several commands av
 -   `npm run jest` - Runs Jest over all tests in src directory
 -   `npm test` - Runs `npm run lint` and `npm run jest` together
 
+## Documentation Style
+
+Documentation (both in markdown files and inline comments) should be written in **British English** where possible.
+
+Titles and headings should adhere to the [Associated Press (AP)](https://www.apstylebook.com/) style:
+
+-   Capitalise words with three or more letters
+-   Capitalise the first and the last word
+-   Capitalise nouns, pronouns, adjectives, verbs, adverbs, and subordinate conjunctions
+-   Lowercase articles (a, an, the), coordinating conjunctions, and prepositions
+-   Capitalise words with four or more letters (including conjunctions and prepositions)
+
 ## Pull Request Checklist
 
 Prior to submitting a pull request back to the main repository, please make sure you have completed the following steps:

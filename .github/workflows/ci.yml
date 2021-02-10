@@ -29,6 +29,18 @@ jobs:
             - name: Compile TypeScript Definition File
               run: npm run build
 
+    commit-lint:
+        name: Lint Commit Messages
+        if: github.event.pull_request.draft == false
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
+            - uses: wagoid/commitlint-github-action@v2.0.3
+              with:
+                  configFile: ./package.json
+
     unit-tests:
         name: Unit Tests
         if: github.event.pull_request.draft == false
@@ -78,7 +90,7 @@ jobs:
     automerge:
         name: Automatically Merge Dependabot Pull Requests
         if: github.event.pull_request.draft == false
-        needs: [lint, unit-tests]
+        needs: [commit-lint, lint, unit-tests]
         runs-on: ubuntu-latest
         steps:
             - uses: fastify/github-action-merge-dependabot@v1.1.1

@@ -7,11 +7,14 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/Fdawgs/node-poppler/badge.svg)](https://snyk.io/test/github/Fdawgs/node-poppler)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
-> Asynchronous node.js wrapper for the Poppler PDF rendering library
+> Asynchronous node.js wrapper for the Poppler PDF rendering library binaries
 
 ## Intro
 
-The node-poppler module was created out of a need for a PDF-to-HTML conversion module at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/) to convert clinical documents in PDF format to HTML.
+[Poppler](https://poppler.freedesktop.org/) is a PDF rendering library that also includes a collection of utility binaries, which allows for the manipulation and extraction of data from PDF documents such as converting PDF files to HTML, TXT, or PostScript.
+
+The `node-poppler` module provides an asynchronous node.js wrapper around these utility binaries, for easier use.
+It was originally created out of a need for a PDF-to-HTML conversion module at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/) to convert clinical documents in PDF format to HTML.
 
 ## Installation
 

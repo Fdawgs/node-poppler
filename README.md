@@ -127,7 +127,7 @@ poppler.pdfToText(file, options).then((res) => {
 
 ## Contributing
 
-Please see [CONTRIBUTING.md](https://github.com/Fdawgs/node-poppler/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
+Please see [CONTRIBUTING.md](./CONTRIBUTING) for more details regarding contributing to this project.
 
 ## Acknowledgements
 
@@ -138,4 +138,4 @@ Please see [CONTRIBUTING.md](https://github.com/Fdawgs/node-poppler/blob/master/
 
 ## License
 
-`node-poppler` is licensed under the [MIT](https://github.com/Fdawgs/node-poppler/blob/master/LICENSE) license.
+`node-poppler` is licensed under the [MIT](./LICENSE) license.

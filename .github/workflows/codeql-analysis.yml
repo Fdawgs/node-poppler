@@ -1,9 +1,4 @@
-# For most projects, this workflow file will not need changing; you simply need
-# to commit it to your repository.
-#
-# You may wish to alter this file to override the set of languages analyzed,
-# or to provide custom queries or build logic.
-name: "CodeQL"
+name: CodeQL
 
 on:
     push:
@@ -18,38 +13,15 @@ on:
 jobs:
     CodeQL-Build:
         if: github.event.pull_request.draft == false
-        # CodeQL runs on ubuntu-latest, windows-latest, and macos-latest
         runs-on: ubuntu-latest
-
         steps:
-            - name: Checkout repository
+            - name: Checkout Repository
               uses: actions/checkout@v2
-
-            # Initialises the CodeQL tools for scanning.
+            # Initialises the CodeQL tools for scanning
             - name: Initialise CodeQL
               uses: github/codeql-action/init@v1
-              # Override language selection by uncommenting this and choosing your languages
-              # with:
-              #   languages: go, javascript, csharp, python, cpp, java
               with:
                   languages: javascript
                   queries: security-and-quality
-
-            # Autobuild attempts to build any compiled languages (C/C++, C#, or Java).
-            # If this step fails, then you should remove it and run the build manually (see below).
-            - name: Autobuild
-              uses: github/codeql-action/autobuild@v1
-
-            # ℹ️ Command-line programs to run using the OS shell.
-            # 📚 https://git.io/JvXDl
-
-            # ✏️ If the Autobuild fails above, remove it and uncomment the following
-            #    three lines and modify them (or add more) to build your code if your
-            #    project uses a compiled language
-
-            #- run: |
-            #   make bootstrap
-            #   make release
-
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v1

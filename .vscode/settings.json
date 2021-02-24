@@ -6,7 +6,6 @@
 	"npm.packageManager": "npm",
 	"prettier.arrowParens": "always",
 	"prettier.endOfLine": "lf",
-	"prettier.singleQuote": true,
 	"prettier.tabWidth": 4,
 	"prettier.useTabs": true,
 	"telemetry.enableCrashReporter": false,

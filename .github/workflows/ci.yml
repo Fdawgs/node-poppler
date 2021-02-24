@@ -16,8 +16,8 @@ jobs:
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v2
+            - uses: actions/checkout@v2.3.4
+            - uses: actions/setup-node@v2.1.5
               with:
                   node-version: 14.x
             - name: Install
@@ -34,7 +34,7 @@ jobs:
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v2.3.4
               with:
                   fetch-depth: 0
             - uses: wagoid/commitlint-github-action@v2.2.3
@@ -50,9 +50,9 @@ jobs:
                 os: [macos-latest, ubuntu-20.04, windows-latest]
         runs-on: ${{ matrix.os }}
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v2.3.4
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@v2.1.5
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install

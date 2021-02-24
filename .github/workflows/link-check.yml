@@ -24,6 +24,7 @@ on:
 jobs:
     link-check:
         name: Link Check
+        if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2.3.4

@@ -97,3 +97,16 @@ jobs:
               if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    release:
+        name: Create/Update Release Pull Request
+        if: github.ref == 'refs/heads/master'
+        needs: [commit-lint, lint, unit-tests]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Release Please
+              id: release
+              uses: GoogleCloudPlatform/release-please-action@v2.20.1
+              with:
+                  changelog-types: '[ { "type": "feat", "section": "Features", "hidden": false }, { "type": "fix", "section": "Bug Fixes", "hidden": false }, { "type": "build", "section": "Dependencies", "hidden": false }, { "type": "chore", "section": "Miscellaneous", "hidden": false }, { "type": "ci", "section": "Miscellaneous", "hidden": false }, { "type": "perf", "section": "Performance", "hidden": false }, { "type": "refactor", "section": "Miscellaneous", "hidden": false }, { "type": "style", "section": "Miscellaneous", "hidden": false }, { "type": "docs", "section": "Documentation", "hidden": false }]'
+                  release-type: node

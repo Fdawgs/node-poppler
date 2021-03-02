@@ -2,8 +2,10 @@ name: CD
 
 on:
     release:
-        # This specifies that the build will be triggered when we publish a release
-        types: [published]
+        # This specifies that the build will be triggered when we release
+        types: [released]
+    # Allows this workflow to be run manually from the Actions tab
+    workflow_dispatch:
 
 jobs:
     build:

@@ -67,12 +67,6 @@
 		"testEnvironment": "node",
 		"testTimeout": 10000
 	},
-	"prettier": {
-		"endOfLine": "lf",
-		"semi": true,
-		"tabWidth": 4,
-		"useTabs": true
-	},
 	"devDependencies": {
 		"@commitlint/cli": "^12.0.1",
 		"@commitlint/config-conventional": "^12.0.1",

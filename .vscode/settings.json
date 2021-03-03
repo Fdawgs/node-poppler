@@ -2,12 +2,11 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
 	"files.eol": "\n",
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"npm.packageManager": "npm",
-	"prettier.arrowParens": "always",
-	"prettier.endOfLine": "lf",
-	"prettier.tabWidth": 4,
-	"prettier.useTabs": true,
 	"telemetry.enableCrashReporter": false,
 	"telemetry.enableTelemetry": false
 }

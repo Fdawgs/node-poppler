@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.2.2](https://www.github.com/Fdawgs/node-poppler/compare/v2.2.1...v2.2.2) (2021-03-03)
+
+
+### Dependencies
+
+* **dependabot:** set commit message prefix; lower pull limit ([25e3652](https://www.github.com/Fdawgs/node-poppler/commit/25e365256f0cfd958d36e8e8146f191bb64eeb40))
+* **deps-dev:** bump @commitlint/cli from 11.0.0 to 12.0.1 ([#206](https://www.github.com/Fdawgs/node-poppler/issues/206)) ([78f92b6](https://www.github.com/Fdawgs/node-poppler/commit/78f92b6ba3cbc06c505371ee24aae3da5105a27a))
+* **deps-dev:** bump @commitlint/config-conventional ([4708778](https://www.github.com/Fdawgs/node-poppler/commit/47087784c8afe2199faf9fb7fab07c4b204a2616))
+* **deps-dev:** bump eslint-config-prettier from 7.2.0 to 8.1.0 ([ef0788a](https://www.github.com/Fdawgs/node-poppler/commit/ef0788accfcd8e0a0acdfc887478a77305e487dd))
+* **deps-dev:** bump jsdoc-to-markdown from 6.0.1 to 7.0.0 ([#207](https://www.github.com/Fdawgs/node-poppler/issues/207)) ([b6f88ae](https://www.github.com/Fdawgs/node-poppler/commit/b6f88ae99e7c57ebd9b51052dfe48e45c45bc8d7))
+* **deps:** bump wagoid/commitlint-github-action from v2.2.3 to v3.0.1 ([3674b7e](https://www.github.com/Fdawgs/node-poppler/commit/3674b7e7be1e503e59062f2bed0c79bf9bb0d454))
+* **deps:** specify minor and hotfix versions ([aa1bb13](https://www.github.com/Fdawgs/node-poppler/commit/aa1bb13ecbe99c91c52824d9574562e9d5caaaa8))
+
+
+### Miscellaneous
+
+* add link check workflow ([39a83c0](https://www.github.com/Fdawgs/node-poppler/commit/39a83c0347a8af3286515669219577603756075e))
+* automate release and changelog generation ([b294617](https://www.github.com/Fdawgs/node-poppler/commit/b294617db770c0165aaa8beda779f0634ecdd53d))
+* **codeql:** remove autobuild action ([d20154c](https://www.github.com/Fdawgs/node-poppler/commit/d20154cd0c06dfe0055d8edcde9084a520063400))
+* **link-check:** ignore if draft pull request event ([d3c7ad7](https://www.github.com/Fdawgs/node-poppler/commit/d3c7ad7bd80f5ad9118cee6cc825952091d62589))
+* **linkcheck:** extend ignored urls ([8c0a238](https://www.github.com/Fdawgs/node-poppler/commit/8c0a238bf1471108ef5eddcef1d11d99cb7f628b))
+* **lint-check:** compress patterns ([c9b7e09](https://www.github.com/Fdawgs/node-poppler/commit/c9b7e09f7cd34cdb6a281d741d244c61f4485bfd))
+* **lint-check:** run on push and pull events for md files ([91cd1fc](https://www.github.com/Fdawgs/node-poppler/commit/91cd1fcc9e3e5b3f9ef77a1c1dff2287b37e72a7))
+* **prettier:** create separate files to allow for CI/CD to use prettier config ([#212](https://www.github.com/Fdawgs/node-poppler/issues/212)) ([8319774](https://www.github.com/Fdawgs/node-poppler/commit/83197747b55609540518aae42b72a11d13ca8715))
+* replace stalebot with github action ([237939d](https://www.github.com/Fdawgs/node-poppler/commit/237939d729df7d8e8f0387748a25fbbbb9be6ad4))
+* **vscode:** remove conflicting prettier ext setting ([316e244](https://www.github.com/Fdawgs/node-poppler/commit/316e24473cb89f6c45ae5930d47b61d9da3d463c))
+* **workflows:** fix release types to account for bots ([7ac80c5](https://www.github.com/Fdawgs/node-poppler/commit/7ac80c52115222e98a0381a4ee990777422b8c45))
+* **workflows:** move release steps into `cd` workflow ([86a94e4](https://www.github.com/Fdawgs/node-poppler/commit/86a94e47766eb33216d1c570a191fbae23cc4989))
+* **workflows:** rename spellcheck workflow ([8fdff21](https://www.github.com/Fdawgs/node-poppler/commit/8fdff210ba5fab00085ff072ced9b95476a63551))
+* **workflows:** tidy node-version syntax ([8b69bc1](https://www.github.com/Fdawgs/node-poppler/commit/8b69bc1f52616e2924f80a7ccae365dbe5917017))
+
+
+### Documentation
+
+* **changelog:** fix h3 header style ([a0efe08](https://www.github.com/Fdawgs/node-poppler/commit/a0efe080bf2c48de4ac71c021b5733834ba1e56b))
+* **readme:** fix broken link ([bc1031b](https://www.github.com/Fdawgs/node-poppler/commit/bc1031b02e33ccda42db80407e52a21698a3d2d5))
+* **readme:** shorten links ([300f033](https://www.github.com/Fdawgs/node-poppler/commit/300f0333f4a4c934b3124eb46b5aa07e98dca5ef))
+
 ### 2.2.1 (2021-02-16)
 
 -   fix(lib): update poppler win32 binaries from 21.01.0 to 21.02.0 ([1d6a042](https://github.com/Fdawgs/node-poppler/commit/1d6a042))

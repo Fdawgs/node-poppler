@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## <small>2.2.1 (2021-02-16)</small>
+### 2.2.1 (2021-02-16)
 
 -   fix(lib): update poppler win32 binaries from 21.01.0 to 21.02.0 ([1d6a042](https://github.com/Fdawgs/node-poppler/commit/1d6a042))
 -   fix(script): add missing ignore-path arg ([ad9f42a](https://github.com/Fdawgs/node-poppler/commit/ad9f42a))
@@ -44,7 +44,7 @@ All notable changes to this project will be documented in this file.
 -   ci(github-actions): set `flag-name` for parallel coverage tests ([e91f37d](https://github.com/Fdawgs/node-poppler/commit/e91f37d))
 -   ci(github-actions): set semver for coverallsapp ([b745a7f](https://github.com/Fdawgs/node-poppler/commit/b745a7f))
 
-## <small>2.1.3 (2021-01-18)</small>
+### 2.1.3 (2021-01-18)
 
 -   build: add typoci config file ([494cdfe](https://github.com/Fdawgs/node-poppler/commit/494cdfe))
 -   build: remove `yarn` as package manager, revert to `npm` ([536b7c2](https://github.com/Fdawgs/node-poppler/commit/536b7c2))
@@ -67,7 +67,7 @@ All notable changes to this project will be documented in this file.
 -   docs(readme): style changes ([4c8b519](https://github.com/Fdawgs/node-poppler/commit/4c8b519))
 -   style(ci): tidy job names ([4b736d7](https://github.com/Fdawgs/node-poppler/commit/4b736d7))
 
-## <small>2.1.2 (2020-12-28)</small>
+### 2.1.2 (2020-12-28)
 
 -   build: update github-actions with dependabot ([ec8bf01](https://github.com/Fdawgs/node-poppler/commit/ec8bf01))
 -   build(deps-dev): bump eslint from 7.15.0 to 7.16.0 ([de68d3d](https://github.com/Fdawgs/node-poppler/commit/de68d3d))
@@ -93,7 +93,7 @@ All notable changes to this project will be documented in this file.
 -   chore(scripts): rename test scripts ([c8a2c69](https://github.com/Fdawgs/node-poppler/commit/c8a2c69))
 -   docs(readme): remove abbreviation ([715fc9d](https://github.com/Fdawgs/node-poppler/commit/715fc9d))
 
-## <small>2.1.1 (2020-12-13)</small>
+### 2.1.1 (2020-12-13)
 
 -   build(deps-dev): bump dev dependencies ([c8d76d9](https://github.com/Fdawgs/node-poppler/commit/c8d76d9))
 -   fix(lib): update poppler win32 binaries from 20.12.0 to 20.12.1 ([d196360](https://github.com/Fdawgs/node-poppler/commit/d196360))
@@ -114,7 +114,7 @@ All notable changes to this project will be documented in this file.
 -   feat(index): add rasterization color space and ICC profile options ([86edf34](https://github.com/Fdawgs/node-poppler/commit/86edf34))
 -   style: format codeql.yml ([7931936](https://github.com/Fdawgs/node-poppler/commit/7931936))
 
-## <small>2.0.1 (2020-11-10)</small>
+### 2.0.1 (2020-11-10)
 
 -   build(deps-dev): bump dev dependencies ([d21e32f](https://github.com/Fdawgs/node-poppler/commit/d21e32f))
 -   fix(index): return promise objects ([81cddaa](https://github.com/Fdawgs/node-poppler/commit/81cddaa))
@@ -142,7 +142,7 @@ All notable changes to this project will be documented in this file.
 
 This allows for easier use of the functions as users no longer have to place an undefined parameter if no options are provided. `Poppler.pdfToText(undefined, file, outputFile)` can now be called instead like `Poppler.pdfToText(file, outputFile)`.
 
-## <small>1.8.5 (2020-10-14)</small>
+### 1.8.5 (2020-10-14)
 
 -   build: create codeql-analysis.yml workflow file ([7346f8f](https://github.com/Fdawgs/node-poppler/commit/7346f8f))
 -   build(deps-dev): bump dev dependencies ([29da2a9](https://github.com/Fdawgs/node-poppler/commit/29da2a9))
@@ -154,7 +154,7 @@ This allows for easier use of the functions as users no longer have to place an 
 -   chore(lib): remove redundant win32 poppler files ([bfea135](https://github.com/Fdawgs/node-poppler/commit/bfea135))
 -   fix(lib): update poppler win32 binaries from 20.09.0 to 20.10.0 ([ab227f6](https://github.com/Fdawgs/node-poppler/commit/ab227f6))
 
-## <small>1.8.4 (2020-10-01)</small>
+### 1.8.4 (2020-10-01)
 
 -   build(dependabot): remove assignment of pull requests to user ([dd04661](https://github.com/Fdawgs/node-poppler/commit/dd04661))
 -   build(deps-dev): bump dev dependencies ([3157acd](https://github.com/Fdawgs/node-poppler/commit/3157acd))
@@ -166,20 +166,20 @@ This allows for easier use of the functions as users no longer have to place an 
 -   chore(eslint): add missing plugin declaration ([562b85b](https://github.com/Fdawgs/node-poppler/commit/562b85b))
 -   chore(eslint): remove unnecessary eslint rules ([907806a](https://github.com/Fdawgs/node-poppler/commit/907806a))
 
-## <small>1.8.3 (2020-08-28)</small>
+### 1.8.3 (2020-08-28)
 
 -   build(deps-dev): add eslint-plugin-security dev dependency ([da49f54](https://github.com/Fdawgs/node-poppler/commit/da49f54))
 -   build(deps-dev): bump dev dependencies ([97f96a6](https://github.com/Fdawgs/node-poppler/commit/97f96a6))
 -   docs(readme): correct example pdftocairo call ([06ca169](https://github.com/Fdawgs/node-poppler/commit/06ca169)), thanks to @gabenunez for spotting
 
-## <small>1.8.2 (2020-08-18)</small>
+### 1.8.2 (2020-08-18)
 
 -   chore: reduce minimum nodejs engine version from 12.x to 10.x ([183400d](https://github.com/Fdawgs/node-poppler/commit/183400d))
 -   chore(github): add issue templates ([adbe5c9](https://github.com/Fdawgs/node-poppler/commit/adbe5c9))
 -   chore(index): spelling and grammar fixes to jsdoc tags ([e3cc16e](https://github.com/Fdawgs/node-poppler/commit/e3cc16e))
 -   build(deps-dev): bump dev dependencies to resolve security cve ([310a943](https://github.com/Fdawgs/node-poppler/commit/310a943))
 
-## <small>1.8.1 (2020-07-26)</small>
+### 1.8.1 (2020-07-26)
 
 -   build(deps-dev): bump dev dependencies ([27bb199](https://github.com/Fdawgs/node-poppler/commit/27bb199))
 -   build(travis): add linux test stage ([caa7513](https://github.com/Fdawgs/node-poppler/commit/caa7513))
@@ -198,13 +198,13 @@ The pdftoCairo Poppler Windows binaries have also been updated to v0.90.0 from v
 -   style(index): add missing dashes to jsdoc tags ([fd3a360](https://github.com/Fdawgs/node-poppler/commit/fd3a360))
 -   style(index): use back ticks as opposed to quotation marks in jsdoc tags ([78bc6e8](https://github.com/Fdawgs/node-poppler/commit/78bc6e8))
 
-## <small>1.7.6 (2020-07-20)</small>
+### 1.7.6 (2020-07-20)
 
 -   build(deps-dev): bump dev dependencies ([54f0542](https://github.com/Fdawgs/node-poppler/commit/54f0542))
 -   build(travis): set osx image to latest version ([680aa14](https://github.com/Fdawgs/node-poppler/commit/680aa14))
 -   fix(index): optional outputfiles to send to stdout ([de50f06](https://github.com/Fdawgs/node-poppler/commit/de50f06))
 
-## <small>1.7.5 (2020-07-16)</small>
+### 1.7.5 (2020-07-16)
 
 -   build(deps-dev): bump dev dependencies ([dd07cde](https://github.com/Fdawgs/node-poppler/commit/dd07cde))
 -   build(deps-dev): remove typescript ([39a6f6e](https://github.com/Fdawgs/node-poppler/commit/39a6f6e))
@@ -219,7 +219,7 @@ The pdftoCairo Poppler Windows binaries have also been updated to v0.90.0 from v
 -   chore(scripts): use gitignore for ignore-path options ([cbfbb90](https://github.com/Fdawgs/node-poppler/commit/cbfbb90))
 -   tests(index): use os platform when testing constructor ([bb1112b](https://github.com/Fdawgs/node-poppler/commit/bb1112b))
 
-## <small>1.7.4 (2020-06-29)</small>
+### 1.7.4 (2020-06-29)
 
 -   chore: add missing jsdoc tags for test function ([770109e](https://github.com/Fdawgs/node-poppler/commit/770109e))
 -   chore: create code_of_conduct.md ([9a3a264](https://github.com/Fdawgs/node-poppler/commit/9a3a264))
@@ -237,7 +237,7 @@ The pdftoCairo Poppler Windows binaries have also been updated to v0.90.0 from v
 -   refactor: replace promise syntax with async await ([5e6c1e4](https://github.com/Fdawgs/node-poppler/commit/5e6c1e4))
 -   refactor(index): move args array inside parseoptions function ([41c44ef](https://github.com/Fdawgs/node-poppler/commit/41c44ef))
 
-## <small>1.7.3 (2020-06-15)</small>
+### 1.7.3 (2020-06-15)
 
 The MacOS/Darwin Poppler binaries included have been updated from 0.66.0 to 0.89.0 by @chetanism,
 bringing this inline with the Windows binaries.
@@ -249,7 +249,7 @@ bringing this inline with the Windows binaries.
 -   docs(readme): tidy example code ([8469292](https://github.com/Fdawgs/node-poppler/commit/8469292))
 -   feat(lib): update poppler darwin binaries from 0.66.0 to 0.89.0 ([9ed863d](https://github.com/Fdawgs/node-poppler/commit/9ed863d))
 
-## <small>1.7.2 (2020-06-08)</small>
+### 1.7.2 (2020-06-08)
 
 -   docs(api): regenerate api docs with new jsdoc-to-markdown version ([4a103a6](https://github.com/Fdawgs/node-poppler/commit/4a103a6))
 -   build(deps-dev): bump eslint-plugin-import from 2.20.2 to 2.21.1 ([a4b74c0](https://github.com/Fdawgs/node-poppler/commit/a4b74c0))
@@ -259,7 +259,7 @@ bringing this inline with the Windows binaries.
 -   feat(lib): update poppler win32 binaries from 0.88.0 to 0.89.0 ([6c3084d](https://github.com/Fdawgs/node-poppler/commit/6c3084d))
 -   chore(scripts): expand coverage of eslint and prettier ([412c2e2](https://github.com/Fdawgs/node-poppler/commit/412c2e2))
 
-## <small>1.7.1 (2020-05-29)</small>
+### 1.7.1 (2020-05-29)
 
 -   chore: add missing @param descriptions ([483613b](https://github.com/Fdawgs/node-poppler/commit/483613b))
 -   chore: add missing @returns tag ([5ae795f](https://github.com/Fdawgs/node-poppler/commit/5ae795f))
@@ -297,7 +297,7 @@ bringing this inline with the Windows binaries.
 -   chore(lib): remove old 0.84.0 win32 binaries ([400bb80](https://github.com/Fdawgs/node-poppler/commit/400bb80))
 -   build(deps-dev): bump jest from 25.2.7 to 25.3.0 ([217ed93](https://github.com/Fdawgs/node-poppler/commit/217ed93))
 
-## <small>1.5.4 (2020-04-10)</small>
+### 1.5.4 (2020-04-10)
 
 -   tests(index): add missing outputfile variable ([a094c19](https://github.com/Fdawgs/node-poppler/commit/a094c19))
 -   tests(index): add test pdf file with attached txt file ([a6842a2](https://github.com/Fdawgs/node-poppler/commit/a6842a2))
@@ -313,7 +313,7 @@ bringing this inline with the Windows binaries.
 -   fix(index): replace catch with then; move code inside resolve function ([95e6c5b](https://github.com/Fdawgs/node-poppler/commit/95e6c5b))
 -   build(deps-dev): add missing cross-env ([3a17904](https://github.com/Fdawgs/node-poppler/commit/3a17904))
 
-## <small>1.5.3 (2020-04-04)</small>
+### 1.5.3 (2020-04-04)
 
 -   chore(deps-dev): bump coveralls from 3.0.9 to 3.0.11 ([149b7dd](https://github.com/Fdawgs/node-poppler/commit/149b7dd))
 -   chore(deps-dev): bump eslint-config-prettier from 6.10.0 to 6.10.1 ([0b4623e](https://github.com/Fdawgs/node-poppler/commit/0b4623e))
@@ -331,7 +331,7 @@ bringing this inline with the Windows binaries.
 -   ci(travis): add npm deploy job ([df55316](https://github.com/Fdawgs/node-poppler/commit/df55316))
 -   ci(travis): add release tags to branch safelist ([74fce47](https://github.com/Fdawgs/node-poppler/commit/74fce47))
 
-## <small>1.5.2 (2020-03-16)</small>
+### 1.5.2 (2020-03-16)
 
 -   chore: update dependencies ([57cb710](https://github.com/Fdawgs/node-poppler/commit/57cb710))
 -   chore: update lockfile ([7df0325](https://github.com/Fdawgs/node-poppler/commit/7df0325))
@@ -342,7 +342,7 @@ bringing this inline with the Windows binaries.
 -   chore(deps-dev): bump eslint-plugin-json from 2.1.0 to 2.1.1 ([741c8ea](https://github.com/Fdawgs/node-poppler/commit/741c8ea))
 -   chore(deps-dev): bump typescript from 3.8.2 to 3.8.3 ([4e43b1f](https://github.com/Fdawgs/node-poppler/commit/4e43b1f))
 
-## <small>1.5.1 (2020-02-21)</small>
+### 1.5.1 (2020-02-21)
 
 -   chore: add .prettierignore ([e2be8a6](https://github.com/Fdawgs/node-poppler/commit/e2be8a6))
 -   chore(deps-dev): bump eslint-config-prettier from 6.9.0 to 6.10.0 ([41042d4](https://github.com/Fdawgs/node-poppler/commit/41042d4))

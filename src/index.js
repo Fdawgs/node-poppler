@@ -63,7 +63,7 @@ class Poppler {
 						__dirname,
 						"lib",
 						"win32",
-						"poppler-21.02.0",
+						"poppler-21.03.0",
 						"Library",
 						"bin"
 					);
@@ -660,6 +660,9 @@ class Poppler {
 	 * @param {string=} options.ownerPassword - Specify the owner password for the PDF file.
 	 * Providing this will bypass all security restrictions.
 	 * @param {boolean=} options.pngFile - Generate PNG file instead a PPM file.
+	 * @param {boolean=} options.printProgress - Print progress info as each page is generated.
+	 * Three space-separated fields are printed to STDERR: the number of the current page, the number
+	 * of the last page that will be generated, and the path to the file written to.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
 	 * @param {boolean=} options.quiet - Do not print any messages or errors.
 	 * @param {number=} options.resolutionXAxis - Specifies the X resolution, in pixels per inch of
@@ -708,6 +711,7 @@ class Poppler {
 			oddPagesOnly: { arg: "-o", type: "boolean" },
 			ownerPassword: { arg: "-opw", type: "string" },
 			pngFile: { arg: "-png", type: "boolean" },
+			printProgress: { arg: "-progress", type: "boolean" },
 			printVersionInfo: { arg: "-v", type: "boolean" },
 			quiet: { arg: "-q", type: "boolean" },
 			resolutionXAxis: { arg: "-rx", type: "number" },
@@ -933,6 +937,8 @@ class Poppler {
 	 * box information for each word in the file.
 	 * @param {boolean=} options.boundingBoxXhtmlLayout - Generate an XHTML file containing
 	 * bounding box information for each block, line, and word in the file.
+	 * @param {boolean=} options.cropBox - Use the crop box rather than the media box with
+	 * `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`
 	 * @param {number=} options.cropHeight - Specifies the height of crop area in pixels
 	 * (image output) or points (vector output).
 	 * @param {number=} options.cropWidth - Specifies the width of crop area in pixels
@@ -973,6 +979,7 @@ class Poppler {
 				arg: "-bbox-layout",
 				type: "boolean",
 			},
+			cropBox: { arg: "-cropbox", type: "boolean" },
 			cropHeight: { arg: "-H", type: "number" },
 			cropWidth: { arg: "-W", type: "number" },
 			cropXAxis: { arg: "-x", type: "number" },

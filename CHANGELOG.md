@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.3.1](https://www.github.com/Fdawgs/node-poppler/compare/v2.3.0...v2.3.1) (2021-03-08)
+
+
+### Miscellaneous
+
+* **workflows:** rename ci and perf sections ([54caeda](https://www.github.com/Fdawgs/node-poppler/commit/54caeda0c2f1df947c9b5d717a65d049fbb5c3d5))
+
 ## [2.3.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.2.1...v2.3.0) (2021-03-04)
 
 

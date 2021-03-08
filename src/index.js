@@ -653,6 +653,7 @@ class Poppler {
 	 * @param {('yes'|'no')=} options.freetype - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
 	 * This defaults to `yes`.
 	 * @param {boolean=} options.grayscaleFile - Generate grayscale PGM file (instead of a color PPM file).
+	 * @param {boolean=} options.hideAnnotations - Hide annotations.
 	 * @param {boolean=} options.jpegFile - Generate JPEG file instead a PPM file.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {boolean=} options.monochromeFile - Generate monochrome PBM file (instead of a color PPM file).
@@ -705,6 +706,10 @@ class Poppler {
 			firstPageToConvert: { arg: "-f", type: "number" },
 			freetype: { arg: "-freetype", type: "string" },
 			grayscaleFile: { arg: "-gray", type: "boolean" },
+			hideAnnotations: {
+				arg: "-hide-annotations",
+				type: "boolean",
+			},
 			jpegFile: { arg: "-jpeg", type: "boolean" },
 			lastPageToConvert: { arg: "-l", type: "number" },
 			monochromeFile: { arg: "-mono", type: "boolean" },

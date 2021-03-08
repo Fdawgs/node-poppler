@@ -120,7 +120,7 @@ describe("pdfAttach Function", () => {
 			.pdfAttach(file, undefined, undefined, options)
 			.catch((err) => {
 				expect(err.message).toEqual(
-					"Invalid value type provided for option 'replace', expected boolean but recieved string"
+					"Invalid value type provided for option 'replace', expected boolean but received string"
 				);
 			});
 	});
@@ -178,7 +178,7 @@ describe("pdfDetach Function", () => {
 		expect.assertions(1);
 		await poppler.pdfDetach(file, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'listEmbedded', expected boolean but recieved string"
+				"Invalid value type provided for option 'listEmbedded', expected boolean but received string"
 			);
 		});
 	});
@@ -231,7 +231,7 @@ describe("pdfFonts Function", () => {
 		expect.assertions(1);
 		await poppler.pdfFonts(file, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToExamine', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToExamine', expected number but received string"
 			);
 		});
 	});
@@ -294,7 +294,7 @@ describe("pdfImages Function", () => {
 		expect.assertions(1);
 		await poppler.pdfImages(undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 			);
 		});
 	});
@@ -347,7 +347,7 @@ describe("pdfInfo Function", () => {
 		expect.assertions(1);
 		await poppler.pdfInfo(file, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string"
 			);
 		});
 	});
@@ -417,7 +417,7 @@ describe("pdfSeparate Function", () => {
 		expect.assertions(1);
 		await poppler.pdfSeparate(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToExtract', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToExtract', expected number but received string"
 			);
 		});
 	});
@@ -500,7 +500,7 @@ describe("pdfToCairo Function", () => {
 		expect.assertions(1);
 		await poppler.pdfToCairo(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'pdfFile', expected boolean but recieved string"
+				"Invalid value type provided for option 'pdfFile', expected boolean but received string"
 			);
 		});
 	});
@@ -578,7 +578,7 @@ describe("pdfToHtml Function", () => {
 		expect.assertions(1);
 		await poppler.pdfToHtml(file, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 			);
 		});
 	});
@@ -651,7 +651,7 @@ describe("pdfToPpm Function", () => {
 		expect.assertions(1);
 		await poppler.pdfToPpm(undefined, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 			);
 		});
 	});
@@ -733,7 +733,7 @@ describe("pdfToPs Function", () => {
 		expect.assertions(1);
 		await poppler.pdfToPs(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 			);
 		});
 	});
@@ -814,7 +814,7 @@ describe("pdfToText Function", () => {
 		expect.assertions(1);
 		await poppler.pdfToText(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'firstPageToConvert', expected number but recieved string; Invalid value type provided for option 'lastPageToConvert', expected number but recieved string"
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 			);
 		});
 	});
@@ -879,7 +879,7 @@ describe("pdfUnite Function", () => {
 		expect.assertions(1);
 		await poppler.pdfUnite(files, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
-				"Invalid value type provided for option 'printVersionInfo', expected boolean but recieved string"
+				"Invalid value type provided for option 'printVersionInfo', expected boolean but received string"
 			);
 		});
 	});

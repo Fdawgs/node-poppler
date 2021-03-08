@@ -1,8 +1,13 @@
+/* eslint-disable jest/no-conditional-expect */
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require("fs");
 const glob = require("glob");
 const os = require("os");
 const path = require("path");
+const { execFile } = require("child_process");
+const util = require("util");
+
+const execFileAsync = util.promisify(execFile);
 const { Poppler } = require("./index");
 
 const testDirectory = `${__dirname}/../test_docs/`;
@@ -599,6 +604,16 @@ describe("pdfToHtml Function", () => {
 });
 
 describe("pdfToPpm Function", () => {
+	let version;
+
+	beforeAll(async () => {
+		const { stderr } = await execFileAsync(
+			path.join(testBinaryPath, "pdftoppm"),
+			["-v"]
+		);
+		version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+	});
+
 	afterAll(async () => {
 		await clean();
 	});
@@ -654,6 +669,28 @@ describe("pdfToPpm Function", () => {
 				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 			);
 		});
+	});
+
+	test("Should return an Error object if option provided is only available in a later version of the pdftoppm binary than what was provided", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const options = {
+			printProgress: true,
+		};
+
+		if (version < "21.03.0") {
+			expect.assertions(1);
+			await poppler
+				.pdfToPpm(
+					file,
+					`${testDirectory}pdf_1.3_NHS_Constitution`,
+					options
+				)
+				.catch((err) => {
+					expect(err.message).toEqual(
+						`Invalid option provided for the current version of the binary used. 'printProgress' was introduced in v21.03.0, but received v${version}`
+					);
+				});
+		}
 	});
 
 	test("Should return an Error object if invalid option is passed to function", async () => {

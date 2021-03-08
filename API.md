@@ -8,8 +8,9 @@
 ## Functions
 
 <dl>
-<dt><a href="#parseOptions">parseOptions(acceptedOptions, options)</a> ⇒ <code>Promise.&lt;(Array|Error)&gt;</code></dt>
-<dd><p>Check each option provided is valid and of the correct type.</p>
+<dt><a href="#parseOptions">parseOptions(acceptedOptions, options, [version])</a> ⇒ <code>Promise.&lt;(Array|Error)&gt;</code></dt>
+<dd><p>Check each option provided is valid, of the correct type, and can be used by specified
+version of binary.</p>
 </dd>
 </dl>
 
@@ -459,9 +460,10 @@ one PDF result file.
 
 <a name="parseOptions"></a>
 
-## parseOptions(acceptedOptions, options) ⇒ <code>Promise.&lt;(Array\|Error)&gt;</code>
+## parseOptions(acceptedOptions, options, [version]) ⇒ <code>Promise.&lt;(Array\|Error)&gt;</code>
 
-Check each option provided is valid and of the correct type.
+Check each option provided is valid, of the correct type, and can be used by specified
+version of binary.
 
 **Kind**: global function  
 **Returns**: <code>Promise.&lt;(Array\|Error)&gt;</code> - Promise of array of CLI arguments on resolve, or Error object on rejection.  
@@ -471,3 +473,4 @@ Check each option provided is valid and of the correct type.
 | --------------- | ------------------- | ------------------------------------------------ |
 | acceptedOptions | <code>object</code> | Object containing options that a binary accepts. |
 | options         | <code>object</code> | Object containing options to pass to binary.     |
+| [version]       | <code>string</code> | Version of binary.                               |

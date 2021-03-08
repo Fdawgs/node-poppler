@@ -368,6 +368,7 @@ export class Poppler {
 	 * @param {number=} options.scalePageToYAxis - Scales each page vertically to fit in scale-to-y
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page.
+	 * @param {string=} options.separator - Specify single character separator between name and page number.
 	 * @param {boolean=} options.singleFile - Writes only the first page and does not add digits.
 	 * @param {('none'|'solid'|'shape')=} options.thinLineMode - Specifies the thin line mode. This defaults to `none`.
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.

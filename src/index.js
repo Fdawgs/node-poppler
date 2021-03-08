@@ -8,12 +8,14 @@ const platform = os.platform();
 
 /**
  * @author Frazer Smith
- * @description Check each option provided is valid and of the correct type.
+ * @description Check each option provided is valid, of the correct type, and can be used by specified
+ * version of binary.
  * @param {object} acceptedOptions - Object containing options that a binary accepts.
  * @param {object} options - Object containing options to pass to binary.
+ * @param {string=} version - Version of binary.
  * @returns {Promise<Array|Error>} Promise of array of CLI arguments on resolve, or Error object on rejection.
  */
-function parseOptions(acceptedOptions, options) {
+function parseOptions(acceptedOptions, options, version) {
 	return new Promise((resolve, reject) => {
 		const args = [];
 		const invalidArgs = [];
@@ -29,7 +31,27 @@ function parseOptions(acceptedOptions, options) {
 					invalidArgs.push(
 						`Invalid value type provided for option '${key}', expected ${
 							acceptedOptions[key].type
-						} but recieved ${typeof options[key]}`
+						} but received ${typeof options[key]}`
+					);
+				}
+
+				if (
+					acceptedOptions[key].minVersion &&
+					version &&
+					version < acceptedOptions[key].minVersion
+				) {
+					invalidArgs.push(
+						`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOptions[key].minVersion}, but received v${version}`
+					);
+				}
+
+				if (
+					acceptedOptions[key].maxVersion &&
+					version &&
+					version > acceptedOptions[key].maxVersion
+				) {
+					invalidArgs.push(
+						`Invalid option provided for the current version of the binary used. '${key}' is only present up to v${acceptedOptions[key].maxVersion}, but received v${version}`
 					);
 				}
 			} else {
@@ -155,7 +177,11 @@ class Poppler {
 			outputEncoding: { arg: "-enc", type: "string" },
 			outputPath: { arg: "-o", type: "string" },
 			printVersionInfo: { arg: "-v", type: "boolean" },
-			saveFile: { arg: "-savefile", type: "string" },
+			saveFile: {
+				arg: "-savefile",
+				type: "string",
+				minVersion: "0.86.0",
+			},
 			saveAllFiles: { arg: "-saveall", type: "boolean" },
 			saveSpecificFile: { arg: "-save", type: "number" },
 			userPassword: { arg: "-upw", type: "string" },
@@ -201,7 +227,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdffonts"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
@@ -257,7 +294,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdfimages"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 			if (outputPrefix) {
 				args.push(outputPrefix);
@@ -325,7 +373,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdfinfo"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
@@ -364,7 +423,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdfseparate"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 			args.push(outputPattern);
 
@@ -521,7 +591,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdftocairo"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 			if (outputFile) {
 				args.push(outputFile);
@@ -547,6 +628,7 @@ class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
+	 * @param {boolean=} options.dataUrls -  Use data URLs instead of external images in HTML.
 	 * @param {boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
 	 * @param {boolean=} options.extractHidden - Force hidden text extraction.
 	 * @param {number=} options.firstPageToConvert - First page to print.
@@ -578,6 +660,11 @@ class Poppler {
 	async pdfToHtml(file, options = {}) {
 		const acceptedOptions = {
 			complexOutput: { arg: "-c", type: "boolean" },
+			dataUrls: {
+				arg: "-dataurls",
+				type: "boolean",
+				minVersion: "0.75.0",
+			},
 			exchangePdfLinks: { arg: "-p", type: "boolean" },
 			extractHidden: { arg: "-hidden", type: "boolean" },
 			firstPageToConvert: { arg: "-f", type: "number" },
@@ -602,7 +689,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdftohtml"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
@@ -652,7 +750,9 @@ class Poppler {
 	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {('yes'|'no')=} options.freetype - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
 	 * This defaults to `yes`.
+	 * @param {boolean=} options.forcePageNumber - Force page number even if there is only one page.
 	 * @param {boolean=} options.grayscaleFile - Generate grayscale PGM file (instead of a color PPM file).
+	 * @param {boolean=} options.hideAnnotations - Hide annotations.
 	 * @param {boolean=} options.jpegFile - Generate JPEG file instead a PPM file.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {boolean=} options.monochromeFile - Generate monochrome PBM file (instead of a color PPM file).
@@ -680,6 +780,7 @@ class Poppler {
 	 * @param {number=} options.scalePageToYAxis - Scales each page vertically to fit in scale-to-y
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page.
+	 * @param {string=} options.separator - Specify single character separator between name and page number.
 	 * @param {boolean=} options.singleFile - Writes only the first page and does not add digits.
 	 * @param {('none'|'solid'|'shape')=} options.thinLineMode - Specifies the thin line mode. This defaults to `none`.
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
@@ -697,21 +798,51 @@ class Poppler {
 			cropWidth: { arg: "-W", type: "number" },
 			cropXAxis: { arg: "-x", type: "number" },
 			cropYAxis: { arg: "-y", type: "number" },
-			defaultCmykProfile: { arg: "-defaultcmykprofile", type: "string" },
-			defaultGrayProfile: { arg: "-defaultgrayprofile", type: "string" },
-			defaultRgbProfile: { arg: "-defaultrgbprofile", type: "string" },
-			displayProfile: { arg: "-displayprofile", type: "string" },
+			defaultCmykProfile: {
+				arg: "-defaultcmykprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			defaultGrayProfile: {
+				arg: "-defaultgrayprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			defaultRgbProfile: {
+				arg: "-defaultrgbprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			displayProfile: {
+				arg: "-displayprofile",
+				type: "string",
+				minVersion: "0.90.0",
+			},
 			evenPagesOnly: { arg: "-e", type: "boolean" },
 			firstPageToConvert: { arg: "-f", type: "number" },
+			forcePageNumber: {
+				arg: "-forcenum",
+				type: "boolean",
+				minVersion: "0.75.0",
+			},
 			freetype: { arg: "-freetype", type: "string" },
 			grayscaleFile: { arg: "-gray", type: "boolean" },
+			hideAnnotations: {
+				arg: "-hide-annotations",
+				type: "boolean",
+				minVersion: "0.84.0",
+			},
 			jpegFile: { arg: "-jpeg", type: "boolean" },
 			lastPageToConvert: { arg: "-l", type: "number" },
 			monochromeFile: { arg: "-mono", type: "boolean" },
 			oddPagesOnly: { arg: "-o", type: "boolean" },
 			ownerPassword: { arg: "-opw", type: "string" },
 			pngFile: { arg: "-png", type: "boolean" },
-			printProgress: { arg: "-progress", type: "boolean" },
+			printProgress: {
+				arg: "-progress",
+				type: "boolean",
+				minVersion: "21.03.0",
+			},
 			printVersionInfo: { arg: "-v", type: "boolean" },
 			quiet: { arg: "-q", type: "boolean" },
 			resolutionXAxis: { arg: "-rx", type: "number" },
@@ -720,6 +851,7 @@ class Poppler {
 			scalePageTo: { arg: "-scale-to", type: "number" },
 			scalePageToXAxis: { arg: "-scale-to-x", type: "number" },
 			scalePageToYAxis: { arg: "-scale-to-y", type: "number" },
+			separator: { arg: "-sep", type: "string", minVersion: "0.75.0" },
 			singleFile: { arg: "-singlefile", type: "boolean" },
 			thinLineMode: { arg: "-thinlinemode", type: "string" },
 			tiffCompression: { arg: "-tiffcompression", type: "string" },
@@ -728,7 +860,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdftoppm"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 			args.push(outputPath);
 
@@ -856,9 +999,21 @@ class Poppler {
 		const acceptedOptions = {
 			antialias: { arg: "-aaRaster", type: "string" },
 			binary: { arg: "-binary", type: "boolean" },
-			defaultCmykProfile: { arg: "-defaultcmykprofile", type: "string" },
-			defaultGrayProfile: { arg: "-defaultgrayprofile", type: "string" },
-			defaultRgbProfile: { arg: "-defaultrgbprofile", type: "string" },
+			defaultCmykProfile: {
+				arg: "-defaultcmykprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			defaultGrayProfile: {
+				arg: "-defaultgrayprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			defaultRgbProfile: {
+				arg: "-defaultrgbprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
 			duplex: { arg: "-duplex", type: "boolean" },
 			epsFile: { arg: "-eps", type: "boolean" },
 			fillPage: { arg: "-expand", type: "boolean" },
@@ -901,13 +1056,28 @@ class Poppler {
 			},
 			processColorFormat: { arg: "-processcolorformat", type: "string" },
 			quiet: { arg: "-q", type: "boolean" },
-			rasterize: { args: "-rasterize", type: "string" },
+			rasterize: {
+				args: "-rasterize",
+				type: "string",
+				minVersion: "0.90.0",
+			},
 			resolutionXYAxis: { arg: "-r", type: "number" },
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdftops"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 			if (outputFile) {
 				args.push(outputFile);
@@ -979,7 +1149,11 @@ class Poppler {
 				arg: "-bbox-layout",
 				type: "boolean",
 			},
-			cropBox: { arg: "-cropbox", type: "boolean" },
+			cropBox: {
+				arg: "-cropbox",
+				type: "boolean",
+				minVersion: "21.03.0",
+			},
 			cropHeight: { arg: "-H", type: "number" },
 			cropWidth: { arg: "-W", type: "number" },
 			cropXAxis: { arg: "-x", type: "number" },
@@ -991,7 +1165,11 @@ class Poppler {
 			lastPageToConvert: { arg: "-l", type: "number" },
 			listEncodingOptions: { arg: "-listenc", type: "boolean" },
 			maintainLayout: { arg: "-layout", type: "boolean" },
-			noDiagonalText: { arg: "-nodiag", type: "boolean" },
+			noDiagonalText: {
+				arg: "-nodiag",
+				type: "boolean",
+				minVersion: "0.80.0",
+			},
 			noPageBreaks: { arg: "-nopgbrk", type: "boolean" },
 			outputEncoding: { arg: "-enc", type: "string" },
 			ownerPassword: { arg: "-opw", type: "string" },
@@ -1003,7 +1181,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdftotext"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			args.push(file);
 			if (outputFile) {
 				args.push(outputFile);
@@ -1039,7 +1228,18 @@ class Poppler {
 		};
 
 		try {
-			const args = await parseOptions(acceptedOptions, options);
+			const { stderr } = await execFileAsync(
+				path.join(this.popplerPath, "pdfunite"),
+				["-v"]
+			);
+
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+
+			const args = await parseOptions(
+				acceptedOptions,
+				options,
+				versionInfo
+			);
 			files.forEach((element) => {
 				args.push(element);
 			});

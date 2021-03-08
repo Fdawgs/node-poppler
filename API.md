@@ -8,8 +8,9 @@
 ## Functions
 
 <dl>
-<dt><a href="#parseOptions">parseOptions(acceptedOptions, options)</a> ⇒ <code>Promise.&lt;(Array|Error)&gt;</code></dt>
-<dd><p>Check each option provided is valid and of the correct type.</p>
+<dt><a href="#parseOptions">parseOptions(acceptedOptions, options, [version])</a> ⇒ <code>Promise.&lt;(Array|Error)&gt;</code></dt>
+<dd><p>Check each option provided is valid, of the correct type, and can be used by specified
+version of binary.</p>
 </dd>
 </dl>
 
@@ -264,6 +265,7 @@ and append `-html` to the end of the filename.
 | file                           | <code>string</code>                                          | Filepath of the PDF file to read.                                                                                                                                         |
 | [options]                      | <code>object</code>                                          | Object containing options to pass to binary.                                                                                                                              |
 | [options.complexOutput]        | <code>boolean</code>                                         | Generate complex output.                                                                                                                                                  |
+| [options.dataUrls]             | <code>boolean</code>                                         | Use data URLs instead of external images in HTML.                                                                                                                         |
 | [options.exchangePdfLinks]     | <code>boolean</code>                                         | Exchange .pdf links with .html.                                                                                                                                           |
 | [options.extractHidden]        | <code>boolean</code>                                         | Force hidden text extraction.                                                                                                                                             |
 | [options.firstPageToConvert]   | <code>number</code>                                          | First page to print.                                                                                                                                                      |
@@ -318,7 +320,9 @@ in Portable Bitmap (PBM) format.
 | [options.evenPagesOnly]      | <code>boolean</code>                                                                                                                                                    | Generates only the even numbered pages.                                                                                                                                                                                     |
 | [options.firstPageToConvert] | <code>number</code>                                                                                                                                                     | Specifies the first page to convert.                                                                                                                                                                                        |
 | [options.freetype]           | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code>                                                                                                             | Enable or disable FreeType (a TrueType / Type 1 font rasterizer). This defaults to `yes`.                                                                                                                                   |
+| [options.forcePageNumber]    | <code>boolean</code>                                                                                                                                                    | Force page number even if there is only one page.                                                                                                                                                                           |
 | [options.grayscaleFile]      | <code>boolean</code>                                                                                                                                                    | Generate grayscale PGM file (instead of a color PPM file).                                                                                                                                                                  |
+| [options.hideAnnotations]    | <code>boolean</code>                                                                                                                                                    | Hide annotations.                                                                                                                                                                                                           |
 | [options.jpegFile]           | <code>boolean</code>                                                                                                                                                    | Generate JPEG file instead a PPM file.                                                                                                                                                                                      |
 | [options.lastPageToConvert]  | <code>number</code>                                                                                                                                                     | Specifies the last page to convert.                                                                                                                                                                                         |
 | [options.monochromeFile]     | <code>boolean</code>                                                                                                                                                    | Generate monochrome PBM file (instead of a color PPM file).                                                                                                                                                                 |
@@ -334,6 +338,7 @@ in Portable Bitmap (PBM) format.
 | [options.scalePageTo]        | <code>number</code>                                                                                                                                                     | Scales the long side of each page (width for landscape pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will be determined by the aspect ratio of the page.                          |
 | [options.scalePageToXAxis]   | <code>number</code>                                                                                                                                                     | Scales each page horizontally to fit in scale-to-x pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of the page.                                                                   |
 | [options.scalePageToYAxis]   | <code>number</code>                                                                                                                                                     | Scales each page vertically to fit in scale-to-y pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of the page.                                                                   |
+| [options.separator]          | <code>string</code>                                                                                                                                                     | Specify single character separator between name and page number.                                                                                                                                                            |
 | [options.singleFile]         | <code>boolean</code>                                                                                                                                                    | Writes only the first page and does not add digits.                                                                                                                                                                         |
 | [options.thinLineMode]       | <code>&#x27;none&#x27;</code> \| <code>&#x27;solid&#x27;</code> \| <code>&#x27;shape&#x27;</code>                                                                       | Specifies the thin line mode. This defaults to `none`.                                                                                                                                                                      |
 | [options.tiffCompression]    | <code>&#x27;none&#x27;</code> \| <code>&#x27;packbits&#x27;</code> \| <code>&#x27;jpeg&#x27;</code> \| <code>&#x27;lzw&#x27;</code> \| <code>&#x27;deflate&#x27;</code> | Set TIFF compression.                                                                                                                                                                                                       |
@@ -455,9 +460,10 @@ one PDF result file.
 
 <a name="parseOptions"></a>
 
-## parseOptions(acceptedOptions, options) ⇒ <code>Promise.&lt;(Array\|Error)&gt;</code>
+## parseOptions(acceptedOptions, options, [version]) ⇒ <code>Promise.&lt;(Array\|Error)&gt;</code>
 
-Check each option provided is valid and of the correct type.
+Check each option provided is valid, of the correct type, and can be used by specified
+version of binary.
 
 **Kind**: global function  
 **Returns**: <code>Promise.&lt;(Array\|Error)&gt;</code> - Promise of array of CLI arguments on resolve, or Error object on rejection.  
@@ -467,3 +473,4 @@ Check each option provided is valid and of the correct type.
 | --------------- | ------------------- | ------------------------------------------------ |
 | acceptedOptions | <code>object</code> | Object containing options that a binary accepts. |
 | options         | <code>object</code> | Object containing options to pass to binary.     |
+| [version]       | <code>string</code> | Version of binary.                               |

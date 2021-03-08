@@ -268,6 +268,7 @@ export class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
+	 * @param {boolean=} options.dataUrls -  Use data URLs instead of external images in HTML.
 	 * @param {boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
 	 * @param {boolean=} options.extractHidden - Force hidden text extraction.
 	 * @param {number=} options.firstPageToConvert - First page to print.
@@ -337,7 +338,9 @@ export class Poppler {
 	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {('yes'|'no')=} options.freetype - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
 	 * This defaults to `yes`.
+	 * @param {boolean=} options.forcePageNumber - Force page number even if there is only one page.
 	 * @param {boolean=} options.grayscaleFile - Generate grayscale PGM file (instead of a color PPM file).
+	 * @param {boolean=} options.hideAnnotations - Hide annotations.
 	 * @param {boolean=} options.jpegFile - Generate JPEG file instead a PPM file.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {boolean=} options.monochromeFile - Generate monochrome PBM file (instead of a color PPM file).
@@ -365,6 +368,7 @@ export class Poppler {
 	 * @param {number=} options.scalePageToYAxis - Scales each page vertically to fit in scale-to-y
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page.
+	 * @param {string=} options.separator - Specify single character separator between name and page number.
 	 * @param {boolean=} options.singleFile - Writes only the first page and does not add digits.
 	 * @param {('none'|'solid'|'shape')=} options.thinLineMode - Specifies the thin line mode. This defaults to `none`.
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.

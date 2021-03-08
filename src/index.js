@@ -547,6 +547,7 @@ class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
+	 * @param {boolean=} options.dataUrls -  Use data URLs instead of external images in HTML.
 	 * @param {boolean=} options.exchangePdfLinks - Exchange .pdf links with .html.
 	 * @param {boolean=} options.extractHidden - Force hidden text extraction.
 	 * @param {number=} options.firstPageToConvert - First page to print.
@@ -578,6 +579,10 @@ class Poppler {
 	async pdfToHtml(file, options = {}) {
 		const acceptedOptions = {
 			complexOutput: { arg: "-c", type: "boolean" },
+			dataUrls: {
+				arg: "-dataurls",
+				type: "boolean",
+			},
 			exchangePdfLinks: { arg: "-p", type: "boolean" },
 			extractHidden: { arg: "-hidden", type: "boolean" },
 			firstPageToConvert: { arg: "-f", type: "number" },

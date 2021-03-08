@@ -29,7 +29,7 @@ function parseOptions(acceptedOptions, options) {
 					invalidArgs.push(
 						`Invalid value type provided for option '${key}', expected ${
 							acceptedOptions[key].type
-						} but recieved ${typeof options[key]}`
+						} but received ${typeof options[key]}`
 					);
 				}
 			} else {

@@ -657,6 +657,7 @@ class Poppler {
 	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {('yes'|'no')=} options.freetype - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
 	 * This defaults to `yes`.
+	 * @param {boolean=} options.forcePageNumber - Force page number even if there is only one page.
 	 * @param {boolean=} options.grayscaleFile - Generate grayscale PGM file (instead of a color PPM file).
 	 * @param {boolean=} options.hideAnnotations - Hide annotations.
 	 * @param {boolean=} options.jpegFile - Generate JPEG file instead a PPM file.
@@ -709,6 +710,7 @@ class Poppler {
 			displayProfile: { arg: "-displayprofile", type: "string" },
 			evenPagesOnly: { arg: "-e", type: "boolean" },
 			firstPageToConvert: { arg: "-f", type: "number" },
+			forcePageNumber: { arg: "-forcenum", type: "boolean" },
 			freetype: { arg: "-freetype", type: "string" },
 			grayscaleFile: { arg: "-gray", type: "boolean" },
 			hideAnnotations: {

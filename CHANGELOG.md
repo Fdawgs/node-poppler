@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.3.0...v2.4.0) (2021-03-09)
+
+
+### Features
+
+* **index:** add binary version checking for options ([13febb5](https://www.github.com/Fdawgs/node-poppler/commit/13febb5fdb7d9d7fa77670a93bee1e11020fc1b5))
+
+
+### Bug Fixes
+
+* **index:** add missing `dataurls` option to pdftohtml ([ec45b5b](https://www.github.com/Fdawgs/node-poppler/commit/ec45b5bb1882a73e2a46b87ce906b6a366295487))
+* **index:** add missing `forcepagenumber` option to pdftoppm ([533f424](https://www.github.com/Fdawgs/node-poppler/commit/533f4249069aa08d8ec928f8f0d588786327bea9))
+* **index:** add missing `hideannotations` option to pdftoppm ([ffbe119](https://www.github.com/Fdawgs/node-poppler/commit/ffbe119c8ce069801a43cfaa2a1faa3f051bcf8e))
+* **index:** add missing `separator` option to pdftoppm ([7744abd](https://www.github.com/Fdawgs/node-poppler/commit/7744abd8deec299a043230e38b70825e9d6728a9))
+* **index:** correct misspelling of `received` in error string ([f6b7fcb](https://www.github.com/Fdawgs/node-poppler/commit/f6b7fcb7ca1b941eccdcc0c8688fdba8dd3cfb99))
+
+
+### Miscellaneous
+
+* **workflows:** rename ci and perf sections ([54caeda](https://www.github.com/Fdawgs/node-poppler/commit/54caeda0c2f1df947c9b5d717a65d049fbb5c3d5))
+
+
+### Dependencies
+
+* **deps:** bump actions/stale from v3.0.17 to v3.0.18 ([b449c7e](https://www.github.com/Fdawgs/node-poppler/commit/b449c7e6d8e4facc3fd8e3bfb76d549d3a3b7dc1))
+* **deps:** bump fastify/github-action-merge-dependabot ([e0bf38d](https://www.github.com/Fdawgs/node-poppler/commit/e0bf38dd7d6f929d00a2caadae58ab8b1260087f))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([f563a41](https://www.github.com/Fdawgs/node-poppler/commit/f563a410fb526ec2182b5d8739d185e066024148))
+* **deps:** bump wagoid/commitlint-github-action from v3.0.1 to v3.0.6 ([405aca1](https://www.github.com/Fdawgs/node-poppler/commit/405aca1d83fc7d19bbc76403e825801670f69b10))
+
 ## [2.3.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.2.1...v2.3.0) (2021-03-04)
 
 

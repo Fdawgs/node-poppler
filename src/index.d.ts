@@ -202,6 +202,17 @@ export class Poppler {
 	 * @param {string=} options.iccFile - Use the specified ICC file as the output profile
 	 * (PNG only). The profile will be embedded in the PNG file.
 	 * @param {boolean=} options.jpegFile - Generate JPEG file(s).
+	 * @param {string=} options.jpegOptions - When used with `options.jpegFile`, this option can
+	 * be used to control the JPEG compression parameters. It takes a string of the form
+	 * `"<opt>=<val>[,<opt>=<val>]"`. Currently available options are:
+	 * * `quality` Selects the JPEG quality value. The value must be an integer between 0 and 100.
+	 * * `progressive` Select progressive JPEG output. The possible values are "y", "n", indicating
+	 * progressive (yes) or non-progressive (no), respectively.
+	 * * `optimize` Sets whether to compute optimal Huffman coding tables for the JPEG output, which
+	 * will create smaller files but make an extra pass over the data. The value must be "y" or "n",
+	 * with "y" performing optimization, otherwise the default Huffman tables are used.
+	 *
+	 * Example: `"quality=95,optimize=y"`.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {boolean=} options.monochromeFile - Generate monochrome file (PNG and TIFF only).
 	 * @param {boolean=} options.noCenter - By default, PDF pages smaller than the paper

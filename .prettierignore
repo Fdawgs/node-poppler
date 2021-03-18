@@ -117,6 +117,7 @@ dist
 
 # Auto generated files
 package.json
+API.md
 CHANGELOG.md
 
 # lock files

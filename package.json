@@ -54,7 +54,8 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-push": "npm test && npm run lint:prettier:ci && npm run doc"
+      "pre-commit": "npm run doc",
+      "pre-push": "npm test && npm run lint:prettier:ci"
     }
   },
   "jest": {

@@ -1,6 +1,6 @@
 {
   "name": "node-poppler",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Asynchronous node.js wrapper for the Poppler PDF rendering library",
   "keywords": [
     "async",

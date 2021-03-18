@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.4.1](https://www.github.com/Fdawgs/node-poppler/compare/v2.4.0...v2.4.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* **index:** add missing  option to pdftocairo ([#222](https://www.github.com/Fdawgs/node-poppler/issues/222)) ([631583f](https://www.github.com/Fdawgs/node-poppler/commit/631583f7a5f98267057e299d357e67ce5190db1f))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([c062248](https://www.github.com/Fdawgs/node-poppler/commit/c0622482c3a37d533870050e438a060edcccde45))
+* **deps:** bump fastify/github-action-merge-dependabot ([9111211](https://www.github.com/Fdawgs/node-poppler/commit/911121163658950b702dfa570fa1dc6864fd6e33))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([74bae38](https://www.github.com/Fdawgs/node-poppler/commit/74bae38b51f57bc3597eefa730c650bc77aaefb0))
+
+
+### Miscellaneous
+
+* **api:** lint with prettier ([7b224b3](https://www.github.com/Fdawgs/node-poppler/commit/7b224b32f4ce94e9e8877660d40a5b61971922fe))
+* **husky:** move doc step to pre-commit hook ([6dc466c](https://www.github.com/Fdawgs/node-poppler/commit/6dc466ccd952f5289c12e5c0a339bc06e36d4f8d))
+* **husky:** reorder pre-push hook ([cd3bf8e](https://www.github.com/Fdawgs/node-poppler/commit/cd3bf8e1e35e03d3e9c251cb89488ece95ab7597))
+* **prettierignore:** add `api.md` ([c226f81](https://www.github.com/Fdawgs/node-poppler/commit/c226f812f8f62911a96612c080468ecace20d0d6))
+
 ## [2.4.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.3.0...v2.4.0) (2021-03-09)
 
 

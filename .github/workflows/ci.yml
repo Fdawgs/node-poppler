@@ -31,7 +31,9 @@ jobs:
 
     commit-lint:
         name: Lint Commit Messages
-        if: github.event.pull_request.draft == false
+        if: >
+            github.event.pull_request.draft == false &&
+            github.actor != 'dependabot[bot]'
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2.3.4
@@ -87,13 +89,20 @@ jobs:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel-finished: true
 
-    automerge:
-        name: Automatically Merge Dependabot Pull Requests
-        if: github.event.pull_request.draft == false
-        needs: [commit-lint, lint, unit-tests]
+    # This job is used to save the PR number in an artifact, for use in the automerge.yml workflow
+    save-pr-number:
+        name: Save PR Number
+        if: >
+            github.event.pull_request.draft == false && 
+            github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
-            - uses: fastify/github-action-merge-dependabot@v2.0.0
-              if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request' }}
+            - uses: actions/checkout@v2.3.4
+            - name: Save PR Number
+              run: |
+                  mkdir -p ./pr
+                  echo ${{ github.event.number }} > ./pr/NR
+            - uses: actions/upload-artifact@v2.2.2
               with:
-                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  name: pr
+                  path: pr/

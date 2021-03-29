@@ -2,9 +2,13 @@ name: Check Markdown for Broken Links
 
 on:
     push:
+        branches:
+            - master
         paths:
             - "**/*.md"
     pull_request:
+        branches:
+            - master
         paths:
             - "**/*.md"
     schedule:

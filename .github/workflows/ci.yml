@@ -31,7 +31,9 @@ jobs:
 
     commit-lint:
         name: Lint Commit Messages
-        if: github.event.pull_request.draft == false
+        if: >
+            github.event.pull_request.draft == false &&
+            github.actor != 'dependabot[bot]'
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2.3.4

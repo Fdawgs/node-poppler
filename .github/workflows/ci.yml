@@ -84,6 +84,7 @@ jobs:
             - name: Run Tests
               run: npm run jest:coverage
             - name: Coveralls Parallel
+              if: github.repository == 'Fdawgs/node-poppler'
               uses: coverallsapp/github-action@v1.1.2
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -92,8 +93,10 @@ jobs:
 
     coverage:
         name: Aggregate Coverage Calculations
-        if: github.event.pull_request.draft == false
         needs: unit-tests
+        if: >
+            github.event.pull_request.draft == false &&
+            github.repository == 'Fdawgs/node-poppler'
         runs-on: ubuntu-latest
         steps:
             - name: Coveralls Finished

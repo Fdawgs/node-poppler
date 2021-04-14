@@ -36,4 +36,4 @@ jobs:
               with:
                   node-version: 14
             - name: Run Linkinator
-              run: npx linkinator '{,!(node_modules|src/lib)/**/}*.md' --skip 'https://github.com/Fdawgs/.*/(commit|issues)/, http://0.0.0.0'
+              run: npx linkinator '{,!(node_modules)/**/}*.md' --skip 'https:\/\/(?:www\.|)github\.com\/Fdawgs\/.*\/(?:commit|issues)\/, http://0.0.0.0'

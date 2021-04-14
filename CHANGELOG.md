@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.4.2](https://www.github.com/Fdawgs/node-poppler/compare/v2.4.1...v2.4.2) (2021-04-14)
+
+
+### Dependencies
+
+* **deps-dev:** bump husky from 4.3.8 to 6.0.0 ([53a38b9](https://www.github.com/Fdawgs/node-poppler/commit/53a38b9836e8fcc981d06207169a96bb931a0bce))
+* **deps:** bump actions/github-script from v3.1.0 to v3.1.1 ([918a23a](https://www.github.com/Fdawgs/node-poppler/commit/918a23a36e23c307059aa9013ff44ca81d77a1d9))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([c602243](https://www.github.com/Fdawgs/node-poppler/commit/c602243285b59326fd7727ceb4e83524d763f3e1))
+* **deps:** bump typoci/spellcheck-action from v0.3.0 to v0.4.0 ([ceab8ee](https://www.github.com/Fdawgs/node-poppler/commit/ceab8ee0f8108401ebbf9bcab72cc884360110dd))
+
+
+### Continuous Integration
+
+* add cleanup-run job ([b826a9e](https://www.github.com/Fdawgs/node-poppler/commit/b826a9e8b01dae1575b43d51eba4e3a534c775da))
+* **automerge:** move automerge job into new workflow ([9b06c43](https://www.github.com/Fdawgs/node-poppler/commit/9b06c4355f671ab0e63472e2697f5393838eb247))
+* **ci:** ignore dependabot prs for commit message linting ([4802519](https://www.github.com/Fdawgs/node-poppler/commit/4802519a783de692288e439f669e4f855f7f28f2))
+* do not run coveralls steps/jobs on forks ([82bbdf3](https://www.github.com/Fdawgs/node-poppler/commit/82bbdf381abe5cbcb3b1cba5062d69be75389d43))
+* **link-check:** fix skip regex ([1803802](https://www.github.com/Fdawgs/node-poppler/commit/18038021f9c644cb427193446035ff50830d5748))
+* **stale:** shorten workflow name ([a93b619](https://www.github.com/Fdawgs/node-poppler/commit/a93b619bbde22b0fc110cb2c84bad2e3c5375312))
+* **workflows:** run only on push and pulls to master branch ([a97b3b3](https://www.github.com/Fdawgs/node-poppler/commit/a97b3b37b4795f4e2d176376a52021b70ce17560))
+
 ### [2.4.1](https://www.github.com/Fdawgs/node-poppler/compare/v2.4.0...v2.4.1) (2021-03-18)
 
 

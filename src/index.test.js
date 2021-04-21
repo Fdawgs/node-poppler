@@ -272,13 +272,25 @@ describe("pdfImages Function", () => {
 		await clean();
 	});
 
-	test("Should accept options and list all images in file", async () => {
+	test("Should accept options and list all images in PDF file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const options = {
-			pngFile: true,
+			list: true,
 		};
 
-		const res = await poppler.pdfImages(file, `file_prefix`, options);
+		const res = await poppler.pdfImages(file, undefined, options);
+
+		expect(typeof res).toBe("string");
+	});
+
+	test("Should accept options and list all images in PDF file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+		const options = {
+			list: true,
+		};
+
+		const res = await poppler.pdfImages(attachmentFile, undefined, options);
 
 		expect(typeof res).toBe("string");
 	});
@@ -288,8 +300,8 @@ describe("pdfImages Function", () => {
 		const testTxtFile = `${testDirectory}test.txt`;
 
 		expect.assertions(1);
-		await poppler.pdfImages(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+		await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -297,8 +309,8 @@ describe("pdfImages Function", () => {
 		const poppler = new Poppler(testBinaryPath);
 
 		expect.assertions(1);
-		await poppler.pdfImages().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+		await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 

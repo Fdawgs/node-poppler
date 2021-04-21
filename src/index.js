@@ -275,8 +275,8 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string} outputPrefix - Filename prefix of output files.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {string=} outputPrefix - Filename prefix of output files.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.allFiles - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
 	 * CMYK files are written as TIFF files. All other images are written as PNG files.
@@ -326,16 +326,47 @@ class Poppler {
 				options,
 				versionInfo
 			);
-			args.push(file);
-			if (outputPrefix) {
-				args.push(outputPrefix);
-			}
 
-			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, "pdfimages"),
-				args
-			);
-			return Promise.resolve(stdout);
+			return new Promise((resolve, reject) => {
+				if (Buffer.isBuffer(file)) {
+					args.push("-");
+				} else {
+					args.push(file);
+				}
+
+				if (outputPrefix) {
+					args.push(outputPrefix);
+				}
+
+				const child = execFile(
+					path.join(this.popplerPath, "pdfimages"),
+					args
+				);
+
+				if (Buffer.isBuffer(file)) {
+					child.stdin.setDefaultEncoding("utf-8");
+					child.stdin.write(file);
+					child.stdin.end();
+				}
+
+				if (outputPrefix) {
+					child.on("close", async (code) => {
+						if (code === 0) {
+							resolve("Code: 0, no error");
+						} else {
+							reject(new Error(`Error Code: ${code.toString()}`));
+						}
+					});
+				} else {
+					child.stdout.on("data", async (data) => {
+						resolve(data);
+					});
+				}
+
+				child.stderr.on("data", async (data) => {
+					reject(new Error(data));
+				});
+			});
 		} catch (err) {
 			return Promise.reject(err);
 		}

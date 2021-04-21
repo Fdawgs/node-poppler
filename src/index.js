@@ -404,13 +404,9 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				let genData;
-
 				child.stdout.on("data", async (data) => {
-					genData += data;
+					resolve(data.toString());
 				});
-
-				child.stdout.on("close", async () => resolve(genData));
 
 				child.stderr.on("data", async (data) => {
 					reject(new Error(data));
@@ -661,7 +657,7 @@ class Poppler {
 	 * Poppler will use the directory and name of the original file
 	 * and append `-html` to the end of the filename.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
 	 * @param {boolean=} options.dataUrls -  Use data URLs instead of external images in HTML.
@@ -737,13 +733,33 @@ class Poppler {
 				options,
 				versionInfo
 			);
-			args.push(file);
 
-			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, "pdftohtml"),
-				args
-			);
-			return Promise.resolve(stdout);
+			return new Promise((resolve, reject) => {
+				if (Buffer.isBuffer(file)) {
+					args.push("-");
+				} else {
+					args.push(file);
+				}
+
+				const child = execFile(
+					path.join(this.popplerPath, "pdftohtml"),
+					args
+				);
+
+				if (Buffer.isBuffer(file)) {
+					child.stdin.setDefaultEncoding("utf-8");
+					child.stdin.write(file);
+					child.stdin.end();
+				}
+
+				child.stdout.on("data", async (data) => {
+					resolve(data.toString());
+				});
+
+				child.stderr.on("data", async (data) => {
+					reject(new Error(data));
+				});
+			});
 		} catch (err) {
 			return Promise.reject(err);
 		}

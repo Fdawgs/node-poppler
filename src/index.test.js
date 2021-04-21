@@ -559,6 +559,15 @@ describe("pdfToHtml Function", () => {
 		).toBe(true);
 	});
 
+	test("Should convert PDF file to HTML file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+
+		const res = await poppler.pdfInfo(attachmentFile);
+
+		expect(typeof res).toBe("string");
+	});
+
 	test("Should accept options and only process 2 pages of PDF file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const options = {
@@ -580,7 +589,7 @@ describe("pdfToHtml Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToHtml(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -589,7 +598,7 @@ describe("pdfToHtml Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToHtml().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 

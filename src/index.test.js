@@ -283,6 +283,17 @@ describe("pdfImages Function", () => {
 		expect(typeof res).toBe("string");
 	});
 
+	test("Should accept options and save images from PDF file", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const options = {
+			pngFile: true,
+		};
+
+		const res = await poppler.pdfImages(file, "file_prefix", options);
+
+		expect(typeof res).toBe("string");
+	});
+
 	test("Should accept options and list all images in PDF file as Buffer", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const attachmentFile = fs.readFileSync(file);
@@ -301,7 +312,7 @@ describe("pdfImages Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+			expect(err.message).toBe("Error opening a PDF file.");
 		});
 	});
 
@@ -310,7 +321,7 @@ describe("pdfImages Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
-			expect(err.message.substring(0, 10)).toBe("I/O Error:");
+			expect(err.message).toBe("Error opening a PDF file.");
 		});
 	});
 
@@ -503,6 +514,17 @@ describe("pdfToCairo Function", () => {
 		expect(
 			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
 		).toBe(true);
+	});
+
+	test("Should convert PDF file to SVG file and send to stdout", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const options = {
+			svgFile: true,
+		};
+
+		const res = await poppler.pdfToCairo(file, undefined, options);
+
+		expect(typeof res).toBe("string");
 	});
 
 	test("Should convert PDF file as Buffer to SVG file", async () => {

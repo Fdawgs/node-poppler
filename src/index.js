@@ -6,6 +6,14 @@ const util = require("util");
 const execFileAsync = util.promisify(execFile);
 const platform = os.platform();
 
+const errorMessages = {
+	0: "No Error.",
+	1: "Error opening a PDF file.",
+	2: "Error opening an output file.",
+	3: "Error related to PDF permissions",
+	99: "Other error.",
+};
+
 /**
  * @author Frazer Smith
  * @description Check each option provided is valid, of the correct type, and can be used by specified
@@ -258,12 +266,23 @@ class Poppler {
 					child.stdin.end();
 				}
 
+				let stdOut = "";
+				let stdErr = "";
+
 				child.stdout.on("data", async (data) => {
-					resolve(data.toString());
+					stdOut += data;
 				});
 
 				child.stderr.on("data", async (data) => {
-					reject(new Error(data));
+					stdErr += data;
+				});
+
+				child.on("close", async () => {
+					if (stdOut !== "") {
+						resolve(stdOut.trim());
+					} else {
+						reject(new Error(stdErr.trim()));
+					}
 				});
 			});
 		} catch (err) {
@@ -352,19 +371,30 @@ class Poppler {
 				if (outputPrefix) {
 					child.on("close", async (code) => {
 						if (code === 0) {
-							resolve("Code: 0, no error");
+							resolve(errorMessages[code]);
 						} else {
-							reject(new Error(`Error Code: ${code.toString()}`));
+							reject(new Error(errorMessages[code]));
 						}
-					});
-				} else {
-					child.stdout.on("data", async (data) => {
-						resolve(data);
 					});
 				}
 
+				let stdOut = "";
+				let stdErr = "";
+
+				child.stdout.on("data", async (data) => {
+					stdOut += data;
+				});
+
 				child.stderr.on("data", async (data) => {
-					reject(new Error(data));
+					stdErr += data;
+				});
+
+				child.on("close", async () => {
+					if (stdOut !== "") {
+						resolve(stdOut.trim());
+					} else {
+						reject(new Error(stdErr.trim()));
+					}
 				});
 			});
 		} catch (err) {
@@ -455,12 +485,23 @@ class Poppler {
 					child.stdin.end();
 				}
 
+				let stdOut = "";
+				let stdErr = "";
+
 				child.stdout.on("data", async (data) => {
-					resolve(data.toString());
+					stdOut += data;
 				});
 
 				child.stderr.on("data", async (data) => {
-					reject(new Error(data));
+					stdErr += data;
+				});
+
+				child.on("close", async () => {
+					if (stdOut !== "") {
+						resolve(stdOut.trim());
+					} else {
+						reject(new Error(stdErr.trim()));
+					}
 				});
 			});
 		} catch (err) {
@@ -714,19 +755,30 @@ class Poppler {
 				if (outputFile) {
 					child.on("close", async (code) => {
 						if (code === 0) {
-							resolve("Code: 0, no error");
+							resolve(errorMessages[code]);
 						} else {
-							reject(new Error(`Error Code: ${code.toString()}`));
+							reject(new Error(errorMessages[code]));
 						}
-					});
-				} else {
-					child.stdout.on("data", async (data) => {
-						resolve(data);
 					});
 				}
 
+				let stdOut = "";
+				let stdErr = "";
+
+				child.stdout.on("data", async (data) => {
+					stdOut += data;
+				});
+
 				child.stderr.on("data", async (data) => {
-					reject(new Error(data));
+					stdErr += data;
+				});
+
+				child.on("close", async () => {
+					if (stdOut !== "") {
+						resolve(stdOut.trim());
+					} else {
+						reject(new Error(stdErr.trim()));
+					}
 				});
 			});
 		} catch (err) {
@@ -835,12 +887,23 @@ class Poppler {
 					child.stdin.end();
 				}
 
+				let stdOut = "";
+				let stdErr = "";
+
 				child.stdout.on("data", async (data) => {
-					resolve(data.toString());
+					stdOut += data;
 				});
 
 				child.stderr.on("data", async (data) => {
-					reject(new Error(data));
+					stdErr += data;
+				});
+
+				child.on("close", async () => {
+					if (stdOut !== "") {
+						resolve(stdOut.trim());
+					} else {
+						reject(new Error(stdErr.trim()));
+					}
 				});
 			});
 		} catch (err) {
@@ -1028,22 +1091,20 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputPath) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve("Code: 0, no error");
-						} else {
-							reject(new Error(`Error Code: ${code.toString()}`));
-						}
-					});
-				} else {
-					child.stdout.on("data", async (data) => {
-						resolve(data);
-					});
-				}
+				let stdErr = "";
 
 				child.stderr.on("data", async (data) => {
-					reject(new Error(data));
+					stdErr += data;
+				});
+
+				child.on("close", async (code) => {
+					if (stdErr !== "") {
+						reject(new Error(stdErr.trim()));
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else {
+						reject(new Error(errorMessages[code]));
+					}
 				});
 			});
 		} catch (err) {
@@ -1272,19 +1333,30 @@ class Poppler {
 				if (outputFile) {
 					child.on("close", async (code) => {
 						if (code === 0) {
-							resolve("Code: 0, no error");
+							resolve(errorMessages[code]);
 						} else {
-							reject(new Error(`Error Code: ${code.toString()}`));
+							reject(new Error(errorMessages[code]));
 						}
-					});
-				} else {
-					child.stdout.on("data", async (data) => {
-						resolve(data);
 					});
 				}
 
+				let stdOut = "";
+				let stdErr = "";
+
+				child.stdout.on("data", async (data) => {
+					stdOut += data;
+				});
+
 				child.stderr.on("data", async (data) => {
-					reject(new Error(data));
+					stdErr += data;
+				});
+
+				child.on("close", async () => {
+					if (stdOut !== "") {
+						resolve(stdOut.trim());
+					} else {
+						reject(new Error(stdErr.trim()));
+					}
 				});
 			});
 		} catch (err) {
@@ -1418,19 +1490,30 @@ class Poppler {
 				if (outputFile) {
 					child.on("close", async (code) => {
 						if (code === 0) {
-							resolve("Code: 0, no error");
+							resolve(errorMessages[code]);
 						} else {
-							reject(new Error(`Error Code: ${code.toString()}`));
+							reject(new Error(errorMessages[code]));
 						}
-					});
-				} else {
-					child.stdout.on("data", async (data) => {
-						resolve(data);
 					});
 				}
 
+				let stdOut = "";
+				let stdErr = "";
+
+				child.stdout.on("data", async (data) => {
+					stdOut += data;
+				});
+
 				child.stderr.on("data", async (data) => {
-					reject(new Error(data));
+					stdErr += data;
+				});
+
+				child.on("close", async () => {
+					if (stdOut !== "") {
+						resolve(stdOut.trim());
+					} else {
+						reject(new Error(stdErr.trim()));
+					}
 				});
 			});
 		} catch (err) {

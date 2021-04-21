@@ -333,13 +333,24 @@ describe("pdfInfo Function", () => {
 		expect(typeof res).toBe("string");
 	});
 
+	test("Should list info of PDF file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(
+			`${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`
+		);
+
+		const res = await poppler.pdfInfo(attachmentFile);
+
+		expect(typeof res).toBe("string");
+	});
+
 	test("Should return an Error object if file passed not PDF format", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
 		expect.assertions(1);
 		await poppler.pdfInfo(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 

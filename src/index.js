@@ -325,7 +325,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToConvert - First page to print.
 	 * @param {number=} options.lastPageToConvert - Last page to print.
@@ -385,13 +385,37 @@ class Poppler {
 				options,
 				versionInfo
 			);
-			args.push(file);
 
-			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, "pdfinfo"),
-				args
-			);
-			return Promise.resolve(stdout);
+			return new Promise((resolve, reject) => {
+				if (Buffer.isBuffer(file)) {
+					args.push("-");
+				} else {
+					args.push(file);
+				}
+
+				const child = execFile(
+					path.join(this.popplerPath, "pdfinfo"),
+					args
+				);
+
+				if (Buffer.isBuffer(file)) {
+					child.stdin.setDefaultEncoding("utf-8");
+					child.stdin.write(file);
+					child.stdin.end();
+				}
+
+				let genData;
+
+				child.stdout.on("data", async (data) => {
+					genData += data;
+				});
+
+				child.stdout.on("close", async () => resolve(genData));
+
+				child.stderr.on("data", async (data) => {
+					reject(new Error(data));
+				});
+			});
 		} catch (err) {
 			return Promise.reject(err);
 		}

@@ -354,6 +354,15 @@ describe("pdfInfo Function", () => {
 		});
 	});
 
+	test("Should return an Error object if PDF file missing", async () => {
+		const poppler = new Poppler(testBinaryPath);
+
+		expect.assertions(1);
+		await poppler.pdfInfo().catch((err) => {
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
+		});
+	});
+
 	test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const options = {

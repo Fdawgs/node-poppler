@@ -217,13 +217,26 @@ describe("pdfFonts Function", () => {
 		expect(typeof res).toBe("string");
 	});
 
+	test("Should examine 3 pages of PDF file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+
+		const options = {
+			firstPageToExamine: 1,
+			lastPageToExamine: 3,
+		};
+		const res = await poppler.pdfFonts(attachmentFile, options);
+
+		expect(typeof res).toBe("string");
+	});
+
 	test("Should return an Error object if file passed not PDF format", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
 		expect.assertions(1);
 		await poppler.pdfFonts(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -259,13 +272,36 @@ describe("pdfImages Function", () => {
 		await clean();
 	});
 
-	test("Should accept options and list all images in file", async () => {
+	test("Should accept options and list all images in PDF file", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const options = {
+			list: true,
+		};
+
+		const res = await poppler.pdfImages(file, undefined, options);
+
+		expect(typeof res).toBe("string");
+	});
+
+	test("Should accept options and save images from PDF file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const options = {
 			pngFile: true,
 		};
 
-		const res = await poppler.pdfImages(file, `file_prefix`, options);
+		const res = await poppler.pdfImages(file, "file_prefix", options);
+
+		expect(typeof res).toBe("string");
+	});
+
+	test("Should accept options and list all images in PDF file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+		const options = {
+			list: true,
+		};
+
+		const res = await poppler.pdfImages(attachmentFile, undefined, options);
 
 		expect(typeof res).toBe("string");
 	});
@@ -275,8 +311,8 @@ describe("pdfImages Function", () => {
 		const testTxtFile = `${testDirectory}test.txt`;
 
 		expect.assertions(1);
-		await poppler.pdfImages(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+		await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
+			expect(err.message).toBe("Error opening a PDF file.");
 		});
 	});
 
@@ -284,8 +320,8 @@ describe("pdfImages Function", () => {
 		const poppler = new Poppler(testBinaryPath);
 
 		expect.assertions(1);
-		await poppler.pdfImages().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+		await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
+			expect(err.message).toBe("Error opening a PDF file.");
 		});
 	});
 
@@ -333,13 +369,33 @@ describe("pdfInfo Function", () => {
 		expect(typeof res).toBe("string");
 	});
 
+	test("Should list info of PDF file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(
+			`${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`
+		);
+
+		const res = await poppler.pdfInfo(attachmentFile);
+
+		expect(typeof res).toBe("string");
+	});
+
 	test("Should return an Error object if file passed not PDF format", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
 		expect.assertions(1);
 		await poppler.pdfInfo(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+		});
+	});
+
+	test("Should return an Error object if PDF file missing", async () => {
+		const poppler = new Poppler(testBinaryPath);
+
+		expect.assertions(1);
+		await poppler.pdfInfo().catch((err) => {
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 
@@ -460,6 +516,37 @@ describe("pdfToCairo Function", () => {
 		).toBe(true);
 	});
 
+	test("Should convert PDF file to SVG file and send to stdout", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const options = {
+			svgFile: true,
+		};
+
+		const res = await poppler.pdfToCairo(file, undefined, options);
+
+		expect(typeof res).toBe("string");
+	});
+
+	test("Should convert PDF file as Buffer to SVG file", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+		const options = {
+			svgFile: true,
+		};
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
+
+		const res = await poppler.pdfToCairo(
+			attachmentFile,
+			outputFile,
+			options
+		);
+
+		expect(typeof res).toBe("string");
+		expect(
+			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
+		).toBe(true);
+	});
+
 	test("Should accept options and only process 2 pages of PDF file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const options = {
@@ -483,7 +570,7 @@ describe("pdfToCairo Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToCairo(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 6)).toBe("Error:");
 		});
 	});
 
@@ -492,7 +579,7 @@ describe("pdfToCairo Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToCairo(file).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 6)).toBe("Error:");
 		});
 	});
 
@@ -539,6 +626,15 @@ describe("pdfToHtml Function", () => {
 		).toBe(true);
 	});
 
+	test("Should convert PDF file to HTML file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+
+		const res = await poppler.pdfInfo(attachmentFile);
+
+		expect(typeof res).toBe("string");
+	});
+
 	test("Should accept options and only process 2 pages of PDF file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const options = {
@@ -560,7 +656,7 @@ describe("pdfToHtml Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToHtml(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -569,7 +665,7 @@ describe("pdfToHtml Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToHtml().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 
@@ -637,13 +733,33 @@ describe("pdfToPpm Function", () => {
 		).toBe(true);
 	});
 
+	test("Should accept options and only process 1 page of PDF file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+		const options = {
+			firstPageToConvert: 1,
+			lastPageToConvert: 1,
+		};
+
+		const res = await poppler.pdfToPpm(
+			attachmentFile,
+			`${testDirectory}pdf_1.3_NHS_Constitution`,
+			options
+		);
+
+		expect(typeof res).toBe("string");
+		expect(
+			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
+		).toBe(true);
+	});
+
 	test("Should return an Error object if file passed not PDF format", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
 		expect.assertions(1);
 		await poppler.pdfToPpm(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -652,7 +768,7 @@ describe("pdfToPpm Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToPpm().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 
@@ -713,7 +829,7 @@ describe("pdfToPs Function", () => {
 		await clean();
 	});
 
-	test("Should convert PDF file to PS file", async () => {
+	test("Should convert PDF file to PS file and write to output file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
 
@@ -723,6 +839,15 @@ describe("pdfToPs Function", () => {
 		expect(
 			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 		).toBe(true);
+	});
+
+	test("Should convert PDF file as Buffer to PS file", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+
+		const res = await poppler.pdfToPs(attachmentFile);
+
+		expect(typeof res).toBe("string");
 	});
 
 	test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -747,7 +872,7 @@ describe("pdfToPs Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToPs(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -756,7 +881,7 @@ describe("pdfToPs Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToPs().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 
@@ -795,7 +920,7 @@ describe("pdfToText Function", () => {
 		await clean();
 	});
 
-	test("Should convert PDF file to Text file", async () => {
+	test("Should convert PDF file to Text file and write to output file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.txt`;
 
@@ -805,6 +930,15 @@ describe("pdfToText Function", () => {
 		expect(
 			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
 		).toBe(true);
+	});
+
+	test("Should convert PDF file as Buffer to Text file", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+
+		const res = await poppler.pdfToText(attachmentFile);
+
+		expect(typeof res).toBe("string");
 	});
 
 	test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -828,7 +962,7 @@ describe("pdfToText Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToText(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -837,7 +971,7 @@ describe("pdfToText Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToText().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 

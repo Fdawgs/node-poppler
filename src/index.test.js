@@ -217,13 +217,26 @@ describe("pdfFonts Function", () => {
 		expect(typeof res).toBe("string");
 	});
 
+	test("Should examine 3 pages of PDF file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+
+		const options = {
+			firstPageToExamine: 1,
+			lastPageToExamine: 3,
+		};
+		const res = await poppler.pdfFonts(attachmentFile, options);
+
+		expect(typeof res).toBe("string");
+	});
+
 	test("Should return an Error object if file passed not PDF format", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
 		expect.assertions(1);
 		await poppler.pdfFonts(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 

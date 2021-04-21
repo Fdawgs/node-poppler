@@ -205,7 +205,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToExamine - Specifies the first page to examine.
 	 * @param {number=} options.lastPageToExamine - Specifies the last page to examine.
@@ -239,13 +239,33 @@ class Poppler {
 				options,
 				versionInfo
 			);
-			args.push(file);
 
-			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, "pdffonts"),
-				args
-			);
-			return Promise.resolve(stdout);
+			return new Promise((resolve, reject) => {
+				if (Buffer.isBuffer(file)) {
+					args.push("-");
+				} else {
+					args.push(file);
+				}
+
+				const child = execFile(
+					path.join(this.popplerPath, "pdffonts"),
+					args
+				);
+
+				if (Buffer.isBuffer(file)) {
+					child.stdin.setDefaultEncoding("utf-8");
+					child.stdin.write(file);
+					child.stdin.end();
+				}
+
+				child.stdout.on("data", async (data) => {
+					resolve(data.toString());
+				});
+
+				child.stderr.on("data", async (data) => {
+					reject(new Error(data));
+				});
+			});
 		} catch (err) {
 			return Promise.reject(err);
 		}

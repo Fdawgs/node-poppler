@@ -505,6 +505,26 @@ describe("pdfToCairo Function", () => {
 		).toBe(true);
 	});
 
+	test("Should convert PDF file as Buffer to SVG file", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+		const options = {
+			svgFile: true,
+		};
+		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
+
+		const res = await poppler.pdfToCairo(
+			attachmentFile,
+			outputFile,
+			options
+		);
+
+		expect(typeof res).toBe("string");
+		expect(
+			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
+		).toBe(true);
+	});
+
 	test("Should accept options and only process 2 pages of PDF file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const options = {
@@ -528,7 +548,7 @@ describe("pdfToCairo Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToCairo(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 6)).toBe("Error:");
 		});
 	});
 
@@ -537,7 +557,7 @@ describe("pdfToCairo Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToCairo(file).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 6)).toBe("Error:");
 		});
 	});
 

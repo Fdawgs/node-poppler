@@ -24,7 +24,7 @@ version of binary.</p>
     * [.pdfAttach(file, fileToAttach, outputFile, [options])](#Poppler+pdfAttach) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfDetach(file, [options])](#Poppler+pdfDetach) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfFonts(file, [options])](#Poppler+pdfFonts) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfImages(file, outputPrefix, [options])](#Poppler+pdfImages) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    * [.pdfImages(file, [outputPrefix], [options])](#Poppler+pdfImages) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfSeparate(file, outputPattern, [options])](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfToCairo(file, [outputFile], [options])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
@@ -94,7 +94,7 @@ Lists the fonts used in a PDF file along with various information for each font.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| file | <code>string</code> | Filepath of the PDF file to read. |
+| file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.firstPageToExamine] | <code>number</code> | Specifies the first page to examine. |
 | [options.lastPageToExamine] | <code>number</code> | Specifies the last page to examine. |
@@ -105,7 +105,7 @@ Lists the fonts used in a PDF file along with various information for each font.
 
 <a name="Poppler+pdfImages"></a>
 
-### poppler.pdfImages(file, outputPrefix, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfImages(file, [outputPrefix], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
@@ -114,8 +114,8 @@ Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 fi
 
 | Param | Type | Description |
 | --- | --- | --- |
-| file | <code>string</code> | Filepath of the PDF file to read. |
-| outputPrefix | <code>string</code> | Filename prefix of output files. |
+| file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
+| [outputPrefix] | <code>string</code> | Filename prefix of output files. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.allFiles] | <code>boolean</code> | Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format. CMYK files are written as TIFF files. All other images are written as PNG files. |
 | [options.ccittFile] | <code>boolean</code> | Generate CCITT images as CCITT files. |
@@ -142,7 +142,7 @@ Prints the contents of the `Info` dictionary from a PDF file.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| file | <code>string</code> | Filepath of the PDF file to read. |
+| file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.firstPageToConvert] | <code>number</code> | First page to print. |
 | [options.lastPageToConvert] | <code>number</code> | Last page to print. |
@@ -191,7 +191,7 @@ Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| file | <code>string</code> | Filepath of the PDF file to read. |
+| file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. Using stdout is not valid with image formats unless `options.singleFile` is set to `true`. If not set then the output filename will be derived from the PDF file name. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.antialias] | <code>&#x27;default&#x27;</code> \| <code>&#x27;none&#x27;</code> \| <code>&#x27;gray&#x27;</code> \| <code>&#x27;subpixel&#x27;</code> \| <code>&#x27;fast&#x27;</code> \| <code>&#x27;good&#x27;</code> \| <code>&#x27;best&#x27;</code> | Set the cairo antialias option used for text and drawing in image files (or rasterized regions in vector output). |
@@ -254,7 +254,7 @@ and append `-html` to the end of the filename.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| file | <code>string</code> | Filepath of the PDF file to read. |
+| file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.complexOutput] | <code>boolean</code> | Generate complex output. |
 | [options.dataUrls] | <code>boolean</code> | Use data URLs instead of external images in HTML. |
@@ -293,7 +293,7 @@ in Portable Bitmap (PBM) format.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| file | <code>string</code> | Filepath of the PDF file to read. |
+| file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | outputPath | <code>string</code> | Filepath to output the results to. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.antialiasFonts] | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code> | Enable or disable font anti-aliasing. This defaults to `yes`. |
@@ -347,7 +347,7 @@ Converts a PDF file to PostScript (PS).
 
 | Param | Type | Description |
 | --- | --- | --- |
-| file | <code>string</code> | Filepath of the PDF file to read. |
+| file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.antialias] | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code> | Enable anti-aliasing on rasterization, accepts `yes` or `no`. |
@@ -403,7 +403,7 @@ Converts a PDF file to TXT.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| file | <code>string</code> | Filepath of the PDF file to read. |
+| file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.boundingBoxXhtml] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each word in the file. |

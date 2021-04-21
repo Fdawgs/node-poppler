@@ -57,7 +57,7 @@ export class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToExamine - Specifies the first page to examine.
 	 * @param {number=} options.lastPageToExamine - Specifies the last page to examine.
@@ -69,15 +69,15 @@ export class Poppler {
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfFonts(
-		file: string,
+		file: Buffer | string,
 		options?: object | undefined
 	): Promise<string | Error>;
 	/**
 	 * @author Frazer Smith
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {string} outputPrefix - Filename prefix of output files.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {string=} outputPrefix - Filename prefix of output files.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.allFiles - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
 	 * CMYK files are written as TIFF files. All other images are written as PNG files.
@@ -98,15 +98,15 @@ export class Poppler {
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfImages(
-		file: string,
-		outputPrefix: string,
+		file: Buffer | string,
+		outputPrefix?: string | undefined,
 		options?: object | undefined
 	): Promise<string | Error>;
 	/**
 	 * @author Frazer Smith
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToConvert - First page to print.
 	 * @param {number=} options.lastPageToConvert - Last page to print.
@@ -135,7 +135,7 @@ export class Poppler {
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfInfo(
-		file: string,
+		file: Buffer | string,
 		options?: object | undefined
 	): Promise<string | Error>;
 	/**
@@ -165,7 +165,7 @@ export class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 *
 	 * If `undefined` then will write output to stdout. Using stdout is not valid with image formats
@@ -266,7 +266,7 @@ export class Poppler {
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToCairo(
-		file: string,
+		file: Buffer | string,
 		outputFile?: string | undefined,
 		options?: object | undefined
 	): Promise<string | Error>;
@@ -276,7 +276,7 @@ export class Poppler {
 	 * Poppler will use the directory and name of the original file
 	 * and append `-html` to the end of the filename.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
 	 * @param {boolean=} options.dataUrls -  Use data URLs instead of external images in HTML.
@@ -309,7 +309,7 @@ export class Poppler {
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToHtml(
-		file: string,
+		file: Buffer | string,
 		options?: object | undefined
 	): Promise<string | Error>;
 	/**
@@ -318,7 +318,7 @@ export class Poppler {
 	 * grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 	 * in Portable Bitmap (PBM) format.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} outputPath - Filepath to output the results to.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {('yes'|'no')=} options.antialiasFonts - Enable or disable font anti-aliasing.
@@ -388,7 +388,7 @@ export class Poppler {
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToPpm(
-		file: string,
+		file: Buffer | string,
 		outputPath: string,
 		options?: object | undefined
 	): Promise<string | Error>;
@@ -396,7 +396,7 @@ export class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to PostScript (PS).
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
 	 * @param {object=} options - Object containing options to pass to binary.
@@ -503,7 +503,7 @@ export class Poppler {
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToPs(
-		file: string,
+		file: Buffer | string,
 		outputFile?: string | undefined,
 		options?: object | undefined
 	): Promise<string | Error>;
@@ -511,7 +511,7 @@ export class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to TXT.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
 	 * @param {object=} options - Object containing options to pass to binary.
@@ -555,7 +555,7 @@ export class Poppler {
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
 	pdfToText(
-		file: string,
+		file: Buffer | string,
 		outputFile?: string | undefined,
 		options?: object | undefined
 	): Promise<string | Error>;

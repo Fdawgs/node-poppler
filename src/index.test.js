@@ -742,7 +742,7 @@ describe("pdfToPs Function", () => {
 		await clean();
 	});
 
-	test("Should convert PDF file to PS file", async () => {
+	test("Should convert PDF file to PS file and write to output file", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
 
@@ -752,6 +752,15 @@ describe("pdfToPs Function", () => {
 		expect(
 			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 		).toBe(true);
+	});
+
+	test("Should convert PDF file as Buffer to PS file", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+
+		const res = await poppler.pdfToPs(attachmentFile);
+
+		expect(typeof res).toBe("string");
 	});
 
 	test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -776,7 +785,7 @@ describe("pdfToPs Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToPs(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -785,7 +794,7 @@ describe("pdfToPs Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToPs().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 

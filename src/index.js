@@ -1182,7 +1182,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to TXT.
 	 *
-	 * @param {string} file - Filepath of the PDF file to read.
+	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
 	 * @param {object=} options - Object containing options to pass to binary.
@@ -1276,18 +1276,49 @@ class Poppler {
 				options,
 				versionInfo
 			);
-			args.push(file);
-			if (outputFile) {
-				args.push(outputFile);
-			} else {
-				args.push("-");
-			}
 
-			const { stdout } = await execFileAsync(
-				path.join(this.popplerPath, "pdftotext"),
-				args
-			);
-			return Promise.resolve(stdout);
+			return new Promise((resolve, reject) => {
+				if (Buffer.isBuffer(file)) {
+					args.push("-");
+				} else {
+					args.push(file);
+				}
+
+				if (outputFile) {
+					args.push(outputFile);
+				} else {
+					args.push("-");
+				}
+
+				const child = execFile(
+					path.join(this.popplerPath, "pdftotext"),
+					args
+				);
+
+				if (Buffer.isBuffer(file)) {
+					child.stdin.setDefaultEncoding("utf-8");
+					child.stdin.write(file);
+					child.stdin.end();
+				}
+
+				if (outputFile) {
+					child.on("close", async (code) => {
+						if (code === 0) {
+							resolve("Code: 0, no error");
+						} else {
+							reject(new Error(`Error Code: ${code.toString()}`));
+						}
+					});
+				} else {
+					child.stdout.on("data", async (data) => {
+						resolve(data);
+					});
+				}
+
+				child.stderr.on("data", async (data) => {
+					reject(new Error(data));
+				});
+			});
 		} catch (err) {
 			return Promise.reject(err);
 		}

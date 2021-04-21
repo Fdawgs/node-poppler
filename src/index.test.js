@@ -666,13 +666,33 @@ describe("pdfToPpm Function", () => {
 		).toBe(true);
 	});
 
+	test("Should accept options and only process 1 page of PDF file as Buffer", async () => {
+		const poppler = new Poppler(testBinaryPath);
+		const attachmentFile = fs.readFileSync(file);
+		const options = {
+			firstPageToConvert: 1,
+			lastPageToConvert: 1,
+		};
+
+		const res = await poppler.pdfToPpm(
+			attachmentFile,
+			`${testDirectory}pdf_1.3_NHS_Constitution`,
+			options
+		);
+
+		expect(typeof res).toBe("string");
+		expect(
+			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
+		).toBe(true);
+	});
+
 	test("Should return an Error object if file passed not PDF format", async () => {
 		const poppler = new Poppler(testBinaryPath);
 		const testTxtFile = `${testDirectory}test.txt`;
 
 		expect.assertions(1);
 		await poppler.pdfToPpm(testTxtFile).catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 		});
 	});
 
@@ -681,7 +701,7 @@ describe("pdfToPpm Function", () => {
 
 		expect.assertions(1);
 		await poppler.pdfToPpm().catch((err) => {
-			expect(err.message.substring(0, 15)).toBe("Command failed:");
+			expect(err.message.substring(0, 10)).toBe("I/O Error:");
 		});
 	});
 

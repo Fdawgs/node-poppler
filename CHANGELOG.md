@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.5.0...v3.0.0) (2021-04-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove support for nodejs v10, as it is EOL as of 2021-04-30
+
+### Miscellaneous
+
+* remove support for node v10 ([fa1a8c1](https://www.github.com/Fdawgs/node-poppler/commit/fa1a8c178757498da3b847c99f3de6da3b17740f))
+
+
+### Documentation
+
+* grammar and readability fixes ([4637e3e](https://www.github.com/Fdawgs/node-poppler/commit/4637e3ef3b06eed0d56646bec54a2982d1907e07))
+
+
+### Continuous Integration
+
+* add nodejs v16 to unit test matrix ([52ead20](https://www.github.com/Fdawgs/node-poppler/commit/52ead20deeafe8b80afd5c77d26c924c71afab32))
+* **link-check:** ignore links to lib binaries ([f71f67b](https://www.github.com/Fdawgs/node-poppler/commit/f71f67b6ccfe316575c5c588b05dc938dd08d98c))
+
 ## [2.5.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.4.1...v2.5.0) (2021-04-21)
 
 

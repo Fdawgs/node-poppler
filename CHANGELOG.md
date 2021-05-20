@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+### [3.0.1](https://www.github.com/Fdawgs/node-poppler/compare/v3.0.0...v3.0.1) (2021-05-20)
+
+
+### Bug Fixes
+
+* **index:** remove setting default encoding of received buffer ([baa3d43](https://www.github.com/Fdawgs/node-poppler/commit/baa3d43fac0e7080328efa3bb45aa0c3658a63e5))
+
+
+### Documentation
+
+* **readme:** remove repetition ([8a36c2d](https://www.github.com/Fdawgs/node-poppler/commit/8a36c2d02030c28af0c0c571a302c190e8eacd86))
+
+
+### Miscellaneous
+
+* **ci:** replace `node-version` key with shorter `node` ([#255](https://www.github.com/Fdawgs/node-poppler/issues/255)) ([4a6cfa9](https://www.github.com/Fdawgs/node-poppler/commit/4a6cfa99d79605df51d9ca9af683d8c43809501c))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([7c6ef15](https://www.github.com/Fdawgs/node-poppler/commit/7c6ef1518c0a4b6d281476590e2db56e5eafc6c2))
+* **deps:** bump actions/stale from 3.0.18 to 3.0.19 ([2479e6a](https://www.github.com/Fdawgs/node-poppler/commit/2479e6af27d1077020f56ee0a444a8a539ff78d0))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([ce14fcf](https://www.github.com/Fdawgs/node-poppler/commit/ce14fcfc4ed03f7ad01b388c9ca455a3463ec525))
+* **deps:** bump wagoid/commitlint-github-action from 3.1.0 to 3.1.4 ([697c43c](https://www.github.com/Fdawgs/node-poppler/commit/697c43cb4f0858a6ce3eb4b9025e53acd3035fbf))
+
+
+### Continuous Integration
+
+* **ci:** replace `ubuntu-20.04` with `ubuntu-latest`; both same version ([aaf1e5f](https://www.github.com/Fdawgs/node-poppler/commit/aaf1e5fab099734f6ff8ca0585e276ed7572f8a6))
+* fix key usage in `action/setup-node` ([3cfb17b](https://www.github.com/Fdawgs/node-poppler/commit/3cfb17b16c369462f2bff239d23e374fb0cc4fa0))
+
 ## [3.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.5.0...v3.0.0) (2021-04-29)
 
 

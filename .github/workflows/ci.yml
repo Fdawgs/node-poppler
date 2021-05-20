@@ -62,7 +62,7 @@ jobs:
         strategy:
             matrix:
                 node: [12, 14, 16]
-                os: [macos-latest, ubuntu-20.04, windows-latest]
+                os: [macos-latest, ubuntu-latest, windows-latest]
         runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v2.3.4
@@ -79,7 +79,7 @@ jobs:
                   HOMEBREW_NO_AUTO_UPDATE: 1
               run: brew install poppler
             - name: Install Ubuntu Dependencies
-              if: matrix.os == 'ubuntu-20.04'
+              if: matrix.os == 'ubuntu-latest'
               run: sudo apt-get -y install poppler-data poppler-utils
             - name: Run Tests
               run: npm run jest:coverage

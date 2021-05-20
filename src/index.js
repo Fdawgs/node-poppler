@@ -261,7 +261,6 @@ class Poppler {
 				);
 
 				if (Buffer.isBuffer(file)) {
-					child.stdin.setDefaultEncoding("utf-8");
 					child.stdin.write(file);
 					child.stdin.end();
 				}
@@ -363,7 +362,6 @@ class Poppler {
 				);
 
 				if (Buffer.isBuffer(file)) {
-					child.stdin.setDefaultEncoding("utf-8");
 					child.stdin.write(file);
 					child.stdin.end();
 				}
@@ -480,7 +478,6 @@ class Poppler {
 				);
 
 				if (Buffer.isBuffer(file)) {
-					child.stdin.setDefaultEncoding("utf-8");
 					child.stdin.write(file);
 					child.stdin.end();
 				}
@@ -747,7 +744,6 @@ class Poppler {
 				);
 
 				if (Buffer.isBuffer(file)) {
-					child.stdin.setDefaultEncoding("utf-8");
 					child.stdin.write(file);
 					child.stdin.end();
 				}
@@ -882,7 +878,6 @@ class Poppler {
 				);
 
 				if (Buffer.isBuffer(file)) {
-					child.stdin.setDefaultEncoding("utf-8");
 					child.stdin.write(file);
 					child.stdin.end();
 				}
@@ -1086,7 +1081,6 @@ class Poppler {
 				);
 
 				if (Buffer.isBuffer(file)) {
-					child.stdin.setDefaultEncoding("utf-8");
 					child.stdin.write(file);
 					child.stdin.end();
 				}
@@ -1325,7 +1319,6 @@ class Poppler {
 				);
 
 				if (Buffer.isBuffer(file)) {
-					child.stdin.setDefaultEncoding("utf-8");
 					child.stdin.write(file);
 					child.stdin.end();
 				}
@@ -1482,7 +1475,6 @@ class Poppler {
 				);
 
 				if (Buffer.isBuffer(file)) {
-					child.stdin.setDefaultEncoding("utf-8");
 					child.stdin.write(file);
 					child.stdin.end();
 				}

@@ -785,10 +785,14 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to HTML.
-	 * Poppler will use the directory and name of the original file
-	 * and append `-html` to the end of the filename.
 	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 * If `undefined` then Poppler will use the directory and name of the original file
+	 * and create a new file, with `-html` appended to the end of the filename.
+	 *
+	 * Required if `file` is a Buffer.
+	 *
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
 	 * @param {boolean=} options.dataUrls -  Use data URLs instead of external images in HTML.
@@ -820,7 +824,7 @@ class Poppler {
 	 * @param {number=} options.zoom - Zoom the PDF document (default 1.5).
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
 	 */
-	async pdfToHtml(file, options = {}) {
+	async pdfToHtml(file, outputFile, options = {}) {
 		const acceptedOptions = {
 			complexOutput: { arg: "-c", type: "boolean" },
 			dataUrls: {
@@ -872,10 +876,24 @@ class Poppler {
 					args.push(file);
 				}
 
+				if (outputFile) {
+					args.push(outputFile);
+				}
+
 				const child = execFile(
 					path.join(this.popplerPath, "pdftohtml"),
 					args
 				);
+
+				if (outputFile) {
+					child.on("close", async (code) => {
+						if (code === 0) {
+							resolve(errorMessages[code]);
+						} else {
+							reject(new Error(errorMessages[code]));
+						}
+					});
+				}
 
 				if (Buffer.isBuffer(file)) {
 					child.stdin.write(file);

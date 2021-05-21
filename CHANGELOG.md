@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v3.0.1...v4.0.0) (2021-05-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **index:** optional `outputFile`string parameter for `pdfToHtml()` function has been added after `file`. `Poppler.pdfToHtml(file, options)` is now `Poppler.pdfToHtml(file, outputFile, options)`.
+
+### Features
+
+* **index:** add `outputFile` param to `pdfToHtml()` function ([cabdf58](https://www.github.com/Fdawgs/node-poppler/commit/cabdf58c1831ecf85eec984b473552f73f516230))
+
+
+### Miscellaneous
+
+* **eslintrc:** ignore empty lines in jsdoc comments ([6ae7b61](https://www.github.com/Fdawgs/node-poppler/commit/6ae7b617676e85d76affd6d5a77bd6878690f50f))
+
 ### [3.0.1](https://www.github.com/Fdawgs/node-poppler/compare/v3.0.0...v3.0.1) (2021-05-20)
 
 

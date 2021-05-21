@@ -630,9 +630,15 @@ describe("pdfToHtml Function", () => {
 		const poppler = new Poppler(testBinaryPath);
 		const attachmentFile = fs.readFileSync(file);
 
-		const res = await poppler.pdfInfo(attachmentFile);
+		const res = await poppler.pdfToHtml(
+			attachmentFile,
+			`${testDirectory}pdf_1.3_NHS_Constitution.html`
+		);
 
 		expect(typeof res).toBe("string");
+		expect(
+			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
+		).toBe(true);
 	});
 
 	test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -642,7 +648,7 @@ describe("pdfToHtml Function", () => {
 			lastPageToConvert: 2,
 		};
 
-		const res = await poppler.pdfToHtml(file, options);
+		const res = await poppler.pdfToHtml(file, undefined, options);
 
 		expect(typeof res).toBe("string");
 		expect(
@@ -677,7 +683,7 @@ describe("pdfToHtml Function", () => {
 		};
 
 		expect.assertions(1);
-		await poppler.pdfToHtml(file, options).catch((err) => {
+		await poppler.pdfToHtml(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 			);
@@ -691,7 +697,7 @@ describe("pdfToHtml Function", () => {
 		};
 
 		expect.assertions(1);
-		await poppler.pdfToHtml(file, options).catch((err) => {
+		await poppler.pdfToHtml(file, undefined, options).catch((err) => {
 			expect(err.message).toEqual(
 				"Invalid option provided 'middlePageToConvert'"
 			);

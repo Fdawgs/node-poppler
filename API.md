@@ -28,7 +28,7 @@ version of binary.</p>
     * [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfSeparate(file, outputPattern, [options])](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfToCairo(file, [outputFile], [options])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfToHtml(file, [options])](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    * [.pdfToHtml(file, [outputFile], [options])](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfToPpm(file, outputPath, [options])](#Poppler+pdfToPpm) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfToPs(file, [outputFile], [options])](#Poppler+pdfToPs) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
     * [.pdfToText(file, [outputFile], [options])](#Poppler+pdfToText) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
@@ -243,10 +243,8 @@ Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
 
 <a name="Poppler+pdfToHtml"></a>
 
-### poppler.pdfToHtml(file, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToHtml(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
 Converts a PDF file to HTML.
-Poppler will use the directory and name of the original file
-and append `-html` to the end of the filename.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
@@ -255,6 +253,7 @@ and append `-html` to the end of the filename.
 | Param | Type | Description |
 | --- | --- | --- |
 | file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
+| [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then Poppler will use the directory and name of the original file and create a new file, with `-html` appended to the end of the filename. Required if `file` is a Buffer. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.complexOutput] | <code>boolean</code> | Generate complex output. |
 | [options.dataUrls] | <code>boolean</code> | Use data URLs instead of external images in HTML. |

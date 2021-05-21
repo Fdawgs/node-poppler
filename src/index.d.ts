@@ -273,10 +273,14 @@ export class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to HTML.
-	 * Poppler will use the directory and name of the original file
-	 * and append `-html` to the end of the filename.
 	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {string=} outputFile - Filepath of the file to output the results to.
+	 * If `undefined` then Poppler will use the directory and name of the original file
+	 * and create a new file, with `-html` appended to the end of the filename.
+	 *
+	 * Required if `file` is a Buffer.
+	 *
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
 	 * @param {boolean=} options.dataUrls -  Use data URLs instead of external images in HTML.
@@ -310,6 +314,7 @@ export class Poppler {
 	 */
 	pdfToHtml(
 		file: Buffer | string,
+		outputFile?: string | undefined,
 		options?: object | undefined
 	): Promise<string | Error>;
 	/**

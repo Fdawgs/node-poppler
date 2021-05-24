@@ -101,7 +101,7 @@ const options = {
 	lastPageToConvert: 2,
 };
 
-poppler.pdfToHtml(file, options).then((res) => {
+poppler.pdfToHtml(file, undefined, options).then((res) => {
 	console.log(res);
 });
 ```
@@ -119,7 +119,7 @@ const options = {
 	lastPageToConvert: 2,
 };
 
-poppler.pdfToHtml(file, options).then((res) => {
+poppler.pdfToHtml(file, "tester.html", options).then((res) => {
 	console.log(res);
 });
 ```

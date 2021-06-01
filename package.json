@@ -70,7 +70,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.2",
     "eslint-plugin-jest": "^24.3.6",
-    "eslint-plugin-jsdoc": "^34.8.2",
+    "eslint-plugin-jsdoc": "^35.1.2",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-security": "^1.4.0",
     "glob": "^7.1.7",

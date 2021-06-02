@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.1.0](https://www.github.com/Fdawgs/node-poppler/compare/v4.0.0...v4.1.0) (2021-06-02)
+
+
+### Features
+
+* **index:** add `printAsJson` arg to `pdfInfo()` options ([56a2ffb](https://www.github.com/Fdawgs/node-poppler/commit/56a2ffbac898209057fdc87f6fec23b18af5404f)), thanks to @sainf
+
+
+### Bug Fixes
+
+* **index:** normalize binary paths ([15cb1a1](https://www.github.com/Fdawgs/node-poppler/commit/15cb1a16bb2fc98b702f52977e824eef412ad937))
+
+
+### Miscellaneous
+
+* **workflows:** remove `stale.yml` ([167484a](https://www.github.com/Fdawgs/node-poppler/commit/167484ab9b84871b62925636a028ad47a975ee5e))
+
+
+### Continuous Integration
+
+* **cd:** move perf optimizations and refactoring into same section ([842d3f5](https://www.github.com/Fdawgs/node-poppler/commit/842d3f588219bd9611021eee6da89731cbbf8a0f))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 34.8.2 to 35.1.2 ([277f31f](https://www.github.com/Fdawgs/node-poppler/commit/277f31f8352f6254d253d164acb86973fac83eb1))
+* **deps-dev:** bump jest from 26.6.3 to 27.0.3 ([e28c345](https://www.github.com/Fdawgs/node-poppler/commit/e28c345ba69f0211131411cc98446288dfb75ff9))
+
+
+### Documentation
+
+* **readme:** grammar and wordiness fixes ([4a02092](https://www.github.com/Fdawgs/node-poppler/commit/4a0209271df7eb7cd110f324a19e77f14d2fb8d9))
+* **readme:** update `pdfToHtml()` examples ([e10a821](https://www.github.com/Fdawgs/node-poppler/commit/e10a821beb34dad8b4eea90e70353ed3d8ed8349))
+* **readme:** update contributing section ([99f4cd6](https://www.github.com/Fdawgs/node-poppler/commit/99f4cd63eb566975296d697c5788edde8e52ff06))
+
 ## [4.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v3.0.1...v4.0.0) (2021-05-21)
 
 

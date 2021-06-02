@@ -145,7 +145,7 @@ poppler.pdfToText(file, options).then((res) => {
 
 ## Contributing
 
-Contributions are welcome and any help that can be offered is greatly appreciated!
+Contributions are welcome, and any help is greatly appreciated!
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to get started.
 Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when contributing.

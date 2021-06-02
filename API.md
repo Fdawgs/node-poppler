@@ -149,6 +149,7 @@ Prints the contents of the `Info` dictionary from a PDF file.
 | [options.listEncodingOptions] | <code>boolean</code> | List the available encodings. |
 | [options.outputEncoding] | <code>string</code> | Sets the encoding to use for text output. This defaults to `UTF-8`. |
 | [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
+| [options.printAsJson] | <code>boolean</code> | Print result as a JSON object. |
 | [options.printBoundingBoxes] | <code>boolean</code> | Prints the page box bounding boxes: MediaBox, CropBox, BleedBox, TrimBox, and ArtBox. |
 | [options.printDocStruct] | <code>boolean</code> | Prints the logical document structure of a Tagged-PDF file. |
 | [options.printDocStructText] | <code>boolean</code> | Print the textual content along with the document structure of a Tagged-PDF file. Note that extracting text this way might be slow for big PDF files. |

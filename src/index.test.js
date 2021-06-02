@@ -362,20 +362,26 @@ describe("pdfInfo Function", () => {
 
 	test("Should list info of PDF file", async () => {
 		const poppler = new Poppler(testBinaryPath);
-		const attachmentFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`;
 
-		const res = await poppler.pdfInfo(attachmentFile);
+		const res = await poppler.pdfInfo(file);
 
 		expect(typeof res).toEqual("string");
 	});
 
+	test("Should list info of PDF file as a JSON object", async () => {
+		const poppler = new Poppler(testBinaryPath);
+
+		const res = await poppler.pdfInfo(file, {
+			printAsJson: true,
+		});
+
+		expect(typeof res).toEqual("object");
+	});
+
 	test("Should list info of PDF file as Buffer", async () => {
 		const poppler = new Poppler(testBinaryPath);
-		const attachmentFile = fs.readFileSync(
-			`${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`
-		);
 
-		const res = await poppler.pdfInfo(attachmentFile);
+		const res = await poppler.pdfInfo(file);
 
 		expect(typeof res).toEqual("string");
 	});

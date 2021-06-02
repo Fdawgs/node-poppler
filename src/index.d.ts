@@ -114,6 +114,7 @@ export class Poppler {
 	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
 	 * This defaults to `UTF-8`.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {boolean=} options.printAsJson - Print result as a JSON object.
 	 * @param {boolean=} options.printBoundingBoxes - Prints the page box bounding boxes:
 	 * MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.
 	 * @param {boolean=} options.printDocStruct - Prints the logical document structure

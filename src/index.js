@@ -1,3 +1,4 @@
+const camelCase = require("camelcase");
 const os = require("os");
 const path = require("path");
 const { execFile } = require("child_process");
@@ -31,7 +32,11 @@ function parseOptions(acceptedOptions, options, version) {
 			if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
 				// eslint-disable-next-line valid-typeof
 				if (typeof options[key] === acceptedOptions[key].type) {
-					args.push(acceptedOptions[key].arg);
+					// Arg will be empty for some non-standard options
+					if (acceptedOptions[key].arg !== "") {
+						args.push(acceptedOptions[key].arg);
+					}
+
 					if (typeof options[key] !== "boolean") {
 						args.push(options[key]);
 					}
@@ -412,6 +417,7 @@ class Poppler {
 	 * @param {string=} options.outputEncoding - Sets the encoding to use for text output.
 	 * This defaults to `UTF-8`.
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
+	 * @param {boolean=} options.printAsJson - Print result as a JSON object.
 	 * @param {boolean=} options.printBoundingBoxes - Prints the page box bounding boxes:
 	 * MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.
 	 * @param {boolean=} options.printDocStruct - Prints the logical document structure
@@ -439,6 +445,7 @@ class Poppler {
 			listEncodingOptions: { arg: "-listenc", type: "boolean" },
 			outputEncoding: { arg: "-enc", type: "string" },
 			ownerPassword: { arg: "-opw", type: "string" },
+			printAsJson: { arg: "", type: "boolean" },
 			printBoundingBoxes: { arg: "-box", type: "boolean" },
 			printDocStruct: { arg: "-struct", type: "boolean" },
 			printDocStructText: { arg: "-struct-text", type: "boolean" },
@@ -495,7 +502,24 @@ class Poppler {
 
 				child.on("close", async () => {
 					if (stdOut !== "") {
-						resolve(stdOut.trim());
+						if (options.printAsJson === true) {
+							/**
+							 * Thanks to @sainf for this solution
+							 * https://github.com/Fdawgs/node-poppler/issues/248#issuecomment-845948080
+							 */
+							const info = {};
+							stdOut
+								.split("\n")
+								.map((line) => line.split(": "))
+								.forEach((line) => {
+									if (line.length > 1)
+										info[camelCase(line[0])] =
+											line[1].trim();
+								});
+							resolve(info);
+						} else {
+							resolve(stdOut.trim());
+						}
 					} else {
 						reject(new Error(stdErr.trim()));
 					}

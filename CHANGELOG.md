@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
-* **index:** add `printAsJson` arg to `pdfInfo()` options ([56a2ffb](https://www.github.com/Fdawgs/node-poppler/commit/56a2ffbac898209057fdc87f6fec23b18af5404f))
+* **index:** add `printAsJson` arg to `pdfInfo()` options ([56a2ffb](https://www.github.com/Fdawgs/node-poppler/commit/56a2ffbac898209057fdc87f6fec23b18af5404f)), thanks to @sainf
 
 
 ### Bug Fixes

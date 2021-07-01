@@ -118,7 +118,7 @@ jobs:
               run: |
                   mkdir -p ./pr
                   echo ${{ github.event.number }} > ./pr/NR
-            - uses: actions/upload-artifact@v2.2.3
+            - uses: actions/upload-artifact@v2.2.4
               with:
                   name: pr
                   path: pr/

@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.1.1](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.0...v4.1.1) (2021-07-16)
+
+
+### Dependencies
+
+* **deps-dev:** bump husky from 6.0.0 to 7.0.0 ([e9f9c97](https://www.github.com/Fdawgs/node-poppler/commit/e9f9c97c38f849f596723616d89a90d70fa371d8))
+* **deps-dev:** bump prettier from 2.3.0 to 2.3.2 ([9eeed40](https://www.github.com/Fdawgs/node-poppler/commit/9eeed40785c45d4251490cb7c3dc982ea0f1e36b))
+* **deps:** bump actions/setup-node from 2.1.5 to 2.2.0 ([dba9b38](https://www.github.com/Fdawgs/node-poppler/commit/dba9b38b1de6d7a69ff4243e7e959dc956cbf645))
+* **deps:** bump actions/upload-artifact from 2.2.3 to 2.2.4 ([2461ce1](https://www.github.com/Fdawgs/node-poppler/commit/2461ce1461468d76b9a067088f86e941467ae0e3))
+
+
+### Miscellaneous
+
+* **vscode:** disable red hat telemetry ([d0084b5](https://www.github.com/Fdawgs/node-poppler/commit/d0084b550fa7d2b9ba81da798ca7387ce3155c28))
+* **vscode:** remove user space config setting ([c899f9f](https://www.github.com/Fdawgs/node-poppler/commit/c899f9fc3ad05af2611efe0b5a4d4e3de64136f1))
+
+
+### Continuous Integration
+
+* **ci:** disable homebrew analytics for macos builds ([#278](https://www.github.com/Fdawgs/node-poppler/issues/278)) ([92ad4fa](https://www.github.com/Fdawgs/node-poppler/commit/92ad4fa2ba60a0fb6054da386b7bfdd9504dd476))
+* **link-check:** reduce frequency from daily to monthly ([#272](https://www.github.com/Fdawgs/node-poppler/issues/272)) ([5e91c2a](https://www.github.com/Fdawgs/node-poppler/commit/5e91c2aa2cf3b807ce1e2f6b6317b1e5e2f58c3f))
+
 ## [4.1.0](https://www.github.com/Fdawgs/node-poppler/compare/v4.0.0...v4.1.0) (2021-06-02)
 
 

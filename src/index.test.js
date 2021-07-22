@@ -508,50 +508,89 @@ describe("pdfToCairo Function", () => {
 		await clean();
 	});
 
-	test("Should convert PDF file to SVG file", async () => {
-		const poppler = new Poppler(testBinaryPath);
-		const options = {
-			svgFile: true,
-		};
-		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
+	describe("PDF-to-PNG Option", () => {
+		test("Should convert PDF file to PNG file", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const options = {
+				pngFile: true,
+			};
+			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
 
-		const res = await poppler.pdfToCairo(file, outputFile, options);
+			const res = await poppler.pdfToCairo(file, outputFile, options);
 
-		expect(typeof res).toEqual("string");
-		expect(
-			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
-		).toEqual(true);
+			expect(typeof res).toEqual("string");
+			expect(
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.png`)
+			).toEqual(true);
+		});
+
+		test("Should convert PDF file as Buffer to PNG file", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const attachmentFile = fs.readFileSync(file);
+			const options = {
+				pngFile: true,
+			};
+			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
+
+			const res = await poppler.pdfToCairo(
+				attachmentFile,
+				outputFile,
+				options
+			);
+
+			expect(typeof res).toEqual("string");
+			expect(
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.png`)
+			).toEqual(true);
+		});
 	});
 
-	test("Should convert PDF file to SVG file and send to stdout", async () => {
-		const poppler = new Poppler(testBinaryPath);
-		const options = {
-			svgFile: true,
-		};
+	describe("PDF-to-SVG Option", () => {
+		test("Should convert PDF file to SVG file", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const options = {
+				svgFile: true,
+			};
+			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
 
-		const res = await poppler.pdfToCairo(file, undefined, options);
+			const res = await poppler.pdfToCairo(file, outputFile, options);
 
-		expect(typeof res).toEqual("string");
-	});
+			expect(typeof res).toEqual("string");
+			expect(
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
+			).toEqual(true);
+		});
 
-	test("Should convert PDF file as Buffer to SVG file", async () => {
-		const poppler = new Poppler(testBinaryPath);
-		const attachmentFile = fs.readFileSync(file);
-		const options = {
-			svgFile: true,
-		};
-		const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
+		test("Should convert PDF file to SVG file and send to stdout", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const options = {
+				svgFile: true,
+			};
 
-		const res = await poppler.pdfToCairo(
-			attachmentFile,
-			outputFile,
-			options
-		);
+			const res = await poppler.pdfToCairo(file, undefined, options);
 
-		expect(typeof res).toEqual("string");
-		expect(
-			fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
-		).toEqual(true);
+			expect(typeof res).toEqual("string");
+		});
+
+		test("Should convert PDF file as Buffer to SVG file", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const attachmentFile = fs.readFileSync(file);
+			const options = {
+				svgFile: true,
+			};
+			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
+
+			const res = await poppler.pdfToCairo(
+				attachmentFile,
+				outputFile,
+				options
+			);
+
+			expect(typeof res).toEqual("string");
+			expect(
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
+			).toEqual(true);
+		});
 	});
 
 	test("Should accept options and only process 2 pages of PDF file", async () => {

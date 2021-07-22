@@ -508,6 +508,43 @@ describe("pdfToCairo Function", () => {
 		await clean();
 	});
 
+	describe("PDF-to-JPG Option", () => {
+		test("Should convert PDF file to JPG file", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const options = {
+				jpegFile: true,
+			};
+			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
+
+			const res = await poppler.pdfToCairo(file, outputFile, options);
+
+			expect(typeof res).toEqual("string");
+			expect(
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`)
+			).toEqual(true);
+		});
+
+		test("Should convert PDF file as Buffer to JPG file", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const attachmentFile = fs.readFileSync(file);
+			const options = {
+				jpegFile: true,
+			};
+			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
+
+			const res = await poppler.pdfToCairo(
+				attachmentFile,
+				outputFile,
+				options
+			);
+
+			expect(typeof res).toEqual("string");
+			expect(
+				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`)
+			).toEqual(true);
+		});
+	});
+
 	describe("PDF-to-PNG Option", () => {
 		test("Should convert PDF file to PNG file", async () => {
 			const poppler = new Poppler(testBinaryPath);

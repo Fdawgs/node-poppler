@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.1.1](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.0...v4.1.1) (2021-07-23)
+
+
+### Bug Fixes
+
+* **index:** add "3221226505" error code mapping ([5017df6](https://www.github.com/Fdawgs/node-poppler/commit/5017df6f4a32abcdb15425d8ef8ba7545a7308d6))
+
+
+### Continuous Integration
+
+* **ci:** disable homebrew analytics for macos builds ([#278](https://www.github.com/Fdawgs/node-poppler/issues/278)) ([92ad4fa](https://www.github.com/Fdawgs/node-poppler/commit/92ad4fa2ba60a0fb6054da386b7bfdd9504dd476))
+* **link-check:** reduce frequency from daily to monthly ([#272](https://www.github.com/Fdawgs/node-poppler/issues/272)) ([5e91c2a](https://www.github.com/Fdawgs/node-poppler/commit/5e91c2aa2cf3b807ce1e2f6b6317b1e5e2f58c3f))
+
+
+### Improvements
+
+* **index:** consolidate child process `close` event handling ([db89bd6](https://www.github.com/Fdawgs/node-poppler/commit/db89bd6a849f5d93c0651f915e2310e6a9708a47))
+
+
+### Dependencies
+
+* **deps-dev:** bump husky from 6.0.0 to 7.0.0 ([e9f9c97](https://www.github.com/Fdawgs/node-poppler/commit/e9f9c97c38f849f596723616d89a90d70fa371d8))
+* **deps-dev:** bump prettier from 2.3.0 to 2.3.2 ([9eeed40](https://www.github.com/Fdawgs/node-poppler/commit/9eeed40785c45d4251490cb7c3dc982ea0f1e36b))
+* **deps:** bump actions/setup-node from 2.1.5 to 2.2.0 ([dba9b38](https://www.github.com/Fdawgs/node-poppler/commit/dba9b38b1de6d7a69ff4243e7e959dc956cbf645))
+* **deps:** bump actions/setup-node from 2.2.0 to 2.3.0 ([c41ef56](https://www.github.com/Fdawgs/node-poppler/commit/c41ef569eb590dec54375063939f8338587174a3))
+* **deps:** bump actions/upload-artifact from 2.2.3 to 2.2.4 ([2461ce1](https://www.github.com/Fdawgs/node-poppler/commit/2461ce1461468d76b9a067088f86e941467ae0e3))
+* **deps:** bump coverallsapp/github-action from 1.1.2 to 1.1.3 ([a6cecca](https://www.github.com/Fdawgs/node-poppler/commit/a6ceccac9470be00a9dd0e15f8fb1d3690fb78c4))
+* **deps:** bump wagoid/commitlint-github-action from 3.1.4 to 4.1.1 ([b29337c](https://www.github.com/Fdawgs/node-poppler/commit/b29337c52b9a7d8ca878ff659737473f53813d06))
+
+
+### Miscellaneous
+
+* **gitignore:** add test generated pdfs ([c70638c](https://www.github.com/Fdawgs/node-poppler/commit/c70638c9bf3dc29a7245683f7f0604db86c17012))
+* **index/pdftocairo:** sort file ext list alphabetically ascending ([8912fc1](https://www.github.com/Fdawgs/node-poppler/commit/8912fc12ba1f022a2a4b24973ce5c491dcbebe36))
+* **package:** update keywords ([5169f74](https://www.github.com/Fdawgs/node-poppler/commit/5169f7473ac0c35f76a6685835f456e9a87570f8))
+* **prettierignore:** ignore all test folder content ([d69dccd](https://www.github.com/Fdawgs/node-poppler/commit/d69dccdf684be316cb35535a53877add76763024))
+* **vscode:** disable red hat telemetry ([d0084b5](https://www.github.com/Fdawgs/node-poppler/commit/d0084b550fa7d2b9ba81da798ca7387ce3155c28))
+* **vscode:** remove user space config setting ([c899f9f](https://www.github.com/Fdawgs/node-poppler/commit/c899f9fc3ad05af2611efe0b5a4d4e3de64136f1))
+
 ## [4.1.0](https://www.github.com/Fdawgs/node-poppler/compare/v4.0.0...v4.1.0) (2021-06-02)
 
 

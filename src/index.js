@@ -8,11 +8,12 @@ const execFileAsync = util.promisify(execFile);
 const platform = os.platform();
 
 const errorMessages = {
-	0: "No Error.",
-	1: "Error opening a PDF file.",
-	2: "Error opening an output file.",
+	0: "No Error",
+	1: "Error opening a PDF file",
+	2: "Error opening an output file",
 	3: "Error related to PDF permissions",
-	99: "Other error.",
+	99: "Other error",
+	3221226505: "Internal process error",
 };
 
 /**
@@ -371,16 +372,6 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputPrefix) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				let stdOut = "";
 				let stdErr = "";
 
@@ -392,11 +383,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -583,7 +578,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
+	 * @description Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
@@ -772,16 +767,6 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputFile) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				let stdOut = "";
 				let stdErr = "";
 
@@ -793,11 +778,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -909,16 +898,6 @@ class Poppler {
 					args
 				);
 
-				if (outputFile) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				if (Buffer.isBuffer(file)) {
 					child.stdin.write(file);
 					child.stdin.end();
@@ -935,11 +914,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -1365,16 +1348,6 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputFile) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				let stdOut = "";
 				let stdErr = "";
 
@@ -1386,11 +1359,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -1521,16 +1498,6 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputFile) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				let stdOut = "";
 				let stdErr = "";
 
@@ -1542,11 +1509,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});

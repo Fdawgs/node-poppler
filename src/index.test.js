@@ -311,7 +311,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
-				expect(err.message).toEqual("Error opening a PDF file.");
+				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
 			});
 		});
 
@@ -320,7 +320,9 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
-				expect(err.message).toEqual("Error opening a PDF file.");
+				expect(err.message.substring(0, 41)).toEqual(
+					"I/O Error: Couldn't open file 'undefined'"
+				);
 			});
 		});
 
@@ -503,6 +505,64 @@ describe("Node-Poppler Module", () => {
 	});
 
 	describe("pdfToCairo Function", () => {
+		describe("PDF-to-EPS Option", () => {
+			test("Should convert PDF file to EPS file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					epsFile: true,
+					firstPageToConvert: 1,
+					lastPageToConvert: 1,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.eps`;
+
+				const res = await poppler.pdfToCairo(file, outputFile, options);
+
+				expect(typeof res).toEqual("string");
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
+					)
+				).toEqual(true);
+			});
+
+			test("Should convert PDF file to EPS file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					epsFile: true,
+					firstPageToConvert: 1,
+					lastPageToConvert: 1,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toEqual("string");
+			});
+
+			test("Should convert PDF file as Buffer to EPS file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const attachmentFile = fs.readFileSync(file);
+				const options = {
+					epsFile: true,
+					firstPageToConvert: 1,
+					lastPageToConvert: 1,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.eps`;
+
+				const res = await poppler.pdfToCairo(
+					attachmentFile,
+					outputFile,
+					options
+				);
+
+				expect(typeof res).toEqual("string");
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
+					)
+				).toEqual(true);
+			});
+		});
+
 		describe("PDF-to-JPG Option", () => {
 			test("Should convert PDF file to JPG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
@@ -581,6 +641,54 @@ describe("Node-Poppler Module", () => {
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
 					)
+				).toEqual(true);
+			});
+		});
+
+		describe("PDF-to-PS Option", () => {
+			test("Should convert PDF file to PS file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					psFile: true,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
+
+				const res = await poppler.pdfToCairo(file, outputFile, options);
+
+				expect(typeof res).toEqual("string");
+				expect(
+					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
+				).toEqual(true);
+			});
+
+			test("Should convert PDF file to PS file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					psFile: true,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toEqual("string");
+			});
+
+			test("Should convert PDF file as Buffer to PS file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const attachmentFile = fs.readFileSync(file);
+				const options = {
+					psFile: true,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
+
+				const res = await poppler.pdfToCairo(
+					attachmentFile,
+					outputFile,
+					options
+				);
+
+				expect(typeof res).toEqual("string");
+				expect(
+					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 				).toEqual(true);
 			});
 		});

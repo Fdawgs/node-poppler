@@ -587,6 +587,54 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
+		describe("PDF-to-PS Option", () => {
+			test("Should convert PDF file to PS file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					psFile: true,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
+
+				const res = await poppler.pdfToCairo(file, outputFile, options);
+
+				expect(typeof res).toEqual("string");
+				expect(
+					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
+				).toEqual(true);
+			});
+
+			test("Should convert PDF file to PS file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					psFile: true,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toEqual("string");
+			});
+
+			test("Should convert PDF file as Buffer to PS file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const attachmentFile = fs.readFileSync(file);
+				const options = {
+					psFile: true,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
+
+				const res = await poppler.pdfToCairo(
+					attachmentFile,
+					outputFile,
+					options
+				);
+
+				expect(typeof res).toEqual("string");
+				expect(
+					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
+				).toEqual(true);
+			});
+		});
+
 		describe("PDF-to-SVG Option", () => {
 			test("Should convert PDF file to SVG file", async () => {
 				const poppler = new Poppler(testBinaryPath);

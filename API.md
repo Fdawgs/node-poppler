@@ -184,7 +184,7 @@ This will not work if the file is encrypted.
 <a name="Poppler+pdfToCairo"></a>
 
 ### poppler.pdfToCairo(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
+Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
 **Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  

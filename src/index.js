@@ -8,11 +8,12 @@ const execFileAsync = util.promisify(execFile);
 const platform = os.platform();
 
 const errorMessages = {
-	0: "No Error.",
-	1: "Error opening a PDF file.",
-	2: "Error opening an output file.",
+	0: "No Error",
+	1: "Error opening a PDF file",
+	2: "Error opening an output file",
 	3: "Error related to PDF permissions",
-	99: "Other error.",
+	99: "Other error",
+	3221226505: "Internal process error",
 };
 
 /**

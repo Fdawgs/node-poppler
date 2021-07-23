@@ -505,6 +505,64 @@ describe("Node-Poppler Module", () => {
 	});
 
 	describe("pdfToCairo Function", () => {
+		describe("PDF-to-EPS Option", () => {
+			test("Should convert PDF file to EPS file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					epsFile: true,
+					firstPageToConvert: 1,
+					lastPageToConvert: 1,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.eps`;
+
+				const res = await poppler.pdfToCairo(file, outputFile, options);
+
+				expect(typeof res).toEqual("string");
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
+					)
+				).toEqual(true);
+			});
+
+			test("Should convert PDF file to EPS file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					epsFile: true,
+					firstPageToConvert: 1,
+					lastPageToConvert: 1,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toEqual("string");
+			});
+
+			test("Should convert PDF file as Buffer to EPS file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const attachmentFile = fs.readFileSync(file);
+				const options = {
+					epsFile: true,
+					firstPageToConvert: 1,
+					lastPageToConvert: 1,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.eps`;
+
+				const res = await poppler.pdfToCairo(
+					attachmentFile,
+					outputFile,
+					options
+				);
+
+				expect(typeof res).toEqual("string");
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
+					)
+				).toEqual(true);
+			});
+		});
+
 		describe("PDF-to-JPG Option", () => {
 			test("Should convert PDF file to JPG file", async () => {
 				const poppler = new Poppler(testBinaryPath);

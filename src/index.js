@@ -371,16 +371,6 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputPrefix) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				let stdOut = "";
 				let stdErr = "";
 
@@ -392,11 +382,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -772,16 +766,6 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputFile) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				let stdOut = "";
 				let stdErr = "";
 
@@ -793,11 +777,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -909,16 +897,6 @@ class Poppler {
 					args
 				);
 
-				if (outputFile) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				if (Buffer.isBuffer(file)) {
 					child.stdin.write(file);
 					child.stdin.end();
@@ -935,11 +913,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -1365,16 +1347,6 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputFile) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				let stdOut = "";
 				let stdErr = "";
 
@@ -1386,11 +1358,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -1521,16 +1497,6 @@ class Poppler {
 					child.stdin.end();
 				}
 
-				if (outputFile) {
-					child.on("close", async (code) => {
-						if (code === 0) {
-							resolve(errorMessages[code]);
-						} else {
-							reject(new Error(errorMessages[code]));
-						}
-					});
-				}
-
 				let stdOut = "";
 				let stdErr = "";
 
@@ -1542,11 +1508,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", async (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else {
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else {
+						reject(new Error(errorMessages[code]));
 					}
 				});
 			});

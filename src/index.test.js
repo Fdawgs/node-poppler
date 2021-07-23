@@ -311,7 +311,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
-				expect(err.message).toEqual("Error opening a PDF file.");
+				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
 			});
 		});
 
@@ -320,7 +320,9 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
-				expect(err.message).toEqual("Error opening a PDF file.");
+				expect(err.message.substring(0, 41)).toEqual(
+					"I/O Error: Couldn't open file 'undefined'"
+				);
 			});
 		});
 

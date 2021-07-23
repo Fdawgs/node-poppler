@@ -578,7 +578,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Converts a PDF file to PNG/JPEG/TIFF/PDF/PS/EPS/SVG.
+	 * @description Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.

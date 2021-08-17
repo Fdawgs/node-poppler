@@ -50,7 +50,7 @@ If you do not wish to use the included macOS binaries, you can download the late
 brew install poppler
 ```
 
-Once they have been installed, you will need to pass the `poppler-utils` installation directory in as parameters to an instance of the Poppler class:
+Once they have been installed, you will need to pass the `poppler-utils` installation directory as a parameter to an instance of the Poppler class:
 
 ```js
 const { Poppler } = require("node-poppler");

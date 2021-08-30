@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.1.2](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.1...v4.1.2) (2021-08-30)
+
+
+### Bug Fixes
+
+* **lib:** update poppler win32 binaries from 21.03.0 to 21.08.0 ([#296](https://www.github.com/Fdawgs/node-poppler/issues/296)) ([34f9e37](https://www.github.com/Fdawgs/node-poppler/commit/34f9e3758a0825cb7f1178cdbf6285e8b93fdb8b))
+
+
+### Documentation
+
+* **readme:** grammar fix ([7503c62](https://www.github.com/Fdawgs/node-poppler/commit/7503c62f4a48f89c7201a0bc5fe007ff3c6091ad))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 12.1.4 to 13.1.0 ([b15218e](https://www.github.com/Fdawgs/node-poppler/commit/b15218ee56847a4d03eac125fd10c57d6804424e))
+* **deps-dev:** bump @commitlint/config-conventional ([bfac706](https://www.github.com/Fdawgs/node-poppler/commit/bfac7066d0bf326d6ec21562b8d588434824249a))
+* **deps-dev:** bump dependencies ([#297](https://www.github.com/Fdawgs/node-poppler/issues/297)) ([f922709](https://www.github.com/Fdawgs/node-poppler/commit/f922709bedef53ad604448618731849ceab412d7))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.5.1 to 36.0.6 ([38e7554](https://www.github.com/Fdawgs/node-poppler/commit/38e75543fb91c478486f8c514d53988dfd56abd5))
+* **deps:** bump actions/github-script from 4.0.2 to 4.1 ([f90cfbd](https://www.github.com/Fdawgs/node-poppler/commit/f90cfbdf2e69bf5cb017025226ab0c430aed5336))
+* **deps:** bump actions/setup-node from 2.3.0 to 2.4.0 ([9180bca](https://www.github.com/Fdawgs/node-poppler/commit/9180bca0fcfd59bec5b8e192bcbba79d62ac6bdd))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([d46efc8](https://www.github.com/Fdawgs/node-poppler/commit/d46efc8d0e8651331ea195fa224c7d3c3a38fbe4))
+
 ### [4.1.1](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.0...v4.1.1) (2021-07-23)
 
 

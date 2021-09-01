@@ -18,13 +18,7 @@ const platform = os.platform();
 switch (platform) {
 	// macOS
 	case "darwin":
-		testBinaryPath = path.joinSafe(
-			__dirname,
-			"lib",
-			"darwin",
-			"poppler-0.89.0",
-			"bin"
-		);
+		testBinaryPath = "/usr/local/bin";
 		break;
 
 	case "linux":
@@ -66,7 +60,7 @@ describe("Node-Poppler Module", () => {
 		await clean();
 	});
 
-	if (platform === "win32" || platform === "darwin") {
+	if (platform === "win32") {
 		describe("Constructor", () => {
 			test("Should convert PDF file to SVG file without binary set, and use included binaries", async () => {
 				const poppler = new Poppler();

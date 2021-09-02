@@ -117,7 +117,7 @@ class Poppler {
 					break;
 
 				default:
-					return new Error(`${platform} is NOT supported.`);
+					throw new Error(`${platform} is NOT supported.`);
 			}
 
 			this.popplerPath = popplerPath;

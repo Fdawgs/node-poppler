@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [4.1.3](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.2...v4.1.3) (2021-09-02)
+
+
+### Bug Fixes
+
+* **index:** throw new error not return it as returning leads to silent failures ([#299](https://www.github.com/Fdawgs/node-poppler/issues/299)) ([e22d02d](https://www.github.com/Fdawgs/node-poppler/commit/e22d02d8f16c635e4a54a46a7e6e1dba97618a2d))
+
 ### [4.1.2](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.1...v4.1.2) (2021-08-30)
 
 

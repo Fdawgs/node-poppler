@@ -34,7 +34,7 @@ node-poppler's test scripts use npm commands.
 
 ### Linux and macOS/Darwin Support
 
-Windows and macOS/Darwin binaries are provided with this repository.
+Windows binaries are provided with this repository.
 For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries separately.
 
 An example of downloading the binaries on a Debian system:
@@ -44,7 +44,7 @@ sudo apt-get install poppler-data
 sudo apt-get install poppler-utils
 ```
 
-If you do not wish to use the included macOS binaries, you can download the latest versions with [Homebrew](https://brew.sh/):
+For macOS users, you can download the latest versions with [Homebrew](https://brew.sh/):
 
 ```
 brew install poppler

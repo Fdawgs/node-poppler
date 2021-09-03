@@ -104,18 +104,6 @@ class Poppler {
 						"bin"
 					);
 					break;
-
-				// macOS
-				case "darwin":
-					popplerPath = path.joinSafe(
-						__dirname,
-						"lib",
-						"darwin",
-						"poppler-0.89.0",
-						"bin"
-					);
-					break;
-
 				default:
 					throw new Error(`${platform} is NOT supported.`);
 			}

@@ -1,0 +1,79 @@
+name: 🐛 Bug Report
+description: File a bug report and help us improve
+labels: [bug]
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for filing a bug report, any help is greatly appreciated!
+
+    - type: checkboxes
+      id: prerequisites
+      attributes:
+          label: Prerequisites
+          options:
+              - label: I have written a descriptive issue title
+                required: true
+              - label: |
+                    I have searched existing issues to ensure it has not already been reported
+                required: true
+              - label: |
+                    I agree to follow the [Code of Conduct](../../CODE_OF_CONDUCT.md) that this project adheres to
+                required: true
+
+    - type: input
+      id: version
+      attributes:
+          label: API/app/plugin version
+          placeholder: 1.x.x
+
+    - type: input
+      id: node-version
+      attributes:
+          label: Node.js version
+          placeholder: 14.x
+      validations:
+          required: true
+
+    - type: dropdown
+      id: os
+      attributes:
+          label: Operating system
+          options:
+              - Linux
+              - macOS
+              - Windows
+      validations:
+          required: true
+
+    - type: input
+      id: os-version
+      attributes:
+          label: Operating system version (i.e. 20.04, 11.3, 10)
+      validations:
+          required: true
+
+    - type: textarea
+      id: description
+      attributes:
+          label: Description
+          description: A clear and concise description of what the bug is.
+      validations:
+          required: true
+
+    - type: textarea
+      id: steps-to-reproduce
+      attributes:
+          label: Steps to Reproduce
+          description: |
+              List of steps, sample code, or a link to code or a project that reproduces the behaviour.
+              Make sure you place a stack trace inside a [code (```) block](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks) to avoid linking unrelated issues.
+      validations:
+          required: true
+
+    - type: textarea
+      id: expected-behaviour
+      attributes:
+          label: Expected Behaviour
+          description: A clear and concise description of what you expected to happen.

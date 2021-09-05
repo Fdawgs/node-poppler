@@ -10,7 +10,7 @@ const util = require("util");
 const execFileAsync = util.promisify(execFile);
 const { Poppler } = require("./index");
 
-const testDirectory = `${__dirname}/../test_docs/`;
+const testDirectory = `${__dirname}/../test_files/`;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
 let testBinaryPath;

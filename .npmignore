@@ -1,0 +1,27 @@
+# Development and CI/CD config
+.github
+.husky
+.vscode
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Optional eslint cache
+.eslintcache
+
+# eslint config
+.eslintrc.js
+
+# Prettier config
+.prettierignore
+.prettierrc
+
+# Documentation
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+SECURITY.md
+
+# Test files
+src/**/*.test.js
+test_files
+test_resources

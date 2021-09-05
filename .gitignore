@@ -120,8 +120,8 @@ package-lock.json
 yarn.lock
 
 # Converted test files
-test_docs/*
-!test_docs/pdf_1.3_NHS_Constitution.pdf
-!test_docs/pdf_1.3_NHS_Constitution_Handbook.pdf
-!test_docs/pdf_1.3_NHS_Constitution_attached_detach.pdf
-!test_docs/test.txt
+test_files/*
+!test_files/pdf_1.3_NHS_Constitution.pdf
+!test_files/pdf_1.7_NHS_Constitution_Handbook.pdf
+!test_files/pdf_1.3_NHS_Constitution_attached_detach.pdf
+!test_files/test.txt

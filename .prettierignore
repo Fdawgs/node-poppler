@@ -125,4 +125,4 @@ package-lock.json
 yarn.lock
 
 # Converted test files
-test_docs/*
+test_files/*

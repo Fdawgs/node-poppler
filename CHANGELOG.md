@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.2...v5.0.0) (2021-09-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **index:** macOS/Darwin binaries have been removed due to persistent issues with them. Please download macOS binaries separately through Homebrew.
+
+### Bug Fixes
+
+* **index:** remove included macos/darwin binaries ([1bfa703](https://www.github.com/Fdawgs/node-poppler/commit/1bfa70332d0f2c5d49cf10e2d750fade332f50b0))
+* **index:** throw new error not return it as returning leads to silent failures ([#299](https://www.github.com/Fdawgs/node-poppler/issues/299)) ([e22d02d](https://www.github.com/Fdawgs/node-poppler/commit/e22d02d8f16c635e4a54a46a7e6e1dba97618a2d))
+
+
+### Miscellaneous
+
+* **.github:** use new YAML configured GitHub issue forms ([#303](https://www.github.com/Fdawgs/node-poppler/issues/303)) ([4760072](https://www.github.com/Fdawgs/node-poppler/commit/4760072385521b2546d1b4b7cc672d84584afc54))
+
+
+### Continuous Integration
+
+* **ci:** replace workflow-run-cleanup-action with github concurrency ([#304](https://www.github.com/Fdawgs/node-poppler/issues/304)) ([0f08d1f](https://www.github.com/Fdawgs/node-poppler/commit/0f08d1f05dc55aec6381c44731dd1220c7f87599))
+
+
+### Dependencies
+
+* add .npmignore; reduce package size from 15.6MB to 13.7MB ([#306](https://www.github.com/Fdawgs/node-poppler/issues/306)) ([3f0fbe6](https://www.github.com/Fdawgs/node-poppler/commit/3f0fbe6b150c68b97c93ea7e3002097715fa090a))
+
 ### [4.1.2](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.1...v4.1.2) (2021-08-30)
 
 

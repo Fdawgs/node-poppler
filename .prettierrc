@@ -2,5 +2,13 @@
 	"endOfLine": "lf",
 	"semi": true,
 	"tabWidth": 4,
-	"useTabs": true
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": ["*.css", "*.html", "*.scss"],
+			"options": {
+				"printWidth": 120
+			}
+		}
+	]
 }

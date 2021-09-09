@@ -4,6 +4,7 @@
 	"recommendations": [
 		"dbaeumer.vscode-eslint",
 		"esbenp.prettier-vscode",
+		"mhutchie.git-graph",
 		"redhat.vscode-yaml"
 	]
 }

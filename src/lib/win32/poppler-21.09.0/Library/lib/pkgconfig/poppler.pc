@@ -1,0 +1,10 @@
+prefix=D:/bld/poppler_1631234218217/_h_env/Library
+libdir=D:/bld/poppler_1631234218217/_h_env/Library/lib
+includedir=D:/bld/poppler_1631234218217/_h_env/Library/include
+
+Name: poppler
+Description: PDF rendering library
+Version: 21.09.0
+
+Libs: -L${libdir} -lpoppler
+Cflags: -I${includedir}/poppler

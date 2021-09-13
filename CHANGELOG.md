@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.0.1](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.0...v5.0.1) (2021-09-13)
+
+
+### Bug Fixes
+
+* **lib:** update poppler win32 binaries from 21.08.0 to 21.09.0 ([#313](https://www.github.com/Fdawgs/node-poppler/issues/313)) ([6cd1a3c](https://www.github.com/Fdawgs/node-poppler/commit/6cd1a3c2e5d6f2f5d81f4b2c1c76317ccd97abbd))
+
+
+### Continuous Integration
+
+* **ci:** revert to workflow-run-clean-action from github concurrency ([4b85707](https://www.github.com/Fdawgs/node-poppler/commit/4b857076e02aad23799127ad8f54c1b1229afc7d))
+
+
+### Miscellaneous
+
+* **.eslintrc:** set correct ecmascript version ([#308](https://www.github.com/Fdawgs/node-poppler/issues/308)) ([055e44e](https://www.github.com/Fdawgs/node-poppler/commit/055e44ed58982e6d9658187beb1f7f280c244b57))
+* **.husky/.gitignore:** remove now redundant file ([d8891bc](https://www.github.com/Fdawgs/node-poppler/commit/d8891bc6b3eb99564d661aeacd097b80e4588194))
+* **.prettierrc:** override defaults for html, css, and scss files ([#309](https://www.github.com/Fdawgs/node-poppler/issues/309)) ([73f9044](https://www.github.com/Fdawgs/node-poppler/commit/73f9044050709188290902a360f1a705e9f3b0c9))
+* **.vscode:** add `mhutchie.git-graph` extension ([6d86a88](https://www.github.com/Fdawgs/node-poppler/commit/6d86a885bd7354dc00dbf6da5ff95bfa6b032e74))
+
+
+### Dependencies
+
+* **deps-dev:** bump prettier from 2.3.2 to 2.4.0 ([5f61282](https://www.github.com/Fdawgs/node-poppler/commit/5f61282a4a7d5a0d5ae972a8c3d7c3dac3495d71))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([5694596](https://www.github.com/Fdawgs/node-poppler/commit/5694596c506fc6c954c99cb93762f9381815da6d))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.1 to 4.1.4 ([f20e9c7](https://www.github.com/Fdawgs/node-poppler/commit/f20e9c7e7a7cb0a18f044fffe691f591669937d3))
+
 ## [5.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.2...v5.0.0) (2021-09-06)
 
 

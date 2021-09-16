@@ -17,7 +17,6 @@ coverage
 .prettierrc
 
 # Documentation
-API.md
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 SECURITY.md

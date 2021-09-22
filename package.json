@@ -79,6 +79,7 @@
     "eslint-plugin-jsdoc": "^36.0.6",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-security-node": "^1.0.14",
     "glob": "^7.1.7",
     "husky": "^7.0.2",
     "jest": "^27.1.0",

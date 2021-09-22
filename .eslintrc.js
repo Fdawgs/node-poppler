@@ -9,6 +9,7 @@ module.exports = {
 		"plugin:jest/recommended",
 		"plugin:jsdoc/recommended",
 		"plugin:security/recommended",
+		"plugin:security-node/recommended",
 		"prettier",
 	],
 	parserOptions: {
@@ -18,7 +19,14 @@ module.exports = {
 			impliedStrict: true,
 		},
 	},
-	plugins: ["import", "jest", "jsdoc", "promise", "security"],
+	plugins: [
+		"import",
+		"jest",
+		"jsdoc",
+		"promise",
+		"security",
+		"security-node",
+	],
 	root: true,
 	rules: {
 		"import/no-extraneous-dependencies": "error",

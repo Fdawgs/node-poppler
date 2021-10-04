@@ -71,12 +71,12 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 		});
 	}
@@ -93,12 +93,12 @@ describe("Node-Poppler Module", () => {
 				outputFile
 			);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(
 					`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
 				)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -107,7 +107,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfAttach(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Command failed:");
+				expect(err.message.substring(0, 15)).toBe("Command failed:");
 			});
 		});
 
@@ -121,7 +121,7 @@ describe("Node-Poppler Module", () => {
 			await poppler
 				.pdfAttach(file, undefined, undefined, options)
 				.catch((err) => {
-					expect(err.message).toEqual(
+					expect(err.message).toBe(
 						"Invalid value type provided for option 'replace', expected boolean but received string"
 					);
 				});
@@ -137,7 +137,7 @@ describe("Node-Poppler Module", () => {
 			await poppler
 				.pdfAttach(file, undefined, undefined, options)
 				.catch((err) => {
-					expect(err.message).toEqual(
+					expect(err.message).toBe(
 						"Invalid option provided 'wordFile'"
 					);
 				});
@@ -154,7 +154,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfDetach(attachmentFile, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -163,7 +163,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfDetach(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Command failed:");
+				expect(err.message.substring(0, 15)).toBe("Command failed:");
 			});
 		});
 
@@ -175,7 +175,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfDetach(file, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'listEmbedded', expected boolean but received string"
 				);
 			});
@@ -189,9 +189,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfDetach(file, options).catch((err) => {
-				expect(err.message).toEqual(
-					"Invalid option provided 'wordFile'"
-				);
+				expect(err.message).toBe("Invalid option provided 'wordFile'");
 			});
 		});
 	});
@@ -205,7 +203,7 @@ describe("Node-Poppler Module", () => {
 			};
 			const res = await poppler.pdfFonts(file, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should examine 3 pages of PDF file as Buffer", async () => {
@@ -218,7 +216,7 @@ describe("Node-Poppler Module", () => {
 			};
 			const res = await poppler.pdfFonts(attachmentFile, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -227,7 +225,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfFonts(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
+				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 			});
 		});
 
@@ -239,7 +237,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfFonts(file, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'firstPageToExamine', expected number but received string"
 				);
 			});
@@ -253,9 +251,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfFonts(file, options).catch((err) => {
-				expect(err.message).toEqual(
-					"Invalid option provided 'wordFile'"
-				);
+				expect(err.message).toBe("Invalid option provided 'wordFile'");
 			});
 		});
 	});
@@ -269,7 +265,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfImages(file, undefined, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should accept options and save images from PDF file", async () => {
@@ -280,7 +276,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfImages(file, "file_prefix", options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should accept options and list all images in PDF file as Buffer", async () => {
@@ -296,7 +292,7 @@ describe("Node-Poppler Module", () => {
 				options
 			);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -305,7 +301,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
+				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 			});
 		});
 
@@ -314,7 +310,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
-				expect(err.message.substring(0, 41)).toEqual(
+				expect(err.message.substring(0, 41)).toBe(
 					"I/O Error: Couldn't open file 'undefined'"
 				);
 			});
@@ -331,7 +327,7 @@ describe("Node-Poppler Module", () => {
 			await poppler
 				.pdfImages(undefined, undefined, options)
 				.catch((err) => {
-					expect(err.message).toEqual(
+					expect(err.message).toBe(
 						"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 					);
 				});
@@ -347,7 +343,7 @@ describe("Node-Poppler Module", () => {
 			await poppler
 				.pdfImages(undefined, undefined, options)
 				.catch((err) => {
-					expect(err.message).toEqual(
+					expect(err.message).toBe(
 						"Invalid option provided 'middlePageToConvert'"
 					);
 				});
@@ -360,7 +356,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfInfo(file);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should list info of PDF file as a JSON object", async () => {
@@ -370,7 +366,7 @@ describe("Node-Poppler Module", () => {
 				printAsJson: true,
 			});
 
-			expect(typeof res).toEqual("object");
+			expect(typeof res).toBe("object");
 		});
 
 		test("Should list info of PDF file as Buffer", async () => {
@@ -379,7 +375,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfInfo(attachmentFile);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -388,7 +384,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
+				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 			});
 		});
 
@@ -397,7 +393,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo().catch((err) => {
-				expect(err.message.substring(0, 10)).toEqual("I/O Error:");
+				expect(err.message.substring(0, 10)).toBe("I/O Error:");
 			});
 		});
 
@@ -409,7 +405,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo(file, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'firstPageToConvert', expected number but received string"
 				);
 			});
@@ -423,9 +419,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo(file, options).catch((err) => {
-				expect(err.message).toEqual(
-					"Invalid option provided 'wordFile'"
-				);
+				expect(err.message).toBe("Invalid option provided 'wordFile'");
 			});
 		});
 	});
@@ -441,22 +435,22 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfSeparate(file, outputPattern, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(
 					`${testDirectory}pdf_1.3_NHS_Constitution-extract-1.pdf`
 				)
-			).toEqual(true);
+			).toBe(true);
 			expect(
 				fs.existsSync(
 					`${testDirectory}pdf_1.3_NHS_Constitution-extract-2.pdf`
 				)
-			).toEqual(true);
+			).toBe(true);
 			expect(
 				fs.existsSync(
 					`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`
 				)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -465,7 +459,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfSeparate(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Command failed:");
+				expect(err.message.substring(0, 15)).toBe("Command failed:");
 			});
 		});
 
@@ -477,7 +471,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfSeparate(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'firstPageToExtract', expected number but received string"
 				);
 			});
@@ -491,9 +485,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfSeparate(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
-					"Invalid option provided 'wordFile'"
-				);
+				expect(err.message).toBe("Invalid option provided 'wordFile'");
 			});
 		});
 	});
@@ -511,12 +503,12 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 
 			test("Should convert PDF file to EPS file and send to stdout", async () => {
@@ -529,7 +521,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, undefined, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 			});
 
 			test("Should convert PDF file as Buffer to EPS file", async () => {
@@ -548,12 +540,12 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 		});
 
@@ -567,12 +559,12 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 
 			test("Should convert PDF file as Buffer to JPG file", async () => {
@@ -589,12 +581,12 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 		});
 
@@ -608,12 +600,12 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 
 			test("Should convert PDF file as Buffer to PNG file", async () => {
@@ -630,12 +622,12 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 		});
 
@@ -649,10 +641,10 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
-				).toEqual(true);
+				).toBe(true);
 			});
 
 			test("Should convert PDF file to PS file and send to stdout", async () => {
@@ -663,7 +655,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, undefined, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 			});
 
 			test("Should convert PDF file as Buffer to PS file", async () => {
@@ -680,10 +672,10 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
-				).toEqual(true);
+				).toBe(true);
 			});
 		});
 
@@ -697,12 +689,12 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 
 			test("Should convert PDF file to SVG file and send to stdout", async () => {
@@ -713,7 +705,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, undefined, options);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 			});
 
 			test("Should convert PDF file as Buffer to SVG file", async () => {
@@ -730,12 +722,12 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toEqual("string");
+				expect(typeof res).toBe("string");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
 					)
-				).toEqual(true);
+				).toBe(true);
 			});
 		});
 
@@ -750,10 +742,10 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToCairo(file, outputFile, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -762,7 +754,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 6)).toEqual("Error:");
+				expect(err.message.substring(0, 6)).toBe("Error:");
 			});
 		});
 
@@ -771,7 +763,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(file).catch((err) => {
-				expect(err.message.substring(0, 6)).toEqual("Error:");
+				expect(err.message.substring(0, 6)).toBe("Error:");
 			});
 		});
 
@@ -783,7 +775,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'pdfFile', expected boolean but received string"
 				);
 			});
@@ -797,9 +789,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
-					"Invalid option provided 'wordFile'"
-				);
+				expect(err.message).toBe("Invalid option provided 'wordFile'");
 			});
 		});
 	});
@@ -810,10 +800,10 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToHtml(file);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should convert PDF file to HTML file as Buffer", async () => {
@@ -825,10 +815,10 @@ describe("Node-Poppler Module", () => {
 				`${testDirectory}pdf_1.3_NHS_Constitution.html`
 			);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -840,10 +830,10 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToHtml(file, undefined, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -852,7 +842,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
+				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 			});
 		});
 
@@ -861,7 +851,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml().catch((err) => {
-				expect(err.message.substring(0, 10)).toEqual("I/O Error:");
+				expect(err.message.substring(0, 10)).toBe("I/O Error:");
 			});
 		});
 
@@ -874,7 +864,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 				);
 			});
@@ -888,7 +878,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid option provided 'middlePageToConvert'"
 				);
 			});
@@ -919,10 +909,10 @@ describe("Node-Poppler Module", () => {
 				options
 			);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should accept options and only process 1 page of PDF file as Buffer", async () => {
@@ -939,10 +929,10 @@ describe("Node-Poppler Module", () => {
 				options
 			);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -951,7 +941,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
+				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 			});
 		});
 
@@ -960,7 +950,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm().catch((err) => {
-				expect(err.message.substring(0, 10)).toEqual("I/O Error:");
+				expect(err.message.substring(0, 10)).toBe("I/O Error:");
 			});
 		});
 
@@ -975,7 +965,7 @@ describe("Node-Poppler Module", () => {
 			await poppler
 				.pdfToPpm(undefined, undefined, options)
 				.catch((err) => {
-					expect(err.message).toEqual(
+					expect(err.message).toBe(
 						"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 					);
 				});
@@ -996,7 +986,7 @@ describe("Node-Poppler Module", () => {
 						options
 					)
 					.catch((err) => {
-						expect(err.message).toEqual(
+						expect(err.message).toBe(
 							`Invalid option provided for the current version of the binary used. 'printProgress' was introduced in v21.03.0, but received v${version}`
 						);
 					});
@@ -1013,7 +1003,7 @@ describe("Node-Poppler Module", () => {
 			await poppler
 				.pdfToPpm(undefined, undefined, options)
 				.catch((err) => {
-					expect(err.message).toEqual(
+					expect(err.message).toBe(
 						"Invalid option provided 'middlePageToConvert'"
 					);
 				});
@@ -1027,10 +1017,10 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToPs(file, outputFile);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should convert PDF file as Buffer to PS file", async () => {
@@ -1039,7 +1029,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToPs(attachmentFile);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -1052,10 +1042,10 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToPs(file, outputFile, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -1064,7 +1054,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
+				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 			});
 		});
 
@@ -1073,7 +1063,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs().catch((err) => {
-				expect(err.message.substring(0, 10)).toEqual("I/O Error:");
+				expect(err.message.substring(0, 10)).toBe("I/O Error:");
 			});
 		});
 
@@ -1086,7 +1076,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 				);
 			});
@@ -1100,7 +1090,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid option provided 'middlePageToConvert'"
 				);
 			});
@@ -1114,10 +1104,10 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToText(file, outputFile);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should convert PDF file as Buffer to Text file", async () => {
@@ -1126,7 +1116,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToText(attachmentFile);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 		});
 
 		test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -1139,10 +1129,10 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToText(file, outputFile, options);
 
-			expect(typeof res).toEqual("string");
+			expect(typeof res).toBe("string");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
-			).toEqual(true);
+			).toBe(true);
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -1151,7 +1141,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Syntax Warning:");
+				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
 			});
 		});
 
@@ -1160,7 +1150,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText().catch((err) => {
-				expect(err.message.substring(0, 10)).toEqual("I/O Error:");
+				expect(err.message.substring(0, 10)).toBe("I/O Error:");
 			});
 		});
 
@@ -1173,7 +1163,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
 				);
 			});
@@ -1187,7 +1177,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText(file, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid option provided 'middlePageToConvert'"
 				);
 			});
@@ -1205,8 +1195,8 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfUnite(files, outputFile);
 
-			expect(typeof res).toEqual("string");
-			expect(fs.existsSync(`${testDirectory}united.pdf`)).toEqual(true);
+			expect(typeof res).toBe("string");
+			expect(fs.existsSync(`${testDirectory}united.pdf`)).toBe(true);
 		});
 
 		test("Should return an Error object if a PDF file and non-PDF file are attempted to be merged", async () => {
@@ -1218,7 +1208,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfUnite(files).catch((err) => {
-				expect(err.message.substring(0, 15)).toEqual("Command failed:");
+				expect(err.message.substring(0, 15)).toBe("Command failed:");
 			});
 		});
 
@@ -1234,7 +1224,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfUnite(files, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
+				expect(err.message).toBe(
 					"Invalid value type provided for option 'printVersionInfo', expected boolean but received string"
 				);
 			});
@@ -1252,9 +1242,7 @@ describe("Node-Poppler Module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfUnite(files, undefined, options).catch((err) => {
-				expect(err.message).toEqual(
-					"Invalid option provided 'wordFile'"
-				);
+				expect(err.message).toBe("Invalid option provided 'wordFile'");
 			});
 		});
 	});

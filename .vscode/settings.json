@@ -7,6 +7,5 @@
 	},
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"npm.packageManager": "npm",
-	"redhat.telemetry.enabled": false,
-	"telemetry.enableCrashReporter": false
+	"redhat.telemetry.enabled": false
 }

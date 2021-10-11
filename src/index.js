@@ -1,3 +1,4 @@
+/* eslint-disable security/detect-child-process */
 const camelCase = require("camelcase");
 const os = require("os");
 const path = require("upath");

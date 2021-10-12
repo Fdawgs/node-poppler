@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.0.2](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.1...v5.0.2) (2021-10-12)
+
+
+### Bug Fixes
+
+* **lib:** update poppler win32 binaries from 21.09.0 to 21.10.0 ([c8e1e77](https://www.github.com/Fdawgs/node-poppler/commit/c8e1e770cb4afa77008c82d56c3fbf3cb5609670))
+
+
+### Continuous Integration
+
+* **automerge:** update location of octokit rest methods ([c2d6959](https://www.github.com/Fdawgs/node-poppler/commit/c2d6959f71355fd7a8e274c19e59010ef4bff958))
+
+
+### Miscellaneous
+
+* **.eslintrc:** remove inaccurate sourcetype ([#323](https://www.github.com/Fdawgs/node-poppler/issues/323)) ([db65fb6](https://www.github.com/Fdawgs/node-poppler/commit/db65fb62386596fb327c8fbd1d7a6e5fd8f16003))
+* **.prettierrc:** enable `bracketsameline` option ([ccd86c9](https://www.github.com/Fdawgs/node-poppler/commit/ccd86c92087c0df02ceab41251a6cbc653ce3d85))
+* **.vscode:** remove deprecated settings ([#324](https://www.github.com/Fdawgs/node-poppler/issues/324)) ([0638d8e](https://www.github.com/Fdawgs/node-poppler/commit/0638d8e776de7d7570f2578250c7f8651c6c3ad4))
+* **index:** resolve `jsdoc/no-multi-asterisks` warning ([#325](https://www.github.com/Fdawgs/node-poppler/issues/325)) ([e54c041](https://www.github.com/Fdawgs/node-poppler/commit/e54c04199df9e8e49535f0e0499d908ab6ab9531))
+
+
+### Dependencies
+
+* **deps-dev:** add eslint-plugin-security-node ([#316](https://www.github.com/Fdawgs/node-poppler/issues/316)) ([5f7d6ad](https://www.github.com/Fdawgs/node-poppler/commit/5f7d6ad6d3bae444b05fdeb735f38d392fdd360c))
+* **deps-dev:** bump eslint-plugin-jest from 24.7.0 to 25.0.5 ([5924cc7](https://www.github.com/Fdawgs/node-poppler/commit/5924cc700bb5ad47dd76ec9bfced9013af69c733))
+* **deps-dev:** bump prettier from 2.4.0 to 2.4.1 ([ae71ec2](https://www.github.com/Fdawgs/node-poppler/commit/ae71ec26996cb1b6eb90d84265eda27e4efa6499))
+* **deps:** bump actions/setup-node from 2.4.0 to 2.4.1 ([18e8f62](https://www.github.com/Fdawgs/node-poppler/commit/18e8f62d479a632e04eae37de7745f07ef81d3aa))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([e27671b](https://www.github.com/Fdawgs/node-poppler/commit/e27671b95a0241168bd5a367aa2940f2bee278ff))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([84e74cf](https://www.github.com/Fdawgs/node-poppler/commit/84e74cf100dcd7f6fc97438910d78d7cd54bcffa))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.4 to 4.1.5 ([2f8052b](https://www.github.com/Fdawgs/node-poppler/commit/2f8052b7884dd55505d571acb5cefd53f3edb08a))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.5 to 4.1.9 ([bf11955](https://www.github.com/Fdawgs/node-poppler/commit/bf11955894fc0a4100533f1e744a5a4d956d1fd3))
+
 ### [5.0.1](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.0...v5.0.1) (2021-09-13)
 
 

@@ -4,7 +4,7 @@ export class Poppler {
 	 * Useful for Linux users who have poppler-utils binaries already installed.
 	 */
 	constructor(binPath?: string | undefined);
-	popplerPath: string | undefined;
+	popplerPath: string;
 	/**
 	 * @author Frazer Smith
 	 * @description Embeds files (attachments) into a PDF file.
@@ -206,10 +206,10 @@ export class Poppler {
 	 * @param {string=} options.jpegOptions - When used with `options.jpegFile`, this option can
 	 * be used to control the JPEG compression parameters. It takes a string of the form
 	 * `"<opt>=<val>[,<opt>=<val>]"`. Currently available options are:
-	 * * `quality` Selects the JPEG quality value. The value must be an integer between 0 and 100.
-	 * * `progressive` Select progressive JPEG output. The possible values are "y", "n", indicating
+	 * - `quality` Selects the JPEG quality value. The value must be an integer between 0 and 100.
+	 * - `progressive` Select progressive JPEG output. The possible values are "y", "n", indicating
 	 * progressive (yes) or non-progressive (no), respectively.
-	 * * `optimize` Sets whether to compute optimal Huffman coding tables for the JPEG output, which
+	 * - `optimize` Sets whether to compute optimal Huffman coding tables for the JPEG output, which
 	 * will create smaller files but make an extra pass over the data. The value must be "y" or "n",
 	 * with "y" performing optimization, otherwise the default Huffman tables are used.
 	 *

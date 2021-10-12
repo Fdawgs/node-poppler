@@ -33,7 +33,7 @@ switch (platform) {
 			__dirname,
 			"lib",
 			"win32",
-			"poppler-21.09.0",
+			"poppler-21.10.0",
 			"Library",
 			"bin"
 		);
@@ -727,6 +727,47 @@ describe("Node-Poppler Module", () => {
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
+					)
+				).toBe(true);
+			});
+		});
+
+		describe("PDF-to-TIFF Option", () => {
+			test("Should convert PDF file to TIFF file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					tiffFile: true,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
+
+				const res = await poppler.pdfToCairo(file, outputFile, options);
+
+				expect(typeof res).toBe("string");
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
+					)
+				).toBe(true);
+			});
+
+			test("Should convert PDF file as Buffer to TIFF file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const attachmentFile = fs.readFileSync(file);
+				const options = {
+					tiffFile: true,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
+
+				const res = await poppler.pdfToCairo(
+					attachmentFile,
+					outputFile,
+					options
+				);
+
+				expect(typeof res).toBe("string");
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
 					)
 				).toBe(true);
 			});

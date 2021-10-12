@@ -18,7 +18,6 @@ All notable changes to this project will be documented in this file.
 ### Miscellaneous
 
 * **.eslintrc:** remove inaccurate sourcetype ([#323](https://www.github.com/Fdawgs/node-poppler/issues/323)) ([db65fb6](https://www.github.com/Fdawgs/node-poppler/commit/db65fb62386596fb327c8fbd1d7a6e5fd8f16003))
-* **.npmignore:** add `API.md` ([#314](https://www.github.com/Fdawgs/node-poppler/issues/314)) ([d392388](https://www.github.com/Fdawgs/node-poppler/commit/d392388151c69f8ba7f8ec8c2a0eacfb48f90d39))
 * **.prettierrc:** enable `bracketsameline` option ([ccd86c9](https://www.github.com/Fdawgs/node-poppler/commit/ccd86c92087c0df02ceab41251a6cbc653ce3d85))
 * **.vscode:** remove deprecated settings ([#324](https://www.github.com/Fdawgs/node-poppler/issues/324)) ([0638d8e](https://www.github.com/Fdawgs/node-poppler/commit/0638d8e776de7d7570f2578250c7f8651c6c3ad4))
 * **index:** resolve `jsdoc/no-multi-asterisks` warning ([#325](https://www.github.com/Fdawgs/node-poppler/issues/325)) ([e54c041](https://www.github.com/Fdawgs/node-poppler/commit/e54c04199df9e8e49535f0e0499d908ab6ab9531))

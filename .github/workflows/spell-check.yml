@@ -13,7 +13,7 @@ jobs:
         name: Spellcheck with Typo CI
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2.3.4
+            - uses: actions/checkout@v2.3.5
             - name: TypoCheck
               uses: typoci/spellcheck-action@v1.1.0
               env:

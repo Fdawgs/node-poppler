@@ -31,6 +31,9 @@ jobs:
 
             - name: Publish to NPM
               if: steps.release.outputs.release_created
-              run: npm publish --ignore-scripts
+              # Disable Husky prepare script
+              run: |
+                  npm set-script prepare ""
+                  npm publish --ignore-scripts
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

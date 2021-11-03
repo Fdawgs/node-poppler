@@ -1,5 +1,4 @@
 {
-	"bracketSameLine": true,
 	"endOfLine": "lf",
 	"semi": true,
 	"tabWidth": 4,
@@ -8,6 +7,7 @@
 		{
 			"files": ["*.css", "*.html", "*.scss"],
 			"options": {
+				"bracketSameLine": true,
 				"printWidth": 120
 			}
 		}

@@ -88,7 +88,7 @@ class Poppler {
 	 */
 	constructor(binPath) {
 		if (binPath) {
-			this.popplerPath = binPath;
+			this.popplerPath = path.normalizeTrim(binPath);
 		} else {
 			let popplerPath;
 

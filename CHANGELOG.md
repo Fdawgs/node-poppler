@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.0.3](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.2...v5.0.3) (2021-11-04)
+
+
+### Bug Fixes
+
+* **index:** normalize `binPath` constructor param ([#345](https://www.github.com/Fdawgs/node-poppler/issues/345)) ([3ec8cae](https://www.github.com/Fdawgs/node-poppler/commit/3ec8cae42432a49fcd467467d7a1c2cd5d9be1d8))
+* **index:** pdftocairo `singleFile` option ([31bbe79](https://www.github.com/Fdawgs/node-poppler/commit/31bbe79d22a68b751ee060a682b7bdcfa44ce6a7))
+* **index:** pdftocairo stdout encoding for `pdfFile` option ([8ddcbba](https://www.github.com/Fdawgs/node-poppler/commit/8ddcbba76c2ed650b6c56f63ecb8621fdc66ff45))
+
+
+### Documentation
+
+* bump coc from v2.0.0 to v2.1.0 ([#334](https://www.github.com/Fdawgs/node-poppler/issues/334)) ([7754959](https://www.github.com/Fdawgs/node-poppler/commit/775495963ef5011754e734f63dca1a04c5d3cb25))
+
+
+### Miscellaneous
+
+* **.eslintrc:** remove redundant `impliedStrict` option ([#332](https://www.github.com/Fdawgs/node-poppler/issues/332)) ([417380e](https://www.github.com/Fdawgs/node-poppler/commit/417380ec732352e2aa7040accac1333d02588e88))
+* **.prettierrc:** only enable `bracketSameLine` for html ([#341](https://www.github.com/Fdawgs/node-poppler/issues/341)) ([30dfe71](https://www.github.com/Fdawgs/node-poppler/commit/30dfe719fa84be290406240c054cf142a7e41824))
+
+
+### Continuous Integration
+
+* **cd:** stop `prepare` script running ([#342](https://www.github.com/Fdawgs/node-poppler/issues/342)) ([5d22a76](https://www.github.com/Fdawgs/node-poppler/commit/5d22a76e8b331630e6a65a9061a1fe57d3785e3a))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 13.2.1 to 14.1.0 ([ffb9ccb](https://www.github.com/Fdawgs/node-poppler/commit/ffb9ccbd93b58d8f6a3571f8a8036187ccf63a49))
+* **deps-dev:** bump @commitlint/config-conventional ([fa491ea](https://www.github.com/Fdawgs/node-poppler/commit/fa491eaf0a8c8d8a35c3039b9054aa81e770ff06))
+* **deps-dev:** bump dev dependencies ([#335](https://www.github.com/Fdawgs/node-poppler/issues/335)) ([ac2e119](https://www.github.com/Fdawgs/node-poppler/commit/ac2e11955b8b00d74666262ee68bed1f6f3ab346))
+* **deps:** bump actions/checkout from 2.3.4 to 2.3.5 ([d3d838c](https://www.github.com/Fdawgs/node-poppler/commit/d3d838caf16a47af3841ec5bce45fa98f01b7c21))
+* **deps:** bump actions/checkout from 2.3.5 to 2.4.0 ([de7aad4](https://www.github.com/Fdawgs/node-poppler/commit/de7aad4ab48198f065df6044b4c897c23b831829))
+
 ### [5.0.2](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.1...v5.0.2) (2021-10-12)
 
 

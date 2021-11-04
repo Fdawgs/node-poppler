@@ -568,6 +568,18 @@ describe("Node-Poppler Module", () => {
 				).toBe(true);
 			});
 
+			test("Should convert PDF file to JPG file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					jpegFile: true,
+					singleFile: true,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toBe("string");
+			});
+
 			test("Should convert PDF file as Buffer to JPG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const attachmentFile = fs.readFileSync(file);
@@ -591,6 +603,58 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
+		describe("PDF-to-PDF Option", () => {
+			test("Should convert PDF file to PDF file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					pdfFile: true,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`;
+
+				const res = await poppler.pdfToCairo(file, outputFile, options);
+
+				expect(typeof res).toBe("string");
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`
+					)
+				).toBe(true);
+			});
+
+			test("Should convert PDF file to PDF file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					pdfFile: true,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toBe("string");
+			});
+
+			test("Should convert PDF file as Buffer to PDF file", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const attachmentFile = fs.readFileSync(file);
+				const options = {
+					pdfFile: true,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`;
+
+				const res = await poppler.pdfToCairo(
+					attachmentFile,
+					outputFile,
+					options
+				);
+
+				expect(typeof res).toBe("string");
+				expect(
+					fs.existsSync(
+						`${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`
+					)
+				).toBe(true);
+			});
+		});
+
 		describe("PDF-to-PNG Option", () => {
 			test("Should convert PDF file to PNG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
@@ -607,6 +671,18 @@ describe("Node-Poppler Module", () => {
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
 					)
 				).toBe(true);
+			});
+
+			test("Should convert PDF file to PNG file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					pngFile: true,
+					singleFile: true,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toBe("string");
 			});
 
 			test("Should convert PDF file as Buffer to PNG file", async () => {
@@ -748,6 +824,18 @@ describe("Node-Poppler Module", () => {
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
 					)
 				).toBe(true);
+			});
+
+			test("Should convert PDF file to TIFF file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					singleFile: true,
+					tiffFile: true,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toBe("string");
 			});
 
 			test("Should convert PDF file as Buffer to TIFF file", async () => {

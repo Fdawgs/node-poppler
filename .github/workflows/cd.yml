@@ -20,7 +20,7 @@ jobs:
                   release-type: node
                   package-name: node-poppler
 
-            - uses: actions/checkout@v2.3.5
+            - uses: actions/checkout@v2.4.0
               if: steps.release.outputs.release_created
 
             - uses: actions/setup-node@v2.4.1

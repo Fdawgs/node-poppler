@@ -591,6 +591,18 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
+		test("Should convert PDF file to JPG file and send to stdout", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const options = {
+				jpegFile: true,
+				singleFile: true,
+			};
+
+			const res = await poppler.pdfToCairo(file, undefined, options);
+
+			expect(typeof res).toBe("string");
+		});
+
 		describe("PDF-to-PNG Option", () => {
 			test("Should convert PDF file to PNG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
@@ -629,6 +641,18 @@ describe("Node-Poppler Module", () => {
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
 					)
 				).toBe(true);
+			});
+
+			test("Should convert PDF file to PNG file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					pngFile: true,
+					singleFile: true,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toBe("string");
 			});
 		});
 
@@ -770,6 +794,18 @@ describe("Node-Poppler Module", () => {
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
 					)
 				).toBe(true);
+			});
+
+			test("Should convert PDF file to TIFF file and send to stdout", async () => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					singleFile: true,
+					tiffFile: true,
+				};
+
+				const res = await poppler.pdfToCairo(file, undefined, options);
+
+				expect(typeof res).toBe("string");
 			});
 		});
 

@@ -193,7 +193,7 @@ Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 | Param | Type | Description |
 | --- | --- | --- |
 | file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
-| [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. Using stdout is not valid with image formats unless `options.singleFile` is set to `true`. If not set then the output filename will be derived from the PDF file name. |
+| [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. Using stdout is not valid with image formats (jpeg, png, and tiff) unless `options.singleFile` is set to `true`. If not set then the output filename will be derived from the PDF file name. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.antialias] | <code>&#x27;default&#x27;</code> \| <code>&#x27;none&#x27;</code> \| <code>&#x27;gray&#x27;</code> \| <code>&#x27;subpixel&#x27;</code> \| <code>&#x27;fast&#x27;</code> \| <code>&#x27;good&#x27;</code> \| <code>&#x27;best&#x27;</code> | Set the cairo antialias option used for text and drawing in image files (or rasterized regions in vector output). |
 | [options.cropBox] | <code>boolean</code> | Uses the crop box rather than media box when generating the files (PNG/JPEG/TIFF only). |
@@ -235,7 +235,7 @@ Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 | [options.scalePageTo] | <code>number</code> | Scales the long side of each page (width for landscape pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will be determined by the aspect ratio of the page (PNG/JPEG/TIFF only). |
 | [options.scalePageToXAxis] | <code>number</code> | Scales each page horizontally to fit in scale-to-x pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of the page (PNG/JPEG/TIFF only). |
 | [options.scalePageToYAxis] | <code>number</code> | Scales each page vertically to fit in scale-to-y pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of the page (PNG/JPEG/TIFF only). |
-| [options.singleFile] | <code>boolean</code> | Writes only the first page and does not add digits. |
+| [options.singleFile] | <code>boolean</code> | Writes only the first page and does not add digits. Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`. Sets output encoding to `binary`. |
 | [options.svgFile] | <code>boolean</code> | Generate SVG (Scalable Vector Graphics) file. |
 | [options.tiffCompression] | <code>&#x27;none&#x27;</code> \| <code>&#x27;packbits&#x27;</code> \| <code>&#x27;jpeg&#x27;</code> \| <code>&#x27;lzw&#x27;</code> \| <code>&#x27;deflate&#x27;</code> | Set TIFF compression. |
 | [options.tiffFile] | <code>boolean</code> | Generate TIFF file(s). |

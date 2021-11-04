@@ -170,7 +170,7 @@ export class Poppler {
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 *
 	 * If `undefined` then will write output to stdout. Using stdout is not valid with image formats
-	 * unless `options.singleFile` is set to `true`.
+	 * (jpeg, png, and tiff) unless `options.singleFile` is set to `true`.
 	 *
 	 * If not set then the output filename will be derived from the PDF file name.
 	 * @param {object=} options - Object containing options to pass to binary.
@@ -258,6 +258,8 @@ export class Poppler {
 	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
 	 * the page (PNG/JPEG/TIFF only).
 	 * @param {boolean=} options.singleFile - Writes only the first page and does not add digits.
+	 * Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`.
+	 * Sets output encoding to `binary`.
 	 * @param {boolean=} options.svgFile - Generate SVG (Scalable Vector Graphics) file.
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
 	 * @param {boolean=} options.tiffFile - Generate TIFF file(s).

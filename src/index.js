@@ -574,6 +574,7 @@ class Poppler {
 	 *
 	 * If `undefined` then will write output to stdout. Using stdout is not valid with image formats
 	 * (jpeg, png, and tiff) unless `options.singleFile` is set to `true`.
+	 * Encoding is set to `binary` if used with `options.singleFile` or `options.pdfFile`.
 	 *
 	 * If not set then the output filename will be derived from the PDF file name.
 	 * @param {object=} options - Object containing options to pass to binary.
@@ -662,7 +663,6 @@ class Poppler {
 	 * the page (PNG/JPEG/TIFF only).
 	 * @param {boolean=} options.singleFile - Writes only the first page and does not add digits.
 	 * Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`.
-	 * Sets output encoding to `binary`.
 	 * @param {boolean=} options.svgFile - Generate SVG (Scalable Vector Graphics) file.
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
 	 * @param {boolean=} options.tiffFile - Generate TIFF file(s).
@@ -753,7 +753,10 @@ class Poppler {
 					args
 				);
 
-				if (outputFile === undefined && args.includes("-singlefile")) {
+				if (
+					outputFile === undefined &&
+					args.some((arg) => ["-singlefile", "-pdf"].includes(arg))
+				) {
 					child.stdout.setEncoding("binary");
 				}
 

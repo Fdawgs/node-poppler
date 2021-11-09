@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.0.4](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.3...v5.0.4) (2021-11-09)
+
+
+### Continuous Integration
+
+* **ci:** do not run clean-up on draft prs ([088722d](https://www.github.com/Fdawgs/node-poppler/commit/088722dde16c7cc9176c90797386d33b56b92056))
+* **spell-check:** do not run on draft prs ([6a48913](https://www.github.com/Fdawgs/node-poppler/commit/6a48913d01f63ec34c30230fe82bb34ad5d3b49e))
+
 ### [5.0.3](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.2...v5.0.3) (2021-11-04)
 
 

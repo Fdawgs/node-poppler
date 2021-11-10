@@ -131,6 +131,8 @@ export class Poppler {
 	 * is specified using the `options.firstPageToConvert` and `options.lastPageToConvert` options, only destinations
 	 * in the page range are listed.
 	 * @param {boolean=} options.printRawDates - Prints the raw (undecoded) date strings, directly from the PDF file.
+	 * @param {boolean=} options.printUrls - Print all URLs in the PDF; only URLs referenced by PDF objects
+	 * such as Link Annotations are listed, not URL strings in the text content.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
 	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.

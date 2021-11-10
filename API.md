@@ -158,6 +158,7 @@ Prints the contents of the `Info` dictionary from a PDF file.
 | [options.printMetadata] | <code>boolean</code> | Prints document-level metadata. (This is the `Metadata` stream from the PDF file's Catalog object). |
 | [options.printNamedDests] | <code>boolean</code> | Print a list of all named destinations. If a page range is specified using the `options.firstPageToConvert` and `options.lastPageToConvert` options, only destinations in the page range are listed. |
 | [options.printRawDates] | <code>boolean</code> | Prints the raw (undecoded) date strings, directly from the PDF file. |
+| [options.printUrls] | <code>boolean</code> | Print all URLs in the PDF; only URLs referenced by PDF objects such as Link Annotations are listed, not URL strings in the text content. |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
 | [options.userPassword] | <code>string</code> | User password (for encrypted files). |
 

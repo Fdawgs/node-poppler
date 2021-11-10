@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.1.0](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.3...v5.1.0) (2021-11-10)
+
+
+### Features
+
+* **index:** add `printUrls` arg to `pdfInfo()` options ([d58da5f](https://www.github.com/Fdawgs/node-poppler/commit/d58da5fc0d6fe6b1eeef8a660701052dd11a17fa))
+
+
+### Bug Fixes
+
+* **lib:** update poppler win32 binaries from 21.10.0 to 21.11.0 ([1838bee](https://www.github.com/Fdawgs/node-poppler/commit/1838bee3c21dc6d467db3246b5e5da0802216cf2))
+
+
+### Continuous Integration
+
+* **ci:** do not run clean-up on draft prs ([088722d](https://www.github.com/Fdawgs/node-poppler/commit/088722dde16c7cc9176c90797386d33b56b92056))
+* **spell-check:** do not run on draft prs ([6a48913](https://www.github.com/Fdawgs/node-poppler/commit/6a48913d01f63ec34c30230fe82bb34ad5d3b49e))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-config-airbnb-base from 14.2.1 to 15.0.0 ([063e5b4](https://www.github.com/Fdawgs/node-poppler/commit/063e5b4338f7a311aebcb3b75c264c4cfd9a8ed5))
+* **deps-dev:** bump eslint-plugin-import from 2.25.2 to 2.25.3 ([5962621](https://www.github.com/Fdawgs/node-poppler/commit/59626219099901f73cd30ab720f07f1f50fa33e6))
+* **deps-dev:** bump eslint-plugin-jest from 25.2.2 to 25.2.4 ([77423a1](https://www.github.com/Fdawgs/node-poppler/commit/77423a1f88976182404ccabe498e7d26f22f40a4))
+
+
+### Documentation
+
+* **readme:** add stdout example ([#353](https://www.github.com/Fdawgs/node-poppler/issues/353)) ([f1ed3c2](https://www.github.com/Fdawgs/node-poppler/commit/f1ed3c27eff6a4bfc3a3d273c5137e7a184c4096))
+
 ### [5.0.3](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.2...v5.0.3) (2021-11-04)
 
 

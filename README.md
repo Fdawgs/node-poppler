@@ -87,6 +87,25 @@ const res = await poppler.pdfToCairo(file, outputFile, options);
 console.log(res);
 ```
 
+Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first of a PDF file to a new
+PDF file using stdout:
+
+```js
+const fs = require("fs");
+const { Poppler } = require("node-poppler");
+
+const file = "test_document.pdf";
+const poppler = new Poppler();
+const options = {
+	lastPageToConvert: 1,
+	pdfFile: true,
+};
+
+const res = await poppler.pdfToCairo(file, undefined, options);
+// pdfToCairo writes to stdout using binary encoding if pdfFile or singleFile options are used
+await fs.writeFile("new_file.pdf", res, { encoding: "binary" });
+```
+
 ### poppler.pdfToHtml
 
 Example of calling `poppler.pdfToHtml()` with a promise chain:

@@ -13,6 +13,7 @@ on:
         paths-ignore:
             - "docs/**"
             - "*.md"
+        types: [opened, ready_for_review, reopened, synchronize]
 
 jobs:
     CodeQL-Build:

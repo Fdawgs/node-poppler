@@ -7,7 +7,7 @@ on:
     pull_request:
         branches:
             - master
-
+        types: [opened, ready_for_review, reopened, synchronize]
 jobs:
     spellcheck:
         name: Spellcheck with Typo CI

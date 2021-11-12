@@ -11,6 +11,7 @@ on:
             - master
         paths:
             - "**/*.md"
+        types: [opened, ready_for_review, reopened, synchronize]
     schedule:
         #        ┌───────────── minute (0 - 59)
         #        │  ┌───────────── hour (0 - 23)

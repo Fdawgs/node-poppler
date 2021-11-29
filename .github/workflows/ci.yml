@@ -43,6 +43,8 @@ jobs:
               run: npm run lint
             - name: Run Prettier
               run: npm run lint:prettier:ci
+            - name: Run License Checker
+              run: npm run lint:licenses
             - name: Compile TypeScript Definition File
               run: npm run build
 

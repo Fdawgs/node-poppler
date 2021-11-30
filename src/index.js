@@ -92,21 +92,20 @@ class Poppler {
 		} else {
 			let popplerPath;
 
-			// Build path to Poppler binaries based on OS
-			switch (platform) {
-				// Windows OS
-				case "win32":
-					popplerPath = path.joinSafe(
-						__dirname,
-						"lib",
-						"win32",
-						"poppler-21.11.0",
-						"Library",
-						"bin"
-					);
-					break;
-				default:
-					throw new Error(`${platform} is NOT supported.`);
+			// Build path to Poppler binaries
+			if (platform === "win32") {
+				popplerPath = path.joinSafe(
+					__dirname,
+					"lib",
+					"win32",
+					"poppler-21.11.0",
+					"Library",
+					"bin"
+				);
+			} else {
+				throw new Error(
+					`${platform} poppler-util binaries are not provided, please pass the \`poppler-utils\` installation directory as a parameter to the Poppler instance.`
+				);
 			}
 
 			this.popplerPath = popplerPath;

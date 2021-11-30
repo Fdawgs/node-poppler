@@ -1,7 +1,6 @@
 /* eslint-disable security/detect-child-process */
 const camelCase = require("camelcase");
 const path = require("upath");
-const { platform } = require("os");
 const { execFile } = require("child_process");
 const util = require("util");
 
@@ -88,7 +87,7 @@ class Poppler {
 	constructor(binPath) {
 		if (binPath) {
 			this.popplerPath = path.normalizeTrim(binPath);
-		} else if (platform() === "win32") {
+		} else if (process.platform === "win32") {
 			this.popplerPath = path.joinSafe(
 				__dirname,
 				"lib",
@@ -99,7 +98,7 @@ class Poppler {
 			);
 		} else {
 			throw new Error(
-				`${platform} poppler-util binaries are not provided, please pass the \`poppler-utils\` installation directory as a parameter to the Poppler instance.`
+				`${process.platform} poppler-util binaries are not provided, please pass the \`poppler-utils\` installation directory as a parameter to the Poppler instance.`
 			);
 		}
 	}

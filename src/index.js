@@ -98,7 +98,7 @@ class Poppler {
 			);
 		} else {
 			throw new Error(
-				`${process.platform} poppler-util binaries are not provided, please pass the \`poppler-utils\` installation directory as a parameter to the Poppler instance.`
+				`${process.platform} poppler-util binaries are not provided, please pass the installation directory as a parameter to the Poppler instance.`
 			);
 		}
 	}

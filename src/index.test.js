@@ -3,7 +3,6 @@
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require("fs");
 const glob = require("glob");
-const os = require("os");
 const path = require("upath");
 const { execFile } = require("child_process");
 const util = require("util");
@@ -15,8 +14,7 @@ const testDirectory = `${__dirname}/../test_files/`;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
 let testBinaryPath;
-const platform = os.platform();
-switch (platform) {
+switch (process.platform) {
 	// macOS
 	case "darwin":
 		testBinaryPath = "/usr/local/bin";
@@ -61,9 +59,9 @@ describe("Node-Poppler Module", () => {
 		await clean();
 	});
 
-	if (platform === "win32") {
-		describe("Constructor", () => {
-			test("Should convert PDF file to SVG file without binary set, and use included binaries", async () => {
+	describe("Constructor", () => {
+		if (process.platform === "win32") {
+			test("Should convert PDF file to SVG file without binary path set on win32, and use included binaries", async () => {
 				const poppler = new Poppler();
 				const options = {
 					svgFile: true,
@@ -79,8 +77,22 @@ describe("Node-Poppler Module", () => {
 					)
 				).toBe(true);
 			});
-		});
-	}
+		}
+
+		if (process.platform !== "win32") {
+			test(`Should return an Error object if binary path unset on ${process.platform}`, async () => {
+				expect.assertions(1);
+				try {
+					// eslint-disable-next-line no-unused-vars
+					const poppler = new Poppler();
+				} catch (err) {
+					expect(err.message).toBe(
+						`${process.platform} poppler-util binaries are not provided, please pass the installation directory as a parameter to the Poppler instance.`
+					);
+				}
+			});
+		}
+	});
 
 	describe("pdfAttach Function", () => {
 		test("Should attach file to PDF file", async () => {

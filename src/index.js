@@ -1,12 +1,10 @@
 /* eslint-disable security/detect-child-process */
 const camelCase = require("camelcase");
-const os = require("os");
 const path = require("upath");
 const { execFile } = require("child_process");
 const util = require("util");
 
 const execFileAsync = util.promisify(execFile);
-const platform = os.platform();
 
 const errorMessages = {
 	0: "No Error",
@@ -89,27 +87,19 @@ class Poppler {
 	constructor(binPath) {
 		if (binPath) {
 			this.popplerPath = path.normalizeTrim(binPath);
+		} else if (process.platform === "win32") {
+			this.popplerPath = path.joinSafe(
+				__dirname,
+				"lib",
+				"win32",
+				"poppler-21.11.0",
+				"Library",
+				"bin"
+			);
 		} else {
-			let popplerPath;
-
-			// Build path to Poppler binaries based on OS
-			switch (platform) {
-				// Windows OS
-				case "win32":
-					popplerPath = path.joinSafe(
-						__dirname,
-						"lib",
-						"win32",
-						"poppler-21.11.0",
-						"Library",
-						"bin"
-					);
-					break;
-				default:
-					throw new Error(`${platform} is NOT supported.`);
-			}
-
-			this.popplerPath = popplerPath;
+			throw new Error(
+				`${process.platform} poppler-util binaries are not provided, please pass the installation directory as a parameter to the Poppler instance.`
+			);
 		}
 	}
 

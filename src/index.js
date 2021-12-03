@@ -57,16 +57,6 @@ function parseOptions(acceptedOptions, options, version) {
 						`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOptions[key].minVersion}, but received v${version}`
 					);
 				}
-
-				if (
-					acceptedOptions[key].maxVersion &&
-					version &&
-					version > acceptedOptions[key].maxVersion
-				) {
-					invalidArgs.push(
-						`Invalid option provided for the current version of the binary used. '${key}' is only present up to v${acceptedOptions[key].maxVersion}, but received v${version}`
-					);
-				}
 			} else {
 				invalidArgs.push(`Invalid option provided '${key}'`);
 			}

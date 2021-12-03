@@ -360,6 +360,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -767,6 +768,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -903,6 +905,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1103,6 +1106,7 @@ class Poppler {
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1348,6 +1352,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1498,6 +1503,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});

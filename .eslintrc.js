@@ -37,5 +37,6 @@ module.exports = {
 		"prefer-destructuring": "off",
 		"promise/prefer-await-to-callbacks": "warn",
 		"promise/prefer-await-to-then": "warn",
+		"security/detect-object-injection": "off",
 	},
 };

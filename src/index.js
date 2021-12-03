@@ -57,16 +57,6 @@ function parseOptions(acceptedOptions, options, version) {
 						`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOptions[key].minVersion}, but received v${version}`
 					);
 				}
-
-				if (
-					acceptedOptions[key].maxVersion &&
-					version &&
-					version > acceptedOptions[key].maxVersion
-				) {
-					invalidArgs.push(
-						`Invalid option provided for the current version of the binary used. '${key}' is only present up to v${acceptedOptions[key].maxVersion}, but received v${version}`
-					);
-				}
 			} else {
 				invalidArgs.push(`Invalid option provided '${key}'`);
 			}
@@ -370,6 +360,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -777,6 +768,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -913,6 +905,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1113,6 +1106,7 @@ class Poppler {
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1358,6 +1352,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1508,6 +1503,7 @@ class Poppler {
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
+						/* istanbul ignore next */
 						reject(new Error(errorMessages[code]));
 					}
 				});

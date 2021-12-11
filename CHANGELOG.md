@@ -2,6 +2,45 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.1](https://www.github.com/Fdawgs/node-poppler/compare/v5.1.0...v5.1.1) (2021-12-11)
+
+
+### Bug Fixes
+
+* **index:** correct message thrown for missing binaries ([#363](https://www.github.com/Fdawgs/node-poppler/issues/363)) ([5249d61](https://www.github.com/Fdawgs/node-poppler/commit/5249d6183b11f6c9eded643359e05d4f3ecf9f01))
+
+
+### Continuous Integration
+
+* trigger workflows when drafts marked as "ready to review" ([#354](https://www.github.com/Fdawgs/node-poppler/issues/354)) ([de922a2](https://www.github.com/Fdawgs/node-poppler/commit/de922a20494d8bc87333da156248342805e37a15))
+
+
+### Documentation
+
+* **coc:** reduce verbosity ([b38d954](https://www.github.com/Fdawgs/node-poppler/commit/b38d9549a890e434868cc26a59867a26a49b8167))
+
+
+### Improvements
+
+* **index:** remove unused `if` conditional ([d56589d](https://www.github.com/Fdawgs/node-poppler/commit/d56589d41caa60533718bee24eb5797aec0f40eb))
+
+
+### Miscellaneous
+
+* ignore `.yarnclean` ([#360](https://www.github.com/Fdawgs/node-poppler/issues/360)) ([196b528](https://www.github.com/Fdawgs/node-poppler/commit/196b528c860bd0bd191e1dbc53c1dfc2867aa334))
+* **package/scripts:** add `lint:licenses` ([#361](https://www.github.com/Fdawgs/node-poppler/issues/361)) ([a010434](https://www.github.com/Fdawgs/node-poppler/commit/a0104344c0569887e3af82263aa091cde0027afc))
+* turn off `security/detect-object-injection` eslint rule ([1d6dc35](https://www.github.com/Fdawgs/node-poppler/commit/1d6dc35bfe4c0e54391745a3ff45485b0c76fac0))
+
+
+### Dependencies
+
+* **dependabot:** ignore minor and patch github-actions updates ([#356](https://www.github.com/Fdawgs/node-poppler/issues/356)) ([56d1a86](https://www.github.com/Fdawgs/node-poppler/commit/56d1a86e20681a8b747da0713176522be7de258e))
+* **dependabot:** ignore minor and patch release-please-action updates ([#367](https://www.github.com/Fdawgs/node-poppler/issues/367)) ([b77729f](https://www.github.com/Fdawgs/node-poppler/commit/b77729f4764f7536fda9ead8cac0b08dc75b269a))
+* **deps-dev:** bump @commitlint/cli from 14.1.0 to 15.0.0 ([08d87b5](https://www.github.com/Fdawgs/node-poppler/commit/08d87b55891b56d81fe73db9db1a0b0eb98b9d17))
+* **deps-dev:** bump @commitlint/config-conventional ([c5452ee](https://www.github.com/Fdawgs/node-poppler/commit/c5452eef69ef09503ee7a357f09595c8526a2e0a))
+* **deps-dev:** bump prettier from 2.4.1 to 2.5.0 ([74f9e90](https://www.github.com/Fdawgs/node-poppler/commit/74f9e907ef9cdabb039463845055316d42a21ad5))
+* **deps-dev:** bump prettier from 2.5.0 to 2.5.1 ([d51ca9b](https://www.github.com/Fdawgs/node-poppler/commit/d51ca9b64884715b47eed2db64229b84c9dd9f4a))
+
 ## [5.1.0](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.3...v5.1.0) (2021-11-10)
 
 

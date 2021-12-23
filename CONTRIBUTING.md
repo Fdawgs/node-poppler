@@ -47,6 +47,8 @@ Prior to submitting a pull request back to the main repository, please make sure
 2. Run `npm test` to check the code adheres to the defined style and that it passes the Jest tests
 3. Run `npm run lint:prettier` to run the Prettier code formatter over the code
 
+Step 2. is automatically run by a pre-commit hook added by [Husky](https://typicode.github.io/husky/#/).
+
 ## Release Process
 
 Before a release, ensure the API docs are regenerated with `npm run doc`.

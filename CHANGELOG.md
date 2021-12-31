@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.2](https://www.github.com/Fdawgs/node-poppler/compare/v5.1.1...v5.1.2) (2021-12-31)
+
+
+### Miscellaneous
+
+* **package:** add `tif` to keywords array ([#369](https://www.github.com/Fdawgs/node-poppler/issues/369)) ([2929483](https://www.github.com/Fdawgs/node-poppler/commit/29294830056f6e8f53c82822560b840d2031f3b6))
+
+
+### Documentation
+
+* **contributing:** add mention of husky pre-commit hook ([8eb63e8](https://www.github.com/Fdawgs/node-poppler/commit/8eb63e8d0dac69bce76fda5032506a5171abf3e4))
+* **contributing:** add step for `lint:licenses` script ([#371](https://www.github.com/Fdawgs/node-poppler/issues/371)) ([5e9f7a5](https://www.github.com/Fdawgs/node-poppler/commit/5e9f7a510f6aa407d39a17ad24d83ade59c98f41))
+
 ### [5.1.1](https://www.github.com/Fdawgs/node-poppler/compare/v5.1.0...v5.1.1) (2021-12-11)
 
 

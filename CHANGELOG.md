@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.2](https://github.com/Fdawgs/node-poppler/compare/v5.1.1...v5.1.2) (2022-01-19)
+
+
+### Bug Fixes
+
+* **lib:** update poppler win32 binaries from 21.11.0 to 22.01.0 ([e76a813](https://github.com/Fdawgs/node-poppler/commit/e76a813b3ad12bb15a808ccd4d1a163016d36eec))
+
+
+### Miscellaneous
+
+* **package:** add `tif` to keywords array ([#369](https://github.com/Fdawgs/node-poppler/issues/369)) ([2929483](https://github.com/Fdawgs/node-poppler/commit/29294830056f6e8f53c82822560b840d2031f3b6))
+
+
+### Documentation
+
+* **contributing:** add mention of husky pre-commit hook ([8eb63e8](https://github.com/Fdawgs/node-poppler/commit/8eb63e8d0dac69bce76fda5032506a5171abf3e4))
+* **contributing:** add step for `lint:licenses` script ([#371](https://github.com/Fdawgs/node-poppler/issues/371)) ([5e9f7a5](https://github.com/Fdawgs/node-poppler/commit/5e9f7a510f6aa407d39a17ad24d83ade59c98f41))
+
+
+### Continuous Integration
+
+* remove spellcheck workflow ([#376](https://github.com/Fdawgs/node-poppler/issues/376)) ([56fb637](https://github.com/Fdawgs/node-poppler/commit/56fb63713171c4aed9458d48b4d2cf66a5b91419))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 15.0.0 to 16.0.1 ([8ab463a](https://github.com/Fdawgs/node-poppler/commit/8ab463aa30b8bc1fd36ed40c4595f2d274d90674))
+* **deps-dev:** bump @commitlint/config-conventional ([6cda233](https://github.com/Fdawgs/node-poppler/commit/6cda233e5a29e44961c2e52d2a19d01b008e9ddc))
+* **deps-dev:** bump eslint from 7.32.0 to 8.7.0 ([73a77a5](https://github.com/Fdawgs/node-poppler/commit/73a77a5bdd250e19086ef9bd838f74b5fec2ef81))
+* **deps-dev:** bump eslint-plugin-promise from 5.2.0 to 6.0.0 ([535feb0](https://github.com/Fdawgs/node-poppler/commit/535feb08ba673a0a6812e5a3d8a4bf0e2af518f3))
+* **deps:** bump GoogleCloudPlatform/release-please-action from 2 to 3 ([e3c9d8e](https://github.com/Fdawgs/node-poppler/commit/e3c9d8e76c34d949f6d98e60a57f19dcff90a766))
+* update dependencies ([db8a76d](https://github.com/Fdawgs/node-poppler/commit/db8a76d498760e808544026183e9aade29b4c4d8))
+
 ### [5.1.1](https://www.github.com/Fdawgs/node-poppler/compare/v5.1.0...v5.1.1) (2021-12-11)
 
 

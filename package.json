@@ -76,22 +76,22 @@
 		"eslint": "^8.7.0",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.3.0",
-		"eslint-plugin-import": "^2.25.3",
-		"eslint-plugin-jest": "^25.2.4",
-		"eslint-plugin-jsdoc": "^37.0.3",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-jest": "^25.7.0",
+		"eslint-plugin-jsdoc": "^37.6.1",
 		"eslint-plugin-promise": "^6.0.0",
 		"eslint-plugin-security": "^1.4.0",
-		"eslint-plugin-security-node": "^1.0.14",
+		"eslint-plugin-security-node": "^1.1.0",
 		"glob": "^7.2.0",
 		"husky": "^7.0.4",
-		"jest": "^27.3.1",
+		"jest": "^27.4.7",
 		"jsdoc-to-markdown": "^7.1.0",
 		"license-checker": "^25.0.1",
 		"prettier": "2.5.1",
-		"typescript": "^4.4.4"
+		"typescript": "^4.5.4"
 	},
 	"dependencies": {
-		"camelcase": "^6.2.0",
+		"camelcase": "^6.3.0",
 		"upath": "^2.0.1"
 	}
 }

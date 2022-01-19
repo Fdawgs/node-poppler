@@ -31,7 +31,7 @@ switch (process.platform) {
 			__dirname,
 			"lib",
 			"win32",
-			"poppler-21.11.0",
+			"poppler-22.01.0",
 			"Library",
 			"bin"
 		);

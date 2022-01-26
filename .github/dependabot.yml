@@ -12,6 +12,9 @@ updates:
           - dependency-name: "GoogleCloudPlatform/release-please-action"
             update-types:
                 ["version-update:semver-minor", "version-update:semver-patch"]
+          - dependency-name: "wagoid/commitlint-github-action"
+            update-types:
+                ["version-update:semver-minor", "version-update:semver-patch"]
       schedule:
           interval: monthly
       open-pull-requests-limit: 25

@@ -17,7 +17,6 @@ updates:
                 ["version-update:semver-minor", "version-update:semver-patch"]
       schedule:
           interval: monthly
-      open-pull-requests-limit: 25
 
     - package-ecosystem: npm
       commit-message:
@@ -26,4 +25,3 @@ updates:
       directory: /
       schedule:
           interval: monthly
-      open-pull-requests-limit: 25

@@ -14,7 +14,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Download Artifact
-              uses: actions/github-script@v5
+              uses: actions/github-script@v6
               with:
                   script: |
                       const fs = require('fs');
@@ -38,7 +38,7 @@ jobs:
                       fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
             - run: unzip pr.zip
             - name: Comment on PR
-              uses: actions/github-script@v5
+              uses: actions/github-script@v6
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   script: |

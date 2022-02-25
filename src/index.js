@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-child-process */
 const camelCase = require("camelcase");
 const path = require("upath");
-const { execFile } = require("child_process");
+const { execFile, spawn } = require("child_process");
 const util = require("util");
 
 const execFileAsync = util.promisify(execFile);
@@ -230,7 +230,7 @@ class Poppler {
 					args.push(file);
 				}
 
-				const child = execFile(
+				const child = spawn(
 					path.joinSafe(this.popplerPath, "pdffonts"),
 					args
 				);
@@ -331,7 +331,7 @@ class Poppler {
 					args.push(outputPrefix);
 				}
 
-				const child = execFile(
+				const child = spawn(
 					path.joinSafe(this.popplerPath, "pdfimages"),
 					args
 				);
@@ -732,7 +732,7 @@ class Poppler {
 					args.push("-");
 				}
 
-				const child = execFile(
+				const child = spawn(
 					path.joinSafe(this.popplerPath, "pdftocairo"),
 					args
 				);
@@ -876,7 +876,7 @@ class Poppler {
 					args.push(outputFile);
 				}
 
-				const child = execFile(
+				const child = spawn(
 					path.joinSafe(this.popplerPath, "pdftohtml"),
 					args
 				);
@@ -1084,7 +1084,7 @@ class Poppler {
 
 				args.push(outputPath);
 
-				const child = execFile(
+				const child = spawn(
 					path.joinSafe(this.popplerPath, "pdftoppm"),
 					args
 				);
@@ -1323,7 +1323,7 @@ class Poppler {
 					args.push("-");
 				}
 
-				const child = execFile(
+				const child = spawn(
 					path.joinSafe(this.popplerPath, "pdftops"),
 					args
 				);
@@ -1474,7 +1474,7 @@ class Poppler {
 					args.push("-");
 				}
 
-				const child = execFile(
+				const child = spawn(
 					path.joinSafe(this.popplerPath, "pdftotext"),
 					args
 				);

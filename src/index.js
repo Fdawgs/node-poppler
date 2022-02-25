@@ -1,7 +1,7 @@
 /* eslint-disable security/detect-child-process */
 const camelCase = require("camelcase");
 const path = require("upath");
-const { execFile } = require("child_process");
+const { execFile, spawn } = require("child_process");
 const util = require("util");
 
 const execFileAsync = util.promisify(execFile);

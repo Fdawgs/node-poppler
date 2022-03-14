@@ -52,7 +52,7 @@
 		"lint:licenses": "license-checker --direct --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Unlicense\" --production --summary",
 		"lint:prettier": "prettier . --write --ignore-unknown",
 		"lint:prettier:ci": "prettier . --check --ignore-unknown",
-		"prepare": "husky install && rm -rf .git/hooks && ln -s ../.husky .git/hooks",
+		"prepare": "husky install",
 		"test": "npm run lint && npm run jest"
 	},
 	"commitlint": {

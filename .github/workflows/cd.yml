@@ -1,5 +1,8 @@
 name: CD
 
+# **What it does**: Automatically generates releases and release notes.
+# **Why we have it**: Allows development to focus on higher value work.
+
 on:
     push:
         branches:
@@ -20,20 +23,22 @@ jobs:
                   release-type: node
                   package-name: node-poppler
 
-            - uses: actions/checkout@v3
+            - name: Check out repo
               if: steps.release.outputs.release_created
+              uses: actions/checkout@v2
 
-            - uses: actions/setup-node@v3
+            - name: Setup Node
+              if: steps.release.outputs.release_created
+              uses: actions/setup-node@v3
               with:
                   node-version: 16
                   registry-url: https://registry.npmjs.org/
-              if: steps.release.outputs.release_created
 
             - name: Publish to NPM
               if: steps.release.outputs.release_created
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
               # Disable Husky prepare script
               run: |
                   npm set-script prepare ""
                   npm publish --ignore-scripts
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,5 +1,8 @@
 name: CodeQL Analysis
 
+# **What it does**: This runs CodeQL on this repo.
+# **Why we have it**: Security scanning.
+
 on:
     push:
         branches:
@@ -20,15 +23,18 @@ jobs:
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout Repository
+            - name: Check out repo
               uses: actions/checkout@v3
+
             # Initialises the CodeQL tools for scanning
             - name: Initialise CodeQL
               uses: github/codeql-action/init@v1
               with:
                   languages: javascript
                   queries: security-and-quality
+
             - name: Autobuild
               uses: github/codeql-action/autobuild@v1
-            - name: Perform CodeQL Analysis
+
+            - name: Perform CodeQL analysis
               uses: github/codeql-action/analyze@v1

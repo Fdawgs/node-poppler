@@ -1,5 +1,8 @@
 name: CI
 
+# **What it does**: Runs our tests.
+# **Why we have it**: We want our tests to pass before merging code.
+
 on:
     push:
         branches:
@@ -33,18 +36,26 @@ jobs:
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
+            - name: Check out repo
+              uses: actions/checkout@v3
+
+            - name: Setup Node
+              uses: actions/setup-node@v3
               with:
                   node-version: 16
+
             - name: Install
               run: npm install --ignore-scripts
+
             - name: Run ESLint
               run: npm run lint
+
             - name: Run Prettier
               run: npm run lint:prettier:ci
+
             - name: Run License Checker
               run: npm run lint:licenses
+
             - name: Compile TypeScript Definition File
               run: npm run build
 
@@ -55,10 +66,13 @@ jobs:
             github.actor != 'dependabot[bot]'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - name: Check out repo
+              uses: actions/checkout@v3
               with:
                   fetch-depth: 0
-            - uses: wagoid/commitlint-github-action@v4
+
+            - name: Run Commitlint
+              uses: wagoid/commitlint-github-action@v4
               with:
                   configFile: ./package.json
 
@@ -71,26 +85,33 @@ jobs:
                 os: [macos-latest, ubuntu-latest, windows-latest]
         runs-on: ${{ matrix.os }}
         steps:
-            - uses: actions/checkout@v3
-            - name: Use Node.js ${{ matrix.node }}
+            - name: Check out repo
+              uses: actions/checkout@v3
+
+            - name: Setup Node ${{ matrix.node }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node }}
+
             - name: Install
               run: npm install --ignore-scripts
-            - name: Install macOS Dependencies
+
+            - name: Install macOS dependencies
               if: matrix.os == 'macos-latest'
               env:
                   HOMEBREW_NO_ANALYTICS: 1
                   HOMEBREW_NO_INSTALL_CLEANUP: 1
                   HOMEBREW_NO_AUTO_UPDATE: 1
               run: brew install poppler
-            - name: Install Ubuntu Dependencies
+
+            - name: Install Ubuntu dependencies
               if: matrix.os == 'ubuntu-latest'
               run: sudo apt-get -y install poppler-data poppler-utils
-            - name: Run Tests
+
+            - name: Run tests
               run: npm run jest:coverage
-            - name: Coveralls Parallel
+
+            - name: Coveralls parallel
               if: github.repository == 'Fdawgs/node-poppler'
               uses: coverallsapp/github-action@1.1.3
               with:
@@ -106,7 +127,7 @@ jobs:
             github.repository == 'Fdawgs/node-poppler'
         runs-on: ubuntu-latest
         steps:
-            - name: Coveralls Finished
+            - name: Coveralls finished
               uses: coverallsapp/github-action@1.1.3
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -120,12 +141,16 @@ jobs:
             github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - name: Save PR Number
+            - name: Check out repo
+              uses: actions/checkout@v3
+
+            - name: Save PR number
               run: |
                   mkdir -p ./pr
                   echo ${{ github.event.number }} > ./pr/NR
-            - uses: actions/upload-artifact@v2
+
+            - name: Upload PR number in artifact
+              uses: actions/upload-artifact@v2
               with:
                   name: pr
                   path: pr/

@@ -46,12 +46,12 @@
 	"scripts": {
 		"build": "tsc",
 		"doc": "tsc && jsdoc2md src/index.js > API.md && npm run lint:prettier",
-		"jest": "jest --detectOpenHandles --runInBand",
-		"jest:coverage": "jest --coverage --runInBand",
+		"jest": "jest",
+		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
 		"lint:licenses": "license-checker --direct --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Unlicense\" --production --summary",
-		"lint:prettier": "prettier . --write --ignore-unknown",
-		"lint:prettier:ci": "prettier . --check --ignore-unknown",
+		"lint:prettier": "prettier . -w -u",
+		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
 		"test": "npm run lint && npm run jest"
 	},

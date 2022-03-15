@@ -1,5 +1,8 @@
 name: Automerge Dependabot PRs
 
+# **What it does**: Automatically merge Dependabot PRs that pass the CI workflow run.
+# **Why we have it**: To keep our dependencies up-to-date, to avoid security issues.
+
 on:
     workflow_run:
         workflows: ["CI"]
@@ -13,7 +16,7 @@ jobs:
             github.actor == 'dependabot[bot]'
         runs-on: ubuntu-latest
         steps:
-            - name: Download Artifact
+            - name: Download artifact
               uses: actions/github-script@v6
               with:
                   script: |
@@ -36,7 +39,10 @@ jobs:
                       });
 
                       fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
-            - run: unzip pr.zip
+
+            - name: Unzip artifact
+              run: unzip pr.zip
+
             - name: Comment on PR
               uses: actions/github-script@v6
               with:

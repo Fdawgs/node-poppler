@@ -1,5 +1,8 @@
 name: Check Markdown for Broken Links
 
+# **What it does**: Checks all links in markdown files, apart from links to repo commits and issues.
+# **Why we have it**: We want to know if any links break.
+
 on:
     push:
         branches:
@@ -32,9 +35,13 @@ jobs:
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
+            - name: Check out repo
+              uses: actions/checkout@v3
+
+            - name: Setup Node
+              uses: actions/setup-node@v3
               with:
                   node-version: 16
+
             - name: Run Linkinator
               run: npx linkinator '{,!(node_modules)/**/}*.md' --skip 'https:\/\/(?:www\.|)github\.com\/Fdawgs\/.*\/(?:commit|issues)\/, http://0.0.0.0, src\/lib\/*'

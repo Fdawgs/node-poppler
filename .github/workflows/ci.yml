@@ -135,10 +135,11 @@ jobs:
 
     # This job is used to save the PR number in an artifact, for use in the automerge.yml workflow
     save-pr-number:
-        name: Save PR Number
+        name: Save Dependabot PR Number
         if: >
             github.event.pull_request.draft == false &&
-            github.event_name == 'pull_request'
+            github.event_name == 'pull_request' &&
+            github.actor == 'dependabot[bot]'
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo

@@ -33,8 +33,5 @@ jobs:
                   languages: javascript
                   queries: security-and-quality
 
-            - name: Autobuild
-              uses: github/codeql-action/autobuild@v1
-
             - name: Perform CodeQL analysis
               uses: github/codeql-action/analyze@v1

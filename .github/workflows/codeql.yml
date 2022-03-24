@@ -18,8 +18,13 @@ on:
             - "*.md"
         types: [opened, ready_for_review, reopened, synchronize]
 
+permissions:
+    actions: read
+    contents: read
+    security-events: write
+
 jobs:
-    CodeQL-Build:
+    build:
         if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         steps:

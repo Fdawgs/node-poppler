@@ -40,7 +40,7 @@ version of binary.</p>
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [binPath] | <code>string</code> | Path of poppler-utils binaries. Useful for Linux users who have poppler-utils binaries already installed. |
+| [binPath] | <code>string</code> | Path of poppler-utils binaries. |
 
 <a name="Poppler+pdfAttach"></a>
 

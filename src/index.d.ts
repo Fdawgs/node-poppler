@@ -1,7 +1,6 @@
 export class Poppler {
 	/**
 	 * @param {string=} binPath - Path of poppler-utils binaries.
-	 * Useful for Linux users who have poppler-utils binaries already installed.
 	 */
 	constructor(binPath?: string | undefined);
 	popplerPath: string;

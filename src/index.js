@@ -72,7 +72,6 @@ function parseOptions(acceptedOptions, options, version) {
 class Poppler {
 	/**
 	 * @param {string=} binPath - Path of poppler-utils binaries.
-	 * Useful for Linux users who have poppler-utils binaries already installed.
 	 */
 	constructor(binPath) {
 		if (binPath) {

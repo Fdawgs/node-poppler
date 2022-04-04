@@ -43,7 +43,7 @@ jobs:
             - name: Unzip artifact
               run: unzip pr.zip
 
-            - name: Comment on PR
+            - name: Merge PR
               uses: actions/github-script@v6
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -52,7 +52,7 @@ jobs:
                       const pull_number = Number(fs.readFileSync('./NR'));
 
                       await github.rest.pulls.merge({
-                          merge_method: "merge",
+                          merge_method: "squash",
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           pull_number: pull_number,

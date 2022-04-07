@@ -19,8 +19,6 @@ on:
         types: [opened, ready_for_review, reopened, synchronize]
 
 permissions:
-    actions: read
-    contents: read
     security-events: write
 
 # This allows a subsequently queued workflow run to interrupt previous runs

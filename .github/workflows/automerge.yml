@@ -8,6 +8,10 @@ on:
         workflows: ["CI"]
         types: [completed]
 
+permissions:
+    contents: write
+    pull-requests: write
+
 jobs:
     on-success:
         if: >

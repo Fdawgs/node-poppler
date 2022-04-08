@@ -83,8 +83,7 @@ describe("Node-Poppler Module", () => {
 			test(`Should return an Error object if binary path unset on ${process.platform}`, async () => {
 				expect.assertions(1);
 				try {
-					// eslint-disable-next-line no-unused-vars
-					const poppler = new Poppler();
+					Poppler();
 				} catch (err) {
 					expect(err.message).toBe(
 						`${process.platform} poppler-util binaries are not provided, please pass the installation directory as a parameter to the Poppler instance.`

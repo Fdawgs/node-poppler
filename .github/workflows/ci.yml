@@ -27,6 +27,19 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
+    dependency-review:
+        name: Dependency Review
+        if: >
+            github.event.pull_request.draft == false &&
+            github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repo
+              uses: actions/checkout@v3
+
+            - name: "Dependency review"
+              uses: actions/dependency-review-action@v1
+
     lint:
         name: Lint Code
         if: github.event.pull_request.draft == false

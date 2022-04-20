@@ -29,7 +29,9 @@ concurrency:
 jobs:
     dependency-review:
         name: Dependency Review
-        if: github.event.pull_request.draft == false
+        if: >
+            github.event.pull_request.draft == false &&
+            github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo

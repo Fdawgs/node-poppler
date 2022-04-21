@@ -9,11 +9,13 @@ on:
             - master
         paths:
             - "**/*.md"
+            - "!CHANGELOG.md"
     pull_request:
         branches:
             - master
         paths:
             - "**/*.md"
+            - "!CHANGELOG.md"
         types: [opened, ready_for_review, reopened, synchronize]
     schedule:
         #        ┌───────────── minute (0 - 59)
@@ -41,10 +43,8 @@ jobs:
             - name: Check out repo
               uses: actions/checkout@v3
 
-            - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 16
-
             - name: Run Linkinator
-              run: npx linkinator '{,!(node_modules)/**/}*.md' --skip 'https:\/\/(?:www\.|)github\.com\/Fdawgs\/.*\/(?:commit|issues)\/, http://0.0.0.0, src\/lib\/*'
+              uses: JustinBeckwith/linkinator-action@v1
+              with:
+                  paths: "**/*.md"
+                  linksToSkip: "https://(?:www.|)github.com/Fdawgs/.*/(?:commit|issues|compare)/, http://0.0.0.0, src/lib/**"

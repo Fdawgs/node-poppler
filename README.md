@@ -20,7 +20,7 @@ It was created out of a need for a PDF-to-HTML conversion module at [Yeovil Dist
 Install using [`npm`](https://www.npmjs.com/package/node-poppler):
 
 ```bash
-npm install node-poppler
+npm i node-poppler
 ```
 
 Or [`yarn`](https://yarnpkg.com/en/package/node-poppler):

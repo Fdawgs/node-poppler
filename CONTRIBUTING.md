@@ -17,7 +17,7 @@ Other processes and specifications that are in use in this repository are:
 
 This repository requires that you have [Node.js](https://nodejs.org) >=12.0.0 installed.
 
-With that in place, you can fork the repository, clone it, and then run `npm install` to install all dependencies.
+With that in place, you can fork the repository, clone it, and then run `npm i` to install all dependencies.
 
 ### Development Workflow
 

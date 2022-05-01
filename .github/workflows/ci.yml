@@ -160,7 +160,7 @@ jobs:
                   echo ${{ github.event.number }} > ./pr/NR
 
             - name: Upload PR number in artifact
-              uses: actions/upload-artifact@v2
+              uses: actions/upload-artifact@v3
               with:
                   name: pr
                   path: pr/

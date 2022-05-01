@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.4](https://github.com/Fdawgs/node-poppler/compare/v5.1.3...v5.1.4) (2022-05-01)
+
+
+### Bug Fixes
+
+* **lib:** update poppler win32 binaries from 22.01.0 to 22.04.0 ([6e74afe](https://github.com/Fdawgs/node-poppler/commit/6e74afe9ee73511a71a14942cd14648b33ec7e2e))
+
+
+### Documentation
+
+* improve readability ([05fcda6](https://github.com/Fdawgs/node-poppler/commit/05fcda639482b687ad3ef01455dc28523ac1b4ea))
+* **readme:** remove snyk badge ([e0a743e](https://github.com/Fdawgs/node-poppler/commit/e0a743ee8462dfa7d39ac2c316cf73b8d4aa0c05))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([3c688e4](https://github.com/Fdawgs/node-poppler/commit/3c688e44885998bfcd7af2e16007f6b6545a4d06))
+* **deps-dev:** bump eslint-plugin-jsdoc from 37.9.7 to 38.0.6 ([49b8cfc](https://github.com/Fdawgs/node-poppler/commit/49b8cfc13fac695c66898a74f939e8f1f8e646cd))
+* **deps-dev:** bump eslint-plugin-jsdoc from 38.1.6 to 39.2.9 ([#405](https://github.com/Fdawgs/node-poppler/issues/405)) ([91d5d11](https://github.com/Fdawgs/node-poppler/commit/91d5d1137463ce3cf94045cb9dfbe36ff51f3191))
+* **deps-dev:** bump glob from 7.2.0 to 8.0.1 ([#406](https://github.com/Fdawgs/node-poppler/issues/406)) ([2a9beef](https://github.com/Fdawgs/node-poppler/commit/2a9beef2531a6e10051fbad6272833f7e30aa729))
+* **deps-dev:** bump jest from 27.5.1 to 28.0.3 ([#407](https://github.com/Fdawgs/node-poppler/issues/407)) ([1894c0d](https://github.com/Fdawgs/node-poppler/commit/1894c0d3efba1595b435f20e3bc8d64e4bfc6690))
+* **deps:** bump actions/checkout from 2 to 3 ([96754d1](https://github.com/Fdawgs/node-poppler/commit/96754d1a07fce63cc2bfa5c8c388f5da4a92eaa9))
+* **deps:** bump actions/checkout from 2 to 3 ([efab6f2](https://github.com/Fdawgs/node-poppler/commit/efab6f21ca40ecd84bcc3e3e292c30cc6e785071))
+* **deps:** bump actions/upload-artifact from 2 to 3 ([#403](https://github.com/Fdawgs/node-poppler/issues/403)) ([e9c8796](https://github.com/Fdawgs/node-poppler/commit/e9c879699ac9e61223ddeee69af97d2f14c7f7d6))
+* **deps:** bump github/codeql-action from 1 to 2 ([#404](https://github.com/Fdawgs/node-poppler/issues/404)) ([073cc6b](https://github.com/Fdawgs/node-poppler/commit/073cc6bd618331604ae6000522c0cf418315da44))
+
+
+### Miscellaneous
+
+* **ci:** remove quotation marks from step name ([81d9943](https://github.com/Fdawgs/node-poppler/commit/81d994381ff75c94f0db831911354259fec28909))
+* **index:** update constructor jsdoc param tag ([#397](https://github.com/Fdawgs/node-poppler/issues/397)) ([cdc61ba](https://github.com/Fdawgs/node-poppler/commit/cdc61ba8b41777ac3132aa72d1644a46b352788e))
+* **scripts:** remove redundant gitkraken fix from prepare script ([be8b489](https://github.com/Fdawgs/node-poppler/commit/be8b4896c6dd1bf19ffc6abac406f1d6838e0742))
+* **scripts:** use shorter arg aliases; remove debugging args from jest ([eefa9cf](https://github.com/Fdawgs/node-poppler/commit/eefa9cf3272fc8f41bf106601ce9c63be17172ca))
+* use npm install alias ([8de1b7c](https://github.com/Fdawgs/node-poppler/commit/8de1b7c8b4a4d4f0fa0c3fd0053028cd48345efd))
+
+
+### Continuous Integration
+
+* add dependency-review job ([dd75f36](https://github.com/Fdawgs/node-poppler/commit/dd75f3695e4a7983d86827dc45ba1229fee07b59))
+* add job step names, workflow comments, and whitespace ([0bdd954](https://github.com/Fdawgs/node-poppler/commit/0bdd95488f6786424e7b4eab7aea20192642ad69))
+* **automerge:** squash automerge prs ([#398](https://github.com/Fdawgs/node-poppler/issues/398)) ([1390729](https://github.com/Fdawgs/node-poppler/commit/1390729aa6dff19e6ad1897884e79b80446994c9))
+* **cd:** update org name for release-please-action ([d5a5257](https://github.com/Fdawgs/node-poppler/commit/d5a5257efcbccb24824004713c7642e946fd0701))
+* **codeql-analysis:** remove unused autobuild step ([de272df](https://github.com/Fdawgs/node-poppler/commit/de272dfc59731f4870164b3633c0402f5d6e1b37))
+* **codeql:** grant minimum permissions to run; rename file ([#394](https://github.com/Fdawgs/node-poppler/issues/394)) ([d3e80e2](https://github.com/Fdawgs/node-poppler/commit/d3e80e2dcf2fd4e0855bdc645cd3bca29dec9116))
+* **link-check:** fix skip regex ([23602df](https://github.com/Fdawgs/node-poppler/commit/23602df07dd51725b89e8244b213a62bb6789e12))
+* **link-check:** replace `npx linkinator` call with github action ([8f626a7](https://github.com/Fdawgs/node-poppler/commit/8f626a79fec0858f52920b3b4d16d01a9dc66c3f))
+* only save pr number artifact for dependabot ([c5c6a7c](https://github.com/Fdawgs/node-poppler/commit/c5c6a7c8f4a04100b59867b35e3ae3509b61ac0f))
+* only trigger dependency-review on pr ([e6e7f71](https://github.com/Fdawgs/node-poppler/commit/e6e7f71f9c2007236737358d110d6752da9bbbff))
+* reduce workflow permissions to minimum ([86e7668](https://github.com/Fdawgs/node-poppler/commit/86e7668d28305454023b9b7c466e8f8764858dcf))
+* replace workflow-run-cleanup-action with github concurrency ([ac13ada](https://github.com/Fdawgs/node-poppler/commit/ac13adab01eb50b80ccd8224adbeb8f453b7c12a))
+
 ### [5.1.3](https://github.com/Fdawgs/node-poppler/compare/v5.1.2...v5.1.3) (2022-02-25)
 
 

@@ -78,7 +78,7 @@
 		"eslint-config-prettier": "^8.4.0",
 		"eslint-plugin-import": "^2.25.4",
 		"eslint-plugin-jest": "^26.1.1",
-		"eslint-plugin-jsdoc": "^38.0.6",
+		"eslint-plugin-jsdoc": "^39.2.9",
 		"eslint-plugin-promise": "^6.0.0",
 		"eslint-plugin-security": "^1.4.0",
 		"eslint-plugin-security-node": "^1.1.1",

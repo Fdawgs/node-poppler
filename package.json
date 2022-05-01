@@ -84,7 +84,7 @@
 		"eslint-plugin-security-node": "^1.1.1",
 		"glob": "^8.0.1",
 		"husky": "^7.0.4",
-		"jest": "^27.5.1",
+		"jest": "^28.0.3",
 		"jsdoc-to-markdown": "^7.1.1",
 		"license-checker": "^25.0.1",
 		"prettier": "^2.5.1",

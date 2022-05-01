@@ -71,24 +71,24 @@
 		"testTimeout": 60000
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^16.2.1",
-		"@commitlint/config-conventional": "^16.2.1",
-		"eslint": "^8.9.0",
+		"@commitlint/cli": "^16.2.4",
+		"@commitlint/config-conventional": "^16.2.4",
+		"eslint": "^8.14.0",
 		"eslint-config-airbnb-base": "^15.0.0",
 		"eslint-config-prettier": "^8.4.0",
-		"eslint-plugin-import": "^2.25.4",
-		"eslint-plugin-jest": "^26.1.1",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-jest": "^26.1.5",
 		"eslint-plugin-jsdoc": "^39.2.9",
 		"eslint-plugin-promise": "^6.0.0",
-		"eslint-plugin-security": "^1.4.0",
+		"eslint-plugin-security": "^1.5.0",
 		"eslint-plugin-security-node": "^1.1.1",
 		"glob": "^8.0.1",
 		"husky": "^7.0.4",
 		"jest": "^28.0.3",
 		"jsdoc-to-markdown": "^7.1.1",
 		"license-checker": "^25.0.1",
-		"prettier": "^2.5.1",
-		"typescript": "^4.5.5"
+		"prettier": "^2.6.2",
+		"typescript": "^4.6.4"
 	},
 	"dependencies": {
 		"camelcase": "^6.3.0",

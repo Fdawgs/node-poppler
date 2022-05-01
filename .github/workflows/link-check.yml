@@ -47,4 +47,4 @@ jobs:
               uses: JustinBeckwith/linkinator-action@v1
               with:
                   paths: "**/*.md"
-                  linksToSkip: "https://(?:www.|)github.com/Fdawgs/.*/(?:commit|issues|compare)/, http://0.0.0.0, src/lib/**"
+                  skip: "https://(?:www.|)github.com/Fdawgs/.*/(?:commit|issues|compare)/, http://0.0.0.0"

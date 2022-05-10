@@ -1,0 +1,13 @@
+name: CodeQL Config
+
+# **What it does**: This provides a config to the CodeQL GitHub Action in this repo.
+# **Why we have it**: Security scanning.
+
+queries:
+    - uses: security-and-quality
+
+# Limit the paths scanning takes place, improving speed of scan
+paths:
+    - "**/*.html"
+    - "**/*.js"
+    - "**/*.yml"

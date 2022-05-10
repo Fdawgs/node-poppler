@@ -10,9 +10,10 @@ on:
     pull_request:
         branches:
             - master
-        paths-ignore:
-            - "docs/**"
-            - "*.md"
+        paths:
+            - "**/*.html"
+            - "**/*.js"
+            - "**/*.yml"
         types: [opened, ready_for_review, reopened, synchronize]
 
 permissions:

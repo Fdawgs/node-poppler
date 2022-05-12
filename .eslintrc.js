@@ -7,6 +7,7 @@ module.exports = {
 		"airbnb-base",
 		"plugin:promise/recommended",
 		"plugin:jest/recommended",
+		"plugin:jest/style",
 		"plugin:jsdoc/recommended",
 		"plugin:security/recommended",
 		"plugin:security-node/recommended",

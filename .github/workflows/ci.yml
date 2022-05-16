@@ -149,7 +149,7 @@ jobs:
         if: >
             github.event.pull_request.draft == false &&
             github.event_name == 'pull_request' &&
-            github.actor == 'dependabot[bot]'
+            github.event.pull_request.user.login == 'dependabot[bot]'
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo

@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.5](https://github.com/Fdawgs/node-poppler/compare/v5.1.4...v5.1.5) (2022-05-16)
+
+
+### Miscellaneous
+
+* **.eslintrc:** enable `plugin:jest/style` rules ([#411](https://github.com/Fdawgs/node-poppler/issues/411)) ([caee804](https://github.com/Fdawgs/node-poppler/commit/caee804360025db416a42449e85b795bb27a22cd))
+* **.github/codeql-config:** remove quotation marks ([0aa9e7f](https://github.com/Fdawgs/node-poppler/commit/0aa9e7f52bf45afdc12b7a4a793185fd856f0c5d))
+
+
+### Continuous Integration
+
+* check `user.login` is dependabot instead of `actor` ([#413](https://github.com/Fdawgs/node-poppler/issues/413)) ([a92ace7](https://github.com/Fdawgs/node-poppler/commit/a92ace7d35fce8ad53f19680b28e676a66bd7333))
+* **ci:** require `unit-tests` job to pass for `save-pr-number` job to run ([5cb3a96](https://github.com/Fdawgs/node-poppler/commit/5cb3a969e052f3f0b360b4f4c2cc7294fa575c83))
+* **codeql:** only run on pr changes to `.html`, `.js`, and `.yml` files ([bc130e3](https://github.com/Fdawgs/node-poppler/commit/bc130e3784cd312db47e290bd56f0dccf24f09fa))
+* **codeql:** resolve missing analyses ([83c2acf](https://github.com/Fdawgs/node-poppler/commit/83c2acf5c30d1fef7a9387ba38a2428bc9ea062c))
+* **codeql:** specify which files to scan during analysis ([0ec3679](https://github.com/Fdawgs/node-poppler/commit/0ec367918ea37fb8f3bab86a664e4cf3db383eb8))
+
 ### [5.1.4](https://github.com/Fdawgs/node-poppler/compare/v5.1.3...v5.1.4) (2022-05-01)
 
 

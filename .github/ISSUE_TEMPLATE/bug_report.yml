@@ -32,7 +32,7 @@ body:
       id: node-version
       attributes:
           label: Node.js version
-          placeholder: 14.x
+          placeholder: 18.x
       validations:
           required: true
 

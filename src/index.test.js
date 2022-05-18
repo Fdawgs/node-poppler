@@ -221,7 +221,7 @@ describe("Node-Poppler Module", () => {
 
 		test("Should examine 3 pages of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = fs.readFileSync(file);
+			const attachmentFile = await fs.promises.readFile(file);
 
 			const options = {
 				firstPageToExamine: 1,
@@ -294,7 +294,7 @@ describe("Node-Poppler Module", () => {
 
 		test("Should accept options and list all images in PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = fs.readFileSync(file);
+			const attachmentFile = await fs.promises.readFile(file);
 			const options = {
 				list: true,
 			};
@@ -384,7 +384,7 @@ describe("Node-Poppler Module", () => {
 
 		test("Should list info of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = fs.readFileSync(file);
+			const attachmentFile = await fs.promises.readFile(file);
 
 			const res = await poppler.pdfInfo(attachmentFile);
 
@@ -539,7 +539,7 @@ describe("Node-Poppler Module", () => {
 
 			test("Should convert PDF file as Buffer to EPS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = fs.readFileSync(file);
+				const attachmentFile = await fs.promises.readFile(file);
 				const options = {
 					epsFile: true,
 					firstPageToConvert: 1,
@@ -594,7 +594,7 @@ describe("Node-Poppler Module", () => {
 
 			test("Should convert PDF file as Buffer to JPG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = fs.readFileSync(file);
+				const attachmentFile = await fs.promises.readFile(file);
 				const options = {
 					jpegFile: true,
 				};
@@ -646,7 +646,7 @@ describe("Node-Poppler Module", () => {
 
 			test("Should convert PDF file as Buffer to PDF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = fs.readFileSync(file);
+				const attachmentFile = await fs.promises.readFile(file);
 				const options = {
 					pdfFile: true,
 				};
@@ -699,7 +699,7 @@ describe("Node-Poppler Module", () => {
 
 			test("Should convert PDF file as Buffer to PNG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = fs.readFileSync(file);
+				const attachmentFile = await fs.promises.readFile(file);
 				const options = {
 					pngFile: true,
 				};
@@ -749,7 +749,7 @@ describe("Node-Poppler Module", () => {
 
 			test("Should convert PDF file as Buffer to PS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = fs.readFileSync(file);
+				const attachmentFile = await fs.promises.readFile(file);
 				const options = {
 					psFile: true,
 				};
@@ -799,7 +799,7 @@ describe("Node-Poppler Module", () => {
 
 			test("Should convert PDF file as Buffer to SVG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = fs.readFileSync(file);
+				const attachmentFile = await fs.promises.readFile(file);
 				const options = {
 					svgFile: true,
 				};
@@ -852,7 +852,7 @@ describe("Node-Poppler Module", () => {
 
 			test("Should convert PDF file as Buffer to TIFF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = fs.readFileSync(file);
+				const attachmentFile = await fs.promises.readFile(file);
 				const options = {
 					tiffFile: true,
 				};
@@ -950,7 +950,7 @@ describe("Node-Poppler Module", () => {
 
 		test("Should convert PDF file to HTML file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = fs.readFileSync(file);
+			const attachmentFile = await fs.promises.readFile(file);
 
 			const res = await poppler.pdfToHtml(
 				attachmentFile,
@@ -1059,7 +1059,7 @@ describe("Node-Poppler Module", () => {
 
 		test("Should accept options and only process 1 page of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = fs.readFileSync(file);
+			const attachmentFile = await fs.promises.readFile(file);
 			const options = {
 				firstPageToConvert: 1,
 				lastPageToConvert: 1,
@@ -1167,7 +1167,7 @@ describe("Node-Poppler Module", () => {
 
 		test("Should convert PDF file as Buffer to PS file", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = fs.readFileSync(file);
+			const attachmentFile = await fs.promises.readFile(file);
 
 			const res = await poppler.pdfToPs(attachmentFile);
 
@@ -1254,7 +1254,7 @@ describe("Node-Poppler Module", () => {
 
 		test("Should convert PDF file as Buffer to Text file", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = fs.readFileSync(file);
+			const attachmentFile = await fs.promises.readFile(file);
 
 			const res = await poppler.pdfToText(attachmentFile);
 

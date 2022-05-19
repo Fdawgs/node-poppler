@@ -42,6 +42,8 @@ jobs:
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             - name: Run Linkinator
               uses: JustinBeckwith/linkinator-action@v1

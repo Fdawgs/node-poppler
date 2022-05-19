@@ -31,6 +31,8 @@ jobs:
         steps:
             - name: Check out repo
               uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
 
             # Initialises the CodeQL tools for scanning
             - name: Initialise CodeQL

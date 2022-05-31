@@ -70,7 +70,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
@@ -167,7 +167,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfDetach(attachmentFile, options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("1 embedded files"));
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -216,7 +216,7 @@ describe("Node-Poppler Module", () => {
 			};
 			const res = await poppler.pdfFonts(file, options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("+Frutiger-"));
 		});
 
 		test("Should examine 3 pages of PDF file as Buffer", async () => {
@@ -229,7 +229,7 @@ describe("Node-Poppler Module", () => {
 			};
 			const res = await poppler.pdfFonts(attachmentFile, options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("+Frutiger-"));
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -278,7 +278,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfImages(file, undefined, options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("page"));
 		});
 
 		test("Should accept options and save images from PDF file", async () => {
@@ -289,7 +289,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfImages(file, "file_prefix", options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("No Error"));
 		});
 
 		test("Should accept options and list all images in PDF file as Buffer", async () => {
@@ -305,7 +305,7 @@ describe("Node-Poppler Module", () => {
 				options
 			);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("page"));
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -369,7 +369,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfInfo(file);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("Pages:"));
 		});
 
 		test("Should list info of PDF file as a JSON object", async () => {
@@ -379,7 +379,20 @@ describe("Node-Poppler Module", () => {
 				printAsJson: true,
 			});
 
-			expect(typeof res).toBe("object");
+			expect(res).toMatchObject({
+				tagged: "yes",
+				userProperties: "no",
+				suspects: "no",
+				form: "AcroForm",
+				javaScript: "no",
+				pages: "16",
+				encrypted: "no",
+				pageSize: "595.276 x 841.89 pts (A4)",
+				pageRot: "0",
+				fileSize: "583094 bytes",
+				optimized: "no",
+				pdfVersion: "1.3",
+			});
 		});
 
 		test("Should list info of PDF file as Buffer", async () => {
@@ -388,7 +401,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfInfo(attachmentFile);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("Pages:"));
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -516,7 +529,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
@@ -553,7 +566,7 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
@@ -572,7 +585,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`
@@ -606,7 +619,7 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`
@@ -625,7 +638,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`
@@ -658,7 +671,7 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`
@@ -677,7 +690,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
@@ -711,7 +724,7 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
@@ -730,7 +743,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 				).toBe(true);
@@ -761,7 +774,7 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 				).toBe(true);
@@ -778,7 +791,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
@@ -811,7 +824,7 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
@@ -830,7 +843,7 @@ describe("Node-Poppler Module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
@@ -864,7 +877,7 @@ describe("Node-Poppler Module", () => {
 					options
 				);
 
-				expect(typeof res).toBe("string");
+				expect(res).toEqual(expect.stringContaining("No Error"));
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
@@ -884,7 +897,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToCairo(file, outputFile, options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("No Error"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
 			).toBe(true);
@@ -942,7 +955,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToHtml(file);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("Page-16"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
 			).toBe(true);
@@ -957,7 +970,7 @@ describe("Node-Poppler Module", () => {
 				`${testDirectory}pdf_1.3_NHS_Constitution.html`
 			);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("Page-16"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
 			).toBe(true);
@@ -972,7 +985,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToHtml(file, undefined, options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("Page-2"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
 			).toBe(true);
@@ -1051,7 +1064,7 @@ describe("Node-Poppler Module", () => {
 				options
 			);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("No Error"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
 			).toBe(true);
@@ -1071,7 +1084,7 @@ describe("Node-Poppler Module", () => {
 				options
 			);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("No Error"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
 			).toBe(true);
@@ -1159,7 +1172,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToPs(file, outputFile);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("No Error"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 			).toBe(true);
@@ -1184,7 +1197,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToPs(file, outputFile, options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("No Error"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 			).toBe(true);
@@ -1246,7 +1259,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToText(file, outputFile);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("No Error"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
 			).toBe(true);
@@ -1258,7 +1271,9 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToText(attachmentFile);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(
+				expect.stringContaining("The NHS Constitution")
+			);
 		});
 
 		test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -1271,7 +1286,7 @@ describe("Node-Poppler Module", () => {
 
 			const res = await poppler.pdfToText(file, outputFile, options);
 
-			expect(typeof res).toBe("string");
+			expect(res).toEqual(expect.stringContaining("No Error"));
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
 			).toBe(true);

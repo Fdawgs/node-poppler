@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+### [5.1.5](https://github.com/Fdawgs/node-poppler/compare/v5.1.4...v5.1.5) (2022-06-01)
+
+
+### Continuous Integration
+
+* **automerge:** fix context ([a77891b](https://github.com/Fdawgs/node-poppler/commit/a77891b87f020be9f631bb01941dba67ae599650))
+* **cd:** use `lts/*` for node setup in release job ([1aefdf2](https://github.com/Fdawgs/node-poppler/commit/1aefdf2daf1952468e60b197b1b3064f2a7f04e4))
+* check `user.login` is dependabot instead of `actor` ([#413](https://github.com/Fdawgs/node-poppler/issues/413)) ([a92ace7](https://github.com/Fdawgs/node-poppler/commit/a92ace7d35fce8ad53f19680b28e676a66bd7333))
+* **ci:** add node 18 to test matrix ([#412](https://github.com/Fdawgs/node-poppler/issues/412)) ([8a109b0](https://github.com/Fdawgs/node-poppler/commit/8a109b0fadf8ad23b4927dc04ad28c02d91f6a6f))
+* **ci:** require `unit-tests` job to pass for `save-pr-number` job to run ([5cb3a96](https://github.com/Fdawgs/node-poppler/commit/5cb3a969e052f3f0b360b4f4c2cc7294fa575c83))
+* **ci:** use `lts/*` for node setup in lint job ([65b7665](https://github.com/Fdawgs/node-poppler/commit/65b76654846ed75b534416f997feedfe61378390))
+* **ci:** use `node-version` for node matrix key ([d294a0e](https://github.com/Fdawgs/node-poppler/commit/d294a0e44d568d806b734fe4d66c41cd871729c3))
+* **codeql:** only run on pr changes to `.html`, `.js`, and `.yml` files ([bc130e3](https://github.com/Fdawgs/node-poppler/commit/bc130e3784cd312db47e290bd56f0dccf24f09fa))
+* **codeql:** resolve missing analyses ([83c2acf](https://github.com/Fdawgs/node-poppler/commit/83c2acf5c30d1fef7a9387ba38a2428bc9ea062c))
+* **codeql:** specify which files to scan during analysis ([0ec3679](https://github.com/Fdawgs/node-poppler/commit/0ec367918ea37fb8f3bab86a664e4cf3db383eb8))
+* remove git credentials after checkout ([#417](https://github.com/Fdawgs/node-poppler/issues/417)) ([e4d7893](https://github.com/Fdawgs/node-poppler/commit/e4d7893a6936f75bba79fee01bf09819a6a0cf21))
+
+
+### Miscellaneous
+
+* **.eslintrc:** enable `plugin:jest/style` rules ([#411](https://github.com/Fdawgs/node-poppler/issues/411)) ([caee804](https://github.com/Fdawgs/node-poppler/commit/caee804360025db416a42449e85b795bb27a22cd))
+* **.github/codeql-config:** remove quotation marks ([0aa9e7f](https://github.com/Fdawgs/node-poppler/commit/0aa9e7f52bf45afdc12b7a4a793185fd856f0c5d))
+* **bug_report:** use node 18 as placeholder for `node-version` ([a28d5ad](https://github.com/Fdawgs/node-poppler/commit/a28d5ad03c3e19eb409e9426bd65e6a03c8ebebc))
+* **lib:** remove source and make files; reduce package size by ~26% ([#418](https://github.com/Fdawgs/node-poppler/issues/418)) ([51b41f8](https://github.com/Fdawgs/node-poppler/commit/51b41f803d601a05be6b7ae9c8ef6ed0373f6a38))
+
+
+### Dependencies
+
+* **deps-dev:** bump @commitlint/cli from 16.3.0 to 17.0.2 ([#422](https://github.com/Fdawgs/node-poppler/issues/422)) ([715be48](https://github.com/Fdawgs/node-poppler/commit/715be48d05cb34e49b9b7d1c1c303cd35a552da2))
+* **deps-dev:** bump @commitlint/config-conventional ([#420](https://github.com/Fdawgs/node-poppler/issues/420)) ([f8700db](https://github.com/Fdawgs/node-poppler/commit/f8700dbfe991b7e6b6f2f0daec1cc412ef291518))
+* **deps-dev:** bump husky from 7.0.4 to 8.0.1 ([#421](https://github.com/Fdawgs/node-poppler/issues/421)) ([b819753](https://github.com/Fdawgs/node-poppler/commit/b8197539a4a56afae8b74078f839a3b8acc20995))
+* **deps:** bump minor and hotfix versions ([#423](https://github.com/Fdawgs/node-poppler/issues/423)) ([4375c56](https://github.com/Fdawgs/node-poppler/commit/4375c56bdc22ba1e5a3529ab6f4e5d3b52d47074))
+
 ### [5.1.4](https://github.com/Fdawgs/node-poppler/compare/v5.1.3...v5.1.4) (2022-05-01)
 
 

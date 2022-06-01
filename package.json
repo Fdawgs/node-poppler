@@ -73,22 +73,22 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.0.2",
 		"@commitlint/config-conventional": "^17.0.2",
-		"eslint": "^8.14.0",
+		"eslint": "^8.16.0",
 		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^8.4.0",
+		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-import": "^2.26.0",
-		"eslint-plugin-jest": "^26.1.5",
-		"eslint-plugin-jsdoc": "^39.2.9",
+		"eslint-plugin-jest": "^26.4.6",
+		"eslint-plugin-jsdoc": "^39.3.2",
 		"eslint-plugin-promise": "^6.0.0",
 		"eslint-plugin-security": "^1.5.0",
 		"eslint-plugin-security-node": "^1.1.1",
 		"glob": "^8.0.1",
 		"husky": "^8.0.1",
-		"jest": "^28.0.3",
+		"jest": "^28.1.0",
 		"jsdoc-to-markdown": "^7.1.1",
 		"license-checker": "^25.0.1",
 		"prettier": "^2.6.2",
-		"typescript": "^4.6.4"
+		"typescript": "^4.7.2"
 	},
 	"dependencies": {
 		"camelcase": "^6.3.0",

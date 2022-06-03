@@ -475,14 +475,12 @@ class Poppler {
 							 * https://github.com/Fdawgs/node-poppler/issues/248#issuecomment-845948080
 							 */
 							const info = {};
-							stdOut
-								.split("\n")
-								.map((line) => line.split(": "))
-								.forEach((line) => {
-									if (line.length > 1)
-										info[camelCase(line[0])] =
-											line[1].trim();
-								});
+							stdOut.split("\n").forEach((line) => {
+								const lines = line.split(": ");
+								if (lines.length > 1) {
+									info[camelCase(lines[0])] = lines[1].trim();
+								}
+							});
 							resolve(info);
 						} else {
 							resolve(stdOut.trim());

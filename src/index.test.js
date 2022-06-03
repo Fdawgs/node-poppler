@@ -364,6 +364,21 @@ describe("Node-Poppler Module", () => {
 	});
 
 	describe("pdfInfo Function", () => {
+		const pdfInfoObject = {
+			tagged: "yes",
+			userProperties: "no",
+			suspects: "no",
+			form: "AcroForm",
+			javaScript: "no",
+			pages: "16",
+			encrypted: "no",
+			pageSize: "595.276 x 841.89 pts (A4)",
+			pageRot: "0",
+			fileSize: "583094 bytes",
+			optimized: "no",
+			pdfVersion: "1.3",
+		};
+
 		test("Should list info of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
@@ -379,20 +394,7 @@ describe("Node-Poppler Module", () => {
 				printAsJson: true,
 			});
 
-			expect(res).toMatchObject({
-				tagged: "yes",
-				userProperties: "no",
-				suspects: "no",
-				form: "AcroForm",
-				javaScript: "no",
-				pages: "16",
-				encrypted: "no",
-				pageSize: "595.276 x 841.89 pts (A4)",
-				pageRot: "0",
-				fileSize: "583094 bytes",
-				optimized: "no",
-				pdfVersion: "1.3",
-			});
+			expect(res).toMatchObject(pdfInfoObject);
 		});
 
 		test("Should list info of PDF file as Buffer", async () => {
@@ -402,6 +404,17 @@ describe("Node-Poppler Module", () => {
 			const res = await poppler.pdfInfo(attachmentFile);
 
 			expect(res).toEqual(expect.stringContaining("Pages:"));
+		});
+
+		test("Should list info of PDF file as Buffer as a JSON object", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const attachmentFile = await fs.promises.readFile(file);
+
+			const res = await poppler.pdfInfo(attachmentFile, {
+				printAsJson: true,
+			});
+
+			expect(res).toMatchObject(pdfInfoObject);
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {

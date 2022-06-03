@@ -439,9 +439,16 @@ class Poppler {
 				versionInfo
 			);
 
+			/**
+			 * Poppler does not set the "File size" metadata value if passed
+			 * a Buffer via stdin, so need to retrieve it from the Buffer
+			 */
+			let fileSize;
+
 			return new Promise((resolve, reject) => {
 				if (Buffer.isBuffer(file)) {
 					args.push("-");
+					fileSize = file.length;
 				} else {
 					args.push(file);
 				}
@@ -469,6 +476,13 @@ class Poppler {
 
 				child.on("close", async () => {
 					if (stdOut !== "") {
+						if (fileSize) {
+							stdOut = stdOut.replace(
+								/(File\s+size:\s+)0(\s+)bytes/,
+								`$1${fileSize}$2bytes`
+							);
+						}
+
 						if (options.printAsJson === true) {
 							/**
 							 * Thanks to @sainf for this solution

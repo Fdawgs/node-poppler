@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.1.6](https://github.com/Fdawgs/node-poppler/compare/v5.1.5...v5.1.6) (2022-06-04)
+
+
+### Bug Fixes
+
+* **index:** set correct "file size" if `pdfInfo()` passed a buffer ([#427](https://github.com/Fdawgs/node-poppler/issues/427)) ([8d30764](https://github.com/Fdawgs/node-poppler/commit/8d3076482d13e1d31a54a5d7147cb1a3390b59bc))
+
+
+### Improvements
+
+* **index:** use `forEach` over `map` as returned array not used ([#426](https://github.com/Fdawgs/node-poppler/issues/426)) ([ef89aa6](https://github.com/Fdawgs/node-poppler/commit/ef89aa6333edcd875596ee133775ad887e43dcb5))
+
+
+### Dependencies
+
+* **.npmignore:** ignore `tsconfig.json` ([a35757d](https://github.com/Fdawgs/node-poppler/commit/a35757d6c51f6ef0386c59b6e5657530c25f6726))
+
+
+### Miscellaneous
+
+* **.github/funding:** remove unused keys ([66a8f36](https://github.com/Fdawgs/node-poppler/commit/66a8f366c9150730718bfa37ed0a056f09b925ce))
+* **.github:** add `FUNDING.yml` ([f73407d](https://github.com/Fdawgs/node-poppler/commit/f73407df0c9561eb69c17732dc40dfd8d6a3517c))
+
 ### [5.1.5](https://github.com/Fdawgs/node-poppler/compare/v5.1.4...v5.1.5) (2022-06-01)
 
 

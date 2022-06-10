@@ -134,6 +134,7 @@ dist
 
 # lock files
 package-lock.json
+pnpm-lock.yaml
 yarn.lock
 
 # Converted test files

@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.0](https://github.com/Fdawgs/node-poppler/compare/v5.1.6...v6.0.0) (2022-08-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for EOL node 12
+
+### Documentation
+
+* **readme:** update acknowledgements section ([6d95ff5](https://github.com/Fdawgs/node-poppler/commit/6d95ff5377d4bf66b84ac30054757d2fe3f1a15e))
+
+
+### Miscellaneous
+
+* **.gitignore:** use latest github ignore template ([ff64a1d](https://github.com/Fdawgs/node-poppler/commit/ff64a1d32b4f5e7fbf6f853188ac7cbd7cc49de6))
+* **.npmrc:** disable package-lock generation ([#434](https://github.com/Fdawgs/node-poppler/issues/434)) ([09dbfdb](https://github.com/Fdawgs/node-poppler/commit/09dbfdbb9df5c2ee58b43e1864061fbb2ab5172d))
+* **.prettierignore:** add new paths from `.gitignore` ([47e886a](https://github.com/Fdawgs/node-poppler/commit/47e886a7ccd33ff122004d8ad9d2ed6cf1e75234))
+* drop support for node 12 ([#437](https://github.com/Fdawgs/node-poppler/issues/437)) ([c32b5b0](https://github.com/Fdawgs/node-poppler/commit/c32b5b0d2bf11d77f67ff3cb2dd67be2d6ed86a8))
+* ignore pnpm lock file ([311f8a6](https://github.com/Fdawgs/node-poppler/commit/311f8a6e4cb68c53ba6bbf4203f347df2164369e))
+
+
+### Dependencies
+
+* **.npmignore:** add documentation; reduce package size by ~0.3% ([#435](https://github.com/Fdawgs/node-poppler/issues/435)) ([fc45b10](https://github.com/Fdawgs/node-poppler/commit/fc45b10bd0633f4f58982688d9ef34d624bfd5d6))
+* **dependabot:** increase `open-pull-requests-limit` from 5 to 20 ([7939b69](https://github.com/Fdawgs/node-poppler/commit/7939b69efa5c001dd959e64fcee477c3633587fd))
+* **deps:** bump actions/dependency-review-action from 1 to 2 ([#432](https://github.com/Fdawgs/node-poppler/issues/432)) ([78cbbc6](https://github.com/Fdawgs/node-poppler/commit/78cbbc695c23540bdb90a86adf72137b858b337d))
+* **deps:** bump dependencies ([#438](https://github.com/Fdawgs/node-poppler/issues/438)) ([adaf16e](https://github.com/Fdawgs/node-poppler/commit/adaf16e27031500fb7ff85a0ebf0da157998fa58))
+* **deps:** bump wagoid/commitlint-github-action from 4 to 5 ([#431](https://github.com/Fdawgs/node-poppler/issues/431)) ([0cfd01c](https://github.com/Fdawgs/node-poppler/commit/0cfd01c2b3b58e0610370b4c428acc3a8ff0f9a8))
+
 ## [5.1.6](https://github.com/Fdawgs/node-poppler/compare/v5.1.5...v5.1.6) (2022-06-04)
 
 

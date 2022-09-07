@@ -28,7 +28,7 @@ function parseOptions(acceptedOptions, options, version) {
 	return new Promise((resolve, reject) => {
 		const args = [];
 		const invalidArgs = [];
-		Object.keys(options).forEach((key) => {
+		Object.getOwnPropertyNames(options).forEach((key) => {
 			if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
 				// eslint-disable-next-line valid-typeof
 				if (typeof options[key] === acceptedOptions[key].type) {

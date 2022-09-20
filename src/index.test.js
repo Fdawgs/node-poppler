@@ -5,9 +5,9 @@ const fs = require("fs");
 const glob = require("glob");
 const path = require("upath");
 const { execFile } = require("child_process");
-const util = require("util");
+const { promisify } = require("util");
 
-const execFileAsync = util.promisify(execFile);
+const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
 
 const testDirectory = `${__dirname}/../test_files/`;

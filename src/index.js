@@ -2,9 +2,9 @@
 const camelCase = require("camelcase");
 const path = require("upath");
 const { execFile, spawn } = require("child_process");
-const util = require("util");
+const { promisify } = require("util");
 
-const execFileAsync = util.promisify(execFile);
+const execFileAsync = promisify(execFile);
 
 const errorMessages = {
 	0: "No Error",

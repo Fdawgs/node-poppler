@@ -194,169 +194,169 @@ All notable changes to this project will be documented in this file.
 * **deps:** bump GoogleCloudPlatform/release-please-action from 2 to 3 ([e3c9d8e](https://github.com/Fdawgs/node-poppler/commit/e3c9d8e76c34d949f6d98e60a57f19dcff90a766))
 * update dependencies ([db8a76d](https://github.com/Fdawgs/node-poppler/commit/db8a76d498760e808544026183e9aade29b4c4d8))
 
-### [5.1.1](https://www.github.com/Fdawgs/node-poppler/compare/v5.1.0...v5.1.1) (2021-12-11)
+### [5.1.1](https://github.com/Fdawgs/node-poppler/compare/v5.1.0...v5.1.1) (2021-12-11)
 
 
 ### Bug Fixes
 
-* **index:** correct message thrown for missing binaries ([#363](https://www.github.com/Fdawgs/node-poppler/issues/363)) ([5249d61](https://www.github.com/Fdawgs/node-poppler/commit/5249d6183b11f6c9eded643359e05d4f3ecf9f01))
+* **index:** correct message thrown for missing binaries ([#363](https://github.com/Fdawgs/node-poppler/issues/363)) ([5249d61](https://github.com/Fdawgs/node-poppler/commit/5249d6183b11f6c9eded643359e05d4f3ecf9f01))
 
 
 ### Continuous Integration
 
-* trigger workflows when drafts marked as "ready to review" ([#354](https://www.github.com/Fdawgs/node-poppler/issues/354)) ([de922a2](https://www.github.com/Fdawgs/node-poppler/commit/de922a20494d8bc87333da156248342805e37a15))
+* trigger workflows when drafts marked as "ready to review" ([#354](https://github.com/Fdawgs/node-poppler/issues/354)) ([de922a2](https://github.com/Fdawgs/node-poppler/commit/de922a20494d8bc87333da156248342805e37a15))
 
 
 ### Documentation
 
-* **coc:** reduce verbosity ([b38d954](https://www.github.com/Fdawgs/node-poppler/commit/b38d9549a890e434868cc26a59867a26a49b8167))
+* **coc:** reduce verbosity ([b38d954](https://github.com/Fdawgs/node-poppler/commit/b38d9549a890e434868cc26a59867a26a49b8167))
 
 
 ### Improvements
 
-* **index:** remove unused `if` conditional ([d56589d](https://www.github.com/Fdawgs/node-poppler/commit/d56589d41caa60533718bee24eb5797aec0f40eb))
+* **index:** remove unused `if` conditional ([d56589d](https://github.com/Fdawgs/node-poppler/commit/d56589d41caa60533718bee24eb5797aec0f40eb))
 
 
 ### Miscellaneous
 
-* ignore `.yarnclean` ([#360](https://www.github.com/Fdawgs/node-poppler/issues/360)) ([196b528](https://www.github.com/Fdawgs/node-poppler/commit/196b528c860bd0bd191e1dbc53c1dfc2867aa334))
-* **package/scripts:** add `lint:licenses` ([#361](https://www.github.com/Fdawgs/node-poppler/issues/361)) ([a010434](https://www.github.com/Fdawgs/node-poppler/commit/a0104344c0569887e3af82263aa091cde0027afc))
-* turn off `security/detect-object-injection` eslint rule ([1d6dc35](https://www.github.com/Fdawgs/node-poppler/commit/1d6dc35bfe4c0e54391745a3ff45485b0c76fac0))
+* ignore `.yarnclean` ([#360](https://github.com/Fdawgs/node-poppler/issues/360)) ([196b528](https://github.com/Fdawgs/node-poppler/commit/196b528c860bd0bd191e1dbc53c1dfc2867aa334))
+* **package/scripts:** add `lint:licenses` ([#361](https://github.com/Fdawgs/node-poppler/issues/361)) ([a010434](https://github.com/Fdawgs/node-poppler/commit/a0104344c0569887e3af82263aa091cde0027afc))
+* turn off `security/detect-object-injection` eslint rule ([1d6dc35](https://github.com/Fdawgs/node-poppler/commit/1d6dc35bfe4c0e54391745a3ff45485b0c76fac0))
 
 
 ### Dependencies
 
-* **dependabot:** ignore minor and patch github-actions updates ([#356](https://www.github.com/Fdawgs/node-poppler/issues/356)) ([56d1a86](https://www.github.com/Fdawgs/node-poppler/commit/56d1a86e20681a8b747da0713176522be7de258e))
-* **dependabot:** ignore minor and patch release-please-action updates ([#367](https://www.github.com/Fdawgs/node-poppler/issues/367)) ([b77729f](https://www.github.com/Fdawgs/node-poppler/commit/b77729f4764f7536fda9ead8cac0b08dc75b269a))
-* **deps-dev:** bump @commitlint/cli from 14.1.0 to 15.0.0 ([08d87b5](https://www.github.com/Fdawgs/node-poppler/commit/08d87b55891b56d81fe73db9db1a0b0eb98b9d17))
-* **deps-dev:** bump @commitlint/config-conventional ([c5452ee](https://www.github.com/Fdawgs/node-poppler/commit/c5452eef69ef09503ee7a357f09595c8526a2e0a))
-* **deps-dev:** bump prettier from 2.4.1 to 2.5.0 ([74f9e90](https://www.github.com/Fdawgs/node-poppler/commit/74f9e907ef9cdabb039463845055316d42a21ad5))
-* **deps-dev:** bump prettier from 2.5.0 to 2.5.1 ([d51ca9b](https://www.github.com/Fdawgs/node-poppler/commit/d51ca9b64884715b47eed2db64229b84c9dd9f4a))
+* **dependabot:** ignore minor and patch github-actions updates ([#356](https://github.com/Fdawgs/node-poppler/issues/356)) ([56d1a86](https://github.com/Fdawgs/node-poppler/commit/56d1a86e20681a8b747da0713176522be7de258e))
+* **dependabot:** ignore minor and patch release-please-action updates ([#367](https://github.com/Fdawgs/node-poppler/issues/367)) ([b77729f](https://github.com/Fdawgs/node-poppler/commit/b77729f4764f7536fda9ead8cac0b08dc75b269a))
+* **deps-dev:** bump @commitlint/cli from 14.1.0 to 15.0.0 ([08d87b5](https://github.com/Fdawgs/node-poppler/commit/08d87b55891b56d81fe73db9db1a0b0eb98b9d17))
+* **deps-dev:** bump @commitlint/config-conventional ([c5452ee](https://github.com/Fdawgs/node-poppler/commit/c5452eef69ef09503ee7a357f09595c8526a2e0a))
+* **deps-dev:** bump prettier from 2.4.1 to 2.5.0 ([74f9e90](https://github.com/Fdawgs/node-poppler/commit/74f9e907ef9cdabb039463845055316d42a21ad5))
+* **deps-dev:** bump prettier from 2.5.0 to 2.5.1 ([d51ca9b](https://github.com/Fdawgs/node-poppler/commit/d51ca9b64884715b47eed2db64229b84c9dd9f4a))
 
-## [5.1.0](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.3...v5.1.0) (2021-11-10)
+## [5.1.0](https://github.com/Fdawgs/node-poppler/compare/v5.0.3...v5.1.0) (2021-11-10)
 
 
 ### Features
 
-* **index:** add `printUrls` arg to `pdfInfo()` options ([d58da5f](https://www.github.com/Fdawgs/node-poppler/commit/d58da5fc0d6fe6b1eeef8a660701052dd11a17fa))
+* **index:** add `printUrls` arg to `pdfInfo()` options ([d58da5f](https://github.com/Fdawgs/node-poppler/commit/d58da5fc0d6fe6b1eeef8a660701052dd11a17fa))
 
 
 ### Bug Fixes
 
-* **lib:** update poppler win32 binaries from 21.10.0 to 21.11.0 ([1838bee](https://www.github.com/Fdawgs/node-poppler/commit/1838bee3c21dc6d467db3246b5e5da0802216cf2))
+* **lib:** update poppler win32 binaries from 21.10.0 to 21.11.0 ([1838bee](https://github.com/Fdawgs/node-poppler/commit/1838bee3c21dc6d467db3246b5e5da0802216cf2))
 
 
 ### Continuous Integration
 
-* **ci:** do not run clean-up on draft prs ([088722d](https://www.github.com/Fdawgs/node-poppler/commit/088722dde16c7cc9176c90797386d33b56b92056))
-* **spell-check:** do not run on draft prs ([6a48913](https://www.github.com/Fdawgs/node-poppler/commit/6a48913d01f63ec34c30230fe82bb34ad5d3b49e))
+* **ci:** do not run clean-up on draft prs ([088722d](https://github.com/Fdawgs/node-poppler/commit/088722dde16c7cc9176c90797386d33b56b92056))
+* **spell-check:** do not run on draft prs ([6a48913](https://github.com/Fdawgs/node-poppler/commit/6a48913d01f63ec34c30230fe82bb34ad5d3b49e))
 
 
 ### Dependencies
 
-* **deps-dev:** bump eslint-config-airbnb-base from 14.2.1 to 15.0.0 ([063e5b4](https://www.github.com/Fdawgs/node-poppler/commit/063e5b4338f7a311aebcb3b75c264c4cfd9a8ed5))
-* **deps-dev:** bump eslint-plugin-import from 2.25.2 to 2.25.3 ([5962621](https://www.github.com/Fdawgs/node-poppler/commit/59626219099901f73cd30ab720f07f1f50fa33e6))
-* **deps-dev:** bump eslint-plugin-jest from 25.2.2 to 25.2.4 ([77423a1](https://www.github.com/Fdawgs/node-poppler/commit/77423a1f88976182404ccabe498e7d26f22f40a4))
+* **deps-dev:** bump eslint-config-airbnb-base from 14.2.1 to 15.0.0 ([063e5b4](https://github.com/Fdawgs/node-poppler/commit/063e5b4338f7a311aebcb3b75c264c4cfd9a8ed5))
+* **deps-dev:** bump eslint-plugin-import from 2.25.2 to 2.25.3 ([5962621](https://github.com/Fdawgs/node-poppler/commit/59626219099901f73cd30ab720f07f1f50fa33e6))
+* **deps-dev:** bump eslint-plugin-jest from 25.2.2 to 25.2.4 ([77423a1](https://github.com/Fdawgs/node-poppler/commit/77423a1f88976182404ccabe498e7d26f22f40a4))
 
 
 ### Documentation
 
-* **readme:** add stdout example ([#353](https://www.github.com/Fdawgs/node-poppler/issues/353)) ([f1ed3c2](https://www.github.com/Fdawgs/node-poppler/commit/f1ed3c27eff6a4bfc3a3d273c5137e7a184c4096))
+* **readme:** add stdout example ([#353](https://github.com/Fdawgs/node-poppler/issues/353)) ([f1ed3c2](https://github.com/Fdawgs/node-poppler/commit/f1ed3c27eff6a4bfc3a3d273c5137e7a184c4096))
 
-### [5.0.3](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.2...v5.0.3) (2021-11-04)
+### [5.0.3](https://github.com/Fdawgs/node-poppler/compare/v5.0.2...v5.0.3) (2021-11-04)
 
 
 ### Bug Fixes
 
-* **index:** normalize `binPath` constructor param ([#345](https://www.github.com/Fdawgs/node-poppler/issues/345)) ([3ec8cae](https://www.github.com/Fdawgs/node-poppler/commit/3ec8cae42432a49fcd467467d7a1c2cd5d9be1d8))
-* **index:** pdftocairo `singleFile` option ([31bbe79](https://www.github.com/Fdawgs/node-poppler/commit/31bbe79d22a68b751ee060a682b7bdcfa44ce6a7))
-* **index:** pdftocairo stdout encoding for `pdfFile` option ([8ddcbba](https://www.github.com/Fdawgs/node-poppler/commit/8ddcbba76c2ed650b6c56f63ecb8621fdc66ff45))
+* **index:** normalize `binPath` constructor param ([#345](https://github.com/Fdawgs/node-poppler/issues/345)) ([3ec8cae](https://github.com/Fdawgs/node-poppler/commit/3ec8cae42432a49fcd467467d7a1c2cd5d9be1d8))
+* **index:** pdftocairo `singleFile` option ([31bbe79](https://github.com/Fdawgs/node-poppler/commit/31bbe79d22a68b751ee060a682b7bdcfa44ce6a7))
+* **index:** pdftocairo stdout encoding for `pdfFile` option ([8ddcbba](https://github.com/Fdawgs/node-poppler/commit/8ddcbba76c2ed650b6c56f63ecb8621fdc66ff45))
 
 
 ### Documentation
 
-* bump coc from v2.0.0 to v2.1.0 ([#334](https://www.github.com/Fdawgs/node-poppler/issues/334)) ([7754959](https://www.github.com/Fdawgs/node-poppler/commit/775495963ef5011754e734f63dca1a04c5d3cb25))
+* bump coc from v2.0.0 to v2.1.0 ([#334](https://github.com/Fdawgs/node-poppler/issues/334)) ([7754959](https://github.com/Fdawgs/node-poppler/commit/775495963ef5011754e734f63dca1a04c5d3cb25))
 
 
 ### Miscellaneous
 
-* **.eslintrc:** remove redundant `impliedStrict` option ([#332](https://www.github.com/Fdawgs/node-poppler/issues/332)) ([417380e](https://www.github.com/Fdawgs/node-poppler/commit/417380ec732352e2aa7040accac1333d02588e88))
-* **.prettierrc:** only enable `bracketSameLine` for html ([#341](https://www.github.com/Fdawgs/node-poppler/issues/341)) ([30dfe71](https://www.github.com/Fdawgs/node-poppler/commit/30dfe719fa84be290406240c054cf142a7e41824))
+* **.eslintrc:** remove redundant `impliedStrict` option ([#332](https://github.com/Fdawgs/node-poppler/issues/332)) ([417380e](https://github.com/Fdawgs/node-poppler/commit/417380ec732352e2aa7040accac1333d02588e88))
+* **.prettierrc:** only enable `bracketSameLine` for html ([#341](https://github.com/Fdawgs/node-poppler/issues/341)) ([30dfe71](https://github.com/Fdawgs/node-poppler/commit/30dfe719fa84be290406240c054cf142a7e41824))
 
 
 ### Continuous Integration
 
-* **cd:** stop `prepare` script running ([#342](https://www.github.com/Fdawgs/node-poppler/issues/342)) ([5d22a76](https://www.github.com/Fdawgs/node-poppler/commit/5d22a76e8b331630e6a65a9061a1fe57d3785e3a))
+* **cd:** stop `prepare` script running ([#342](https://github.com/Fdawgs/node-poppler/issues/342)) ([5d22a76](https://github.com/Fdawgs/node-poppler/commit/5d22a76e8b331630e6a65a9061a1fe57d3785e3a))
 
 
 ### Dependencies
 
-* **deps-dev:** bump @commitlint/cli from 13.2.1 to 14.1.0 ([ffb9ccb](https://www.github.com/Fdawgs/node-poppler/commit/ffb9ccbd93b58d8f6a3571f8a8036187ccf63a49))
-* **deps-dev:** bump @commitlint/config-conventional ([fa491ea](https://www.github.com/Fdawgs/node-poppler/commit/fa491eaf0a8c8d8a35c3039b9054aa81e770ff06))
-* **deps-dev:** bump dev dependencies ([#335](https://www.github.com/Fdawgs/node-poppler/issues/335)) ([ac2e119](https://www.github.com/Fdawgs/node-poppler/commit/ac2e11955b8b00d74666262ee68bed1f6f3ab346))
-* **deps:** bump actions/checkout from 2.3.4 to 2.3.5 ([d3d838c](https://www.github.com/Fdawgs/node-poppler/commit/d3d838caf16a47af3841ec5bce45fa98f01b7c21))
-* **deps:** bump actions/checkout from 2.3.5 to 2.4.0 ([de7aad4](https://www.github.com/Fdawgs/node-poppler/commit/de7aad4ab48198f065df6044b4c897c23b831829))
+* **deps-dev:** bump @commitlint/cli from 13.2.1 to 14.1.0 ([ffb9ccb](https://github.com/Fdawgs/node-poppler/commit/ffb9ccbd93b58d8f6a3571f8a8036187ccf63a49))
+* **deps-dev:** bump @commitlint/config-conventional ([fa491ea](https://github.com/Fdawgs/node-poppler/commit/fa491eaf0a8c8d8a35c3039b9054aa81e770ff06))
+* **deps-dev:** bump dev dependencies ([#335](https://github.com/Fdawgs/node-poppler/issues/335)) ([ac2e119](https://github.com/Fdawgs/node-poppler/commit/ac2e11955b8b00d74666262ee68bed1f6f3ab346))
+* **deps:** bump actions/checkout from 2.3.4 to 2.3.5 ([d3d838c](https://github.com/Fdawgs/node-poppler/commit/d3d838caf16a47af3841ec5bce45fa98f01b7c21))
+* **deps:** bump actions/checkout from 2.3.5 to 2.4.0 ([de7aad4](https://github.com/Fdawgs/node-poppler/commit/de7aad4ab48198f065df6044b4c897c23b831829))
 
-### [5.0.2](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.1...v5.0.2) (2021-10-12)
+### [5.0.2](https://github.com/Fdawgs/node-poppler/compare/v5.0.1...v5.0.2) (2021-10-12)
 
 
 ### Bug Fixes
 
-* **lib:** update poppler win32 binaries from 21.09.0 to 21.10.0 ([c8e1e77](https://www.github.com/Fdawgs/node-poppler/commit/c8e1e770cb4afa77008c82d56c3fbf3cb5609670))
+* **lib:** update poppler win32 binaries from 21.09.0 to 21.10.0 ([c8e1e77](https://github.com/Fdawgs/node-poppler/commit/c8e1e770cb4afa77008c82d56c3fbf3cb5609670))
 
 
 ### Continuous Integration
 
-* **automerge:** update location of octokit rest methods ([c2d6959](https://www.github.com/Fdawgs/node-poppler/commit/c2d6959f71355fd7a8e274c19e59010ef4bff958))
+* **automerge:** update location of octokit rest methods ([c2d6959](https://github.com/Fdawgs/node-poppler/commit/c2d6959f71355fd7a8e274c19e59010ef4bff958))
 
 
 ### Miscellaneous
 
-* **.eslintrc:** remove inaccurate sourcetype ([#323](https://www.github.com/Fdawgs/node-poppler/issues/323)) ([db65fb6](https://www.github.com/Fdawgs/node-poppler/commit/db65fb62386596fb327c8fbd1d7a6e5fd8f16003))
-* **.prettierrc:** enable `bracketsameline` option ([ccd86c9](https://www.github.com/Fdawgs/node-poppler/commit/ccd86c92087c0df02ceab41251a6cbc653ce3d85))
-* **.vscode:** remove deprecated settings ([#324](https://www.github.com/Fdawgs/node-poppler/issues/324)) ([0638d8e](https://www.github.com/Fdawgs/node-poppler/commit/0638d8e776de7d7570f2578250c7f8651c6c3ad4))
-* **index:** resolve `jsdoc/no-multi-asterisks` warning ([#325](https://www.github.com/Fdawgs/node-poppler/issues/325)) ([e54c041](https://www.github.com/Fdawgs/node-poppler/commit/e54c04199df9e8e49535f0e0499d908ab6ab9531))
+* **.eslintrc:** remove inaccurate sourcetype ([#323](https://github.com/Fdawgs/node-poppler/issues/323)) ([db65fb6](https://github.com/Fdawgs/node-poppler/commit/db65fb62386596fb327c8fbd1d7a6e5fd8f16003))
+* **.prettierrc:** enable `bracketsameline` option ([ccd86c9](https://github.com/Fdawgs/node-poppler/commit/ccd86c92087c0df02ceab41251a6cbc653ce3d85))
+* **.vscode:** remove deprecated settings ([#324](https://github.com/Fdawgs/node-poppler/issues/324)) ([0638d8e](https://github.com/Fdawgs/node-poppler/commit/0638d8e776de7d7570f2578250c7f8651c6c3ad4))
+* **index:** resolve `jsdoc/no-multi-asterisks` warning ([#325](https://github.com/Fdawgs/node-poppler/issues/325)) ([e54c041](https://github.com/Fdawgs/node-poppler/commit/e54c04199df9e8e49535f0e0499d908ab6ab9531))
 
 
 ### Dependencies
 
-* **deps-dev:** add eslint-plugin-security-node ([#316](https://www.github.com/Fdawgs/node-poppler/issues/316)) ([5f7d6ad](https://www.github.com/Fdawgs/node-poppler/commit/5f7d6ad6d3bae444b05fdeb735f38d392fdd360c))
-* **deps-dev:** bump eslint-plugin-jest from 24.7.0 to 25.0.5 ([5924cc7](https://www.github.com/Fdawgs/node-poppler/commit/5924cc700bb5ad47dd76ec9bfced9013af69c733))
-* **deps-dev:** bump prettier from 2.4.0 to 2.4.1 ([ae71ec2](https://www.github.com/Fdawgs/node-poppler/commit/ae71ec26996cb1b6eb90d84265eda27e4efa6499))
-* **deps:** bump actions/setup-node from 2.4.0 to 2.4.1 ([18e8f62](https://www.github.com/Fdawgs/node-poppler/commit/18e8f62d479a632e04eae37de7745f07ef81d3aa))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([e27671b](https://www.github.com/Fdawgs/node-poppler/commit/e27671b95a0241168bd5a367aa2940f2bee278ff))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([84e74cf](https://www.github.com/Fdawgs/node-poppler/commit/84e74cf100dcd7f6fc97438910d78d7cd54bcffa))
-* **deps:** bump wagoid/commitlint-github-action from 4.1.4 to 4.1.5 ([2f8052b](https://www.github.com/Fdawgs/node-poppler/commit/2f8052b7884dd55505d571acb5cefd53f3edb08a))
-* **deps:** bump wagoid/commitlint-github-action from 4.1.5 to 4.1.9 ([bf11955](https://www.github.com/Fdawgs/node-poppler/commit/bf11955894fc0a4100533f1e744a5a4d956d1fd3))
+* **deps-dev:** add eslint-plugin-security-node ([#316](https://github.com/Fdawgs/node-poppler/issues/316)) ([5f7d6ad](https://github.com/Fdawgs/node-poppler/commit/5f7d6ad6d3bae444b05fdeb735f38d392fdd360c))
+* **deps-dev:** bump eslint-plugin-jest from 24.7.0 to 25.0.5 ([5924cc7](https://github.com/Fdawgs/node-poppler/commit/5924cc700bb5ad47dd76ec9bfced9013af69c733))
+* **deps-dev:** bump prettier from 2.4.0 to 2.4.1 ([ae71ec2](https://github.com/Fdawgs/node-poppler/commit/ae71ec26996cb1b6eb90d84265eda27e4efa6499))
+* **deps:** bump actions/setup-node from 2.4.0 to 2.4.1 ([18e8f62](https://github.com/Fdawgs/node-poppler/commit/18e8f62d479a632e04eae37de7745f07ef81d3aa))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([e27671b](https://github.com/Fdawgs/node-poppler/commit/e27671b95a0241168bd5a367aa2940f2bee278ff))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([84e74cf](https://github.com/Fdawgs/node-poppler/commit/84e74cf100dcd7f6fc97438910d78d7cd54bcffa))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.4 to 4.1.5 ([2f8052b](https://github.com/Fdawgs/node-poppler/commit/2f8052b7884dd55505d571acb5cefd53f3edb08a))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.5 to 4.1.9 ([bf11955](https://github.com/Fdawgs/node-poppler/commit/bf11955894fc0a4100533f1e744a5a4d956d1fd3))
 
-### [5.0.1](https://www.github.com/Fdawgs/node-poppler/compare/v5.0.0...v5.0.1) (2021-09-13)
+### [5.0.1](https://github.com/Fdawgs/node-poppler/compare/v5.0.0...v5.0.1) (2021-09-13)
 
 
 ### Bug Fixes
 
-* **lib:** update poppler win32 binaries from 21.08.0 to 21.09.0 ([#313](https://www.github.com/Fdawgs/node-poppler/issues/313)) ([6cd1a3c](https://www.github.com/Fdawgs/node-poppler/commit/6cd1a3c2e5d6f2f5d81f4b2c1c76317ccd97abbd))
+* **lib:** update poppler win32 binaries from 21.08.0 to 21.09.0 ([#313](https://github.com/Fdawgs/node-poppler/issues/313)) ([6cd1a3c](https://github.com/Fdawgs/node-poppler/commit/6cd1a3c2e5d6f2f5d81f4b2c1c76317ccd97abbd))
 
 
 ### Continuous Integration
 
-* **ci:** revert to workflow-run-clean-action from github concurrency ([4b85707](https://www.github.com/Fdawgs/node-poppler/commit/4b857076e02aad23799127ad8f54c1b1229afc7d))
+* **ci:** revert to workflow-run-clean-action from github concurrency ([4b85707](https://github.com/Fdawgs/node-poppler/commit/4b857076e02aad23799127ad8f54c1b1229afc7d))
 
 
 ### Miscellaneous
 
-* **.eslintrc:** set correct ecmascript version ([#308](https://www.github.com/Fdawgs/node-poppler/issues/308)) ([055e44e](https://www.github.com/Fdawgs/node-poppler/commit/055e44ed58982e6d9658187beb1f7f280c244b57))
-* **.husky/.gitignore:** remove now redundant file ([d8891bc](https://www.github.com/Fdawgs/node-poppler/commit/d8891bc6b3eb99564d661aeacd097b80e4588194))
-* **.prettierrc:** override defaults for html, css, and scss files ([#309](https://www.github.com/Fdawgs/node-poppler/issues/309)) ([73f9044](https://www.github.com/Fdawgs/node-poppler/commit/73f9044050709188290902a360f1a705e9f3b0c9))
-* **.vscode:** add `mhutchie.git-graph` extension ([6d86a88](https://www.github.com/Fdawgs/node-poppler/commit/6d86a885bd7354dc00dbf6da5ff95bfa6b032e74))
+* **.eslintrc:** set correct ecmascript version ([#308](https://github.com/Fdawgs/node-poppler/issues/308)) ([055e44e](https://github.com/Fdawgs/node-poppler/commit/055e44ed58982e6d9658187beb1f7f280c244b57))
+* **.husky/.gitignore:** remove now redundant file ([d8891bc](https://github.com/Fdawgs/node-poppler/commit/d8891bc6b3eb99564d661aeacd097b80e4588194))
+* **.prettierrc:** override defaults for html, css, and scss files ([#309](https://github.com/Fdawgs/node-poppler/issues/309)) ([73f9044](https://github.com/Fdawgs/node-poppler/commit/73f9044050709188290902a360f1a705e9f3b0c9))
+* **.vscode:** add `mhutchie.git-graph` extension ([6d86a88](https://github.com/Fdawgs/node-poppler/commit/6d86a885bd7354dc00dbf6da5ff95bfa6b032e74))
 
 
 ### Dependencies
 
-* **deps-dev:** bump prettier from 2.3.2 to 2.4.0 ([5f61282](https://www.github.com/Fdawgs/node-poppler/commit/5f61282a4a7d5a0d5ae972a8c3d7c3dac3495d71))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([5694596](https://www.github.com/Fdawgs/node-poppler/commit/5694596c506fc6c954c99cb93762f9381815da6d))
-* **deps:** bump wagoid/commitlint-github-action from 4.1.1 to 4.1.4 ([f20e9c7](https://www.github.com/Fdawgs/node-poppler/commit/f20e9c7e7a7cb0a18f044fffe691f591669937d3))
+* **deps-dev:** bump prettier from 2.3.2 to 2.4.0 ([5f61282](https://github.com/Fdawgs/node-poppler/commit/5f61282a4a7d5a0d5ae972a8c3d7c3dac3495d71))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([5694596](https://github.com/Fdawgs/node-poppler/commit/5694596c506fc6c954c99cb93762f9381815da6d))
+* **deps:** bump wagoid/commitlint-github-action from 4.1.1 to 4.1.4 ([f20e9c7](https://github.com/Fdawgs/node-poppler/commit/f20e9c7e7a7cb0a18f044fffe691f591669937d3))
 
-## [5.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.2...v5.0.0) (2021-09-06)
+## [5.0.0](https://github.com/Fdawgs/node-poppler/compare/v4.1.2...v5.0.0) (2021-09-06)
 
 
 ### ⚠ BREAKING CHANGES
@@ -365,122 +365,122 @@ All notable changes to this project will be documented in this file.
 
 ### Bug Fixes
 
-* **index:** remove included macos/darwin binaries ([1bfa703](https://www.github.com/Fdawgs/node-poppler/commit/1bfa70332d0f2c5d49cf10e2d750fade332f50b0))
-* **index:** throw new error not return it as returning leads to silent failures ([#299](https://www.github.com/Fdawgs/node-poppler/issues/299)) ([e22d02d](https://www.github.com/Fdawgs/node-poppler/commit/e22d02d8f16c635e4a54a46a7e6e1dba97618a2d))
+* **index:** remove included macos/darwin binaries ([1bfa703](https://github.com/Fdawgs/node-poppler/commit/1bfa70332d0f2c5d49cf10e2d750fade332f50b0))
+* **index:** throw new error not return it as returning leads to silent failures ([#299](https://github.com/Fdawgs/node-poppler/issues/299)) ([e22d02d](https://github.com/Fdawgs/node-poppler/commit/e22d02d8f16c635e4a54a46a7e6e1dba97618a2d))
 
 
 ### Miscellaneous
 
-* **.github:** use new YAML configured GitHub issue forms ([#303](https://www.github.com/Fdawgs/node-poppler/issues/303)) ([4760072](https://www.github.com/Fdawgs/node-poppler/commit/4760072385521b2546d1b4b7cc672d84584afc54))
+* **.github:** use new YAML configured GitHub issue forms ([#303](https://github.com/Fdawgs/node-poppler/issues/303)) ([4760072](https://github.com/Fdawgs/node-poppler/commit/4760072385521b2546d1b4b7cc672d84584afc54))
 
 
 ### Continuous Integration
 
-* **ci:** replace workflow-run-cleanup-action with github concurrency ([#304](https://www.github.com/Fdawgs/node-poppler/issues/304)) ([0f08d1f](https://www.github.com/Fdawgs/node-poppler/commit/0f08d1f05dc55aec6381c44731dd1220c7f87599))
+* **ci:** replace workflow-run-cleanup-action with github concurrency ([#304](https://github.com/Fdawgs/node-poppler/issues/304)) ([0f08d1f](https://github.com/Fdawgs/node-poppler/commit/0f08d1f05dc55aec6381c44731dd1220c7f87599))
 
 
 ### Dependencies
 
-* add .npmignore; reduce package size from 15.6MB to 13.7MB ([#306](https://www.github.com/Fdawgs/node-poppler/issues/306)) ([3f0fbe6](https://www.github.com/Fdawgs/node-poppler/commit/3f0fbe6b150c68b97c93ea7e3002097715fa090a))
+* add .npmignore; reduce package size from 15.6MB to 13.7MB ([#306](https://github.com/Fdawgs/node-poppler/issues/306)) ([3f0fbe6](https://github.com/Fdawgs/node-poppler/commit/3f0fbe6b150c68b97c93ea7e3002097715fa090a))
 
-### [4.1.2](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.1...v4.1.2) (2021-08-30)
+### [4.1.2](https://github.com/Fdawgs/node-poppler/compare/v4.1.1...v4.1.2) (2021-08-30)
 
 
 ### Bug Fixes
 
-* **lib:** update poppler win32 binaries from 21.03.0 to 21.08.0 ([#296](https://www.github.com/Fdawgs/node-poppler/issues/296)) ([34f9e37](https://www.github.com/Fdawgs/node-poppler/commit/34f9e3758a0825cb7f1178cdbf6285e8b93fdb8b))
+* **lib:** update poppler win32 binaries from 21.03.0 to 21.08.0 ([#296](https://github.com/Fdawgs/node-poppler/issues/296)) ([34f9e37](https://github.com/Fdawgs/node-poppler/commit/34f9e3758a0825cb7f1178cdbf6285e8b93fdb8b))
 
 
 ### Documentation
 
-* **readme:** grammar fix ([7503c62](https://www.github.com/Fdawgs/node-poppler/commit/7503c62f4a48f89c7201a0bc5fe007ff3c6091ad))
+* **readme:** grammar fix ([7503c62](https://github.com/Fdawgs/node-poppler/commit/7503c62f4a48f89c7201a0bc5fe007ff3c6091ad))
 
 
 ### Dependencies
 
-* **deps-dev:** bump @commitlint/cli from 12.1.4 to 13.1.0 ([b15218e](https://www.github.com/Fdawgs/node-poppler/commit/b15218ee56847a4d03eac125fd10c57d6804424e))
-* **deps-dev:** bump @commitlint/config-conventional ([bfac706](https://www.github.com/Fdawgs/node-poppler/commit/bfac7066d0bf326d6ec21562b8d588434824249a))
-* **deps-dev:** bump dependencies ([#297](https://www.github.com/Fdawgs/node-poppler/issues/297)) ([f922709](https://www.github.com/Fdawgs/node-poppler/commit/f922709bedef53ad604448618731849ceab412d7))
-* **deps-dev:** bump eslint-plugin-jsdoc from 35.5.1 to 36.0.6 ([38e7554](https://www.github.com/Fdawgs/node-poppler/commit/38e75543fb91c478486f8c514d53988dfd56abd5))
-* **deps:** bump actions/github-script from 4.0.2 to 4.1 ([f90cfbd](https://www.github.com/Fdawgs/node-poppler/commit/f90cfbdf2e69bf5cb017025226ab0c430aed5336))
-* **deps:** bump actions/setup-node from 2.3.0 to 2.4.0 ([9180bca](https://www.github.com/Fdawgs/node-poppler/commit/9180bca0fcfd59bec5b8e192bcbba79d62ac6bdd))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([d46efc8](https://www.github.com/Fdawgs/node-poppler/commit/d46efc8d0e8651331ea195fa224c7d3c3a38fbe4))
+* **deps-dev:** bump @commitlint/cli from 12.1.4 to 13.1.0 ([b15218e](https://github.com/Fdawgs/node-poppler/commit/b15218ee56847a4d03eac125fd10c57d6804424e))
+* **deps-dev:** bump @commitlint/config-conventional ([bfac706](https://github.com/Fdawgs/node-poppler/commit/bfac7066d0bf326d6ec21562b8d588434824249a))
+* **deps-dev:** bump dependencies ([#297](https://github.com/Fdawgs/node-poppler/issues/297)) ([f922709](https://github.com/Fdawgs/node-poppler/commit/f922709bedef53ad604448618731849ceab412d7))
+* **deps-dev:** bump eslint-plugin-jsdoc from 35.5.1 to 36.0.6 ([38e7554](https://github.com/Fdawgs/node-poppler/commit/38e75543fb91c478486f8c514d53988dfd56abd5))
+* **deps:** bump actions/github-script from 4.0.2 to 4.1 ([f90cfbd](https://github.com/Fdawgs/node-poppler/commit/f90cfbdf2e69bf5cb017025226ab0c430aed5336))
+* **deps:** bump actions/setup-node from 2.3.0 to 2.4.0 ([9180bca](https://github.com/Fdawgs/node-poppler/commit/9180bca0fcfd59bec5b8e192bcbba79d62ac6bdd))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([d46efc8](https://github.com/Fdawgs/node-poppler/commit/d46efc8d0e8651331ea195fa224c7d3c3a38fbe4))
 
-### [4.1.1](https://www.github.com/Fdawgs/node-poppler/compare/v4.1.0...v4.1.1) (2021-07-23)
+### [4.1.1](https://github.com/Fdawgs/node-poppler/compare/v4.1.0...v4.1.1) (2021-07-23)
 
 
 ### Bug Fixes
 
-* **index:** add "3221226505" error code mapping ([5017df6](https://www.github.com/Fdawgs/node-poppler/commit/5017df6f4a32abcdb15425d8ef8ba7545a7308d6))
+* **index:** add "3221226505" error code mapping ([5017df6](https://github.com/Fdawgs/node-poppler/commit/5017df6f4a32abcdb15425d8ef8ba7545a7308d6))
 
 
 ### Continuous Integration
 
-* **ci:** disable homebrew analytics for macos builds ([#278](https://www.github.com/Fdawgs/node-poppler/issues/278)) ([92ad4fa](https://www.github.com/Fdawgs/node-poppler/commit/92ad4fa2ba60a0fb6054da386b7bfdd9504dd476))
-* **link-check:** reduce frequency from daily to monthly ([#272](https://www.github.com/Fdawgs/node-poppler/issues/272)) ([5e91c2a](https://www.github.com/Fdawgs/node-poppler/commit/5e91c2aa2cf3b807ce1e2f6b6317b1e5e2f58c3f))
+* **ci:** disable homebrew analytics for macos builds ([#278](https://github.com/Fdawgs/node-poppler/issues/278)) ([92ad4fa](https://github.com/Fdawgs/node-poppler/commit/92ad4fa2ba60a0fb6054da386b7bfdd9504dd476))
+* **link-check:** reduce frequency from daily to monthly ([#272](https://github.com/Fdawgs/node-poppler/issues/272)) ([5e91c2a](https://github.com/Fdawgs/node-poppler/commit/5e91c2aa2cf3b807ce1e2f6b6317b1e5e2f58c3f))
 
 
 ### Improvements
 
-* **index:** consolidate child process `close` event handling ([db89bd6](https://www.github.com/Fdawgs/node-poppler/commit/db89bd6a849f5d93c0651f915e2310e6a9708a47))
+* **index:** consolidate child process `close` event handling ([db89bd6](https://github.com/Fdawgs/node-poppler/commit/db89bd6a849f5d93c0651f915e2310e6a9708a47))
 
 
 ### Dependencies
 
-* **deps-dev:** bump husky from 6.0.0 to 7.0.0 ([e9f9c97](https://www.github.com/Fdawgs/node-poppler/commit/e9f9c97c38f849f596723616d89a90d70fa371d8))
-* **deps-dev:** bump prettier from 2.3.0 to 2.3.2 ([9eeed40](https://www.github.com/Fdawgs/node-poppler/commit/9eeed40785c45d4251490cb7c3dc982ea0f1e36b))
-* **deps:** bump actions/setup-node from 2.1.5 to 2.2.0 ([dba9b38](https://www.github.com/Fdawgs/node-poppler/commit/dba9b38b1de6d7a69ff4243e7e959dc956cbf645))
-* **deps:** bump actions/setup-node from 2.2.0 to 2.3.0 ([c41ef56](https://www.github.com/Fdawgs/node-poppler/commit/c41ef569eb590dec54375063939f8338587174a3))
-* **deps:** bump actions/upload-artifact from 2.2.3 to 2.2.4 ([2461ce1](https://www.github.com/Fdawgs/node-poppler/commit/2461ce1461468d76b9a067088f86e941467ae0e3))
-* **deps:** bump coverallsapp/github-action from 1.1.2 to 1.1.3 ([a6cecca](https://www.github.com/Fdawgs/node-poppler/commit/a6ceccac9470be00a9dd0e15f8fb1d3690fb78c4))
-* **deps:** bump wagoid/commitlint-github-action from 3.1.4 to 4.1.1 ([b29337c](https://www.github.com/Fdawgs/node-poppler/commit/b29337c52b9a7d8ca878ff659737473f53813d06))
+* **deps-dev:** bump husky from 6.0.0 to 7.0.0 ([e9f9c97](https://github.com/Fdawgs/node-poppler/commit/e9f9c97c38f849f596723616d89a90d70fa371d8))
+* **deps-dev:** bump prettier from 2.3.0 to 2.3.2 ([9eeed40](https://github.com/Fdawgs/node-poppler/commit/9eeed40785c45d4251490cb7c3dc982ea0f1e36b))
+* **deps:** bump actions/setup-node from 2.1.5 to 2.2.0 ([dba9b38](https://github.com/Fdawgs/node-poppler/commit/dba9b38b1de6d7a69ff4243e7e959dc956cbf645))
+* **deps:** bump actions/setup-node from 2.2.0 to 2.3.0 ([c41ef56](https://github.com/Fdawgs/node-poppler/commit/c41ef569eb590dec54375063939f8338587174a3))
+* **deps:** bump actions/upload-artifact from 2.2.3 to 2.2.4 ([2461ce1](https://github.com/Fdawgs/node-poppler/commit/2461ce1461468d76b9a067088f86e941467ae0e3))
+* **deps:** bump coverallsapp/github-action from 1.1.2 to 1.1.3 ([a6cecca](https://github.com/Fdawgs/node-poppler/commit/a6ceccac9470be00a9dd0e15f8fb1d3690fb78c4))
+* **deps:** bump wagoid/commitlint-github-action from 3.1.4 to 4.1.1 ([b29337c](https://github.com/Fdawgs/node-poppler/commit/b29337c52b9a7d8ca878ff659737473f53813d06))
 
 
 ### Miscellaneous
 
-* **gitignore:** add test generated pdfs ([c70638c](https://www.github.com/Fdawgs/node-poppler/commit/c70638c9bf3dc29a7245683f7f0604db86c17012))
-* **index/pdftocairo:** sort file ext list alphabetically ascending ([8912fc1](https://www.github.com/Fdawgs/node-poppler/commit/8912fc12ba1f022a2a4b24973ce5c491dcbebe36))
-* **package:** update keywords ([5169f74](https://www.github.com/Fdawgs/node-poppler/commit/5169f7473ac0c35f76a6685835f456e9a87570f8))
-* **prettierignore:** ignore all test folder content ([d69dccd](https://www.github.com/Fdawgs/node-poppler/commit/d69dccdf684be316cb35535a53877add76763024))
-* **vscode:** disable red hat telemetry ([d0084b5](https://www.github.com/Fdawgs/node-poppler/commit/d0084b550fa7d2b9ba81da798ca7387ce3155c28))
-* **vscode:** remove user space config setting ([c899f9f](https://www.github.com/Fdawgs/node-poppler/commit/c899f9fc3ad05af2611efe0b5a4d4e3de64136f1))
+* **gitignore:** add test generated pdfs ([c70638c](https://github.com/Fdawgs/node-poppler/commit/c70638c9bf3dc29a7245683f7f0604db86c17012))
+* **index/pdftocairo:** sort file ext list alphabetically ascending ([8912fc1](https://github.com/Fdawgs/node-poppler/commit/8912fc12ba1f022a2a4b24973ce5c491dcbebe36))
+* **package:** update keywords ([5169f74](https://github.com/Fdawgs/node-poppler/commit/5169f7473ac0c35f76a6685835f456e9a87570f8))
+* **prettierignore:** ignore all test folder content ([d69dccd](https://github.com/Fdawgs/node-poppler/commit/d69dccdf684be316cb35535a53877add76763024))
+* **vscode:** disable red hat telemetry ([d0084b5](https://github.com/Fdawgs/node-poppler/commit/d0084b550fa7d2b9ba81da798ca7387ce3155c28))
+* **vscode:** remove user space config setting ([c899f9f](https://github.com/Fdawgs/node-poppler/commit/c899f9fc3ad05af2611efe0b5a4d4e3de64136f1))
 
-## [4.1.0](https://www.github.com/Fdawgs/node-poppler/compare/v4.0.0...v4.1.0) (2021-06-02)
+## [4.1.0](https://github.com/Fdawgs/node-poppler/compare/v4.0.0...v4.1.0) (2021-06-02)
 
 
 ### Features
 
-* **index:** add `printAsJson` arg to `pdfInfo()` options ([56a2ffb](https://www.github.com/Fdawgs/node-poppler/commit/56a2ffbac898209057fdc87f6fec23b18af5404f)), thanks to @sainf
+* **index:** add `printAsJson` arg to `pdfInfo()` options ([56a2ffb](https://github.com/Fdawgs/node-poppler/commit/56a2ffbac898209057fdc87f6fec23b18af5404f)), thanks to @sainf
 
 
 ### Bug Fixes
 
-* **index:** normalize binary paths ([15cb1a1](https://www.github.com/Fdawgs/node-poppler/commit/15cb1a16bb2fc98b702f52977e824eef412ad937))
+* **index:** normalize binary paths ([15cb1a1](https://github.com/Fdawgs/node-poppler/commit/15cb1a16bb2fc98b702f52977e824eef412ad937))
 
 
 ### Miscellaneous
 
-* **workflows:** remove `stale.yml` ([167484a](https://www.github.com/Fdawgs/node-poppler/commit/167484ab9b84871b62925636a028ad47a975ee5e))
+* **workflows:** remove `stale.yml` ([167484a](https://github.com/Fdawgs/node-poppler/commit/167484ab9b84871b62925636a028ad47a975ee5e))
 
 
 ### Continuous Integration
 
-* **cd:** move perf optimizations and refactoring into same section ([842d3f5](https://www.github.com/Fdawgs/node-poppler/commit/842d3f588219bd9611021eee6da89731cbbf8a0f))
+* **cd:** move perf optimizations and refactoring into same section ([842d3f5](https://github.com/Fdawgs/node-poppler/commit/842d3f588219bd9611021eee6da89731cbbf8a0f))
 
 
 ### Dependencies
 
-* **deps-dev:** bump eslint-plugin-jsdoc from 34.8.2 to 35.1.2 ([277f31f](https://www.github.com/Fdawgs/node-poppler/commit/277f31f8352f6254d253d164acb86973fac83eb1))
-* **deps-dev:** bump jest from 26.6.3 to 27.0.3 ([e28c345](https://www.github.com/Fdawgs/node-poppler/commit/e28c345ba69f0211131411cc98446288dfb75ff9))
+* **deps-dev:** bump eslint-plugin-jsdoc from 34.8.2 to 35.1.2 ([277f31f](https://github.com/Fdawgs/node-poppler/commit/277f31f8352f6254d253d164acb86973fac83eb1))
+* **deps-dev:** bump jest from 26.6.3 to 27.0.3 ([e28c345](https://github.com/Fdawgs/node-poppler/commit/e28c345ba69f0211131411cc98446288dfb75ff9))
 
 
 ### Documentation
 
-* **readme:** grammar and wordiness fixes ([4a02092](https://www.github.com/Fdawgs/node-poppler/commit/4a0209271df7eb7cd110f324a19e77f14d2fb8d9))
-* **readme:** update `pdfToHtml()` examples ([e10a821](https://www.github.com/Fdawgs/node-poppler/commit/e10a821beb34dad8b4eea90e70353ed3d8ed8349))
-* **readme:** update contributing section ([99f4cd6](https://www.github.com/Fdawgs/node-poppler/commit/99f4cd63eb566975296d697c5788edde8e52ff06))
+* **readme:** grammar and wordiness fixes ([4a02092](https://github.com/Fdawgs/node-poppler/commit/4a0209271df7eb7cd110f324a19e77f14d2fb8d9))
+* **readme:** update `pdfToHtml()` examples ([e10a821](https://github.com/Fdawgs/node-poppler/commit/e10a821beb34dad8b4eea90e70353ed3d8ed8349))
+* **readme:** update contributing section ([99f4cd6](https://github.com/Fdawgs/node-poppler/commit/99f4cd63eb566975296d697c5788edde8e52ff06))
 
-## [4.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v3.0.1...v4.0.0) (2021-05-21)
+## [4.0.0](https://github.com/Fdawgs/node-poppler/compare/v3.0.1...v4.0.0) (2021-05-21)
 
 
 ### ⚠ BREAKING CHANGES
@@ -489,45 +489,45 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
-* **index:** add `outputFile` param to `pdfToHtml()` function ([cabdf58](https://www.github.com/Fdawgs/node-poppler/commit/cabdf58c1831ecf85eec984b473552f73f516230))
+* **index:** add `outputFile` param to `pdfToHtml()` function ([cabdf58](https://github.com/Fdawgs/node-poppler/commit/cabdf58c1831ecf85eec984b473552f73f516230))
 
 
 ### Miscellaneous
 
-* **eslintrc:** ignore empty lines in jsdoc comments ([6ae7b61](https://www.github.com/Fdawgs/node-poppler/commit/6ae7b617676e85d76affd6d5a77bd6878690f50f))
+* **eslintrc:** ignore empty lines in jsdoc comments ([6ae7b61](https://github.com/Fdawgs/node-poppler/commit/6ae7b617676e85d76affd6d5a77bd6878690f50f))
 
-### [3.0.1](https://www.github.com/Fdawgs/node-poppler/compare/v3.0.0...v3.0.1) (2021-05-20)
+### [3.0.1](https://github.com/Fdawgs/node-poppler/compare/v3.0.0...v3.0.1) (2021-05-20)
 
 
 ### Bug Fixes
 
-* **index:** remove setting default encoding of received buffer ([baa3d43](https://www.github.com/Fdawgs/node-poppler/commit/baa3d43fac0e7080328efa3bb45aa0c3658a63e5))
+* **index:** remove setting default encoding of received buffer ([baa3d43](https://github.com/Fdawgs/node-poppler/commit/baa3d43fac0e7080328efa3bb45aa0c3658a63e5))
 
 
 ### Documentation
 
-* **readme:** remove repetition ([8a36c2d](https://www.github.com/Fdawgs/node-poppler/commit/8a36c2d02030c28af0c0c571a302c190e8eacd86))
+* **readme:** remove repetition ([8a36c2d](https://github.com/Fdawgs/node-poppler/commit/8a36c2d02030c28af0c0c571a302c190e8eacd86))
 
 
 ### Miscellaneous
 
-* **ci:** replace `node-version` key with shorter `node` ([#255](https://www.github.com/Fdawgs/node-poppler/issues/255)) ([4a6cfa9](https://www.github.com/Fdawgs/node-poppler/commit/4a6cfa99d79605df51d9ca9af683d8c43809501c))
+* **ci:** replace `node-version` key with shorter `node` ([#255](https://github.com/Fdawgs/node-poppler/issues/255)) ([4a6cfa9](https://github.com/Fdawgs/node-poppler/commit/4a6cfa99d79605df51d9ca9af683d8c43809501c))
 
 
 ### Dependencies
 
-* **deps-dev:** bump dev dependencies ([7c6ef15](https://www.github.com/Fdawgs/node-poppler/commit/7c6ef1518c0a4b6d281476590e2db56e5eafc6c2))
-* **deps:** bump actions/stale from 3.0.18 to 3.0.19 ([2479e6a](https://www.github.com/Fdawgs/node-poppler/commit/2479e6af27d1077020f56ee0a444a8a539ff78d0))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([ce14fcf](https://www.github.com/Fdawgs/node-poppler/commit/ce14fcfc4ed03f7ad01b388c9ca455a3463ec525))
-* **deps:** bump wagoid/commitlint-github-action from 3.1.0 to 3.1.4 ([697c43c](https://www.github.com/Fdawgs/node-poppler/commit/697c43cb4f0858a6ce3eb4b9025e53acd3035fbf))
+* **deps-dev:** bump dev dependencies ([7c6ef15](https://github.com/Fdawgs/node-poppler/commit/7c6ef1518c0a4b6d281476590e2db56e5eafc6c2))
+* **deps:** bump actions/stale from 3.0.18 to 3.0.19 ([2479e6a](https://github.com/Fdawgs/node-poppler/commit/2479e6af27d1077020f56ee0a444a8a539ff78d0))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([ce14fcf](https://github.com/Fdawgs/node-poppler/commit/ce14fcfc4ed03f7ad01b388c9ca455a3463ec525))
+* **deps:** bump wagoid/commitlint-github-action from 3.1.0 to 3.1.4 ([697c43c](https://github.com/Fdawgs/node-poppler/commit/697c43cb4f0858a6ce3eb4b9025e53acd3035fbf))
 
 
 ### Continuous Integration
 
-* **ci:** replace `ubuntu-20.04` with `ubuntu-latest`; both same version ([aaf1e5f](https://www.github.com/Fdawgs/node-poppler/commit/aaf1e5fab099734f6ff8ca0585e276ed7572f8a6))
-* fix key usage in `action/setup-node` ([3cfb17b](https://www.github.com/Fdawgs/node-poppler/commit/3cfb17b16c369462f2bff239d23e374fb0cc4fa0))
+* **ci:** replace `ubuntu-20.04` with `ubuntu-latest`; both same version ([aaf1e5f](https://github.com/Fdawgs/node-poppler/commit/aaf1e5fab099734f6ff8ca0585e276ed7572f8a6))
+* fix key usage in `action/setup-node` ([3cfb17b](https://github.com/Fdawgs/node-poppler/commit/3cfb17b16c369462f2bff239d23e374fb0cc4fa0))
 
-## [3.0.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.5.0...v3.0.0) (2021-04-29)
+## [3.0.0](https://github.com/Fdawgs/node-poppler/compare/v2.5.0...v3.0.0) (2021-04-29)
 
 
 ### ⚠ BREAKING CHANGES
@@ -536,153 +536,153 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous
 
-* remove support for node v10 ([fa1a8c1](https://www.github.com/Fdawgs/node-poppler/commit/fa1a8c178757498da3b847c99f3de6da3b17740f))
+* remove support for node v10 ([fa1a8c1](https://github.com/Fdawgs/node-poppler/commit/fa1a8c178757498da3b847c99f3de6da3b17740f))
 
 
 ### Documentation
 
-* grammar and readability fixes ([4637e3e](https://www.github.com/Fdawgs/node-poppler/commit/4637e3ef3b06eed0d56646bec54a2982d1907e07))
+* grammar and readability fixes ([4637e3e](https://github.com/Fdawgs/node-poppler/commit/4637e3ef3b06eed0d56646bec54a2982d1907e07))
 
 
 ### Continuous Integration
 
-* add nodejs v16 to unit test matrix ([52ead20](https://www.github.com/Fdawgs/node-poppler/commit/52ead20deeafe8b80afd5c77d26c924c71afab32))
-* **link-check:** ignore links to lib binaries ([f71f67b](https://www.github.com/Fdawgs/node-poppler/commit/f71f67b6ccfe316575c5c588b05dc938dd08d98c))
+* add nodejs v16 to unit test matrix ([52ead20](https://github.com/Fdawgs/node-poppler/commit/52ead20deeafe8b80afd5c77d26c924c71afab32))
+* **link-check:** ignore links to lib binaries ([f71f67b](https://github.com/Fdawgs/node-poppler/commit/f71f67b6ccfe316575c5c588b05dc938dd08d98c))
 
-## [2.5.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.4.1...v2.5.0) (2021-04-21)
+## [2.5.0](https://github.com/Fdawgs/node-poppler/compare/v2.4.1...v2.5.0) (2021-04-21)
 
 
 ### Features
 
-* support buffer input for functions ([#238](https://www.github.com/Fdawgs/node-poppler/issues/238)) ([a9a88cd](https://www.github.com/Fdawgs/node-poppler/commit/a9a88cd4d79a13332090fd3c0f3be2ed00124537))
+* support buffer input for functions ([#238](https://github.com/Fdawgs/node-poppler/issues/238)) ([a9a88cd](https://github.com/Fdawgs/node-poppler/commit/a9a88cd4d79a13332090fd3c0f3be2ed00124537))
 
 
 ### Continuous Integration
 
-* add cleanup-run job ([b826a9e](https://www.github.com/Fdawgs/node-poppler/commit/b826a9e8b01dae1575b43d51eba4e3a534c775da))
-* **automerge:** move automerge job into new workflow ([9b06c43](https://www.github.com/Fdawgs/node-poppler/commit/9b06c4355f671ab0e63472e2697f5393838eb247))
-* **ci:** ignore dependabot prs for commit message linting ([4802519](https://www.github.com/Fdawgs/node-poppler/commit/4802519a783de692288e439f669e4f855f7f28f2))
-* do not run coveralls steps/jobs on forks ([82bbdf3](https://www.github.com/Fdawgs/node-poppler/commit/82bbdf381abe5cbcb3b1cba5062d69be75389d43))
-* **link-check:** fix skip regex ([1803802](https://www.github.com/Fdawgs/node-poppler/commit/18038021f9c644cb427193446035ff50830d5748))
-* **stale:** shorten workflow name ([a93b619](https://www.github.com/Fdawgs/node-poppler/commit/a93b619bbde22b0fc110cb2c84bad2e3c5375312))
-* **workflows:** run only on push and pulls to master branch ([a97b3b3](https://www.github.com/Fdawgs/node-poppler/commit/a97b3b37b4795f4e2d176376a52021b70ce17560))
+* add cleanup-run job ([b826a9e](https://github.com/Fdawgs/node-poppler/commit/b826a9e8b01dae1575b43d51eba4e3a534c775da))
+* **automerge:** move automerge job into new workflow ([9b06c43](https://github.com/Fdawgs/node-poppler/commit/9b06c4355f671ab0e63472e2697f5393838eb247))
+* **ci:** ignore dependabot prs for commit message linting ([4802519](https://github.com/Fdawgs/node-poppler/commit/4802519a783de692288e439f669e4f855f7f28f2))
+* do not run coveralls steps/jobs on forks ([82bbdf3](https://github.com/Fdawgs/node-poppler/commit/82bbdf381abe5cbcb3b1cba5062d69be75389d43))
+* **link-check:** fix skip regex ([1803802](https://github.com/Fdawgs/node-poppler/commit/18038021f9c644cb427193446035ff50830d5748))
+* **stale:** shorten workflow name ([a93b619](https://github.com/Fdawgs/node-poppler/commit/a93b619bbde22b0fc110cb2c84bad2e3c5375312))
+* **workflows:** run only on push and pulls to master branch ([a97b3b3](https://github.com/Fdawgs/node-poppler/commit/a97b3b37b4795f4e2d176376a52021b70ce17560))
 
 
 ### Dependencies
 
-* **deps-dev:** bump eslint-plugin-promise from 4.3.1 to 5.1.0 ([2af245b](https://www.github.com/Fdawgs/node-poppler/commit/2af245b195f859103e9cc11bf49666379297583e))
-* **deps-dev:** bump husky from 4.3.8 to 6.0.0 ([53a38b9](https://www.github.com/Fdawgs/node-poppler/commit/53a38b9836e8fcc981d06207169a96bb931a0bce))
-* **deps:** bump actions/github-script from v3.1.0 to v3.1.1 ([918a23a](https://www.github.com/Fdawgs/node-poppler/commit/918a23a36e23c307059aa9013ff44ca81d77a1d9))
-* **deps:** bump actions/upload-artifact from v2.2.2 to v2.2.3 ([93e1cc5](https://www.github.com/Fdawgs/node-poppler/commit/93e1cc5bd53e1840110fd626ae68505dafe0d4b5))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([9c06911](https://www.github.com/Fdawgs/node-poppler/commit/9c0691105cdc73db6e8c5d76ae5180c11f4b5b79))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([c602243](https://www.github.com/Fdawgs/node-poppler/commit/c602243285b59326fd7727ceb4e83524d763f3e1))
-* **deps:** bump typoci/spellcheck-action from v0.3.0 to v0.4.0 ([ceab8ee](https://www.github.com/Fdawgs/node-poppler/commit/ceab8ee0f8108401ebbf9bcab72cc884360110dd))
-* **deps:** bump typoci/spellcheck-action from v0.4.0 to v1.0.0 ([c8ea234](https://www.github.com/Fdawgs/node-poppler/commit/c8ea234fa48d7bfa08d46b4041aad291cdf3e033))
-* **deps:** bump wagoid/commitlint-github-action from v3.0.6 to v3.1.0 ([bcd1cc6](https://www.github.com/Fdawgs/node-poppler/commit/bcd1cc606142b3b450d6de1eed75b4791fd4dab3))
+* **deps-dev:** bump eslint-plugin-promise from 4.3.1 to 5.1.0 ([2af245b](https://github.com/Fdawgs/node-poppler/commit/2af245b195f859103e9cc11bf49666379297583e))
+* **deps-dev:** bump husky from 4.3.8 to 6.0.0 ([53a38b9](https://github.com/Fdawgs/node-poppler/commit/53a38b9836e8fcc981d06207169a96bb931a0bce))
+* **deps:** bump actions/github-script from v3.1.0 to v3.1.1 ([918a23a](https://github.com/Fdawgs/node-poppler/commit/918a23a36e23c307059aa9013ff44ca81d77a1d9))
+* **deps:** bump actions/upload-artifact from v2.2.2 to v2.2.3 ([93e1cc5](https://github.com/Fdawgs/node-poppler/commit/93e1cc5bd53e1840110fd626ae68505dafe0d4b5))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([9c06911](https://github.com/Fdawgs/node-poppler/commit/9c0691105cdc73db6e8c5d76ae5180c11f4b5b79))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([c602243](https://github.com/Fdawgs/node-poppler/commit/c602243285b59326fd7727ceb4e83524d763f3e1))
+* **deps:** bump typoci/spellcheck-action from v0.3.0 to v0.4.0 ([ceab8ee](https://github.com/Fdawgs/node-poppler/commit/ceab8ee0f8108401ebbf9bcab72cc884360110dd))
+* **deps:** bump typoci/spellcheck-action from v0.4.0 to v1.0.0 ([c8ea234](https://github.com/Fdawgs/node-poppler/commit/c8ea234fa48d7bfa08d46b4041aad291cdf3e033))
+* **deps:** bump wagoid/commitlint-github-action from v3.0.6 to v3.1.0 ([bcd1cc6](https://github.com/Fdawgs/node-poppler/commit/bcd1cc606142b3b450d6de1eed75b4791fd4dab3))
 
 
 ### Miscellaneous
 
-* prep release ([3f62b5a](https://www.github.com/Fdawgs/node-poppler/commit/3f62b5a565d137cc1a6ca52a971824d14735080a))
+* prep release ([3f62b5a](https://github.com/Fdawgs/node-poppler/commit/3f62b5a565d137cc1a6ca52a971824d14735080a))
 
 
 ### Documentation
 
-* **readme:** add example of buffer usage ([f3dbfff](https://www.github.com/Fdawgs/node-poppler/commit/f3dbffff7957fedb6adbb56d195879793db91fdc))
+* **readme:** add example of buffer usage ([f3dbfff](https://github.com/Fdawgs/node-poppler/commit/f3dbffff7957fedb6adbb56d195879793db91fdc))
 
-### [2.4.1](https://www.github.com/Fdawgs/node-poppler/compare/v2.4.0...v2.4.1) (2021-03-18)
-
-
-### Bug Fixes
-
-* **index:** add missing  option to pdftocairo ([#222](https://www.github.com/Fdawgs/node-poppler/issues/222)) ([631583f](https://www.github.com/Fdawgs/node-poppler/commit/631583f7a5f98267057e299d357e67ce5190db1f))
-
-
-### Dependencies
-
-* **deps-dev:** bump dev dependencies ([c062248](https://www.github.com/Fdawgs/node-poppler/commit/c0622482c3a37d533870050e438a060edcccde45))
-* **deps:** bump fastify/github-action-merge-dependabot ([9111211](https://www.github.com/Fdawgs/node-poppler/commit/911121163658950b702dfa570fa1dc6864fd6e33))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([74bae38](https://www.github.com/Fdawgs/node-poppler/commit/74bae38b51f57bc3597eefa730c650bc77aaefb0))
-
-
-### Miscellaneous
-
-* **api:** lint with prettier ([7b224b3](https://www.github.com/Fdawgs/node-poppler/commit/7b224b32f4ce94e9e8877660d40a5b61971922fe))
-* **husky:** move doc step to pre-commit hook ([6dc466c](https://www.github.com/Fdawgs/node-poppler/commit/6dc466ccd952f5289c12e5c0a339bc06e36d4f8d))
-* **husky:** reorder pre-push hook ([cd3bf8e](https://www.github.com/Fdawgs/node-poppler/commit/cd3bf8e1e35e03d3e9c251cb89488ece95ab7597))
-* **prettierignore:** add `api.md` ([c226f81](https://www.github.com/Fdawgs/node-poppler/commit/c226f812f8f62911a96612c080468ecace20d0d6))
-
-## [2.4.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.3.0...v2.4.0) (2021-03-09)
-
-
-### Features
-
-* **index:** add binary version checking for options ([13febb5](https://www.github.com/Fdawgs/node-poppler/commit/13febb5fdb7d9d7fa77670a93bee1e11020fc1b5))
+### [2.4.1](https://github.com/Fdawgs/node-poppler/compare/v2.4.0...v2.4.1) (2021-03-18)
 
 
 ### Bug Fixes
 
-* **index:** add missing `dataurls` option to pdftohtml ([ec45b5b](https://www.github.com/Fdawgs/node-poppler/commit/ec45b5bb1882a73e2a46b87ce906b6a366295487))
-* **index:** add missing `forcepagenumber` option to pdftoppm ([533f424](https://www.github.com/Fdawgs/node-poppler/commit/533f4249069aa08d8ec928f8f0d588786327bea9))
-* **index:** add missing `hideannotations` option to pdftoppm ([ffbe119](https://www.github.com/Fdawgs/node-poppler/commit/ffbe119c8ce069801a43cfaa2a1faa3f051bcf8e))
-* **index:** add missing `separator` option to pdftoppm ([7744abd](https://www.github.com/Fdawgs/node-poppler/commit/7744abd8deec299a043230e38b70825e9d6728a9))
-* **index:** correct misspelling of `received` in error string ([f6b7fcb](https://www.github.com/Fdawgs/node-poppler/commit/f6b7fcb7ca1b941eccdcc0c8688fdba8dd3cfb99))
-
-
-### Miscellaneous
-
-* **workflows:** rename ci and perf sections ([54caeda](https://www.github.com/Fdawgs/node-poppler/commit/54caeda0c2f1df947c9b5d717a65d049fbb5c3d5))
+* **index:** add missing  option to pdftocairo ([#222](https://github.com/Fdawgs/node-poppler/issues/222)) ([631583f](https://github.com/Fdawgs/node-poppler/commit/631583f7a5f98267057e299d357e67ce5190db1f))
 
 
 ### Dependencies
 
-* **deps:** bump actions/stale from v3.0.17 to v3.0.18 ([b449c7e](https://www.github.com/Fdawgs/node-poppler/commit/b449c7e6d8e4facc3fd8e3bfb76d549d3a3b7dc1))
-* **deps:** bump fastify/github-action-merge-dependabot ([e0bf38d](https://www.github.com/Fdawgs/node-poppler/commit/e0bf38dd7d6f929d00a2caadae58ab8b1260087f))
-* **deps:** bump GoogleCloudPlatform/release-please-action ([f563a41](https://www.github.com/Fdawgs/node-poppler/commit/f563a410fb526ec2182b5d8739d185e066024148))
-* **deps:** bump wagoid/commitlint-github-action from v3.0.1 to v3.0.6 ([405aca1](https://www.github.com/Fdawgs/node-poppler/commit/405aca1d83fc7d19bbc76403e825801670f69b10))
+* **deps-dev:** bump dev dependencies ([c062248](https://github.com/Fdawgs/node-poppler/commit/c0622482c3a37d533870050e438a060edcccde45))
+* **deps:** bump fastify/github-action-merge-dependabot ([9111211](https://github.com/Fdawgs/node-poppler/commit/911121163658950b702dfa570fa1dc6864fd6e33))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([74bae38](https://github.com/Fdawgs/node-poppler/commit/74bae38b51f57bc3597eefa730c650bc77aaefb0))
 
-## [2.3.0](https://www.github.com/Fdawgs/node-poppler/compare/v2.2.1...v2.3.0) (2021-03-04)
+
+### Miscellaneous
+
+* **api:** lint with prettier ([7b224b3](https://github.com/Fdawgs/node-poppler/commit/7b224b32f4ce94e9e8877660d40a5b61971922fe))
+* **husky:** move doc step to pre-commit hook ([6dc466c](https://github.com/Fdawgs/node-poppler/commit/6dc466ccd952f5289c12e5c0a339bc06e36d4f8d))
+* **husky:** reorder pre-push hook ([cd3bf8e](https://github.com/Fdawgs/node-poppler/commit/cd3bf8e1e35e03d3e9c251cb89488ece95ab7597))
+* **prettierignore:** add `api.md` ([c226f81](https://github.com/Fdawgs/node-poppler/commit/c226f812f8f62911a96612c080468ecace20d0d6))
+
+## [2.4.0](https://github.com/Fdawgs/node-poppler/compare/v2.3.0...v2.4.0) (2021-03-09)
 
 
 ### Features
 
-* **lib:** update poppler win32 binaries from 21.02.0 to 21.03.0 ([4648db5](https://www.github.com/Fdawgs/node-poppler/commit/4648db55f600bceb763fd7c342035ab3362a7ff1))
+* **index:** add binary version checking for options ([13febb5](https://github.com/Fdawgs/node-poppler/commit/13febb5fdb7d9d7fa77670a93bee1e11020fc1b5))
 
 
-### Dependencies
+### Bug Fixes
 
-* **dependabot:** set commit message prefix; lower pull limit ([25e3652](https://www.github.com/Fdawgs/node-poppler/commit/25e365256f0cfd958d36e8e8146f191bb64eeb40))
-* **deps-dev:** bump @commitlint/cli from 11.0.0 to 12.0.1 ([#206](https://www.github.com/Fdawgs/node-poppler/issues/206)) ([78f92b6](https://www.github.com/Fdawgs/node-poppler/commit/78f92b6ba3cbc06c505371ee24aae3da5105a27a))
-* **deps-dev:** bump @commitlint/config-conventional ([4708778](https://www.github.com/Fdawgs/node-poppler/commit/47087784c8afe2199faf9fb7fab07c4b204a2616))
-* **deps-dev:** bump eslint-config-prettier from 7.2.0 to 8.1.0 ([ef0788a](https://www.github.com/Fdawgs/node-poppler/commit/ef0788accfcd8e0a0acdfc887478a77305e487dd))
-* **deps-dev:** bump jsdoc-to-markdown from 6.0.1 to 7.0.0 ([#207](https://www.github.com/Fdawgs/node-poppler/issues/207)) ([b6f88ae](https://www.github.com/Fdawgs/node-poppler/commit/b6f88ae99e7c57ebd9b51052dfe48e45c45bc8d7))
-* **deps:** bump wagoid/commitlint-github-action from v2.2.3 to v3.0.1 ([3674b7e](https://www.github.com/Fdawgs/node-poppler/commit/3674b7e7be1e503e59062f2bed0c79bf9bb0d454))
-* **deps:** specify minor and hotfix versions ([aa1bb13](https://www.github.com/Fdawgs/node-poppler/commit/aa1bb13ecbe99c91c52824d9574562e9d5caaaa8))
+* **index:** add missing `dataurls` option to pdftohtml ([ec45b5b](https://github.com/Fdawgs/node-poppler/commit/ec45b5bb1882a73e2a46b87ce906b6a366295487))
+* **index:** add missing `forcepagenumber` option to pdftoppm ([533f424](https://github.com/Fdawgs/node-poppler/commit/533f4249069aa08d8ec928f8f0d588786327bea9))
+* **index:** add missing `hideannotations` option to pdftoppm ([ffbe119](https://github.com/Fdawgs/node-poppler/commit/ffbe119c8ce069801a43cfaa2a1faa3f051bcf8e))
+* **index:** add missing `separator` option to pdftoppm ([7744abd](https://github.com/Fdawgs/node-poppler/commit/7744abd8deec299a043230e38b70825e9d6728a9))
+* **index:** correct misspelling of `received` in error string ([f6b7fcb](https://github.com/Fdawgs/node-poppler/commit/f6b7fcb7ca1b941eccdcc0c8688fdba8dd3cfb99))
 
 
 ### Miscellaneous
 
-* add link check workflow ([39a83c0](https://www.github.com/Fdawgs/node-poppler/commit/39a83c0347a8af3286515669219577603756075e))
-* automate release and changelog generation ([b294617](https://www.github.com/Fdawgs/node-poppler/commit/b294617db770c0165aaa8beda779f0634ecdd53d))
-* **codeql:** remove autobuild action ([d20154c](https://www.github.com/Fdawgs/node-poppler/commit/d20154cd0c06dfe0055d8edcde9084a520063400))
-* **link-check:** ignore if draft pull request event ([d3c7ad7](https://www.github.com/Fdawgs/node-poppler/commit/d3c7ad7bd80f5ad9118cee6cc825952091d62589))
-* **linkcheck:** extend ignored urls ([8c0a238](https://www.github.com/Fdawgs/node-poppler/commit/8c0a238bf1471108ef5eddcef1d11d99cb7f628b))
-* **lint-check:** compress patterns ([c9b7e09](https://www.github.com/Fdawgs/node-poppler/commit/c9b7e09f7cd34cdb6a281d741d244c61f4485bfd))
-* **lint-check:** run on push and pull events for md files ([91cd1fc](https://www.github.com/Fdawgs/node-poppler/commit/91cd1fcc9e3e5b3f9ef77a1c1dff2287b37e72a7))
-* **prettier:** create separate files to allow for CI/CD to use prettier config ([#212](https://www.github.com/Fdawgs/node-poppler/issues/212)) ([8319774](https://www.github.com/Fdawgs/node-poppler/commit/83197747b55609540518aae42b72a11d13ca8715))
-* replace stalebot with github action ([237939d](https://www.github.com/Fdawgs/node-poppler/commit/237939d729df7d8e8f0387748a25fbbbb9be6ad4))
-* **vscode:** remove conflicting prettier ext setting ([316e244](https://www.github.com/Fdawgs/node-poppler/commit/316e24473cb89f6c45ae5930d47b61d9da3d463c))
-* **workflows:** fix release types to account for bots ([7ac80c5](https://www.github.com/Fdawgs/node-poppler/commit/7ac80c52115222e98a0381a4ee990777422b8c45))
-* **workflows:** move release steps into `cd` workflow ([86a94e4](https://www.github.com/Fdawgs/node-poppler/commit/86a94e47766eb33216d1c570a191fbae23cc4989))
-* **workflows:** rename spellcheck workflow ([8fdff21](https://www.github.com/Fdawgs/node-poppler/commit/8fdff210ba5fab00085ff072ced9b95476a63551))
-* **workflows:** tidy node-version syntax ([8b69bc1](https://www.github.com/Fdawgs/node-poppler/commit/8b69bc1f52616e2924f80a7ccae365dbe5917017))
+* **workflows:** rename ci and perf sections ([54caeda](https://github.com/Fdawgs/node-poppler/commit/54caeda0c2f1df947c9b5d717a65d049fbb5c3d5))
+
+
+### Dependencies
+
+* **deps:** bump actions/stale from v3.0.17 to v3.0.18 ([b449c7e](https://github.com/Fdawgs/node-poppler/commit/b449c7e6d8e4facc3fd8e3bfb76d549d3a3b7dc1))
+* **deps:** bump fastify/github-action-merge-dependabot ([e0bf38d](https://github.com/Fdawgs/node-poppler/commit/e0bf38dd7d6f929d00a2caadae58ab8b1260087f))
+* **deps:** bump GoogleCloudPlatform/release-please-action ([f563a41](https://github.com/Fdawgs/node-poppler/commit/f563a410fb526ec2182b5d8739d185e066024148))
+* **deps:** bump wagoid/commitlint-github-action from v3.0.1 to v3.0.6 ([405aca1](https://github.com/Fdawgs/node-poppler/commit/405aca1d83fc7d19bbc76403e825801670f69b10))
+
+## [2.3.0](https://github.com/Fdawgs/node-poppler/compare/v2.2.1...v2.3.0) (2021-03-04)
+
+
+### Features
+
+* **lib:** update poppler win32 binaries from 21.02.0 to 21.03.0 ([4648db5](https://github.com/Fdawgs/node-poppler/commit/4648db55f600bceb763fd7c342035ab3362a7ff1))
+
+
+### Dependencies
+
+* **dependabot:** set commit message prefix; lower pull limit ([25e3652](https://github.com/Fdawgs/node-poppler/commit/25e365256f0cfd958d36e8e8146f191bb64eeb40))
+* **deps-dev:** bump @commitlint/cli from 11.0.0 to 12.0.1 ([#206](https://github.com/Fdawgs/node-poppler/issues/206)) ([78f92b6](https://github.com/Fdawgs/node-poppler/commit/78f92b6ba3cbc06c505371ee24aae3da5105a27a))
+* **deps-dev:** bump @commitlint/config-conventional ([4708778](https://github.com/Fdawgs/node-poppler/commit/47087784c8afe2199faf9fb7fab07c4b204a2616))
+* **deps-dev:** bump eslint-config-prettier from 7.2.0 to 8.1.0 ([ef0788a](https://github.com/Fdawgs/node-poppler/commit/ef0788accfcd8e0a0acdfc887478a77305e487dd))
+* **deps-dev:** bump jsdoc-to-markdown from 6.0.1 to 7.0.0 ([#207](https://github.com/Fdawgs/node-poppler/issues/207)) ([b6f88ae](https://github.com/Fdawgs/node-poppler/commit/b6f88ae99e7c57ebd9b51052dfe48e45c45bc8d7))
+* **deps:** bump wagoid/commitlint-github-action from v2.2.3 to v3.0.1 ([3674b7e](https://github.com/Fdawgs/node-poppler/commit/3674b7e7be1e503e59062f2bed0c79bf9bb0d454))
+* **deps:** specify minor and hotfix versions ([aa1bb13](https://github.com/Fdawgs/node-poppler/commit/aa1bb13ecbe99c91c52824d9574562e9d5caaaa8))
+
+
+### Miscellaneous
+
+* add link check workflow ([39a83c0](https://github.com/Fdawgs/node-poppler/commit/39a83c0347a8af3286515669219577603756075e))
+* automate release and changelog generation ([b294617](https://github.com/Fdawgs/node-poppler/commit/b294617db770c0165aaa8beda779f0634ecdd53d))
+* **codeql:** remove autobuild action ([d20154c](https://github.com/Fdawgs/node-poppler/commit/d20154cd0c06dfe0055d8edcde9084a520063400))
+* **link-check:** ignore if draft pull request event ([d3c7ad7](https://github.com/Fdawgs/node-poppler/commit/d3c7ad7bd80f5ad9118cee6cc825952091d62589))
+* **linkcheck:** extend ignored urls ([8c0a238](https://github.com/Fdawgs/node-poppler/commit/8c0a238bf1471108ef5eddcef1d11d99cb7f628b))
+* **lint-check:** compress patterns ([c9b7e09](https://github.com/Fdawgs/node-poppler/commit/c9b7e09f7cd34cdb6a281d741d244c61f4485bfd))
+* **lint-check:** run on push and pull events for md files ([91cd1fc](https://github.com/Fdawgs/node-poppler/commit/91cd1fcc9e3e5b3f9ef77a1c1dff2287b37e72a7))
+* **prettier:** create separate files to allow for CI/CD to use prettier config ([#212](https://github.com/Fdawgs/node-poppler/issues/212)) ([8319774](https://github.com/Fdawgs/node-poppler/commit/83197747b55609540518aae42b72a11d13ca8715))
+* replace stalebot with github action ([237939d](https://github.com/Fdawgs/node-poppler/commit/237939d729df7d8e8f0387748a25fbbbb9be6ad4))
+* **vscode:** remove conflicting prettier ext setting ([316e244](https://github.com/Fdawgs/node-poppler/commit/316e24473cb89f6c45ae5930d47b61d9da3d463c))
+* **workflows:** fix release types to account for bots ([7ac80c5](https://github.com/Fdawgs/node-poppler/commit/7ac80c52115222e98a0381a4ee990777422b8c45))
+* **workflows:** move release steps into `cd` workflow ([86a94e4](https://github.com/Fdawgs/node-poppler/commit/86a94e47766eb33216d1c570a191fbae23cc4989))
+* **workflows:** rename spellcheck workflow ([8fdff21](https://github.com/Fdawgs/node-poppler/commit/8fdff210ba5fab00085ff072ced9b95476a63551))
+* **workflows:** tidy node-version syntax ([8b69bc1](https://github.com/Fdawgs/node-poppler/commit/8b69bc1f52616e2924f80a7ccae365dbe5917017))
 
 
 ### Documentation
 
-* **changelog:** fix h3 header style ([a0efe08](https://www.github.com/Fdawgs/node-poppler/commit/a0efe080bf2c48de4ac71c021b5733834ba1e56b))
-* **readme:** fix broken link ([bc1031b](https://www.github.com/Fdawgs/node-poppler/commit/bc1031b02e33ccda42db80407e52a21698a3d2d5))
-* **readme:** shorten links ([300f033](https://www.github.com/Fdawgs/node-poppler/commit/300f0333f4a4c934b3124eb46b5aa07e98dca5ef))
+* **changelog:** fix h3 header style ([a0efe08](https://github.com/Fdawgs/node-poppler/commit/a0efe080bf2c48de4ac71c021b5733834ba1e56b))
+* **readme:** fix broken link ([bc1031b](https://github.com/Fdawgs/node-poppler/commit/bc1031b02e33ccda42db80407e52a21698a3d2d5))
+* **readme:** shorten links ([300f033](https://github.com/Fdawgs/node-poppler/commit/300f0333f4a4c934b3124eb46b5aa07e98dca5ef))
 
 ### 2.2.1 (2021-02-16)
 

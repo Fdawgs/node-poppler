@@ -23,8 +23,6 @@ Install using `npm`:
 npm i node-poppler
 ```
 
-node-poppler's test scripts use `npm` commands.
-
 ### Linux and macOS/Darwin Support
 
 Windows binaries are provided with this repository.

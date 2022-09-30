@@ -28,13 +28,8 @@ module.exports = {
 	rules: {
 		"import/no-extraneous-dependencies": "error",
 		"no-console": "off",
-		"no-multiple-empty-lines": [
-			"error",
-			{
-				max: 1,
-			},
-		],
-		"prefer-destructuring": "off",
+		"no-multiple-empty-lines": ["error", { max: 1 }],
+		"prefer-destructuring": ["error", { object: true, array: false }],
 		"promise/prefer-await-to-callbacks": "warn",
 		"promise/prefer-await-to-then": "warn",
 		"security/detect-object-injection": "off",

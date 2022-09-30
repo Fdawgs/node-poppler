@@ -128,7 +128,6 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
-	 *
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.listEmbedded - List all of the embedded files in the PDF file.
@@ -186,7 +185,6 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
-	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToExamine - Specifies the first page to examine.
@@ -266,7 +264,6 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
-	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputPrefix - Filename prefix of output files.
 	 * @param {object=} options - Object containing options to pass to binary.
@@ -372,7 +369,6 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
-	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {number=} options.firstPageToConvert - First page to print.
@@ -514,7 +510,6 @@ class Poppler {
 	 * @description Extract single pages from a PDF file,
 	 * and writes one PDF file for each page to outputPattern.
 	 * This will not work if the file is encrypted.
-	 *
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} outputPattern - Should contain %d (or any variant respecting printf format),
 	 * since %d is replaced by the page number.
@@ -563,7 +558,6 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
-	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 *
@@ -792,14 +786,12 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to HTML.
-	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * If `undefined` then Poppler will use the directory and name of the original file
 	 * and create a new file, with `-html` appended to the end of the filename.
 	 *
 	 * Required if `file` is a Buffer.
-	 *
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.complexOutput - Generate complex output.
 	 * @param {boolean=} options.dataUrls -  Use data URLs instead of external images in HTML.
@@ -931,7 +923,6 @@ class Poppler {
 	 * @description Converts a PDF file to colour image files in Portable Pixmap (PPM) format,
 	 * grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 	 * in Portable Bitmap (PBM) format.
-	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} outputPath - Filepath to output the results to.
 	 * @param {object=} options - Object containing options to pass to binary.
@@ -1130,7 +1121,6 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to PostScript (PS).
-	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
@@ -1376,7 +1366,6 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to TXT.
-	 *
 	 * @param {Buffer| string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string=} outputFile - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
@@ -1528,7 +1517,6 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Merges several PDF files in order of their occurrence in the files array to
 	 * one PDF result file.
-	 *
 	 * @param {Array} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`.
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.

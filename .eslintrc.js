@@ -34,7 +34,6 @@ module.exports = {
 				max: 1,
 			},
 		],
-		"jsdoc/tag-lines": "off",
 		"prefer-destructuring": "off",
 		"promise/prefer-await-to-callbacks": "warn",
 		"promise/prefer-await-to-then": "warn",

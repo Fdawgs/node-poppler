@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.1](https://github.com/Fdawgs/node-poppler/compare/v6.0.0...v6.0.1) (2022-10-03)
+
+
+### Documentation
+
+* **readme:** remove redundant statement ([d96a75c](https://github.com/Fdawgs/node-poppler/commit/d96a75c70a2c2967407a085cb8f0070cbab0c5f4))
+* use shorter urls; remove yarn install guidance ([f06e113](https://github.com/Fdawgs/node-poppler/commit/f06e113887f36ca985222a98ae0ab0b210413179))
+
+
+### Miscellaneous
+
+* **.husky:** shell path and arg updates ([#440](https://github.com/Fdawgs/node-poppler/issues/440)) ([ce43cdf](https://github.com/Fdawgs/node-poppler/commit/ce43cdf13938f88c7c9d0b3ec656538bbaeee692))
+* **.npmignore:** reduce entries ([d297f0f](https://github.com/Fdawgs/node-poppler/commit/d297f0f69b967cc3f191da9d95b828105abe6235))
+* **.vscode/extensions:** remove unmaintained extension ([a5e1bdf](https://github.com/Fdawgs/node-poppler/commit/a5e1bdff3771513c2652c2eb643eee7d45c9760b))
+* ***.ignore:** add clinicjs directory ([b9d984e](https://github.com/Fdawgs/node-poppler/commit/b9d984ec8229ca4880fff44a2beb362d7419ecb3))
+* import destructuring ([#446](https://github.com/Fdawgs/node-poppler/issues/446)) ([5cc8089](https://github.com/Fdawgs/node-poppler/commit/5cc8089d644cbf63c37d423e2c24a599d87c08db))
+* **index:** remove empty jsdoc tag lines ([e1ef6aa](https://github.com/Fdawgs/node-poppler/commit/e1ef6aa70862e529c1398ff931656cbcc472b126))
+* **LICENSE:** remove trailing whitespace ([adb48c2](https://github.com/Fdawgs/node-poppler/commit/adb48c2f3d9d22db471838e75d2221fb787c5aa1))
+* prefer object destructuring ([b7efc38](https://github.com/Fdawgs/node-poppler/commit/b7efc3865d2ba1a8710effa0f37548ce89761675))
+* **test_resources:** compress test documents ([#444](https://github.com/Fdawgs/node-poppler/issues/444)) ([ce5e446](https://github.com/Fdawgs/node-poppler/commit/ce5e446f0c94fde62d8662807be005c32b00b3af))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([ff4118b](https://github.com/Fdawgs/node-poppler/commit/ff4118b45e7633acc2b1aa38ef5e3b2a8da26f83))
+* **deps-dev:** bump eslint-plugin-jest from 26.9.0 to 27.0.1 ([#443](https://github.com/Fdawgs/node-poppler/issues/443)) ([2e74377](https://github.com/Fdawgs/node-poppler/commit/2e743771bd786a7adb621833a0303c1a609ef96b))
+* **deps-dev:** bump jest from 28.1.3 to 29.0.1 ([#442](https://github.com/Fdawgs/node-poppler/issues/442)) ([88caf42](https://github.com/Fdawgs/node-poppler/commit/88caf4285d2983bc6d26dbf2af8dd9f466bc0e03))
+
 ## [6.0.0](https://github.com/Fdawgs/node-poppler/compare/v5.1.6...v6.0.0) (2022-08-09)
 
 

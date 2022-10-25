@@ -44,7 +44,7 @@ jobs:
               if: steps.release.outputs.release_created
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-              # Disable Husky prepare script
+              # Remove dev values from package.json
               run: |
-                  npm set-script prepare ""
+                  npm pkg delete commitlint devDependencies jest scripts
                   npm publish --ignore-scripts

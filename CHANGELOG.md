@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.3](https://github.com/Fdawgs/node-poppler/compare/v6.0.2...v6.0.3) (2022-10-25)
+
+
+### Continuous Integration
+
+* **cd:** fix typescript def gen ([64eb724](https://github.com/Fdawgs/node-poppler/commit/64eb724f77d7b2af139f822510177a56a3ebe73e))
+
 ## [6.0.2](https://github.com/Fdawgs/node-poppler/compare/v6.0.1...v6.0.2) (2022-10-25)
 
 

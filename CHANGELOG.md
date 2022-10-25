@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.2](https://github.com/Fdawgs/node-poppler/compare/v6.0.1...v6.0.2) (2022-10-25)
+
+
+### Miscellaneous
+
+* **lib/win32:** compress binaries ([#449](https://github.com/Fdawgs/node-poppler/issues/449)) ([c5728de](https://github.com/Fdawgs/node-poppler/commit/c5728de1710080d5713730ed01238d5f41a0569c))
+
+
+### Continuous Integration
+
+* **cd:** gen typescript definitions before publishing ([e655c6a](https://github.com/Fdawgs/node-poppler/commit/e655c6aa05d2ddcc19623a27b5cbaaf8f420f140))
+* **cd:** remove dev values from `package.json` ([692480e](https://github.com/Fdawgs/node-poppler/commit/692480e6cad327f4646cd1e80c8974d059541fe2))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([c8c0de7](https://github.com/Fdawgs/node-poppler/commit/c8c0de7aa0e19197b37dee8b355f13eb458e6e19))
+
 ## [6.0.1](https://github.com/Fdawgs/node-poppler/compare/v6.0.0...v6.0.1) (2022-10-03)
 
 

@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.0](https://github.com/Fdawgs/node-poppler/compare/v6.0.3...v6.1.0) (2022-11-22)
+
+
+### Features
+
+* **index:** add `generateTsvFile` arg to `pdfToText()` options ([108785d](https://github.com/Fdawgs/node-poppler/commit/108785d8dfdc5eb1724c17f4ad9810e1f9c3e9cb))
+
+
+### Bug Fixes
+
+* **lib:** update poppler win32 binaries from 22.04.0 to 22.11.0 ([5bd66c3](https://github.com/Fdawgs/node-poppler/commit/5bd66c3016255f5613301b73eaa2142bf0a4e765))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([519b84e](https://github.com/Fdawgs/node-poppler/commit/519b84eb53d2f68c599c530cc21ab4ab5e712b2d))
+* **deps:** bump actions/dependency-review-action from 2 to 3 ([#453](https://github.com/Fdawgs/node-poppler/issues/453)) ([bcf8727](https://github.com/Fdawgs/node-poppler/commit/bcf8727d9dcdc1db2d1ec367504ebd9ac33902a9))
+
 ## [6.0.3](https://github.com/Fdawgs/node-poppler/compare/v6.0.2...v6.0.3) (2022-10-25)
 
 

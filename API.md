@@ -418,6 +418,7 @@ Converts a PDF file to TXT.
 | [options.firstPageToConvert] | <code>number</code> | Specifies the first page to convert. |
 | [options.fixedWidthLayout] | <code>number</code> | Assume fixed-pitch (or tabular) text, with the specified character width (in points). This forces physical layout mode. |
 | [options.generateHtmlMetaFile] | <code>boolean</code> | Generate simple HTML file, including the meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers. |
+| [options.generateTsvFile] | <code>boolean</code> | Generate a TSV file containing the bounding box information for each block, line, and word in the file. |
 | [options.lastPageToConvert] | <code>number</code> | Specifies the last page to convert. |
 | [options.listEncodingOptions] | <code>boolean</code> | List the available encodings. |
 | [options.maintainLayout] | <code>boolean</code> | Maintain (as best as possible) the original physical layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and output the text in reading order. |

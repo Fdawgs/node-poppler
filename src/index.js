@@ -1391,6 +1391,8 @@ class Poppler {
 	 * specified character width (in points). This forces physical layout mode.
 	 * @param {boolean=} options.generateHtmlMetaFile Generate simple HTML file, including the
 	 * meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers.
+	 * @param {boolean=} options.generateTsvFile - Generate a TSV file containing the bounding box
+	 * information for each block, line, and word in the file.
 	 * @param {number=} options.lastPageToConvert - Specifies the last page to convert.
 	 * @param {boolean=} options.listEncodingOptions - List the available encodings.
 	 * @param {boolean=} options.maintainLayout - Maintain (as best as possible) the original physical
@@ -1429,6 +1431,7 @@ class Poppler {
 			firstPageToConvert: { arg: "-f", type: "number" },
 			fixedWidthLayout: { arg: "-fixed", type: "number" },
 			generateHtmlMetaFile: { arg: "-htmlmeta", type: "boolean" },
+			generateTsvFile: { arg: "-tsv", type: "boolean" },
 			lastPageToConvert: { arg: "-l", type: "number" },
 			listEncodingOptions: { arg: "-listenc", type: "boolean" },
 			maintainLayout: { arg: "-layout", type: "boolean" },

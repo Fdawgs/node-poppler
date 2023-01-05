@@ -4,7 +4,7 @@
 
 Please email reports about any security-related issues you find to frazer.dev@outlook.com.
 Please use a descriptive subject line in your report email, in addition to a reference or link to this repository.
-After the initial reply to your report, we will endeavor to keep you informed of the progress being made towards a fix.
+After the initial reply to your report, we will attempt to keep you informed of the progress being made towards a fix.
 
 In addition, please include the following information along with your report:
 

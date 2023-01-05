@@ -15,7 +15,7 @@ Other processes and specifications that are in use in this repository are:
 
 ## Getting Started
 
-This repository requires that you have [Node.js](https://nodejs.org) >=12.0.0 installed.
+This repository requires that you have [Node.js](https://nodejs.org) >=14.0.0 installed.
 
 With that in place, you can fork the repository, clone it, and then run `npm i` to install all dependencies.
 

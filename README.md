@@ -45,7 +45,7 @@ Once they have been installed, you will need to pass the `poppler-utils` install
 
 ```js
 const { Poppler } = require("node-poppler");
-const poppler = new Poppler("./usr/bin");
+const poppler = new Poppler("/usr/bin");
 ```
 
 ## API

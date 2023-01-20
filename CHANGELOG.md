@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.1](https://github.com/Fdawgs/node-poppler/compare/v6.1.0...v6.1.1) (2023-01-20)
+
+
+### Bug Fixes
+
+* **lib:** update poppler win32 binaries from 22.11.0 to 23.01.0 ([#464](https://github.com/Fdawgs/node-poppler/issues/464)) ([b0db479](https://github.com/Fdawgs/node-poppler/commit/b0db479a658b2d5111e51a7dd8c14447f74140ae))
+
+
+### Miscellaneous
+
+* **license:** update license year ([19a971b](https://github.com/Fdawgs/node-poppler/commit/19a971b89ee6ac95d75fdcb5c69ab0acd13db875))
+
+
+### Improvements
+
+* **index:** convert `parseOptions()` internal func to sync ([02b9566](https://github.com/Fdawgs/node-poppler/commit/02b9566a499c40edce80c0ee89ffb8b06bef52b2))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([3fd8f17](https://github.com/Fdawgs/node-poppler/commit/3fd8f1743978b1a45c8cd05b85b2b41fc88fe422))
+* **deps-dev:** bump jsdoc-to-markdown from 7.1.1 to 8.0.0 ([#457](https://github.com/Fdawgs/node-poppler/issues/457)) ([ad8f7ec](https://github.com/Fdawgs/node-poppler/commit/ad8f7ec74ca05342132ec1f924b765ea77f98498))
+
+
+### Documentation
+
+* **contributing:** update min node version ([d94f44b](https://github.com/Fdawgs/node-poppler/commit/d94f44ba1c3b99fb0d79cd721029a1ccc44bf306))
+* grammar and clarity fixes ([4ae6a06](https://github.com/Fdawgs/node-poppler/commit/4ae6a060876db7ffced9e991652f1cc0c044e426))
+* **readme:** fix linux path example ([#463](https://github.com/Fdawgs/node-poppler/issues/463)) ([18382e9](https://github.com/Fdawgs/node-poppler/commit/18382e992fd07ac066bfa625a7f5f9d0b1c1f72c))
+
 ## [6.1.0](https://github.com/Fdawgs/node-poppler/compare/v6.0.3...v6.1.0) (2022-11-22)
 
 

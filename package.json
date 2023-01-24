@@ -44,8 +44,7 @@
 		"node": ">=14.0.0"
 	},
 	"scripts": {
-		"build": "tsc",
-		"doc": "tsc && jsdoc2md src/index.js > API.md && npm run lint:prettier",
+		"build": "tsc && jsdoc2md src/index.js > API.md && npm run lint:prettier",
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",

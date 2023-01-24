@@ -47,6 +47,6 @@ jobs:
               # Build docs and TS definitions and remove dev values from package.json
               run: |
                   npm i --ignore-scripts
-                  npm run doc
+                  npm run build
                   npm pkg delete commitlint devDependencies jest scripts
                   npm publish --ignore-scripts

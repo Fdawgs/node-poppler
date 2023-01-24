@@ -52,7 +52,7 @@ Steps 2. and 4. are automatically run by a pre-commit hook added by [Husky](http
 
 ## Release Process
 
-Before a release, ensure the API docs are regenerated with `npm run doc`.
+Before a release, ensure the API docs are regenerated with `npm run build`.
 
 ## Issues
 

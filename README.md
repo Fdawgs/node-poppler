@@ -13,7 +13,6 @@
 [Poppler](https://poppler.freedesktop.org/) is a PDF rendering library that also includes a collection of utility binaries, which allows for the manipulation and extraction of data from PDF documents such as converting PDF files to HTML, TXT, or PostScript.
 
 The `node-poppler` module provides an asynchronous node.js wrapper around said utility binaries for easier use.
-It was created out of a need for a PDF-to-HTML conversion module at [Yeovil District Hospital NHS Foundation Trust](https://yeovilhospital.co.uk/) to convert clinical documents.
 
 ## Installation
 

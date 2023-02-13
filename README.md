@@ -8,7 +8,7 @@
 
 > Asynchronous node.js wrapper for the Poppler PDF rendering library
 
-## Intro
+## Overview
 
 [Poppler](https://poppler.freedesktop.org/) is a PDF rendering library that also includes a collection of utility binaries, which allows for the manipulation and extraction of data from PDF documents such as converting PDF files to HTML, TXT, or PostScript.
 
@@ -22,7 +22,7 @@ Install using `npm`:
 npm i node-poppler
 ```
 
-### Linux and macOS/Darwin Support
+### Linux and macOS/Darwin support
 
 Windows binaries are provided with this repository.
 For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries separately.

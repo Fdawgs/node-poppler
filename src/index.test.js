@@ -54,7 +54,7 @@ function clean() {
 	});
 }
 
-describe("Node-Poppler Module", () => {
+describe("Node-Poppler module", () => {
 	afterEach(async () => {
 		await clean();
 	});
@@ -94,7 +94,7 @@ describe("Node-Poppler Module", () => {
 		}
 	});
 
-	describe("pdfAttach Function", () => {
+	describe("pdfAttach function", () => {
 		test("Should attach file to PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = `${testDirectory}test.txt`;
@@ -157,7 +157,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfDetach Function", () => {
+	describe("pdfDetach function", () => {
 		test("Should list embedded files", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
@@ -207,7 +207,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfFonts Function", () => {
+	describe("pdfFonts function", () => {
 		test("Should examine 3 pages of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
@@ -269,7 +269,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfImages Function", () => {
+	describe("pdfImages function", () => {
 		test("Should accept options and list all images in PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
@@ -363,7 +363,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfInfo Function", () => {
+	describe("pdfInfo function", () => {
 		const pdfInfoObject = {
 			tagged: "yes",
 			userProperties: "no",
@@ -463,7 +463,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfSeparate Function", () => {
+	describe("pdfSeparate function", () => {
 		test("Should extract 3 pages from PDF file to new files", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
@@ -529,8 +529,8 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfToCairo Function", () => {
-		describe("PDF-to-EPS Option", () => {
+	describe("pdfToCairo function", () => {
+		describe("PDF-to-EPS option", () => {
 			test("Should convert PDF file to EPS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
@@ -588,7 +588,7 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
-		describe("PDF-to-JPG Option", () => {
+		describe("PDF-to-JPG option", () => {
 			test("Should convert PDF file to JPG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
@@ -641,7 +641,7 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
-		describe("PDF-to-PDF Option", () => {
+		describe("PDF-to-PDF option", () => {
 			test("Should convert PDF file to PDF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
@@ -693,7 +693,7 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
-		describe("PDF-to-PNG Option", () => {
+		describe("PDF-to-PNG option", () => {
 			test("Should convert PDF file to PNG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
@@ -746,7 +746,7 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
-		describe("PDF-to-PS Option", () => {
+		describe("PDF-to-PS option", () => {
 			test("Should convert PDF file to PS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
@@ -794,7 +794,7 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
-		describe("PDF-to-SVG Option", () => {
+		describe("PDF-to-SVG option", () => {
 			test("Should convert PDF file to SVG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
@@ -846,7 +846,7 @@ describe("Node-Poppler Module", () => {
 			});
 		});
 
-		describe("PDF-to-TIFF Option", () => {
+		describe("PDF-to-TIFF option", () => {
 			test("Should convert PDF file to TIFF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
@@ -962,7 +962,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfToHtml Function", () => {
+	describe("pdfToHtml function", () => {
 		test("Should convert PDF file to HTML file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
@@ -1053,7 +1053,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfToPpm Function", () => {
+	describe("pdfToPpm function", () => {
 		let version;
 
 		beforeAll(async () => {
@@ -1178,7 +1178,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfToPs Function", () => {
+	describe("pdfToPs function", () => {
 		test("Should convert PDF file to PS file and write to output file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
@@ -1265,7 +1265,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfToText Function", () => {
+	describe("pdfToText function", () => {
 		test("Should convert PDF file to Text file and write to output file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.txt`;
@@ -1354,7 +1354,7 @@ describe("Node-Poppler Module", () => {
 		});
 	});
 
-	describe("pdfUnite Function", () => {
+	describe("pdfUnite function", () => {
 		test("Should merge two separate PDF files into a new single PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const files = [

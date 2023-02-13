@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [6.1.1](https://github.com/Fdawgs/node-poppler/compare/v6.1.0...v6.1.1) (2023-01-20)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **lib:** update poppler win32 binaries from 22.11.0 to 23.01.0 ([#464](https://github.com/Fdawgs/node-poppler/issues/464)) ([b0db479](https://github.com/Fdawgs/node-poppler/commit/b0db479a658b2d5111e51a7dd8c14447f74140ae))
 
@@ -40,7 +40,7 @@ All notable changes to this project will be documented in this file.
 * **index:** add `generateTsvFile` arg to `pdfToText()` options ([108785d](https://github.com/Fdawgs/node-poppler/commit/108785d8dfdc5eb1724c17f4ad9810e1f9c3e9cb))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **lib:** update poppler win32 binaries from 22.04.0 to 22.11.0 ([5bd66c3](https://github.com/Fdawgs/node-poppler/commit/5bd66c3016255f5613301b73eaa2142bf0a4e765))
 
@@ -53,7 +53,7 @@ All notable changes to this project will be documented in this file.
 ## [6.0.3](https://github.com/Fdawgs/node-poppler/compare/v6.0.2...v6.0.3) (2022-10-25)
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** fix typescript def gen ([64eb724](https://github.com/Fdawgs/node-poppler/commit/64eb724f77d7b2af139f822510177a56a3ebe73e))
 
@@ -65,7 +65,7 @@ All notable changes to this project will be documented in this file.
 * **lib/win32:** compress binaries ([#449](https://github.com/Fdawgs/node-poppler/issues/449)) ([c5728de](https://github.com/Fdawgs/node-poppler/commit/c5728de1710080d5713730ed01238d5f41a0569c))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** gen typescript definitions before publishing ([e655c6a](https://github.com/Fdawgs/node-poppler/commit/e655c6aa05d2ddcc19623a27b5cbaaf8f420f140))
 * **cd:** remove dev values from `package.json` ([692480e](https://github.com/Fdawgs/node-poppler/commit/692480e6cad327f4646cd1e80c8974d059541fe2))
@@ -135,7 +135,7 @@ All notable changes to this project will be documented in this file.
 ## [5.1.6](https://github.com/Fdawgs/node-poppler/compare/v5.1.5...v5.1.6) (2022-06-04)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** set correct "file size" if `pdfInfo()` passed a buffer ([#427](https://github.com/Fdawgs/node-poppler/issues/427)) ([8d30764](https://github.com/Fdawgs/node-poppler/commit/8d3076482d13e1d31a54a5d7147cb1a3390b59bc))
 
@@ -158,7 +158,7 @@ All notable changes to this project will be documented in this file.
 ### [5.1.5](https://github.com/Fdawgs/node-poppler/compare/v5.1.4...v5.1.5) (2022-06-01)
 
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** fix context ([a77891b](https://github.com/Fdawgs/node-poppler/commit/a77891b87f020be9f631bb01941dba67ae599650))
 * **cd:** use `lts/*` for node setup in release job ([1aefdf2](https://github.com/Fdawgs/node-poppler/commit/1aefdf2daf1952468e60b197b1b3064f2a7f04e4))
@@ -191,7 +191,7 @@ All notable changes to this project will be documented in this file.
 ### [5.1.4](https://github.com/Fdawgs/node-poppler/compare/v5.1.3...v5.1.4) (2022-05-01)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **lib:** update poppler win32 binaries from 22.01.0 to 22.04.0 ([6e74afe](https://github.com/Fdawgs/node-poppler/commit/6e74afe9ee73511a71a14942cd14648b33ec7e2e))
 
@@ -224,7 +224,7 @@ All notable changes to this project will be documented in this file.
 * use npm install alias ([8de1b7c](https://github.com/Fdawgs/node-poppler/commit/8de1b7c8b4a4d4f0fa0c3fd0053028cd48345efd))
 
 
-### Continuous Integration
+### Continuous integration
 
 * add dependency-review job ([dd75f36](https://github.com/Fdawgs/node-poppler/commit/dd75f3695e4a7983d86827dc45ba1229fee07b59))
 * add job step names, workflow comments, and whitespace ([0bdd954](https://github.com/Fdawgs/node-poppler/commit/0bdd95488f6786424e7b4eab7aea20192642ad69))
@@ -242,7 +242,7 @@ All notable changes to this project will be documented in this file.
 ### [5.1.3](https://github.com/Fdawgs/node-poppler/compare/v5.1.2...v5.1.3) (2022-02-25)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** use `spawn` for larger stream results ([#386](https://github.com/Fdawgs/node-poppler/issues/386)) ([e437f3e](https://github.com/Fdawgs/node-poppler/commit/e437f3e9e9fa73a8e36d64a01283388e3a879e10))
 
@@ -265,7 +265,7 @@ All notable changes to this project will be documented in this file.
 ### [5.1.2](https://github.com/Fdawgs/node-poppler/compare/v5.1.1...v5.1.2) (2022-01-19)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **lib:** update poppler win32 binaries from 21.11.0 to 22.01.0 ([e76a813](https://github.com/Fdawgs/node-poppler/commit/e76a813b3ad12bb15a808ccd4d1a163016d36eec))
 
@@ -281,7 +281,7 @@ All notable changes to this project will be documented in this file.
 * **contributing:** add step for `lint:licenses` script ([#371](https://github.com/Fdawgs/node-poppler/issues/371)) ([5e9f7a5](https://github.com/Fdawgs/node-poppler/commit/5e9f7a510f6aa407d39a17ad24d83ade59c98f41))
 
 
-### Continuous Integration
+### Continuous integration
 
 * remove spellcheck workflow ([#376](https://github.com/Fdawgs/node-poppler/issues/376)) ([56fb637](https://github.com/Fdawgs/node-poppler/commit/56fb63713171c4aed9458d48b4d2cf66a5b91419))
 
@@ -298,12 +298,12 @@ All notable changes to this project will be documented in this file.
 ### [5.1.1](https://github.com/Fdawgs/node-poppler/compare/v5.1.0...v5.1.1) (2021-12-11)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** correct message thrown for missing binaries ([#363](https://github.com/Fdawgs/node-poppler/issues/363)) ([5249d61](https://github.com/Fdawgs/node-poppler/commit/5249d6183b11f6c9eded643359e05d4f3ecf9f01))
 
 
-### Continuous Integration
+### Continuous integration
 
 * trigger workflows when drafts marked as "ready to review" ([#354](https://github.com/Fdawgs/node-poppler/issues/354)) ([de922a2](https://github.com/Fdawgs/node-poppler/commit/de922a20494d8bc87333da156248342805e37a15))
 
@@ -342,12 +342,12 @@ All notable changes to this project will be documented in this file.
 * **index:** add `printUrls` arg to `pdfInfo()` options ([d58da5f](https://github.com/Fdawgs/node-poppler/commit/d58da5fc0d6fe6b1eeef8a660701052dd11a17fa))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **lib:** update poppler win32 binaries from 21.10.0 to 21.11.0 ([1838bee](https://github.com/Fdawgs/node-poppler/commit/1838bee3c21dc6d467db3246b5e5da0802216cf2))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** do not run clean-up on draft prs ([088722d](https://github.com/Fdawgs/node-poppler/commit/088722dde16c7cc9176c90797386d33b56b92056))
 * **spell-check:** do not run on draft prs ([6a48913](https://github.com/Fdawgs/node-poppler/commit/6a48913d01f63ec34c30230fe82bb34ad5d3b49e))
@@ -367,7 +367,7 @@ All notable changes to this project will be documented in this file.
 ### [5.0.3](https://github.com/Fdawgs/node-poppler/compare/v5.0.2...v5.0.3) (2021-11-04)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** normalize `binPath` constructor param ([#345](https://github.com/Fdawgs/node-poppler/issues/345)) ([3ec8cae](https://github.com/Fdawgs/node-poppler/commit/3ec8cae42432a49fcd467467d7a1c2cd5d9be1d8))
 * **index:** pdftocairo `singleFile` option ([31bbe79](https://github.com/Fdawgs/node-poppler/commit/31bbe79d22a68b751ee060a682b7bdcfa44ce6a7))
@@ -385,7 +385,7 @@ All notable changes to this project will be documented in this file.
 * **.prettierrc:** only enable `bracketSameLine` for html ([#341](https://github.com/Fdawgs/node-poppler/issues/341)) ([30dfe71](https://github.com/Fdawgs/node-poppler/commit/30dfe719fa84be290406240c054cf142a7e41824))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** stop `prepare` script running ([#342](https://github.com/Fdawgs/node-poppler/issues/342)) ([5d22a76](https://github.com/Fdawgs/node-poppler/commit/5d22a76e8b331630e6a65a9061a1fe57d3785e3a))
 
@@ -401,12 +401,12 @@ All notable changes to this project will be documented in this file.
 ### [5.0.2](https://github.com/Fdawgs/node-poppler/compare/v5.0.1...v5.0.2) (2021-10-12)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **lib:** update poppler win32 binaries from 21.09.0 to 21.10.0 ([c8e1e77](https://github.com/Fdawgs/node-poppler/commit/c8e1e770cb4afa77008c82d56c3fbf3cb5609670))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **automerge:** update location of octokit rest methods ([c2d6959](https://github.com/Fdawgs/node-poppler/commit/c2d6959f71355fd7a8e274c19e59010ef4bff958))
 
@@ -433,12 +433,12 @@ All notable changes to this project will be documented in this file.
 ### [5.0.1](https://github.com/Fdawgs/node-poppler/compare/v5.0.0...v5.0.1) (2021-09-13)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **lib:** update poppler win32 binaries from 21.08.0 to 21.09.0 ([#313](https://github.com/Fdawgs/node-poppler/issues/313)) ([6cd1a3c](https://github.com/Fdawgs/node-poppler/commit/6cd1a3c2e5d6f2f5d81f4b2c1c76317ccd97abbd))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** revert to workflow-run-clean-action from github concurrency ([4b85707](https://github.com/Fdawgs/node-poppler/commit/4b857076e02aad23799127ad8f54c1b1229afc7d))
 
@@ -464,7 +464,7 @@ All notable changes to this project will be documented in this file.
 
 * **index:** macOS/Darwin binaries have been removed due to persistent issues with them. Please download macOS binaries separately through Homebrew.
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** remove included macos/darwin binaries ([1bfa703](https://github.com/Fdawgs/node-poppler/commit/1bfa70332d0f2c5d49cf10e2d750fade332f50b0))
 * **index:** throw new error not return it as returning leads to silent failures ([#299](https://github.com/Fdawgs/node-poppler/issues/299)) ([e22d02d](https://github.com/Fdawgs/node-poppler/commit/e22d02d8f16c635e4a54a46a7e6e1dba97618a2d))
@@ -475,7 +475,7 @@ All notable changes to this project will be documented in this file.
 * **.github:** use new YAML configured GitHub issue forms ([#303](https://github.com/Fdawgs/node-poppler/issues/303)) ([4760072](https://github.com/Fdawgs/node-poppler/commit/4760072385521b2546d1b4b7cc672d84584afc54))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** replace workflow-run-cleanup-action with github concurrency ([#304](https://github.com/Fdawgs/node-poppler/issues/304)) ([0f08d1f](https://github.com/Fdawgs/node-poppler/commit/0f08d1f05dc55aec6381c44731dd1220c7f87599))
 
@@ -487,7 +487,7 @@ All notable changes to this project will be documented in this file.
 ### [4.1.2](https://github.com/Fdawgs/node-poppler/compare/v4.1.1...v4.1.2) (2021-08-30)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **lib:** update poppler win32 binaries from 21.03.0 to 21.08.0 ([#296](https://github.com/Fdawgs/node-poppler/issues/296)) ([34f9e37](https://github.com/Fdawgs/node-poppler/commit/34f9e3758a0825cb7f1178cdbf6285e8b93fdb8b))
 
@@ -510,12 +510,12 @@ All notable changes to this project will be documented in this file.
 ### [4.1.1](https://github.com/Fdawgs/node-poppler/compare/v4.1.0...v4.1.1) (2021-07-23)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** add "3221226505" error code mapping ([5017df6](https://github.com/Fdawgs/node-poppler/commit/5017df6f4a32abcdb15425d8ef8ba7545a7308d6))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** disable homebrew analytics for macos builds ([#278](https://github.com/Fdawgs/node-poppler/issues/278)) ([92ad4fa](https://github.com/Fdawgs/node-poppler/commit/92ad4fa2ba60a0fb6054da386b7bfdd9504dd476))
 * **link-check:** reduce frequency from daily to monthly ([#272](https://github.com/Fdawgs/node-poppler/issues/272)) ([5e91c2a](https://github.com/Fdawgs/node-poppler/commit/5e91c2aa2cf3b807ce1e2f6b6317b1e5e2f58c3f))
@@ -554,7 +554,7 @@ All notable changes to this project will be documented in this file.
 * **index:** add `printAsJson` arg to `pdfInfo()` options ([56a2ffb](https://github.com/Fdawgs/node-poppler/commit/56a2ffbac898209057fdc87f6fec23b18af5404f)), thanks to @sainf
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** normalize binary paths ([15cb1a1](https://github.com/Fdawgs/node-poppler/commit/15cb1a16bb2fc98b702f52977e824eef412ad937))
 
@@ -564,7 +564,7 @@ All notable changes to this project will be documented in this file.
 * **workflows:** remove `stale.yml` ([167484a](https://github.com/Fdawgs/node-poppler/commit/167484ab9b84871b62925636a028ad47a975ee5e))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **cd:** move perf optimizations and refactoring into same section ([842d3f5](https://github.com/Fdawgs/node-poppler/commit/842d3f588219bd9611021eee6da89731cbbf8a0f))
 
@@ -600,7 +600,7 @@ All notable changes to this project will be documented in this file.
 ### [3.0.1](https://github.com/Fdawgs/node-poppler/compare/v3.0.0...v3.0.1) (2021-05-20)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** remove setting default encoding of received buffer ([baa3d43](https://github.com/Fdawgs/node-poppler/commit/baa3d43fac0e7080328efa3bb45aa0c3658a63e5))
 
@@ -623,7 +623,7 @@ All notable changes to this project will be documented in this file.
 * **deps:** bump wagoid/commitlint-github-action from 3.1.0 to 3.1.4 ([697c43c](https://github.com/Fdawgs/node-poppler/commit/697c43cb4f0858a6ce3eb4b9025e53acd3035fbf))
 
 
-### Continuous Integration
+### Continuous integration
 
 * **ci:** replace `ubuntu-20.04` with `ubuntu-latest`; both same version ([aaf1e5f](https://github.com/Fdawgs/node-poppler/commit/aaf1e5fab099734f6ff8ca0585e276ed7572f8a6))
 * fix key usage in `action/setup-node` ([3cfb17b](https://github.com/Fdawgs/node-poppler/commit/3cfb17b16c369462f2bff239d23e374fb0cc4fa0))
@@ -645,7 +645,7 @@ All notable changes to this project will be documented in this file.
 * grammar and readability fixes ([4637e3e](https://github.com/Fdawgs/node-poppler/commit/4637e3ef3b06eed0d56646bec54a2982d1907e07))
 
 
-### Continuous Integration
+### Continuous integration
 
 * add nodejs v16 to unit test matrix ([52ead20](https://github.com/Fdawgs/node-poppler/commit/52ead20deeafe8b80afd5c77d26c924c71afab32))
 * **link-check:** ignore links to lib binaries ([f71f67b](https://github.com/Fdawgs/node-poppler/commit/f71f67b6ccfe316575c5c588b05dc938dd08d98c))
@@ -658,7 +658,7 @@ All notable changes to this project will be documented in this file.
 * support buffer input for functions ([#238](https://github.com/Fdawgs/node-poppler/issues/238)) ([a9a88cd](https://github.com/Fdawgs/node-poppler/commit/a9a88cd4d79a13332090fd3c0f3be2ed00124537))
 
 
-### Continuous Integration
+### Continuous integration
 
 * add cleanup-run job ([b826a9e](https://github.com/Fdawgs/node-poppler/commit/b826a9e8b01dae1575b43d51eba4e3a534c775da))
 * **automerge:** move automerge job into new workflow ([9b06c43](https://github.com/Fdawgs/node-poppler/commit/9b06c4355f671ab0e63472e2697f5393838eb247))
@@ -694,7 +694,7 @@ All notable changes to this project will be documented in this file.
 ### [2.4.1](https://github.com/Fdawgs/node-poppler/compare/v2.4.0...v2.4.1) (2021-03-18)
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** add missing  option to pdftocairo ([#222](https://github.com/Fdawgs/node-poppler/issues/222)) ([631583f](https://github.com/Fdawgs/node-poppler/commit/631583f7a5f98267057e299d357e67ce5190db1f))
 
@@ -721,7 +721,7 @@ All notable changes to this project will be documented in this file.
 * **index:** add binary version checking for options ([13febb5](https://github.com/Fdawgs/node-poppler/commit/13febb5fdb7d9d7fa77670a93bee1e11020fc1b5))
 
 
-### Bug Fixes
+### Bug fixes
 
 * **index:** add missing `dataurls` option to pdftohtml ([ec45b5b](https://github.com/Fdawgs/node-poppler/commit/ec45b5bb1882a73e2a46b87ce906b6a366295487))
 * **index:** add missing `forcepagenumber` option to pdftoppm ([533f424](https://github.com/Fdawgs/node-poppler/commit/533f4249069aa08d8ec928f8f0d588786327bea9))

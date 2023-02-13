@@ -22,7 +22,7 @@ Install using `npm`:
 npm i node-poppler
 ```
 
-### Linux and macOS/Darwin Support
+### Linux and macOS/Darwin support
 
 Windows binaries are provided with this repository.
 For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries separately.

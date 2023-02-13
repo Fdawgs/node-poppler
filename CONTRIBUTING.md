@@ -13,13 +13,13 @@ Other processes and specifications that are in use in this repository are:
 -   [Conventional commits](https://conventionalcommits.org/en/v1.0.0/) following the @commitlint/config-conventional config
 -   [Prettier](https://prettier.io/) style guide
 
-## Getting Started
+## Getting started
 
 This repository requires that you have [Node.js](https://nodejs.org) >=14.0.0 installed.
 
 With that in place, you can fork the repository, clone it, and then run `npm i` to install all dependencies.
 
-### Development Workflow
+### Development workflow
 
 After cloning the repository and installing all the dependencies, there are several commands available for local development:
 
@@ -27,19 +27,13 @@ After cloning the repository and installing all the dependencies, there are seve
 -   `npm run jest` - Runs Jest over all tests in src directory
 -   `npm test` - Runs `npm run lint` and `npm run jest` together
 
-## Documentation Style
+## Documentation style
 
 Documentation (both in markdown files and inline comments) should be written in **British English** where possible.
 
-Titles and headings should adhere to the [Associated Press (AP)](https://apstylebook.com/) style:
+Titles and headings should use sentence-style capitalisation, where only the first letter of a sentence and proper nouns are capitalised.
 
--   Capitalise words with three or more letters
--   Capitalise the first and the last word
--   Capitalise nouns, pronouns, adjectives, verbs, adverbs, and subordinate conjunctions
--   Lowercase articles (a, an, the), coordinating conjunctions, and prepositions
--   Capitalise words with four or more letters (including conjunctions and prepositions)
-
-## Pull Request Checklist
+## Pull request checklist
 
 Before submitting a pull request back to the main repository, please make sure you have completed the following steps:
 
@@ -50,7 +44,7 @@ Before submitting a pull request back to the main repository, please make sure y
 
 Steps 2. and 4. are automatically run by a pre-commit hook added by [Husky](https://typicode.github.io/husky/#/).
 
-## Release Process
+## Release process
 
 Before a release, ensure the API docs are regenerated with `npm run build`.
 

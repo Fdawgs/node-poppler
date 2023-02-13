@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.1.2](https://github.com/Fdawgs/node-poppler/compare/v6.1.1...v6.1.2) (2023-02-13)
+
+
+### Documentation
+
+* **readme:** remove fluff ([bf8fb9f](https://github.com/Fdawgs/node-poppler/commit/bf8fb9fdd170247e8d467e86961c172bd7a33a87))
+* **readme:** rename intro to overview ([b1d2284](https://github.com/Fdawgs/node-poppler/commit/b1d228495fc36cdbd43ad47d756f16cc6c480c23))
+
+
+### Miscellaneous
+
+* **package:** remove `doc` script ([#465](https://github.com/Fdawgs/node-poppler/issues/465)) ([4837c01](https://github.com/Fdawgs/node-poppler/commit/4837c01fc2ed0e6f82c39a3732d9ddbdcff4e9bb))
+* use sentence case over ap style for titles and headings ([0de5b85](https://github.com/Fdawgs/node-poppler/commit/0de5b85c3464dc4e927f7d119477abf5904d37d0))
+
+
+### Continuous integration
+
+* **cd:** use sentence case for changelog headings ([f80107e](https://github.com/Fdawgs/node-poppler/commit/f80107e008d02ee66a0760d276465367a6078f6e))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([8826727](https://github.com/Fdawgs/node-poppler/commit/8826727ae945d0f4ef8d1bad0aeee6a245c57988))
+
 ## [6.1.1](https://github.com/Fdawgs/node-poppler/compare/v6.1.0...v6.1.1) (2023-01-20)
 
 

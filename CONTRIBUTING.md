@@ -4,8 +4,8 @@ Contributions are welcome and any help that can be offered is greatly appreciate
 Please take a moment to read the entire contributing guide.
 
 This repository uses the [Feature Branch Workflow](https://atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow),
-meaning that development should take place in `feat/` branches, with the `master` branch kept in a stable state.
-When you submit pull requests, please make sure to fork from and submit back to `master`.
+meaning that development should take place in `feat/` branches, with the `main` branch kept in a stable state.
+When you submit pull requests, please make sure to fork from and submit back to `main`.
 
 Other processes and specifications that are in use in this repository are:
 
@@ -37,7 +37,7 @@ Titles and headings should use sentence-style capitalisation, where only the fir
 
 Before submitting a pull request back to the main repository, please make sure you have completed the following steps:
 
-1. Pull request base branch is set to `master`. All pull requests should be forked from and merged back to `master`
+1. Pull request base branch is set to `main`. All pull requests should be forked from and merged back to `main`
 2. Run `npm test` to check the code adheres to the defined ESLint style and that it passes the Jest tests
 3. Run `npm run lint:prettier` to run the Prettier code formatter over the code
 4. Run `npm run lint:licenses` if adding or updating production dependencies to check they use permissive licenses

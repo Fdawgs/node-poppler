@@ -666,7 +666,7 @@ All notable changes to this project will be documented in this file.
 * do not run coveralls steps/jobs on forks ([82bbdf3](https://github.com/Fdawgs/node-poppler/commit/82bbdf381abe5cbcb3b1cba5062d69be75389d43))
 * **link-check:** fix skip regex ([1803802](https://github.com/Fdawgs/node-poppler/commit/18038021f9c644cb427193446035ff50830d5748))
 * **stale:** shorten workflow name ([a93b619](https://github.com/Fdawgs/node-poppler/commit/a93b619bbde22b0fc110cb2c84bad2e3c5375312))
-* **workflows:** run only on push and pulls to master branch ([a97b3b3](https://github.com/Fdawgs/node-poppler/commit/a97b3b37b4795f4e2d176376a52021b70ce17560))
+* **workflows:** run only on push and pulls to main branch ([a97b3b3](https://github.com/Fdawgs/node-poppler/commit/a97b3b37b4795f4e2d176376a52021b70ce17560))
 
 
 ### Dependencies

@@ -2,8 +2,8 @@
 
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/node-poppler.svg)](https://github.com/Fdawgs/node-poppler/releases/latest/)
 [![npm version](https://img.shields.io/npm/v/node-poppler)](https://npmjs.com/package/node-poppler)
-![Build Status](https://github.com/Fdawgs/node-poppler/workflows/CI/badge.svg?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/node-poppler/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/node-poppler?branch=master)
+![Build Status](https://github.com/Fdawgs/node-poppler/workflows/CI/badge.svg?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/Fdawgs/node-poppler/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/node-poppler?branch=main)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
 > Asynchronous node.js wrapper for the Poppler PDF rendering library
@@ -53,7 +53,7 @@ const poppler = new Poppler("/usr/bin");
 const { Poppler } = require("node-poppler");
 ```
 
-[**API Documentation can be found here**](https://github.com/Fdawgs/node-poppler/blob/master/API.md)
+[**API Documentation can be found here**](https://github.com/Fdawgs/node-poppler/blob/main/API.md)
 
 ## Examples
 

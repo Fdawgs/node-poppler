@@ -19,6 +19,7 @@ const errorMessages = {
  * @author Frazer Smith
  * @description Check each option provided is valid, of the correct type, and can be used by specified
  * version of binary.
+ * @ignore
  * @param {object} acceptedOptions - Object containing options that a binary accepts.
  * @param {object} options - Object containing options to pass to binary.
  * @param {string=} version - Version of binary.

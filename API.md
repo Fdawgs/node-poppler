@@ -1,19 +1,3 @@
-## Classes
-
-<dl>
-<dt><a href="#Poppler">Poppler</a></dt>
-<dd></dd>
-</dl>
-
-## Functions
-
-<dl>
-<dt><a href="#parseOptions">parseOptions(acceptedOptions, options, [version])</a> ⇒ <code>Promise.&lt;(Array|Error)&gt;</code></dt>
-<dd><p>Check each option provided is valid, of the correct type, and can be used by specified
-version of binary.</p>
-</dd>
-</dl>
-
 <a name="Poppler"></a>
 
 ## Poppler
@@ -447,20 +431,4 @@ one PDF result file.
 | outputFile | <code>string</code> | Filepath of the file to output the resulting merged PDF to. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information. |
-
-<a name="parseOptions"></a>
-
-## parseOptions(acceptedOptions, options, [version]) ⇒ <code>Promise.&lt;(Array\|Error)&gt;</code>
-Check each option provided is valid, of the correct type, and can be used by specified
-version of binary.
-
-**Kind**: global function  
-**Returns**: <code>Promise.&lt;(Array\|Error)&gt;</code> - Promise of array of CLI arguments on resolve, or Error object on rejection.  
-**Author**: Frazer Smith  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| acceptedOptions | <code>object</code> | Object containing options that a binary accepts. |
-| options | <code>object</code> | Object containing options to pass to binary. |
-| [version] | <code>string</code> | Version of binary. |
 

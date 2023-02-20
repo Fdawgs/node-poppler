@@ -875,16 +875,17 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async (code) => {
+				/**
+				 * pdfToHtml does not return an exit code so check output to see if it was successful.
+				 * See https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1
+				 */
+				child.on("close", async () => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else if (code === 0) {
-						resolve(errorMessages[code]);
-					} else if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
 					} else {
-						/* istanbul ignore next */
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(stdErr ? `${stdErr.trim()}` : undefined)
+						);
 					}
 				});
 			});

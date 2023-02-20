@@ -11,6 +11,7 @@ const errorMessages = {
 	1: "Error opening a PDF file",
 	2: "Error opening an output file",
 	3: "Error related to PDF permissions",
+	4: "Error related to ICC profile",
 	99: "Other error",
 	3221226505: "Internal process error",
 };

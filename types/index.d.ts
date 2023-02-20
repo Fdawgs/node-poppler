@@ -1,3 +1,4 @@
+export default Poppler;
 export class Poppler {
 	/**
 	 * @param {string=} binPath - Path of poppler-utils binaries.

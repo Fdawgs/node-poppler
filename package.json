@@ -33,6 +33,7 @@
 		"unite"
 	],
 	"main": "src/index.js",
+	"types": "types/index.d.ts",
 	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
 	"homepage": "https://github.com/Fdawgs/node-poppler",
 	"bugs": {

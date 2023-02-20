@@ -25,7 +25,7 @@ const errorMessages = {
  * @param {object} options - Object containing options to pass to binary.
  * @param {string=} version - Version of binary.
  * @returns {Array<string>} Array of CLI arguments.
- * @throws {Error} If invalid arguments provided.
+ * @throws If invalid arguments provided.
  */
 function parseOptions(acceptedOptions, options, version) {
 	const args = [];

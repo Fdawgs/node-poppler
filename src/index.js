@@ -248,7 +248,7 @@ class Poppler {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else {
-						reject(new Error(stdErr.trim()));
+						reject(new Error(stdErr ? stdErr.trim() : undefined));
 					}
 				});
 			});
@@ -484,7 +484,7 @@ class Poppler {
 							resolve(stdOut.trim());
 						}
 					} else {
-						reject(new Error(stdErr.trim()));
+						reject(new Error(stdErr ? stdErr.trim() : undefined));
 					}
 				});
 			});
@@ -884,9 +884,7 @@ class Poppler {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else {
-						reject(
-							new Error(stdErr ? `${stdErr.trim()}` : undefined)
-						);
+						reject(new Error(stdErr ? stdErr.trim() : undefined));
 					}
 				});
 			});

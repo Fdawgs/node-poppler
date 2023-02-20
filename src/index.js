@@ -23,7 +23,8 @@ const errorMessages = {
  * @param {object} acceptedOptions - Object containing options that a binary accepts.
  * @param {object} options - Object containing options to pass to binary.
  * @param {string=} version - Version of binary.
- * @returns {Array|Error} Array of CLI arguments or Error object if invalid arguments provided.
+ * @returns {Array<string>} Array of CLI arguments.
+ * @throws {Error} If invalid arguments provided.
  */
 function parseOptions(acceptedOptions, options, version) {
 	const args = [];
@@ -1519,6 +1520,5 @@ class Poppler {
 	}
 }
 
-module.exports = {
-	Poppler,
-};
+module.exports.Poppler = Poppler;
+module.exports.default = Poppler;

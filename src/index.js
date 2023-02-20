@@ -11,6 +11,7 @@ const errorMessages = {
 	1: "Error opening a PDF file",
 	2: "Error opening an output file",
 	3: "Error related to PDF permissions",
+	4: "Error related to ICC profile",
 	99: "Other error",
 	3221226505: "Internal process error",
 };
@@ -24,7 +25,7 @@ const errorMessages = {
  * @param {object} options - Object containing options to pass to binary.
  * @param {string=} version - Version of binary.
  * @returns {Array<string>} Array of CLI arguments.
- * @throws {Error} If invalid arguments provided.
+ * @throws If invalid arguments provided.
  */
 function parseOptions(acceptedOptions, options, version) {
 	const args = [];
@@ -247,7 +248,7 @@ class Poppler {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else {
-						reject(new Error(stdErr.trim()));
+						reject(new Error(stdErr ? stdErr.trim() : undefined));
 					}
 				});
 			});
@@ -483,7 +484,7 @@ class Poppler {
 							resolve(stdOut.trim());
 						}
 					} else {
-						reject(new Error(stdErr.trim()));
+						reject(new Error(stdErr ? stdErr.trim() : undefined));
 					}
 				});
 			});
@@ -875,16 +876,15 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", async (code) => {
+				/**
+				 * pdfToHtml does not return an exit code so check output to see if it was successful.
+				 * See https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1
+				 */
+				child.on("close", async () => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
-					} else if (code === 0) {
-						resolve(errorMessages[code]);
-					} else if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
 					} else {
-						/* istanbul ignore next */
-						reject(new Error(errorMessages[code]));
+						reject(new Error(stdErr ? stdErr.trim() : undefined));
 					}
 				});
 			});

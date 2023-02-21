@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.0](https://github.com/Fdawgs/node-poppler/compare/v6.1.2...v6.2.0) (2023-02-20)
+
+
+### Features
+
+* add nodenext compatibility ([#470](https://github.com/Fdawgs/node-poppler/issues/470)) ([4590aa7](https://github.com/Fdawgs/node-poppler/commit/4590aa794e05d4da6a3bbbef437f5c958c8af551))
+
+
+### Documentation
+
+* **api:** remove `parseOptions()` private method ([#471](https://github.com/Fdawgs/node-poppler/issues/471)) ([7637c71](https://github.com/Fdawgs/node-poppler/commit/7637c71c3e60543a8b77a6f94893c24d3051add6))
+
+
+### Bug fixes
+
+* **index:** add error code for icc profiles ([0d2f61d](https://github.com/Fdawgs/node-poppler/commit/0d2f61ddd7a720bf043b58a8a12c272ddffd21da))
+
+
+### Miscellaneous
+
+* **index:** remove jsdoc type from `parseOptions()` ([4a47c93](https://github.com/Fdawgs/node-poppler/commit/4a47c930996f90785c5305c46b80a47dc3dd7cba))
+
+
+### Improvements
+
+* **index:** `pdfToHtml()` does not have exit codes ([4176746](https://github.com/Fdawgs/node-poppler/commit/417674660af0be53d5f73bd13e95b6d76318612e))
+* **index:** do not return empty error messages on rejection ([c020a12](https://github.com/Fdawgs/node-poppler/commit/c020a12d29ff5a7ed366873f42becd6e335efd74))
+
 ## [6.1.2](https://github.com/Fdawgs/node-poppler/compare/v6.1.1...v6.1.2) (2023-02-13)
 
 

@@ -2,7 +2,7 @@
 /* eslint-disable security/detect-child-process */
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require("fs");
-const glob = require("glob");
+const { glob } = require("glob");
 const path = require("upath");
 const { execFile } = require("child_process");
 const { promisify } = require("util");
@@ -38,25 +38,19 @@ switch (process.platform) {
 		break;
 }
 
-/**
- * @description Removes leftover test files.
- * @returns {Promise<string>} 'done' on resolve.
- */
-function clean() {
-	return new Promise((resolve) => {
-		const files = glob.GlobSync(
-			`${testDirectory}!(test.txt|pdf_1.3_NHS_Constitution.pdf|pdf_1.3_NHS_Constitution_attached_detach.pdf|pdf_1.7_NHS_Constitution_Handbook.pdf)`
-		).found;
-		files.forEach((foundFile) => {
-			fs.unlinkSync(foundFile);
-		});
-		resolve("done");
-	});
-}
-
 describe("Node-Poppler module", () => {
 	afterEach(async () => {
-		await clean();
+		// Remove leftover test files
+		const files = await glob(`${testDirectory}**/*`, {
+			ignore: [
+				`${testDirectory}/pdf_1.3_NHS_Constitution_attached_detach.pdf`,
+				`${testDirectory}/pdf_1.3_NHS_Constitution.pdf`,
+				`${testDirectory}/pdf_1.7_NHS_Constitution_Handbook.pdf`,
+				`${testDirectory}/test.txt`,
+			],
+		});
+
+		await Promise.all(files.map((filed) => fs.promises.unlink(filed)));
 	});
 
 	describe("Constructor", () => {

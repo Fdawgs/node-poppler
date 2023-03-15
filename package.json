@@ -50,7 +50,7 @@
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
-		"lint:licenses": " node scripts/license-checker.js",
+		"lint:licenses": "node scripts/license-checker.js",
 		"lint:prettier": "prettier . -w -u",
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",

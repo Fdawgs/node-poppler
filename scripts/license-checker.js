@@ -14,7 +14,7 @@ const path = require("upath");
  * @description Check licenses of all direct production dependencies to
  * ensure they are not copyleft.
  * @param {object} options - Options object.
- * @param {string} options.start - Path to start checking from.
+ * @param {string} [options.start="__dirname/.."] - Path to start checking from.
  */
 async function checkLicenses(
 	options = { start: path.joinSafe(__dirname, "..") }

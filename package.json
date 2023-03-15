@@ -50,7 +50,7 @@
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
-		"lint:licenses": "license-checker --direct --onlyAllow=\"0BSD;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;MIT;Unlicense\" --production --summary",
+		"lint:licenses": " node scripts/license-checker.js",
 		"lint:prettier": "prettier . -w -u",
 		"lint:prettier:ci": "prettier . -c -u",
 		"prepare": "husky install",
@@ -89,6 +89,7 @@
 		"jsdoc-to-markdown": "^8.0.0",
 		"license-checker": "^25.0.1",
 		"prettier": "^2.8.4",
+		"spdx-copyleft": "^1.0.0",
 		"typescript": "^4.9.5"
 	},
 	"dependencies": {

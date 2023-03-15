@@ -1,7 +1,5 @@
-/* eslint-disable security-node/detect-crlf */
 /* eslint-disable security/detect-object-injection */
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-console */
+/* eslint-disable security-node/detect-crlf */
 const checker = require("license-checker");
 const copyLeftLicenses = require("spdx-copyleft");
 const { promisify } = require("util");

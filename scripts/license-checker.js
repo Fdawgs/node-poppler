@@ -11,12 +11,8 @@ const path = require("upath");
  * @author Frazer Smith
  * @description Check licenses of all direct production dependencies to
  * ensure they are not copyleft.
- * @param {object} options - Options object.
- * @param {string} [options.start="__dirname/.."] - Path to start checking from.
  */
-async function checkLicenses(
-	options = { start: path.joinSafe(__dirname, "..") }
-) {
+async function checkLicenses() {
 	console.log("Checking licenses of direct production dependencies...");
 
 	/**
@@ -57,7 +53,7 @@ async function checkLicenses(
 	const licenses = await init({
 		direct: true,
 		production: true,
-		start: options.start,
+		start: path.joinSafe(__dirname, ".."),
 	});
 
 	const copyLeftLicensesList = Object.keys(licenses).filter((license) =>
@@ -77,9 +73,4 @@ async function checkLicenses(
 	process.exit(0);
 }
 
-// If file called directly, then run function
-if (require.main === module) {
-	checkLicenses();
-}
-
-module.exports = checkLicenses;
+checkLicenses();

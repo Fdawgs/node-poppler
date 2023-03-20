@@ -236,15 +236,15 @@ class Poppler {
 				let stdOut = "";
 				let stdErr = "";
 
-				child.stdout.on("data", async (data) => {
+				child.stdout.on("data", (data) => {
 					stdOut += data;
 				});
 
-				child.stderr.on("data", async (data) => {
+				child.stderr.on("data", (data) => {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", () => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else {
@@ -332,15 +332,15 @@ class Poppler {
 				let stdOut = "";
 				let stdErr = "";
 
-				child.stdout.on("data", async (data) => {
+				child.stdout.on("data", (data) => {
 					stdOut += data;
 				});
 
-				child.stderr.on("data", async (data) => {
+				child.stderr.on("data", (data) => {
 					stdErr += data;
 				});
 
-				child.on("close", async (code) => {
+				child.on("close", (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
@@ -450,15 +450,15 @@ class Poppler {
 				let stdOut = "";
 				let stdErr = "";
 
-				child.stdout.on("data", async (data) => {
+				child.stdout.on("data", (data) => {
 					stdOut += data;
 				});
 
-				child.stderr.on("data", async (data) => {
+				child.stderr.on("data", (data) => {
 					stdErr += data;
 				});
 
-				child.on("close", async () => {
+				child.on("close", () => {
 					if (stdOut !== "") {
 						if (fileSize) {
 							stdOut = stdOut.replace(
@@ -737,15 +737,15 @@ class Poppler {
 				let stdOut = "";
 				let stdErr = "";
 
-				child.stdout.on("data", async (data) => {
+				child.stdout.on("data", (data) => {
 					stdOut += data;
 				});
 
-				child.stderr.on("data", async (data) => {
+				child.stderr.on("data", (data) => {
 					stdErr += data;
 				});
 
-				child.on("close", async (code) => {
+				child.on("close", (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
@@ -868,11 +868,11 @@ class Poppler {
 				let stdOut = "";
 				let stdErr = "";
 
-				child.stdout.on("data", async (data) => {
+				child.stdout.on("data", (data) => {
 					stdOut += data;
 				});
 
-				child.stderr.on("data", async (data) => {
+				child.stderr.on("data", (data) => {
 					stdErr += data;
 				});
 
@@ -880,7 +880,7 @@ class Poppler {
 				 * pdfToHtml does not return an exit code so check output to see if it was successful.
 				 * See https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1
 				 */
-				child.on("close", async () => {
+				child.on("close", () => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else {
@@ -1069,11 +1069,11 @@ class Poppler {
 
 				let stdErr = "";
 
-				child.stderr.on("data", async (data) => {
+				child.stderr.on("data", (data) => {
 					stdErr += data;
 				});
 
-				child.on("close", async (code) => {
+				child.on("close", (code) => {
 					if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else if (code === 0) {
@@ -1304,15 +1304,15 @@ class Poppler {
 				let stdOut = "";
 				let stdErr = "";
 
-				child.stdout.on("data", async (data) => {
+				child.stdout.on("data", (data) => {
 					stdOut += data;
 				});
 
-				child.stderr.on("data", async (data) => {
+				child.stderr.on("data", (data) => {
 					stdErr += data;
 				});
 
-				child.on("close", async (code) => {
+				child.on("close", (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
@@ -1453,15 +1453,15 @@ class Poppler {
 				let stdOut = "";
 				let stdErr = "";
 
-				child.stdout.on("data", async (data) => {
+				child.stdout.on("data", (data) => {
 					stdOut += data;
 				});
 
-				child.stderr.on("data", async (data) => {
+				child.stderr.on("data", (data) => {
 					stdErr += data;
 				});
 
-				child.on("close", async (code) => {
+				child.on("close", (code) => {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {

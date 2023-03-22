@@ -3,7 +3,7 @@ updates:
     - package-ecosystem: github-actions
       commit-message:
           include: scope
-          prefix: build
+          prefix: ci
       directory: /
       open-pull-requests-limit: 20
       schedule:

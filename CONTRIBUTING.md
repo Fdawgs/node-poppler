@@ -10,7 +10,7 @@ When you submit pull requests, please make sure to fork from and submit back to 
 Other processes and specifications that are in use in this repository are:
 
 -   [Semantic versioning](https://semver.org/)
--   [Conventional commits](https://conventionalcommits.org/en/v1.0.0/) following the @commitlint/config-conventional config
+-   [Conventional commits](https://conventionalcommits.org/en/v1.0.0/) following the [@commitlint/config-conventional config](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional)
 -   [Prettier](https://prettier.io/) style guide
 
 ## Getting started

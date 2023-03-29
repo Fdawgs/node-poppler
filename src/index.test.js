@@ -64,7 +64,7 @@ describe("Node-Poppler module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
@@ -283,7 +283,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfImages(file, "file_prefix", options);
 
-			expect(res).toEqual(expect.stringContaining("No Error"));
+			expect(res).toBe("No Error");
 		});
 
 		test("Should accept options and list all images in PDF file as Buffer", async () => {
@@ -536,7 +536,7 @@ describe("Node-Poppler module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
@@ -573,7 +573,7 @@ describe("Node-Poppler module", () => {
 					options
 				);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
@@ -592,7 +592,7 @@ describe("Node-Poppler module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`
@@ -626,7 +626,7 @@ describe("Node-Poppler module", () => {
 					options
 				);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`
@@ -645,7 +645,7 @@ describe("Node-Poppler module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`
@@ -678,7 +678,7 @@ describe("Node-Poppler module", () => {
 					options
 				);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`
@@ -697,7 +697,7 @@ describe("Node-Poppler module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
@@ -731,7 +731,7 @@ describe("Node-Poppler module", () => {
 					options
 				);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
@@ -750,7 +750,7 @@ describe("Node-Poppler module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 				).toBe(true);
@@ -781,7 +781,7 @@ describe("Node-Poppler module", () => {
 					options
 				);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 				).toBe(true);
@@ -798,7 +798,7 @@ describe("Node-Poppler module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
@@ -831,7 +831,7 @@ describe("Node-Poppler module", () => {
 					options
 				);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
@@ -850,7 +850,7 @@ describe("Node-Poppler module", () => {
 
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
@@ -884,7 +884,7 @@ describe("Node-Poppler module", () => {
 					options
 				);
 
-				expect(res).toEqual(expect.stringContaining("No Error"));
+				expect(res).toBe("No Error");
 				expect(
 					fs.existsSync(
 						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
@@ -904,7 +904,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfToCairo(file, outputFile, options);
 
-			expect(res).toEqual(expect.stringContaining("No Error"));
+			expect(res).toBe("No Error");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
 			).toBe(true);
@@ -1071,7 +1071,7 @@ describe("Node-Poppler module", () => {
 				options
 			);
 
-			expect(res).toEqual(expect.stringContaining("No Error"));
+			expect(res).toBe("No Error");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
 			).toBe(true);
@@ -1091,7 +1091,7 @@ describe("Node-Poppler module", () => {
 				options
 			);
 
-			expect(res).toEqual(expect.stringContaining("No Error"));
+			expect(res).toBe("No Error");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
 			).toBe(true);
@@ -1179,7 +1179,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfToPs(file, outputFile);
 
-			expect(res).toEqual(expect.stringContaining("No Error"));
+			expect(res).toBe("No Error");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 			).toBe(true);
@@ -1204,7 +1204,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfToPs(file, outputFile, options);
 
-			expect(res).toEqual(expect.stringContaining("No Error"));
+			expect(res).toBe("No Error");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
 			).toBe(true);
@@ -1266,7 +1266,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfToText(file, outputFile);
 
-			expect(res).toEqual(expect.stringContaining("No Error"));
+			expect(res).toBe("No Error");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
 			).toBe(true);
@@ -1293,7 +1293,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfToText(file, outputFile, options);
 
-			expect(res).toEqual(expect.stringContaining("No Error"));
+			expect(res).toBe("No Error");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
 			).toBe(true);

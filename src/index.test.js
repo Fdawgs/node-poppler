@@ -114,7 +114,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfAttach(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Command failed:");
+				expect(err.message).toMatch(/^Command failed:/);
 			});
 		});
 
@@ -161,7 +161,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfDetach(attachmentFile, options);
 
-			expect(res).toEqual(expect.stringContaining("1 embedded files"));
+			expect(res).toMatch("1 embedded files");
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -170,7 +170,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfDetach(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Command failed:");
+				expect(err.message).toMatch(/^Command failed:/);
 			});
 		});
 
@@ -210,7 +210,7 @@ describe("Node-Poppler module", () => {
 			};
 			const res = await poppler.pdfFonts(file, options);
 
-			expect(res).toEqual(expect.stringContaining("+Frutiger-"));
+			expect(res).toMatch("+Frutiger-");
 		});
 
 		test("Should examine 3 pages of PDF file as Buffer", async () => {
@@ -223,7 +223,7 @@ describe("Node-Poppler module", () => {
 			};
 			const res = await poppler.pdfFonts(attachmentFile, options);
 
-			expect(res).toEqual(expect.stringContaining("+Frutiger-"));
+			expect(res).toMatch("+Frutiger-");
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -232,7 +232,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfFonts(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+				expect(err.message).toMatch(/^Syntax Warning:/);
 			});
 		});
 
@@ -272,7 +272,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfImages(file, undefined, options);
 
-			expect(res).toEqual(expect.stringContaining("page"));
+			expect(res).toMatch("page");
 		});
 
 		test("Should accept options and save images from PDF file", async () => {
@@ -299,7 +299,7 @@ describe("Node-Poppler module", () => {
 				options
 			);
 
-			expect(res).toEqual(expect.stringContaining("page"));
+			expect(res).toMatch("page");
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -308,7 +308,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+				expect(err.message).toMatch(/^Syntax Warning:/);
 			});
 		});
 
@@ -317,8 +317,8 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
-				expect(err.message.substring(0, 41)).toBe(
-					"I/O Error: Couldn't open file 'undefined'"
+				expect(err.message).toMatch(
+					/^I\/O Error: Couldn't open file 'undefined'/
 				);
 			});
 		});
@@ -378,7 +378,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfInfo(file);
 
-			expect(res).toEqual(expect.stringContaining("Pages:"));
+			expect(res).toMatch("Pages:");
 		});
 
 		test("Should list info of PDF file as a JSON object", async () => {
@@ -397,7 +397,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfInfo(attachmentFile);
 
-			expect(res).toEqual(expect.stringContaining("Pages:"));
+			expect(res).toMatch("Pages:");
 		});
 
 		test("Should list info of PDF file as Buffer as a JSON object", async () => {
@@ -417,7 +417,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+				expect(err.message).toMatch(/^Syntax Warning:/);
 			});
 		});
 
@@ -426,7 +426,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo().catch((err) => {
-				expect(err.message.substring(0, 10)).toBe("I/O Error:");
+				expect(err.message).toMatch(/^I\/O Error:/);
 			});
 		});
 
@@ -492,7 +492,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfSeparate(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Command failed:");
+				expect(err.message).toMatch(/^Command failed:/);
 			});
 		});
 
@@ -916,7 +916,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 6)).toBe("Error:");
+				expect(err.message).toMatch(/Error:/);
 			});
 		});
 
@@ -925,7 +925,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(file).catch((err) => {
-				expect(err.message.substring(0, 6)).toBe("Error:");
+				expect(err.message).toMatch(/Error:/);
 			});
 		});
 
@@ -962,7 +962,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfToHtml(file);
 
-			expect(res).toEqual(expect.stringContaining("Page-16"));
+			expect(res).toMatch("Page-16");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
 			).toBe(true);
@@ -977,7 +977,7 @@ describe("Node-Poppler module", () => {
 				`${testDirectory}pdf_1.3_NHS_Constitution.html`
 			);
 
-			expect(res).toEqual(expect.stringContaining("Page-16"));
+			expect(res).toMatch("Page-16");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
 			).toBe(true);
@@ -992,7 +992,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfToHtml(file, undefined, options);
 
-			expect(res).toEqual(expect.stringContaining("Page-2"));
+			expect(res).toMatch("Page-2");
 			expect(
 				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
 			).toBe(true);
@@ -1004,7 +1004,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+				expect(err.message).toMatch(/^Syntax Warning:/);
 			});
 		});
 
@@ -1013,7 +1013,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml().catch((err) => {
-				expect(err.message.substring(0, 10)).toBe("I/O Error:");
+				expect(err.message).toMatch(/^I\/O Error:/);
 			});
 		});
 
@@ -1103,7 +1103,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+				expect(err.message).toMatch(/^Syntax Warning:/);
 			});
 		});
 
@@ -1112,7 +1112,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm().catch((err) => {
-				expect(err.message.substring(0, 10)).toBe("I/O Error:");
+				expect(err.message).toMatch(/^I\/O Error:/);
 			});
 		});
 
@@ -1216,7 +1216,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+				expect(err.message).toMatch(/^Syntax Warning:/);
 			});
 		});
 
@@ -1225,7 +1225,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs().catch((err) => {
-				expect(err.message.substring(0, 10)).toBe("I/O Error:");
+				expect(err.message).toMatch(/^I\/O Error:/);
 			});
 		});
 
@@ -1278,9 +1278,7 @@ describe("Node-Poppler module", () => {
 
 			const res = await poppler.pdfToText(attachmentFile);
 
-			expect(res).toEqual(
-				expect.stringContaining("The NHS Constitution")
-			);
+			expect(res).toMatch("The NHS Constitution");
 		});
 
 		test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -1305,7 +1303,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText(testTxtFile).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Syntax Warning:");
+				expect(err.message).toMatch(/^Syntax Warning:/);
 			});
 		});
 
@@ -1314,7 +1312,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText().catch((err) => {
-				expect(err.message.substring(0, 10)).toBe("I/O Error:");
+				expect(err.message).toMatch(/^I\/O Error:/);
 			});
 		});
 
@@ -1372,7 +1370,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfUnite(files).catch((err) => {
-				expect(err.message.substring(0, 15)).toBe("Command failed:");
+				expect(err.message).toMatch(/^Command failed:/);
 			});
 		});
 

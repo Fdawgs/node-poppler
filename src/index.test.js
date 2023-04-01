@@ -124,14 +124,11 @@ describe("Node-Poppler module", () => {
 				replace: "test",
 			};
 
-			expect.assertions(1);
-			await poppler
-				.pdfAttach(file, undefined, undefined, options)
-				.catch((err) => {
-					expect(err.message).toBe(
-						"Invalid value type provided for option 'replace', expected boolean but received string"
-					);
-				});
+			await expect(
+				poppler.pdfAttach(file, undefined, undefined, options)
+			).rejects.toThrow(
+				"Invalid value type provided for option 'replace', expected boolean but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -140,14 +137,9 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			expect.assertions(1);
-			await poppler
-				.pdfAttach(file, undefined, undefined, options)
-				.catch((err) => {
-					expect(err.message).toBe(
-						"Invalid option provided 'wordFile'"
-					);
-				});
+			await expect(
+				poppler.pdfAttach(file, undefined, undefined, options)
+			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});
 	});
 
@@ -180,12 +172,9 @@ describe("Node-Poppler module", () => {
 				listEmbedded: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfDetach(file, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid value type provided for option 'listEmbedded', expected boolean but received string"
-				);
-			});
+			await expect(poppler.pdfDetach(file, options)).rejects.toThrow(
+				"Invalid value type provided for option 'listEmbedded', expected boolean but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -194,10 +183,9 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfDetach(file, options).catch((err) => {
-				expect(err.message).toBe("Invalid option provided 'wordFile'");
-			});
+			await expect(poppler.pdfDetach(file, options)).rejects.toThrow(
+				"Invalid option provided 'wordFile'"
+			);
 		});
 	});
 
@@ -242,12 +230,9 @@ describe("Node-Poppler module", () => {
 				firstPageToExamine: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfFonts(file, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid value type provided for option 'firstPageToExamine', expected number but received string"
-				);
-			});
+			await expect(poppler.pdfFonts(file, options)).rejects.toThrow(
+				"Invalid value type provided for option 'firstPageToExamine', expected number but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -256,10 +241,9 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfFonts(file, options).catch((err) => {
-				expect(err.message).toBe("Invalid option provided 'wordFile'");
-			});
+			await expect(poppler.pdfFonts(file, options)).rejects.toThrow(
+				"Invalid option provided 'wordFile'"
+			);
 		});
 	});
 
@@ -330,14 +314,11 @@ describe("Node-Poppler module", () => {
 				lastPageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler
-				.pdfImages(undefined, undefined, options)
-				.catch((err) => {
-					expect(err.message).toBe(
-						"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
-					);
-				});
+			await expect(
+				poppler.pdfImages(undefined, undefined, options)
+			).rejects.toThrow(
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -346,14 +327,9 @@ describe("Node-Poppler module", () => {
 				middlePageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler
-				.pdfImages(undefined, undefined, options)
-				.catch((err) => {
-					expect(err.message).toBe(
-						"Invalid option provided 'middlePageToConvert'"
-					);
-				});
+			await expect(
+				poppler.pdfImages(undefined, undefined, options)
+			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
 	});
 
@@ -436,12 +412,9 @@ describe("Node-Poppler module", () => {
 				firstPageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfInfo(file, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid value type provided for option 'firstPageToConvert', expected number but received string"
-				);
-			});
+			await expect(poppler.pdfInfo(file, options)).rejects.toThrow(
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -450,10 +423,9 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfInfo(file, options).catch((err) => {
-				expect(err.message).toBe("Invalid option provided 'wordFile'");
-			});
+			await expect(poppler.pdfInfo(file, options)).rejects.toThrow(
+				"Invalid option provided 'wordFile'"
+			);
 		});
 	});
 
@@ -502,12 +474,11 @@ describe("Node-Poppler module", () => {
 				firstPageToExtract: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfSeparate(file, undefined, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid value type provided for option 'firstPageToExtract', expected number but received string"
-				);
-			});
+			await expect(
+				poppler.pdfSeparate(file, undefined, options)
+			).rejects.toThrow(
+				"Invalid value type provided for option 'firstPageToExtract', expected number but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -516,10 +487,9 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfSeparate(file, undefined, options).catch((err) => {
-				expect(err.message).toBe("Invalid option provided 'wordFile'");
-			});
+			await expect(
+				poppler.pdfSeparate(file, undefined, options)
+			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});
 	});
 
@@ -935,12 +905,11 @@ describe("Node-Poppler module", () => {
 				pdfFile: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfToCairo(file, undefined, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid value type provided for option 'pdfFile', expected boolean but received string"
-				);
-			});
+			await expect(
+				poppler.pdfToCairo(file, undefined, options)
+			).rejects.toThrow(
+				"Invalid value type provided for option 'pdfFile', expected boolean but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -949,10 +918,9 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfToCairo(file, undefined, options).catch((err) => {
-				expect(err.message).toBe("Invalid option provided 'wordFile'");
-			});
+			await expect(
+				poppler.pdfToCairo(file, undefined, options)
+			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});
 	});
 
@@ -1024,12 +992,11 @@ describe("Node-Poppler module", () => {
 				lastPageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfToHtml(file, undefined, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
-				);
-			});
+			await expect(
+				poppler.pdfToHtml(file, undefined, options)
+			).rejects.toThrow(
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -1038,12 +1005,9 @@ describe("Node-Poppler module", () => {
 				middlePageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfToHtml(file, undefined, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid option provided 'middlePageToConvert'"
-				);
-			});
+			await expect(
+				poppler.pdfToHtml(file, undefined, options)
+			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
 	});
 
@@ -1123,14 +1087,11 @@ describe("Node-Poppler module", () => {
 				lastPageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler
-				.pdfToPpm(undefined, undefined, options)
-				.catch((err) => {
-					expect(err.message).toBe(
-						"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
-					);
-				});
+			await expect(
+				poppler.pdfToPpm(undefined, undefined, options)
+			).rejects.toThrow(
+				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
+			);
 		});
 
 		test("Should return an Error object if option provided is only available in a later version of the pdftoppm binary than what was provided", async () => {
@@ -1140,18 +1101,15 @@ describe("Node-Poppler module", () => {
 			};
 
 			if (version < "21.03.0") {
-				expect.assertions(1);
-				await poppler
-					.pdfToPpm(
+				await expect(
+					poppler.pdfToPpm(
 						file,
 						`${testDirectory}pdf_1.3_NHS_Constitution`,
 						options
 					)
-					.catch((err) => {
-						expect(err.message).toBe(
-							`Invalid option provided for the current version of the binary used. 'printProgress' was introduced in v21.03.0, but received v${version}`
-						);
-					});
+				).rejects.toThrow(
+					`Invalid option provided for the current version of the binary used. 'printProgress' was introduced in v21.03.0, but received v${version}`
+				);
 			}
 		});
 
@@ -1161,14 +1119,9 @@ describe("Node-Poppler module", () => {
 				middlePageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler
-				.pdfToPpm(undefined, undefined, options)
-				.catch((err) => {
-					expect(err.message).toBe(
-						"Invalid option provided 'middlePageToConvert'"
-					);
-				});
+			await expect(
+				poppler.pdfToPpm(undefined, undefined, options)
+			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
 	});
 
@@ -1250,12 +1203,9 @@ describe("Node-Poppler module", () => {
 				middlePageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfToPs(file, undefined, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid option provided 'middlePageToConvert'"
-				);
-			});
+			await expect(
+				poppler.pdfToPs(file, undefined, options)
+			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
 	});
 
@@ -1337,12 +1287,9 @@ describe("Node-Poppler module", () => {
 				middlePageToConvert: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfToText(file, undefined, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid option provided 'middlePageToConvert'"
-				);
-			});
+			await expect(
+				poppler.pdfToText(file, undefined, options)
+			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
 	});
 
@@ -1384,12 +1331,11 @@ describe("Node-Poppler module", () => {
 				printVersionInfo: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfUnite(files, undefined, options).catch((err) => {
-				expect(err.message).toBe(
-					"Invalid value type provided for option 'printVersionInfo', expected boolean but received string"
-				);
-			});
+			await expect(
+				poppler.pdfUnite(files, undefined, options)
+			).rejects.toThrow(
+				"Invalid value type provided for option 'printVersionInfo', expected boolean but received string"
+			);
 		});
 
 		test("Should return an Error object if invalid option is passed to function", async () => {
@@ -1402,10 +1348,9 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			expect.assertions(1);
-			await poppler.pdfUnite(files, undefined, options).catch((err) => {
-				expect(err.message).toBe("Invalid option provided 'wordFile'");
-			});
+			await expect(
+				poppler.pdfUnite(files, undefined, options)
+			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});
 	});
 });

@@ -1,7 +1,7 @@
 /* eslint-disable jest/no-conditional-expect */
 /* eslint-disable security/detect-child-process */
 /* eslint-disable security/detect-non-literal-fs-filename */
-const fs = require("fs");
+const fs = require("fs/promises");
 const { glob } = require("glob");
 const path = require("upath");
 const { execFile } = require("child_process");
@@ -50,7 +50,7 @@ describe("Node-Poppler module", () => {
 			],
 		});
 
-		await Promise.all(files.map((filed) => fs.promises.unlink(filed)));
+		await Promise.all(files.map((filed) => fs.unlink(filed)));
 	});
 
 	describe("Constructor", () => {
@@ -65,11 +65,7 @@ describe("Node-Poppler module", () => {
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
-					)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 		}
 
@@ -101,11 +97,11 @@ describe("Node-Poppler module", () => {
 			);
 
 			expect(typeof res).toBe("string");
-			expect(
-				fs.existsSync(
+			await expect(
+				fs.access(
 					`${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`
 				)
-			).toBe(true);
+			).resolves.toBeUndefined();
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -203,7 +199,7 @@ describe("Node-Poppler module", () => {
 
 		test("Should examine 3 pages of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = await fs.promises.readFile(file);
+			const attachmentFile = await fs.readFile(file);
 
 			const options = {
 				firstPageToExamine: 1,
@@ -272,7 +268,7 @@ describe("Node-Poppler module", () => {
 
 		test("Should accept options and list all images in PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = await fs.promises.readFile(file);
+			const attachmentFile = await fs.readFile(file);
 			const options = {
 				list: true,
 			};
@@ -369,7 +365,7 @@ describe("Node-Poppler module", () => {
 
 		test("Should list info of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = await fs.promises.readFile(file);
+			const attachmentFile = await fs.readFile(file);
 
 			const res = await poppler.pdfInfo(attachmentFile);
 
@@ -378,7 +374,7 @@ describe("Node-Poppler module", () => {
 
 		test("Should list info of PDF file as Buffer as a JSON object", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = await fs.promises.readFile(file);
+			const attachmentFile = await fs.readFile(file);
 
 			const res = await poppler.pdfInfo(attachmentFile, {
 				printAsJson: true,
@@ -441,21 +437,22 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfSeparate(file, outputPattern, options);
 
 			expect(typeof res).toBe("string");
-			expect(
-				fs.existsSync(
+
+			await expect(
+				fs.access(
 					`${testDirectory}pdf_1.3_NHS_Constitution-extract-1.pdf`
 				)
-			).toBe(true);
-			expect(
-				fs.existsSync(
+			).resolves.toBeUndefined();
+			await expect(
+				fs.access(
 					`${testDirectory}pdf_1.3_NHS_Constitution-extract-2.pdf`
 				)
-			).toBe(true);
-			expect(
-				fs.existsSync(
+			).resolves.toBeUndefined();
+			await expect(
+				fs.access(
 					`${testDirectory}pdf_1.3_NHS_Constitution-extract-3.pdf`
 				)
-			).toBe(true);
+			).resolves.toBeUndefined();
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -507,11 +504,7 @@ describe("Node-Poppler module", () => {
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
-					)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 
 			test("Should convert PDF file to EPS file and send to stdout", async () => {
@@ -529,7 +522,7 @@ describe("Node-Poppler module", () => {
 
 			test("Should convert PDF file as Buffer to EPS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = await fs.promises.readFile(file);
+				const attachmentFile = await fs.readFile(file);
 				const options = {
 					epsFile: true,
 					firstPageToConvert: 1,
@@ -544,11 +537,7 @@ describe("Node-Poppler module", () => {
 				);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution.eps`
-					)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 		});
 
@@ -563,11 +552,9 @@ describe("Node-Poppler module", () => {
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`
-					)
-				).toBe(true);
+				await expect(
+					fs.access(`${outputFile}-01.jpg`)
+				).resolves.toBeUndefined();
 			});
 
 			test("Should convert PDF file to JPG file and send to stdout", async () => {
@@ -584,7 +571,7 @@ describe("Node-Poppler module", () => {
 
 			test("Should convert PDF file as Buffer to JPG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = await fs.promises.readFile(file);
+				const attachmentFile = await fs.readFile(file);
 				const options = {
 					jpegFile: true,
 				};
@@ -597,11 +584,9 @@ describe("Node-Poppler module", () => {
 				);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution-01.jpg`
-					)
-				).toBe(true);
+				await expect(
+					fs.access(`${outputFile}-01.jpg`)
+				).resolves.toBeUndefined();
 			});
 		});
 
@@ -616,11 +601,7 @@ describe("Node-Poppler module", () => {
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`
-					)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 
 			test("Should convert PDF file to PDF file and send to stdout", async () => {
@@ -636,7 +617,7 @@ describe("Node-Poppler module", () => {
 
 			test("Should convert PDF file as Buffer to PDF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = await fs.promises.readFile(file);
+				const attachmentFile = await fs.readFile(file);
 				const options = {
 					pdfFile: true,
 				};
@@ -649,11 +630,7 @@ describe("Node-Poppler module", () => {
 				);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`
-					)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 		});
 
@@ -668,11 +645,9 @@ describe("Node-Poppler module", () => {
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
-					)
-				).toBe(true);
+				await expect(
+					fs.access(`${outputFile}-01.png`)
+				).resolves.toBeUndefined();
 			});
 
 			test("Should convert PDF file to PNG file and send to stdout", async () => {
@@ -689,7 +664,7 @@ describe("Node-Poppler module", () => {
 
 			test("Should convert PDF file as Buffer to PNG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = await fs.promises.readFile(file);
+				const attachmentFile = await fs.readFile(file);
 				const options = {
 					pngFile: true,
 				};
@@ -702,11 +677,9 @@ describe("Node-Poppler module", () => {
 				);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution-01.png`
-					)
-				).toBe(true);
+				await expect(
+					fs.access(`${outputFile}-01.png`)
+				).resolves.toBeUndefined();
 			});
 		});
 
@@ -721,9 +694,7 @@ describe("Node-Poppler module", () => {
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 
 			test("Should convert PDF file to PS file and send to stdout", async () => {
@@ -739,7 +710,7 @@ describe("Node-Poppler module", () => {
 
 			test("Should convert PDF file as Buffer to PS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = await fs.promises.readFile(file);
+				const attachmentFile = await fs.readFile(file);
 				const options = {
 					psFile: true,
 				};
@@ -752,9 +723,7 @@ describe("Node-Poppler module", () => {
 				);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 		});
 
@@ -769,11 +738,7 @@ describe("Node-Poppler module", () => {
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
-					)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 
 			test("Should convert PDF file to SVG file and send to stdout", async () => {
@@ -789,7 +754,7 @@ describe("Node-Poppler module", () => {
 
 			test("Should convert PDF file as Buffer to SVG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = await fs.promises.readFile(file);
+				const attachmentFile = await fs.readFile(file);
 				const options = {
 					svgFile: true,
 				};
@@ -802,11 +767,7 @@ describe("Node-Poppler module", () => {
 				);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution.svg`
-					)
-				).toBe(true);
+				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 		});
 
@@ -821,11 +782,9 @@ describe("Node-Poppler module", () => {
 				const res = await poppler.pdfToCairo(file, outputFile, options);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
-					)
-				).toBe(true);
+				await expect(
+					fs.access(`${outputFile}-01.tif`)
+				).resolves.toBeUndefined();
 			});
 
 			test("Should convert PDF file to TIFF file and send to stdout", async () => {
@@ -842,7 +801,7 @@ describe("Node-Poppler module", () => {
 
 			test("Should convert PDF file as Buffer to TIFF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
-				const attachmentFile = await fs.promises.readFile(file);
+				const attachmentFile = await fs.readFile(file);
 				const options = {
 					tiffFile: true,
 				};
@@ -855,11 +814,9 @@ describe("Node-Poppler module", () => {
 				);
 
 				expect(res).toBe("No Error");
-				expect(
-					fs.existsSync(
-						`${testDirectory}pdf_1.3_NHS_Constitution-01.tif`
-					)
-				).toBe(true);
+				await expect(
+					fs.access(`${outputFile}-01.tif`)
+				).resolves.toBeUndefined();
 			});
 		});
 
@@ -875,9 +832,7 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfToCairo(file, outputFile, options);
 
 			expect(res).toBe("No Error");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.svg`)
-			).toBe(true);
+			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -931,14 +886,14 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfToHtml(file);
 
 			expect(res).toMatch("Page-16");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
-			).toBe(true);
+			await expect(
+				fs.access(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
+			).resolves.toBeUndefined();
 		});
 
 		test("Should convert PDF file to HTML file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = await fs.promises.readFile(file);
+			const attachmentFile = await fs.readFile(file);
 
 			const res = await poppler.pdfToHtml(
 				attachmentFile,
@@ -946,9 +901,9 @@ describe("Node-Poppler module", () => {
 			);
 
 			expect(res).toMatch("Page-16");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
-			).toBe(true);
+			await expect(
+				fs.access(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
+			).resolves.toBeUndefined();
 		});
 
 		test("Should accept options and only process 2 pages of PDF file", async () => {
@@ -961,9 +916,9 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfToHtml(file, undefined, options);
 
 			expect(res).toMatch("Page-2");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
-			).toBe(true);
+			await expect(
+				fs.access(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
+			).resolves.toBeUndefined();
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -1036,14 +991,14 @@ describe("Node-Poppler module", () => {
 			);
 
 			expect(res).toBe("No Error");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
-			).toBe(true);
+			await expect(
+				fs.access(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
+			).resolves.toBeUndefined();
 		});
 
 		test("Should accept options and only process 1 page of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = await fs.promises.readFile(file);
+			const attachmentFile = await fs.readFile(file);
 			const options = {
 				firstPageToConvert: 1,
 				lastPageToConvert: 1,
@@ -1056,9 +1011,9 @@ describe("Node-Poppler module", () => {
 			);
 
 			expect(res).toBe("No Error");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
-			).toBe(true);
+			await expect(
+				fs.access(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
+			).resolves.toBeUndefined();
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -1133,14 +1088,12 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfToPs(file, outputFile);
 
 			expect(res).toBe("No Error");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
-			).toBe(true);
+			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
 		test("Should convert PDF file as Buffer to PS file", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = await fs.promises.readFile(file);
+			const attachmentFile = await fs.readFile(file);
 
 			const res = await poppler.pdfToPs(attachmentFile);
 
@@ -1158,9 +1111,7 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfToPs(file, outputFile, options);
 
 			expect(res).toBe("No Error");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.ps`)
-			).toBe(true);
+			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -1217,14 +1168,12 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfToText(file, outputFile);
 
 			expect(res).toBe("No Error");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
-			).toBe(true);
+			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
 		test("Should convert PDF file as Buffer to Text file", async () => {
 			const poppler = new Poppler(testBinaryPath);
-			const attachmentFile = await fs.promises.readFile(file);
+			const attachmentFile = await fs.readFile(file);
 
 			const res = await poppler.pdfToText(attachmentFile);
 
@@ -1242,9 +1191,7 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfToText(file, outputFile, options);
 
 			expect(res).toBe("No Error");
-			expect(
-				fs.existsSync(`${testDirectory}pdf_1.3_NHS_Constitution.txt`)
-			).toBe(true);
+			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
 		test("Should return an Error object if file passed not PDF format", async () => {
@@ -1305,7 +1252,7 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfUnite(files, outputFile);
 
 			expect(typeof res).toBe("string");
-			expect(fs.existsSync(`${testDirectory}united.pdf`)).toBe(true);
+			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
 		test("Should return an Error object if a PDF file and non-PDF file are attempted to be merged", async () => {

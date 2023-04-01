@@ -1,4 +1,3 @@
-/* eslint-disable security/detect-child-process */
 const camelCase = require("camelcase");
 const path = require("upath");
 const { execFile, spawn } = require("child_process");

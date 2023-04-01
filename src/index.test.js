@@ -1,5 +1,4 @@
 /* eslint-disable jest/no-conditional-expect */
-/* eslint-disable security/detect-child-process */
 /* eslint-disable security/detect-non-literal-fs-filename */
 const fs = require("fs");
 const { glob } = require("glob");

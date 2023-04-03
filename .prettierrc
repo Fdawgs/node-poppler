@@ -1,4 +1,5 @@
 {
+	"arrowParens": "always",
 	"endOfLine": "lf",
 	"semi": true,
 	"tabWidth": 4,

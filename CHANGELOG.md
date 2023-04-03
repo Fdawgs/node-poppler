@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.1](https://github.com/Fdawgs/node-poppler/compare/v6.2.0...v6.2.1) (2023-04-03)
+
+
+### Documentation
+
+* **contributing:** add link to conventional config ([#483](https://github.com/Fdawgs/node-poppler/issues/483)) ([349b8fd](https://github.com/Fdawgs/node-poppler/commit/349b8fd54daf54afea244e478a08b73ad29f06fc))
+
+
+### Continuous integration
+
+* **dependabot:** change commit message prefix for gh actions to `ci` ([#482](https://github.com/Fdawgs/node-poppler/issues/482)) ([0833174](https://github.com/Fdawgs/node-poppler/commit/0833174c9ed6377c145a19748f61086012fade7e))
+* **dependabot:** ignore esm major versions ([#481](https://github.com/Fdawgs/node-poppler/issues/481)) ([b536bbd](https://github.com/Fdawgs/node-poppler/commit/b536bbde5d88243ab9865e4b9755f91d7cc17ae9))
+* **deps:** bump coverallsapp/github-action from 1.2.4 to 2.0.0 ([#484](https://github.com/Fdawgs/node-poppler/issues/484)) ([9a98bf1](https://github.com/Fdawgs/node-poppler/commit/9a98bf1cf40bf8866b0ed50576e1b775401bb2a0))
+
+
+### Miscellaneous
+
+* **.prettierrc:** enable `arrowParens` option ([#489](https://github.com/Fdawgs/node-poppler/issues/489)) ([df6bafa](https://github.com/Fdawgs/node-poppler/commit/df6bafad32b5787f58232efbb2a62130c49708aa))
+* ignore bun lockfile ([#478](https://github.com/Fdawgs/node-poppler/issues/478)) ([f6a9549](https://github.com/Fdawgs/node-poppler/commit/f6a9549b793c8d8916616434786cc0a3582ed5f4))
+* **index:** remove redundant `async` keywords ([#480](https://github.com/Fdawgs/node-poppler/issues/480)) ([d9fe6cd](https://github.com/Fdawgs/node-poppler/commit/d9fe6cda27651613a98a55f85979bea17bf81e15))
+* **index:** remove redundant eslint comments ([#487](https://github.com/Fdawgs/node-poppler/issues/487)) ([058d2a6](https://github.com/Fdawgs/node-poppler/commit/058d2a6e7d2024379d35eaf1a3dc241b6033266c))
+* **package:** add funding url ([442f6f6](https://github.com/Fdawgs/node-poppler/commit/442f6f63a88a63108ba8e52bf6da34b71ff4ca82))
+* **scripts:** add eslint rule file ([a06adae](https://github.com/Fdawgs/node-poppler/commit/a06adaeb94cf23af7346a2df57b0e42129820f29))
+* **scripts:** remove redundant export ([2a14904](https://github.com/Fdawgs/node-poppler/commit/2a149040e260c7150f8359a3e1b527a7d398006b))
+* **scripts:** use js script to check licenses ([#479](https://github.com/Fdawgs/node-poppler/issues/479)) ([c79dea7](https://github.com/Fdawgs/node-poppler/commit/c79dea7ab3732be4d602c63ccc08ccf01f881766))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([3277e49](https://github.com/Fdawgs/node-poppler/commit/3277e49aa50996eed6dc8ed995a5ea2f7b0159c1))
+* **deps-dev:** bump glob from 8.1.0 to 9.1.0 ([#475](https://github.com/Fdawgs/node-poppler/issues/475)) ([899020d](https://github.com/Fdawgs/node-poppler/commit/899020da66f81518020da063f78dd1c11bf08728))
+* **deps-dev:** bump typescript from 4.9.5 to 5.0.2 ([#485](https://github.com/Fdawgs/node-poppler/issues/485)) ([174da42](https://github.com/Fdawgs/node-poppler/commit/174da42980eb09c13de72be4acda07d2357bce9b))
+* **deps:** bump coverallsapp/github-action from 1.1.3 to 1.2.3 ([#474](https://github.com/Fdawgs/node-poppler/issues/474)) ([6b8976b](https://github.com/Fdawgs/node-poppler/commit/6b8976ba28552169112e09b3651087ec4739b8aa))
+* **deps:** bump coverallsapp/github-action from 1.2.3 to 1.2.4 ([#477](https://github.com/Fdawgs/node-poppler/issues/477)) ([e57e73f](https://github.com/Fdawgs/node-poppler/commit/e57e73f8322179aeff07901fc4cea8135289f191))
+
 ## [6.2.0](https://github.com/Fdawgs/node-poppler/compare/v6.1.2...v6.2.0) (2023-02-20)
 
 

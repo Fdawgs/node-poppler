@@ -54,7 +54,7 @@ describe("Node-Poppler module", () => {
 
 	describe("Constructor", () => {
 		if (process.platform === "win32") {
-			test("Should convert PDF file to SVG file without binary path set on win32, and use included binaries", async () => {
+			it("Converts PDF file to SVG file without binary path set on win32, and use included binaries", async () => {
 				const poppler = new Poppler();
 				const options = {
 					svgFile: true,
@@ -69,7 +69,7 @@ describe("Node-Poppler module", () => {
 		}
 
 		if (process.platform !== "win32") {
-			test(`Should return an Error object if binary path unset on ${process.platform}`, async () => {
+			it(`Returns an Error object if binary path unset on ${process.platform}`, async () => {
 				expect.assertions(1);
 				try {
 					// eslint-disable-next-line no-unused-vars
@@ -84,7 +84,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfAttach function", () => {
-		test("Should attach file to PDF file", async () => {
+		it("Attachs file to PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = `${testDirectory}test.txt`;
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`;
@@ -103,7 +103,7 @@ describe("Node-Poppler module", () => {
 			).resolves.toBeUndefined();
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -113,7 +113,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				replace: "test",
@@ -126,7 +126,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				wordFile: "test",
@@ -139,7 +139,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfDetach function", () => {
-		test("Should list embedded files", async () => {
+		it("Lists embedded files", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				listEmbedded: true,
@@ -151,7 +151,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatch("1 embedded files");
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -161,7 +161,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				listEmbedded: "test",
@@ -172,7 +172,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				wordFile: "test",
@@ -185,7 +185,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfFonts function", () => {
-		test("Should examine 3 pages of PDF file", async () => {
+		it("Examines 3 pages of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToExamine: 1,
@@ -196,7 +196,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatch("+Frutiger-");
 		});
 
-		test("Should examine 3 pages of PDF file as Buffer", async () => {
+		it("Examines 3 pages of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = await fs.readFile(file);
 
@@ -209,7 +209,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatch("+Frutiger-");
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -219,7 +219,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToExamine: "test",
@@ -230,7 +230,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				wordFile: "test",
@@ -243,7 +243,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfImages function", () => {
-		test("Should accept options and list all images in PDF file", async () => {
+		it("Accepts options and list all images in PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				list: true,
@@ -254,7 +254,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatch("page");
 		});
 
-		test("Should accept options and save images from PDF file", async () => {
+		it("Accepts options and save images from PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				pngFile: true,
@@ -265,7 +265,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toBe("No Error");
 		});
 
-		test("Should accept options and list all images in PDF file as Buffer", async () => {
+		it("Accepts options and list all images in PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = await fs.readFile(file);
 			const options = {
@@ -281,7 +281,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatch("page");
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -291,7 +291,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if PDF file missing", async () => {
+		it("Returns an Error object if PDF file missing", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
@@ -302,7 +302,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: "test",
@@ -316,7 +316,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				middlePageToConvert: "test",
@@ -344,7 +344,7 @@ describe("Node-Poppler module", () => {
 			pdfVersion: "1.3",
 		};
 
-		test("Should list info of PDF file", async () => {
+		it("Lists info of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			const res = await poppler.pdfInfo(file);
@@ -352,7 +352,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatch("Pages:");
 		});
 
-		test("Should list info of PDF file as a JSON object", async () => {
+		it("Lists info of PDF file as a JSON object", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			const res = await poppler.pdfInfo(file, {
@@ -362,7 +362,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatchObject(pdfInfoObject);
 		});
 
-		test("Should list info of PDF file as Buffer", async () => {
+		it("Lists info of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = await fs.readFile(file);
 
@@ -371,7 +371,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatch("Pages:");
 		});
 
-		test("Should list info of PDF file as Buffer as a JSON object", async () => {
+		it("Lists info of PDF file as Buffer as a JSON object", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = await fs.readFile(file);
 
@@ -382,7 +382,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatchObject(pdfInfoObject);
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -392,7 +392,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if PDF file missing", async () => {
+		it("Returns an Error object if PDF file missing", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
@@ -401,7 +401,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: "test",
@@ -412,7 +412,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				wordFile: "test",
@@ -425,7 +425,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfSeparate function", () => {
-		test("Should extract 3 pages from PDF file to new files", async () => {
+		it("Extracts 3 pages from PDF file to new files", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToExtract: 1,
@@ -454,7 +454,7 @@ describe("Node-Poppler module", () => {
 			).resolves.toBeUndefined();
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -464,7 +464,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToExtract: "test",
@@ -477,7 +477,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				wordFile: "test",
@@ -491,7 +491,7 @@ describe("Node-Poppler module", () => {
 
 	describe("pdfToCairo function", () => {
 		describe("PDF-to-EPS option", () => {
-			test("Should convert PDF file to EPS file", async () => {
+			it("Converts PDF file to EPS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					epsFile: true,
@@ -506,7 +506,7 @@ describe("Node-Poppler module", () => {
 				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 
-			test("Should convert PDF file to EPS file and send to stdout", async () => {
+			it("Converts PDF file to EPS file and send to stdout", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					epsFile: true,
@@ -519,7 +519,7 @@ describe("Node-Poppler module", () => {
 				expect(typeof res).toBe("string");
 			});
 
-			test("Should convert PDF file as Buffer to EPS file", async () => {
+			it("Converts PDF file as Buffer to EPS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const attachmentFile = await fs.readFile(file);
 				const options = {
@@ -541,7 +541,7 @@ describe("Node-Poppler module", () => {
 		});
 
 		describe("PDF-to-JPG option", () => {
-			test("Should convert PDF file to JPG file", async () => {
+			it("Converts PDF file to JPG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					jpegFile: true,
@@ -556,7 +556,7 @@ describe("Node-Poppler module", () => {
 				).resolves.toBeUndefined();
 			});
 
-			test("Should convert PDF file to JPG file and send to stdout", async () => {
+			it("Converts PDF file to JPG file and send to stdout", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					jpegFile: true,
@@ -568,7 +568,7 @@ describe("Node-Poppler module", () => {
 				expect(typeof res).toBe("string");
 			});
 
-			test("Should convert PDF file as Buffer to JPG file", async () => {
+			it("Converts PDF file as Buffer to JPG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const attachmentFile = await fs.readFile(file);
 				const options = {
@@ -590,7 +590,7 @@ describe("Node-Poppler module", () => {
 		});
 
 		describe("PDF-to-PDF option", () => {
-			test("Should convert PDF file to PDF file", async () => {
+			it("Converts PDF file to PDF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					pdfFile: true,
@@ -603,7 +603,7 @@ describe("Node-Poppler module", () => {
 				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 
-			test("Should convert PDF file to PDF file and send to stdout", async () => {
+			it("Converts PDF file to PDF file and send to stdout", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					pdfFile: true,
@@ -614,7 +614,7 @@ describe("Node-Poppler module", () => {
 				expect(typeof res).toBe("string");
 			});
 
-			test("Should convert PDF file as Buffer to PDF file", async () => {
+			it("Converts PDF file as Buffer to PDF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const attachmentFile = await fs.readFile(file);
 				const options = {
@@ -634,7 +634,7 @@ describe("Node-Poppler module", () => {
 		});
 
 		describe("PDF-to-PNG option", () => {
-			test("Should convert PDF file to PNG file", async () => {
+			it("Converts PDF file to PNG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					pngFile: true,
@@ -649,7 +649,7 @@ describe("Node-Poppler module", () => {
 				).resolves.toBeUndefined();
 			});
 
-			test("Should convert PDF file to PNG file and send to stdout", async () => {
+			it("Converts PDF file to PNG file and send to stdout", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					pngFile: true,
@@ -661,7 +661,7 @@ describe("Node-Poppler module", () => {
 				expect(typeof res).toBe("string");
 			});
 
-			test("Should convert PDF file as Buffer to PNG file", async () => {
+			it("Converts PDF file as Buffer to PNG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const attachmentFile = await fs.readFile(file);
 				const options = {
@@ -683,7 +683,7 @@ describe("Node-Poppler module", () => {
 		});
 
 		describe("PDF-to-PS option", () => {
-			test("Should convert PDF file to PS file", async () => {
+			it("Converts PDF file to PS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					psFile: true,
@@ -696,7 +696,7 @@ describe("Node-Poppler module", () => {
 				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 
-			test("Should convert PDF file to PS file and send to stdout", async () => {
+			it("Converts PDF file to PS file and send to stdout", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					psFile: true,
@@ -707,7 +707,7 @@ describe("Node-Poppler module", () => {
 				expect(typeof res).toBe("string");
 			});
 
-			test("Should convert PDF file as Buffer to PS file", async () => {
+			it("Converts PDF file as Buffer to PS file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const attachmentFile = await fs.readFile(file);
 				const options = {
@@ -727,7 +727,7 @@ describe("Node-Poppler module", () => {
 		});
 
 		describe("PDF-to-SVG option", () => {
-			test("Should convert PDF file to SVG file", async () => {
+			it("Converts PDF file to SVG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					svgFile: true,
@@ -740,7 +740,7 @@ describe("Node-Poppler module", () => {
 				await expect(fs.access(outputFile)).resolves.toBeUndefined();
 			});
 
-			test("Should convert PDF file to SVG file and send to stdout", async () => {
+			it("Converts PDF file to SVG file and send to stdout", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					svgFile: true,
@@ -751,7 +751,7 @@ describe("Node-Poppler module", () => {
 				expect(typeof res).toBe("string");
 			});
 
-			test("Should convert PDF file as Buffer to SVG file", async () => {
+			it("Converts PDF file as Buffer to SVG file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const attachmentFile = await fs.readFile(file);
 				const options = {
@@ -771,7 +771,7 @@ describe("Node-Poppler module", () => {
 		});
 
 		describe("PDF-to-TIFF option", () => {
-			test("Should convert PDF file to TIFF file", async () => {
+			it("Converts PDF file to TIFF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					tiffFile: true,
@@ -786,7 +786,7 @@ describe("Node-Poppler module", () => {
 				).resolves.toBeUndefined();
 			});
 
-			test("Should convert PDF file to TIFF file and send to stdout", async () => {
+			it("Converts PDF file to TIFF file and send to stdout", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const options = {
 					singleFile: true,
@@ -798,7 +798,7 @@ describe("Node-Poppler module", () => {
 				expect(typeof res).toBe("string");
 			});
 
-			test("Should convert PDF file as Buffer to TIFF file", async () => {
+			it("Converts PDF file as Buffer to TIFF file", async () => {
 				const poppler = new Poppler(testBinaryPath);
 				const attachmentFile = await fs.readFile(file);
 				const options = {
@@ -819,7 +819,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should accept options and only process 2 pages of PDF file", async () => {
+		it("Accepts options and only process 2 pages of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: 1,
@@ -834,7 +834,7 @@ describe("Node-Poppler module", () => {
 			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -844,7 +844,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if no format option is passed to function", async () => {
+		it("Returns an Error object if no format option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
@@ -853,7 +853,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				pdfFile: "test",
@@ -866,7 +866,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				wordFile: "test",
@@ -879,7 +879,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfToHtml function", () => {
-		test("Should convert PDF file to HTML file", async () => {
+		it("Converts PDF file to HTML file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			const res = await poppler.pdfToHtml(file);
@@ -890,7 +890,7 @@ describe("Node-Poppler module", () => {
 			).resolves.toBeUndefined();
 		});
 
-		test("Should convert PDF file to HTML file as Buffer", async () => {
+		it("Converts PDF file to HTML file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = await fs.readFile(file);
 
@@ -905,7 +905,7 @@ describe("Node-Poppler module", () => {
 			).resolves.toBeUndefined();
 		});
 
-		test("Should accept options and only process 2 pages of PDF file", async () => {
+		it("Accepts options and only process 2 pages of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: 1,
@@ -920,7 +920,7 @@ describe("Node-Poppler module", () => {
 			).resolves.toBeUndefined();
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -930,7 +930,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if PDF file missing", async () => {
+		it("Returns an Error object if PDF file missing", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
@@ -939,7 +939,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: "test",
@@ -953,7 +953,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				middlePageToConvert: "test",
@@ -976,7 +976,7 @@ describe("Node-Poppler module", () => {
 			version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
 		});
 
-		test("Should accept options and only process 1 page of PDF file", async () => {
+		it("Accepts options and only process 1 page of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: 1,
@@ -995,7 +995,7 @@ describe("Node-Poppler module", () => {
 			).resolves.toBeUndefined();
 		});
 
-		test("Should accept options and only process 1 page of PDF file as Buffer", async () => {
+		it("Accepts options and only process 1 page of PDF file as Buffer", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = await fs.readFile(file);
 			const options = {
@@ -1015,7 +1015,7 @@ describe("Node-Poppler module", () => {
 			).resolves.toBeUndefined();
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -1025,7 +1025,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if PDF file missing", async () => {
+		it("Returns an Error object if PDF file missing", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
@@ -1034,7 +1034,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: "test",
@@ -1048,7 +1048,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if option provided is only available in a later version of the pdftoppm binary than what was provided", async () => {
+		it("Returns an Error object if option provided is only available in a later version of the pdftoppm binary than what was provided", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				printProgress: true,
@@ -1067,7 +1067,7 @@ describe("Node-Poppler module", () => {
 			}
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				middlePageToConvert: "test",
@@ -1080,7 +1080,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfToPs function", () => {
-		test("Should convert PDF file to PS file and write to output file", async () => {
+		it("Converts PDF file to PS file and write to output file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
 
@@ -1090,7 +1090,7 @@ describe("Node-Poppler module", () => {
 			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
-		test("Should convert PDF file as Buffer to PS file", async () => {
+		it("Converts PDF file as Buffer to PS file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = await fs.readFile(file);
 
@@ -1099,7 +1099,7 @@ describe("Node-Poppler module", () => {
 			expect(typeof res).toBe("string");
 		});
 
-		test("Should accept options and only process 2 pages of PDF file", async () => {
+		it("Accepts options and only process 2 pages of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
 			const options = {
@@ -1113,7 +1113,7 @@ describe("Node-Poppler module", () => {
 			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -1123,7 +1123,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if PDF file missing", async () => {
+		it("Returns an Error object if PDF file missing", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
@@ -1132,7 +1132,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: "test",
@@ -1147,7 +1147,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				middlePageToConvert: "test",
@@ -1160,7 +1160,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfToText function", () => {
-		test("Should convert PDF file to Text file and write to output file", async () => {
+		it("Converts PDF file to Text file and write to output file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.txt`;
 
@@ -1170,7 +1170,7 @@ describe("Node-Poppler module", () => {
 			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
-		test("Should convert PDF file as Buffer to Text file", async () => {
+		it("Converts PDF file as Buffer to Text file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const attachmentFile = await fs.readFile(file);
 
@@ -1179,7 +1179,7 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatch("The NHS Constitution");
 		});
 
-		test("Should accept options and only process 2 pages of PDF file", async () => {
+		it("Accepts options and only process 2 pages of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.txt`;
 			const options = {
@@ -1193,7 +1193,7 @@ describe("Node-Poppler module", () => {
 			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
-		test("Should return an Error object if file passed not PDF format", async () => {
+		it("Returns an Error object if file passed not PDF format", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -1203,7 +1203,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if PDF file missing", async () => {
+		it("Returns an Error object if PDF file missing", async () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
@@ -1212,7 +1212,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				firstPageToConvert: "test",
@@ -1227,7 +1227,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {
 				middlePageToConvert: "test",
@@ -1240,7 +1240,7 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfUnite function", () => {
-		test("Should merge two separate PDF files into a new single PDF file", async () => {
+		it("Merges two separate PDF files into a new single PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const files = [
 				file,
@@ -1254,7 +1254,7 @@ describe("Node-Poppler module", () => {
 			await expect(fs.access(outputFile)).resolves.toBeUndefined();
 		});
 
-		test("Should return an Error object if a PDF file and non-PDF file are attempted to be merged", async () => {
+		it("Returns an Error object if a PDF file and non-PDF file are attempted to be merged", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const files = [
 				`${testDirectory}test.txt`,
@@ -1267,7 +1267,7 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
-		test("Should return an Error object if invalid value types provided for an option are passed to function", async () => {
+		it("Returns an Error object if invalid value types provided for an option are passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const files = [
 				file,
@@ -1284,7 +1284,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		test("Should return an Error object if invalid option is passed to function", async () => {
+		it("Returns an Error object if invalid option is passed to function", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const files = [
 				file,

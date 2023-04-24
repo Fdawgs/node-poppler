@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.2](https://github.com/Fdawgs/node-poppler/compare/v6.2.1...v6.2.2) (2023-04-24)
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 40.3.0 to 43.0.7 ([#492](https://github.com/Fdawgs/node-poppler/issues/492)) ([93b7b57](https://github.com/Fdawgs/node-poppler/commit/93b7b578798013357828b6bccf11b1ae00f8aad6))
+* **deps-dev:** bump glob from 9.3.5 to 10.2.2 ([#491](https://github.com/Fdawgs/node-poppler/issues/491)) ([4af7652](https://github.com/Fdawgs/node-poppler/commit/4af7652401c44c3d453407cdfa9caa28be18cbc8))
+
+
+### Continuous integration
+
+* **cd:** publish to npm with provenance ([#495](https://github.com/Fdawgs/node-poppler/issues/495)) ([7571e97](https://github.com/Fdawgs/node-poppler/commit/7571e97ce2726eb6acd593af724ece55a2acc7b2))
+* **ci:** add node 20 to test matrix ([#493](https://github.com/Fdawgs/node-poppler/issues/493)) ([b9c7a5d](https://github.com/Fdawgs/node-poppler/commit/b9c7a5db478d992e46dcd0e7f98f4f3f22050b7a))
+* **deps:** bump coverallsapp/github-action from 2.0.0 to 2.1.2 ([#490](https://github.com/Fdawgs/node-poppler/issues/490)) ([9df3af0](https://github.com/Fdawgs/node-poppler/commit/9df3af00f7dbbfab19349f4c27f3386f0f066ca2))
+
 ## [6.2.1](https://github.com/Fdawgs/node-poppler/compare/v6.2.0...v6.2.1) (2023-04-03)
 
 

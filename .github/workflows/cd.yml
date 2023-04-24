@@ -12,6 +12,7 @@ on:
 
 permissions:
     contents: write
+    id-token: write
     pull-requests: write
 
 jobs:
@@ -49,4 +50,4 @@ jobs:
                   npm i --ignore-scripts
                   npm run build
                   npm pkg delete commitlint devDependencies jest scripts
-                  npm publish --ignore-scripts
+                  npm publish --ignore-scripts --provenance

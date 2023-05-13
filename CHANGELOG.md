@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.3](https://github.com/Fdawgs/node-poppler/compare/v6.2.2...v6.2.3) (2023-05-13)
+
+
+### Miscellaneous
+
+* **scripts/license-checker:** resolve eslint jsdoc warning ([#496](https://github.com/Fdawgs/node-poppler/issues/496)) ([cba1622](https://github.com/Fdawgs/node-poppler/commit/cba1622587d35f2d9ad88a590c90810433da8917))
+
+
+### Dependencies
+
+* **deps-dev:** bump eslint-plugin-jsdoc from 43.2.0 to 44.2.3 ([#500](https://github.com/Fdawgs/node-poppler/issues/500)) ([2fa53af](https://github.com/Fdawgs/node-poppler/commit/2fa53afbcfed08dc66dde3bf3bb24b9de5f983f2))
+
+
+### Bug fixes
+
+* **index:** respect the value of boolean options ([#498](https://github.com/Fdawgs/node-poppler/issues/498)) ([e736e3e](https://github.com/Fdawgs/node-poppler/commit/e736e3e5a4e728233167516491925bb07fa79c19))
+* **lib:** update poppler win32 binaries from 23.01.0 to 23.05.0 ([#499](https://github.com/Fdawgs/node-poppler/issues/499)) ([b0836ea](https://github.com/Fdawgs/node-poppler/commit/b0836eac727904ffbb41d59e5bcdae710317bc12))
+
 ## [6.2.2](https://github.com/Fdawgs/node-poppler/compare/v6.2.1...v6.2.2) (2023-04-24)
 
 

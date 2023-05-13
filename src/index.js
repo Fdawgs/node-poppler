@@ -33,10 +33,8 @@ function parseOptions(acceptedOptions, options, version) {
 		if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
 			// eslint-disable-next-line valid-typeof
 			if (typeof options[key] === acceptedOptions[key].type) {
-				if (
-					typeof options[key] === "boolean" &&
-					options[key] === false
-				) {
+				// Skip boolean options if false
+				if (acceptedOptions[key].type === "boolean" && !options[key]) {
 					return;
 				}
 				// Arg will be empty for some non-standard options

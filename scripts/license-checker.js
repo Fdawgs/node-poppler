@@ -9,7 +9,7 @@ const path = require("upath");
 
 /**
  * @author Frazer Smith
- * @description Check licenses of all direct production dependencies to
+ * @description Checks licenses of all direct production dependencies to
  * ensure they are not copyleft.
  */
 async function checkLicenses() {

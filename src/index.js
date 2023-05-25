@@ -17,7 +17,7 @@ const errorMessages = {
 
 /**
  * @author Frazer Smith
- * @description Check each option provided is valid, of the correct type, and can be used by specified
+ * @description Checks each option provided is valid, of the correct type, and can be used by specified
  * version of binary.
  * @ignore
  * @param {object} acceptedOptions - Object containing options that a binary accepts.
@@ -498,7 +498,7 @@ class Poppler {
 
 	/**
 	 * @author Frazer Smith
-	 * @description Extract single pages from a PDF file,
+	 * @description Extracts single pages from a PDF file,
 	 * and writes one PDF file for each page to outputPattern.
 	 * This will not work if the file is encrypted.
 	 * @param {string} file - Filepath of the PDF file to read.

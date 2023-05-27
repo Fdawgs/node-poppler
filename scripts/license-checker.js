@@ -46,7 +46,7 @@ async function checkLicenses() {
 		"LGPL-3.0+",
 	];
 
-	// merge copyleft licenses with deprecated licenses list
+	// Merge copyleft licenses with deprecated licenses list
 	copyLeftLicenses.push(...deprecatedLicenseList);
 
 	const licenses = await init({

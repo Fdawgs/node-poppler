@@ -5,18 +5,18 @@
 
 * [Poppler](#Poppler)
     * [new Poppler([binPath])](#new_Poppler_new)
-    * [.pdfAttach(file, fileToAttach, outputFile, [options])](#Poppler+pdfAttach) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfDetach(file, [options])](#Poppler+pdfDetach) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfFonts(file, [options])](#Poppler+pdfFonts) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfImages(file, [outputPrefix], [options])](#Poppler+pdfImages) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfSeparate(file, outputPattern, [options])](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfToCairo(file, [outputFile], [options])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfToHtml(file, [outputFile], [options])](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfToPpm(file, outputPath, [options])](#Poppler+pdfToPpm) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfToPs(file, [outputFile], [options])](#Poppler+pdfToPs) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfToText(file, [outputFile], [options])](#Poppler+pdfToText) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-    * [.pdfUnite(files, outputFile, [options])](#Poppler+pdfUnite) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+    * [.pdfAttach(file, fileToAttach, outputFile, [options])](#Poppler+pdfAttach) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfDetach(file, [options])](#Poppler+pdfDetach) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfFonts(file, [options])](#Poppler+pdfFonts) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfImages(file, [outputPrefix], [options])](#Poppler+pdfImages) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfSeparate(file, outputPattern, [options])](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfToCairo(file, [outputFile], [options])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfToHtml(file, [outputFile], [options])](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfToPpm(file, outputPath, [options])](#Poppler+pdfToPpm) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfToPs(file, [outputFile], [options])](#Poppler+pdfToPs) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfToText(file, [outputFile], [options])](#Poppler+pdfToText) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfUnite(files, outputFile, [options])](#Poppler+pdfUnite) ⇒ <code>Promise.&lt;string&gt;</code>
 
 <a name="new_Poppler_new"></a>
 
@@ -28,11 +28,11 @@
 
 <a name="Poppler+pdfAttach"></a>
 
-### poppler.pdfAttach(file, fileToAttach, outputFile, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfAttach(file, fileToAttach, outputFile, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Embeds files (attachments) into a PDF file.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -46,11 +46,11 @@ Embeds files (attachments) into a PDF file.
 
 <a name="Poppler+pdfDetach"></a>
 
-### poppler.pdfDetach(file, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfDetach(file, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Lists or extracts embedded files (attachments) from a PDF file.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -69,11 +69,11 @@ Lists or extracts embedded files (attachments) from a PDF file.
 
 <a name="Poppler+pdfFonts"></a>
 
-### poppler.pdfFonts(file, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfFonts(file, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Lists the fonts used in a PDF file along with various information for each font.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -89,11 +89,11 @@ Lists the fonts used in a PDF file along with various information for each font.
 
 <a name="Poppler+pdfImages"></a>
 
-### poppler.pdfImages(file, [outputPrefix], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfImages(file, [outputPrefix], [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -117,11 +117,11 @@ Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 fi
 
 <a name="Poppler+pdfInfo"></a>
 
-### poppler.pdfInfo(file, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfInfo(file, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Prints the contents of the `Info` dictionary from a PDF file.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -148,13 +148,13 @@ Prints the contents of the `Info` dictionary from a PDF file.
 
 <a name="Poppler+pdfSeparate"></a>
 
-### poppler.pdfSeparate(file, outputPattern, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
-Extract single pages from a PDF file,
+### poppler.pdfSeparate(file, outputPattern, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
+Extracts single pages from a PDF file,
 and writes one PDF file for each page to outputPattern.
 This will not work if the file is encrypted.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -168,11 +168,11 @@ This will not work if the file is encrypted.
 
 <a name="Poppler+pdfToCairo"></a>
 
-### poppler.pdfToCairo(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToCairo(file, [outputFile], [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -229,11 +229,11 @@ Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 
 <a name="Poppler+pdfToHtml"></a>
 
-### poppler.pdfToHtml(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToHtml(file, [outputFile], [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Converts a PDF file to HTML.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -267,13 +267,13 @@ Converts a PDF file to HTML.
 
 <a name="Poppler+pdfToPpm"></a>
 
-### poppler.pdfToPpm(file, outputPath, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToPpm(file, outputPath, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Converts a PDF file to colour image files in Portable Pixmap (PPM) format,
 grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 in Portable Bitmap (PBM) format.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -323,11 +323,11 @@ in Portable Bitmap (PBM) format.
 
 <a name="Poppler+pdfToPs"></a>
 
-### poppler.pdfToPs(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToPs(file, [outputFile], [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Converts a PDF file to PostScript (PS).
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -379,11 +379,11 @@ Converts a PDF file to PostScript (PS).
 
 <a name="Poppler+pdfToText"></a>
 
-### poppler.pdfToText(file, [outputFile], [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfToText(file, [outputFile], [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Converts a PDF file to TXT.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |
@@ -417,12 +417,12 @@ Converts a PDF file to TXT.
 
 <a name="Poppler+pdfUnite"></a>
 
-### poppler.pdfUnite(files, outputFile, [options]) ⇒ <code>Promise.&lt;(string\|Error)&gt;</code>
+### poppler.pdfUnite(files, outputFile, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
 Merges several PDF files in order of their occurrence in the files array to
 one PDF result file.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;(string\|Error)&gt;</code> - Promise of stdout string on resolve, or Error object on rejection.  
+**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |

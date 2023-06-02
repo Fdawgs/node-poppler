@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.4](https://github.com/Fdawgs/node-poppler/compare/v6.2.3...v6.2.4) (2023-06-02)
+
+
+### Miscellaneous
+
+* **scripts:** fix inline comment style ([#503](https://github.com/Fdawgs/node-poppler/issues/503)) ([20c6145](https://github.com/Fdawgs/node-poppler/commit/20c6145d215fa2b14fc303948899c22fca82fce8))
+* use nouns for leading word in function description tags ([#501](https://github.com/Fdawgs/node-poppler/issues/501)) ([f0e9aee](https://github.com/Fdawgs/node-poppler/commit/f0e9aee3e3d0f664e5bf8994baac686ae518d713))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([#504](https://github.com/Fdawgs/node-poppler/issues/504)) ([f5c13f8](https://github.com/Fdawgs/node-poppler/commit/f5c13f81963834b4e63ca415e57e382c676e99e0))
+* **deps-dev:** bump eslint-plugin-jsdoc from 44.2.7 to 46.1.0 ([#505](https://github.com/Fdawgs/node-poppler/issues/505)) ([867bb8b](https://github.com/Fdawgs/node-poppler/commit/867bb8bbacda6bd3399b1cf3afb70a8986b2afa2))
+
+
+### Bug fixes
+
+* **index:** return types don't support promise rejection values ([#506](https://github.com/Fdawgs/node-poppler/issues/506)) ([00a78d8](https://github.com/Fdawgs/node-poppler/commit/00a78d8213a8576da96c903e75064da66bf46c87))
+
 ## [6.2.3](https://github.com/Fdawgs/node-poppler/compare/v6.2.2...v6.2.3) (2023-05-13)
 
 

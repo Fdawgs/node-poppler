@@ -14,14 +14,14 @@ export class Poppler {
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.replace - Replace embedded file with same name (if it exists).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfAttach(
 		file: string,
 		fileToAttach: string,
 		outputFile: string,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
@@ -46,12 +46,9 @@ export class Poppler {
 	 * By default, this uses the file name associated with the embedded file (as printed by
 	 * `options.listEmbedded`); the file name can be changed with `options.outputPath`.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	pdfDetach(
-		file: string,
-		options?: object | undefined
-	): Promise<string | Error>;
+	pdfDetach(file: string, options?: object | undefined): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
@@ -64,12 +61,12 @@ export class Poppler {
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {string=} options.userPassword - User password (for encrypted files).	 *
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfFonts(
 		file: Buffer | string,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
@@ -92,13 +89,13 @@ export class Poppler {
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.tiffFile - Change the default output format to TIFF.
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfImages(
 		file: Buffer | string,
 		outputPrefix?: string | undefined,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
@@ -131,15 +128,15 @@ export class Poppler {
 	 * such as Link Annotations are listed, not URL strings in the text content.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfInfo(
 		file: Buffer | string,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
-	 * @description Extract single pages from a PDF file,
+	 * @description Extracts single pages from a PDF file,
 	 * and writes one PDF file for each page to outputPattern.
 	 * This will not work if the file is encrypted.
 	 * @param {string} file - Filepath of the PDF file to read.
@@ -152,13 +149,13 @@ export class Poppler {
 	 * @param {number=} options.lastPageToExtract - Specifies the last page to extract.
 	 * This defaults to the last page of the PDF file.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfSeparate(
 		file: string,
 		outputPattern: string,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
@@ -262,13 +259,13 @@ export class Poppler {
 	 * @param {boolean=} options.transparentPageColor - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfToCairo(
 		file: Buffer | string,
 		outputFile?: string | undefined,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to HTML.
@@ -307,13 +304,13 @@ export class Poppler {
 	 * than this percent of character height.
 	 * @param {boolean=} options.xmlOutput - Output for XML post-processing.
 	 * @param {number=} options.zoom - Zoom the PDF document (default 1.5).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfToHtml(
 		file: Buffer | string,
 		outputFile?: string | undefined,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to colour image files in Portable Pixmap (PPM) format,
@@ -386,13 +383,13 @@ export class Poppler {
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
 	 * @param {boolean=} options.tiffFile - Generate TIFF file instead a PPM file.
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfToPpm(
 		file: Buffer | string,
 		outputPath: string,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to PostScript (PS).
@@ -500,13 +497,13 @@ export class Poppler {
 	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
 	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfToPs(
 		file: Buffer | string,
 		outputFile?: string | undefined,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to TXT.
@@ -553,13 +550,13 @@ export class Poppler {
 	 * @param {boolean=} options.rawLayout - Keep the text in content stream order. This is a
 	 * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfToText(
 		file: Buffer | string,
 		outputFile?: string | undefined,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Merges several PDF files in order of their occurrence in the files array to
@@ -569,11 +566,11 @@ export class Poppler {
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfUnite(
 		files: any[],
 		outputFile: string,
 		options?: object | undefined
-	): Promise<string | Error>;
+	): Promise<string>;
 }

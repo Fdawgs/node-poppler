@@ -104,7 +104,7 @@ class Poppler {
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.replace - Replace embedded file with same name (if it exists).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfAttach(file, fileToAttach, outputFile, options = {}) {
 		const acceptedOptions = {
@@ -152,7 +152,7 @@ class Poppler {
 	 * By default, this uses the file name associated with the embedded file (as printed by
 	 * `options.listEmbedded`); the file name can be changed with `options.outputPath`.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfDetach(file, options = {}) {
 		const acceptedOptions = {
@@ -197,7 +197,7 @@ class Poppler {
 	 * @param {string=} options.ownerPassword - Owner password (for encrypted files).
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {string=} options.userPassword - User password (for encrypted files).	 *
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfFonts(file, options = {}) {
 		const acceptedOptions = {
@@ -282,7 +282,7 @@ class Poppler {
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {boolean=} options.tiffFile - Change the default output format to TIFF.
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfImages(file, outputPrefix, options = {}) {
 		const acceptedOptions = {
@@ -393,7 +393,7 @@ class Poppler {
 	 * such as Link Annotations are listed, not URL strings in the text content.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfInfo(file, options = {}) {
 		const acceptedOptions = {
@@ -511,7 +511,7 @@ class Poppler {
 	 * @param {number=} options.lastPageToExtract - Specifies the last page to extract.
 	 * This defaults to the last page of the PDF file.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version info.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfSeparate(file, outputPattern, options = {}) {
 		const acceptedOptions = {
@@ -645,7 +645,7 @@ class Poppler {
 	 * @param {boolean=} options.transparentPageColor - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToCairo(file, outputFile, options = {}) {
 		const acceptedOptions = {
@@ -804,7 +804,7 @@ class Poppler {
 	 * than this percent of character height.
 	 * @param {boolean=} options.xmlOutput - Output for XML post-processing.
 	 * @param {number=} options.zoom - Zoom the PDF document (default 1.5).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToHtml(file, outputFile, options = {}) {
 		const acceptedOptions = {
@@ -968,7 +968,7 @@ class Poppler {
 	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')=} options.tiffCompression - Set TIFF compression.
 	 * @param {boolean=} options.tiffFile - Generate TIFF file instead a PPM file.
 	 * @param {string=} options.userPassword - Specify the user password for the PDF file.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToPpm(file, outputPath, options = {}) {
 		const acceptedOptions = {
@@ -1199,7 +1199,7 @@ class Poppler {
 	 * @param {number=} options.resolutionXYAxis - Specifies the X and Y resolution, in pixels per
 	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToPs(file, outputFile, options = {}) {
 		const acceptedOptions = {
@@ -1379,7 +1379,7 @@ class Poppler {
 	 * @param {boolean=} options.rawLayout - Keep the text in content stream order. This is a
 	 * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
 	 * @param {string=} options.userPassword - User password (for encrypted files).
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToText(file, outputFile, options = {}) {
 		const acceptedOptions = {
@@ -1491,7 +1491,7 @@ class Poppler {
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @param {object=} options - Object containing options to pass to binary.
 	 * @param {boolean=} options.printVersionInfo - Print copyright and version information.
-	 * @returns {Promise<string|Error>} Promise of stdout string on resolve, or Error object on rejection.
+	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfUnite(files, outputFile, options = {}) {
 		const acceptedOptions = {

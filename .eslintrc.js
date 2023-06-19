@@ -6,24 +6,22 @@ module.exports = {
 	extends: [
 		"airbnb-base",
 		"plugin:promise/recommended",
-		"plugin:jest/recommended",
-		"plugin:jest/style",
 		"plugin:jsdoc/recommended",
 		"plugin:security/recommended",
 		"plugin:security-node/recommended",
 		"prettier",
 	],
+	overrides: [
+		{
+			extends: ["plugin:jest/recommended", "plugin:jest/style"],
+			files: ["src/**/*.test.js"],
+			plugins: ["jest"],
+		},
+	],
 	parserOptions: {
 		ecmaVersion: 2019,
 	},
-	plugins: [
-		"import",
-		"jest",
-		"jsdoc",
-		"promise",
-		"security",
-		"security-node",
-	],
+	plugins: ["import", "jsdoc", "promise", "security", "security-node"],
 	root: true,
 	rules: {
 		"import/no-extraneous-dependencies": "error",

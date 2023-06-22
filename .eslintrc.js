@@ -38,6 +38,7 @@ module.exports = {
 	root: true,
 	rules: {
 		"import/no-extraneous-dependencies": "error",
+		"jsdoc/require-hyphen-before-param-description": "error",
 		"no-console": "off",
 		"no-multiple-empty-lines": ["error", { max: 1 }],
 		"prefer-destructuring": ["error", { object: true, array: false }],

@@ -1,6 +1,6 @@
 module.exports = {
 	env: {
-		es2017: true,
+		es2019: true,
 		node: true,
 	},
 	extends: [

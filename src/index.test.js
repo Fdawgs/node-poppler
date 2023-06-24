@@ -12,6 +12,14 @@ const { Poppler } = require("./index");
 const testDirectory = `${__dirname}/../test_files/`;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
+const windowsPath = path.joinSafe(
+	__dirname,
+	"lib",
+	"win32",
+	"poppler-23.05.0",
+	"Library",
+	"bin"
+);
 let testBinaryPath;
 switch (process.platform) {
 	// macOS
@@ -26,14 +34,7 @@ switch (process.platform) {
 	// Windows OS
 	case "win32":
 	default:
-		testBinaryPath = path.joinSafe(
-			__dirname,
-			"lib",
-			"win32",
-			"poppler-23.05.0",
-			"Library",
-			"bin"
-		);
+		testBinaryPath = windowsPath;
 		break;
 }
 
@@ -53,34 +54,44 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("Constructor", () => {
-		if (process.platform === "win32") {
-			it("Converts PDF file to SVG file without binary path set on win32, and use included binaries", async () => {
+		let platform;
+
+		beforeEach(() => {
+			// Copy the process platform
+			({ platform } = process);
+		});
+
+		afterEach(() => {
+			// Restore the process platform
+			Object.defineProperty(process, "platform", {
+				value: platform,
+			});
+		});
+
+		it("Creates a new Poppler instance without the binary path set on win32", () => {
+			Object.defineProperty(process, "platform", {
+				value: "win32",
+			});
+
+			const poppler = new Poppler();
+			expect(poppler.popplerPath).toBe(windowsPath);
+		});
+
+		it("Throws an Error if the binary path is not set and the platform is not win32", () => {
+			Object.defineProperty(process, "platform", {
+				value: "mockOS",
+			});
+
+			expect.assertions(1);
+			try {
+				// eslint-disable-next-line no-unused-vars
 				const poppler = new Poppler();
-				const options = {
-					svgFile: true,
-				};
-				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
-
-				const res = await poppler.pdfToCairo(file, outputFile, options);
-
-				expect(res).toBe("No Error");
-				await expect(fs.access(outputFile)).resolves.toBeUndefined();
-			});
-		}
-
-		if (process.platform !== "win32") {
-			it(`Rejects with an Error object if binary path unset on ${process.platform}`, async () => {
-				expect.assertions(1);
-				try {
-					// eslint-disable-next-line no-unused-vars
-					const poppler = new Poppler();
-				} catch (err) {
-					expect(err.message).toBe(
-						`${process.platform} poppler-util binaries are not provided, please pass the installation directory as a parameter to the Poppler instance.`
-					);
-				}
-			});
-		}
+			} catch (err) {
+				expect(err.message).toBe(
+					`${process.platform} poppler-util binaries are not provided, please pass the installation directory as a parameter to the Poppler instance.`
+				);
+			}
+		});
 	});
 
 	describe("pdfAttach function", () => {
@@ -904,6 +915,25 @@ describe("Node-Poppler module", () => {
 				fs.access(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
 			).resolves.toBeUndefined();
 		});
+
+		it.each([true, false])(
+			"Converts PDF file to HTML file with ignoreImages option set to %s",
+			async (ignoreImages) => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					firstPageToConvert: 1,
+					lastPageToConvert: 2,
+					ignoreImages,
+				};
+
+				const res = await poppler.pdfToHtml(file, undefined, options);
+
+				expect(res).toMatch("Page-2");
+				await expect(
+					fs.access(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
+				).resolves.toBeUndefined();
+			}
+		);
 
 		it("Accepts options and only process 2 pages of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);

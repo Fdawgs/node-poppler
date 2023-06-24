@@ -916,6 +916,25 @@ describe("Node-Poppler module", () => {
 			).resolves.toBeUndefined();
 		});
 
+		it.each([true, false])(
+			"Converts PDF file to HTML file with ignoreImages option set to %s",
+			async (ignoreImages) => {
+				const poppler = new Poppler(testBinaryPath);
+				const options = {
+					firstPageToConvert: 1,
+					lastPageToConvert: 2,
+					ignoreImages,
+				};
+
+				const res = await poppler.pdfToHtml(file, undefined, options);
+
+				expect(res).toMatch("Page-2");
+				await expect(
+					fs.access(`${testDirectory}pdf_1.3_NHS_Constitution.html`)
+				).resolves.toBeUndefined();
+			}
+		);
+
 		it("Accepts options and only process 2 pages of PDF file", async () => {
 			const poppler = new Poppler(testBinaryPath);
 			const options = {

@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.5](https://github.com/Fdawgs/node-poppler/compare/v6.2.4...v6.2.5) (2023-06-24)
+
+
+### Continuous integration
+
+* **deps:** bump coverallsapp/github-action from 2.1.2 to 2.2.0 ([#509](https://github.com/Fdawgs/node-poppler/issues/509)) ([4f46dbd](https://github.com/Fdawgs/node-poppler/commit/4f46dbd1f4c0c1b0fe2dac59f20131201894a772))
+
+
+### Miscellaneous
+
+* **.eslintrc:** enable additional jest plugin rules ([564555a](https://github.com/Fdawgs/node-poppler/commit/564555a4ad0f591b95298ef5da066dfe7b75f286))
+* **.eslintrc:** enable additional jsdoc plugin rules ([36d333f](https://github.com/Fdawgs/node-poppler/commit/36d333fefc455a852799f0eba9e9fa14f2a8b650))
+* **.eslintrc:** only use jest plugin to lint test-related files ([2f515ea](https://github.com/Fdawgs/node-poppler/commit/2f515eaa27981d23a6c58499a5bd5bdca2bdbd63))
+* **.eslintrc:** update ecmascript version ([8b4662e](https://github.com/Fdawgs/node-poppler/commit/8b4662eaf12076dcbae26b53ede7d651a45a7bb4))
+* **index:** fix jsdoc params ([f162260](https://github.com/Fdawgs/node-poppler/commit/f16226018ecf5b76befdd55097c53a1ff99e86ba))
+* **package:** remove global jest mock config values ([#507](https://github.com/Fdawgs/node-poppler/issues/507)) ([a75b83d](https://github.com/Fdawgs/node-poppler/commit/a75b83d4f3cbbfb7e477edb9d3a9606d3b2affa2))
+* **package:** set jest coverage threshold ([b21db44](https://github.com/Fdawgs/node-poppler/commit/b21db44ceb8d17dd556bc9f3762cbe938bcae62b))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([#512](https://github.com/Fdawgs/node-poppler/issues/512)) ([bbb1b68](https://github.com/Fdawgs/node-poppler/commit/bbb1b68cfe3424d73330eeda8e1178abc1c14530))
+
 ## [6.2.4](https://github.com/Fdawgs/node-poppler/compare/v6.2.3...v6.2.4) (2023-06-02)
 
 

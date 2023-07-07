@@ -5,8 +5,8 @@ module.exports = {
 	},
 	extends: [
 		"airbnb-base",
-		"plugin:promise/recommended",
 		"plugin:jsdoc/recommended",
+		"plugin:promise/recommended",
 		"plugin:security/recommended",
 		"plugin:security-node/recommended",
 		"prettier",

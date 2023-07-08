@@ -86,7 +86,7 @@ class Poppler {
 				__dirname,
 				"lib",
 				"win32",
-				"poppler-23.05.0",
+				"poppler-23.07.0",
 				"Library",
 				"bin"
 			);

@@ -1,3 +1,5 @@
+"use strict";
+
 const camelCase = require("camelcase");
 const path = require("upath");
 const { execFile, spawn } = require("child_process");
@@ -215,7 +217,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -307,7 +309,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -422,7 +424,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -465,7 +467,7 @@ class Poppler {
 					if (stdOut !== "") {
 						if (fileSize) {
 							stdOut = stdOut.replace(
-								/(File\s+size:\s+)0(\s+)bytes/,
+								/(File\s+size:\s+)0(\s+)bytes/u,
 								`$1${fileSize}$2bytes`
 							);
 						}
@@ -526,7 +528,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 			args.push(file);
@@ -703,7 +705,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -843,7 +845,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1047,7 +1049,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1277,7 +1279,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1426,7 +1428,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1504,7 +1506,7 @@ class Poppler {
 				["-v"]
 			);
 
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 			files.forEach((element) => {

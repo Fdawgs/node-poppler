@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.6](https://github.com/Fdawgs/node-poppler/compare/v6.2.5...v6.2.6) (2023-07-08)
+
+
+### Miscellaneous
+
+* **.eslintrc:** sort `extends` array ([6a4e5fa](https://github.com/Fdawgs/node-poppler/commit/6a4e5fad13a6875c86eea769d4a27014fe31d22e))
+
+
+### Dependencies
+
+* **deps-dev:** add eslint-plugin-regexp ([4fbae66](https://github.com/Fdawgs/node-poppler/commit/4fbae661ae80508e68d4fb70161d788f9b08403d))
+* **deps-dev:** bump dev dependencies ([fa353db](https://github.com/Fdawgs/node-poppler/commit/fa353db76210a4c9dbcaf37c30965545ee0206f0))
+
+
+### Improvements
+
+* **index:** add strict `u` flag to all regex patterns ([06ac742](https://github.com/Fdawgs/node-poppler/commit/06ac7423950cbd8136b7665465c562e849bc1b29))
+* **index:** remove useless `i` regex flag ([72eea36](https://github.com/Fdawgs/node-poppler/commit/72eea3679c6cb9bb91cea50f35ce6af429160ff4))
+
+
+### Bug fixes
+
+* add missing strict mode directives ([7f25364](https://github.com/Fdawgs/node-poppler/commit/7f25364784711f2cfeae71a34d1045589e964e1f))
+* **lib:** update poppler win32 binaries from 23.05.0 to 23.07.0 ([#517](https://github.com/Fdawgs/node-poppler/issues/517)) ([9a3cb32](https://github.com/Fdawgs/node-poppler/commit/9a3cb32dd4afbdf4666dc275b3833cdc570c833c))
+
 ## [6.2.5](https://github.com/Fdawgs/node-poppler/compare/v6.2.4...v6.2.5) (2023-06-24)
 
 

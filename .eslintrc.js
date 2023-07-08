@@ -5,8 +5,9 @@ module.exports = {
 	},
 	extends: [
 		"airbnb-base",
-		"plugin:promise/recommended",
 		"plugin:jsdoc/recommended",
+		"plugin:promise/recommended",
+		"plugin:regexp/recommended",
 		"plugin:security/recommended",
 		"plugin:security-node/recommended",
 		"prettier",
@@ -34,7 +35,14 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 2019,
 	},
-	plugins: ["import", "jsdoc", "promise", "security", "security-node"],
+	plugins: [
+		"import",
+		"jsdoc",
+		"promise",
+		"regexp",
+		"security",
+		"security-node",
+	],
 	root: true,
 	rules: {
 		"import/no-extraneous-dependencies": "error",

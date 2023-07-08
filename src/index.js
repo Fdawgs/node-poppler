@@ -1,3 +1,5 @@
+"use strict";
+
 const camelCase = require("camelcase");
 const path = require("upath");
 const { execFile, spawn } = require("child_process");

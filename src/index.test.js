@@ -1,5 +1,8 @@
 /* eslint-disable jest/no-conditional-expect */
 /* eslint-disable security/detect-non-literal-fs-filename */
+
+"use strict";
+
 const fs = require("fs/promises");
 const { glob } = require("glob");
 const path = require("upath");

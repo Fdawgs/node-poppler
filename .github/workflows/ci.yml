@@ -55,6 +55,8 @@ jobs:
             - name: Setup Node
               uses: actions/setup-node@v3
               with:
+                  cache: npm
+                  cache-dependency-path: package.json
                   node-version: lts/*
 
             - name: Install
@@ -107,6 +109,8 @@ jobs:
             - name: Setup Node ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
+                  cache: npm
+                  cache-dependency-path: package.json
                   node-version: ${{ matrix.node-version }}
 
             - name: Install

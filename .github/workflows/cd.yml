@@ -38,6 +38,8 @@ jobs:
               if: steps.release.outputs.release_created
               uses: actions/setup-node@v3
               with:
+                  cache: npm
+                  cache-dependency-path: package.json
                   node-version: lts/*
                   registry-url: https://registry.npmjs.org/
 

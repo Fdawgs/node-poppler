@@ -123,7 +123,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfAttach(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/);
+				expect(err.message).toMatch(/^Command failed:/u);
 			});
 		});
 
@@ -171,7 +171,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfDetach(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/);
+				expect(err.message).toMatch(/^Command failed:/u);
 			});
 		});
 
@@ -229,7 +229,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfFonts(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/);
+				expect(err.message).toMatch(/^Syntax Warning:/u);
 			});
 		});
 
@@ -301,7 +301,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/);
+				expect(err.message).toMatch(/^Syntax Warning:/u);
 			});
 		});
 
@@ -311,7 +311,7 @@ describe("Node-Poppler module", () => {
 			expect.assertions(1);
 			await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
 				expect(err.message).toMatch(
-					/^I\/O Error: Couldn't open file 'undefined'/
+					/^I\/O Error: Couldn't open file 'undefined'/u
 				);
 			});
 		});
@@ -402,7 +402,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/);
+				expect(err.message).toMatch(/^Syntax Warning:/u);
 			});
 		});
 
@@ -411,7 +411,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/);
+				expect(err.message).toMatch(/^I\/O Error:/u);
 			});
 		});
 
@@ -474,7 +474,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfSeparate(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/);
+				expect(err.message).toMatch(/^Command failed:/u);
 			});
 		});
 
@@ -854,7 +854,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/Error:/);
+				expect(err.message).toMatch(/Error:/u);
 			});
 		});
 
@@ -863,7 +863,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(file).catch((err) => {
-				expect(err.message).toMatch(/Error:/);
+				expect(err.message).toMatch(/Error:/u);
 			});
 		});
 
@@ -959,7 +959,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/);
+				expect(err.message).toMatch(/^Syntax Warning:/u);
 			});
 		});
 
@@ -968,7 +968,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/);
+				expect(err.message).toMatch(/^I\/O Error:/u);
 			});
 		});
 
@@ -1006,7 +1006,7 @@ describe("Node-Poppler module", () => {
 				path.joinSafe(testBinaryPath, "pdftoppm"),
 				["-v"]
 			);
-			version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/i.exec(stderr)[1];
+			version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 		});
 
 		it("Accepts options and only process 1 page of PDF file", async () => {
@@ -1054,7 +1054,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/);
+				expect(err.message).toMatch(/^Syntax Warning:/u);
 			});
 		});
 
@@ -1063,7 +1063,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/);
+				expect(err.message).toMatch(/^I\/O Error:/u);
 			});
 		});
 
@@ -1152,7 +1152,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/);
+				expect(err.message).toMatch(/^Syntax Warning:/u);
 			});
 		});
 
@@ -1161,7 +1161,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/);
+				expect(err.message).toMatch(/^I\/O Error:/u);
 			});
 		});
 
@@ -1232,7 +1232,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/);
+				expect(err.message).toMatch(/^Syntax Warning:/u);
 			});
 		});
 
@@ -1241,7 +1241,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/);
+				expect(err.message).toMatch(/^I\/O Error:/u);
 			});
 		});
 
@@ -1296,7 +1296,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfUnite(files).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/);
+				expect(err.message).toMatch(/^Command failed:/u);
 			});
 		});
 

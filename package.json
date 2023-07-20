@@ -46,13 +46,13 @@
 		"node": ">=14.0.0"
 	},
 	"scripts": {
-		"build": "tsc && jsdoc2md src/index.js > API.md && npm run lint:prettier",
+		"build": "tsc && jsdoc2md src/index.js > API.md && npm run lint:prettier:fix",
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
 		"lint:licenses": "node scripts/license-checker.js",
-		"lint:prettier": "prettier . -w -u",
-		"lint:prettier:ci": "prettier . -c -u",
+		"lint:prettier": "prettier . -c -u",
+		"lint:prettier:fix": "prettier . -w -u",
 		"prepare": "husky install",
 		"test": "npm run lint && npm run jest"
 	},

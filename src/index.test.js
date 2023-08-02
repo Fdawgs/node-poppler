@@ -13,7 +13,7 @@ const path = require("upath");
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
 
-const testDirectory = `${__dirname}/../test_files/`;
+const testDirectory = `${__dirname}/../test_resources/test_files/`;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
 const windowsPath = path.joinSafe(
@@ -999,6 +999,8 @@ describe("Node-Poppler module", () => {
 				path.joinSafe(testBinaryPath, "pdftoppm"),
 				["-v"]
 			);
+
+			// console.log(stderr);
 			version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 		});
 

@@ -7,6 +7,7 @@ const { execFile } = require("child_process");
 const { access, readFile, unlink } = require("fs/promises");
 const { promisify } = require("util");
 const { glob } = require("glob");
+const { lt } = require("semver");
 const path = require("upath");
 
 const execFileAsync = promisify(execFile);
@@ -1079,7 +1080,7 @@ describe("Node-Poppler module", () => {
 				printProgress: true,
 			};
 
-			if (version < "21.03.0") {
+			if (lt(version, "21.03.0", { loose: true })) {
 				await expect(
 					poppler.pdfToPpm(
 						file,

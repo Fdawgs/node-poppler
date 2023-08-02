@@ -1,9 +1,10 @@
 "use strict";
 
-const camelCase = require("camelcase");
-const path = require("upath");
 const { execFile, spawn } = require("child_process");
 const { promisify } = require("util");
+const camelCase = require("camelcase");
+const { lt } = require("semver");
+const path = require("upath");
 
 const execFileAsync = promisify(execFile);
 
@@ -58,7 +59,7 @@ function parseOptions(acceptedOptions, options, version) {
 			if (
 				acceptedOptions[key].minVersion &&
 				version &&
-				version < acceptedOptions[key].minVersion
+				lt(version, acceptedOptions[key].minVersion, { loose: true })
 			) {
 				invalidArgs.push(
 					`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOptions[key].minVersion}, but received v${version}`

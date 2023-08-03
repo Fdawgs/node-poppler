@@ -63,7 +63,7 @@ async function checkLicenses() {
 	);
 
 	if (copyLeftLicensesList.length > 0) {
-		console.log(
+		console.error(
 			`The following dependencies are using copyleft licenses: ${copyLeftLicensesList.join(
 				", "
 			)}`

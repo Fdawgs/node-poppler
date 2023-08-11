@@ -26,7 +26,7 @@ const errorMessages = {
  * @param {object} acceptedOptions - Object containing options that a binary accepts.
  * @param {object} options - Object containing options to pass to binary.
  * @param {string=} version - Version of binary.
- * @returns {Array<string>} Array of CLI arguments.
+ * @returns {string[]} Array of CLI arguments.
  * @throws If invalid arguments provided.
  */
 function parseOptions(acceptedOptions, options, version) {
@@ -1489,7 +1489,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Merges several PDF files in order of their occurrence in the files array to
 	 * one PDF result file.
-	 * @param {Array} files - Filepaths of the PDF files to merge.
+	 * @param {string[]} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`.
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @param {object=} options - Object containing options to pass to binary.

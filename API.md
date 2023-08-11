@@ -427,7 +427,7 @@ one PDF result file.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| files | <code>Array</code> | Filepaths of the PDF files to merge. An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`. |
+| files | <code>Array.&lt;string&gt;</code> | Filepaths of the PDF files to merge. An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`. |
 | outputFile | <code>string</code> | Filepath of the file to output the resulting merged PDF to. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information. |

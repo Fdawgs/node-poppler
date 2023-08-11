@@ -168,7 +168,7 @@ export class Poppler {
 	 *
 	 * If not set then the output filename will be derived from the PDF file name.
 	 * @param {object=} options - Object containing options to pass to binary.
-	 * @param {('default'|'none'|'gray'|'subpixel'|'fast'|'good'|'best')=} options.antialias Set the cairo
+	 * @param {('default'|'none'|'gray'|'subpixel'|'fast'|'good'|'best')=} options.antialias - Set the cairo
 	 * antialias option used for text and drawing in image files (or rasterized regions in vector output).
 	 * @param {boolean=} options.cropBox - Uses the crop box rather than media box when
 	 * generating the files (PNG/JPEG/TIFF only).
@@ -530,7 +530,7 @@ export class Poppler {
 	 * @param {number=} options.firstPageToConvert - Specifies the first page to convert.
 	 * @param {number=} options.fixedWidthLayout - Assume fixed-pitch (or tabular) text, with the
 	 * specified character width (in points). This forces physical layout mode.
-	 * @param {boolean=} options.generateHtmlMetaFile Generate simple HTML file, including the
+	 * @param {boolean=} options.generateHtmlMetaFile - Generate simple HTML file, including the
 	 * meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers.
 	 * @param {boolean=} options.generateTsvFile - Generate a TSV file containing the bounding box
 	 * information for each block, line, and word in the file.
@@ -561,7 +561,7 @@ export class Poppler {
 	 * @author Frazer Smith
 	 * @description Merges several PDF files in order of their occurrence in the files array to
 	 * one PDF result file.
-	 * @param {Array} files - Filepaths of the PDF files to merge.
+	 * @param {string[]} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`.
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @param {object=} options - Object containing options to pass to binary.
@@ -569,7 +569,7 @@ export class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	pdfUnite(
-		files: any[],
+		files: string[],
 		outputFile: string,
 		options?: object | undefined
 	): Promise<string>;

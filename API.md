@@ -180,7 +180,7 @@ Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 | file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. Using stdout is not valid with image formats (jpeg, png, and tiff) unless `options.singleFile` is set to `true`. Encoding is set to `binary` if used with `options.singleFile` or `options.pdfFile`. If not set then the output filename will be derived from the PDF file name. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
-| [options.antialias] | <code>&#x27;default&#x27;</code> \| <code>&#x27;none&#x27;</code> \| <code>&#x27;gray&#x27;</code> \| <code>&#x27;subpixel&#x27;</code> \| <code>&#x27;fast&#x27;</code> \| <code>&#x27;good&#x27;</code> \| <code>&#x27;best&#x27;</code> | Set the cairo antialias option used for text and drawing in image files (or rasterized regions in vector output). |
+| [options.antialias] | <code>&#x27;best&#x27;</code> \| <code>&#x27;default&#x27;</code> \| <code>&#x27;fast&#x27;</code> \| <code>&#x27;good&#x27;</code> \| <code>&#x27;gray&#x27;</code> \| <code>&#x27;none&#x27;</code> \| <code>&#x27;subpixel&#x27;</code> | Set the cairo antialias option used for text and drawing in image files (or rasterized regions in vector output). |
 | [options.cropBox] | <code>boolean</code> | Uses the crop box rather than media box when generating the files (PNG/JPEG/TIFF only). |
 | [options.cropHeight] | <code>number</code> | Specifies the height of crop area in pixels (image output) or points (vector output). |
 | [options.cropSize] | <code>number</code> | Specifies the size of crop square in pixels (image output) or points (vector output). |
@@ -205,7 +205,7 @@ Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 | [options.originalPageSizes] | <code>boolean</code> | Set the paper size of each page to match the size specified in the PDF file. |
 | [options.ownerPassword] | <code>string</code> | Specify the owner password for the PDF file. Providing this will bypass all security restrictions. |
 | [options.paperHeight] | <code>number</code> | Set the paper height, in points (PS, PDF, SVG only). |
-| [options.paperSize] | <code>&#x27;letter&#x27;</code> \| <code>&#x27;legal&#x27;</code> \| <code>&#x27;A4&#x27;</code> \| <code>&#x27;A3&#x27;</code> \| <code>&#x27;match&#x27;</code> | Set the paper size to one of `letter`, `legal`, `A4`, or `A3` (PS,PDF,SVG only). This can also be set to `match`, which will set the paper size of each page to match the size specified in the PDF file. If none of the paperSize, paperWidth, or paperHeight options are specified the default is to match the paper size. |
+| [options.paperSize] | <code>&#x27;A3&#x27;</code> \| <code>&#x27;A4&#x27;</code> \| <code>&#x27;legal&#x27;</code> \| <code>&#x27;letter&#x27;</code> \| <code>&#x27;match&#x27;</code> | Set the paper size to one of `A3`, `A4`, `legal`, or `letter` (PS,PDF,SVG only). This can also be set to `match`, which will set the paper size of each page to match the size specified in the PDF file. If none of the paperSize, paperWidth, or paperHeight options are specified the default is to match the paper size. |
 | [options.paperWidth] | <code>number</code> | Set the paper width, in points (PS,PDF,SVG only). |
 | [options.pdfFile] | <code>boolean</code> | Generate PDF file. |
 | [options.pngFile] | <code>boolean</code> | Generate PNG file(s). |
@@ -222,7 +222,7 @@ Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 | [options.scalePageToYAxis] | <code>number</code> | Scales each page vertically to fit in scale-to-y pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of the page (PNG/JPEG/TIFF only). |
 | [options.singleFile] | <code>boolean</code> | Writes only the first page and does not add digits. Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`. |
 | [options.svgFile] | <code>boolean</code> | Generate SVG (Scalable Vector Graphics) file. |
-| [options.tiffCompression] | <code>&#x27;none&#x27;</code> \| <code>&#x27;packbits&#x27;</code> \| <code>&#x27;jpeg&#x27;</code> \| <code>&#x27;lzw&#x27;</code> \| <code>&#x27;deflate&#x27;</code> | Set TIFF compression. |
+| [options.tiffCompression] | <code>&#x27;deflate&#x27;</code> \| <code>&#x27;jpeg&#x27;</code> \| <code>&#x27;lzw&#x27;</code> \| <code>&#x27;none&#x27;</code> \| <code>&#x27;packbits&#x27;</code> | Set TIFF compression. |
 | [options.tiffFile] | <code>boolean</code> | Generate TIFF file(s). |
 | [options.transparentPageColor] | <code>boolean</code> | Use a transparent page color instead of white (PNG and TIFF only). |
 | [options.userPassword] | <code>string</code> | Specify the user password for the PDF file. |
@@ -248,7 +248,7 @@ Converts a PDF file to HTML.
 | [options.firstPageToConvert] | <code>number</code> | First page to print. |
 | [options.fontFullName] | <code>boolean</code> | Outputs the font name without any substitutions. |
 | [options.ignoreImages] | <code>boolean</code> | Ignore images. |
-| [options.imageFormat] | <code>&#x27;PNG&#x27;</code> \| <code>&#x27;JPG&#x27;</code> | Image file format for Splash output (PNG or JPG). If complexOutput is selected, but imageFormat is not specified, PNG will be assumed. |
+| [options.imageFormat] | <code>&#x27;JPG&#x27;</code> \| <code>&#x27;PNG&#x27;</code> | Image file format for Splash output (JPG or PNG). If complexOutput is selected, but imageFormat is not specified, PNG will be assumed. |
 | [options.lastPageToConvert] | <code>number</code> | Last page to print. |
 | [options.noDrm] | <code>boolean</code> | Override document DRM settings. |
 | [options.noFrames] | <code>boolean</code> | Generate no frames. Not supported in complex output mode. |
@@ -281,8 +281,8 @@ in Portable Bitmap (PBM) format.
 | file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | outputPath | <code>string</code> | Filepath to output the results to. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
-| [options.antialiasFonts] | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code> | Enable or disable font anti-aliasing. This defaults to `yes`. |
-| [options.antialiasVectors] | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code> | Enable or disable vector anti-aliasing. This defaults to `yes`. |
+| [options.antialiasFonts] | <code>&#x27;no&#x27;</code> \| <code>&#x27;yes&#x27;</code> | Enable or disable font anti-aliasing. This defaults to `yes`. |
+| [options.antialiasVectors] | <code>&#x27;no&#x27;</code> \| <code>&#x27;yes&#x27;</code> | Enable or disable vector anti-aliasing. This defaults to `yes`. |
 | [options.cropBox] | <code>boolean</code> | Uses the crop box rather than media box when generating the files (PNG/JPEG/TIFF only). |
 | [options.cropHeight] | <code>number</code> | Specifies the height of crop area in pixels (image output) or points (vector output). |
 | [options.cropSize] | <code>number</code> | Specifies the size of crop square in pixels (image output) or points (vector output). |
@@ -295,7 +295,7 @@ in Portable Bitmap (PBM) format.
 | [options.displayProfile] | <code>string</code> | If Poppler is compiled with colour management support, this option sets the display profile to the ICC profile stored in the display profile file passed. |
 | [options.evenPagesOnly] | <code>boolean</code> | Generates only the even numbered pages. |
 | [options.firstPageToConvert] | <code>number</code> | Specifies the first page to convert. |
-| [options.freetype] | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code> | Enable or disable FreeType (a TrueType / Type 1 font rasterizer). This defaults to `yes`. |
+| [options.freetype] | <code>&#x27;no&#x27;</code> \| <code>&#x27;yes&#x27;</code> | Enable or disable FreeType (a TrueType / Type 1 font rasterizer). This defaults to `yes`. |
 | [options.forcePageNumber] | <code>boolean</code> | Force page number even if there is only one page. |
 | [options.grayscaleFile] | <code>boolean</code> | Generate grayscale PGM file (instead of a color PPM file). |
 | [options.hideAnnotations] | <code>boolean</code> | Hide annotations. |
@@ -316,8 +316,8 @@ in Portable Bitmap (PBM) format.
 | [options.scalePageToYAxis] | <code>number</code> | Scales each page vertically to fit in scale-to-y pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of the page. |
 | [options.separator] | <code>string</code> | Specify single character separator between name and page number. |
 | [options.singleFile] | <code>boolean</code> | Writes only the first page and does not add digits. |
-| [options.thinLineMode] | <code>&#x27;none&#x27;</code> \| <code>&#x27;solid&#x27;</code> \| <code>&#x27;shape&#x27;</code> | Specifies the thin line mode. This defaults to `none`. |
-| [options.tiffCompression] | <code>&#x27;none&#x27;</code> \| <code>&#x27;packbits&#x27;</code> \| <code>&#x27;jpeg&#x27;</code> \| <code>&#x27;lzw&#x27;</code> \| <code>&#x27;deflate&#x27;</code> | Set TIFF compression. |
+| [options.thinLineMode] | <code>&#x27;none&#x27;</code> \| <code>&#x27;shape&#x27;</code> \| <code>&#x27;solid&#x27;</code> | Specifies the thin line mode. This defaults to `none`. |
+| [options.tiffCompression] | <code>&#x27;deflate&#x27;</code> \| <code>&#x27;jpeg&#x27;</code> \| <code>&#x27;lzw&#x27;</code> \| <code>&#x27;none&#x27;</code> \| <code>&#x27;packbits&#x27;</code> | Set TIFF compression. |
 | [options.tiffFile] | <code>boolean</code> | Generate TIFF file instead a PPM file. |
 | [options.userPassword] | <code>string</code> | Specify the user password for the PDF file. |
 
@@ -335,7 +335,7 @@ Converts a PDF file to PostScript (PS).
 | file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
-| [options.antialias] | <code>&#x27;yes&#x27;</code> \| <code>&#x27;no&#x27;</code> | Enable anti-aliasing on rasterization, accepts `yes` or `no`. |
+| [options.antialias] | <code>&#x27;no&#x27;</code> \| <code>&#x27;yes&#x27;</code> | Enable anti-aliasing on rasterization, accepts `no` or `yes`. |
 | [options.binary] | <code>boolean</code> | Write binary data in Level 1 PostScript. By default, pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1 PostScript but reduces the file size and can be useful when Level 1 PostScript is required only for its restricted use of PostScript operators. |
 | [options.defaultCmykProfile] | <code>string</code> | If Poppler is compiled with colour management support, this option sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed. |
 | [options.defaultGrayProfile] | <code>string</code> | If Poppler is compiled with colour management support, this option sets the DefaultGray color space to the ICC profile stored in the display profile file passed. |
@@ -365,7 +365,7 @@ Converts a PDF file to PostScript (PS).
 | [options.overprint] | <code>boolean</code> | Enable overprinting. |
 | [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
 | [options.paperHeight] | <code>number</code> | Set the paper height, in points. |
-| [options.paperSize] | <code>&#x27;letter&#x27;</code> \| <code>&#x27;legal&#x27;</code> \| <code>&#x27;A4&#x27;</code> \| <code>&#x27;A3&#x27;</code> \| <code>&#x27;match&#x27;</code> | Set the paper size to one of `letter`, `legal`, `A4`, or `A3`. This can also be set to `match`, which will set the paper size of each page to match the size specified in the PDF file. If none of the paperSize, paperWidth, or paperHeight options are specified the default is to match the paper size. |
+| [options.paperSize] | <code>&#x27;A3&#x27;</code> \| <code>&#x27;A4&#x27;</code> \| <code>&#x27;legal&#x27;</code> \| <code>&#x27;letter&#x27;</code> \| <code>&#x27;match&#x27;</code> | Set the paper size to one of `A3`, `A4`, `legal`, or `letter`. This can also be set to `match`, which will set the paper size of each page to match the size specified in the PDF file. If none of the paperSize, paperWidth, or paperHeight options are specified the default is to match the paper size. |
 | [options.paperWidth] | <code>number</code> | Set the paper width, in points. |
 | [options.passfonts] | <code>boolean</code> | By default, references to non-embedded 8-bit fonts in the PDF file are substituted with the closest `Helvetica`, `Times-Roman`, or `Courier` font. This option passes references to non-embedded fonts through to the PostScript file. |
 | [options.preload] | <code>boolean</code> | Preload images and forms. |
@@ -398,7 +398,7 @@ Converts a PDF file to TXT.
 | [options.cropWidth] | <code>number</code> | Specifies the width of crop area in pixels (image output) or points (vector output). |
 | [options.cropXAxis] | <code>number</code> | Specifies the x-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |
 | [options.cropYAxis] | <code>number</code> | Specifies the y-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |
-| [options.eolConvention] | <code>&#x27;unix&#x27;</code> \| <code>&#x27;dos&#x27;</code> \| <code>&#x27;mac&#x27;</code> | Sets the end-of-line convention to use for text output: unix; dos; mac. |
+| [options.eolConvention] | <code>&#x27;dos&#x27;</code> \| <code>&#x27;mac&#x27;</code> \| <code>&#x27;unix&#x27;</code> | Sets the end-of-line convention to use for text output: dos; mac; unix. |
 | [options.firstPageToConvert] | <code>number</code> | Specifies the first page to convert. |
 | [options.fixedWidthLayout] | <code>number</code> | Assume fixed-pitch (or tabular) text, with the specified character width (in points). This forces physical layout mode. |
 | [options.generateHtmlMetaFile] | <code>boolean</code> | Generate simple HTML file, including the meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers. |
@@ -427,7 +427,7 @@ one PDF result file.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| files | <code>Array</code> | Filepaths of the PDF files to merge. An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`. |
+| files | <code>Array.&lt;string&gt;</code> | Filepaths of the PDF files to merge. An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`. |
 | outputFile | <code>string</code> | Filepath of the file to output the resulting merged PDF to. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information. |

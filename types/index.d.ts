@@ -239,7 +239,7 @@ export class Poppler {
 	 *
 	 * If not set then the output filename will be derived from the PDF file name.
 	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {('default'|'none'|'gray'|'subpixel'|'fast'|'good'|'best')} [options.antialias] - Set the cairo
+	 * @param {('best'|'default'|'fast'|'good'|'gray'|'none'|'subpixel')} [options.antialias] - Set the cairo
 	 * antialias option used for text and drawing in image files (or rasterized regions in vector output).
 	 * @param {boolean} [options.cropBox] - Uses the crop box rather than media box when
 	 * generating the files (PNG/JPEG/TIFF only).
@@ -294,8 +294,8 @@ export class Poppler {
 	 * @param {string} [options.ownerPassword] - Specify the owner password for the PDF file.
 	 * Providing this will bypass all security restrictions.
 	 * @param {number} [options.paperHeight] - Set the paper height, in points (PS, PDF, SVG only).
-	 * @param {('letter'|'legal'|'A4'|'A3'|'match')} [options.paperSize] - Set the paper size to one of `letter`, `legal`, `A4`,
-	 * or `A3` (PS,PDF,SVG only). This can also be set to `match`, which will set the paper size
+	 * @param {('A3'|'A4'|'legal'|'letter'|'match')} [options.paperSize] - Set the paper size to one of `A3`, `A4`,
+	 * `legal`, or `letter` (PS,PDF,SVG only). This can also be set to `match`, which will set the paper size
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
 	 * @param {number} [options.paperWidth] - Set the paper width, in points (PS,PDF,SVG only).
@@ -325,7 +325,7 @@ export class Poppler {
 	 * @param {boolean} [options.singleFile] - Writes only the first page and does not add digits.
 	 * Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`.
 	 * @param {boolean} [options.svgFile] - Generate SVG (Scalable Vector Graphics) file.
-	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')} [options.tiffCompression] - Set TIFF compression.
+	 * @param {('deflate'|'jpeg'|'lzw'|'none'|'packbits')} [options.tiffCompression] - Set TIFF compression.
 	 * @param {boolean} [options.tiffFile] - Generate TIFF file(s).
 	 * @param {boolean} [options.transparentPageColor] - Use a transparent page color
 	 * instead of white (PNG and TIFF only).
@@ -340,11 +340,11 @@ export class Poppler {
 					antialias?:
 						| "none"
 						| "default"
-						| "gray"
-						| "subpixel"
+						| "best"
 						| "fast"
 						| "good"
-						| "best"
+						| "gray"
+						| "subpixel"
 						| undefined;
 					cropBox?: boolean | undefined;
 					cropHeight?: number | undefined;
@@ -372,10 +372,10 @@ export class Poppler {
 					paperHeight?: number | undefined;
 					paperSize?:
 						| "match"
-						| "letter"
-						| "legal"
-						| "A4"
 						| "A3"
+						| "A4"
+						| "legal"
+						| "letter"
 						| undefined;
 					paperWidth?: number | undefined;
 					pdfFile?: boolean | undefined;
@@ -396,9 +396,9 @@ export class Poppler {
 					tiffCompression?:
 						| "none"
 						| "deflate"
-						| "packbits"
 						| "jpeg"
 						| "lzw"
+						| "packbits"
 						| undefined;
 					tiffFile?: boolean | undefined;
 					transparentPageColor?: boolean | undefined;
@@ -423,7 +423,7 @@ export class Poppler {
 	 * @param {number} [options.firstPageToConvert] - First page to print.
 	 * @param {boolean} [options.fontFullName] - Outputs the font name without any substitutions.
 	 * @param {boolean} [options.ignoreImages] - Ignore images.
-	 * @param {('PNG'|'JPG')} [options.imageFormat] - Image file format for Splash output (PNG or JPG).
+	 * @param {('JPG'|'PNG')} [options.imageFormat] - Image file format for Splash output (JPG or PNG).
 	 * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
 	 * @param {number} [options.lastPageToConvert] - Last page to print.
 	 * @param {boolean} [options.noDrm] - Override document DRM settings.
@@ -458,7 +458,7 @@ export class Poppler {
 					firstPageToConvert?: number | undefined;
 					fontFullName?: boolean | undefined;
 					ignoreImages?: boolean | undefined;
-					imageFormat?: "PNG" | "JPG" | undefined;
+					imageFormat?: "JPG" | "PNG" | undefined;
 					lastPageToConvert?: number | undefined;
 					noDrm?: boolean | undefined;
 					noFrames?: boolean | undefined;
@@ -485,9 +485,9 @@ export class Poppler {
 	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} outputPath - Filepath to output the results to.
 	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {('yes'|'no')} [options.antialiasFonts] - Enable or disable font anti-aliasing.
+	 * @param {('no'|'yes')} [options.antialiasFonts] - Enable or disable font anti-aliasing.
 	 * This defaults to `yes`.
-	 * @param {('yes'|'no')} [options.antialiasVectors] - Enable or disable vector anti-aliasing.
+	 * @param {('no'|'yes')} [options.antialiasVectors] - Enable or disable vector anti-aliasing.
 	 * This defaults to `yes`.
 	 * @param {boolean} [options.cropBox] - Uses the crop box rather than media box when
 	 * generating the files (PNG/JPEG/TIFF only).
@@ -511,7 +511,7 @@ export class Poppler {
 	 * sets the display profile to the ICC profile stored in the display profile file passed.
 	 * @param {boolean} [options.evenPagesOnly] - Generates only the even numbered pages.
 	 * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
-	 * @param {('yes'|'no')} [options.freetype] - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
+	 * @param {('no'|'yes')} [options.freetype] - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
 	 * This defaults to `yes`.
 	 * @param {boolean} [options.forcePageNumber] - Force page number even if there is only one page.
 	 * @param {boolean} [options.grayscaleFile] - Generate grayscale PGM file (instead of a color PPM file).
@@ -545,8 +545,8 @@ export class Poppler {
 	 * the page.
 	 * @param {string} [options.separator] - Specify single character separator between name and page number.
 	 * @param {boolean} [options.singleFile] - Writes only the first page and does not add digits.
-	 * @param {('none'|'solid'|'shape')} [options.thinLineMode] - Specifies the thin line mode. This defaults to `none`.
-	 * @param {('none'|'packbits'|'jpeg'|'lzw'|'deflate')} [options.tiffCompression] - Set TIFF compression.
+	 * @param {('none'|'shape'|'solid')} [options.thinLineMode] - Specifies the thin line mode. This defaults to `none`.
+	 * @param {('deflate'|'jpeg'|'lzw'|'none'|'packbits')} [options.tiffCompression] - Set TIFF compression.
 	 * @param {boolean} [options.tiffFile] - Generate TIFF file instead a PPM file.
 	 * @param {string} [options.userPassword] - Specify the user password for the PDF file.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
@@ -556,8 +556,8 @@ export class Poppler {
 		outputPath: string,
 		options?:
 			| {
-					antialiasFonts?: "yes" | "no" | undefined;
-					antialiasVectors?: "yes" | "no" | undefined;
+					antialiasFonts?: "no" | "yes" | undefined;
+					antialiasVectors?: "no" | "yes" | undefined;
 					cropBox?: boolean | undefined;
 					cropHeight?: number | undefined;
 					cropSize?: number | undefined;
@@ -570,7 +570,7 @@ export class Poppler {
 					displayProfile?: string | undefined;
 					evenPagesOnly?: boolean | undefined;
 					firstPageToConvert?: number | undefined;
-					freetype?: "yes" | "no" | undefined;
+					freetype?: "no" | "yes" | undefined;
 					forcePageNumber?: boolean | undefined;
 					grayscaleFile?: boolean | undefined;
 					hideAnnotations?: boolean | undefined;
@@ -591,13 +591,13 @@ export class Poppler {
 					scalePageToYAxis?: number | undefined;
 					separator?: string | undefined;
 					singleFile?: boolean | undefined;
-					thinLineMode?: "none" | "solid" | "shape" | undefined;
+					thinLineMode?: "none" | "shape" | "solid" | undefined;
 					tiffCompression?:
 						| "none"
 						| "deflate"
-						| "packbits"
 						| "jpeg"
 						| "lzw"
+						| "packbits"
 						| undefined;
 					tiffFile?: boolean | undefined;
 					userPassword?: string | undefined;
@@ -611,7 +611,7 @@ export class Poppler {
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
 	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {('yes'|'no')} [options.antialias] - Enable anti-aliasing on rasterization, accepts `yes` or `no`.
+	 * @param {('no'|'yes')} [options.antialias] - Enable anti-aliasing on rasterization, accepts `no` or `yes`.
 	 * @param {boolean} [options.binary] - Write binary data in Level 1 PostScript. By default,
 	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
 	 * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
@@ -683,8 +683,8 @@ export class Poppler {
 	 * @param {boolean} [options.overprint] - Enable overprinting.
 	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
 	 * @param {number} [options.paperHeight] - Set the paper height, in points.
-	 * @param {('letter'|'legal'|'A4'|'A3'|'match')} [options.paperSize] - Set the paper size to one of `letter`, `legal`, `A4`,
-	 * or `A3`. This can also be set to `match`, which will set the paper size
+	 * @param {('A3'|'A4'|'legal'|'letter'|'match')} [options.paperSize] - Set the paper size to one of `A3`, `A4`,
+	 * `legal`, or `letter`. This can also be set to `match`, which will set the paper size
 	 * of each page to match the size specified in the PDF file. If none of the paperSize,
 	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
 	 * @param {number} [options.paperWidth] - Set the paper width, in points.
@@ -718,7 +718,7 @@ export class Poppler {
 		outputFile?: string | undefined,
 		options?:
 			| {
-					antialias?: "yes" | "no" | undefined;
+					antialias?: "no" | "yes" | undefined;
 					binary?: boolean | undefined;
 					defaultCmykProfile?: string | undefined;
 					defaultGrayProfile?: string | undefined;
@@ -750,10 +750,10 @@ export class Poppler {
 					paperHeight?: number | undefined;
 					paperSize?:
 						| "match"
-						| "letter"
-						| "legal"
-						| "A4"
 						| "A3"
+						| "A4"
+						| "legal"
+						| "letter"
 						| undefined;
 					paperWidth?: number | undefined;
 					passfonts?: boolean | undefined;
@@ -789,8 +789,8 @@ export class Poppler {
 	 * corner in pixels (image output) or points (vector output).
 	 * @param {number} [options.cropYAxis] - Specifies the y-coordinate of the crop area top left
 	 * corner in pixels (image output) or points (vector output).
-	 * @param {('unix'|'dos'|'mac')} [options.eolConvention] - Sets the end-of-line convention to use for
-	 * text output: unix; dos; mac.
+	 * @param {('dos'|'mac'|'unix')} [options.eolConvention] - Sets the end-of-line convention to use for
+	 * text output: dos; mac; unix.
 	 * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
 	 * @param {number} [options.fixedWidthLayout] - Assume fixed-pitch (or tabular) text, with the
 	 * specified character width (in points). This forces physical layout mode.
@@ -828,7 +828,7 @@ export class Poppler {
 					cropWidth?: number | undefined;
 					cropXAxis?: number | undefined;
 					cropYAxis?: number | undefined;
-					eolConvention?: "unix" | "dos" | "mac" | undefined;
+					eolConvention?: "dos" | "mac" | "unix" | undefined;
 					firstPageToConvert?: number | undefined;
 					fixedWidthLayout?: number | undefined;
 					generateHtmlMetaFile?: boolean | undefined;

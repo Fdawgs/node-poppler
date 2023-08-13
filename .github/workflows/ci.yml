@@ -69,6 +69,9 @@ jobs:
             - name: Run License Checker
               run: npm run lint:licenses
 
+            - name: Compile TypeScript Definition File
+              run: npm run build
+
     commit-lint:
         name: Lint Commit Messages
         if: >
@@ -109,11 +112,23 @@ jobs:
             - name: Install
               run: npm i --ignore-scripts
 
+            - name: Install macOS dependencies
+              if: matrix.os == 'macos-latest'
+              env:
+                  HOMEBREW_NO_ANALYTICS: 1
+                  HOMEBREW_NO_INSTALL_CLEANUP: 1
+                  HOMEBREW_NO_AUTO_UPDATE: 1
+              run: brew install poppler
+
+            - name: Install Ubuntu dependencies
+              if: matrix.os == 'ubuntu-latest'
+              run: sudo apt-get -y install poppler-data poppler-utils
+
             - name: Run tests
-              run: npm run jest:coverage -- --ci
+              run: npm run jest:coverage
 
             - name: Coveralls parallel
-              if: github.repository == 'Fdawgs/fastify-disablecache'
+              if: github.repository == 'Fdawgs/node-poppler'
               uses: coverallsapp/github-action@v2.2.1
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -125,7 +140,7 @@ jobs:
         needs: unit-tests
         if: >
             github.event.pull_request.draft == false &&
-            github.repository == 'Fdawgs/fastify-disablecache'
+            github.repository == 'Fdawgs/node-poppler'
         runs-on: ubuntu-latest
         steps:
             - name: Coveralls finished

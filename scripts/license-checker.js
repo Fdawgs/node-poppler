@@ -5,6 +5,7 @@
 
 const { promisify } = require("util");
 const { init } = require("license-checker");
+// @ts-ignore
 const copyLeftLicenses = require("spdx-copyleft");
 const path = require("upath");
 

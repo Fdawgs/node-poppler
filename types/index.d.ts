@@ -338,8 +338,8 @@ export class Poppler {
 		options?:
 			| {
 					antialias?:
-						| "none"
 						| "default"
+						| "none"
 						| "best"
 						| "fast"
 						| "good"

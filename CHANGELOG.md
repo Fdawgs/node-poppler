@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.2.7](https://github.com/Fdawgs/node-poppler/compare/v6.2.6...v6.2.7) (2023-08-16)
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([#528](https://github.com/Fdawgs/node-poppler/issues/528)) ([f734981](https://github.com/Fdawgs/node-poppler/commit/f734981124f666340c4753645251a31732743fbc))
+* **deps-dev:** bump eslint-config-prettier from 8.10.0 to 9.0.0 ([#527](https://github.com/Fdawgs/node-poppler/issues/527)) ([fcde459](https://github.com/Fdawgs/node-poppler/commit/fcde459beabac31e44e318f856f56d928b60adcb))
+* **deps:** add semver dependency ([003f09a](https://github.com/Fdawgs/node-poppler/commit/003f09a4bceea8adae8929a0f793e05351062f22))
+
+
+### Miscellaneous
+
+* **.eslintrc:** error on google closure jsdoc syntax ([3180ab5](https://github.com/Fdawgs/node-poppler/commit/3180ab5a5f6d5a453cab01913f8ea67a63f820c6))
+* **index:** use jsdoc syntax for arrays over interfaces ([5e07b37](https://github.com/Fdawgs/node-poppler/commit/5e07b37c149732b0118efcafa202958359c47328))
+* rename `lint:prettier` scripts to reflect their function ([#520](https://github.com/Fdawgs/node-poppler/issues/520)) ([b6d14c1](https://github.com/Fdawgs/node-poppler/commit/b6d14c1a7a96f22eb9aac247a7d1debc5a98eace))
+* **scripts/license-checker:** use `console.error()` to log failures ([c641af8](https://github.com/Fdawgs/node-poppler/commit/c641af8b840bcbaa710b12fa5257eff6f202e1c9))
+* sort param types alphabetically ([f0945c9](https://github.com/Fdawgs/node-poppler/commit/f0945c9cfb040115824680dc906f62d6fcf3d5ee))
+* **test-resources:** move test_files into new dir ([4816d46](https://github.com/Fdawgs/node-poppler/commit/4816d46808528724003f02c79b5d06c04b8cc7ad))
+* **tsconfig:** sort options ([2e25274](https://github.com/Fdawgs/node-poppler/commit/2e25274c8847cee60c6371c23c63ee5a9b1bba92))
+* use jsdoc syntax for opt params over google closure syntax ([972d222](https://github.com/Fdawgs/node-poppler/commit/972d2223d60d31339a383d065f750147cd7fe6b4))
+
+
+### Continuous integration
+
+* **ci:** error on new jest snapshot ([c4c55ed](https://github.com/Fdawgs/node-poppler/commit/c4c55ed24da90fbc97c6b3378940decef252af96))
+* **ci:** revert jest snapshot cli arg addition ([6368e92](https://github.com/Fdawgs/node-poppler/commit/6368e92fce2bedf2d667f8a909fbb3a31008b6e5))
+* **deps:** bump coverallsapp/github-action from 2.2.0 to 2.2.1 ([#523](https://github.com/Fdawgs/node-poppler/issues/523)) ([f229049](https://github.com/Fdawgs/node-poppler/commit/f2290491c347e337187837b2945501713d30fac3))
+
+
+### Improvements
+
+* deconstruct imports ([28de503](https://github.com/Fdawgs/node-poppler/commit/28de50353373c176cebdf797de840e3e216a82a5))
+
 ## [6.2.6](https://github.com/Fdawgs/node-poppler/compare/v6.2.5...v6.2.6) (2023-07-08)
 
 

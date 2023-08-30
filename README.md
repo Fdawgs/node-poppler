@@ -81,7 +81,7 @@ Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only th
 PDF file using stdout:
 
 ```js
-const fs = require("fs");
+const { writeFile } = require("node:fs/promises");
 const { Poppler } = require("node-poppler");
 
 const file = "test_document.pdf";
@@ -93,7 +93,7 @@ const options = {
 
 const res = await poppler.pdfToCairo(file, undefined, options);
 // pdfToCairo writes to stdout using binary encoding if pdfFile or singleFile options are used
-await fs.writeFile("new_file.pdf", res, { encoding: "binary" });
+await writeFile("new_file.pdf", res, { encoding: "binary" });
 ```
 
 ### poppler.pdfToHtml
@@ -118,10 +118,10 @@ poppler.pdfToHtml(file, undefined, options).then((res) => {
 Example of calling `poppler.pdfToHtml()` with a promise chain, providing a Buffer as an input:
 
 ```js
-const fs = require("fs");
+const { readFileSync } = require("node:fs");
 const { Poppler } = require("node-poppler");
 
-const file = fs.readFileSync("test_document.pdf");
+const file = readFileSync("test_document.pdf");
 const poppler = new Poppler();
 const options = {
 	firstPageToConvert: 1,

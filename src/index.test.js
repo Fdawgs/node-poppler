@@ -3,9 +3,9 @@
 
 "use strict";
 
-const { execFile } = require("child_process");
-const { access, readFile, unlink } = require("fs/promises");
-const { promisify } = require("util");
+const { execFile } = require("node:child_process");
+const { access, readFile, unlink } = require("node:fs/promises");
+const { promisify } = require("node:util");
 const { glob } = require("glob");
 const { lt } = require("semver");
 const path = require("upath");

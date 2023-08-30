@@ -4,7 +4,8 @@
 		"declaration": true,
 		"emitDeclarationOnly": true,
 		"lib": ["ES2019"],
-		"moduleResolution": "nodenext",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
 		"outDir": "types",
 		"resolveJsonModule": true,
 		"strict": true

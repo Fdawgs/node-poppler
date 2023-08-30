@@ -1,7 +1,7 @@
 "use strict";
 
-const { execFile, spawn } = require("child_process");
-const { promisify } = require("util");
+const { execFile, spawn } = require("node:child_process");
+const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const { lt } = require("semver");
 const path = require("upath");

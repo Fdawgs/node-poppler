@@ -5,7 +5,8 @@
 
 const { promisify } = require("node:util");
 const { init } = require("license-checker");
-// @ts-ignore
+/** @type {string[]} */
+// @ts-ignore: module is a JSON file
 const copyLeftLicenses = require("spdx-copyleft");
 const path = require("upath");
 

@@ -473,11 +473,11 @@ class Poppler {
 							);
 						}
 
+						/**
+						 * Convert output to JSON.
+						 * @see {@link https://github.com/Fdawgs/node-poppler/issues/248#issuecomment-845948080 | Node-Poppler Issue #248}
+						 */
 						if (options.printAsJson === true) {
-							/**
-							 * Thanks to @sainf for this solution
-							 * https://github.com/Fdawgs/node-poppler/issues/248#issuecomment-845948080
-							 */
 							const info = {};
 							stdOut.split("\n").forEach((line) => {
 								const lines = line.split(": ");
@@ -884,7 +884,7 @@ class Poppler {
 
 				/**
 				 * pdfToHtml does not return an exit code so check output to see if it was successful.
-				 * See https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1
+				 * @see {@link  https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1 | Poppler pdftohtml man}
 				 */
 				child.on("close", () => {
 					if (stdOut !== "") {

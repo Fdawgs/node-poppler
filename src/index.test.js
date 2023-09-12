@@ -8,7 +8,7 @@ const { access, readFile, unlink } = require("node:fs/promises");
 const { promisify } = require("node:util");
 const { glob } = require("glob");
 const { lt } = require("semver");
-const path = require("upath");
+const { joinSafe } = require("upath");
 
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
@@ -16,7 +16,7 @@ const { Poppler } = require("./index");
 const testDirectory = `${__dirname}/../test_resources/test_files/`;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
-const windowsPath = path.joinSafe(
+const windowsPath = joinSafe(
 	__dirname,
 	"lib",
 	"win32",
@@ -996,7 +996,7 @@ describe("Node-Poppler module", () => {
 
 		beforeAll(async () => {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(testBinaryPath, "pdftoppm"),
+				joinSafe(testBinaryPath, "pdftoppm"),
 				["-v"]
 			);
 

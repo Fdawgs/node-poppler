@@ -4,7 +4,7 @@ const { execFile, spawn } = require("node:child_process");
 const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const { lt } = require("semver");
-const path = require("upath");
+const { joinSafe, normalizeTrim } = require("upath");
 
 const execFileAsync = promisify(execFile);
 
@@ -81,9 +81,9 @@ class Poppler {
 	 */
 	constructor(binPath) {
 		if (binPath) {
-			this.popplerPath = path.normalizeTrim(binPath);
+			this.popplerPath = normalizeTrim(binPath);
 		} else if (process.platform === "win32") {
-			this.popplerPath = path.joinSafe(
+			this.popplerPath = joinSafe(
 				__dirname,
 				"lib",
 				"win32",
@@ -122,7 +122,7 @@ class Poppler {
 			args.push(outputFile);
 
 			const { stdout } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdfattach"),
+				joinSafe(this.popplerPath, "pdfattach"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -179,7 +179,7 @@ class Poppler {
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdfdetach"),
+				joinSafe(this.popplerPath, "pdfdetach"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -214,7 +214,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdffonts"),
+				joinSafe(this.popplerPath, "pdffonts"),
 				["-v"]
 			);
 
@@ -230,7 +230,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					path.joinSafe(this.popplerPath, "pdffonts"),
+					joinSafe(this.popplerPath, "pdffonts"),
 					args
 				);
 
@@ -306,7 +306,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdfimages"),
+				joinSafe(this.popplerPath, "pdfimages"),
 				["-v"]
 			);
 
@@ -326,7 +326,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					path.joinSafe(this.popplerPath, "pdfimages"),
+					joinSafe(this.popplerPath, "pdfimages"),
 					args
 				);
 
@@ -421,7 +421,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdfinfo"),
+				joinSafe(this.popplerPath, "pdfinfo"),
 				["-v"]
 			);
 
@@ -444,7 +444,7 @@ class Poppler {
 				}
 
 				const child = execFile(
-					path.joinSafe(this.popplerPath, "pdfinfo"),
+					joinSafe(this.popplerPath, "pdfinfo"),
 					args
 				);
 
@@ -525,7 +525,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdfseparate"),
+				joinSafe(this.popplerPath, "pdfseparate"),
 				["-v"]
 			);
 
@@ -536,7 +536,7 @@ class Poppler {
 			args.push(outputPattern);
 
 			const { stdout } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdfseparate"),
+				joinSafe(this.popplerPath, "pdfseparate"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -702,7 +702,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdftocairo"),
+				joinSafe(this.popplerPath, "pdftocairo"),
 				["-v"]
 			);
 
@@ -724,7 +724,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					path.joinSafe(this.popplerPath, "pdftocairo"),
+					joinSafe(this.popplerPath, "pdftocairo"),
 					args
 				);
 
@@ -842,7 +842,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdftohtml"),
+				joinSafe(this.popplerPath, "pdftohtml"),
 				["-v"]
 			);
 
@@ -862,7 +862,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					path.joinSafe(this.popplerPath, "pdftohtml"),
+					joinSafe(this.popplerPath, "pdftohtml"),
 					args
 				);
 
@@ -1046,7 +1046,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdftoppm"),
+				joinSafe(this.popplerPath, "pdftoppm"),
 				["-v"]
 			);
 
@@ -1064,7 +1064,7 @@ class Poppler {
 				args.push(outputPath);
 
 				const child = spawn(
-					path.joinSafe(this.popplerPath, "pdftoppm"),
+					joinSafe(this.popplerPath, "pdftoppm"),
 					args
 				);
 
@@ -1276,7 +1276,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdftops"),
+				joinSafe(this.popplerPath, "pdftops"),
 				["-v"]
 			);
 
@@ -1298,7 +1298,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					path.joinSafe(this.popplerPath, "pdftops"),
+					joinSafe(this.popplerPath, "pdftops"),
 					args
 				);
 
@@ -1425,7 +1425,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdftotext"),
+				joinSafe(this.popplerPath, "pdftotext"),
 				["-v"]
 			);
 
@@ -1447,7 +1447,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					path.joinSafe(this.popplerPath, "pdftotext"),
+					joinSafe(this.popplerPath, "pdftotext"),
 					args
 				);
 
@@ -1503,7 +1503,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdfunite"),
+				joinSafe(this.popplerPath, "pdfunite"),
 				["-v"]
 			);
 
@@ -1516,7 +1516,7 @@ class Poppler {
 			args.push(outputFile);
 
 			const { stdout } = await execFileAsync(
-				path.joinSafe(this.popplerPath, "pdfunite"),
+				joinSafe(this.popplerPath, "pdfunite"),
 				args
 			);
 			return Promise.resolve(stdout);

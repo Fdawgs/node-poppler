@@ -61,6 +61,7 @@ async function checkLicenses() {
 	});
 
 	const copyLeftLicensesList = Object.keys(licenses).filter((license) =>
+		// @ts-ignore: includes() returns false if undefined is passed
 		copyLeftLicenses.includes(licenses[license].licenses)
 	);
 

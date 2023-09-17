@@ -399,7 +399,8 @@ class Poppler {
 	 * such as Link Annotations are listed, not URL strings in the text content.
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
 	 * @param {string} [options.userPassword] - User password (for encrypted files).
-	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
+	 * @returns {Promise<object|string>} A promise that resolves with a stdout string or JSON object if
+	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
 	 */
 	async pdfInfo(file, options = {}) {
 		const acceptedOptions = {
@@ -487,6 +488,7 @@ class Poppler {
 							stdOut.split("\n").forEach((line) => {
 								const lines = line.split(": ");
 								if (lines.length > 1) {
+									// @ts-ignore: creating dynamic object keys
 									info[camelCase(lines[0])] = lines[1].trim();
 								}
 							});

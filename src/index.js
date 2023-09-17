@@ -23,8 +23,8 @@ const errorMessages = {
  * @description Checks each option provided is valid, of the correct type, and can be used by specified
  * version of binary.
  * @ignore
- * @param {{[key: string]: {arg: string, type: string, minVersion?: string, maxVersion?: string}}} acceptedOptions - Object containing accepted options.
- * @param {{[key: string]: any}} options - Object containing options to pass to binary.
+ * @param {object} acceptedOptions - Object containing accepted options.
+ * @param {object} options - Object containing options to pass to binary.
  * @param {string} [version] - Version of binary.
  * @returns {string[]} Array of CLI arguments.
  * @throws If invalid arguments provided.
@@ -36,35 +36,45 @@ function parseOptions(acceptedOptions, options, version) {
 	const invalidArgs = [];
 	Object.keys(options).forEach((key) => {
 		if (Object.hasOwn(acceptedOptions, key)) {
+			// @ts-ignore
 			// eslint-disable-next-line valid-typeof
 			if (typeof options[key] === acceptedOptions[key].type) {
 				// Skip boolean options if false
+				// @ts-ignore
 				if (acceptedOptions[key].type === "boolean" && !options[key]) {
 					return;
 				}
 				// Arg will be empty for some non-standard options
+				// @ts-ignore
 				if (acceptedOptions[key].arg !== "") {
+					// @ts-ignore
 					args.push(acceptedOptions[key].arg);
 				}
 
+				// @ts-ignore
 				if (typeof options[key] !== "boolean") {
+					// @ts-ignore
 					args.push(options[key]);
 				}
 			} else {
 				invalidArgs.push(
 					`Invalid value type provided for option '${key}', expected ${
+						// @ts-ignore
 						acceptedOptions[key].type
+						// @ts-ignore
 					} but received ${typeof options[key]}`
 				);
 			}
 
 			if (
+				// @ts-ignore
 				acceptedOptions[key].minVersion &&
 				version &&
 				// @ts-ignore: type checking is done above
 				lt(version, acceptedOptions[key].minVersion, { loose: true })
 			) {
 				invalidArgs.push(
+					// @ts-ignore
 					`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOptions[key].minVersion}, but received v${version}`
 				);
 			}

@@ -76,9 +76,7 @@ function parseOptions(acceptedOptions, options, version) {
 }
 
 class Poppler {
-	/**
-	 * @param {string} [binPath] - Path of poppler-utils binaries.
-	 */
+	/** @param {string} [binPath] - Path of poppler-utils binaries. */
 	constructor(binPath) {
 		if (binPath) {
 			this.popplerPath = normalizeTrim(binPath);

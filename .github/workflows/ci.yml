@@ -95,7 +95,7 @@ jobs:
         if: github.event.pull_request.draft == false
         strategy:
             matrix:
-                node-version: [14, 16, 18, 20]
+                node-version: [18, 20]
                 os: [macos-latest, ubuntu-latest, windows-latest]
         runs-on: ${{ matrix.os }}
         steps:

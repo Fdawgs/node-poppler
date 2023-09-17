@@ -35,7 +35,7 @@ module.exports = {
 		},
 	],
 	parserOptions: {
-		ecmaVersion: 2019,
+		ecmaVersion: 2023,
 		// Explicitly tell ESLint to parse JavaScript as CommonJS, as airbnb-base sets this to "modules" for ECMAScript
 		sourceType: "script",
 	},

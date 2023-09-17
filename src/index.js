@@ -23,45 +23,58 @@ const errorMessages = {
  * @description Checks each option provided is valid, of the correct type, and can be used by specified
  * version of binary.
  * @ignore
- * @param {object} acceptedOptions - Object containing options that a binary accepts.
+ * @param {object} acceptedOptions - Object containing accepted options.
  * @param {object} options - Object containing options to pass to binary.
  * @param {string} [version] - Version of binary.
  * @returns {string[]} Array of CLI arguments.
  * @throws If invalid arguments provided.
  */
 function parseOptions(acceptedOptions, options, version) {
+	/** @type {string[]} */
 	const args = [];
+	/** @type {string[]} */
 	const invalidArgs = [];
 	Object.keys(options).forEach((key) => {
-		if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
+		if (Object.hasOwn(acceptedOptions, key)) {
+			// @ts-ignore
 			// eslint-disable-next-line valid-typeof
 			if (typeof options[key] === acceptedOptions[key].type) {
 				// Skip boolean options if false
+				// @ts-ignore
 				if (acceptedOptions[key].type === "boolean" && !options[key]) {
 					return;
 				}
 				// Arg will be empty for some non-standard options
+				// @ts-ignore
 				if (acceptedOptions[key].arg !== "") {
+					// @ts-ignore
 					args.push(acceptedOptions[key].arg);
 				}
 
+				// @ts-ignore
 				if (typeof options[key] !== "boolean") {
+					// @ts-ignore
 					args.push(options[key]);
 				}
 			} else {
 				invalidArgs.push(
 					`Invalid value type provided for option '${key}', expected ${
+						// @ts-ignore
 						acceptedOptions[key].type
+						// @ts-ignore
 					} but received ${typeof options[key]}`
 				);
 			}
 
 			if (
+				// @ts-ignore
 				acceptedOptions[key].minVersion &&
 				version &&
+				// @ts-ignore: type checking is done above
 				lt(version, acceptedOptions[key].minVersion, { loose: true })
 			) {
 				invalidArgs.push(
+					// @ts-ignore
 					`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOptions[key].minVersion}, but received v${version}`
 				);
 			}
@@ -76,9 +89,7 @@ function parseOptions(acceptedOptions, options, version) {
 }
 
 class Poppler {
-	/**
-	 * @param {string} [binPath] - Path of poppler-utils binaries.
-	 */
+	/** @param {string} [binPath] - Path of poppler-utils binaries. */
 	constructor(binPath) {
 		if (binPath) {
 			this.popplerPath = normalizeTrim(binPath);
@@ -218,6 +229,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -310,6 +322,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -347,14 +360,19 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
+					/* istanbul ignore next */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else if (!code) {
+						reject(
+							new Error('No error code returned from "pdfimages"')
+						);
 					} else {
-						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -396,7 +414,8 @@ class Poppler {
 	 * such as Link Annotations are listed, not URL strings in the text content.
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
 	 * @param {string} [options.userPassword] - User password (for encrypted files).
-	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
+	 * @returns {Promise<object|string>} A promise that resolves with a stdout string or JSON object if
+	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
 	 */
 	async pdfInfo(file, options = {}) {
 		const acceptedOptions = {
@@ -425,6 +444,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -433,6 +453,7 @@ class Poppler {
 			 * Poppler does not set the "File size" metadata value if passed
 			 * a Buffer via stdin, so need to retrieve it from the Buffer
 			 */
+			/** @type {number} */
 			let fileSize;
 
 			return new Promise((resolve, reject) => {
@@ -443,7 +464,7 @@ class Poppler {
 					args.push(file);
 				}
 
-				const child = execFile(
+				const child = spawn(
 					joinSafe(this.popplerPath, "pdfinfo"),
 					args
 				);
@@ -482,6 +503,7 @@ class Poppler {
 							stdOut.split("\n").forEach((line) => {
 								const lines = line.split(": ");
 								if (lines.length > 1) {
+									// @ts-ignore: creating dynamic object keys
 									info[camelCase(lines[0])] = lines[1].trim();
 								}
 							});
@@ -529,6 +551,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -706,6 +729,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -752,14 +776,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
+					/* istanbul ignore next */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else if (!code) {
+						reject(
+							new Error(
+								'No error code returned from "pdftocairo"'
+							)
+						);
 					} else {
-						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -846,6 +877,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1050,6 +1082,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1080,12 +1113,17 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
+					/* istanbul ignore next */
 					if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
+					} else if (!code) {
+						reject(
+							new Error('No error code returned from "pdftoppm"')
+						);
 					} else {
-						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1266,7 +1304,7 @@ class Poppler {
 			processColorFormat: { arg: "-processcolorformat", type: "string" },
 			quiet: { arg: "-q", type: "boolean" },
 			rasterize: {
-				args: "-rasterize",
+				arg: "-rasterize",
 				type: "string",
 				minVersion: "0.90.0",
 			},
@@ -1280,6 +1318,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1319,14 +1358,19 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
+					/* istanbul ignore next */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else if (!code) {
+						reject(
+							new Error('No error code returned from "pdftops"')
+						);
 					} else {
-						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1429,6 +1473,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1468,14 +1513,19 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
+					/* istanbul ignore next */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else if (!code) {
+						reject(
+							new Error('No error code returned from "pdftotext"')
+						);
 					} else {
-						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1507,6 +1557,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);

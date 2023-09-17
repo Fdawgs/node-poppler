@@ -1,8 +1,6 @@
 export default Poppler;
 export class Poppler {
-	/**
-	 * @param {string} [binPath] - Path of poppler-utils binaries.
-	 */
+	/** @param {string} [binPath] - Path of poppler-utils binaries. */
 	constructor(binPath?: string | undefined);
 	popplerPath: string;
 	/**
@@ -173,7 +171,8 @@ export class Poppler {
 	 * such as Link Annotations are listed, not URL strings in the text content.
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
 	 * @param {string} [options.userPassword] - User password (for encrypted files).
-	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
+	 * @returns {Promise<object|string>} A promise that resolves with a stdout string or JSON object if
+	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
 	 */
 	pdfInfo(
 		file: Buffer | string,
@@ -198,7 +197,7 @@ export class Poppler {
 					userPassword?: string | undefined;
 			  }
 			| undefined
-	): Promise<string>;
+	): Promise<object | string>;
 	/**
 	 * @author Frazer Smith
 	 * @description Extracts single pages from a PDF file,

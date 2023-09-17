@@ -9,7 +9,7 @@
     * [.pdfDetach(file, [options])](#Poppler+pdfDetach) ⇒ <code>Promise.&lt;string&gt;</code>
     * [.pdfFonts(file, [options])](#Poppler+pdfFonts) ⇒ <code>Promise.&lt;string&gt;</code>
     * [.pdfImages(file, [outputPrefix], [options])](#Poppler+pdfImages) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;string&gt;</code>
+    * [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;(object\|string)&gt;</code>
     * [.pdfSeparate(file, outputPattern, [options])](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;string&gt;</code>
     * [.pdfToCairo(file, [outputFile], [options])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;string&gt;</code>
     * [.pdfToHtml(file, [outputFile], [options])](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;string&gt;</code>
@@ -117,11 +117,12 @@ Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 fi
 
 <a name="Poppler+pdfInfo"></a>
 
-### poppler.pdfInfo(file, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
+### poppler.pdfInfo(file, [options]) ⇒ <code>Promise.&lt;(object\|string)&gt;</code>
 Prints the contents of the `Info` dictionary from a PDF file.
 
 **Kind**: instance method of [<code>Poppler</code>](#Poppler)  
-**Returns**: <code>Promise.&lt;string&gt;</code> - A promise that resolves with a stdout string, or rejects with an `Error` object.  
+**Returns**: <code>Promise.&lt;(object\|string)&gt;</code> - A promise that resolves with a stdout string or JSON object if
+`options.printAsJson` is `true`, or rejects with an `Error` object.  
 **Author**: Frazer Smith  
 
 | Param | Type | Description |

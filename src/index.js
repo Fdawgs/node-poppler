@@ -1275,7 +1275,7 @@ class Poppler {
 			processColorFormat: { arg: "-processcolorformat", type: "string" },
 			quiet: { arg: "-q", type: "boolean" },
 			rasterize: {
-				args: "-rasterize",
+				arg: "-rasterize",
 				type: "string",
 				minVersion: "0.90.0",
 			},

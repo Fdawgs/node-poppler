@@ -23,14 +23,16 @@ const errorMessages = {
  * @description Checks each option provided is valid, of the correct type, and can be used by specified
  * version of binary.
  * @ignore
- * @param {object} acceptedOptions - Object containing options that a binary accepts.
- * @param {object} options - Object containing options to pass to binary.
+ * @param {{[key: string]: {arg: string, type: string, minVersion?: string, maxVersion?: string}}} acceptedOptions - Object containing accepted options.
+ * @param {{[key: string]: any}} options - Object containing options to pass to binary.
  * @param {string} [version] - Version of binary.
  * @returns {string[]} Array of CLI arguments.
  * @throws If invalid arguments provided.
  */
 function parseOptions(acceptedOptions, options, version) {
+	/** @type {string[]} */
 	const args = [];
+	/** @type {string[]} */
 	const invalidArgs = [];
 	Object.keys(options).forEach((key) => {
 		if (Object.prototype.hasOwnProperty.call(acceptedOptions, key)) {
@@ -59,6 +61,7 @@ function parseOptions(acceptedOptions, options, version) {
 			if (
 				acceptedOptions[key].minVersion &&
 				version &&
+				// @ts-ignore: type checking is done above
 				lt(version, acceptedOptions[key].minVersion, { loose: true })
 			) {
 				invalidArgs.push(
@@ -216,6 +219,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -308,6 +312,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -423,6 +428,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -431,6 +437,7 @@ class Poppler {
 			 * Poppler does not set the "File size" metadata value if passed
 			 * a Buffer via stdin, so need to retrieve it from the Buffer
 			 */
+			/** @type {number} */
 			let fileSize;
 
 			return new Promise((resolve, reject) => {
@@ -527,6 +534,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -704,6 +712,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -844,6 +853,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1048,6 +1058,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1278,6 +1289,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1427,6 +1439,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1505,6 +1518,7 @@ class Poppler {
 				["-v"]
 			);
 
+			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);

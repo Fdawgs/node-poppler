@@ -2,7 +2,7 @@
 
 module.exports = {
 	env: {
-		es2019: true,
+		es2023: true,
 		node: true,
 	},
 	extends: [

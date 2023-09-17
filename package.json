@@ -44,7 +44,7 @@
 	"author": "Frazer Smith <frazer.dev@outlook.com>",
 	"funding": "https://github.com/sponsors/Fdawgs",
 	"engines": {
-		"node": ">=14.18.0"
+		"node": ">=18.0.0"
 	},
 	"scripts": {
 		"build": "tsc && jsdoc2md src/index.js > API.md && npm run lint:prettier:fix",

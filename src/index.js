@@ -356,8 +356,14 @@ class Poppler {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else if (!code) {
+						/* istanbul ignore next */
+						reject(
+							new Error('No error code returned from "pdfimages"')
+						);
 					} else {
 						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -767,8 +773,16 @@ class Poppler {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else if (!code) {
+						/* istanbul ignore next */
+						reject(
+							new Error(
+								'No error code returned from "pdftocairo"'
+							)
+						);
 					} else {
 						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1095,8 +1109,14 @@ class Poppler {
 						reject(new Error(stdErr.trim()));
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
+					} else if (!code) {
+						/* istanbul ignore next */
+						reject(
+							new Error('No error code returned from "pdftoppm"')
+						);
 					} else {
 						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1337,8 +1357,14 @@ class Poppler {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else if (!code) {
+						/* istanbul ignore next */
+						reject(
+							new Error('No error code returned from "pdftops"')
+						);
 					} else {
 						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});
@@ -1487,8 +1513,14 @@ class Poppler {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
+					} else if (!code) {
+						/* istanbul ignore next */
+						reject(
+							new Error('No error code returned from "pdftotext"')
+						);
 					} else {
 						/* istanbul ignore next */
+						// @ts-ignore: catching null codes above
 						reject(new Error(errorMessages[code]));
 					}
 				});

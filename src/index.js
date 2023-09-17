@@ -448,7 +448,7 @@ class Poppler {
 					args.push(file);
 				}
 
-				const child = execFile(
+				const child = spawn(
 					joinSafe(this.popplerPath, "pdfinfo"),
 					args
 				);

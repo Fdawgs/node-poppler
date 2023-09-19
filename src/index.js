@@ -360,20 +360,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
-					} else if (!code) {
-						reject(
-							new Error('No error code returned from "pdfimages"')
-						);
 					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdfimages"'
+							)
+						);
 					}
 				});
 			});
@@ -776,22 +777,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
-					} else if (!code) {
+					} else {
 						reject(
 							new Error(
-								'No error code returned from "pdftocairo"'
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdftocairo"'
 							)
 						);
-					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -1113,18 +1113,19 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
-					} else if (!code) {
-						reject(
-							new Error('No error code returned from "pdftoppm"')
-						);
 					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdftoppm"'
+							)
+						);
 					}
 				});
 			});
@@ -1358,20 +1359,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
-					} else if (!code) {
-						reject(
-							new Error('No error code returned from "pdftops"')
-						);
 					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdftops"'
+							)
+						);
 					}
 				});
 			});
@@ -1513,20 +1515,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
-					} else if (!code) {
-						reject(
-							new Error('No error code returned from "pdftotext"')
-						);
 					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdftotext"'
+							)
+						);
 					}
 				});
 			});

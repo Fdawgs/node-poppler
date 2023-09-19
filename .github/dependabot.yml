@@ -17,6 +17,7 @@ updates:
       ignore:
           # Below are deps that have migrate to ESM in their
           # next major version so we can't use them
+          - dependency-name: is-stream
           - dependency-name: camelcase
             update-types: ["version-update:semver-major"]
       open-pull-requests-limit: 20

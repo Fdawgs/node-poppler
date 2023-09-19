@@ -96,6 +96,111 @@ const res = await poppler.pdfToCairo(file, undefined, options);
 await writeFile("new_file.pdf", res, { encoding: "binary" });
 ```
 
+Example of poppler.pdfToCairo with streams:
+
+The result from pdftocario will be automatically piped into outputFileStream.
+The awaited result from poppler.pdfToCairo will behave the same as for other file concepts, i.e. return "No Error" when a successful stream has ended.
+
+```js
+const { Poppler } = require("node-poppler");
+const poppler = new Poppler();
+const inputFileStream = fs.createReadStream(file);
+
+const options = {
+	jpegFile: true,
+	singleFile: true,
+};
+const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.jpg`;
+const outputFileStream = fs.createWriteStream(outputFile);
+
+const res = await poppler.pdfToCairo(
+	inputFileStream,
+	outputFileStream,
+	options
+);
+```
+
+Advanced example using streams with Sharp to resize image files
+
+```js
+const fs = require("fs");
+const path = require("path");
+const sharp = require("sharp");
+
+const { Poppler } = require("node-poppler");
+const poppler = new Poppler("/opt/homebrew/bin");
+
+const main = async () => {
+	const inputFileStream = fs.createReadStream("./myPdfFile.pdf");
+
+	const options = {
+		firstPageToConvert: 1,
+		lastPageToConvert: 1,
+		jpegFile: true,
+		singleFile: true,
+	};
+
+	try {
+		//Our end destinations, files in this case. Could be S3 uploads or something else
+		const fileWrite100 = fs.createWriteStream("./image100.jpg");
+		const fileWrite500 = fs.createWriteStream("./image500.jpg");
+
+		//Our sharp stream, we will pipe the output from poppler to this
+		const sharpStream = sharp({ failOn: "error" });
+
+		//Use .clone to split the stream into multiple conversion pipelines
+		const promises = [];
+		promises.push(
+			sharpStream
+				.clone()
+				.on("info", function (info) {
+					console.log(
+						`Info from SharpStream_100: ${info.width} x ${info.height}`
+					);
+				})
+				.resize({ width: 100 })
+				.jpeg({ quality: 100 })
+				.pipe(fileWrite100)
+		);
+
+		promises.push(
+			sharpStream
+				.clone()
+				.resize({ width: 500 })
+				.on("info", function (info) {
+					console.log(
+						`Info from SharpStream_500: ${info.width} x ${info.height}`
+					);
+				})
+				.jpeg({ quality: 80 })
+				.pipe(fileWrite500)
+		);
+
+		//Await all conversions
+		Promise.all(promises)
+			.then((res) => {
+				console.log("Done!");
+			})
+			.catch((err) => {
+				console.error("Error processing files", err);
+			});
+
+		// Start the conversion, it will go like this:
+		// inputFileStream -> pdftocairo -> sharpStream -> clone -> resize100 -> fileWrite100
+		//                                              -> clone -> resize500 -> fileWrite500
+		const res = await poppler.pdfToCairo(
+			inputFileStream,
+			sharpStream,
+			options
+		);
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+main();
+```
+
 ### poppler.pdfToHtml
 
 Example of calling `poppler.pdfToHtml()` with a promise chain:

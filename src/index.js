@@ -5,6 +5,7 @@ const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const { lt } = require("semver");
 const { joinSafe, normalizeTrim } = require("upath");
+const isStream = require("is-stream");
 
 const execFileAsync = promisify(execFile);
 
@@ -564,8 +565,15 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
-	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
-	 * @param {string} [outputFile] - Filepath of the file to output the results to.
+	 * @param {Buffer|string|ReadableStream} inputFile - PDF file as Buffer, or filepath of the PDF file to read, or a ReadableStream.
+	 * @param {string|WritableStream} [outputFile] - Filepath of the file to output the results to, or a WritableStream.
+	 *
+	 * If `undefined` then will write output to stdout. Using stdout is not valid with image formats
+	 * (jpeg, png, and tiff) unless `options.singleFile` is set to `true`.
+	 * Encoding is set to `binary` if used with `options.singleFile` or `options.pdfFile`.
+	 *
+	 * If outputFile is WritableStream then will write output to outputFile. Using stdout is not valid with image formats
+	 * (jpeg, png, and tiff) unless `options.singleFile` is set to `true`.
 	 *
 	 * If `undefined` then will write output to stdout. Using stdout is not valid with image formats
 	 * (jpeg, png, and tiff) unless `options.singleFile` is set to `true`.
@@ -666,7 +674,7 @@ class Poppler {
 	 * @param {string} [options.userPassword] - Specify the user password for the PDF file.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfToCairo(file, outputFile, options = {}) {
+	async pdfToCairo(inputFile, outputFile, options = {}) {
 		const acceptedOptions = {
 			antialias: { arg: "-antialias", type: "string" },
 			cropBox: { arg: "-cropbox", type: "boolean" },
@@ -728,13 +736,18 @@ class Poppler {
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
+				const inputFileIsBuffer = Buffer.isBuffer(inputFile);
+				const inputFileIsStream = isStream.readable(inputFile);
+				const returnValueIsBuffer = outputFile === undefined;
+				const outputFileIsStream = isStream.writable(outputFile);
+
+				if (inputFileIsBuffer || inputFileIsStream) {
 					args.push("-");
 				} else {
-					args.push(file);
+					args.push(inputFile);
 				}
 
-				if (outputFile) {
+				if (outputFile && !outputFileIsStream) {
 					args.push(outputFile);
 				} else {
 					args.push("-");
@@ -746,23 +759,29 @@ class Poppler {
 				);
 
 				if (
-					outputFile === undefined &&
+					returnValueIsBuffer &&
 					args.some((arg) => ["-singlefile", "-pdf"].includes(arg))
 				) {
 					child.stdout.setEncoding("binary");
 				}
 
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
+				if (inputFileIsBuffer) {
+					child.stdin.write(inputFile);
 					child.stdin.end();
+				} else if (inputFileIsStream) {
+					inputFile.pipe(child.stdin);
 				}
 
 				let stdOut = "";
 				let stdErr = "";
 
-				child.stdout.on("data", (data) => {
-					stdOut += data;
-				});
+				if (outputFileIsStream) {
+					child.stdout.pipe(outputFile);
+				} else {
+					child.stdout.on("data", (data) => {
+						stdOut += data;
+					});
+				}
 
 				child.stderr.on("data", (data) => {
 					stdErr += data;

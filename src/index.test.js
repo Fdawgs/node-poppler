@@ -3,12 +3,13 @@
 
 "use strict";
 
-const { execFile } = require("node:child_process");
+const { execFile, execFileSync } = require("node:child_process");
 const { access, readFile, unlink } = require("node:fs/promises");
 const { promisify } = require("node:util");
 const { glob } = require("glob");
 const { lt } = require("semver");
 const { joinSafe } = require("upath");
+const fs = require("fs");
 
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
@@ -27,9 +28,20 @@ const windowsPath = joinSafe(
 let testBinaryPath;
 switch (process.platform) {
 	// macOS
-	case "darwin":
-		testBinaryPath = "/usr/local/bin";
+	case "darwin": {
+		// @ts-ignore: parseOptions checks if falsy
+
+		// Use "which pdftocairo" on Mac to find binary path. This solves the problem where Poppler is installed via Homebrew.
+		const cairoRegex = /(.+)pdftocairo/;
+		const whichOutput = execFileSync("which", ["pdftocairo"], {
+			encoding: "utf8",
+		});
+		const match = cairoRegex.exec(whichOutput);
+		const foundBinaryPath = match?.[1];
+
+		testBinaryPath = foundBinaryPath || "/usr/local/bin";
 		break;
+	}
 
 	case "linux":
 		testBinaryPath = "/usr/bin";
@@ -594,6 +606,28 @@ describe("Node-Poppler module", () => {
 					access(`${outputFile}-01.jpg`)
 				).resolves.toBeUndefined();
 			});
+		});
+
+		it("Converts PDF file as ReadableStream to JPG file", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const attachmentFile = fs.createReadStream(file);
+
+			const options = {
+				jpegFile: true,
+				singleFile: true,
+			};
+			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.jpg`;
+			const fileWriteStream = fs.createWriteStream(outputFile);
+
+			const res = await poppler.pdfToCairo(
+				attachmentFile,
+				fileWriteStream,
+				options
+			);
+
+			expect(res).toBe("No Error");
+
+			await expect(access(`${outputFile}`)).resolves.toBeUndefined();
 		});
 
 		describe("PDF-to-PDF option", () => {

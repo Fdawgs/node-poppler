@@ -36,45 +36,37 @@ function parseOptions(acceptedOptions, options, version) {
 	const invalidArgs = [];
 	Object.keys(options).forEach((key) => {
 		if (Object.hasOwn(acceptedOptions, key)) {
-			// @ts-ignore
 			// eslint-disable-next-line valid-typeof
 			if (typeof options[key] === acceptedOptions[key].type) {
 				// Skip boolean options if false
-				// @ts-ignore
+
 				if (acceptedOptions[key].type === "boolean" && !options[key]) {
 					return;
 				}
 				// Arg will be empty for some non-standard options
-				// @ts-ignore
+
 				if (acceptedOptions[key].arg !== "") {
-					// @ts-ignore
 					args.push(acceptedOptions[key].arg);
 				}
 
-				// @ts-ignore
 				if (typeof options[key] !== "boolean") {
-					// @ts-ignore
 					args.push(options[key]);
 				}
 			} else {
 				invalidArgs.push(
 					`Invalid value type provided for option '${key}', expected ${
-						// @ts-ignore
 						acceptedOptions[key].type
-						// @ts-ignore
 					} but received ${typeof options[key]}`
 				);
 			}
 
 			if (
-				// @ts-ignore
 				acceptedOptions[key].minVersion &&
 				version &&
 				// @ts-ignore: type checking is done above
 				lt(version, acceptedOptions[key].minVersion, { loose: true })
 			) {
 				invalidArgs.push(
-					// @ts-ignore
 					`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOptions[key].minVersion}, but received v${version}`
 				);
 			}
@@ -360,20 +352,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
-					} else if (!code) {
-						reject(
-							new Error('No error code returned from "pdfimages"')
-						);
 					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdfimages"'
+							)
+						);
 					}
 				});
 			});
@@ -776,22 +769,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
-					} else if (!code) {
+					} else {
 						reject(
 							new Error(
-								'No error code returned from "pdftocairo"'
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdftocairo"'
 							)
 						);
-					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
 					}
 				});
 			});
@@ -1113,18 +1105,19 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
-					} else if (!code) {
-						reject(
-							new Error('No error code returned from "pdftoppm"')
-						);
 					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdftoppm"'
+							)
+						);
 					}
 				});
 			});
@@ -1358,20 +1351,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
-					} else if (!code) {
-						reject(
-							new Error('No error code returned from "pdftops"')
-						);
 					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdftops"'
+							)
+						);
 					}
 				});
 			});
@@ -1513,20 +1507,21 @@ class Poppler {
 				});
 
 				child.on("close", (code) => {
-					/* istanbul ignore next */
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
-					} else if (!code) {
-						reject(
-							new Error('No error code returned from "pdftotext"')
-						);
 					} else {
-						// @ts-ignore: catching null codes above
-						reject(new Error(errorMessages[code]));
+						reject(
+							new Error(
+								code
+									? errorMessages[code]
+									: 'No error code returned from "pdftotext"'
+							)
+						);
 					}
 				});
 			});

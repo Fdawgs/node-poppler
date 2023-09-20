@@ -16,6 +16,7 @@ const errorMessages = {
 	4: "Error related to ICC profile",
 	99: "Other error",
 	3221226505: "Internal process error",
+	unk: "Unknown error",
 };
 
 /**
@@ -362,9 +363,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code
-									? errorMessages[code]
-									: 'No error code returned from "pdfimages"'
+								code ? errorMessages[code] : errorMessages.unk
 							)
 						);
 					}
@@ -779,9 +778,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code
-									? errorMessages[code]
-									: 'No error code returned from "pdftocairo"'
+								code ? errorMessages[code] : errorMessages.unk
 							)
 						);
 					}
@@ -1113,9 +1110,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code
-									? errorMessages[code]
-									: 'No error code returned from "pdftoppm"'
+								code ? errorMessages[code] : errorMessages.unk
 							)
 						);
 					}
@@ -1361,9 +1356,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code
-									? errorMessages[code]
-									: 'No error code returned from "pdftops"'
+								code ? errorMessages[code] : errorMessages.unk
 							)
 						);
 					}
@@ -1517,9 +1510,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code
-									? errorMessages[code]
-									: 'No error code returned from "pdftotext"'
+								code ? errorMessages[code] : errorMessages.unk
 							)
 						);
 					}

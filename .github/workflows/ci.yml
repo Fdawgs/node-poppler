@@ -35,7 +35,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                   persist-credentials: false
 
@@ -48,7 +48,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                   persist-credentials: false
 
@@ -80,7 +80,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                   fetch-depth: 0
                   persist-credentials: false
@@ -100,7 +100,7 @@ jobs:
         runs-on: ${{ matrix.os }}
         steps:
             - name: Check out repo
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                   persist-credentials: false
 
@@ -160,7 +160,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repo
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
               with:
                   persist-credentials: false
 

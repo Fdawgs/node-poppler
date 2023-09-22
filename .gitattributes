@@ -1,5 +1,2 @@
 # Set default behaviour to automatically convert line endings
-* text=auto
-
-# Require Unix line endings
-* text eol=lf
+* text=auto eol=lf

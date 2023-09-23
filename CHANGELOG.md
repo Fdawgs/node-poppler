@@ -2,6 +2,65 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.0](https://github.com/Fdawgs/node-poppler/compare/v6.2.7...v7.0.0) (2023-09-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* dropped support for EOL node 14 and 16
+
+### Bug fixes
+
+* **index:** `pdfInfo()` use `spawn` over `execFile` to stop truncation ([c725ff9](https://github.com/Fdawgs/node-poppler/commit/c725ff9bfadeac1bfda896d651162c11c2d9a43c))
+* **index:** `pdfToPs()` rasterize option misspelt key ([d578e78](https://github.com/Fdawgs/node-poppler/commit/d578e7879ad900a0e02496fd18551126fc8b6677))
+* **index:** handle null error codes ([77aeb24](https://github.com/Fdawgs/node-poppler/commit/77aeb24b3c6b5445d72f79d129304c7cf4136937))
+* **index:** promise resolve type for `pdfInfo()` ([85c4c36](https://github.com/Fdawgs/node-poppler/commit/85c4c360b9b50441eafe91d70d87d56b7ae92097))
+* **index:** type build ([84abe85](https://github.com/Fdawgs/node-poppler/commit/84abe855bc68aa037fc1b78ad2f458f492f7e898))
+
+
+### Dependencies
+
+* **deps-dev:** add @types/jest ([1c1dbcc](https://github.com/Fdawgs/node-poppler/commit/1c1dbccb17e7319ab8e220993d2b9155dcdef2a7))
+* **deps-dev:** bump dev dependencies ([ef28215](https://github.com/Fdawgs/node-poppler/commit/ef28215411ee635b6cf06ddb3475f5c86e31e89a))
+
+
+### Miscellaneous
+
+* **.eslintrc:** bump ecmaversion to 2023 ([67dba5e](https://github.com/Fdawgs/node-poppler/commit/67dba5e249775aae2f0f224dcd5d819e765db8bb))
+* **.gitattributes:** auto lf eol all files ([d3c339d](https://github.com/Fdawgs/node-poppler/commit/d3c339d56232083e86202cccefbd7b4aa5c62c3d))
+* add missing `.gitattributes` file ([8084971](https://github.com/Fdawgs/node-poppler/commit/80849712d33221e831cbe613aea99661ff8d0378))
+* change comment blocks with one line into single block ([16e7bbe](https://github.com/Fdawgs/node-poppler/commit/16e7bbe5bdc25f87d8b998dab55717d6ddc021e5))
+* destruct upath module import ([#532](https://github.com/Fdawgs/node-poppler/issues/532)) ([e60b2ab](https://github.com/Fdawgs/node-poppler/commit/e60b2abcc700eeed01b4d2cfaa8899304503e8d1))
+* drop support for node 14 and 16 ([#534](https://github.com/Fdawgs/node-poppler/issues/534)) ([92ce251](https://github.com/Fdawgs/node-poppler/commit/92ce251097d737b6cd5ba5ef8346ea5b9c1d17cd))
+* **package:** explicitly declare js module type ([1716b4d](https://github.com/Fdawgs/node-poppler/commit/1716b4d958e046d68a165964b472544b851f2738))
+* **scripts/license-checker:** declare `copyLeftLicenses` type ([ed51441](https://github.com/Fdawgs/node-poppler/commit/ed5144126eecb089e4c8346ec065405891fd1a54))
+* **scripts/license-checker:** ignore invalid ts error ([7fbaf0a](https://github.com/Fdawgs/node-poppler/commit/7fbaf0a71006e55cd885df9dd3fdcc72662b5aff))
+* **tsconfig:** disable strict mode ([91a11f5](https://github.com/Fdawgs/node-poppler/commit/91a11f53a5592f7c584a36c3dfbcf2fa602d6f5b))
+* **tsconfig:** enable checkJs compiler option ([bb385fa](https://github.com/Fdawgs/node-poppler/commit/bb385fa144272fbbe3ec4e7543ac6668b7459173))
+* **tsconfig:** set module to nodenext ([e451110](https://github.com/Fdawgs/node-poppler/commit/e451110391de0acd66839554c4967238032bc2ff))
+* **tsconfig:** target es2022 ([c3f5d10](https://github.com/Fdawgs/node-poppler/commit/c3f5d102ac560885e5d4e415203b900b7139023a))
+* use `[@see](https://github.com/see)` jsdoc tag for inline comment links ([f44ad78](https://github.com/Fdawgs/node-poppler/commit/f44ad78d94f03ef5ee48a5fe68e18f634597e2cf))
+
+
+### Continuous integration
+
+* **dependabot:** group dependabot updates ([a230488](https://github.com/Fdawgs/node-poppler/commit/a23048805d0a9405a2ee6b84bd4f969c5111d036))
+* **deps:** bump actions/checkout from 3 to 4 ([#541](https://github.com/Fdawgs/node-poppler/issues/541)) ([21f39e9](https://github.com/Fdawgs/node-poppler/commit/21f39e9be7109a3ed344c4906ddaee4ae0b8a703))
+* **deps:** bump coverallsapp/github-action from 2.2.1 to 2.2.3 ([#542](https://github.com/Fdawgs/node-poppler/issues/542)) ([ef261e5](https://github.com/Fdawgs/node-poppler/commit/ef261e58f6c5b4a42399f039bc95515ef0274362))
+
+
+### Improvements
+
+* **index:** consolidate error code handling branches ([2411723](https://github.com/Fdawgs/node-poppler/commit/24117230ece3580b69ed5a5c698c25d156aa1d6f))
+* **index:** consolidate error codes ([#540](https://github.com/Fdawgs/node-poppler/issues/540)) ([f899904](https://github.com/Fdawgs/node-poppler/commit/f899904cfcf0a1aa7a2e09d1ff53b23929af5762))
+* **index:** replace `hasOwnProperty.call()` with `hasOwn()` ([db091b8](https://github.com/Fdawgs/node-poppler/commit/db091b8e311890ab7732894d6116d9a99a2bbb8d))
+* use `node:` prefix to bypass require.cache call for builtins ([c45e7da](https://github.com/Fdawgs/node-poppler/commit/c45e7da325e0c200bca84f026133906077cfb0ff))
+
+
+### Documentation
+
+* **readme:** update chaining examples with `.catch()` ([56980d2](https://github.com/Fdawgs/node-poppler/commit/56980d23b3bb155c6e4cbd8cbc61b2c0cca85c65))
+
 ## [6.2.7](https://github.com/Fdawgs/node-poppler/compare/v6.2.6...v6.2.7) (2023-08-16)
 
 

@@ -1,7 +1,7 @@
 export default Poppler;
 export class Poppler {
 	/** @param {string} [binPath] - Path of poppler-utils binaries. */
-	constructor(binPath?: string | undefined);
+	constructor(binPath?: string);
 	popplerPath: string;
 	/**
 	 * @author Frazer Smith
@@ -18,12 +18,10 @@ export class Poppler {
 		file: string,
 		fileToAttach: string,
 		outputFile: string,
-		options?:
-			| {
-					printVersionInfo?: boolean | undefined;
-					replace?: boolean | undefined;
-			  }
-			| undefined
+		options?: {
+			printVersionInfo?: boolean;
+			replace?: boolean;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -53,19 +51,17 @@ export class Poppler {
 	 */
 	pdfDetach(
 		file: string,
-		options?:
-			| {
-					listEmbedded?: boolean | undefined;
-					ownerPassword?: string | undefined;
-					outputEncoding?: string | undefined;
-					outputPath?: string | undefined;
-					printVersionInfo?: boolean | undefined;
-					saveAllFiles?: boolean | undefined;
-					saveFile?: string | undefined;
-					saveSpecificFile?: number | undefined;
-					userPassword?: string | undefined;
-			  }
-			| undefined
+		options?: {
+			listEmbedded?: boolean;
+			ownerPassword?: string;
+			outputEncoding?: string;
+			outputPath?: string;
+			printVersionInfo?: boolean;
+			saveAllFiles?: boolean;
+			saveFile?: string;
+			saveSpecificFile?: number;
+			userPassword?: string;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -83,16 +79,14 @@ export class Poppler {
 	 */
 	pdfFonts(
 		file: Buffer | string,
-		options?:
-			| {
-					firstPageToExamine?: number | undefined;
-					lastPageToExamine?: number | undefined;
-					listSubstitutes?: boolean | undefined;
-					ownerPassword?: string | undefined;
-					printVersionInfo?: boolean | undefined;
-					userPassword?: string | undefined;
-			  }
-			| undefined
+		options?: {
+			firstPageToExamine?: number;
+			lastPageToExamine?: number;
+			listSubstitutes?: boolean;
+			ownerPassword?: string;
+			printVersionInfo?: boolean;
+			userPassword?: string;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -120,24 +114,22 @@ export class Poppler {
 	 */
 	pdfImages(
 		file: Buffer | string,
-		outputPrefix?: string | undefined,
-		options?:
-			| {
-					allFiles?: boolean | undefined;
-					ccittFile?: boolean | undefined;
-					firstPageToConvert?: number | undefined;
-					lastPageToConvert?: number | undefined;
-					list?: boolean | undefined;
-					jbig2File?: boolean | undefined;
-					jpeg2000File?: boolean | undefined;
-					jpegFile?: boolean | undefined;
-					ownerPassword?: string | undefined;
-					pngFile?: boolean | undefined;
-					printVersionInfo?: boolean | undefined;
-					tiffFile?: boolean | undefined;
-					userPassword?: string | undefined;
-			  }
-			| undefined
+		outputPrefix?: string,
+		options?: {
+			allFiles?: boolean;
+			ccittFile?: boolean;
+			firstPageToConvert?: number;
+			lastPageToConvert?: number;
+			list?: boolean;
+			jbig2File?: boolean;
+			jpeg2000File?: boolean;
+			jpegFile?: boolean;
+			ownerPassword?: string;
+			pngFile?: boolean;
+			printVersionInfo?: boolean;
+			tiffFile?: boolean;
+			userPassword?: string;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -176,27 +168,25 @@ export class Poppler {
 	 */
 	pdfInfo(
 		file: Buffer | string,
-		options?:
-			| {
-					firstPageToConvert?: number | undefined;
-					lastPageToConvert?: number | undefined;
-					listEncodingOptions?: boolean | undefined;
-					outputEncoding?: string | undefined;
-					ownerPassword?: string | undefined;
-					printAsJson?: boolean | undefined;
-					printBoundingBoxes?: boolean | undefined;
-					printDocStruct?: boolean | undefined;
-					printDocStructText?: boolean | undefined;
-					printIsoDates?: boolean | undefined;
-					printJS?: boolean | undefined;
-					printMetadata?: boolean | undefined;
-					printNamedDests?: boolean | undefined;
-					printRawDates?: boolean | undefined;
-					printUrls?: boolean | undefined;
-					printVersionInfo?: boolean | undefined;
-					userPassword?: string | undefined;
-			  }
-			| undefined
+		options?: {
+			firstPageToConvert?: number;
+			lastPageToConvert?: number;
+			listEncodingOptions?: boolean;
+			outputEncoding?: string;
+			ownerPassword?: string;
+			printAsJson?: boolean;
+			printBoundingBoxes?: boolean;
+			printDocStruct?: boolean;
+			printDocStructText?: boolean;
+			printIsoDates?: boolean;
+			printJS?: boolean;
+			printMetadata?: boolean;
+			printNamedDests?: boolean;
+			printRawDates?: boolean;
+			printUrls?: boolean;
+			printVersionInfo?: boolean;
+			userPassword?: string;
+		}
 	): Promise<object | string>;
 	/**
 	 * @author Frazer Smith
@@ -218,13 +208,11 @@ export class Poppler {
 	pdfSeparate(
 		file: string,
 		outputPattern: string,
-		options?:
-			| {
-					firstPageToExtract?: number | undefined;
-					lastPageToExtract?: number | undefined;
-					printVersionInfo?: boolean | undefined;
-			  }
-			| undefined
+		options?: {
+			firstPageToExtract?: number;
+			lastPageToExtract?: number;
+			printVersionInfo?: boolean;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -333,77 +321,62 @@ export class Poppler {
 	 */
 	pdfToCairo(
 		file: Buffer | string,
-		outputFile?: string | undefined,
-		options?:
-			| {
-					antialias?:
-						| "default"
-						| "none"
-						| "best"
-						| "fast"
-						| "good"
-						| "gray"
-						| "subpixel"
-						| undefined;
-					cropBox?: boolean | undefined;
-					cropHeight?: number | undefined;
-					cropSize?: number | undefined;
-					cropWidth?: number | undefined;
-					cropXAxis?: number | undefined;
-					cropYAxis?: number | undefined;
-					duplex?: boolean | undefined;
-					epsFile?: boolean | undefined;
-					evenPagesOnly?: boolean | undefined;
-					fillPage?: boolean | undefined;
-					firstPageToConvert?: number | undefined;
-					grayscaleFile?: boolean | undefined;
-					iccFile?: string | undefined;
-					jpegFile?: boolean | undefined;
-					jpegOptions?: string | undefined;
-					lastPageToConvert?: number | undefined;
-					monochromeFile?: boolean | undefined;
-					noCenter?: boolean | undefined;
-					noCrop?: boolean | undefined;
-					noShrink?: boolean | undefined;
-					oddPagesOnly?: boolean | undefined;
-					originalPageSizes?: boolean | undefined;
-					ownerPassword?: string | undefined;
-					paperHeight?: number | undefined;
-					paperSize?:
-						| "match"
-						| "A3"
-						| "A4"
-						| "legal"
-						| "letter"
-						| undefined;
-					paperWidth?: number | undefined;
-					pdfFile?: boolean | undefined;
-					pngFile?: boolean | undefined;
-					printVersionInfo?: boolean | undefined;
-					psFile?: boolean | undefined;
-					psLevel2?: boolean | undefined;
-					psLevel3?: boolean | undefined;
-					quiet?: boolean | undefined;
-					resolutionXAxis?: number | undefined;
-					resolutionXYAxis?: number | undefined;
-					resolutionYAxis?: number | undefined;
-					scalePageTo?: number | undefined;
-					scalePageToXAxis?: number | undefined;
-					scalePageToYAxis?: number | undefined;
-					singleFile?: boolean | undefined;
-					svgFile?: boolean | undefined;
-					tiffCompression?:
-						| "none"
-						| "deflate"
-						| "jpeg"
-						| "lzw"
-						| "packbits"
-						| undefined;
-					tiffFile?: boolean | undefined;
-					transparentPageColor?: boolean | undefined;
-					userPassword?: string | undefined;
-			  }
-			| undefined
+		outputFile?: string,
+		options?: {
+			antialias?:
+				| "best"
+				| "default"
+				| "fast"
+				| "good"
+				| "gray"
+				| "none"
+				| "subpixel";
+			cropBox?: boolean;
+			cropHeight?: number;
+			cropSize?: number;
+			cropWidth?: number;
+			cropXAxis?: number;
+			cropYAxis?: number;
+			duplex?: boolean;
+			epsFile?: boolean;
+			evenPagesOnly?: boolean;
+			fillPage?: boolean;
+			firstPageToConvert?: number;
+			grayscaleFile?: boolean;
+			iccFile?: string;
+			jpegFile?: boolean;
+			jpegOptions?: string;
+			lastPageToConvert?: number;
+			monochromeFile?: boolean;
+			noCenter?: boolean;
+			noCrop?: boolean;
+			noShrink?: boolean;
+			oddPagesOnly?: boolean;
+			originalPageSizes?: boolean;
+			ownerPassword?: string;
+			paperHeight?: number;
+			paperSize?: "A3" | "A4" | "legal" | "letter" | "match";
+			paperWidth?: number;
+			pdfFile?: boolean;
+			pngFile?: boolean;
+			printVersionInfo?: boolean;
+			psFile?: boolean;
+			psLevel2?: boolean;
+			psLevel3?: boolean;
+			quiet?: boolean;
+			resolutionXAxis?: number;
+			resolutionXYAxis?: number;
+			resolutionYAxis?: number;
+			scalePageTo?: number;
+			scalePageToXAxis?: number;
+			scalePageToYAxis?: number;
+			singleFile?: boolean;
+			svgFile?: boolean;
+			tiffCompression?: "deflate" | "jpeg" | "lzw" | "none" | "packbits";
+			tiffFile?: boolean;
+			transparentPageColor?: boolean;
+			userPassword?: string;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -447,34 +420,32 @@ export class Poppler {
 	 */
 	pdfToHtml(
 		file: Buffer | string,
-		outputFile?: string | undefined,
-		options?:
-			| {
-					complexOutput?: boolean | undefined;
-					dataUrls?: boolean | undefined;
-					exchangePdfLinks?: boolean | undefined;
-					extractHidden?: boolean | undefined;
-					firstPageToConvert?: number | undefined;
-					fontFullName?: boolean | undefined;
-					ignoreImages?: boolean | undefined;
-					imageFormat?: "JPG" | "PNG" | undefined;
-					lastPageToConvert?: number | undefined;
-					noDrm?: boolean | undefined;
-					noFrames?: boolean | undefined;
-					noMergeParagraph?: boolean | undefined;
-					noRoundedCoordinates?: boolean | undefined;
-					outputEncoding?: string | undefined;
-					ownerPassword?: string | undefined;
-					printVersionInfo?: boolean | undefined;
-					quiet?: boolean | undefined;
-					singlePage?: boolean | undefined;
-					stdout?: boolean | undefined;
-					userPassword?: string | undefined;
-					wordBreakThreshold?: number | undefined;
-					xmlOutput?: boolean | undefined;
-					zoom?: number | undefined;
-			  }
-			| undefined
+		outputFile?: string,
+		options?: {
+			complexOutput?: boolean;
+			dataUrls?: boolean;
+			exchangePdfLinks?: boolean;
+			extractHidden?: boolean;
+			firstPageToConvert?: number;
+			fontFullName?: boolean;
+			ignoreImages?: boolean;
+			imageFormat?: "JPG" | "PNG";
+			lastPageToConvert?: number;
+			noDrm?: boolean;
+			noFrames?: boolean;
+			noMergeParagraph?: boolean;
+			noRoundedCoordinates?: boolean;
+			outputEncoding?: string;
+			ownerPassword?: string;
+			printVersionInfo?: boolean;
+			quiet?: boolean;
+			singlePage?: boolean;
+			stdout?: boolean;
+			userPassword?: string;
+			wordBreakThreshold?: number;
+			xmlOutput?: boolean;
+			zoom?: number;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -553,55 +524,47 @@ export class Poppler {
 	pdfToPpm(
 		file: Buffer | string,
 		outputPath: string,
-		options?:
-			| {
-					antialiasFonts?: "no" | "yes" | undefined;
-					antialiasVectors?: "no" | "yes" | undefined;
-					cropBox?: boolean | undefined;
-					cropHeight?: number | undefined;
-					cropSize?: number | undefined;
-					cropWidth?: number | undefined;
-					cropXAxis?: number | undefined;
-					cropYAxis?: number | undefined;
-					defaultCmykProfile?: string | undefined;
-					defaultGrayProfile?: string | undefined;
-					defaultRgbProfile?: string | undefined;
-					displayProfile?: string | undefined;
-					evenPagesOnly?: boolean | undefined;
-					firstPageToConvert?: number | undefined;
-					freetype?: "no" | "yes" | undefined;
-					forcePageNumber?: boolean | undefined;
-					grayscaleFile?: boolean | undefined;
-					hideAnnotations?: boolean | undefined;
-					jpegFile?: boolean | undefined;
-					lastPageToConvert?: number | undefined;
-					monochromeFile?: boolean | undefined;
-					oddPagesOnly?: boolean | undefined;
-					ownerPassword?: string | undefined;
-					pngFile?: boolean | undefined;
-					printProgress?: boolean | undefined;
-					printVersionInfo?: boolean | undefined;
-					quiet?: boolean | undefined;
-					resolutionXAxis?: number | undefined;
-					resolutionXYAxis?: number | undefined;
-					resolutionYAxis?: number | undefined;
-					scalePageTo?: number | undefined;
-					scalePageToXAxis?: number | undefined;
-					scalePageToYAxis?: number | undefined;
-					separator?: string | undefined;
-					singleFile?: boolean | undefined;
-					thinLineMode?: "none" | "shape" | "solid" | undefined;
-					tiffCompression?:
-						| "none"
-						| "deflate"
-						| "jpeg"
-						| "lzw"
-						| "packbits"
-						| undefined;
-					tiffFile?: boolean | undefined;
-					userPassword?: string | undefined;
-			  }
-			| undefined
+		options?: {
+			antialiasFonts?: "no" | "yes";
+			antialiasVectors?: "no" | "yes";
+			cropBox?: boolean;
+			cropHeight?: number;
+			cropSize?: number;
+			cropWidth?: number;
+			cropXAxis?: number;
+			cropYAxis?: number;
+			defaultCmykProfile?: string;
+			defaultGrayProfile?: string;
+			defaultRgbProfile?: string;
+			displayProfile?: string;
+			evenPagesOnly?: boolean;
+			firstPageToConvert?: number;
+			freetype?: "no" | "yes";
+			forcePageNumber?: boolean;
+			grayscaleFile?: boolean;
+			hideAnnotations?: boolean;
+			jpegFile?: boolean;
+			lastPageToConvert?: number;
+			monochromeFile?: boolean;
+			oddPagesOnly?: boolean;
+			ownerPassword?: string;
+			pngFile?: boolean;
+			printProgress?: boolean;
+			printVersionInfo?: boolean;
+			quiet?: boolean;
+			resolutionXAxis?: number;
+			resolutionXYAxis?: number;
+			resolutionYAxis?: number;
+			scalePageTo?: number;
+			scalePageToXAxis?: number;
+			scalePageToYAxis?: number;
+			separator?: string;
+			singleFile?: boolean;
+			thinLineMode?: "none" | "shape" | "solid";
+			tiffCompression?: "deflate" | "jpeg" | "lzw" | "none" | "packbits";
+			tiffFile?: boolean;
+			userPassword?: string;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -714,58 +677,50 @@ export class Poppler {
 	 */
 	pdfToPs(
 		file: Buffer | string,
-		outputFile?: string | undefined,
-		options?:
-			| {
-					antialias?: "no" | "yes" | undefined;
-					binary?: boolean | undefined;
-					defaultCmykProfile?: string | undefined;
-					defaultGrayProfile?: string | undefined;
-					defaultRgbProfile?: string | undefined;
-					duplex?: boolean | undefined;
-					epsFile?: boolean | undefined;
-					fillPage?: boolean | undefined;
-					firstPageToConvert?: number | undefined;
-					form?: number | undefined;
-					lastPageToConvert?: number | undefined;
-					level1?: boolean | undefined;
-					level1Sep?: boolean | undefined;
-					level2?: boolean | undefined;
-					level2Sep?: boolean | undefined;
-					level3?: boolean | undefined;
-					level3Sep?: boolean | undefined;
-					noEmbedCIDFonts?: boolean | undefined;
-					noEmbedCIDTrueTypeFonts?: boolean | undefined;
-					noEmbedTrueTypeFonts?: boolean | undefined;
-					noEmbedType1Fonts?: boolean | undefined;
-					noCenter?: boolean | undefined;
-					noCrop?: boolean | undefined;
-					noShrink?: boolean | undefined;
-					opi?: boolean | undefined;
-					optimizecolorspace?: boolean | undefined;
-					originalPageSizes?: boolean | undefined;
-					overprint?: boolean | undefined;
-					ownerPassword?: string | undefined;
-					paperHeight?: number | undefined;
-					paperSize?:
-						| "match"
-						| "A3"
-						| "A4"
-						| "legal"
-						| "letter"
-						| undefined;
-					paperWidth?: number | undefined;
-					passfonts?: boolean | undefined;
-					preload?: boolean | undefined;
-					printVersionInfo?: boolean | undefined;
-					processColorFormat?: "CMYK8" | "MONO8" | "RGB8" | undefined;
-					processColorProfile?: string | undefined;
-					quiet?: boolean | undefined;
-					rasterize?: "always" | "never" | "whenneeded" | undefined;
-					resolutionXYAxis?: number | undefined;
-					userPassword?: string | undefined;
-			  }
-			| undefined
+		outputFile?: string,
+		options?: {
+			antialias?: "no" | "yes";
+			binary?: boolean;
+			defaultCmykProfile?: string;
+			defaultGrayProfile?: string;
+			defaultRgbProfile?: string;
+			duplex?: boolean;
+			epsFile?: boolean;
+			fillPage?: boolean;
+			firstPageToConvert?: number;
+			form?: number;
+			lastPageToConvert?: number;
+			level1?: boolean;
+			level1Sep?: boolean;
+			level2?: boolean;
+			level2Sep?: boolean;
+			level3?: boolean;
+			level3Sep?: boolean;
+			noEmbedCIDFonts?: boolean;
+			noEmbedCIDTrueTypeFonts?: boolean;
+			noEmbedTrueTypeFonts?: boolean;
+			noEmbedType1Fonts?: boolean;
+			noCenter?: boolean;
+			noCrop?: boolean;
+			noShrink?: boolean;
+			opi?: boolean;
+			optimizecolorspace?: boolean;
+			originalPageSizes?: boolean;
+			overprint?: boolean;
+			ownerPassword?: string;
+			paperHeight?: number;
+			paperSize?: "A3" | "A4" | "legal" | "letter" | "match";
+			paperWidth?: number;
+			passfonts?: boolean;
+			preload?: boolean;
+			printVersionInfo?: boolean;
+			processColorFormat?: "CMYK8" | "MONO8" | "RGB8";
+			processColorProfile?: string;
+			quiet?: boolean;
+			rasterize?: "always" | "never" | "whenneeded";
+			resolutionXYAxis?: number;
+			userPassword?: string;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -817,34 +772,32 @@ export class Poppler {
 	 */
 	pdfToText(
 		file: Buffer | string,
-		outputFile?: string | undefined,
-		options?:
-			| {
-					boundingBoxXhtml?: boolean | undefined;
-					boundingBoxXhtmlLayout?: boolean | undefined;
-					cropBox?: boolean | undefined;
-					cropHeight?: number | undefined;
-					cropWidth?: number | undefined;
-					cropXAxis?: number | undefined;
-					cropYAxis?: number | undefined;
-					eolConvention?: "dos" | "mac" | "unix" | undefined;
-					firstPageToConvert?: number | undefined;
-					fixedWidthLayout?: number | undefined;
-					generateHtmlMetaFile?: boolean | undefined;
-					generateTsvFile?: boolean | undefined;
-					lastPageToConvert?: number | undefined;
-					listEncodingOptions?: boolean | undefined;
-					maintainLayout?: boolean | undefined;
-					noDiagonalText?: boolean | undefined;
-					noPageBreaks?: boolean | undefined;
-					outputEncoding?: string | undefined;
-					ownerPassword?: string | undefined;
-					printVersionInfo?: boolean | undefined;
-					quiet?: boolean | undefined;
-					rawLayout?: boolean | undefined;
-					userPassword?: string | undefined;
-			  }
-			| undefined
+		outputFile?: string,
+		options?: {
+			boundingBoxXhtml?: boolean;
+			boundingBoxXhtmlLayout?: boolean;
+			cropBox?: boolean;
+			cropHeight?: number;
+			cropWidth?: number;
+			cropXAxis?: number;
+			cropYAxis?: number;
+			eolConvention?: "dos" | "mac" | "unix";
+			firstPageToConvert?: number;
+			fixedWidthLayout?: number;
+			generateHtmlMetaFile?: boolean;
+			generateTsvFile?: boolean;
+			lastPageToConvert?: number;
+			listEncodingOptions?: boolean;
+			maintainLayout?: boolean;
+			noDiagonalText?: boolean;
+			noPageBreaks?: boolean;
+			outputEncoding?: string;
+			ownerPassword?: string;
+			printVersionInfo?: boolean;
+			quiet?: boolean;
+			rawLayout?: boolean;
+			userPassword?: string;
+		}
 	): Promise<string>;
 	/**
 	 * @author Frazer Smith
@@ -860,10 +813,8 @@ export class Poppler {
 	pdfUnite(
 		files: string[],
 		outputFile: string,
-		options?:
-			| {
-					printVersionInfo?: boolean | undefined;
-			  }
-			| undefined
+		options?: {
+			printVersionInfo?: boolean;
+		}
 	): Promise<string>;
 }

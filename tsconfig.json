@@ -8,7 +8,8 @@
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"outDir": "types",
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"target": "ES2022"
 	},
 	"include": ["src/index.js"]
 }

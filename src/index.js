@@ -16,7 +16,6 @@ const errorMessages = {
 	4: "Error related to ICC profile",
 	99: "Other error",
 	3221226505: "Internal process error",
-	unk: "Unknown error",
 };
 
 /**
@@ -363,7 +362,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdfimages ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}
@@ -778,7 +780,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdftocairo ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}
@@ -1110,7 +1115,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdftoppm ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}
@@ -1356,7 +1364,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdftops ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}
@@ -1510,7 +1521,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdftotext ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}

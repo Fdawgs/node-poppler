@@ -110,9 +110,15 @@ const options = {
 	lastPageToConvert: 2,
 };
 
-poppler.pdfToHtml(file, undefined, options).then((res) => {
-	console.log(res);
-});
+poppler
+	.pdfToHtml(file, undefined, options)
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => {
+		console.error(err);
+		throw err;
+	});
 ```
 
 Example of calling `poppler.pdfToHtml()` with a promise chain, providing a Buffer as an input:
@@ -128,9 +134,15 @@ const options = {
 	lastPageToConvert: 2,
 };
 
-poppler.pdfToHtml(file, "tester.html", options).then((res) => {
-	console.log(res);
-});
+poppler
+	.pdfToHtml(file, "tester.html", options)
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => {
+		console.error(err);
+		throw err;
+	});
 ```
 
 ### poppler.pdfToText
@@ -147,9 +159,15 @@ const options = {
 	lastPageToConvert: 2,
 };
 
-poppler.pdfToText(file, options).then((res) => {
-	console.log(res);
-});
+poppler
+	.pdfToText(file, options)
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => {
+		console.error(err);
+		throw err;
+	});
 ```
 
 ## Contributing

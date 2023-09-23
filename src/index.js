@@ -254,11 +254,23 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", () => {
+				child.on("close", (code) => {
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
+						reject(new Error(stdErr.trim()));
 					} else {
-						reject(new Error(stdErr ? stdErr.trim() : undefined));
+						reject(
+							new Error(
+								errorMessages[code] ||
+									`pdffonts ${args.join(
+										" "
+									)} exited with code ${code}`
+							)
+						);
 					}
 				});
 			});
@@ -479,7 +491,8 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", () => {
+				child.on("close", (code) => {
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						if (fileSize) {
 							stdOut = stdOut.replace(
@@ -505,8 +518,19 @@ class Poppler {
 						} else {
 							resolve(stdOut.trim());
 						}
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
+						reject(new Error(stdErr.trim()));
 					} else {
-						reject(new Error(stdErr ? stdErr.trim() : undefined));
+						reject(
+							new Error(
+								errorMessages[code] ||
+									`pdfinfo ${args.join(
+										" "
+									)} exited with code ${code}`
+							)
+						);
 					}
 				});
 			});

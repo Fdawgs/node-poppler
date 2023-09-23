@@ -14,9 +14,16 @@ updates:
           include: scope
           prefix: build
       directory: /
+      groups:
+          commitlint:
+              patterns:
+                  - "@commitlint*"
+          eslint:
+              patterns:
+                  - "eslint*"
       ignore:
-          # Below are deps that have migrate to ESM in their
-          # next major version so we can't use them
+          # Below are dependencies that have migrated to ESM
+          # in their next major version so we can't use them
           - dependency-name: camelcase
             update-types: ["version-update:semver-major"]
       open-pull-requests-limit: 20

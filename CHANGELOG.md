@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.1](https://github.com/Fdawgs/node-poppler/compare/v7.0.0...v7.0.1) (2023-09-26)
+
+
+### Bug fixes
+
+* **index:** do not mask error code if unknown ([dc524a7](https://github.com/Fdawgs/node-poppler/commit/dc524a728588d0342f6bed5853c99d3aac9ac6fd))
+* **index:** expose error codes for pdffonts and pdfinfo ([c2f277b](https://github.com/Fdawgs/node-poppler/commit/c2f277b6cb3bd2eeb22993cb6d52f96e9b0d6037))
+
 ## [7.0.0](https://github.com/Fdawgs/node-poppler/compare/v6.2.7...v7.0.0) (2023-09-23)
 
 

@@ -16,7 +16,6 @@ const errorMessages = {
 	4: "Error related to ICC profile",
 	99: "Other error",
 	3221226505: "Internal process error",
-	unk: "Unknown error",
 };
 
 /**
@@ -255,11 +254,23 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", () => {
+				child.on("close", (code) => {
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
+						reject(new Error(stdErr.trim()));
 					} else {
-						reject(new Error(stdErr ? stdErr.trim() : undefined));
+						reject(
+							new Error(
+								errorMessages[code] ||
+									`pdffonts ${args.join(
+										" "
+									)} exited with code ${code}`
+							)
+						);
 					}
 				});
 			});
@@ -363,7 +374,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdfimages ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}
@@ -477,7 +491,8 @@ class Poppler {
 					stdErr += data;
 				});
 
-				child.on("close", () => {
+				child.on("close", (code) => {
+					/* istanbul ignore else */
 					if (stdOut !== "") {
 						if (fileSize) {
 							stdOut = stdOut.replace(
@@ -503,8 +518,19 @@ class Poppler {
 						} else {
 							resolve(stdOut.trim());
 						}
+					} else if (code === 0) {
+						resolve(errorMessages[code]);
+					} else if (stdErr !== "") {
+						reject(new Error(stdErr.trim()));
 					} else {
-						reject(new Error(stdErr ? stdErr.trim() : undefined));
+						reject(
+							new Error(
+								errorMessages[code] ||
+									`pdfinfo ${args.join(
+										" "
+									)} exited with code ${code}`
+							)
+						);
 					}
 				});
 			});
@@ -778,7 +804,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdftocairo ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}
@@ -1110,7 +1139,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdftoppm ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}
@@ -1356,7 +1388,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdftops ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}
@@ -1510,7 +1545,10 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
-								code ? errorMessages[code] : errorMessages.unk
+								errorMessages[code] ||
+									`pdftotext ${args.join(
+										" "
+									)} exited with code ${code}`
 							)
 						);
 					}

@@ -1,5 +1,5 @@
-/* eslint-disable jest/no-conditional-expect */
-/* eslint-disable security/detect-non-literal-fs-filename */
+/* eslint-disable jest/no-conditional-expect -- Depends on the version of the binary */
+/* eslint-disable security/detect-non-literal-fs-filename -- Test files are not user-provided */
 
 "use strict";
 
@@ -88,7 +88,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			try {
-				// eslint-disable-next-line no-unused-vars
+				// eslint-disable-next-line no-unused-vars -- This is intentional
 				const poppler = new Poppler();
 			} catch (err) {
 				expect(err.message).toBe(

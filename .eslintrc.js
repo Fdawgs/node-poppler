@@ -7,6 +7,7 @@ module.exports = {
 	},
 	extends: [
 		"airbnb-base",
+		"plugin:@eslint-community/eslint-comments/recommended",
 		"plugin:jsdoc/recommended",
 		"plugin:promise/recommended",
 		"plugin:regexp/recommended",
@@ -49,10 +50,12 @@ module.exports = {
 	],
 	root: true,
 	rules: {
+		"@eslint-community/eslint-comments/disable-enable-pair": "off",
+		"@eslint-community/eslint-comments/no-unused-disable": "error",
+		"@eslint-community/eslint-comments/require-description": "error",
 		"import/no-extraneous-dependencies": "error",
 		"jsdoc/check-syntax": "error",
 		"jsdoc/require-hyphen-before-param-description": "error",
-		"no-console": "off",
 		"no-multiple-empty-lines": ["error", { max: 1 }],
 		"prefer-destructuring": ["error", { object: true, array: false }],
 		"promise/prefer-await-to-callbacks": "warn",

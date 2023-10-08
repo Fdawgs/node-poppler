@@ -1,6 +1,3 @@
-/* eslint-disable security/detect-object-injection */
-/* eslint-disable security-node/detect-crlf */
-
 "use strict";
 
 const { promisify } = require("node:util");

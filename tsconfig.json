@@ -4,7 +4,7 @@
 		"checkJs": true,
 		"declaration": true,
 		"emitDeclarationOnly": true,
-		"lib": ["ES2023"],
+		"lib": ["ES2022"],
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"outDir": "types",

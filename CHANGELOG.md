@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.0.2](https://github.com/Fdawgs/node-poppler/compare/v7.0.1...v7.0.2) (2023-10-29)
+
+
+### Dependencies
+
+* **deps-dev:** add eslint-community/eslint-plugin-eslint-comments ([07641df](https://github.com/Fdawgs/node-poppler/commit/07641df23e0ef79bdf5fa99c4180611cfb1c8415))
+* **deps-dev:** bump the commitlint group with 2 updates ([#549](https://github.com/Fdawgs/node-poppler/issues/549)) ([5f50bd5](https://github.com/Fdawgs/node-poppler/commit/5f50bd539c94ea7c92bb9fb238af913bbe059349))
+* **deps-dev:** bump the eslint group with 1 update ([#550](https://github.com/Fdawgs/node-poppler/issues/550)) ([76f5187](https://github.com/Fdawgs/node-poppler/commit/76f51871e1a4d8e8bd63f49d83be2fa8b0ee4417))
+
+
+### Miscellaneous
+
+* **.vscode:** add github-markdown-preview to recommended extension ([21842b9](https://github.com/Fdawgs/node-poppler/commit/21842b9158277924d7efc9ddc57629dedd161f9b))
+* **.vscode:** add gitlens to recommended extensions ([19a5838](https://github.com/Fdawgs/node-poppler/commit/19a5838d976720d3ec21156cff984364af7ee4a8))
+* **scripts/license-checker:** update link to deprecated list ([4f7a1a3](https://github.com/Fdawgs/node-poppler/commit/4f7a1a33986a6626a615420f2e1646dbcbafae6f))
+* **tsconfig:** use es2022 lib ([f52b92b](https://github.com/Fdawgs/node-poppler/commit/f52b92bcea47416bb389953614472cb141826975))
+
+
+### Continuous integration
+
+* **deps:** bump actions/setup-node from 3 to 4 ([#548](https://github.com/Fdawgs/node-poppler/issues/548)) ([0f4cf99](https://github.com/Fdawgs/node-poppler/commit/0f4cf993126a2af10d0f0c61e2f3f6fa6572ac88))
+
+
+### Improvements
+
+* **index:** cache regex literals ([7c1296e](https://github.com/Fdawgs/node-poppler/commit/7c1296e676b8f190194b89ac8c858a2e144c6276))
+
 ## [7.0.1](https://github.com/Fdawgs/node-poppler/compare/v7.0.0...v7.0.1) (2023-09-26)
 
 

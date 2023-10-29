@@ -19,7 +19,7 @@ async function checkLicenses() {
 
 	/**
 	 * List of deprecated copyleft license identifiers
-	 * @see {@link https://spdx.org/licenses/ | SPDX License List}
+	 * @see {@link https://spdx.org/licenses/#deprecated | SPDX Deprecated License Identifiers}
 	 */
 	const deprecatedLicenseList = [
 		"AGPL-1.0",

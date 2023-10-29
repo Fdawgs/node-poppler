@@ -18,6 +18,10 @@ const errorMessages = {
 	3221226505: "Internal process error",
 };
 
+// Cache immutable regex as they are expensive to create and garbage collect
+const popplerVersionRegex = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u;
+const pdfInfoFileSizesRegex = /(File\s+size:\s+)0(\s+)bytes/u;
+
 /**
  * @author Frazer Smith
  * @description Checks each option provided is valid, of the correct type, and can be used by specified
@@ -222,7 +226,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -327,7 +331,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -451,7 +455,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -496,7 +500,7 @@ class Poppler {
 					if (stdOut !== "") {
 						if (fileSize) {
 							stdOut = stdOut.replace(
-								/(File\s+size:\s+)0(\s+)bytes/u,
+								pdfInfoFileSizesRegex,
 								`$1${fileSize}$2bytes`
 							);
 						}
@@ -570,7 +574,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 			args.push(file);
@@ -748,7 +752,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -896,7 +900,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1101,7 +1105,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1339,7 +1343,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1496,7 +1500,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1582,7 +1586,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 			files.forEach((element) => {

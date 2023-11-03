@@ -211,6 +211,7 @@ Converts a PDF file to EPS/JPEG/PDF/PNG/PS/SVG/TIFF.
 | [options.pdfFile] | <code>boolean</code> | Generate PDF file. |
 | [options.pngFile] | <code>boolean</code> | Generate PNG file(s). |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information. |
+| [options.printDocStruct] | <code>boolean</code> | If the input file contains structural information about the document's content, write this information to the output file (PDF only). |
 | [options.psFile] | <code>boolean</code> | Generate PS file. |
 | [options.psLevel2] | <code>boolean</code> | Generate Level 2 PostScript (PS only). |
 | [options.psLevel3] | <code>boolean</code> | Generate Level 3 PostScript (PS only). This enables all Level 2 features plus shading patterns and masked images. This is the default setting. |

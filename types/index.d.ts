@@ -289,6 +289,8 @@ export class Poppler {
 	 * @param {boolean} [options.pdfFile] - Generate PDF file.
 	 * @param {boolean} [options.pngFile] - Generate PNG file(s).
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version information.
+	 * @param {boolean} [options.printDocStruct] - If the input file contains structural information
+	 * about the document's content, write this information to the output file (PDF only).
 	 * @param {boolean} [options.psFile] - Generate PS file.
 	 * @param {boolean} [options.psLevel2] - Generate Level 2 PostScript (PS only).
 	 * @param {boolean} [options.psLevel3] - Generate Level 3 PostScript (PS only). This enables all
@@ -360,6 +362,7 @@ export class Poppler {
 			pdfFile?: boolean;
 			pngFile?: boolean;
 			printVersionInfo?: boolean;
+			printDocStruct?: boolean;
 			psFile?: boolean;
 			psLevel2?: boolean;
 			psLevel3?: boolean;

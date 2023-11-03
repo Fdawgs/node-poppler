@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.1.0](https://github.com/Fdawgs/node-poppler/compare/v7.0.2...v7.1.0) (2023-11-03)
+
+
+### Features
+
+* **index:** add `printDocStruct` option to `pdfToCairo` ([f6d2e2a](https://github.com/Fdawgs/node-poppler/commit/f6d2e2a1ed69280702ecf94ba51f88e824086826))
+
+
+### Bug fixes
+
+* **lib:** update poppler win32 binaries from 23.07.0 to 23.11.0 ([c02f9aa](https://github.com/Fdawgs/node-poppler/commit/c02f9aa8e0526512f3c1fce974cdc3d753d5098a))
+
+
+### Documentation
+
+* **readme:** fix broken ci badge link ([0f77a7f](https://github.com/Fdawgs/node-poppler/commit/0f77a7f827f12812680cfde9fed5b08740251559))
+* **readme:** fix npm badge ([ce9fcdf](https://github.com/Fdawgs/node-poppler/commit/ce9fcdff815e51d22da912e06a76258cc23bde64))
+
 ## [7.0.2](https://github.com/Fdawgs/node-poppler/compare/v7.0.1...v7.0.2) (2023-10-29)
 
 

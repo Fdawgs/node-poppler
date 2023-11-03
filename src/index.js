@@ -665,6 +665,8 @@ class Poppler {
 	 * @param {boolean} [options.pdfFile] - Generate PDF file.
 	 * @param {boolean} [options.pngFile] - Generate PNG file(s).
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version information.
+	 * @param {boolean} [options.printDocStruct] - If the input file contains structural information
+	 * about the document's content, write this information to the output file (PDF only).
 	 * @param {boolean} [options.psFile] - Generate PS file.
 	 * @param {boolean} [options.psLevel2] - Generate Level 2 PostScript (PS only).
 	 * @param {boolean} [options.psLevel3] - Generate Level 3 PostScript (PS only). This enables all
@@ -726,6 +728,11 @@ class Poppler {
 			paperWidth: { arg: "-paperw", type: "number" },
 			pdfFile: { arg: "-pdf", type: "boolean" },
 			pngFile: { arg: "-png", type: "boolean" },
+			printDocStruct: {
+				arg: "-struct",
+				type: "boolean",
+				minVersion: "23.11.0",
+			},
 			printVersionInfo: { arg: "-v", type: "boolean" },
 			psFile: { arg: "-ps", type: "boolean" },
 			psLevel2: { arg: "-level2", type: "boolean" },

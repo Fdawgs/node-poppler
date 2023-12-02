@@ -22,6 +22,7 @@ jobs:
         steps:
             - name: Release Please
               id: release
+              # Staying on v3 for now as v4 introduced some questionable changes
               uses: google-github-actions/release-please-action@v3
               with:
                   changelog-types: '[ { "type": "feat", "section": "Features", "hidden": false }, { "type": "fix", "section": "Bug fixes", "hidden": false }, { "type": "build", "section": "Dependencies", "hidden": false }, { "type": "chore", "section": "Miscellaneous", "hidden": false }, { "type": "ci", "section": "Continuous integration", "hidden": false }, { "type": "perf", "section": "Improvements", "hidden": false }, { "type": "refactor", "section": "Improvements", "hidden": false }, { "type": "style", "section": "Miscellaneous", "hidden": false }, { "type": "docs", "section": "Documentation", "hidden": false }]'

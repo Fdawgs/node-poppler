@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.1.1](https://github.com/Fdawgs/node-poppler/compare/v7.1.0...v7.1.1) (2023-12-02)
+
+
+### Miscellaneous
+
+* **.eslintrc:** update no-param-reassign rule to ignore obj refs ([93ab881](https://github.com/Fdawgs/node-poppler/commit/93ab8813f27c9e816c04e680fddfcd75fb248100))
+
+
+### Continuous integration
+
+* **dependabot:** ignore release-please-action major updates ([73836f4](https://github.com/Fdawgs/node-poppler/commit/73836f4a51cfbf4818e4ac9da9f6b0ac31f1377b))
+* **deps:** bump actions/github-script from 6 to 7 ([#553](https://github.com/Fdawgs/node-poppler/issues/553)) ([36afe67](https://github.com/Fdawgs/node-poppler/commit/36afe67ea58dff35fc3038201ea597916f4254bc))
+
 ## [7.1.0](https://github.com/Fdawgs/node-poppler/compare/v7.0.2...v7.1.0) (2023-11-03)
 
 

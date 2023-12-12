@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.1.1](https://github.com/Fdawgs/node-poppler/compare/v7.1.0...v7.1.1) (2023-12-12)
+
+
+### Continuous integration
+
+* **dependabot:** ignore release-please-action major updates ([c6e565d](https://github.com/Fdawgs/node-poppler/commit/c6e565da3c9eae39368458ab897a7de0026d4629))
+* **deps:** bump actions/github-script from 6 to 7 ([#553](https://github.com/Fdawgs/node-poppler/issues/553)) ([36afe67](https://github.com/Fdawgs/node-poppler/commit/36afe67ea58dff35fc3038201ea597916f4254bc))
+
 ## [7.1.0](https://github.com/Fdawgs/node-poppler/compare/v7.0.2...v7.1.0) (2023-11-03)
 
 

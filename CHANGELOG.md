@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.1.1](https://github.com/Fdawgs/node-poppler/compare/v7.1.0...v7.1.1) (2023-12-18)
+
+
+### Miscellaneous
+
+* jsdoc comments must be complete sentences ([d91f466](https://github.com/Fdawgs/node-poppler/commit/d91f4669f82da696e11bda9fb3aa85236af148cd))
+
+
+### Continuous integration
+
+* **dependabot:** ignore release-please-action major updates ([c6e565d](https://github.com/Fdawgs/node-poppler/commit/c6e565da3c9eae39368458ab897a7de0026d4629))
+* **deps:** bump actions/github-script from 6 to 7 ([#553](https://github.com/Fdawgs/node-poppler/issues/553)) ([36afe67](https://github.com/Fdawgs/node-poppler/commit/36afe67ea58dff35fc3038201ea597916f4254bc))
+* **deps:** bump actions/upload-artifact from 3 to 4 ([#557](https://github.com/Fdawgs/node-poppler/issues/557)) ([6a67b7c](https://github.com/Fdawgs/node-poppler/commit/6a67b7c452e13bdc26ac8518258370f3153f0386))
+* **deps:** bump github/codeql-action from 2 to 3 ([#558](https://github.com/Fdawgs/node-poppler/issues/558)) ([d724604](https://github.com/Fdawgs/node-poppler/commit/d724604d2c1df259edcac8c44329506b0f80a587))
+
 ## [7.1.0](https://github.com/Fdawgs/node-poppler/compare/v7.0.2...v7.1.0) (2023-11-03)
 
 

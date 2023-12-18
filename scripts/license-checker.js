@@ -18,7 +18,7 @@ async function checkLicenses() {
 	console.log("Checking licenses of direct production dependencies...");
 
 	/**
-	 * List of deprecated copyleft license identifiers
+	 * List of deprecated copyleft license identifiers.
 	 * @see {@link https://spdx.org/licenses/#deprecated | SPDX Deprecated License Identifiers}
 	 */
 	const deprecatedLicenseList = [

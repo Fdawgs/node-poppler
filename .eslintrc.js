@@ -55,6 +55,7 @@ module.exports = {
 		"@eslint-community/eslint-comments/require-description": "error",
 		"import/no-extraneous-dependencies": "error",
 		"jsdoc/check-syntax": "error",
+		"jsdoc/require-description-complete-sentence": "error",
 		"jsdoc/require-hyphen-before-param-description": "error",
 		"no-multiple-empty-lines": ["error", { max: 1 }],
 		"prefer-destructuring": ["error", { object: true, array: false }],

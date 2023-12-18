@@ -206,7 +206,7 @@ class Poppler {
 	 * will use for non-embedded fonts.
 	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
-	 * @param {string} [options.userPassword] - User password (for encrypted files).	 *
+	 * @param {string} [options.userPassword] - User password (for encrypted files).
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfFonts(file, options = {}) {
@@ -410,7 +410,6 @@ class Poppler {
 	 * of a Tagged-PDF file.
 	 * @param {boolean} [options.printDocStructText] - Print the textual content along with the
 	 * document structure of a Tagged-PDF file. Note that extracting text this way might be slow
-	 *
 	 * for big PDF files.
 	 * @param {boolean} [options.printIsoDates] - Prints dates in ISO-8601 format (including the time zone).
 	 * @param {boolean} [options.printJS] - Prints all JavaScript in the PDF file.
@@ -461,7 +460,7 @@ class Poppler {
 
 			/**
 			 * Poppler does not set the "File size" metadata value if passed
-			 * a Buffer via stdin, so need to retrieve it from the Buffer
+			 * a Buffer via stdin, so need to retrieve it from the Buffer.
 			 */
 			/** @type {number} */
 			let fileSize;
@@ -859,7 +858,7 @@ class Poppler {
 	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
 	 * @param {boolean} [options.quiet] - Do not print any messages or errors.
-	 * @param {boolean} [options.singlePage] - generate single HTML that includes all pages.
+	 * @param {boolean} [options.singlePage] - Generate single HTML that includes all pages.
 	 * @param {boolean} [options.stdout] - Use standard output.
 	 * @param {string} [options.userPassword] - User password (for encrypted files).
 	 * @param {number} [options.wordBreakThreshold] - Adjust the word break threshold percent.
@@ -944,8 +943,8 @@ class Poppler {
 				});
 
 				/**
-				 * pdfToHtml does not return an exit code so check output to see if it was successful.
-				 * @see {@link  https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1 | Poppler pdftohtml man}
+				 * PdfToHtml does not return an exit code so check output to see if it was successful.
+				 * @see {@link https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1 | Poppler pdftohtml man}
 				 */
 				child.on("close", () => {
 					if (stdOut !== "") {
@@ -1425,7 +1424,7 @@ class Poppler {
 	 * @param {boolean} [options.boundingBoxXhtmlLayout] - Generate an XHTML file containing
 	 * bounding box information for each block, line, and word in the file.
 	 * @param {boolean} [options.cropBox] - Use the crop box rather than the media box with
-	 * `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`
+	 * `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`.
 	 * @param {number} [options.cropHeight] - Specifies the height of crop area in pixels
 	 * (image output) or points (vector output).
 	 * @param {number} [options.cropWidth] - Specifies the width of crop area in pixels

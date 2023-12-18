@@ -94,7 +94,7 @@
 		"eslint-plugin-jsdoc": "^46.8.2",
 		"eslint-plugin-promise": "^6.1.1",
 		"eslint-plugin-regexp": "^2.1.1",
-		"eslint-plugin-security": "^1.7.1",
+		"eslint-plugin-security": "^2.1.0",
 		"eslint-plugin-security-node": "^1.1.1",
 		"glob": "^10.3.6",
 		"husky": "^8.0.3",

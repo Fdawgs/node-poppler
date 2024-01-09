@@ -11,7 +11,7 @@ module.exports = {
 		"plugin:jsdoc/recommended",
 		"plugin:promise/recommended",
 		"plugin:regexp/recommended",
-		"plugin:security/recommended",
+		"plugin:security/recommended-legacy",
 		"prettier",
 	],
 	overrides: [

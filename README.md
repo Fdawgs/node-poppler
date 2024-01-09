@@ -174,8 +174,8 @@ poppler
 
 Contributions are welcome, and any help is greatly appreciated!
 
-See [the contributing guide](./CONTRIBUTING.md) for details on how to get started.
-Please adhere to this project's [Code of Conduct](./CODE_OF_CONDUCT.md) when contributing.
+See [the contributing guide](https://github.com/Fdawgs/.github/blob/main/CONTRIBUTING.md) for details on how to get started.
+Please adhere to this project's [Code of Conduct](https://github.com/Fdawgs/.github/blob/main/CODE_OF_CONDUCT.md) when contributing.
 
 ## Acknowledgements
 

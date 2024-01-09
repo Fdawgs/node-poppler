@@ -56,7 +56,7 @@
 		"lint:prettier": "prettier . -c -u",
 		"lint:prettier:fix": "prettier . -w -u",
 		"prepare": "husky install",
-		"test": "npm run lint && npm run jest"
+		"test": "npm run lint && npm run lint:prettier && npm run jest"
 	},
 	"commitlint": {
 		"extends": [

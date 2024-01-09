@@ -51,6 +51,7 @@
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
+		"lint:fix": "npm run lint -- --fix",
 		"lint:licenses": "node scripts/license-checker.js",
 		"lint:prettier": "prettier . -c -u",
 		"lint:prettier:fix": "prettier . -w -u",

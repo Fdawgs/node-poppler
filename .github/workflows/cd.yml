@@ -10,15 +10,15 @@ on:
     # Allows this workflow to be run manually from the Actions tab
     workflow_dispatch:
 
-permissions:
-    contents: write
-    id-token: write
-    pull-requests: write
-
 jobs:
     release:
         name: Create/Update Release Pull Request
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+        outputs:
+            release_created: ${{ steps.release.outputs.release_created }}
         steps:
             - name: Release Please
               id: release
@@ -29,26 +29,71 @@ jobs:
                   release-type: node
                   package-name: node-poppler
 
+    publish-npm:
+        name: Publish to NPM
+        needs: release
+        if: needs.release.outputs.release_created == 'true'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            id-token: write
+        steps:
             - name: Check out repo
-              if: steps.release.outputs.release_created
               uses: actions/checkout@v4
               with:
                   persist-credentials: false
 
             - name: Setup Node
-              if: steps.release.outputs.release_created
               uses: actions/setup-node@v4
               with:
                   node-version: lts/*
-                  registry-url: https://registry.npmjs.org/
+                  registry-url: https://registry.npmjs.org
 
             - name: Publish to NPM
-              if: steps.release.outputs.release_created
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-              # Build docs and TS definitions and remove dev values from package.json
+              # Build docs and TS definitions, and remove dev values
+              # from package.json before publishing to reduce package size
               run: |
                   npm i --ignore-scripts
                   npm run build
                   npm pkg delete commitlint devDependencies jest scripts
-                  npm publish --ignore-scripts --provenance
+                  npm publish --access public --ignore-scripts --provenance
+
+    publish-ghp:
+        name: Publish to GitHub Packages
+        needs: release
+        if: needs.release.outputs.release_created == 'true'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            id-token: write
+            packages: write
+        steps:
+            - name: Check out repo
+              uses: actions/checkout@v4
+              with:
+                  persist-credentials: false
+
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+                  registry-url: https://npm.pkg.github.com
+                  scope: "@fdawgs"
+
+            - name: Scope package
+              run: |
+                  pkgName=$(npm pkg get name | tr -d '"')
+                  npm pkg set name="@fdawgs/$pkgName"
+
+            - name: Publish to GitHub Packages
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              # Build docs and TS definitions, and remove dev values
+              # from package.json before publishing to reduce package size
+              run: |
+                  npm i --ignore-scripts
+                  npm run build
+                  npm pkg delete commitlint devDependencies jest scripts
+                  npm publish --access public --ignore-scripts --provenance

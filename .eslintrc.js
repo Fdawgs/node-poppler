@@ -11,8 +11,7 @@ module.exports = {
 		"plugin:jsdoc/recommended",
 		"plugin:promise/recommended",
 		"plugin:regexp/recommended",
-		"plugin:security/recommended",
-		"plugin:security-node/recommended",
+		"plugin:security/recommended-legacy",
 		"prettier",
 	],
 	overrides: [
@@ -40,14 +39,7 @@ module.exports = {
 		// Explicitly tell ESLint to parse JavaScript as CommonJS, as airbnb-base sets this to "modules" for ECMAScript
 		sourceType: "script",
 	},
-	plugins: [
-		"import",
-		"jsdoc",
-		"promise",
-		"regexp",
-		"security",
-		"security-node",
-	],
+	plugins: ["import", "jsdoc", "promise", "regexp", "security"],
 	root: true,
 	rules: {
 		"@eslint-community/eslint-comments/disable-enable-pair": "off",

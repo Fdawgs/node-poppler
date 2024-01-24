@@ -85,7 +85,7 @@ Lists the fonts used in a PDF file along with various information for each font.
 | [options.listSubstitutes] | <code>boolean</code> | List the substitute fonts that poppler will use for non-embedded fonts. |
 | [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
-| [options.userPassword] | <code>string</code> | User password (for encrypted files).	 * |
+| [options.userPassword] | <code>string</code> | User password (for encrypted files). |
 
 <a name="Poppler+pdfImages"></a>
 
@@ -260,7 +260,7 @@ Converts a PDF file to HTML.
 | [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
 | [options.quiet] | <code>boolean</code> | Do not print any messages or errors. |
-| [options.singlePage] | <code>boolean</code> | generate single HTML that includes all pages. |
+| [options.singlePage] | <code>boolean</code> | Generate single HTML that includes all pages. |
 | [options.stdout] | <code>boolean</code> | Use standard output. |
 | [options.userPassword] | <code>string</code> | User password (for encrypted files). |
 | [options.wordBreakThreshold] | <code>number</code> | Adjust the word break threshold percent. Default is 10. Word break occurs when distance between two adjacent characters is greater than this percent of character height. |
@@ -395,7 +395,7 @@ Converts a PDF file to TXT.
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.boundingBoxXhtml] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each word in the file. |
 | [options.boundingBoxXhtmlLayout] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each block, line, and word in the file. |
-| [options.cropBox] | <code>boolean</code> | Use the crop box rather than the media box with `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout` |
+| [options.cropBox] | <code>boolean</code> | Use the crop box rather than the media box with `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`. |
 | [options.cropHeight] | <code>number</code> | Specifies the height of crop area in pixels (image output) or points (vector output). |
 | [options.cropWidth] | <code>number</code> | Specifies the width of crop area in pixels (image output) or points (vector output). |
 | [options.cropXAxis] | <code>number</code> | Specifies the x-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |

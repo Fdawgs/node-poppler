@@ -57,10 +57,20 @@ async function checkLicenses() {
 		start: joinSafe(__dirname, ".."),
 	});
 
-	const copyLeftLicensesList = Object.keys(licenses).filter((license) =>
-		// @ts-ignore: includes() returns false if undefined is passed
-		copyLeftLicenses.includes(licenses[license].licenses)
-	);
+	const copyLeftLicensesList = Object.keys(licenses).filter((license) => {
+		let lic = licenses[license].licenses;
+
+		if (!lic) {
+			console.error(
+				`No license found for ${license}. Please check the package.json file.`
+			);
+			process.exit(1);
+		}
+
+		lic = Array.isArray(lic) ? lic : [lic];
+
+		return lic.some((l) => copyLeftLicenses.includes(l));
+	});
 
 	if (copyLeftLicensesList.length > 0) {
 		console.error(

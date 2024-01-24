@@ -35,7 +35,10 @@
 	"main": "src/index.js",
 	"type": "commonjs",
 	"types": "types/index.d.ts",
-	"repository": "git+https://github.com/Fdawgs/node-poppler.git",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Fdawgs/node-poppler.git"
+	},
 	"homepage": "https://github.com/Fdawgs/node-poppler",
 	"bugs": {
 		"url": "https://github.com/Fdawgs/node-poppler/issues"
@@ -47,15 +50,16 @@
 		"node": ">=18.0.0"
 	},
 	"scripts": {
-		"build": "tsc && jsdoc2md src/index.js > API.md && npm run lint:prettier:fix",
+		"build": "tsc && jsdoc2md src/index.js > API.md",
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
+		"lint:fix": "npm run lint -- --fix",
 		"lint:licenses": "node scripts/license-checker.js",
 		"lint:prettier": "prettier . -c -u",
 		"lint:prettier:fix": "prettier . -w -u",
 		"prepare": "husky install",
-		"test": "npm run lint && npm run jest"
+		"test": "npm run lint && npm run lint:prettier && npm run jest"
 	},
 	"commitlint": {
 		"extends": [
@@ -82,28 +86,27 @@
 		"testTimeout": 60000
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^18.2.0",
-		"@commitlint/config-conventional": "^18.1.0",
+		"@commitlint/cli": "^18.5.0",
+		"@commitlint/config-conventional": "^18.5.0",
 		"@eslint-community/eslint-plugin-eslint-comments": "^4.1.0",
-		"@types/jest": "^29.5.5",
-		"eslint": "^8.50.0",
+		"@types/jest": "^29.5.11",
+		"eslint": "^8.56.0",
 		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-import": "^2.28.1",
-		"eslint-plugin-jest": "^27.4.0",
-		"eslint-plugin-jsdoc": "^46.8.2",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-import": "^2.29.1",
+		"eslint-plugin-jest": "^27.6.3",
+		"eslint-plugin-jsdoc": "^48.0.2",
 		"eslint-plugin-promise": "^6.1.1",
-		"eslint-plugin-regexp": "^2.1.1",
-		"eslint-plugin-security": "^1.7.1",
-		"eslint-plugin-security-node": "^1.1.1",
-		"glob": "^10.3.6",
+		"eslint-plugin-regexp": "^2.2.0",
+		"eslint-plugin-security": "^2.1.0",
+		"glob": "^10.3.10",
 		"husky": "^8.0.3",
 		"jest": "^29.7.0",
 		"jsdoc-to-markdown": "^8.0.0",
 		"license-checker": "^25.0.1",
-		"prettier": "^3.0.3",
+		"prettier": "^3.2.4",
 		"spdx-copyleft": "^1.0.0",
-		"typescript": "^5.2.2"
+		"typescript": "^5.3.3"
 	},
 	"dependencies": {
 		"camelcase": "^6.3.0",

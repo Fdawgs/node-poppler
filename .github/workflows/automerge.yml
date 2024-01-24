@@ -24,25 +24,26 @@ jobs:
               uses: actions/github-script@v7
               with:
                   script: |
-                      const fs = require('fs');
+                      const { writeFile } = require("node:fs/promises");
+                      const { owner, repo } = context.repo;
 
                       const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
-                          owner: context.repo.owner,
-                          repo: context.repo.repo,
+                          owner,
+                          repo,
                           run_id: ${{ github.event.workflow_run.id }},
                       });
-                      const matchArtifact = artifacts.data.artifacts.filter((artifact) => {
-                          return artifact.name == 'pr';
-                      })[0];
+                      const matchArtifact = artifacts.data.artifacts.find(
+                          (artifact) => artifact.name == "pr"
+                      );
 
                       const download = await github.rest.actions.downloadArtifact({
-                          owner: context.repo.owner,
-                          repo: context.repo.repo,
+                          owner,
+                          repo,
                           artifact_id: matchArtifact.id,
-                          archive_format: 'zip',
+                          archive_format: "zip",
                       });
 
-                      fs.writeFileSync('${{github.workspace}}/pr.zip', Buffer.from(download.data));
+                      await writeFile("${{github.workspace}}/pr.zip", Buffer.from(download.data));
 
             - name: Unzip artifact
               run: unzip pr.zip
@@ -52,12 +53,14 @@ jobs:
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   script: |
-                      const fs = require('fs');
-                      const pull_number = Number(fs.readFileSync('./NR'));
+                      const { readFile } = require("node:fs/promises");
+                      const { owner, repo } = context.repo;
+
+                      const pull_number = Number(await readFile("./NR", "utf8"));
 
                       await github.rest.pulls.merge({
                           merge_method: "squash",
-                          owner: context.repo.owner,
-                          repo: context.repo.repo,
-                          pull_number: pull_number,
+                          owner,
+                          repo,
+                          pull_number,
                       });

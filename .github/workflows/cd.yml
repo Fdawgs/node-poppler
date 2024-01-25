@@ -34,6 +34,7 @@ jobs:
         needs: release
         if: needs.release.outputs.release_created == 'true'
         runs-on: ubuntu-latest
+        environment: main
         permissions:
             contents: read
             id-token: write

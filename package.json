@@ -58,7 +58,7 @@
 		"lint:licenses": "node scripts/license-checker.js",
 		"lint:prettier": "prettier . -c -u",
 		"lint:prettier:fix": "prettier . -w -u",
-		"prepare": "husky install",
+		"prepare": "husky",
 		"test": "npm run lint && npm run lint:prettier && npm run jest"
 	},
 	"commitlint": {

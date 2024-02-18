@@ -8,6 +8,6 @@
 	},
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"npm.packageManager": "npm",
-	"prettier.prettierPath": "./node_modules/prettier",
+	"prettier.prettierPath": "./node_modules/prettier/index.cjs",
 	"redhat.telemetry.enabled": false
 }

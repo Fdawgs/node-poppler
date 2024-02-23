@@ -43,12 +43,11 @@ function parseOptions(acceptedOptions, options, version) {
 			// eslint-disable-next-line valid-typeof -- `type` is a string
 			if (acceptedOptions[key].type === typeof options[key]) {
 				// Skip boolean options if false
-
 				if (acceptedOptions[key].type === "boolean" && !options[key]) {
 					return;
 				}
-				// Arg will be empty for some non-standard options
 
+				// Arg will be empty for some non-standard options
 				if (acceptedOptions[key].arg !== "") {
 					args.push(acceptedOptions[key].arg);
 				}

@@ -145,9 +145,9 @@ class Poppler {
 	 * @param {object} [options] - Object containing options to pass to binary.
 	 * @param {boolean} [options.listEmbedded] - List all of the embedded files in the PDF file.
 	 * File names are converted to the text encoding specified by `options.outputEncoding`.
-	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
 	 * @param {string} [options.outputEncoding] - Sets the encoding to use for text output.
 	 * This defaults to `UTF-8`.
+	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
 	 * @param {string} [options.outputPath] - Set the file name used when saving an embedded file with
 	 * the save option enabled, or the directory if `options.saveall` is used.
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
@@ -167,16 +167,16 @@ class Poppler {
 	async pdfDetach(file, options = {}) {
 		const acceptedOptions = {
 			listEmbedded: { arg: "-list", type: "boolean" },
-			ownerPassword: { arg: "-opw", type: "string" },
 			outputEncoding: { arg: "-enc", type: "string" },
 			outputPath: { arg: "-o", type: "string" },
+			ownerPassword: { arg: "-opw", type: "string" },
 			printVersionInfo: { arg: "-v", type: "boolean" },
+			saveAllFiles: { arg: "-saveall", type: "boolean" },
 			saveFile: {
 				arg: "-savefile",
 				type: "string",
 				minVersion: "0.86.0",
 			},
-			saveAllFiles: { arg: "-saveall", type: "boolean" },
 			saveSpecificFile: { arg: "-save", type: "number" },
 			userPassword: { arg: "-upw", type: "string" },
 		};
@@ -294,12 +294,12 @@ class Poppler {
 	 * @param {boolean} [options.ccittFile] - Generate CCITT images as CCITT files.
 	 * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
 	 * @param {number} [options.lastPageToConvert] - Specifies the last page to convert.
-	 * @param {boolean} [options.list] - Instead of writing the images, list the
-	 * images along with various information for each image.
-	 * NOTE: Do not specify the outputPrefix with this option.
 	 * @param {boolean} [options.jbig2File] - Generate JBIG2 images as JBIG2 files.
 	 * @param {boolean} [options.jpeg2000File] - Generate JPEG2000 images at JP2 files.
 	 * @param {boolean} [options.jpegFile] - Generate JPEG images as JPEG files.
+	 * @param {boolean} [options.list] - Instead of writing the images, list the
+	 * images along with various information for each image.
+	 * NOTE: Do not specify the outputPrefix with this option.
 	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
 	 * @param {boolean} [options.pngFile] - Change the default output format to PNG.
 	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
@@ -313,10 +313,10 @@ class Poppler {
 			ccittFile: { arg: "-ccitt", type: "boolean" },
 			firstPageToConvert: { arg: "-f", type: "number" },
 			lastPageToConvert: { arg: "-l", type: "number" },
-			list: { arg: "-list", type: "boolean" },
 			jbig2File: { arg: "-jbig2", type: "boolean" },
 			jpeg2000File: { arg: "-jp2", type: "boolean" },
 			jpegFile: { arg: "-j", type: "boolean" },
+			list: { arg: "-list", type: "boolean" },
 			ownerPassword: { arg: "-opw", type: "string" },
 			pngFile: { arg: "-png", type: "boolean" },
 			printVersionInfo: { arg: "-v", type: "boolean" },
@@ -1211,6 +1211,11 @@ class Poppler {
 	 * This enables all Level 2 featuresplus CID font embedding.
 	 * @param {boolean} [options.level3Sep] - Generate Level 3 separable PostScript.
 	 * The separation handling is the same as for `options.level2Sep`.
+	 * @param {boolean} [options.noCenter] - By default, PDF pages smaller than the paper
+	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
+	 * the lower-left corner of the paper instead.
+	 * @param {boolean} [options.noCrop] - By default, printing output is cropped to the CropBox
+	 * specified in the PDF file. This option disables cropping.
 	 * @param {boolean} [options.noEmbedCIDFonts] - By default, any CID PostScript fonts which are
 	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
 	 * No attempt is made to substitute for non-embedded CID PostScript fonts.
@@ -1224,11 +1229,6 @@ class Poppler {
 	 * @param {boolean} [options.noEmbedType1Fonts] - By default, any Type 1 fonts which are embedded in the PDF file
 	 * are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead.
 	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
-	 * @param {boolean} [options.noCenter] - By default, PDF pages smaller than the paper
-	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
-	 * the lower-left corner of the paper instead.
-	 * @param {boolean} [options.noCrop] - By default, printing output is cropped to the CropBox
-	 * specified in the PDF file. This option disables cropping.
 	 * @param {boolean} [options.noShrink] - Do not scale PDF pages which are larger than the paper.
 	 * By default, pages larger than the paper are shrunk to fit.
 	 * @param {boolean} [options.opi] - Generate OPI comments for all images and forms which have OPI information.
@@ -1303,6 +1303,8 @@ class Poppler {
 			level2Sep: { arg: "-level2sep", type: "boolean" },
 			level3: { arg: "-level3", type: "boolean" },
 			level3Sep: { arg: "-level3sep", type: "boolean" },
+			noCenter: { arg: "-nocenter", type: "boolean" },
+			noCrop: { arg: "-nocrop", type: "boolean" },
 			noEmbedCIDFonts: { arg: "-noembcidps", type: "boolean" },
 			noEmbedCIDTrueTypeFonts: {
 				arg: "-noembcidtt",
@@ -1310,8 +1312,6 @@ class Poppler {
 			},
 			noEmbedTrueTypeFonts: { arg: "-noembtt", type: "boolean" },
 			noEmbedType1Fonts: { arg: "-noembt1", type: "boolean" },
-			noCenter: { arg: "-nocenter", type: "boolean" },
-			noCrop: { arg: "-nocrop", type: "boolean" },
 			noShrink: { arg: "-noshrink", type: "boolean" },
 			opi: { arg: "-opi", type: "boolean" },
 			optimizecolorspace: {
@@ -1327,11 +1327,11 @@ class Poppler {
 			passfonts: { arg: "-passfonts", type: "boolean" },
 			preload: { arg: "-preload", type: "boolean" },
 			printVersionInfo: { arg: "-v", type: "boolean" },
+			processColorFormat: { arg: "-processcolorformat", type: "string" },
 			processColorProfile: {
 				arg: "-processcolorprofile",
 				type: "string",
 			},
-			processColorFormat: { arg: "-processcolorformat", type: "string" },
 			quiet: { arg: "-q", type: "boolean" },
 			rasterize: {
 				arg: "-rasterize",

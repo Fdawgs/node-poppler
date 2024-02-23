@@ -343,18 +343,18 @@ describe("Node-Poppler module", () => {
 
 	describe("pdfInfo function", () => {
 		const pdfInfoObject = {
-			tagged: "yes",
-			userProperties: "no",
-			suspects: "no",
+			encrypted: "no",
+			fileSize: "583094 bytes",
 			form: "AcroForm",
 			javaScript: "no",
-			pages: "16",
-			encrypted: "no",
-			pageSize: "595.276 x 841.89 pts (A4)",
-			pageRot: "0",
-			fileSize: "583094 bytes",
 			optimized: "no",
+			pageRot: "0",
+			pageSize: "595.276 x 841.89 pts (A4)",
+			pages: "16",
 			pdfVersion: "1.3",
+			suspects: "no",
+			tagged: "yes",
+			userProperties: "no",
 		};
 
 		it("Lists info of PDF file", async () => {

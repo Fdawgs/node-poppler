@@ -25,9 +25,9 @@ export class Poppler {
      * @param {object} [options] - Object containing options to pass to binary.
      * @param {boolean} [options.listEmbedded] - List all of the embedded files in the PDF file.
      * File names are converted to the text encoding specified by `options.outputEncoding`.
-     * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
      * @param {string} [options.outputEncoding] - Sets the encoding to use for text output.
      * This defaults to `UTF-8`.
+     * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
      * @param {string} [options.outputPath] - Set the file name used when saving an embedded file with
      * the save option enabled, or the directory if `options.saveall` is used.
      * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
@@ -46,8 +46,8 @@ export class Poppler {
      */
     pdfDetach(file: string, options?: {
         listEmbedded?: boolean;
-        ownerPassword?: string;
         outputEncoding?: string;
+        ownerPassword?: string;
         outputPath?: string;
         printVersionInfo?: boolean;
         saveAllFiles?: boolean;
@@ -88,12 +88,12 @@ export class Poppler {
      * @param {boolean} [options.ccittFile] - Generate CCITT images as CCITT files.
      * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
      * @param {number} [options.lastPageToConvert] - Specifies the last page to convert.
-     * @param {boolean} [options.list] - Instead of writing the images, list the
-     * images along with various information for each image.
-     * NOTE: Do not specify the outputPrefix with this option.
      * @param {boolean} [options.jbig2File] - Generate JBIG2 images as JBIG2 files.
      * @param {boolean} [options.jpeg2000File] - Generate JPEG2000 images at JP2 files.
      * @param {boolean} [options.jpegFile] - Generate JPEG images as JPEG files.
+     * @param {boolean} [options.list] - Instead of writing the images, list the
+     * images along with various information for each image.
+     * NOTE: Do not specify the outputPrefix with this option.
      * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
      * @param {boolean} [options.pngFile] - Change the default output format to PNG.
      * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
@@ -106,10 +106,10 @@ export class Poppler {
         ccittFile?: boolean;
         firstPageToConvert?: number;
         lastPageToConvert?: number;
-        list?: boolean;
         jbig2File?: boolean;
         jpeg2000File?: boolean;
         jpegFile?: boolean;
+        list?: boolean;
         ownerPassword?: string;
         pngFile?: boolean;
         printVersionInfo?: boolean;
@@ -575,6 +575,11 @@ export class Poppler {
      * This enables all Level 2 featuresplus CID font embedding.
      * @param {boolean} [options.level3Sep] - Generate Level 3 separable PostScript.
      * The separation handling is the same as for `options.level2Sep`.
+     * @param {boolean} [options.noCenter] - By default, PDF pages smaller than the paper
+     * (after any scaling) are centered on the paper. This option causes them to be aligned to
+     * the lower-left corner of the paper instead.
+     * @param {boolean} [options.noCrop] - By default, printing output is cropped to the CropBox
+     * specified in the PDF file. This option disables cropping.
      * @param {boolean} [options.noEmbedCIDFonts] - By default, any CID PostScript fonts which are
      * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
      * No attempt is made to substitute for non-embedded CID PostScript fonts.
@@ -588,11 +593,6 @@ export class Poppler {
      * @param {boolean} [options.noEmbedType1Fonts] - By default, any Type 1 fonts which are embedded in the PDF file
      * are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead.
      * Embedded fonts make PostScript files larger, but may be necessary for readable output.
-     * @param {boolean} [options.noCenter] - By default, PDF pages smaller than the paper
-     * (after any scaling) are centered on the paper. This option causes them to be aligned to
-     * the lower-left corner of the paper instead.
-     * @param {boolean} [options.noCrop] - By default, printing output is cropped to the CropBox
-     * specified in the PDF file. This option disables cropping.
      * @param {boolean} [options.noShrink] - Do not scale PDF pages which are larger than the paper.
      * By default, pages larger than the paper are shrunk to fit.
      * @param {boolean} [options.opi] - Generate OPI comments for all images and forms which have OPI information.
@@ -654,12 +654,12 @@ export class Poppler {
         level2Sep?: boolean;
         level3?: boolean;
         level3Sep?: boolean;
+        noCenter?: boolean;
+        noCrop?: boolean;
         noEmbedCIDFonts?: boolean;
         noEmbedCIDTrueTypeFonts?: boolean;
         noEmbedTrueTypeFonts?: boolean;
         noEmbedType1Fonts?: boolean;
-        noCenter?: boolean;
-        noCrop?: boolean;
         noShrink?: boolean;
         opi?: boolean;
         optimizecolorspace?: boolean;

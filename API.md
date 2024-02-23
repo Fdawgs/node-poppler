@@ -58,8 +58,8 @@ Lists or extracts embedded files (attachments) from a PDF file.
 | file | <code>string</code> | Filepath of the PDF file to read. |
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.listEmbedded] | <code>boolean</code> | List all of the embedded files in the PDF file. File names are converted to the text encoding specified by `options.outputEncoding`. |
-| [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
 | [options.outputEncoding] | <code>string</code> | Sets the encoding to use for text output. This defaults to `UTF-8`. |
+| [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
 | [options.outputPath] | <code>string</code> | Set the file name used when saving an embedded file with the save option enabled, or the directory if `options.saveall` is used. |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
 | [options.saveAllFiles] | <code>boolean</code> | Save all of the embedded files. This uses the file names associated with the embedded files (as printed by `options.listEmbedded`). By default, the files are saved in the current directory; this can be changed with `options.outputPath`. |
@@ -105,10 +105,10 @@ Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 fi
 | [options.ccittFile] | <code>boolean</code> | Generate CCITT images as CCITT files. |
 | [options.firstPageToConvert] | <code>number</code> | Specifies the first page to convert. |
 | [options.lastPageToConvert] | <code>number</code> | Specifies the last page to convert. |
-| [options.list] | <code>boolean</code> | Instead of writing the images, list the images along with various information for each image. NOTE: Do not specify the outputPrefix with this option. |
 | [options.jbig2File] | <code>boolean</code> | Generate JBIG2 images as JBIG2 files. |
 | [options.jpeg2000File] | <code>boolean</code> | Generate JPEG2000 images at JP2 files. |
 | [options.jpegFile] | <code>boolean</code> | Generate JPEG images as JPEG files. |
+| [options.list] | <code>boolean</code> | Instead of writing the images, list the images along with various information for each image. NOTE: Do not specify the outputPrefix with this option. |
 | [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
 | [options.pngFile] | <code>boolean</code> | Change the default output format to PNG. |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
@@ -354,12 +354,12 @@ Converts a PDF file to PostScript (PS).
 | [options.level2Sep] | <code>boolean</code> | Generate Level 2 separable PostScript. All colors are converted to CMYK. The PostScript separation convention operators are used to handle custom (spot) colors. |
 | [options.level3] | <code>boolean</code> | Generate Level 3 PostScript. This enables all Level 2 featuresplus CID font embedding. |
 | [options.level3Sep] | <code>boolean</code> | Generate Level 3 separable PostScript. The separation handling is the same as for `options.level2Sep`. |
+| [options.noCenter] | <code>boolean</code> | By default, PDF pages smaller than the paper (after any scaling) are centered on the paper. This option causes them to be aligned to the lower-left corner of the paper instead. |
+| [options.noCrop] | <code>boolean</code> | By default, printing output is cropped to the CropBox specified in the PDF file. This option disables cropping. |
 | [options.noEmbedCIDFonts] | <code>boolean</code> | By default, any CID PostScript fonts which are embedded in the PDF file are copied into the PostScript file. This option disables that embedding. No attempt is made to substitute for non-embedded CID PostScript fonts. |
 | [options.noEmbedCIDTrueTypeFonts] | <code>boolean</code> | By default, any CID TrueType fonts which are embedded in the PDF file are copied into the PostScript file. This option disables that embedding. No attempt is made to substitute for non-embedded CID TrueType fonts. |
 | [options.noEmbedTrueTypeFonts] | <code>boolean</code> | By default, any TrueType fonts which are embedded in the PDF file are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead. Embedded fonts make PostScript files larger, but may be necessary for readable output. Also, some PostScript interpreters do not have TrueType rasterizers. |
 | [options.noEmbedType1Fonts] | <code>boolean</code> | By default, any Type 1 fonts which are embedded in the PDF file are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead. Embedded fonts make PostScript files larger, but may be necessary for readable output. |
-| [options.noCenter] | <code>boolean</code> | By default, PDF pages smaller than the paper (after any scaling) are centered on the paper. This option causes them to be aligned to the lower-left corner of the paper instead. |
-| [options.noCrop] | <code>boolean</code> | By default, printing output is cropped to the CropBox specified in the PDF file. This option disables cropping. |
 | [options.noShrink] | <code>boolean</code> | Do not scale PDF pages which are larger than the paper. By default, pages larger than the paper are shrunk to fit. |
 | [options.opi] | <code>boolean</code> | Generate OPI comments for all images and forms which have OPI information. |
 | [options.optimizecolorspace] | <code>boolean</code> | By default, bitmap images in the PDF pass through to the output PostScript in their original color space, which produces predictable results. This option converts RGB and CMYK images into Gray images if every pixel of the image has equal components. This can fix problems when doing color separations of PDFs that contain embedded black and white images encoded as RGB. |

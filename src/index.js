@@ -123,9 +123,7 @@ class Poppler {
 
 		try {
 			const args = parseOptions(acceptedOptions, options);
-			args.push(file);
-			args.push(fileToAttach);
-			args.push(outputFile);
+			args.push(file, fileToAttach, outputFile);
 
 			const { stdout } = await execFileAsync(
 				joinSafe(this.popplerPath, "pdfattach"),
@@ -230,11 +228,7 @@ class Poppler {
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
-					args.push("-");
-				} else {
-					args.push(file);
-				}
+				args.push(Buffer.isBuffer(file) ? "-" : file);
 
 				const child = spawn(
 					joinSafe(this.popplerPath, "pdffonts"),
@@ -335,11 +329,7 @@ class Poppler {
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
-					args.push("-");
-				} else {
-					args.push(file);
-				}
+				args.push(Buffer.isBuffer(file) ? "-" : file);
 
 				if (outputPrefix) {
 					args.push(outputPrefix);
@@ -575,8 +565,7 @@ class Poppler {
 			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
-			args.push(file);
-			args.push(outputPattern);
+			args.push(file, outputPattern);
 
 			const { stdout } = await execFileAsync(
 				joinSafe(this.popplerPath, "pdfseparate"),
@@ -762,17 +751,10 @@ class Poppler {
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
-					args.push("-");
-				} else {
-					args.push(file);
-				}
-
-				if (outputFile) {
-					args.push(outputFile);
-				} else {
-					args.push("-");
-				}
+				args.push(
+					Buffer.isBuffer(file) ? "-" : file,
+					outputFile || "-"
+				);
 
 				const child = spawn(
 					joinSafe(this.popplerPath, "pdftocairo"),
@@ -910,11 +892,7 @@ class Poppler {
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
-					args.push("-");
-				} else {
-					args.push(file);
-				}
+				args.push(Buffer.isBuffer(file) ? "-" : file);
 
 				if (outputFile) {
 					args.push(outputFile);
@@ -1115,13 +1093,7 @@ class Poppler {
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
-					args.push("-");
-				} else {
-					args.push(file);
-				}
-
-				args.push(outputPath);
+				args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
 
 				const child = spawn(
 					joinSafe(this.popplerPath, "pdftoppm"),
@@ -1353,17 +1325,10 @@ class Poppler {
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
-					args.push("-");
-				} else {
-					args.push(file);
-				}
-
-				if (outputFile) {
-					args.push(outputFile);
-				} else {
-					args.push("-");
-				}
+				args.push(
+					Buffer.isBuffer(file) ? "-" : file,
+					outputFile || "-"
+				);
 
 				const child = spawn(
 					joinSafe(this.popplerPath, "pdftops"),
@@ -1510,17 +1475,10 @@ class Poppler {
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
-					args.push("-");
-				} else {
-					args.push(file);
-				}
-
-				if (outputFile) {
-					args.push(outputFile);
-				} else {
-					args.push("-");
-				}
+				args.push(
+					Buffer.isBuffer(file) ? "-" : file,
+					outputFile || "-"
+				);
 
 				const child = spawn(
 					joinSafe(this.popplerPath, "pdftotext"),

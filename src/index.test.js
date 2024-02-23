@@ -20,7 +20,7 @@ const windowsPath = joinSafe(
 	__dirname,
 	"lib",
 	"win32",
-	"poppler-23.11.0",
+	"poppler-24.02.0",
 	"Library",
 	"bin"
 );

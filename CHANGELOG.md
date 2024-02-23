@@ -2,6 +2,64 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.1.1](https://github.com/Fdawgs/node-poppler/compare/v7.1.0...v7.1.1) (2024-02-23)
+
+
+### Bug fixes
+
+* **lib:** update poppler win32 binaries from 23.11.0 to 24.02.0 ([07fc431](https://github.com/Fdawgs/node-poppler/commit/07fc431b819f9802ac750cb8294c7ad3ff7580d6))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([66cd910](https://github.com/Fdawgs/node-poppler/commit/66cd910b7109d2f2b97bfdac1d4a2b5c4d8e65a9))
+* **deps-dev:** bump dev dependencies ([9b25cf4](https://github.com/Fdawgs/node-poppler/commit/9b25cf4dfc4132c7614492ba32a45e7cd19ac259))
+* **deps-dev:** bump dev dependencies ([5d49f0b](https://github.com/Fdawgs/node-poppler/commit/5d49f0bea9a5127b87513deb46a4bb6fe0aab4bf))
+* **deps-dev:** bump husky from 8.0.3 to 9.0.6 ([#565](https://github.com/Fdawgs/node-poppler/issues/565)) ([1ce715d](https://github.com/Fdawgs/node-poppler/commit/1ce715d79fdb0dacc989464baa80a7e77b69466a))
+* **deps-dev:** remove broken eslint-plugin-security-node ([7ed59ba](https://github.com/Fdawgs/node-poppler/commit/7ed59ba79e9fbc43182c4d9bc21d70f54a4a6ca4))
+* **deps:** bump semver from 7.5.4 to 7.6.0 ([f561a84](https://github.com/Fdawgs/node-poppler/commit/f561a8426a53ecdfe0a102642731cee9e6eb049a))
+
+
+### Miscellaneous
+
+* **.husky:** migrate hooks to v9 style ([31d8729](https://github.com/Fdawgs/node-poppler/commit/31d872937fb64397db187caff8aab0f0d730114f))
+* **.prettierignore:** ignore auto-generate types ([3e52e27](https://github.com/Fdawgs/node-poppler/commit/3e52e27895970f83f4c89f677ea0020d1d65f4b4))
+* **.vscode:** fix `prettier.prettierPath` setting ([7108895](https://github.com/Fdawgs/node-poppler/commit/7108895d16da656058d178fc38e746e61bf2757d))
+* **.vscode:** use local prettier version ([0ec4bdf](https://github.com/Fdawgs/node-poppler/commit/0ec4bdf3934e74536bf5e8f70f39ef694fe654f3))
+* **index:** fix whitespace ([3cf93e0](https://github.com/Fdawgs/node-poppler/commit/3cf93e0d6754beb2eca43697b6725361139bf880))
+* jsdoc comments must be complete sentences ([d91f466](https://github.com/Fdawgs/node-poppler/commit/d91f4669f82da696e11bda9fb3aa85236af148cd))
+* **package:** add `lint:fix` script ([deeb062](https://github.com/Fdawgs/node-poppler/commit/deeb0626c13e9a32824008542dcf59a1b6180a4d))
+* **package:** fix `repository` structure ([0d7baf1](https://github.com/Fdawgs/node-poppler/commit/0d7baf16403677701e6a1c078c28ca7cae71af7a))
+* **package:** run `lint:prettier` in `test` script ([02cac7f](https://github.com/Fdawgs/node-poppler/commit/02cac7f07b3ddd052c77b3b8a84ce519c2c1627c))
+* **scripts/license-checker:** handle old license arrays or missing ([3e651b6](https://github.com/Fdawgs/node-poppler/commit/3e651b636f2a217585e242a13098f9efe3320661))
+* sort options in ascending order ([f0dc8b8](https://github.com/Fdawgs/node-poppler/commit/f0dc8b8a21157b01cd85eb2f88dc6b932dc37f2d))
+* **tsconfig:** remove `lib`; `target` will be used in absence ([1c8da1c](https://github.com/Fdawgs/node-poppler/commit/1c8da1c48bf7349104f13f813b6449f2d3dcf1a6))
+* use shared files from `fdawgs/.github` ([79fd2c2](https://github.com/Fdawgs/node-poppler/commit/79fd2c2d57290894631f164d4a1579ba27c96424))
+
+
+### Continuous integration
+
+* **automerge:** optimise inline js scripts ([33412c5](https://github.com/Fdawgs/node-poppler/commit/33412c5bc1162ec8e77e264eea826ba60e620c30))
+* **cd:** add github packages publish job ([809a726](https://github.com/Fdawgs/node-poppler/commit/809a726df5c9e684df0c025984be41dfb02b6c7f))
+* **cd:** set github package to public ([498bb2f](https://github.com/Fdawgs/node-poppler/commit/498bb2f8876cf25b6c0490974c05d2daeaf07600))
+* **cd:** use `main` environment for publish-npm job ([613546c](https://github.com/Fdawgs/node-poppler/commit/613546c6454293223975c0c6a67b20f241cd2884))
+* **dependabot:** ignore release-please-action major updates ([c6e565d](https://github.com/Fdawgs/node-poppler/commit/c6e565da3c9eae39368458ab897a7de0026d4629))
+* **deps:** bump actions/dependency-review-action from 3 to 4 ([#564](https://github.com/Fdawgs/node-poppler/issues/564)) ([6536741](https://github.com/Fdawgs/node-poppler/commit/6536741826e2628f51afbd72edd88e09e86656b4))
+* **deps:** bump actions/github-script from 6 to 7 ([#553](https://github.com/Fdawgs/node-poppler/issues/553)) ([36afe67](https://github.com/Fdawgs/node-poppler/commit/36afe67ea58dff35fc3038201ea597916f4254bc))
+* **deps:** bump actions/upload-artifact from 3 to 4 ([#557](https://github.com/Fdawgs/node-poppler/issues/557)) ([6a67b7c](https://github.com/Fdawgs/node-poppler/commit/6a67b7c452e13bdc26ac8518258370f3153f0386))
+* **deps:** bump github/codeql-action from 2 to 3 ([#558](https://github.com/Fdawgs/node-poppler/issues/558)) ([d724604](https://github.com/Fdawgs/node-poppler/commit/d724604d2c1df259edcac8c44329506b0f80a587))
+
+
+### Improvements
+
+* **index:** combine chained array pushes ([ee37124](https://github.com/Fdawgs/node-poppler/commit/ee371249c80f57b12e0836366c3e748a74b35a6c))
+* **index:** use constant comparison order ([71720b7](https://github.com/Fdawgs/node-poppler/commit/71720b794c29b7f9abd2e3d2b010f6cd17dadae8))
+
+
+### Documentation
+
+* **readme:** update links ([1f6d17f](https://github.com/Fdawgs/node-poppler/commit/1f6d17f9a8b8123c951b3ac30396ebb6139c66b5))
+
 ## [7.1.0](https://github.com/Fdawgs/node-poppler/compare/v7.0.2...v7.1.0) (2023-11-03)
 
 

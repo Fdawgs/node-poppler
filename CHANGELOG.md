@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.0](https://github.com/Fdawgs/node-poppler/compare/v7.1.1...v7.2.0) (2024-03-12)
+
+
+### Features
+
+* **index:** use binary from path env variable if not passed as param ([a7319f6](https://github.com/Fdawgs/node-poppler/commit/a7319f69689ada7f712bb42874f0ea15d7812bb4))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([9253774](https://github.com/Fdawgs/node-poppler/commit/9253774d388a9ff066ebd032cbdfa18a1d06c1e5))
+* **deps-dev:** bump the commitlint group with 2 updates ([#567](https://github.com/Fdawgs/node-poppler/issues/567)) ([fd91827](https://github.com/Fdawgs/node-poppler/commit/fd918277f1cbf76d4640eb33a87961496f9955f4))
+
+
+### Miscellaneous
+
+* **index:** correct constructor description ([0119864](https://github.com/Fdawgs/node-poppler/commit/01198648a0f4cd1198b1b41f7e89fc746a5cbeee))
+* **index:** inline comment re export types ([3c21793](https://github.com/Fdawgs/node-poppler/commit/3c217936690786c11ac48091dd63700f611c89dd))
+* stop types being committed ([1e82060](https://github.com/Fdawgs/node-poppler/commit/1e82060079de72d9a551b29beee8fdab09451030))
+
+
+### Continuous integration
+
+* **cd:** standardise [@fdawgs](https://github.com/fdawgs) cd workflows ([2b0a000](https://github.com/Fdawgs/node-poppler/commit/2b0a000213814ef169bcc27150e4b9c3567e69a5))
+* **ci:** standardise [@fdawgs](https://github.com/fdawgs) ci workflows ([84c2444](https://github.com/Fdawgs/node-poppler/commit/84c244445914dacc679f318e3eed188e4f388f13))
+* **dependabot:** add `[@eslint-community](https://github.com/eslint-community)` scoped deps to eslint group ([5d4072d](https://github.com/Fdawgs/node-poppler/commit/5d4072de4d2eb42190320bff718653e49e66d643))
+
+
+### Documentation
+
+* **readme:** remove section re passing bin path for unix installs ([69a6fa1](https://github.com/Fdawgs/node-poppler/commit/69a6fa15529c3c2d1818788afde4de14710eb693))
+* remove outdated api docs; refer to type defs instead ([a687ea3](https://github.com/Fdawgs/node-poppler/commit/a687ea309b6fc76ca5c5901213f95158f5a585b4))
+
 ## [7.1.1](https://github.com/Fdawgs/node-poppler/compare/v7.1.0...v7.1.1) (2024-02-23)
 
 

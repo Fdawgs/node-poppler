@@ -47,15 +47,9 @@ const { Poppler } = require("node-poppler");
 const poppler = new Poppler("/usr/bin");
 ```
 
-## API
+## Example usage
 
-```js
-const { Poppler } = require("node-poppler");
-```
-
-[**API Documentation can be found here**](https://github.com/Fdawgs/node-poppler/blob/main/API.md)
-
-## Examples
+Please refer to the [JSDoc comments in the source code](./src/index.js) or the [generated type definitions](https://www.npmjs.com/package/node-poppler?activeTab=code) for information on the available options.
 
 ### poppler.pdfToCairo
 

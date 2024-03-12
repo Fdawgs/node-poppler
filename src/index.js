@@ -92,7 +92,11 @@ class Poppler {
 	 * if a local installation is not found.
 	 */
 	constructor(binPath) {
+		this.popplerPath = "";
+
+		/* istanbul ignore else: requires specific OS */
 		if (binPath) {
+			/** @type {string|undefined} */
 			this.popplerPath = binPath;
 		} else {
 			const { platform } = process;

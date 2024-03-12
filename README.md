@@ -40,13 +40,6 @@ For macOS users, you can download the latest versions with [Homebrew](https://br
 brew install poppler
 ```
 
-Once they have been installed, you will need to pass the `poppler-utils` installation directory as a parameter to an instance of the Poppler class:
-
-```js
-const { Poppler } = require("node-poppler");
-const poppler = new Poppler("/usr/bin");
-```
-
 ## Example usage
 
 Please refer to the [JSDoc comments in the source code](./src/index.js) or the [generated type definitions](https://www.npmjs.com/package/node-poppler?activeTab=code) for information on the available options.

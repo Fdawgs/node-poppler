@@ -1568,5 +1568,5 @@ class Poppler {
 	}
 }
 
-module.exports.Poppler = Poppler;
-module.exports.default = Poppler;
+module.exports.default = Poppler; // ESM default export
+module.exports.Poppler = Poppler; // TypeScript and named export

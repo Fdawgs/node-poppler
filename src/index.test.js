@@ -73,6 +73,11 @@ describe("Node-Poppler module", () => {
 			});
 		});
 
+		it("Creates a new Poppler instance without the binary path set", () => {
+			const poppler = new Poppler();
+			expect(poppler.popplerPath).toBe(testBinaryPath);
+		});
+
 		/**
 		 * @todo Fix this test, mocking of "node:" scheme not supported yet.
 		 * @see {@link https://github.com/jestjs/jest/pull/14297 | Jest PR #14297}

@@ -87,8 +87,8 @@ class Poppler {
 	/**
 	 * @param {string} [binPath] - Path of poppler-utils binaries.
 	 * If not provided, the constructor will attempt to find the Poppler `pdfinfo` binary
-	 * in the PATH environment variable and use that as the binary path for all binaries.
-	 * For `win32` the binary is bundled with the package and will be used
+	 * in the PATH environment variable and use that as the path for all binaries.
+	 * For `win32` the binaries are bundled with the package and will be used
 	 * if a local installation is not found.
 	 */
 	constructor(binPath) {

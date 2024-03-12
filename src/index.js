@@ -1,6 +1,6 @@
 "use strict";
 
-const { execFile, spawn } = require("node:child_process");
+const { execFile, spawn, spawnSync } = require("node:child_process");
 const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const { lt } = require("semver");
@@ -84,24 +84,46 @@ function parseOptions(acceptedOptions, options, version) {
 }
 
 class Poppler {
-	/** @param {string} [binPath] - Path of poppler-utils binaries. */
+	/**
+	 * @param {string} [binPath] - Path of poppler-utils binaries.
+	 * If not provided, the constructor will attempt to find the Poppler `pdfinfo` binary
+	 * in the PATH environment variable and use that as the binary path for all binaries.
+	 * For `win32` the binary is bundled with the package and will be used
+	 * if a local installation is not found.
+	 */
 	constructor(binPath) {
 		if (binPath) {
-			this.popplerPath = normalizeTrim(binPath);
-		} else if (process.platform === "win32") {
-			this.popplerPath = joinSafe(
-				__dirname,
-				"lib",
-				"win32",
-				"poppler-24.02.0",
-				"Library",
-				"bin"
-			);
+			this.popplerPath = binPath;
 		} else {
+			const { platform } = process;
+
+			const which = spawnSync(platform === "win32" ? "where" : "which", [
+				"pdfinfo",
+			]).stdout.toString();
+			const popplerPath = /(.+)pdfinfo/u.exec(which)?.[1];
+
+			if (popplerPath) {
+				this.popplerPath = popplerPath;
+			}
+			if (platform === "win32" && !popplerPath) {
+				this.popplerPath = joinSafe(
+					__dirname,
+					"lib",
+					"win32",
+					"poppler-24.02.0",
+					"Library",
+					"bin"
+				);
+			}
+		}
+
+		/* istanbul ignore next: unable to test due to https://github.com/jestjs/jest/pull/14297 */
+		if (!this.popplerPath) {
 			throw new Error(
-				`${process.platform} poppler-util binaries are not provided, please pass the installation directory as a parameter to the Poppler instance.`
+				`Unable to find ${process.platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
 			);
 		}
+		this.popplerPath = normalizeTrim(this.popplerPath);
 	}
 
 	/**

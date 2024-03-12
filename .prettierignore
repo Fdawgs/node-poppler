@@ -139,7 +139,7 @@ dist
 package.json
 API.md
 CHANGELOG.md
-/types/index.d.ts
+types/
 
 # lock files
 bun.lockb

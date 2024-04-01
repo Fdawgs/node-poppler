@@ -86,7 +86,7 @@ jobs:
                   persist-credentials: false
 
             - name: Run Commitlint
-              uses: wagoid/commitlint-github-action@v5
+              uses: wagoid/commitlint-github-action@v6
               with:
                   configFile: ./package.json
 

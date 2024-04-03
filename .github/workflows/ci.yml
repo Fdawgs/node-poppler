@@ -55,6 +55,7 @@ jobs:
             - name: Setup Node
               uses: actions/setup-node@v4
               with:
+                  check-latest: true
                   node-version: lts/*
 
             - name: Install
@@ -110,6 +111,7 @@ jobs:
             - name: Setup Node ${{ matrix.node-version }}
               uses: actions/setup-node@v4
               with:
+                  check-latest: true
                   node-version: ${{ matrix.node-version }}
 
             - name: Install

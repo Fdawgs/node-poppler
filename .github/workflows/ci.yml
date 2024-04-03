@@ -60,6 +60,9 @@ jobs:
             - name: Install
               run: npm i --ignore-scripts
 
+            - name: Audit NPM package signatures and provenance attestations
+              run: npm audit signatures
+
             - name: Run ESLint
               run: npm run lint
 

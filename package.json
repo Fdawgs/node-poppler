@@ -108,7 +108,7 @@
 		"typescript": "^5.4.2"
 	},
 	"dependencies": {
-		"camelcase": "^6.3.0",
+		"camelcase": "^8.0.0",
 		"semver": "^7.6.0",
 		"upath": "^2.0.1"
 	}

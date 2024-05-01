@@ -30,8 +30,7 @@ For Linux users, you will need to download the `poppler-data` and `poppler-utils
 An example of downloading the binaries on a Debian system:
 
 ```
-sudo apt-get install poppler-data
-sudo apt-get install poppler-utils
+sudo apt-get install poppler-data poppler-utils
 ```
 
 For macOS users, you can download the latest versions with [Homebrew](https://brew.sh/):

@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.1](https://github.com/Fdawgs/node-poppler/compare/v7.2.0...v7.2.1) (2024-05-03)
+
+
+### Miscellaneous
+
+* **package:** change author email ([b221d6d](https://github.com/Fdawgs/node-poppler/commit/b221d6d30db58dc0bda262e6ae5a5474802e676d))
+
+
+### Continuous integration
+
+* **ci:** audit package signatures and provenance attestations ([6d4e25c](https://github.com/Fdawgs/node-poppler/commit/6d4e25c4d98f80455f55fa28f2453b2d5d4441c6))
+* **deps:** bump wagoid/commitlint-github-action from 5 to 6 ([#574](https://github.com/Fdawgs/node-poppler/issues/574)) ([0369669](https://github.com/Fdawgs/node-poppler/commit/03696693a68885ffe6fb2eea2f58dfdcde2218d4))
+* use latest node lts version ([dc9d91d](https://github.com/Fdawgs/node-poppler/commit/dc9d91d753caefdb9ada3462960b4d3a4fe66368))
+
+
+### Documentation
+
+* **readme:** update sudo commands ([8866344](https://github.com/Fdawgs/node-poppler/commit/886634441f1f3d8ed4b6cead5d34c5e8db95a1b6))
+
 ## [7.2.0](https://github.com/Fdawgs/node-poppler/compare/v7.1.1...v7.2.0) (2024-03-12)
 
 

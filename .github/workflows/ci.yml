@@ -134,7 +134,7 @@ jobs:
 
             - name: Coveralls parallel
               if: github.repository == 'Fdawgs/node-poppler'
-              uses: coverallsapp/github-action@v2.2.3
+              uses: coverallsapp/github-action@v2.3.0
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel: true
@@ -149,7 +149,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Coveralls finished
-              uses: coverallsapp/github-action@v2.2.3
+              uses: coverallsapp/github-action@v2.3.0
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   parallel-finished: true

@@ -4,12 +4,12 @@
 
 "use strict";
 
-const { execFile } = require("node:child_process");
+const { execFile, spawnSync } = require("node:child_process");
 const { access, readFile, unlink } = require("node:fs/promises");
 const { promisify } = require("node:util");
 const { glob } = require("glob");
 const { lt } = require("semver");
-const { joinSafe } = require("upath");
+const { joinSafe, normalizeTrim } = require("upath");
 
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
@@ -17,31 +17,32 @@ const { Poppler } = require("./index");
 const testDirectory = `${__dirname}/../test_resources/test_files/`;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
-const windowsPath = joinSafe(
-	__dirname,
-	"lib",
-	"win32",
-	"poppler-24.02.0",
-	"Library",
-	"bin"
-);
-let testBinaryPath;
-switch (process.platform) {
-	// macOS
-	case "darwin":
-		testBinaryPath = "/usr/local/bin";
-		break;
+/**
+ * @description Returns the path to the poppler-util binaries based on the OS.
+ * @returns {string} The path to the poppler-util binaries.
+ */
+function getTestBinaryPath() {
+	const { platform } = process;
+	const which = spawnSync(platform === "win32" ? "where" : "which", [
+		"pdfinfo",
+	]).stdout.toString();
+	let popplerPath = /(.+)pdfinfo/u.exec(which)?.[1];
 
-	case "linux":
-		testBinaryPath = "/usr/bin";
-		break;
+	if (platform === "win32" && !popplerPath) {
+		popplerPath = joinSafe(
+			__dirname,
+			"lib",
+			"win32",
+			"poppler-24.02.0",
+			"Library",
+			"bin"
+		);
+	}
 
-	// Windows OS
-	case "win32":
-	default:
-		testBinaryPath = windowsPath;
-		break;
+	return normalizeTrim(popplerPath);
 }
+
+const testBinaryPath = getTestBinaryPath();
 
 describe("Node-Poppler module", () => {
 	afterEach(async () => {

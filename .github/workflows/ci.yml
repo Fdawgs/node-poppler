@@ -127,7 +127,9 @@ jobs:
 
             - name: Install Ubuntu dependencies
               if: matrix.os == 'ubuntu-latest'
-              run: sudo apt-get -y install poppler-data poppler-utils
+              run: |
+                  sudo apt-get -q update
+                  sudo apt-get -y install poppler-data poppler-utils
 
             - name: Run tests
               run: npm run jest:coverage

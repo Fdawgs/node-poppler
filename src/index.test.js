@@ -67,6 +67,10 @@ describe("Node-Poppler module", () => {
 			({ platform } = process);
 		});
 
+		beforeEach(() => {
+			jest.resetModules();
+		});
+
 		afterEach(() => {
 			// Restore the process platform
 			Object.defineProperty(process, "platform", {
@@ -79,19 +83,13 @@ describe("Node-Poppler module", () => {
 			expect(poppler.popplerPath).toBe(testBinaryPath);
 		});
 
-		/**
-		 * @todo Fix this test, mocking of "node:" scheme not supported yet.
-		 * @see {@link https://github.com/jestjs/jest/pull/14297 | Jest PR #14297}
-		 */
-		// eslint-disable-next-line jest/no-disabled-tests -- Blocked by Jest PR #14297
-		it.skip("Throws an Error if the binary path is not found", () => {
+		it("Throws an Error if the binary path is not found", () => {
 			Object.defineProperty(process, "platform", {
 				value: "mockOS",
 			});
 
-			// Ensure the mock is used by the UnRTF constructor
-			jest.resetModules();
-			jest.mock("node:child_process", () => ({
+			jest.doMock("node:child_process", () => ({
+				...jest.requireActual("node:child_process"),
 				spawnSync: jest.fn(() => ({
 					stdout: {
 						toString: () => "",

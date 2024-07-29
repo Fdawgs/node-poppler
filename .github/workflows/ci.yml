@@ -129,7 +129,7 @@ jobs:
               if: matrix.os == 'ubuntu-latest'
               run: |
                   sudo apt-get -q update
-                  sudo apt-get -y install poppler-data poppler-utils
+                  sudo apt-get -y --no-install-recommends install poppler-data poppler-utils
 
             - name: Run tests
               run: npm run jest:coverage

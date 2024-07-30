@@ -148,7 +148,7 @@ const options = {
 const outputFile = "test_document.txt";
 
 poppler
-	.pdfToText(file, output, options)
+	.pdfToText(file, outputFile, options)
 	.then((res) => {
 		console.log(res);
 	})

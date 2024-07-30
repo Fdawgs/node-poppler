@@ -144,9 +144,10 @@ const options = {
 	firstPageToConvert: 1,
 	lastPageToConvert: 2,
 };
+const outputFile = "test_document.txt";
 
 poppler
-	.pdfToText(file, options)
+	.pdfToText(file, outputFile, options)
 	.then((res) => {
 		console.log(res);
 	})

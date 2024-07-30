@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.1](https://github.com/Fdawgs/node-poppler/compare/v7.2.0...v7.2.1) (2024-07-30)
+
+
+### Continuous integration
+
+* **cd:** sort release note sections alphabetically ([c7f8d31](https://github.com/Fdawgs/node-poppler/commit/c7f8d31a86c5859815e481c2b480c142913b95ce))
+* **ci:** add node 22 to test matrix ([1739c55](https://github.com/Fdawgs/node-poppler/commit/1739c551daa474fe498722d6057f76c183b837c9))
+* **ci:** audit package signatures and provenance attestations ([6d4e25c](https://github.com/Fdawgs/node-poppler/commit/6d4e25c4d98f80455f55fa28f2453b2d5d4441c6))
+* **ci:** ignore recommended packages ([4fff485](https://github.com/Fdawgs/node-poppler/commit/4fff485531991505e93a1473b6d9344b12f5a36c))
+* **ci:** run `apt-get update` for ubuntu tests ([35e548a](https://github.com/Fdawgs/node-poppler/commit/35e548a0cfda91c505a37a14d96ff48c81e53f7e))
+* **deps:** bump coverallsapp/github-action from 2.2.3 to 2.3.0 ([#583](https://github.com/Fdawgs/node-poppler/issues/583)) ([894f7ca](https://github.com/Fdawgs/node-poppler/commit/894f7cafc5389e303e49937322787cb15fe2fbbc))
+* **deps:** bump wagoid/commitlint-github-action from 5 to 6 ([#574](https://github.com/Fdawgs/node-poppler/issues/574)) ([0369669](https://github.com/Fdawgs/node-poppler/commit/03696693a68885ffe6fb2eea2f58dfdcde2218d4))
+* use latest node lts version ([dc9d91d](https://github.com/Fdawgs/node-poppler/commit/dc9d91d753caefdb9ada3462960b4d3a4fe66368))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([e189c9d](https://github.com/Fdawgs/node-poppler/commit/e189c9d30eab690aca40a88cce60b08d73b8f337))
+* **deps-dev:** bump glob from 10.4.5 to 11.0.0 ([#587](https://github.com/Fdawgs/node-poppler/issues/587)) ([9480652](https://github.com/Fdawgs/node-poppler/commit/9480652be754be6f2b23bc55b608a89db0efa9e0))
+* **deps:** bump semver from 7.6.0 to 7.6.3 ([b3ccf43](https://github.com/Fdawgs/node-poppler/commit/b3ccf43f14c0e8c9840f44a26460ad66c6478d96))
+
+
+### Documentation
+
+* **readme:** add parameter for `pdfToText` function ([#573](https://github.com/Fdawgs/node-poppler/issues/573)) ([ba77074](https://github.com/Fdawgs/node-poppler/commit/ba77074279de4adfaa6ba0d8ab2b09d281229e19))
+* **readme:** update sudo commands ([8866344](https://github.com/Fdawgs/node-poppler/commit/886634441f1f3d8ed4b6cead5d34c5e8db95a1b6))
+
+
+### Miscellaneous
+
+* **.husky/commit-msg:** remove `npx` usage ([65cad62](https://github.com/Fdawgs/node-poppler/commit/65cad62c92deea80f421aefc3af3f82ba3f0f2f7))
+* **package:** change author email ([b221d6d](https://github.com/Fdawgs/node-poppler/commit/b221d6d30db58dc0bda262e6ae5a5474802e676d))
+* **package:** use shorter semver syntax ([e074e99](https://github.com/Fdawgs/node-poppler/commit/e074e99ce3941ba6b47a74607ae94494f63da24e))
+* **tsconfig:** update target to `ES2023` ([a6ce29d](https://github.com/Fdawgs/node-poppler/commit/a6ce29d2561df759cc8f9a0c35e2bb2a1832c306))
+
+
+### Tests
+
+* **index:** account for arm macs ([4422d9d](https://github.com/Fdawgs/node-poppler/commit/4422d9dbebaf26e6dee3929851bf31ae69804c76))
+* **index:** fix skipped test ([6a1f35d](https://github.com/Fdawgs/node-poppler/commit/6a1f35dc2e7e5048651da75d69cecc6ab31a2f4c))
+
 ## [7.2.0](https://github.com/Fdawgs/node-poppler/compare/v7.1.1...v7.2.0) (2024-03-12)
 
 

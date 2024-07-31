@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.2](https://github.com/Fdawgs/node-poppler/compare/v7.2.1...v7.2.2) (2024-07-31)
+
+
+### Miscellaneous
+
+* **.npmrc:** remove excess whitespace ([602c889](https://github.com/Fdawgs/node-poppler/commit/602c889761db564528ac2bc3edd9b202078ed3fe))
+
 ## [7.2.1](https://github.com/Fdawgs/node-poppler/compare/v7.2.0...v7.2.1) (2024-07-30)
 
 

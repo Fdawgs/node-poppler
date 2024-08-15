@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.2](https://github.com/Fdawgs/node-poppler/compare/v7.2.1...v7.2.2) (2024-08-15)
+
+
+### Bug fixes
+
+* **lib:** update poppler win32 binaries from 24.02.0 to 24.07.0 ([#596](https://github.com/Fdawgs/node-poppler/issues/596)) ([a788e1a](https://github.com/Fdawgs/node-poppler/commit/a788e1a06c6592d8b286492752700af24698bffa))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([0318cf1](https://github.com/Fdawgs/node-poppler/commit/0318cf13097eee17c701a424beea9c0635b8e3d6))
+
+
+### Miscellaneous
+
+* **.npmrc:** enforce strict engine checks ([#593](https://github.com/Fdawgs/node-poppler/issues/593)) ([d933f29](https://github.com/Fdawgs/node-poppler/commit/d933f295bc8dd32666be1e1c83ea2a6217bec8b4))
+* **.npmrc:** remove excess whitespace ([602c889](https://github.com/Fdawgs/node-poppler/commit/602c889761db564528ac2bc3edd9b202078ed3fe))
+
 ## [7.2.1](https://github.com/Fdawgs/node-poppler/compare/v7.2.0...v7.2.1) (2024-07-30)
 
 

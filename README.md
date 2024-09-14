@@ -63,7 +63,7 @@ const res = await poppler.pdfToCairo(file, outputFile, options);
 console.log(res);
 ```
 
-Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first of a PDF file to a new
+Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first page of a PDF file to a new
 PDF file using stdout:
 
 ```js

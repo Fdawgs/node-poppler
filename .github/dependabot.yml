@@ -5,10 +5,6 @@ updates:
           include: scope
           prefix: ci
       directory: /
-      ignore:
-          # Staying on v3 due to incomplete migration guide for v4
-          - dependency-name: google-github-actions/release-please-action
-            update-types: ["version-update:semver-major"]
       open-pull-requests-limit: 20
       schedule:
           interval: monthly

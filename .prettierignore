@@ -139,6 +139,7 @@ dist
 package.json
 CHANGELOG.md
 types/
+.github/release-please/manifest.json
 
 # lock files
 bun.lockb

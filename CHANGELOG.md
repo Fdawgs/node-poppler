@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.3](https://github.com/Fdawgs/node-poppler/compare/v7.2.2...v7.2.3) (2024-10-14)
+
+
+### Continuous integration
+
+* **cd:** migrate to manifest config ([428a865](https://github.com/Fdawgs/node-poppler/commit/428a865d7831c3d4a02d0749e7f4fb0e2a06fd27))
+
 ## [7.2.2](https://github.com/Fdawgs/node-poppler/compare/v7.2.1...v7.2.2) (2024-08-15)
 
 

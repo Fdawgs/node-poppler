@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.3](https://github.com/Fdawgs/node-poppler/compare/v7.2.2...v7.2.3) (2025-01-13)
+
+
+### Bug fixes
+
+* **index:** do not trim output if `options.maintainLayout` set ([#615](https://github.com/Fdawgs/node-poppler/issues/615)) ([ebc3fd0](https://github.com/Fdawgs/node-poppler/commit/ebc3fd0e3a5cf332ca273f567f907b6ed2f6965e))
+
+
+### Continuous integration
+
+* **cd:** migrate to manifest config ([428a865](https://github.com/Fdawgs/node-poppler/commit/428a865d7831c3d4a02d0749e7f4fb0e2a06fd27))
+* **ci:** use major tag for coverallsapp/github-action ([15f5792](https://github.com/Fdawgs/node-poppler/commit/15f579253ac8c13bd73b12317bd0decae3ab3203))
+* **deps:** bump coverallsapp/github-action from 2.3.0 to 2.3.1 ([#603](https://github.com/Fdawgs/node-poppler/issues/603)) ([ea759e3](https://github.com/Fdawgs/node-poppler/commit/ea759e310cf6bf6167178e2d07d34b3e1085db58))
+* **deps:** bump coverallsapp/github-action from 2.3.1 to 2.3.4 ([#608](https://github.com/Fdawgs/node-poppler/issues/608)) ([dae765f](https://github.com/Fdawgs/node-poppler/commit/dae765ff08ae1e80ba646ee6c1d903134c2ee1d5))
+
+
+### Dependencies
+
+* **deps-dev:** bump dev dependencies ([e0d7ca6](https://github.com/Fdawgs/node-poppler/commit/e0d7ca6b999ea000899aaf4872724ba18a79b129))
+* **deps-dev:** bump typescript from 5.5.4 to 5.6.3 ([#607](https://github.com/Fdawgs/node-poppler/issues/607)) ([10d0d29](https://github.com/Fdawgs/node-poppler/commit/10d0d294c6f6d058418e644538d1285f6e221cb8))
+* **deps-dev:** lock typescript minor version ([#605](https://github.com/Fdawgs/node-poppler/issues/605)) ([8da91ef](https://github.com/Fdawgs/node-poppler/commit/8da91ef09db2145e105e100d383d80129968b22d))
+
+
+### Documentation
+
+* **readme:** rename ci badge to reflect workflow ([37abda0](https://github.com/Fdawgs/node-poppler/commit/37abda00b5c2b2899f35d95d044e2db5d0322da4))
+* update README.md ([#599](https://github.com/Fdawgs/node-poppler/issues/599)) ([2e5a780](https://github.com/Fdawgs/node-poppler/commit/2e5a78033bd32aa81ade48ffd34a774edfadf593))
+
+
+### Miscellaneous
+
+* **license:** update license year ([9cb30f1](https://github.com/Fdawgs/node-poppler/commit/9cb30f106ec9a29af5c9775067300f3b8c8590a4))
+
 ## [7.2.2](https://github.com/Fdawgs/node-poppler/compare/v7.2.1...v7.2.2) (2024-08-15)
 
 

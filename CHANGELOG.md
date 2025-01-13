@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.4](https://github.com/Fdawgs/node-poppler/compare/v7.2.3...v7.2.4) (2025-01-13)
+
+
+### Continuous integration
+
+* **release-please:** declare schema ([19d3ef7](https://github.com/Fdawgs/node-poppler/commit/19d3ef7b42ebc048021b3a5cfab4bbb0bdc9bc36))
+
+
+### Miscellaneous
+
+* **tsconfig:** set schema ([8898da8](https://github.com/Fdawgs/node-poppler/commit/8898da88e6990419d32c84b2c6fbc2706b944eb9))
+
 ## [7.2.3](https://github.com/Fdawgs/node-poppler/compare/v7.2.2...v7.2.3) (2025-01-13)
 
 

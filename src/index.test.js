@@ -16,6 +16,7 @@ const { Poppler } = require("./index");
 
 const testDirectory = `${__dirname}/../test_resources/test_files/`;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
+const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
 
 /**
  * @description Returns the path to the poppler-util binaries based on the OS.
@@ -53,6 +54,7 @@ describe("Node-Poppler module", () => {
 				`${testDirectory}/pdf_1.3_NHS_Constitution.pdf`,
 				`${testDirectory}/pdf_1.7_NHS_Constitution_Handbook.pdf`,
 				`${testDirectory}/test.txt`,
+				whitespaceFile,
 			],
 		});
 
@@ -1218,6 +1220,22 @@ describe("Node-Poppler module", () => {
 			const res = await poppler.pdfToText(attachmentFile);
 
 			expect(res).toMatch("The NHS Constitution");
+		});
+
+		it("Converts PDF file to Text file and retains the original layout, including whitespace", async () => {
+			const poppler = new Poppler(testBinaryPath);
+			const options = {
+				maintainLayout: true,
+			};
+
+			const res = await poppler.pdfToText(
+				whitespaceFile,
+				undefined,
+				options
+			);
+
+			expect(res).toMatch(/^\s*/u);
+			expect(res).toMatch(/\s*$/u);
 		});
 
 		it("Accepts options and only process 2 pages of PDF file", async () => {

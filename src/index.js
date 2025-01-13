@@ -1530,7 +1530,9 @@ class Poppler {
 				child.on("close", (code) => {
 					/* istanbul ignore else */
 					if (stdOut !== "") {
-						resolve(stdOut.trim());
+						resolve(
+							options.maintainLayout ? stdOut : stdOut.trim()
+						);
 					} else if (code === 0) {
 						resolve(errorMessages[code]);
 					} else if (stdErr !== "") {

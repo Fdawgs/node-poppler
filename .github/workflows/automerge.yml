@@ -1,7 +1,7 @@
 name: Automerge Dependabot PRs
 
 # **What it does**: Automatically merge Dependabot PRs that pass the CI workflow run.
-# **Why we have it**: To keep our dependencies up-to-date, to avoid security issues.
+# **Why we have it**: Keeps dependencies up-to-date, to avoid security issues.
 
 on:
     workflow_run:

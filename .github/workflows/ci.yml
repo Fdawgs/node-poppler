@@ -1,7 +1,7 @@
 name: CI
 
-# **What it does**: Runs our tests.
-# **Why we have it**: We want our tests to pass before merging code.
+# **What it does**: Runs tests.
+# **Why we have it**: Ensures tests pass before merging code.
 
 on:
     push:

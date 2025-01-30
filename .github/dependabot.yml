@@ -24,7 +24,7 @@ updates:
                   - "eslint*"
       ignore:
           # Below are dependencies that have migrated to ESM
-          # in their next major version so we can't use them
+          # in their next major version so they cannot be updated
           - dependency-name: camelcase
             update-types: ["version-update:semver-major"]
       open-pull-requests-limit: 20

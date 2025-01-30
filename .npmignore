@@ -1,4 +1,4 @@
-# `package.json` is published to npm, so everything we add is included in the installed tarball.
+# `package.json` is published to npm, so everything added is included in the installed tarball.
 # Removing the `files` key and replacing it with this `.npmignore` saves some bytes, which
 # should improve installation performance slightly
 *

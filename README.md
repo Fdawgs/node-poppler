@@ -25,7 +25,7 @@ npm i node-poppler
 ### Linux and macOS/Darwin support
 
 Windows binaries are provided with this repository.
-For Linux users, you will need to download the `poppler-data` and `poppler-utils` binaries separately.
+For Linux and Mac users, the `poppler-data` and `poppler-utils` binaries binary will need to be installed separately.
 
 An example of downloading the binaries on a Debian system:
 
@@ -33,7 +33,7 @@ An example of downloading the binaries on a Debian system:
 sudo apt-get install poppler-data poppler-utils
 ```
 
-For macOS users, you can download the latest versions with [Homebrew](https://brew.sh/):
+For macOS users, the binaries can be installed with [Homebrew](https://brew.sh/):
 
 ```
 brew install poppler

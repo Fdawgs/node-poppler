@@ -9,7 +9,7 @@ const { access, readFile, unlink } = require("node:fs/promises");
 const { promisify } = require("node:util");
 const { glob } = require("glob");
 const { lt } = require("semver");
-const { joinSafe, normalizeTrim } = require("upath");
+const { join, normalize } = require("node:path");
 
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
@@ -30,7 +30,7 @@ function getTestBinaryPath() {
 	let popplerPath = /(.+)pdfinfo/u.exec(which)?.[1];
 
 	if (platform === "win32" && !popplerPath) {
-		popplerPath = joinSafe(
+		popplerPath = join(
 			__dirname,
 			"lib",
 			"win32",
@@ -40,7 +40,7 @@ function getTestBinaryPath() {
 		);
 	}
 
-	return normalizeTrim(popplerPath);
+	return normalize(popplerPath);
 }
 
 const testBinaryPath = getTestBinaryPath();
@@ -1011,7 +1011,7 @@ describe("Node-Poppler module", () => {
 
 		beforeAll(async () => {
 			const { stderr } = await execFileAsync(
-				joinSafe(testBinaryPath, "pdftoppm"),
+				join(testBinaryPath, "pdftoppm"),
 				["-v"]
 			);
 

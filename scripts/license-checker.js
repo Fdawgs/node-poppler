@@ -5,7 +5,7 @@ const { init } = require("license-checker");
 /** @type {string[]} */
 // @ts-ignore: module is a JSON file
 const copyLeftLicenses = require("spdx-copyleft");
-const { joinSafe } = require("upath");
+const { join } = require("node:path");
 
 const check = promisify(init);
 
@@ -54,7 +54,7 @@ async function checkLicenses() {
 	const licenses = await check({
 		direct: true,
 		production: true,
-		start: joinSafe(__dirname, ".."),
+		start: join(__dirname, ".."),
 	});
 
 	const copyLeftLicensesList = Object.keys(licenses).filter((license) => {

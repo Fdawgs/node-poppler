@@ -110,7 +110,6 @@
 	},
 	"dependencies": {
 		"camelcase": "^6.3.0",
-		"semver": "^7.6.3",
-		"upath": "^2.0.1"
+		"semver": "^7.6.3"
 	}
 }

@@ -43,7 +43,7 @@ jobs:
                           archive_format: "zip",
                       });
 
-                      await writeFile("${{github.workspace}}/pr.zip", Buffer.from(download.data));
+                      await writeFile("${{github.workspace}}/pr.zip", Buffer.from(download.data), { flush: true });
 
             - name: Unzip artifact
               run: unzip pr.zip

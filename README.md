@@ -79,7 +79,7 @@ const options = {
 
 const res = await poppler.pdfToCairo(file, undefined, options);
 // pdfToCairo writes to stdout using binary encoding if pdfFile or singleFile options are used
-await writeFile("new_file.pdf", res, { encoding: "binary" });
+await writeFile("new_file.pdf", res, { encoding: "binary", flush: true });
 ```
 
 ### poppler.pdfToHtml

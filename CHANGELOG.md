@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.2.4](https://github.com/Fdawgs/node-poppler/compare/v7.2.3...v7.2.4) (2025-02-06)
+
+
+### Continuous integration
+
+* **automerge:** flush buffer to disk ([884a9e3](https://github.com/Fdawgs/node-poppler/commit/884a9e3d33f689c780302c95f02dc1d96cb0fd4d))
+* **release-please:** declare schema ([19d3ef7](https://github.com/Fdawgs/node-poppler/commit/19d3ef7b42ebc048021b3a5cfab4bbb0bdc9bc36))
+
+
+### Dependencies
+
+* **deps:** remove upath ([4a15022](https://github.com/Fdawgs/node-poppler/commit/4a150221edd3231383e349eb6e30d1714d871005))
+
+
+### Documentation
+
+* **api:** add api documentation ([98a10a3](https://github.com/Fdawgs/node-poppler/commit/98a10a33b76d5ea8d5286c09c443bf6dc96a8fee))
+
+
+### Improvements
+
+* **index:** optimise `parseOptions` ([#624](https://github.com/Fdawgs/node-poppler/issues/624)) ([604ad25](https://github.com/Fdawgs/node-poppler/commit/604ad25ff9d824c9a09f7f0beae920e92bd087d8))
+
+
+### Miscellaneous
+
+* **tsconfig:** set schema ([8898da8](https://github.com/Fdawgs/node-poppler/commit/8898da88e6990419d32c84b2c6fbc2706b944eb9))
+* use impersonal language ([5ee481d](https://github.com/Fdawgs/node-poppler/commit/5ee481df3dc8e17016c24dd43ac6d95f8936caf4))
+
 ## [7.2.3](https://github.com/Fdawgs/node-poppler/compare/v7.2.2...v7.2.3) (2025-01-13)
 
 

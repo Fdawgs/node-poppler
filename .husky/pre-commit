@@ -1,1 +1,2 @@
 npm run lint:licenses && npm test
+npm run build:docs && git add API.md

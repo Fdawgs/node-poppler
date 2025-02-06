@@ -51,6 +51,7 @@
 	},
 	"scripts": {
 		"build": "tsc",
+		"build:docs": "jsdoc2md src/index.js > API.md --EOL posix",
 		"jest": "jest",
 		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
@@ -103,6 +104,7 @@
 		"glob": "^10.4.5",
 		"husky": "^9.1.7",
 		"jest": "^29.7.0",
+		"jsdoc-to-markdown": "^9.1.1",
 		"license-checker": "^25.0.1",
 		"prettier": "^3.4.2",
 		"spdx-copyleft": "^1.0.0",

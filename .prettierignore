@@ -137,6 +137,7 @@ dist
 
 # Auto generated files
 package.json
+API.md
 CHANGELOG.md
 types/
 .github/release-please/manifest.json

@@ -28,7 +28,7 @@ const pdfInfoFileSizesRegex = /(File\s+size:\s+)0(\s+)bytes/u;
  * version of binary.
  * @ignore
  * @param {object} acceptedOptions - Object containing accepted options.
- * @param {object} options - Object containing options to pass to binary.
+ * @param {Record<string, any>} options - Object containing options to pass to binary.
  * @param {string} [version] - Version of binary.
  * @returns {string[]} Array of CLI arguments.
  * @throws If invalid arguments provided.
@@ -38,45 +38,46 @@ function parseOptions(acceptedOptions, options, version) {
 	const args = [];
 	/** @type {string[]} */
 	const invalidArgs = [];
-	Object.keys(options).forEach((key) => {
+	for (const key of Object.keys(options)) {
 		if (Object.hasOwn(acceptedOptions, key)) {
+			const option = options[key];
+			const acceptedOption = acceptedOptions[key];
+
 			// eslint-disable-next-line valid-typeof -- `type` is a string
-			if (acceptedOptions[key].type === typeof options[key]) {
+			if (acceptedOption.type === typeof option) {
 				// Skip boolean options if false
-				if (acceptedOptions[key].type === "boolean" && !options[key]) {
-					return;
-				}
+				if (acceptedOption.type !== "boolean" || option) {
+					// Arg will be empty for some non-standard options
+					if (acceptedOption.arg !== "") {
+						args.push(acceptedOption.arg);
+					}
 
-				// Arg will be empty for some non-standard options
-				if (acceptedOptions[key].arg !== "") {
-					args.push(acceptedOptions[key].arg);
-				}
-
-				if (typeof options[key] !== "boolean") {
-					args.push(options[key]);
+					if (typeof option !== "boolean") {
+						args.push(option);
+					}
 				}
 			} else {
 				invalidArgs.push(
 					`Invalid value type provided for option '${key}', expected ${
-						acceptedOptions[key].type
-					} but received ${typeof options[key]}`
+						acceptedOption.type
+					} but received ${typeof option}`
 				);
 			}
 
 			if (
-				acceptedOptions[key].minVersion &&
+				acceptedOption.minVersion &&
 				version &&
 				// @ts-ignore: type checking is done above
-				lt(version, acceptedOptions[key].minVersion, { loose: true })
+				lt(version, acceptedOption.minVersion, { loose: true })
 			) {
 				invalidArgs.push(
-					`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOptions[key].minVersion}, but received v${version}`
+					`Invalid option provided for the current version of the binary used. '${key}' was introduced in v${acceptedOption.minVersion}, but received v${version}`
 				);
 			}
 		} else {
 			invalidArgs.push(`Invalid option provided '${key}'`);
 		}
-	});
+	}
 	if (invalidArgs.length === 0) {
 		return args;
 	}

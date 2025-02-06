@@ -50,6 +50,19 @@ module.exports = {
 		"jsdoc/require-description-complete-sentence": "error",
 		"jsdoc/require-hyphen-before-param-description": "error",
 		"no-multiple-empty-lines": ["error", { max: 1 }],
+		"no-restricted-syntax": [
+			"error",
+			{
+				selector: "LabeledStatement",
+				message:
+					"Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.",
+			},
+			{
+				selector: "WithStatement",
+				message:
+					"`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
+			},
+		],
 		"prefer-destructuring": ["error", { object: true, array: false }],
 		"promise/prefer-await-to-callbacks": "warn",
 		"promise/prefer-await-to-then": "warn",

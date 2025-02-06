@@ -82,7 +82,7 @@ describe("Node-Poppler module", () => {
 
 		it("Creates a new Poppler instance without the binary path set", () => {
 			const poppler = new Poppler();
-			expect(poppler.popplerPath).toBe(testBinaryPath);
+			expect(poppler.path).toBe(testBinaryPath);
 		});
 
 		it("Throws an Error if the binary path is not found", () => {

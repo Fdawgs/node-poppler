@@ -23,11 +23,23 @@ const popplerVersionRegex = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u;
 const pdfInfoFileSizesRegex = /(File\s+size:\s+)0(\s+)bytes/u;
 
 /**
+ * @typedef {object} OptionDetails
+ * @property {string} arg The argument to pass to the binary.
+ * @property {('boolean'|'number'|'string')} type The type of the option.
+ * @property {string} [minVersion] The minimum version of the binary that supports this option.
+ * @property {string} [maxVersion] The maximum version of the binary that supports this option (optional).
+ */
+
+/**
+ * @typedef {Record<string, OptionDetails>} PopplerAcceptedOptions
+ */
+
+/**
  * @author Frazer Smith
  * @description Checks each option provided is valid, of the correct type, and can be used by specified
  * version of binary.
  * @ignore
- * @param {object} acceptedOptions - Object containing accepted options.
+ * @param {PopplerAcceptedOptions} acceptedOptions - Object containing accepted options.
  * @param {Record<string, any>} options - Object containing options to pass to binary.
  * @param {string} [version] - Version of binary.
  * @returns {string[]} Array of CLI arguments.
@@ -85,6 +97,8 @@ function parseOptions(acceptedOptions, options, version) {
 }
 
 class Poppler {
+	#popplerPath;
+
 	/**
 	 * @param {string} [binPath] - Path of poppler-utils binaries.
 	 * If not provided, the constructor will attempt to find the Poppler `pdfinfo` binary
@@ -93,12 +107,12 @@ class Poppler {
 	 * if a local installation is not found.
 	 */
 	constructor(binPath) {
-		this.popplerPath = "";
+		this.#popplerPath = "";
 
 		/* istanbul ignore else: requires specific OS */
 		if (binPath) {
 			/** @type {string|undefined} */
-			this.popplerPath = binPath;
+			this.#popplerPath = binPath;
 		} else {
 			const { platform } = process;
 
@@ -108,10 +122,10 @@ class Poppler {
 			const popplerPath = /(.+)pdfinfo/u.exec(which)?.[1];
 
 			if (popplerPath) {
-				this.popplerPath = popplerPath;
+				this.#popplerPath = popplerPath;
 			}
 			if (platform === "win32" && !popplerPath) {
-				this.popplerPath = pathResolve(
+				this.#popplerPath = pathResolve(
 					__dirname,
 					"lib",
 					"win32",
@@ -123,12 +137,20 @@ class Poppler {
 		}
 
 		/* istanbul ignore next: unable to test due to https://github.com/jestjs/jest/pull/14297 */
-		if (!this.popplerPath) {
+		if (!this.#popplerPath) {
 			throw new Error(
 				`Unable to find ${process.platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
 			);
 		}
-		this.popplerPath = normalize(this.popplerPath);
+		this.#popplerPath = normalize(this.#popplerPath);
+	}
+
+	/**
+	 * @description Returns the path of the Poppler binaries.
+	 * @returns {string} Path of Poppler binaries.
+	 */
+	get path() {
+		return this.#popplerPath;
 	}
 
 	/**
@@ -143,6 +165,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfAttach(file, fileToAttach, outputFile, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			printVersionInfo: { arg: "-v", type: "boolean" },
 			replace: { arg: "-replace", type: "boolean" },
@@ -153,7 +176,7 @@ class Poppler {
 			args.push(file, fileToAttach, outputFile);
 
 			const { stdout } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdfattach"),
+				pathResolve(this.#popplerPath, "pdfattach"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -189,6 +212,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfDetach(file, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			listEmbedded: { arg: "-list", type: "boolean" },
 			outputEncoding: { arg: "-enc", type: "string" },
@@ -210,7 +234,7 @@ class Poppler {
 			args.push(file);
 
 			const { stdout } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdfdetach"),
+				pathResolve(this.#popplerPath, "pdfdetach"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -234,6 +258,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfFonts(file, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			firstPageToExamine: { arg: "-f", type: "number" },
 			lastPageToExamine: { arg: "-l", type: "number" },
@@ -245,7 +270,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdffonts"),
+				pathResolve(this.#popplerPath, "pdffonts"),
 				["-v"]
 			);
 
@@ -258,7 +283,7 @@ class Poppler {
 				args.push(Buffer.isBuffer(file) ? "-" : file);
 
 				const child = spawn(
-					pathResolve(this.popplerPath, "pdffonts"),
+					pathResolve(this.#popplerPath, "pdffonts"),
 					args
 				);
 
@@ -289,6 +314,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
+								// @ts-ignore: Second operand used if code is not in errorMessages
 								errorMessages[code] ||
 									`pdffonts ${args.join(
 										" "
@@ -328,6 +354,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfImages(file, outputPrefix, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			allFiles: { arg: "-all", type: "boolean" },
 			ccittFile: { arg: "-ccitt", type: "boolean" },
@@ -346,7 +373,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdfimages"),
+				pathResolve(this.#popplerPath, "pdfimages"),
 				["-v"]
 			);
 
@@ -363,7 +390,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					pathResolve(this.popplerPath, "pdfimages"),
+					pathResolve(this.#popplerPath, "pdfimages"),
 					args
 				);
 
@@ -394,6 +421,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
+								// @ts-ignore: Second operand used if code is not in errorMessages
 								errorMessages[code] ||
 									`pdfimages ${args.join(
 										" "
@@ -443,6 +471,7 @@ class Poppler {
 	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
 	 */
 	async pdfInfo(file, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			firstPageToConvert: { arg: "-f", type: "number" },
 			lastPageToConvert: { arg: "-l", type: "number" },
@@ -465,7 +494,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdfinfo"),
+				pathResolve(this.#popplerPath, "pdfinfo"),
 				["-v"]
 			);
 
@@ -490,7 +519,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					pathResolve(this.popplerPath, "pdfinfo"),
+					pathResolve(this.#popplerPath, "pdfinfo"),
 					args
 				);
 
@@ -544,6 +573,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
+								// @ts-ignore: Second operand used if code is not in errorMessages
 								errorMessages[code] ||
 									`pdfinfo ${args.join(
 										" "
@@ -576,6 +606,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfSeparate(file, outputPattern, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			firstPageToExtract: { arg: "-f", type: "number" },
 			lastPageToExtract: { arg: "-l", type: "number" },
@@ -584,7 +615,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdfseparate"),
+				pathResolve(this.#popplerPath, "pdfseparate"),
 				["-v"]
 			);
 
@@ -595,7 +626,7 @@ class Poppler {
 			args.push(file, outputPattern);
 
 			const { stdout } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdfseparate"),
+				pathResolve(this.#popplerPath, "pdfseparate"),
 				args
 			);
 			return Promise.resolve(stdout);
@@ -712,6 +743,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToCairo(file, outputFile, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			antialias: { arg: "-antialias", type: "string" },
 			cropBox: { arg: "-cropbox", type: "boolean" },
@@ -768,7 +800,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdftocairo"),
+				pathResolve(this.#popplerPath, "pdftocairo"),
 				["-v"]
 			);
 
@@ -784,7 +816,7 @@ class Poppler {
 				);
 
 				const child = spawn(
-					pathResolve(this.popplerPath, "pdftocairo"),
+					pathResolve(this.#popplerPath, "pdftocairo"),
 					args
 				);
 
@@ -822,6 +854,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
+								// @ts-ignore: Second operand used if code is not in errorMessages
 								errorMessages[code] ||
 									`pdftocairo ${args.join(
 										" "
@@ -877,6 +910,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToHtml(file, outputFile, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			complexOutput: { arg: "-c", type: "boolean" },
 			dataUrls: {
@@ -909,7 +943,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdftohtml"),
+				pathResolve(this.#popplerPath, "pdftohtml"),
 				["-v"]
 			);
 
@@ -926,7 +960,7 @@ class Poppler {
 				}
 
 				const child = spawn(
-					pathResolve(this.popplerPath, "pdftohtml"),
+					pathResolve(this.#popplerPath, "pdftohtml"),
 					args
 				);
 
@@ -1038,6 +1072,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToPpm(file, outputPath, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			antialiasFonts: { arg: "-aa", type: "string" },
 			antialiasVectors: { arg: "-aaVector", type: "string" },
@@ -1110,7 +1145,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdftoppm"),
+				pathResolve(this.#popplerPath, "pdftoppm"),
 				["-v"]
 			);
 
@@ -1123,7 +1158,7 @@ class Poppler {
 				args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
 
 				const child = spawn(
-					pathResolve(this.popplerPath, "pdftoppm"),
+					pathResolve(this.#popplerPath, "pdftoppm"),
 					args
 				);
 
@@ -1147,6 +1182,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
+								// @ts-ignore: Second operand used if code is not in errorMessages
 								errorMessages[code] ||
 									`pdftoppm ${args.join(
 										" "
@@ -1271,6 +1307,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToPs(file, outputFile, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			antialias: { arg: "-aaRaster", type: "string" },
 			binary: { arg: "-binary", type: "boolean" },
@@ -1342,7 +1379,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdftops"),
+				pathResolve(this.#popplerPath, "pdftops"),
 				["-v"]
 			);
 
@@ -1358,7 +1395,7 @@ class Poppler {
 				);
 
 				const child = spawn(
-					pathResolve(this.popplerPath, "pdftops"),
+					pathResolve(this.#popplerPath, "pdftops"),
 					args
 				);
 
@@ -1389,6 +1426,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
+								// @ts-ignore: Second operand used if code is not in errorMessages
 								errorMessages[code] ||
 									`pdftops ${args.join(
 										" "
@@ -1452,6 +1490,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToText(file, outputFile, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			boundingBoxXhtml: { arg: "-bbox", type: "boolean" },
 			boundingBoxXhtmlLayout: {
@@ -1492,7 +1531,7 @@ class Poppler {
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdftotext"),
+				pathResolve(this.#popplerPath, "pdftotext"),
 				["-v"]
 			);
 
@@ -1508,7 +1547,7 @@ class Poppler {
 				);
 
 				const child = spawn(
-					pathResolve(this.popplerPath, "pdftotext"),
+					pathResolve(this.#popplerPath, "pdftotext"),
 					args
 				);
 
@@ -1541,6 +1580,7 @@ class Poppler {
 					} else {
 						reject(
 							new Error(
+								// @ts-ignore: Second operand used if code is not in errorMessages
 								errorMessages[code] ||
 									`pdftotext ${args.join(
 										" "
@@ -1567,13 +1607,14 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfUnite(files, outputFile, options = {}) {
+		/** @type {PopplerAcceptedOptions} */
 		const acceptedOptions = {
 			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
 		try {
 			const { stderr } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdfunite"),
+				pathResolve(this.#popplerPath, "pdfunite"),
 				["-v"]
 			);
 
@@ -1587,7 +1628,7 @@ class Poppler {
 			args.push(outputFile);
 
 			const { stdout } = await execFileAsync(
-				pathResolve(this.popplerPath, "pdfunite"),
+				pathResolve(this.#popplerPath, "pdfunite"),
 				args
 			);
 			return Promise.resolve(stdout);

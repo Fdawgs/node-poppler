@@ -9,6 +9,7 @@
 		"moduleResolution": "NodeNext",
 		"outDir": "types",
 		"resolveJsonModule": true,
+		"strict": true,
 		"target": "ES2023"
 	},
 	"include": ["src/index.js"]

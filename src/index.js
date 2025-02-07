@@ -222,7 +222,7 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
-	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object} [options] - Object containing options to pass to binary.
 	 * @param {number} [options.firstPageToExamine] - Specifies the first page to examine.
 	 * @param {number} [options.lastPageToExamine] - Specifies the last page to examine.
@@ -306,7 +306,7 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
-	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputPrefix] - Filename prefix of output files.
 	 * @param {object} [options] - Object containing options to pass to binary.
 	 * @param {boolean} [options.allFiles] - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
@@ -411,7 +411,7 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
-	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {object} [options] - Object containing options to pass to binary.
 	 * @param {number} [options.firstPageToConvert] - First page to print.
 	 * @param {number} [options.lastPageToConvert] - Last page to print.
@@ -839,7 +839,7 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to HTML.
-	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then Poppler will use the directory and name of the original file
 	 * and create a new file, with `-html` appended to the end of the filename.
@@ -968,7 +968,7 @@ class Poppler {
 	 * @description Converts a PDF file to colour image files in Portable Pixmap (PPM) format,
 	 * grayscale image files in Portable Graymap (PGM) format, or monochrome image files
 	 * in Portable Bitmap (PBM) format.
-	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} outputPath - Filepath to output the results to.
 	 * @param {object} [options] - Object containing options to pass to binary.
 	 * @param {('no'|'yes')} [options.antialiasFonts] - Enable or disable font anti-aliasing.
@@ -1164,7 +1164,7 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to PostScript (PS).
-	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
 	 * @param {object} [options] - Object containing options to pass to binary.
@@ -1406,7 +1406,7 @@ class Poppler {
 	/**
 	 * @author Frazer Smith
 	 * @description Converts a PDF file to TXT.
-	 * @param {Buffer|string} file - PDF file as Buffer, or filepath of the PDF file to read.
+	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
 	 * @param {object} [options] - Object containing options to pass to binary.

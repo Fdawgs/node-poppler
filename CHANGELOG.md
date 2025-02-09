@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.0](https://github.com/Fdawgs/node-poppler/compare/v7.2.4...v8.0.0) (2025-02-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* dropped support for node 18
+* **index:** `popplerPath` field can no longer be changed after class has been initialised
+
+### Improvements
+
+* **index:** make `popplerPath` field private ([#625](https://github.com/Fdawgs/node-poppler/issues/625)) ([4b242fc](https://github.com/Fdawgs/node-poppler/commit/4b242fc443e06055c00a6a21f53e8706a0929461))
+
+
+### Miscellaneous
+
+* drop support for node 18 ([18f09de](https://github.com/Fdawgs/node-poppler/commit/18f09de8f16e9848558af6b7517243951884493b))
+* **index:** correct syntax for union types ([7e15571](https://github.com/Fdawgs/node-poppler/commit/7e155718c5cf9cc53adefc330f9e66f4f53322c1))
+
 ## [7.2.4](https://github.com/Fdawgs/node-poppler/compare/v7.2.3...v7.2.4) (2025-02-06)
 
 

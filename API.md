@@ -1,3 +1,19 @@
+## Classes
+
+<dl>
+<dt><a href="#Poppler">Poppler</a></dt>
+<dd></dd>
+</dl>
+
+## Typedefs
+
+<dl>
+<dt><a href="#OptionDetails">OptionDetails</a> : <code>object</code></dt>
+<dd></dd>
+<dt><a href="#PopplerAcceptedOptions">PopplerAcceptedOptions</a> : <code>Record.&lt;string, OptionDetails&gt;</code></dt>
+<dd></dd>
+</dl>
+
 <a name="Poppler"></a>
 
 ## Poppler
@@ -5,19 +21,22 @@
 
 * [Poppler](#Poppler)
     * [new Poppler([binPath])](#new_Poppler_new)
-    * [.popplerPath](#Poppler+popplerPath) : <code>string</code> \| <code>undefined</code>
-    * [.pdfAttach(file, fileToAttach, outputFile, [options])](#Poppler+pdfAttach) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfDetach(file, [options])](#Poppler+pdfDetach) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfFonts(file, [options])](#Poppler+pdfFonts) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfImages(file, [outputPrefix], [options])](#Poppler+pdfImages) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;(object\|string)&gt;</code>
-    * [.pdfSeparate(file, outputPattern, [options])](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfToCairo(file, [outputFile], [options])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfToHtml(file, [outputFile], [options])](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfToPpm(file, outputPath, [options])](#Poppler+pdfToPpm) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfToPs(file, [outputFile], [options])](#Poppler+pdfToPs) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfToText(file, [outputFile], [options])](#Poppler+pdfToText) ⇒ <code>Promise.&lt;string&gt;</code>
-    * [.pdfUnite(files, outputFile, [options])](#Poppler+pdfUnite) ⇒ <code>Promise.&lt;string&gt;</code>
+    * _instance_
+        * [.path](#Poppler+path) ⇒ <code>string</code>
+        * [.pdfAttach(file, fileToAttach, outputFile, [options])](#Poppler+pdfAttach) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfDetach(file, [options])](#Poppler+pdfDetach) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfFonts(file, [options])](#Poppler+pdfFonts) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfImages(file, [outputPrefix], [options])](#Poppler+pdfImages) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfInfo(file, [options])](#Poppler+pdfInfo) ⇒ <code>Promise.&lt;(object\|string)&gt;</code>
+        * [.pdfSeparate(file, outputPattern, [options])](#Poppler+pdfSeparate) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfToCairo(file, [outputFile], [options])](#Poppler+pdfToCairo) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfToHtml(file, [outputFile], [options])](#Poppler+pdfToHtml) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfToPpm(file, outputPath, [options])](#Poppler+pdfToPpm) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfToPs(file, [outputFile], [options])](#Poppler+pdfToPs) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfToText(file, [outputFile], [options])](#Poppler+pdfToText) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.pdfUnite(files, outputFile, [options])](#Poppler+pdfUnite) ⇒ <code>Promise.&lt;string&gt;</code>
+    * _static_
+        * [.Poppler](#Poppler.Poppler) : <code>string</code> \| <code>undefined</code>
 
 <a name="new_Poppler_new"></a>
 
@@ -27,10 +46,13 @@
 | --- | --- | --- |
 | [binPath] | <code>string</code> | Path of poppler-utils binaries. If not provided, the constructor will attempt to find the Poppler `pdfinfo` binary in the PATH environment variable and use that as the path for all binaries. For `win32` the binaries are bundled with the package and will be used if a local installation is not found. |
 
-<a name="Poppler+popplerPath"></a>
+<a name="Poppler+path"></a>
 
-### poppler.popplerPath : <code>string</code> \| <code>undefined</code>
+### poppler.path ⇒ <code>string</code>
+Returns the path of the Poppler binaries.
+
 **Kind**: instance property of [<code>Poppler</code>](#Poppler)  
+**Returns**: <code>string</code> - Path of Poppler binaries.  
 <a name="Poppler+pdfAttach"></a>
 
 ### poppler.pdfAttach(file, fileToAttach, outputFile, [options]) ⇒ <code>Promise.&lt;string&gt;</code>
@@ -439,3 +461,24 @@ one PDF result file.
 | [options] | <code>object</code> | Object containing options to pass to binary. |
 | [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information. |
 
+<a name="Poppler.Poppler"></a>
+
+### Poppler.Poppler : <code>string</code> \| <code>undefined</code>
+**Kind**: static property of [<code>Poppler</code>](#Poppler)  
+<a name="OptionDetails"></a>
+
+## OptionDetails : <code>object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| arg | <code>string</code> | The argument to pass to the binary. |
+| type | <code>&#x27;boolean&#x27;</code> \| <code>&#x27;number&#x27;</code> \| <code>&#x27;string&#x27;</code> | The type of the option. |
+| [minVersion] | <code>string</code> | The minimum version of the binary that supports this option. |
+| [maxVersion] | <code>string</code> | The maximum version of the binary that supports this option (optional). |
+
+<a name="PopplerAcceptedOptions"></a>
+
+## PopplerAcceptedOptions : <code>Record.&lt;string, OptionDetails&gt;</code>
+**Kind**: global typedef  

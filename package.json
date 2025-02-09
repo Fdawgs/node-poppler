@@ -47,7 +47,7 @@
 	"author": "Frazer Smith <frazer.dev@icloud.com>",
 	"funding": "https://github.com/sponsors/Fdawgs",
 	"engines": {
-		"node": ">=18"
+		"node": ">=20"
 	},
 	"scripts": {
 		"build": "tsc",

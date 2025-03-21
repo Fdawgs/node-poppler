@@ -52,15 +52,15 @@
 	"scripts": {
 		"build": "tsc",
 		"build:docs": "jsdoc2md src/index.js > API.md --EOL posix",
-		"jest": "jest",
-		"jest:coverage": "jest --coverage",
 		"lint": "eslint . --cache --ext js,jsx --ignore-path .gitignore",
 		"lint:fix": "npm run lint -- --fix",
 		"lint:licenses": "node scripts/license-checker.js",
 		"lint:prettier": "prettier . -c -u",
 		"lint:prettier:fix": "prettier . -w -u",
 		"prepare": "husky",
-		"test": "npm run lint && npm run lint:prettier && npm run jest"
+		"test": "npm run lint && npm run lint:prettier && npm run test:unit",
+		"test:unit": "jest",
+		"test:unit:coverage": "jest --coverage"
 	},
 	"commitlint": {
 		"extends": [

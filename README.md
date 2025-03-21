@@ -6,13 +6,13 @@
 [![Coverage status](https://coveralls.io/repos/github/Fdawgs/node-poppler/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/node-poppler?branch=main)
 [![code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 
-> Asynchronous node.js wrapper for the Poppler PDF rendering library
+> Asynchronous Node.js wrapper for the Poppler PDF rendering library
 
 ## Overview
 
 [Poppler](https://poppler.freedesktop.org/) is a PDF rendering library that also includes a collection of utility binaries, which allows for the manipulation and extraction of data from PDF documents such as converting PDF files to HTML, TXT, or PostScript.
 
-The `node-poppler` module provides an asynchronous node.js wrapper around said utility binaries for easier use.
+The `node-poppler` module provides an asynchronous Node.js wrapper around said utility binaries for easier use.
 
 ## Installation
 

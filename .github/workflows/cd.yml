@@ -10,6 +10,9 @@ on:
     # Allows this workflow to be run manually from the Actions tab
     workflow_dispatch:
 
+permissions:
+    contents: read
+
 jobs:
     release:
         name: Create/Update Release Pull Request

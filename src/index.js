@@ -50,7 +50,10 @@ function parseOptions(acceptedOptions, options, version) {
 	const args = [];
 	/** @type {string[]} */
 	const invalidArgs = [];
-	for (const key of Object.keys(options)) {
+	const keys = Object.keys(options);
+	const keysLength = keys.length;
+	for (let i = 0; i < keysLength; i += 1) {
+		const key = keys[i];
 		if (Object.hasOwn(acceptedOptions, key)) {
 			const option = options[key];
 			const acceptedOption = acceptedOptions[key];

@@ -558,13 +558,16 @@ class Poppler {
 						 */
 						if (options.printAsJson === true) {
 							const info = {};
-							stdOut.split("\n").forEach((line) => {
+							const stdOutLines = stdOut.split("\n");
+							const stdOutLinesLength = stdOutLines.length;
+							for (let i = 0; i < stdOutLinesLength; i += 1) {
+								const line = stdOutLines[i];
 								const lines = line.split(": ");
 								if (lines.length > 1) {
 									// @ts-ignore: creating dynamic object keys
 									info[camelCase(lines[0])] = lines[1].trim();
 								}
-							});
+							}
 							resolve(info);
 						} else {
 							resolve(stdOut.trim());
@@ -1625,10 +1628,7 @@ class Poppler {
 			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
-			files.forEach((element) => {
-				args.push(element);
-			});
-			args.push(outputFile);
+			args.push(...files, outputFile);
 
 			const { stdout } = await execFileAsync(
 				pathResolve(this.#popplerPath, "pdfunite"),

@@ -2,6 +2,50 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.0](https://github.com/Fdawgs/node-poppler/compare/v7.2.4...v8.0.0) (2025-05-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* dropped support for node 18
+* **index:** `popplerPath` field can no longer be changed after class has been initialised
+
+### Continuous integration
+
+* **.github:** pin actions to commit-hash; set permissions at job level ([4a2cab8](https://github.com/Fdawgs/node-poppler/commit/4a2cab86c3789047cbfc0057e4e95f4c93307a79))
+* add top-level workflow permissions ([#632](https://github.com/Fdawgs/node-poppler/issues/632)) ([da1f8c4](https://github.com/Fdawgs/node-poppler/commit/da1f8c4ba51afd4a6279a64ceabf72b605fbe589))
+* **codeql:** analyse github actions ([2b753b5](https://github.com/Fdawgs/node-poppler/commit/2b753b5cfdc854d9054fd59117ae64e29fff88d8))
+* **deps:** bump actions/dependency-review-action from 4.5.0 to 4.6.0 ([#633](https://github.com/Fdawgs/node-poppler/issues/633)) ([79fb42e](https://github.com/Fdawgs/node-poppler/commit/79fb42ecc2d440defddef5c4b11101885169cd78))
+* **deps:** bump actions/setup-node from 4.3.0 to 4.4.0 ([#636](https://github.com/Fdawgs/node-poppler/issues/636)) ([910e092](https://github.com/Fdawgs/node-poppler/commit/910e092fe6529171e906c7a6f095e745b13851bb))
+* **deps:** bump github/codeql-action from 3.28.12 to 3.28.13 ([#634](https://github.com/Fdawgs/node-poppler/issues/634)) ([45c71c8](https://github.com/Fdawgs/node-poppler/commit/45c71c8ba102328a70766aa19d58b9c246e59e6e))
+* **deps:** bump github/codeql-action from 3.28.13 to 3.28.16 ([#637](https://github.com/Fdawgs/node-poppler/issues/637)) ([385f9d4](https://github.com/Fdawgs/node-poppler/commit/385f9d46d8c95b1d104f9d4eb0f8e9711f5635e7))
+* use latest node lts version for unit tests ([#635](https://github.com/Fdawgs/node-poppler/issues/635)) ([0785a61](https://github.com/Fdawgs/node-poppler/commit/0785a6181ca330b259eb72429f38ab10f81c7c15))
+
+
+### Dependencies
+
+* **deps-dev:** bump glob from 10.4.5 to 11.0.2 ([#638](https://github.com/Fdawgs/node-poppler/issues/638)) ([ff73305](https://github.com/Fdawgs/node-poppler/commit/ff73305e2bd544c89a12d2360ff1dbdfcae67aaa))
+* **deps-dev:** bump typescript from 5.7.3 to 5.8.2 ([#629](https://github.com/Fdawgs/node-poppler/issues/629)) ([6698255](https://github.com/Fdawgs/node-poppler/commit/669825599eb70b551acb8419636052cef0f66818))
+
+
+### Documentation
+
+* correctly capitalise node.js ([055fd1d](https://github.com/Fdawgs/node-poppler/commit/055fd1d1cd31975827ff663aa597ec43f74fc88b))
+
+
+### Improvements
+
+* **index:** destruct push in `pdfUnite`; replace `forEach` in `pdfInfo` ([#640](https://github.com/Fdawgs/node-poppler/issues/640)) ([9149dcc](https://github.com/Fdawgs/node-poppler/commit/9149dccf24ef154ac657f1a4ccbe58f77ea11e27))
+* **index:** make `popplerPath` field private ([#625](https://github.com/Fdawgs/node-poppler/issues/625)) ([4b242fc](https://github.com/Fdawgs/node-poppler/commit/4b242fc443e06055c00a6a21f53e8706a0929461))
+* **index:** use `for` loop over `for...of` loop ([#639](https://github.com/Fdawgs/node-poppler/issues/639)) ([ff419cf](https://github.com/Fdawgs/node-poppler/commit/ff419cfeb15571922e3a24858f6ea53971f89cfa))
+
+
+### Miscellaneous
+
+* drop support for node 18 ([18f09de](https://github.com/Fdawgs/node-poppler/commit/18f09de8f16e9848558af6b7517243951884493b))
+* **index:** correct syntax for union types ([7e15571](https://github.com/Fdawgs/node-poppler/commit/7e155718c5cf9cc53adefc330f9e66f4f53322c1))
+* **package:** standardise test script naming ([160d126](https://github.com/Fdawgs/node-poppler/commit/160d1266f575a91ad9156f2465dda26d1421a914))
+
 ## [7.2.4](https://github.com/Fdawgs/node-poppler/compare/v7.2.3...v7.2.4) (2025-02-06)
 
 

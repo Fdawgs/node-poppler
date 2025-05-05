@@ -1625,10 +1625,7 @@ class Poppler {
 			const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
-			files.forEach((element) => {
-				args.push(element);
-			});
-			args.push(outputFile);
+			args.push(...files, outputFile);
 
 			const { stdout } = await execFileAsync(
 				pathResolve(this.#popplerPath, "pdfunite"),

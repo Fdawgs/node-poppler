@@ -50,12 +50,17 @@ function parseOptions(acceptedOptions, options, version) {
 	const args = [];
 	/** @type {string[]} */
 	const invalidArgs = [];
-	const keys = Object.keys(options);
-	const keysLength = keys.length;
-	for (let i = 0; i < keysLength; i += 1) {
-		const key = keys[i];
+	/**
+	 * Imperative loops are faster than functional loops.
+	 * @see {@link https://romgrk.com/posts/optimizing-javascript#3-avoid-arrayobject-methods || Optimizing JavaScript}
+	 */
+	const entries = Object.entries(options);
+	const entriesLength = entries.length;
+	for (let i = 0; i < entriesLength; i += 1) {
+		// Destructuring adds overhead, so use index access
+		const key = entries[i][0];
 		if (Object.hasOwn(acceptedOptions, key)) {
-			const option = options[key];
+			const option = entries[i][1];
 			const acceptedOption = acceptedOptions[key];
 
 			// eslint-disable-next-line valid-typeof -- `type` is a string

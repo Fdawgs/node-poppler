@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.1](https://github.com/Fdawgs/node-poppler/compare/v8.0.0...v8.0.1) (2025-05-06)
+
+
+### Improvements
+
+* **index:** replace `Object.keys` with `Object.entries` ([#641](https://github.com/Fdawgs/node-poppler/issues/641)) ([388df87](https://github.com/Fdawgs/node-poppler/commit/388df87eb2f25c4c0784d3ecf3c13bd537421a2d))
+
 ## [8.0.0](https://github.com/Fdawgs/node-poppler/compare/v7.2.4...v8.0.0) (2025-05-05)
 
 

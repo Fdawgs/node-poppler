@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.2](https://github.com/Fdawgs/node-poppler/compare/v8.0.1...v8.0.2) (2025-05-17)
+
+
+### Continuous integration
+
+* **ci:** add node 24 to test matrix ([#643](https://github.com/Fdawgs/node-poppler/issues/643)) ([738db46](https://github.com/Fdawgs/node-poppler/commit/738db46b524913b8882e0f114c51bd2465cae64c))
+
+
+### Improvements
+
+* **index:** stop rethrowing errors ([#645](https://github.com/Fdawgs/node-poppler/issues/645)) ([f9e3c4d](https://github.com/Fdawgs/node-poppler/commit/f9e3c4d8a6eabfb25f9d2eedde6da304b61f0203))
+
 ## [8.0.1](https://github.com/Fdawgs/node-poppler/compare/v8.0.0...v8.0.1) (2025-05-06)
 
 

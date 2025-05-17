@@ -179,18 +179,14 @@ class Poppler {
 			replace: { arg: "-replace", type: "boolean" },
 		};
 
-		try {
-			const args = parseOptions(acceptedOptions, options);
-			args.push(file, fileToAttach, outputFile);
+		const args = parseOptions(acceptedOptions, options);
+		args.push(file, fileToAttach, outputFile);
 
-			const { stdout } = await execFileAsync(
-				pathResolve(this.#popplerPath, "pdfattach"),
-				args
-			);
-			return Promise.resolve(stdout);
-		} catch (err) {
-			return Promise.reject(err);
-		}
+		const { stdout } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdfattach"),
+			args
+		);
+		return stdout;
 	}
 
 	/**
@@ -237,18 +233,14 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		try {
-			const args = parseOptions(acceptedOptions, options);
-			args.push(file);
+		const args = parseOptions(acceptedOptions, options);
+		args.push(file);
 
-			const { stdout } = await execFileAsync(
-				pathResolve(this.#popplerPath, "pdfdetach"),
-				args
-			);
-			return Promise.resolve(stdout);
-		} catch (err) {
-			return Promise.reject(err);
-		}
+		const { stdout } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdfdetach"),
+			args
+		);
+		return stdout;
 	}
 
 	/**
@@ -276,65 +268,61 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdffonts"),
+			["-v"]
+		);
+
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+
+		return new Promise((resolve, reject) => {
+			args.push(Buffer.isBuffer(file) ? "-" : file);
+
+			const child = spawn(
 				pathResolve(this.#popplerPath, "pdffonts"),
-				["-v"]
+				args
 			);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+			if (Buffer.isBuffer(file)) {
+				child.stdin.write(file);
+				child.stdin.end();
+			}
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
+			let stdOut = "";
+			let stdErr = "";
 
-			return new Promise((resolve, reject) => {
-				args.push(Buffer.isBuffer(file) ? "-" : file);
-
-				const child = spawn(
-					pathResolve(this.#popplerPath, "pdffonts"),
-					args
-				);
-
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
-					child.stdin.end();
-				}
-
-				let stdOut = "";
-				let stdErr = "";
-
-				child.stdout.on("data", (data) => {
-					stdOut += data;
-				});
-
-				child.stderr.on("data", (data) => {
-					stdErr += data;
-				});
-
-				child.on("close", (code) => {
-					/* istanbul ignore else */
-					if (stdOut !== "") {
-						resolve(stdOut.trim());
-					} else if (code === 0) {
-						resolve(errorMessages[code]);
-					} else if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
-					} else {
-						reject(
-							new Error(
-								// @ts-ignore: Second operand used if code is not in errorMessages
-								errorMessages[code] ||
-									`pdffonts ${args.join(
-										" "
-									)} exited with code ${code}`
-							)
-						);
-					}
-				});
+			child.stdout.on("data", (data) => {
+				stdOut += data;
 			});
-		} catch (err) {
-			return Promise.reject(err);
-		}
+
+			child.stderr.on("data", (data) => {
+				stdErr += data;
+			});
+
+			child.on("close", (code) => {
+				/* istanbul ignore else */
+				if (stdOut !== "") {
+					resolve(stdOut.trim());
+				} else if (code === 0) {
+					resolve(errorMessages[code]);
+				} else if (stdErr !== "") {
+					reject(new Error(stdErr.trim()));
+				} else {
+					reject(
+						new Error(
+							// @ts-ignore: Second operand used if code is not in errorMessages
+							errorMessages[code] ||
+								`pdffonts ${args.join(
+									" "
+								)} exited with code ${code}`
+						)
+					);
+				}
+			});
+		});
 	}
 
 	/**
@@ -379,69 +367,65 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdfimages"),
+			["-v"]
+		);
+
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+
+		return new Promise((resolve, reject) => {
+			args.push(Buffer.isBuffer(file) ? "-" : file);
+
+			if (outputPrefix) {
+				args.push(outputPrefix);
+			}
+
+			const child = spawn(
 				pathResolve(this.#popplerPath, "pdfimages"),
-				["-v"]
+				args
 			);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+			if (Buffer.isBuffer(file)) {
+				child.stdin.write(file);
+				child.stdin.end();
+			}
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
+			let stdOut = "";
+			let stdErr = "";
 
-			return new Promise((resolve, reject) => {
-				args.push(Buffer.isBuffer(file) ? "-" : file);
-
-				if (outputPrefix) {
-					args.push(outputPrefix);
-				}
-
-				const child = spawn(
-					pathResolve(this.#popplerPath, "pdfimages"),
-					args
-				);
-
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
-					child.stdin.end();
-				}
-
-				let stdOut = "";
-				let stdErr = "";
-
-				child.stdout.on("data", (data) => {
-					stdOut += data;
-				});
-
-				child.stderr.on("data", (data) => {
-					stdErr += data;
-				});
-
-				child.on("close", (code) => {
-					/* istanbul ignore else */
-					if (stdOut !== "") {
-						resolve(stdOut.trim());
-					} else if (code === 0) {
-						resolve(errorMessages[code]);
-					} else if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
-					} else {
-						reject(
-							new Error(
-								// @ts-ignore: Second operand used if code is not in errorMessages
-								errorMessages[code] ||
-									`pdfimages ${args.join(
-										" "
-									)} exited with code ${code}`
-							)
-						);
-					}
-				});
+			child.stdout.on("data", (data) => {
+				stdOut += data;
 			});
-		} catch (err) {
-			return Promise.reject(err);
-		}
+
+			child.stderr.on("data", (data) => {
+				stdErr += data;
+			});
+
+			child.on("close", (code) => {
+				/* istanbul ignore else */
+				if (stdOut !== "") {
+					resolve(stdOut.trim());
+				} else if (code === 0) {
+					resolve(errorMessages[code]);
+				} else if (stdErr !== "") {
+					reject(new Error(stdErr.trim()));
+				} else {
+					reject(
+						new Error(
+							// @ts-ignore: Second operand used if code is not in errorMessages
+							errorMessages[code] ||
+								`pdfimages ${args.join(
+									" "
+								)} exited with code ${code}`
+						)
+					);
+				}
+			});
+		});
 	}
 
 	/**
@@ -500,103 +484,99 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdfinfo"),
+			["-v"]
+		);
+
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+
+		/**
+		 * Poppler does not set the "File size" metadata value if passed
+		 * a Buffer via stdin, so need to retrieve it from the Buffer.
+		 */
+		/** @type {number} */
+		let fileSize;
+
+		return new Promise((resolve, reject) => {
+			if (Buffer.isBuffer(file)) {
+				args.push("-");
+				fileSize = file.length;
+			} else {
+				args.push(file);
+			}
+
+			const child = spawn(
 				pathResolve(this.#popplerPath, "pdfinfo"),
-				["-v"]
+				args
 			);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+			if (Buffer.isBuffer(file)) {
+				child.stdin.write(file);
+				child.stdin.end();
+			}
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
+			let stdOut = "";
+			let stdErr = "";
 
-			/**
-			 * Poppler does not set the "File size" metadata value if passed
-			 * a Buffer via stdin, so need to retrieve it from the Buffer.
-			 */
-			/** @type {number} */
-			let fileSize;
+			child.stdout.on("data", (data) => {
+				stdOut += data;
+			});
 
-			return new Promise((resolve, reject) => {
-				if (Buffer.isBuffer(file)) {
-					args.push("-");
-					fileSize = file.length;
-				} else {
-					args.push(file);
-				}
+			child.stderr.on("data", (data) => {
+				stdErr += data;
+			});
 
-				const child = spawn(
-					pathResolve(this.#popplerPath, "pdfinfo"),
-					args
-				);
-
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
-					child.stdin.end();
-				}
-
-				let stdOut = "";
-				let stdErr = "";
-
-				child.stdout.on("data", (data) => {
-					stdOut += data;
-				});
-
-				child.stderr.on("data", (data) => {
-					stdErr += data;
-				});
-
-				child.on("close", (code) => {
-					/* istanbul ignore else */
-					if (stdOut !== "") {
-						if (fileSize) {
-							stdOut = stdOut.replace(
-								pdfInfoFileSizesRegex,
-								`$1${fileSize}$2bytes`
-							);
-						}
-
-						/**
-						 * Convert output to JSON.
-						 * @see {@link https://github.com/Fdawgs/node-poppler/issues/248#issuecomment-845948080 | Node-Poppler Issue #248}
-						 */
-						if (options.printAsJson === true) {
-							const info = {};
-							const stdOutLines = stdOut.split("\n");
-							const stdOutLinesLength = stdOutLines.length;
-							for (let i = 0; i < stdOutLinesLength; i += 1) {
-								const line = stdOutLines[i];
-								const lines = line.split(": ");
-								if (lines.length > 1) {
-									// @ts-ignore: creating dynamic object keys
-									info[camelCase(lines[0])] = lines[1].trim();
-								}
-							}
-							resolve(info);
-						} else {
-							resolve(stdOut.trim());
-						}
-					} else if (code === 0) {
-						resolve(errorMessages[code]);
-					} else if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
-					} else {
-						reject(
-							new Error(
-								// @ts-ignore: Second operand used if code is not in errorMessages
-								errorMessages[code] ||
-									`pdfinfo ${args.join(
-										" "
-									)} exited with code ${code}`
-							)
+			child.on("close", (code) => {
+				/* istanbul ignore else */
+				if (stdOut !== "") {
+					if (fileSize) {
+						stdOut = stdOut.replace(
+							pdfInfoFileSizesRegex,
+							`$1${fileSize}$2bytes`
 						);
 					}
-				});
+
+					/**
+					 * Convert output to JSON.
+					 * @see {@link https://github.com/Fdawgs/node-poppler/issues/248#issuecomment-845948080 | Node-Poppler Issue #248}
+					 */
+					if (options.printAsJson === true) {
+						const info = {};
+						const stdOutLines = stdOut.split("\n");
+						const stdOutLinesLength = stdOutLines.length;
+						for (let i = 0; i < stdOutLinesLength; i += 1) {
+							const line = stdOutLines[i];
+							const lines = line.split(": ");
+							if (lines.length > 1) {
+								// @ts-ignore: creating dynamic object keys
+								info[camelCase(lines[0])] = lines[1].trim();
+							}
+						}
+						resolve(info);
+					} else {
+						resolve(stdOut.trim());
+					}
+				} else if (code === 0) {
+					resolve(errorMessages[code]);
+				} else if (stdErr !== "") {
+					reject(new Error(stdErr.trim()));
+				} else {
+					reject(
+						new Error(
+							// @ts-ignore: Second operand used if code is not in errorMessages
+							errorMessages[code] ||
+								`pdfinfo ${args.join(
+									" "
+								)} exited with code ${code}`
+						)
+					);
+				}
 			});
-		} catch (err) {
-			return Promise.reject(err);
-		}
+		});
 	}
 
 	/**
@@ -624,26 +604,22 @@ class Poppler {
 			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
-				pathResolve(this.#popplerPath, "pdfseparate"),
-				["-v"]
-			);
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdfseparate"),
+			["-v"]
+		);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
-			args.push(file, outputPattern);
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+		args.push(file, outputPattern);
 
-			const { stdout } = await execFileAsync(
-				pathResolve(this.#popplerPath, "pdfseparate"),
-				args
-			);
-			return Promise.resolve(stdout);
-		} catch (err) {
-			return Promise.reject(err);
-		}
+		const { stdout } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdfseparate"),
+			args
+		);
+		return stdout;
 	}
 
 	/**
@@ -952,60 +928,56 @@ class Poppler {
 			zoom: { arg: "-zoom", type: "number" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdftohtml"),
+			["-v"]
+		);
+
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+
+		return new Promise((resolve, reject) => {
+			args.push(Buffer.isBuffer(file) ? "-" : file);
+
+			if (outputFile) {
+				args.push(outputFile);
+			}
+
+			const child = spawn(
 				pathResolve(this.#popplerPath, "pdftohtml"),
-				["-v"]
+				args
 			);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+			if (Buffer.isBuffer(file)) {
+				child.stdin.write(file);
+				child.stdin.end();
+			}
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
+			let stdOut = "";
+			let stdErr = "";
 
-			return new Promise((resolve, reject) => {
-				args.push(Buffer.isBuffer(file) ? "-" : file);
-
-				if (outputFile) {
-					args.push(outputFile);
-				}
-
-				const child = spawn(
-					pathResolve(this.#popplerPath, "pdftohtml"),
-					args
-				);
-
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
-					child.stdin.end();
-				}
-
-				let stdOut = "";
-				let stdErr = "";
-
-				child.stdout.on("data", (data) => {
-					stdOut += data;
-				});
-
-				child.stderr.on("data", (data) => {
-					stdErr += data;
-				});
-
-				/**
-				 * PdfToHtml does not return an exit code so check output to see if it was successful.
-				 * @see {@link https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1 | Poppler pdftohtml man}
-				 */
-				child.on("close", () => {
-					if (stdOut !== "") {
-						resolve(stdOut.trim());
-					} else {
-						reject(new Error(stdErr ? stdErr.trim() : undefined));
-					}
-				});
+			child.stdout.on("data", (data) => {
+				stdOut += data;
 			});
-		} catch (err) {
-			return Promise.reject(err);
-		}
+
+			child.stderr.on("data", (data) => {
+				stdErr += data;
+			});
+
+			/**
+			 * PdfToHtml does not return an exit code so check output to see if it was successful.
+			 * @see {@link https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1 | Poppler pdftohtml man}
+			 */
+			child.on("close", () => {
+				if (stdOut !== "") {
+					resolve(stdOut.trim());
+				} else {
+					reject(new Error(stdErr ? stdErr.trim() : undefined));
+				}
+			});
+		});
 	}
 
 	/**
@@ -1154,58 +1126,54 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdftoppm"),
+			["-v"]
+		);
+
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+
+		return new Promise((resolve, reject) => {
+			args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
+
+			const child = spawn(
 				pathResolve(this.#popplerPath, "pdftoppm"),
-				["-v"]
+				args
 			);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+			if (Buffer.isBuffer(file)) {
+				child.stdin.write(file);
+				child.stdin.end();
+			}
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
+			let stdErr = "";
 
-			return new Promise((resolve, reject) => {
-				args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
-
-				const child = spawn(
-					pathResolve(this.#popplerPath, "pdftoppm"),
-					args
-				);
-
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
-					child.stdin.end();
-				}
-
-				let stdErr = "";
-
-				child.stderr.on("data", (data) => {
-					stdErr += data;
-				});
-
-				child.on("close", (code) => {
-					/* istanbul ignore else */
-					if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
-					} else if (code === 0) {
-						resolve(errorMessages[code]);
-					} else {
-						reject(
-							new Error(
-								// @ts-ignore: Second operand used if code is not in errorMessages
-								errorMessages[code] ||
-									`pdftoppm ${args.join(
-										" "
-									)} exited with code ${code}`
-							)
-						);
-					}
-				});
+			child.stderr.on("data", (data) => {
+				stdErr += data;
 			});
-		} catch (err) {
-			return Promise.reject(err);
-		}
+
+			child.on("close", (code) => {
+				/* istanbul ignore else */
+				if (stdErr !== "") {
+					reject(new Error(stdErr.trim()));
+				} else if (code === 0) {
+					resolve(errorMessages[code]);
+				} else {
+					reject(
+						new Error(
+							// @ts-ignore: Second operand used if code is not in errorMessages
+							errorMessages[code] ||
+								`pdftoppm ${args.join(
+									" "
+								)} exited with code ${code}`
+						)
+					);
+				}
+			});
+		});
 	}
 
 	/**
@@ -1388,68 +1356,61 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdftops"),
+			["-v"]
+		);
+
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+
+		return new Promise((resolve, reject) => {
+			args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
+
+			const child = spawn(
 				pathResolve(this.#popplerPath, "pdftops"),
-				["-v"]
+				args
 			);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+			if (Buffer.isBuffer(file)) {
+				child.stdin.write(file);
+				child.stdin.end();
+			}
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
+			let stdOut = "";
+			let stdErr = "";
 
-			return new Promise((resolve, reject) => {
-				args.push(
-					Buffer.isBuffer(file) ? "-" : file,
-					outputFile || "-"
-				);
-
-				const child = spawn(
-					pathResolve(this.#popplerPath, "pdftops"),
-					args
-				);
-
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
-					child.stdin.end();
-				}
-
-				let stdOut = "";
-				let stdErr = "";
-
-				child.stdout.on("data", (data) => {
-					stdOut += data;
-				});
-
-				child.stderr.on("data", (data) => {
-					stdErr += data;
-				});
-
-				child.on("close", (code) => {
-					/* istanbul ignore else */
-					if (stdOut !== "") {
-						resolve(stdOut.trim());
-					} else if (code === 0) {
-						resolve(errorMessages[code]);
-					} else if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
-					} else {
-						reject(
-							new Error(
-								// @ts-ignore: Second operand used if code is not in errorMessages
-								errorMessages[code] ||
-									`pdftops ${args.join(
-										" "
-									)} exited with code ${code}`
-							)
-						);
-					}
-				});
+			child.stdout.on("data", (data) => {
+				stdOut += data;
 			});
-		} catch (err) {
-			return Promise.reject(err);
-		}
+
+			child.stderr.on("data", (data) => {
+				stdErr += data;
+			});
+
+			child.on("close", (code) => {
+				/* istanbul ignore else */
+				if (stdOut !== "") {
+					resolve(stdOut.trim());
+				} else if (code === 0) {
+					resolve(errorMessages[code]);
+				} else if (stdErr !== "") {
+					reject(new Error(stdErr.trim()));
+				} else {
+					reject(
+						new Error(
+							// @ts-ignore: Second operand used if code is not in errorMessages
+							errorMessages[code] ||
+								`pdftops ${args.join(
+									" "
+								)} exited with code ${code}`
+						)
+					);
+				}
+			});
+		});
 	}
 
 	/**
@@ -1540,70 +1501,61 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdftotext"),
+			["-v"]
+		);
+
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+
+		return new Promise((resolve, reject) => {
+			args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
+
+			const child = spawn(
 				pathResolve(this.#popplerPath, "pdftotext"),
-				["-v"]
+				args
 			);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+			if (Buffer.isBuffer(file)) {
+				child.stdin.write(file);
+				child.stdin.end();
+			}
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
+			let stdOut = "";
+			let stdErr = "";
 
-			return new Promise((resolve, reject) => {
-				args.push(
-					Buffer.isBuffer(file) ? "-" : file,
-					outputFile || "-"
-				);
-
-				const child = spawn(
-					pathResolve(this.#popplerPath, "pdftotext"),
-					args
-				);
-
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
-					child.stdin.end();
-				}
-
-				let stdOut = "";
-				let stdErr = "";
-
-				child.stdout.on("data", (data) => {
-					stdOut += data;
-				});
-
-				child.stderr.on("data", (data) => {
-					stdErr += data;
-				});
-
-				child.on("close", (code) => {
-					/* istanbul ignore else */
-					if (stdOut !== "") {
-						resolve(
-							options.maintainLayout ? stdOut : stdOut.trim()
-						);
-					} else if (code === 0) {
-						resolve(errorMessages[code]);
-					} else if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
-					} else {
-						reject(
-							new Error(
-								// @ts-ignore: Second operand used if code is not in errorMessages
-								errorMessages[code] ||
-									`pdftotext ${args.join(
-										" "
-									)} exited with code ${code}`
-							)
-						);
-					}
-				});
+			child.stdout.on("data", (data) => {
+				stdOut += data;
 			});
-		} catch (err) {
-			return Promise.reject(err);
-		}
+
+			child.stderr.on("data", (data) => {
+				stdErr += data;
+			});
+
+			child.on("close", (code) => {
+				/* istanbul ignore else */
+				if (stdOut !== "") {
+					resolve(options.maintainLayout ? stdOut : stdOut.trim());
+				} else if (code === 0) {
+					resolve(errorMessages[code]);
+				} else if (stdErr !== "") {
+					reject(new Error(stdErr.trim()));
+				} else {
+					reject(
+						new Error(
+							// @ts-ignore: Second operand used if code is not in errorMessages
+							errorMessages[code] ||
+								`pdftotext ${args.join(
+									" "
+								)} exited with code ${code}`
+						)
+					);
+				}
+			});
+		});
 	}
 
 	/**
@@ -1623,26 +1575,22 @@ class Poppler {
 			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
-		try {
-			const { stderr } = await execFileAsync(
-				pathResolve(this.#popplerPath, "pdfunite"),
-				["-v"]
-			);
+		const { stderr } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdfunite"),
+			["-v"]
+		);
 
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		// @ts-ignore: parseOptions checks if falsy
+		const versionInfo = popplerVersionRegex.exec(stderr)[1];
 
-			const args = parseOptions(acceptedOptions, options, versionInfo);
-			args.push(...files, outputFile);
+		const args = parseOptions(acceptedOptions, options, versionInfo);
+		args.push(...files, outputFile);
 
-			const { stdout } = await execFileAsync(
-				pathResolve(this.#popplerPath, "pdfunite"),
-				args
-			);
-			return Promise.resolve(stdout);
-		} catch (err) {
-			return Promise.reject(err);
-		}
+		const { stdout } = await execFileAsync(
+			pathResolve(this.#popplerPath, "pdfunite"),
+			args
+		);
+		return stdout;
 	}
 }
 

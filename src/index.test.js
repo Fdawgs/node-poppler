@@ -1,4 +1,4 @@
-/* eslint-disable global-require, security/detect-child-process -- Mocking child_process */
+/* eslint-disable n/global-require, security/detect-child-process -- Mocking child_process */
 /* eslint-disable jest/no-conditional-expect -- Depends on the version of the binary */
 /* eslint-disable security/detect-non-literal-fs-filename -- Test files are not user-provided */
 
@@ -14,7 +14,7 @@ const { join, normalize } = require("node:path");
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
 
-const testDirectory = `${__dirname}/../test_resources/test_files/`;
+const testDirectory = join(__dirname, "../test_resources/test_files/");
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
 

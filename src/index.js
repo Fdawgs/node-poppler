@@ -50,10 +50,8 @@ function parseOptions(acceptedOptions, options, version) {
 	const args = [];
 	/** @type {string[]} */
 	const invalidArgs = [];
-	/**
-	 * Imperative loops are faster than functional loops.
-	 * @see {@link https://romgrk.com/posts/optimizing-javascript#3-avoid-arrayobject-methods || Optimizing JavaScript}
-	 */
+
+	// Imperative loops are faster than functional loops, see https://romgrk.com/posts/optimizing-javascript
 	const entries = Object.entries(options);
 	const entriesLength = entries.length;
 	for (let i = 0; i < entriesLength; i += 1) {
@@ -494,10 +492,7 @@ class Poppler {
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
-		/**
-		 * Poppler does not set the "File size" metadata value if passed
-		 * a Buffer via stdin, so need to retrieve it from the Buffer.
-		 */
+		// Fetch file size if stdin input is a Buffer, as Poppler omits it
 		/** @type {number} */
 		let fileSize;
 
@@ -540,10 +535,6 @@ class Poppler {
 						);
 					}
 
-					/**
-					 * Convert output to JSON.
-					 * @see {@link https://github.com/Fdawgs/node-poppler/issues/248#issuecomment-845948080 | Node-Poppler Issue #248}
-					 */
 					if (options.printAsJson === true) {
 						const info = {};
 						const stdOutLines = stdOut.split("\n");
@@ -966,10 +957,7 @@ class Poppler {
 				stdErr += data;
 			});
 
-			/**
-			 * PdfToHtml does not return an exit code so check output to see if it was successful.
-			 * @see {@link https://gitlab.freedesktop.org/poppler/poppler/-/blob/master/utils/pdftohtml.1 | Poppler pdftohtml man}
-			 */
+			// PdfToHtml has no exit code; check output for success
 			child.on("close", () => {
 				if (stdOut !== "") {
 					resolve(stdOut.trim());

@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.2](https://github.com/Fdawgs/node-poppler/compare/v8.0.1...v8.0.2) (2025-06-18)
+
+
+### Continuous integration
+
+* **ci:** add node 24 to test matrix ([#643](https://github.com/Fdawgs/node-poppler/issues/643)) ([738db46](https://github.com/Fdawgs/node-poppler/commit/738db46b524913b8882e0f114c51bd2465cae64c))
+* **deps:** bump actions/dependency-review-action from 4.6.0 to 4.7.1 ([#646](https://github.com/Fdawgs/node-poppler/issues/646)) ([ab8c9fa](https://github.com/Fdawgs/node-poppler/commit/ab8c9fa85ae139467954fdf18e0b25711e6cb1d8))
+* **deps:** bump github/codeql-action from 3.28.16 to 3.28.18 ([#647](https://github.com/Fdawgs/node-poppler/issues/647)) ([c6c5f2e](https://github.com/Fdawgs/node-poppler/commit/c6c5f2ed37d1625182c9fd5577ff55b2dfbc0e73))
+* use tags for immutable github actions ([#648](https://github.com/Fdawgs/node-poppler/issues/648)) ([93285f2](https://github.com/Fdawgs/node-poppler/commit/93285f2ea200cbe2065f775638e88f14182ca3a0))
+
+
+### Improvements
+
+* **index:** stop rethrowing errors ([#645](https://github.com/Fdawgs/node-poppler/issues/645)) ([f9e3c4d](https://github.com/Fdawgs/node-poppler/commit/f9e3c4d8a6eabfb25f9d2eedde6da304b61f0203))
+
+
+### Miscellaneous
+
+* remove redundant jsdoc comments ([#650](https://github.com/Fdawgs/node-poppler/issues/650)) ([aca19a2](https://github.com/Fdawgs/node-poppler/commit/aca19a2ab0cc5df781cd217d578a227ff50797f5))
+
 ## [8.0.1](https://github.com/Fdawgs/node-poppler/compare/v8.0.0...v8.0.1) (2025-05-06)
 
 

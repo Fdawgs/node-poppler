@@ -61,7 +61,6 @@ function parseOptions(acceptedOptions, options, version) {
 			const option = entries[i][1];
 			const acceptedOption = acceptedOptions[key];
 
-			// eslint-disable-next-line valid-typeof -- `type` is a string
 			if (acceptedOption.type === typeof option) {
 				// Skip boolean options if false
 				if (acceptedOption.type !== "boolean" || option) {

@@ -8,7 +8,7 @@ const { lt } = require("semver");
 
 const execFileAsync = promisify(execFile);
 
-const errorMessages = {
+const ERROR_MSGS = {
 	0: "No Error",
 	1: "Error opening a PDF file",
 	2: "Error opening an output file",
@@ -19,8 +19,8 @@ const errorMessages = {
 };
 
 // Cache immutable regex as they are expensive to create and garbage collect
-const popplerVersionRegex = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u;
-const pdfInfoFileSizesRegex = /(File\s+size:\s+)0(\s+)bytes/u;
+const POPPLER_VERSION_REG = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u;
+const PDF_INFO_FILE_SIZES_REG = /(File\s+size:\s+)0(\s+)bytes/u;
 
 /**
  * @typedef {object} OptionDetails
@@ -271,7 +271,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -304,14 +304,14 @@ class Poppler {
 				if (stdOut !== "") {
 					resolve(stdOut.trim());
 				} else if (code === 0) {
-					resolve(errorMessages[code]);
+					resolve(ERROR_MSGS[code]);
 				} else if (stdErr !== "") {
 					reject(new Error(stdErr.trim()));
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in errorMessages
-							errorMessages[code] ||
+							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
+							ERROR_MSGS[code] ||
 								`pdffonts ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -370,7 +370,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -407,14 +407,14 @@ class Poppler {
 				if (stdOut !== "") {
 					resolve(stdOut.trim());
 				} else if (code === 0) {
-					resolve(errorMessages[code]);
+					resolve(ERROR_MSGS[code]);
 				} else if (stdErr !== "") {
 					reject(new Error(stdErr.trim()));
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in errorMessages
-							errorMessages[code] ||
+							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
+							ERROR_MSGS[code] ||
 								`pdfimages ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -487,7 +487,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -529,7 +529,7 @@ class Poppler {
 				if (stdOut !== "") {
 					if (fileSize) {
 						stdOut = stdOut.replace(
-							pdfInfoFileSizesRegex,
+							PDF_INFO_FILE_SIZES_REG,
 							`$1${fileSize}$2bytes`
 						);
 					}
@@ -551,14 +551,14 @@ class Poppler {
 						resolve(stdOut.trim());
 					}
 				} else if (code === 0) {
-					resolve(errorMessages[code]);
+					resolve(ERROR_MSGS[code]);
 				} else if (stdErr !== "") {
 					reject(new Error(stdErr.trim()));
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in errorMessages
-							errorMessages[code] ||
+							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
+							ERROR_MSGS[code] ||
 								`pdfinfo ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -600,7 +600,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(file, outputPattern);
@@ -782,7 +782,7 @@ class Poppler {
 			);
 
 			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = popplerVersionRegex.exec(stderr)[1];
+			const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -825,14 +825,14 @@ class Poppler {
 					if (stdOut !== "") {
 						resolve(stdOut.trim());
 					} else if (code === 0) {
-						resolve(errorMessages[code]);
+						resolve(ERROR_MSGS[code]);
 					} else if (stdErr !== "") {
 						reject(new Error(stdErr.trim()));
 					} else {
 						reject(
 							new Error(
-								// @ts-ignore: Second operand used if code is not in errorMessages
-								errorMessages[code] ||
+								// @ts-ignore: Second operand used if code is not in ERROR_MSGS
+								ERROR_MSGS[code] ||
 									`pdftocairo ${args.join(
 										" "
 									)} exited with code ${code}`
@@ -924,7 +924,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1119,7 +1119,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1147,12 +1147,12 @@ class Poppler {
 				if (stdErr !== "") {
 					reject(new Error(stdErr.trim()));
 				} else if (code === 0) {
-					resolve(errorMessages[code]);
+					resolve(ERROR_MSGS[code]);
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in errorMessages
-							errorMessages[code] ||
+							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
+							ERROR_MSGS[code] ||
 								`pdftoppm ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -1349,7 +1349,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1382,14 +1382,14 @@ class Poppler {
 				if (stdOut !== "") {
 					resolve(stdOut.trim());
 				} else if (code === 0) {
-					resolve(errorMessages[code]);
+					resolve(ERROR_MSGS[code]);
 				} else if (stdErr !== "") {
 					reject(new Error(stdErr.trim()));
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in errorMessages
-							errorMessages[code] ||
+							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
+							ERROR_MSGS[code] ||
 								`pdftops ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -1494,7 +1494,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1527,14 +1527,14 @@ class Poppler {
 				if (stdOut !== "") {
 					resolve(options.maintainLayout ? stdOut : stdOut.trim());
 				} else if (code === 0) {
-					resolve(errorMessages[code]);
+					resolve(ERROR_MSGS[code]);
 				} else if (stdErr !== "") {
 					reject(new Error(stdErr.trim()));
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in errorMessages
-							errorMessages[code] ||
+							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
+							ERROR_MSGS[code] ||
 								`pdftotext ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -1568,7 +1568,7 @@ class Poppler {
 		);
 
 		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = popplerVersionRegex.exec(stderr)[1];
+		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(...files, outputFile);

@@ -1,10 +1,10 @@
 "use strict";
 
 const { execFile, spawn, spawnSync } = require("node:child_process");
+const { normalize, resolve: pathResolve } = require("node:path");
 const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const { lt } = require("semver");
-const { normalize, resolve: pathResolve } = require("node:path");
 
 const execFileAsync = promisify(execFile);
 

@@ -6,15 +6,24 @@
 
 const { execFile, spawnSync } = require("node:child_process");
 const { access, readFile, unlink } = require("node:fs/promises");
+const { join, normalize, posix } = require("node:path");
 const { promisify } = require("node:util");
+const {
+	afterEach,
+	beforeAll,
+	beforeEach,
+	describe,
+	expect,
+	it,
+	jest,
+} = require("@jest/globals");
 const { glob } = require("glob");
 const { lt } = require("semver");
-const { join, normalize } = require("node:path");
 
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
 
-const testDirectory = join(__dirname, "../test_resources/test_files/");
+const testDirectory = posix.join(__dirname, "../test_resources/test_files/");
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
 
@@ -50,10 +59,10 @@ describe("Node-Poppler module", () => {
 		// Remove leftover test files
 		const files = await glob(`${testDirectory}**/*`, {
 			ignore: [
-				`${testDirectory}/pdf_1.3_NHS_Constitution_attached_detach.pdf`,
-				`${testDirectory}/pdf_1.3_NHS_Constitution.pdf`,
-				`${testDirectory}/pdf_1.7_NHS_Constitution_Handbook.pdf`,
-				`${testDirectory}/test.txt`,
+				`${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`,
+				`${testDirectory}pdf_1.3_NHS_Constitution.pdf`,
+				`${testDirectory}pdf_1.7_NHS_Constitution_Handbook.pdf`,
+				`${testDirectory}test.txt`,
 				whitespaceFile,
 			],
 		});

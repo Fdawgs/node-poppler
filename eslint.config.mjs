@@ -32,6 +32,7 @@ const config = defineConfig([
 			"jest/prefer-expect-resolves": "error",
 			"jest/prefer-hooks-in-order": "error",
 			"jest/prefer-hooks-on-top": "error",
+			"jest/prefer-importing-jest-globals": "error",
 			"jest/prefer-mock-promise-shorthand": "error",
 			"jest/prefer-spy-on": "error",
 			"jest/require-top-level-describe": "error",

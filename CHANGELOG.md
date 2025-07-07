@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.3](https://github.com/Fdawgs/node-poppler/compare/v8.0.2...v8.0.3) (2025-07-07)
+
+
+### Miscellaneous
+
+* **index:** use upper snakecase for cached values ([#658](https://github.com/Fdawgs/node-poppler/issues/658)) ([55613b3](https://github.com/Fdawgs/node-poppler/commit/55613b3a97b90604dca1423c9b16eba25bd9f6de))
+
 ## [8.0.2](https://github.com/Fdawgs/node-poppler/compare/v8.0.1...v8.0.2) (2025-07-07)
 
 

@@ -21,8 +21,8 @@ updates:
           eslint:
               patterns:
                   - "@eslint*"
+                  - "*eslint-config*"
                   - "eslint*"
-                  - "@fdawgs/eslint-config"
       ignore:
           # Below are dependencies that have migrated to ESM
           # in their next major version so they cannot be updated

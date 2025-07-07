@@ -1,10 +1,10 @@
 "use strict";
 
 const { execFile, spawn, spawnSync } = require("node:child_process");
+const { normalize, resolve: pathResolve } = require("node:path");
 const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const { lt } = require("semver");
-const { normalize, resolve: pathResolve } = require("node:path");
 
 const execFileAsync = promisify(execFile);
 
@@ -61,7 +61,6 @@ function parseOptions(acceptedOptions, options, version) {
 			const option = entries[i][1];
 			const acceptedOption = acceptedOptions[key];
 
-			// eslint-disable-next-line valid-typeof -- `type` is a string
 			if (acceptedOption.type === typeof option) {
 				// Skip boolean options if false
 				if (acceptedOption.type !== "boolean" || option) {

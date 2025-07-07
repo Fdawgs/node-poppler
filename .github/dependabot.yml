@@ -20,7 +20,8 @@ updates:
                   - "@commitlint*"
           eslint:
               patterns:
-                  - "@eslint-community*"
+                  - "@eslint*"
+                  - "*eslint-config*"
                   - "eslint*"
       ignore:
           # Below are dependencies that have migrated to ESM

@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.3](https://github.com/Fdawgs/node-poppler/compare/v8.0.2...v8.0.3) (2025-07-08)
+
+
+### Improvements
+
+* **index:** cache pdfinfo path regex ([#660](https://github.com/Fdawgs/node-poppler/issues/660)) ([0c81b11](https://github.com/Fdawgs/node-poppler/commit/0c81b11492a1af8c4820180718193ab814df514f))
+* **index:** import `node:process` explicitly ([#662](https://github.com/Fdawgs/node-poppler/issues/662)) ([ebd0b72](https://github.com/Fdawgs/node-poppler/commit/ebd0b72d3a221be8efdd8382c783c252f9cd00dc))
+
+
+### Miscellaneous
+
+* **index:** use upper snakecase for cached values ([#658](https://github.com/Fdawgs/node-poppler/issues/658)) ([55613b3](https://github.com/Fdawgs/node-poppler/commit/55613b3a97b90604dca1423c9b16eba25bd9f6de))
+
 ## [8.0.2](https://github.com/Fdawgs/node-poppler/compare/v8.0.1...v8.0.2) (2025-07-07)
 
 

@@ -2,6 +2,7 @@
 
 const { execFile, spawn, spawnSync } = require("node:child_process");
 const { normalize, resolve: pathResolve } = require("node:path");
+const { platform } = require("node:process");
 const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const { lt } = require("semver");
@@ -120,8 +121,6 @@ class Poppler {
 			/** @type {string|undefined} */
 			this.#popplerPath = binPath;
 		} else {
-			const { platform } = process;
-
 			const which = spawnSync(platform === "win32" ? "where" : "which", [
 				"pdfinfo",
 			]).stdout.toString();
@@ -145,7 +144,7 @@ class Poppler {
 		/* istanbul ignore next: unable to test due to https://github.com/jestjs/jest/pull/14297 */
 		if (!this.#popplerPath) {
 			throw new Error(
-				`Unable to find ${process.platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
+				`Unable to find ${platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
 			);
 		}
 		this.#popplerPath = normalize(this.#popplerPath);

@@ -7,6 +7,7 @@
 const { execFile, spawnSync } = require("node:child_process");
 const { access, readFile, unlink } = require("node:fs/promises");
 const { join, normalize, posix } = require("node:path");
+const { platform } = require("node:process");
 const { promisify } = require("node:util");
 const {
 	afterEach,
@@ -23,6 +24,11 @@ const { lt } = require("semver");
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
 
+// Cache immutable regex as they are expensive to create and garbage collect
+const CMD_FAILED_REG = /^Command failed:/u;
+const SYNTAX_WARNING_REG = /^Syntax Warning:/u;
+const IO_ERROR_REG = /^I\/O Error:/u;
+
 const testDirectory = posix.join(__dirname, "../test_resources/test_files/");
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
@@ -32,7 +38,6 @@ const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
  * @returns {string} The path to the poppler-util binaries.
  */
 function getTestBinaryPath() {
-	const { platform } = process;
 	const which = spawnSync(platform === "win32" ? "where" : "which", [
 		"pdfinfo",
 	]).stdout.toString();
@@ -71,22 +76,8 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("Constructor", () => {
-		let platform;
-
-		beforeAll(() => {
-			// Copy the process platform
-			({ platform } = process);
-		});
-
 		beforeEach(() => {
 			jest.resetModules();
-		});
-
-		afterEach(() => {
-			// Restore the process platform
-			Object.defineProperty(process, "platform", {
-				value: platform,
-			});
 		});
 
 		it("Creates a new Poppler instance without the binary path set", () => {
@@ -95,9 +86,10 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Throws an Error if the binary path is not found", () => {
-			Object.defineProperty(process, "platform", {
-				value: "mockOS",
-			});
+			jest.doMock("node:process", () => ({
+				platform: "mockOS",
+			}));
+			const { platform: mockPlatform } = require("node:process");
 
 			jest.doMock("node:child_process", () => ({
 				...jest.requireActual("node:child_process"),
@@ -116,7 +108,7 @@ describe("Node-Poppler module", () => {
 				const poppler = new PopplerMock();
 			} catch (err) {
 				expect(err.message).toBe(
-					`Unable to find ${process.platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
+					`Unable to find ${mockPlatform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
 				);
 			}
 		});
@@ -146,7 +138,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfAttach(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/u);
+				expect(err.message).toMatch(CMD_FAILED_REG);
 			});
 		});
 
@@ -194,7 +186,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfDetach(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/u);
+				expect(err.message).toMatch(CMD_FAILED_REG);
 			});
 		});
 
@@ -252,7 +244,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfFonts(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -323,8 +315,8 @@ describe("Node-Poppler module", () => {
 			const testTxtFile = `${testDirectory}test.txt`;
 
 			expect.assertions(1);
-			await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+			await poppler.pdfImages(testTxtFile, "file_prefix").catch((err) => {
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -332,7 +324,7 @@ describe("Node-Poppler module", () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
-			await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
+			await poppler.pdfImages(undefined, "file_prefix").catch((err) => {
 				expect(err.message).toMatch(
 					/^I\/O Error: Couldn't open file 'undefined'/u
 				);
@@ -425,7 +417,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -434,7 +426,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -491,7 +483,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfSeparate(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/u);
+				expect(err.message).toMatch(CMD_FAILED_REG);
 			});
 		});
 
@@ -871,7 +863,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/Error:/u);
+				expect(err.message).toMatch("Error:");
 			});
 		});
 
@@ -880,7 +872,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(file).catch((err) => {
-				expect(err.message).toMatch(/Error:/u);
+				expect(err.message).toMatch("Error:");
 			});
 		});
 
@@ -976,7 +968,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -985,7 +977,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -1024,7 +1016,6 @@ describe("Node-Poppler module", () => {
 				["-v"]
 			);
 
-			// console.log(stderr);
 			version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 		});
 
@@ -1073,7 +1064,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -1082,7 +1073,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -1171,7 +1162,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -1180,7 +1171,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -1267,7 +1258,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -1276,7 +1267,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -1331,7 +1322,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfUnite(files).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/u);
+				expect(err.message).toMatch(CMD_FAILED_REG);
 			});
 		});
 

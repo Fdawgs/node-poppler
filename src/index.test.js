@@ -1016,7 +1016,6 @@ describe("Node-Poppler module", () => {
 				["-v"]
 			);
 
-			// console.log(stderr);
 			version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
 		});
 

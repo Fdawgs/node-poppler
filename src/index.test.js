@@ -7,6 +7,7 @@
 const { execFile, spawnSync } = require("node:child_process");
 const { access, readFile, unlink } = require("node:fs/promises");
 const { join, normalize, posix } = require("node:path");
+const { platform } = require("node:process");
 const { promisify } = require("node:util");
 const {
 	afterEach,
@@ -32,7 +33,6 @@ const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
  * @returns {string} The path to the poppler-util binaries.
  */
 function getTestBinaryPath() {
-	const { platform } = process;
 	const which = spawnSync(platform === "win32" ? "where" : "which", [
 		"pdfinfo",
 	]).stdout.toString();
@@ -71,22 +71,8 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("Constructor", () => {
-		let platform;
-
-		beforeAll(() => {
-			// Copy the process platform
-			({ platform } = process);
-		});
-
 		beforeEach(() => {
 			jest.resetModules();
-		});
-
-		afterEach(() => {
-			// Restore the process platform
-			Object.defineProperty(process, "platform", {
-				value: platform,
-			});
 		});
 
 		it("Creates a new Poppler instance without the binary path set", () => {
@@ -95,9 +81,10 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Throws an Error if the binary path is not found", () => {
-			Object.defineProperty(process, "platform", {
-				value: "mockOS",
-			});
+			jest.doMock("node:process", () => ({
+				platform: "mockOS",
+			}));
+			const { platform: mockPlatform } = require("node:process");
 
 			jest.doMock("node:child_process", () => ({
 				...jest.requireActual("node:child_process"),
@@ -116,7 +103,7 @@ describe("Node-Poppler module", () => {
 				const poppler = new PopplerMock();
 			} catch (err) {
 				expect(err.message).toBe(
-					`Unable to find ${process.platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
+					`Unable to find ${mockPlatform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
 				);
 			}
 		});
@@ -323,7 +310,7 @@ describe("Node-Poppler module", () => {
 			const testTxtFile = `${testDirectory}test.txt`;
 
 			expect.assertions(1);
-			await poppler.pdfImages(testTxtFile, `file_prefix`).catch((err) => {
+			await poppler.pdfImages(testTxtFile, "file_prefix").catch((err) => {
 				expect(err.message).toMatch(/^Syntax Warning:/u);
 			});
 		});
@@ -332,7 +319,7 @@ describe("Node-Poppler module", () => {
 			const poppler = new Poppler(testBinaryPath);
 
 			expect.assertions(1);
-			await poppler.pdfImages(undefined, `file_prefix`).catch((err) => {
+			await poppler.pdfImages(undefined, "file_prefix").catch((err) => {
 				expect(err.message).toMatch(
 					/^I\/O Error: Couldn't open file 'undefined'/u
 				);

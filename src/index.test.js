@@ -24,6 +24,11 @@ const { lt } = require("semver");
 const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
 
+// Cache immutable regex as they are expensive to create and garbage collect
+const CMD_FAILED_REG = /^Command failed:/u;
+const SYNTAX_WARNING_REG = /^Syntax Warning:/u;
+const IO_ERROR_REG = /^I\/O Error:/u;
+
 const testDirectory = posix.join(__dirname, "../test_resources/test_files/");
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
@@ -133,7 +138,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfAttach(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/u);
+				expect(err.message).toMatch(CMD_FAILED_REG);
 			});
 		});
 
@@ -181,7 +186,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfDetach(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/u);
+				expect(err.message).toMatch(CMD_FAILED_REG);
 			});
 		});
 
@@ -239,7 +244,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfFonts(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -311,7 +316,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfImages(testTxtFile, "file_prefix").catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -412,7 +417,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -421,7 +426,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfInfo().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -478,7 +483,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfSeparate(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/u);
+				expect(err.message).toMatch(CMD_FAILED_REG);
 			});
 		});
 
@@ -858,7 +863,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/Error:/u);
+				expect(err.message).toMatch("Error:");
 			});
 		});
 
@@ -867,7 +872,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToCairo(file).catch((err) => {
-				expect(err.message).toMatch(/Error:/u);
+				expect(err.message).toMatch("Error:");
 			});
 		});
 
@@ -963,7 +968,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -972,7 +977,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToHtml().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -1060,7 +1065,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -1069,7 +1074,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPpm().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -1158,7 +1163,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -1167,7 +1172,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToPs().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -1254,7 +1259,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(/^Syntax Warning:/u);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -1263,7 +1268,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfToText().catch((err) => {
-				expect(err.message).toMatch(/^I\/O Error:/u);
+				expect(err.message).toMatch(IO_ERROR_REG);
 			});
 		});
 
@@ -1318,7 +1323,7 @@ describe("Node-Poppler module", () => {
 
 			expect.assertions(1);
 			await poppler.pdfUnite(files).catch((err) => {
-				expect(err.message).toMatch(/^Command failed:/u);
+				expect(err.message).toMatch(CMD_FAILED_REG);
 			});
 		});
 

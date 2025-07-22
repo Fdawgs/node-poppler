@@ -70,6 +70,8 @@ jobs:
         if: needs.release.outputs.release_created == 'true'
         runs-on: ubuntu-latest
         environment: main
+        env:
+            SCOPE: "@fdawgs"
         permissions:
             contents: read
             id-token: write
@@ -86,12 +88,14 @@ jobs:
                   check-latest: true
                   node-version: lts/*
                   registry-url: https://npm.pkg.github.com
-                  scope: "@fdawgs"
+                  scope: ${{ env.SCOPE }}
 
             - name: Scope package
               run: |
                   pkgName=$(node -p "require('./package.json').name")
-                  npm pkg set name="@fdawgs/$pkgName"
+                  if ! echo "$pkgName" | grep -q "^${SCOPE}/"; then
+                  npm pkg set name="${SCOPE}/$pkgName"
+                  fi
 
             - name: Publish to GitHub Packages
               env:
@@ -101,5 +105,5 @@ jobs:
               run: |
                   npm i --ignore-scripts
                   npm run build --if-present
-                  npm pkg delete commitlint devDependencies jest scripts
+                  npm pkg delete commitlint devDependencies scripts
                   npm publish --access public --ignore-scripts --provenance

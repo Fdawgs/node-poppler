@@ -6,7 +6,7 @@
 
 const { execFile, spawnSync } = require("node:child_process");
 const { access, readFile, unlink } = require("node:fs/promises");
-const { join, normalize, posix } = require("node:path");
+const { join, normalize, sep } = require("node:path");
 const { platform } = require("node:process");
 const { promisify } = require("node:util");
 const {
@@ -29,7 +29,8 @@ const CMD_FAILED_REG = /^Command failed:/u;
 const SYNTAX_WARNING_REG = /^Syntax Warning:/u;
 const IO_ERROR_REG = /^I\/O Error:/u;
 
-const testDirectory = posix.join(__dirname, "../test_resources/test_files/");
+const testDirectory =
+	join(__dirname, "..", "test_resources", "test_files") + sep;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
 

@@ -106,6 +106,19 @@ function parseOptions(acceptedOptions, options, version) {
 class Poppler {
 	#popplerPath;
 
+	#pdfAttachBin;
+	#pdfDetachBin;
+	#pdfFontsBin;
+	#pdfImagesBin;
+	#pdfInfoBin;
+	#pdfSeparateBin;
+	#pdfToCairoBin;
+	#pdfToHtmlBin;
+	#pdfToPpmBin;
+	#pdfToPsBin;
+	#pdfToTextBin;
+	#pdfUniteBin;
+
 	/**
 	 * @param {string} [binPath] - Path of poppler-utils binaries.
 	 * If not provided, the constructor will attempt to find the Poppler `pdfinfo` binary
@@ -148,6 +161,19 @@ class Poppler {
 			);
 		}
 		this.#popplerPath = normalize(this.#popplerPath);
+
+		this.#pdfAttachBin = pathResolve(this.#popplerPath, "pdfattach");
+		this.#pdfDetachBin = pathResolve(this.#popplerPath, "pdfdetach");
+		this.#pdfFontsBin = pathResolve(this.#popplerPath, "pdffonts");
+		this.#pdfImagesBin = pathResolve(this.#popplerPath, "pdfimages");
+		this.#pdfInfoBin = pathResolve(this.#popplerPath, "pdfinfo");
+		this.#pdfSeparateBin = pathResolve(this.#popplerPath, "pdfseparate");
+		this.#pdfToCairoBin = pathResolve(this.#popplerPath, "pdftocairo");
+		this.#pdfToHtmlBin = pathResolve(this.#popplerPath, "pdftohtml");
+		this.#pdfToPpmBin = pathResolve(this.#popplerPath, "pdftoppm");
+		this.#pdfToPsBin = pathResolve(this.#popplerPath, "pdftops");
+		this.#pdfToTextBin = pathResolve(this.#popplerPath, "pdftotext");
+		this.#pdfUniteBin = pathResolve(this.#popplerPath, "pdfunite");
 	}
 
 	/**
@@ -179,10 +205,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options);
 		args.push(file, fileToAttach, outputFile);
 
-		const { stdout } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdfattach"),
-			args
-		);
+		const { stdout } = await execFileAsync(this.#pdfAttachBin, args);
 		return stdout;
 	}
 
@@ -233,10 +256,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options);
 		args.push(file);
 
-		const { stdout } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdfdetach"),
-			args
-		);
+		const { stdout } = await execFileAsync(this.#pdfDetachBin, args);
 		return stdout;
 	}
 
@@ -265,10 +285,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdffonts"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfFontsBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -278,10 +295,7 @@ class Poppler {
 		return new Promise((resolve, reject) => {
 			args.push(Buffer.isBuffer(file) ? "-" : file);
 
-			const child = spawn(
-				pathResolve(this.#popplerPath, "pdffonts"),
-				args
-			);
+			const child = spawn(this.#pdfFontsBin, args);
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);
@@ -364,10 +378,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdfimages"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfImagesBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -381,10 +392,7 @@ class Poppler {
 				args.push(outputPrefix);
 			}
 
-			const child = spawn(
-				pathResolve(this.#popplerPath, "pdfimages"),
-				args
-			);
+			const child = spawn(this.#pdfImagesBin, args);
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);
@@ -481,10 +489,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdfinfo"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfInfoBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -503,10 +508,7 @@ class Poppler {
 				args.push(file);
 			}
 
-			const child = spawn(
-				pathResolve(this.#popplerPath, "pdfinfo"),
-				args
-			);
+			const child = spawn(this.#pdfInfoBin, args);
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);
@@ -594,10 +596,7 @@ class Poppler {
 			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdfseparate"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfSeparateBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -605,10 +604,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(file, outputPattern);
 
-		const { stdout } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdfseparate"),
-			args
-		);
+		const { stdout } = await execFileAsync(this.#pdfSeparateBin, args);
 		return stdout;
 	}
 
@@ -776,10 +772,7 @@ class Poppler {
 		};
 
 		try {
-			const { stderr } = await execFileAsync(
-				pathResolve(this.#popplerPath, "pdftocairo"),
-				["-v"]
-			);
+			const { stderr } = await execFileAsync(this.#pdfToCairoBin, ["-v"]);
 
 			// @ts-ignore: parseOptions checks if falsy
 			const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -792,10 +785,7 @@ class Poppler {
 					outputFile || "-"
 				);
 
-				const child = spawn(
-					pathResolve(this.#popplerPath, "pdftocairo"),
-					args
-				);
+				const child = spawn(this.#pdfToCairoBin, args);
 
 				if (
 					outputFile === undefined &&
@@ -918,10 +908,7 @@ class Poppler {
 			zoom: { arg: "-zoom", type: "number" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdftohtml"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfToHtmlBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -935,10 +922,7 @@ class Poppler {
 				args.push(outputFile);
 			}
 
-			const child = spawn(
-				pathResolve(this.#popplerPath, "pdftohtml"),
-				args
-			);
+			const child = spawn(this.#pdfToHtmlBin, args);
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);
@@ -1113,10 +1097,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdftoppm"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfToPpmBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -1126,10 +1107,7 @@ class Poppler {
 		return new Promise((resolve, reject) => {
 			args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
 
-			const child = spawn(
-				pathResolve(this.#popplerPath, "pdftoppm"),
-				args
-			);
+			const child = spawn(this.#pdfToPpmBin, args);
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);
@@ -1343,10 +1321,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdftops"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfToPsBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -1356,10 +1331,7 @@ class Poppler {
 		return new Promise((resolve, reject) => {
 			args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-			const child = spawn(
-				pathResolve(this.#popplerPath, "pdftops"),
-				args
-			);
+			const child = spawn(this.#pdfToPsBin, args);
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);
@@ -1488,10 +1460,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdftotext"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfToTextBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -1501,10 +1470,7 @@ class Poppler {
 		return new Promise((resolve, reject) => {
 			args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-			const child = spawn(
-				pathResolve(this.#popplerPath, "pdftotext"),
-				args
-			);
+			const child = spawn(this.#pdfToTextBin, args);
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);
@@ -1562,10 +1528,7 @@ class Poppler {
 			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
-		const { stderr } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdfunite"),
-			["-v"]
-		);
+		const { stderr } = await execFileAsync(this.#pdfUniteBin, ["-v"]);
 
 		// @ts-ignore: parseOptions checks if falsy
 		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
@@ -1573,10 +1536,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(...files, outputFile);
 
-		const { stdout } = await execFileAsync(
-			pathResolve(this.#popplerPath, "pdfunite"),
-			args
-		);
+		const { stdout } = await execFileAsync(this.#pdfUniteBin, args);
 		return stdout;
 	}
 }

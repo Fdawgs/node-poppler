@@ -121,6 +121,335 @@ class Poppler {
 
 	#binVersions = new Map();
 
+	/** @type {Record<string, PopplerAcceptedOptions>} */
+	static #acceptedOptions = {
+		pdfAttach: {
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			replace: { arg: "-replace", type: "boolean" },
+		},
+		pdfDetach: {
+			listEmbedded: { arg: "-list", type: "boolean" },
+			outputEncoding: { arg: "-enc", type: "string" },
+			outputPath: { arg: "-o", type: "string" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			saveAllFiles: { arg: "-saveall", type: "boolean" },
+			saveFile: {
+				arg: "-savefile",
+				type: "string",
+				minVersion: "0.86.0",
+			},
+			saveSpecificFile: { arg: "-save", type: "number" },
+			userPassword: { arg: "-upw", type: "string" },
+		},
+		pdfFonts: {
+			firstPageToExamine: { arg: "-f", type: "number" },
+			lastPageToExamine: { arg: "-l", type: "number" },
+			listSubstitutes: { arg: "-subst", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
+		},
+		pdfImages: {
+			allFiles: { arg: "-all", type: "boolean" },
+			ccittFile: { arg: "-ccitt", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			jbig2File: { arg: "-jbig2", type: "boolean" },
+			jpeg2000File: { arg: "-jp2", type: "boolean" },
+			jpegFile: { arg: "-j", type: "boolean" },
+			list: { arg: "-list", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			pngFile: { arg: "-png", type: "boolean" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			tiffFile: { arg: "-tiff", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
+		},
+		pdfInfo: {
+			firstPageToConvert: { arg: "-f", type: "number" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			listEncodingOptions: { arg: "-listenc", type: "boolean" },
+			outputEncoding: { arg: "-enc", type: "string" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printAsJson: { arg: "", type: "boolean" },
+			printBoundingBoxes: { arg: "-box", type: "boolean" },
+			printDocStruct: { arg: "-struct", type: "boolean" },
+			printDocStructText: { arg: "-struct-text", type: "boolean" },
+			printIsoDates: { arg: "-isodates", type: "boolean" },
+			printJS: { arg: "-js", type: "boolean" },
+			printMetadata: { arg: "-meta", type: "boolean" },
+			printNamedDests: { arg: "-dests", type: "boolean" },
+			printRawDates: { arg: "-rawdates", type: "boolean" },
+			printUrls: { arg: "-url", type: "boolean", minVersion: "21.11.0" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
+		},
+		pdfSeparate: {
+			firstPageToExtract: { arg: "-f", type: "number" },
+			lastPageToExtract: { arg: "-l", type: "number" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+		},
+		pdfToCairo: {
+			antialias: { arg: "-antialias", type: "string" },
+			cropBox: { arg: "-cropbox", type: "boolean" },
+			cropHeight: { arg: "-H", type: "number" },
+			cropSize: { arg: "-sz", type: "number" },
+			cropWidth: { arg: "-W", type: "number" },
+			cropXAxis: { arg: "-x", type: "number" },
+			cropYAxis: { arg: "-y", type: "number" },
+			duplex: { arg: "-duplex", type: "boolean" },
+			epsFile: { arg: "-eps", type: "boolean" },
+			evenPagesOnly: { arg: "-e", type: "boolean" },
+			fillPage: { arg: "-expand", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			grayscaleFile: { arg: "-gray", type: "boolean" },
+			iccFile: { arg: "-icc", type: "string" },
+			jpegFile: { arg: "-jpeg", type: "boolean" },
+			jpegOptions: { arg: "-jpegopt", type: "string" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			monochromeFile: { arg: "-mono", type: "boolean" },
+			noCenter: { arg: "-nocenter", type: "boolean" },
+			noCrop: { arg: "-nocrop", type: "boolean" },
+			noShrink: { arg: "-noshrink", type: "boolean" },
+			oddPagesOnly: { arg: "-o", type: "boolean" },
+			originalPageSizes: { arg: "-origpagesizes", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			paperHeight: { arg: "-paperh", type: "number" },
+			paperSize: { arg: "-paper", type: "string" },
+			paperWidth: { arg: "-paperw", type: "number" },
+			pdfFile: { arg: "-pdf", type: "boolean" },
+			pngFile: { arg: "-png", type: "boolean" },
+			printDocStruct: {
+				arg: "-struct",
+				type: "boolean",
+				minVersion: "23.11.0",
+			},
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			psFile: { arg: "-ps", type: "boolean" },
+			psLevel2: { arg: "-level2", type: "boolean" },
+			psLevel3: { arg: "-level3", type: "boolean" },
+			quiet: { arg: "-q", type: "boolean" },
+			resolutionXAxis: { arg: "-rx", type: "number" },
+			resolutionXYAxis: { arg: "-r", type: "number" },
+			resolutionYAxis: { arg: "-ry", type: "number" },
+			scalePageTo: { arg: "-scale-to", type: "number" },
+			scalePageToXAxis: { arg: "-scale-to-x", type: "number" },
+			scalePageToYAxis: { arg: "-scale-to-y", type: "number" },
+			singleFile: { arg: "-singlefile", type: "boolean" },
+			svgFile: { arg: "-svg", type: "boolean" },
+			tiffCompression: { arg: "-tiffcompression", type: "string" },
+			tiffFile: { arg: "-tiff", type: "boolean" },
+			transparentPageColor: { arg: "-transp", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
+		},
+		pdfToHtml: {
+			complexOutput: { arg: "-c", type: "boolean" },
+			dataUrls: {
+				arg: "-dataurls",
+				type: "boolean",
+				minVersion: "0.75.0",
+			},
+			exchangePdfLinks: { arg: "-p", type: "boolean" },
+			extractHidden: { arg: "-hidden", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			fontFullName: { arg: "-fontfullname", type: "boolean" },
+			ignoreImages: { arg: "-i", type: "boolean" },
+			imageFormat: { arg: "-fmt", type: "string" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			noDrm: { arg: "-nodrm", type: "boolean" },
+			noFrames: { arg: "-noframes", type: "boolean" },
+			noMergeParagraph: { arg: "-nomerge", type: "boolean" },
+			noRoundedCoordinates: { arg: "-noroundcoord", type: "boolean" },
+			outputEncoding: { arg: "-enc", type: "string" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			quiet: { arg: "-q", type: "boolean" },
+			singlePage: { arg: "-s", type: "boolean" },
+			stdout: { arg: "-stdout", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
+			wordBreakThreshold: { arg: "-wbt", type: "number" },
+			xmlOutput: { arg: "-xml", type: "boolean" },
+			zoom: { arg: "-zoom", type: "number" },
+		},
+		pdfToPpm: {
+			antialiasFonts: { arg: "-aa", type: "string" },
+			antialiasVectors: { arg: "-aaVector", type: "string" },
+			cropBox: { arg: "-cropbox", type: "boolean" },
+			cropHeight: { arg: "-H", type: "number" },
+			cropSize: { arg: "-sz", type: "number" },
+			cropWidth: { arg: "-W", type: "number" },
+			cropXAxis: { arg: "-x", type: "number" },
+			cropYAxis: { arg: "-y", type: "number" },
+			defaultCmykProfile: {
+				arg: "-defaultcmykprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			defaultGrayProfile: {
+				arg: "-defaultgrayprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			defaultRgbProfile: {
+				arg: "-defaultrgbprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			displayProfile: {
+				arg: "-displayprofile",
+				type: "string",
+				minVersion: "0.90.0",
+			},
+			evenPagesOnly: { arg: "-e", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			forcePageNumber: {
+				arg: "-forcenum",
+				type: "boolean",
+				minVersion: "0.75.0",
+			},
+			freetype: { arg: "-freetype", type: "string" },
+			grayscaleFile: { arg: "-gray", type: "boolean" },
+			hideAnnotations: {
+				arg: "-hide-annotations",
+				type: "boolean",
+				minVersion: "0.84.0",
+			},
+			jpegFile: { arg: "-jpeg", type: "boolean" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			monochromeFile: { arg: "-mono", type: "boolean" },
+			oddPagesOnly: { arg: "-o", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			pngFile: { arg: "-png", type: "boolean" },
+			printProgress: {
+				arg: "-progress",
+				type: "boolean",
+				minVersion: "21.03.0",
+			},
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			quiet: { arg: "-q", type: "boolean" },
+			resolutionXAxis: { arg: "-rx", type: "number" },
+			resolutionXYAxis: { arg: "-r", type: "number" },
+			resolutionYAxis: { arg: "-ry", type: "number" },
+			scalePageTo: { arg: "-scale-to", type: "number" },
+			scalePageToXAxis: { arg: "-scale-to-x", type: "number" },
+			scalePageToYAxis: { arg: "-scale-to-y", type: "number" },
+			separator: { arg: "-sep", type: "string", minVersion: "0.75.0" },
+			singleFile: { arg: "-singlefile", type: "boolean" },
+			thinLineMode: { arg: "-thinlinemode", type: "string" },
+			tiffCompression: { arg: "-tiffcompression", type: "string" },
+			tiffFile: { arg: "-tiff", type: "boolean" },
+			userPassword: { arg: "-upw", type: "string" },
+		},
+		pdfToPs: {
+			antialias: { arg: "-aaRaster", type: "string" },
+			binary: { arg: "-binary", type: "boolean" },
+			defaultCmykProfile: {
+				arg: "-defaultcmykprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			defaultGrayProfile: {
+				arg: "-defaultgrayprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			defaultRgbProfile: {
+				arg: "-defaultrgbprofile",
+				type: "string",
+				minVersion: "21.01.0",
+			},
+			duplex: { arg: "-duplex", type: "boolean" },
+			epsFile: { arg: "-eps", type: "boolean" },
+			fillPage: { arg: "-expand", type: "boolean" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			form: { arg: "-form", type: "boolean" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			level1: { arg: "-level1", type: "boolean" },
+			level1Sep: { arg: "-level1sep", type: "boolean" },
+			level2: { arg: "-level2", type: "boolean" },
+			level2Sep: { arg: "-level2sep", type: "boolean" },
+			level3: { arg: "-level3", type: "boolean" },
+			level3Sep: { arg: "-level3sep", type: "boolean" },
+			noCenter: { arg: "-nocenter", type: "boolean" },
+			noCrop: { arg: "-nocrop", type: "boolean" },
+			noEmbedCIDFonts: { arg: "-noembcidps", type: "boolean" },
+			noEmbedCIDTrueTypeFonts: {
+				arg: "-noembcidtt",
+				type: "boolean",
+			},
+			noEmbedTrueTypeFonts: { arg: "-noembtt", type: "boolean" },
+			noEmbedType1Fonts: { arg: "-noembt1", type: "boolean" },
+			noShrink: { arg: "-noshrink", type: "boolean" },
+			opi: { arg: "-opi", type: "boolean" },
+			optimizecolorspace: {
+				arg: "-optimizecolorspace",
+				type: "boolean",
+			},
+			originalPageSizes: { arg: "-origpagesizes", type: "boolean" },
+			overprint: { arg: "-overprint", type: "boolean" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			paperHeight: { arg: "-paperh", type: "number" },
+			paperSize: { arg: "-paper", type: "string" },
+			paperWidth: { arg: "-paperw", type: "number" },
+			passfonts: { arg: "-passfonts", type: "boolean" },
+			preload: { arg: "-preload", type: "boolean" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			processColorFormat: { arg: "-processcolorformat", type: "string" },
+			processColorProfile: {
+				arg: "-processcolorprofile",
+				type: "string",
+			},
+			quiet: { arg: "-q", type: "boolean" },
+			rasterize: {
+				arg: "-rasterize",
+				type: "string",
+				minVersion: "0.90.0",
+			},
+			resolutionXYAxis: { arg: "-r", type: "number" },
+			userPassword: { arg: "-upw", type: "string" },
+		},
+		pdfToText: {
+			boundingBoxXhtml: { arg: "-bbox", type: "boolean" },
+			boundingBoxXhtmlLayout: {
+				arg: "-bbox-layout",
+				type: "boolean",
+			},
+			cropBox: {
+				arg: "-cropbox",
+				type: "boolean",
+				minVersion: "21.03.0",
+			},
+			cropHeight: { arg: "-H", type: "number" },
+			cropWidth: { arg: "-W", type: "number" },
+			cropXAxis: { arg: "-x", type: "number" },
+			cropYAxis: { arg: "-y", type: "number" },
+			eolConvention: { arg: "-eol", type: "string" },
+			firstPageToConvert: { arg: "-f", type: "number" },
+			fixedWidthLayout: { arg: "-fixed", type: "number" },
+			generateHtmlMetaFile: { arg: "-htmlmeta", type: "boolean" },
+			generateTsvFile: { arg: "-tsv", type: "boolean" },
+			lastPageToConvert: { arg: "-l", type: "number" },
+			listEncodingOptions: { arg: "-listenc", type: "boolean" },
+			maintainLayout: { arg: "-layout", type: "boolean" },
+			noDiagonalText: {
+				arg: "-nodiag",
+				type: "boolean",
+				minVersion: "0.80.0",
+			},
+			noPageBreaks: { arg: "-nopgbrk", type: "boolean" },
+			outputEncoding: { arg: "-enc", type: "string" },
+			ownerPassword: { arg: "-opw", type: "string" },
+			printVersionInfo: { arg: "-v", type: "boolean" },
+			quiet: { arg: "-q", type: "boolean" },
+			rawLayout: { arg: "-raw", type: "boolean" },
+			resolution: { arg: "-r", type: "number" },
+			userPassword: { arg: "-upw", type: "string" },
+		},
+		pdfUnite: {
+			printVersionInfo: { arg: "-v", type: "boolean" },
+		},
+	};
+
 	/**
 	 * @param {string} [binPath] - Path of poppler-utils binaries.
 	 * If not provided, the constructor will attempt to find the Poppler `pdfinfo` binary
@@ -214,12 +543,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfAttach(file, fileToAttach, outputFile, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			replace: { arg: "-replace", type: "boolean" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfAttach;
 		const args = parseOptions(acceptedOptions, options);
 		args.push(file, fileToAttach, outputFile);
 
@@ -254,23 +578,7 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfDetach(file, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			listEmbedded: { arg: "-list", type: "boolean" },
-			outputEncoding: { arg: "-enc", type: "string" },
-			outputPath: { arg: "-o", type: "string" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			saveAllFiles: { arg: "-saveall", type: "boolean" },
-			saveFile: {
-				arg: "-savefile",
-				type: "string",
-				minVersion: "0.86.0",
-			},
-			saveSpecificFile: { arg: "-save", type: "number" },
-			userPassword: { arg: "-upw", type: "string" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfDetach;
 		const args = parseOptions(acceptedOptions, options);
 		args.push(file);
 
@@ -293,21 +601,8 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfFonts(file, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			firstPageToExamine: { arg: "-f", type: "number" },
-			lastPageToExamine: { arg: "-l", type: "number" },
-			listSubstitutes: { arg: "-subst", type: "boolean" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			userPassword: { arg: "-upw", type: "string" },
-		};
-
-		const { stderr } = await execFileAsync(this.#pdfFontsBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfFonts;
+		const versionInfo = await this.#getVersion(this.#pdfFontsBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
 		return new Promise((resolve, reject) => {
@@ -379,25 +674,8 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfImages(file, outputPrefix, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			allFiles: { arg: "-all", type: "boolean" },
-			ccittFile: { arg: "-ccitt", type: "boolean" },
-			firstPageToConvert: { arg: "-f", type: "number" },
-			lastPageToConvert: { arg: "-l", type: "number" },
-			jbig2File: { arg: "-jbig2", type: "boolean" },
-			jpeg2000File: { arg: "-jp2", type: "boolean" },
-			jpegFile: { arg: "-j", type: "boolean" },
-			list: { arg: "-list", type: "boolean" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			pngFile: { arg: "-png", type: "boolean" },
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			tiffFile: { arg: "-tiff", type: "boolean" },
-			userPassword: { arg: "-upw", type: "string" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfImages;
 		const versionInfo = await this.#getVersion(this.#pdfImagesBin);
-
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
 		return new Promise((resolve, reject) => {
@@ -483,29 +761,8 @@ class Poppler {
 	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
 	 */
 	async pdfInfo(file, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			firstPageToConvert: { arg: "-f", type: "number" },
-			lastPageToConvert: { arg: "-l", type: "number" },
-			listEncodingOptions: { arg: "-listenc", type: "boolean" },
-			outputEncoding: { arg: "-enc", type: "string" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			printAsJson: { arg: "", type: "boolean" },
-			printBoundingBoxes: { arg: "-box", type: "boolean" },
-			printDocStruct: { arg: "-struct", type: "boolean" },
-			printDocStructText: { arg: "-struct-text", type: "boolean" },
-			printIsoDates: { arg: "-isodates", type: "boolean" },
-			printJS: { arg: "-js", type: "boolean" },
-			printMetadata: { arg: "-meta", type: "boolean" },
-			printNamedDests: { arg: "-dests", type: "boolean" },
-			printRawDates: { arg: "-rawdates", type: "boolean" },
-			printUrls: { arg: "-url", type: "boolean", minVersion: "21.11.0" },
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			userPassword: { arg: "-upw", type: "string" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfInfo;
 		const versionInfo = await this.#getVersion(this.#pdfInfoBin);
-
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
 		// Fetch file size if stdin input is a Buffer, as Poppler omits it
@@ -601,15 +858,8 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfSeparate(file, outputPattern, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			firstPageToExtract: { arg: "-f", type: "number" },
-			lastPageToExtract: { arg: "-l", type: "number" },
-			printVersionInfo: { arg: "-v", type: "boolean" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfSeparate;
 		const versionInfo = await this.#getVersion(this.#pdfSeparateBin);
-
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(file, outputPattern);
 
@@ -725,64 +975,9 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToCairo(file, outputFile, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			antialias: { arg: "-antialias", type: "string" },
-			cropBox: { arg: "-cropbox", type: "boolean" },
-			cropHeight: { arg: "-H", type: "number" },
-			cropSize: { arg: "-sz", type: "number" },
-			cropWidth: { arg: "-W", type: "number" },
-			cropXAxis: { arg: "-x", type: "number" },
-			cropYAxis: { arg: "-y", type: "number" },
-			duplex: { arg: "-duplex", type: "boolean" },
-			epsFile: { arg: "-eps", type: "boolean" },
-			evenPagesOnly: { arg: "-e", type: "boolean" },
-			fillPage: { arg: "-expand", type: "boolean" },
-			firstPageToConvert: { arg: "-f", type: "number" },
-			grayscaleFile: { arg: "-gray", type: "boolean" },
-			iccFile: { arg: "-icc", type: "string" },
-			jpegFile: { arg: "-jpeg", type: "boolean" },
-			jpegOptions: { arg: "-jpegopt", type: "string" },
-			lastPageToConvert: { arg: "-l", type: "number" },
-			monochromeFile: { arg: "-mono", type: "boolean" },
-			noCenter: { arg: "-nocenter", type: "boolean" },
-			noCrop: { arg: "-nocrop", type: "boolean" },
-			noShrink: { arg: "-noshrink", type: "boolean" },
-			oddPagesOnly: { arg: "-o", type: "boolean" },
-			originalPageSizes: { arg: "-origpagesizes", type: "boolean" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			paperHeight: { arg: "-paperh", type: "number" },
-			paperSize: { arg: "-paper", type: "string" },
-			paperWidth: { arg: "-paperw", type: "number" },
-			pdfFile: { arg: "-pdf", type: "boolean" },
-			pngFile: { arg: "-png", type: "boolean" },
-			printDocStruct: {
-				arg: "-struct",
-				type: "boolean",
-				minVersion: "23.11.0",
-			},
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			psFile: { arg: "-ps", type: "boolean" },
-			psLevel2: { arg: "-level2", type: "boolean" },
-			psLevel3: { arg: "-level3", type: "boolean" },
-			quiet: { arg: "-q", type: "boolean" },
-			resolutionXAxis: { arg: "-rx", type: "number" },
-			resolutionXYAxis: { arg: "-r", type: "number" },
-			resolutionYAxis: { arg: "-ry", type: "number" },
-			scalePageTo: { arg: "-scale-to", type: "number" },
-			scalePageToXAxis: { arg: "-scale-to-x", type: "number" },
-			scalePageToYAxis: { arg: "-scale-to-y", type: "number" },
-			singleFile: { arg: "-singlefile", type: "boolean" },
-			svgFile: { arg: "-svg", type: "boolean" },
-			tiffCompression: { arg: "-tiffcompression", type: "string" },
-			tiffFile: { arg: "-tiff", type: "boolean" },
-			transparentPageColor: { arg: "-transp", type: "boolean" },
-			userPassword: { arg: "-upw", type: "string" },
-		};
-
 		try {
+			const acceptedOptions = Poppler.#acceptedOptions.pdfToCairo;
 			const versionInfo = await this.#getVersion(this.#pdfToCairoBin);
-
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
 			return new Promise((resolve, reject) => {
@@ -883,39 +1078,8 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToHtml(file, outputFile, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			complexOutput: { arg: "-c", type: "boolean" },
-			dataUrls: {
-				arg: "-dataurls",
-				type: "boolean",
-				minVersion: "0.75.0",
-			},
-			exchangePdfLinks: { arg: "-p", type: "boolean" },
-			extractHidden: { arg: "-hidden", type: "boolean" },
-			firstPageToConvert: { arg: "-f", type: "number" },
-			fontFullName: { arg: "-fontfullname", type: "boolean" },
-			ignoreImages: { arg: "-i", type: "boolean" },
-			imageFormat: { arg: "-fmt", type: "string" },
-			lastPageToConvert: { arg: "-l", type: "number" },
-			noDrm: { arg: "-nodrm", type: "boolean" },
-			noFrames: { arg: "-noframes", type: "boolean" },
-			noMergeParagraph: { arg: "-nomerge", type: "boolean" },
-			noRoundedCoordinates: { arg: "-noroundcoord", type: "boolean" },
-			outputEncoding: { arg: "-enc", type: "string" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			quiet: { arg: "-q", type: "boolean" },
-			singlePage: { arg: "-s", type: "boolean" },
-			stdout: { arg: "-stdout", type: "boolean" },
-			userPassword: { arg: "-upw", type: "string" },
-			wordBreakThreshold: { arg: "-wbt", type: "number" },
-			xmlOutput: { arg: "-xml", type: "boolean" },
-			zoom: { arg: "-zoom", type: "number" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfToHtml;
 		const versionInfo = await this.#getVersion(this.#pdfToHtmlBin);
-
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
 		return new Promise((resolve, reject) => {
@@ -1029,79 +1193,8 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToPpm(file, outputPath, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			antialiasFonts: { arg: "-aa", type: "string" },
-			antialiasVectors: { arg: "-aaVector", type: "string" },
-			cropBox: { arg: "-cropbox", type: "boolean" },
-			cropHeight: { arg: "-H", type: "number" },
-			cropSize: { arg: "-sz", type: "number" },
-			cropWidth: { arg: "-W", type: "number" },
-			cropXAxis: { arg: "-x", type: "number" },
-			cropYAxis: { arg: "-y", type: "number" },
-			defaultCmykProfile: {
-				arg: "-defaultcmykprofile",
-				type: "string",
-				minVersion: "21.01.0",
-			},
-			defaultGrayProfile: {
-				arg: "-defaultgrayprofile",
-				type: "string",
-				minVersion: "21.01.0",
-			},
-			defaultRgbProfile: {
-				arg: "-defaultrgbprofile",
-				type: "string",
-				minVersion: "21.01.0",
-			},
-			displayProfile: {
-				arg: "-displayprofile",
-				type: "string",
-				minVersion: "0.90.0",
-			},
-			evenPagesOnly: { arg: "-e", type: "boolean" },
-			firstPageToConvert: { arg: "-f", type: "number" },
-			forcePageNumber: {
-				arg: "-forcenum",
-				type: "boolean",
-				minVersion: "0.75.0",
-			},
-			freetype: { arg: "-freetype", type: "string" },
-			grayscaleFile: { arg: "-gray", type: "boolean" },
-			hideAnnotations: {
-				arg: "-hide-annotations",
-				type: "boolean",
-				minVersion: "0.84.0",
-			},
-			jpegFile: { arg: "-jpeg", type: "boolean" },
-			lastPageToConvert: { arg: "-l", type: "number" },
-			monochromeFile: { arg: "-mono", type: "boolean" },
-			oddPagesOnly: { arg: "-o", type: "boolean" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			pngFile: { arg: "-png", type: "boolean" },
-			printProgress: {
-				arg: "-progress",
-				type: "boolean",
-				minVersion: "21.03.0",
-			},
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			quiet: { arg: "-q", type: "boolean" },
-			resolutionXAxis: { arg: "-rx", type: "number" },
-			resolutionXYAxis: { arg: "-r", type: "number" },
-			resolutionYAxis: { arg: "-ry", type: "number" },
-			scalePageTo: { arg: "-scale-to", type: "number" },
-			scalePageToXAxis: { arg: "-scale-to-x", type: "number" },
-			scalePageToYAxis: { arg: "-scale-to-y", type: "number" },
-			separator: { arg: "-sep", type: "string", minVersion: "0.75.0" },
-			singleFile: { arg: "-singlefile", type: "boolean" },
-			thinLineMode: { arg: "-thinlinemode", type: "string" },
-			tiffCompression: { arg: "-tiffcompression", type: "string" },
-			tiffFile: { arg: "-tiff", type: "boolean" },
-			userPassword: { arg: "-upw", type: "string" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfToPpm;
 		const versionInfo = await this.#getVersion(this.#pdfToPpmBin);
-
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
 		return new Promise((resolve, reject) => {
@@ -1251,78 +1344,8 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToPs(file, outputFile, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			antialias: { arg: "-aaRaster", type: "string" },
-			binary: { arg: "-binary", type: "boolean" },
-			defaultCmykProfile: {
-				arg: "-defaultcmykprofile",
-				type: "string",
-				minVersion: "21.01.0",
-			},
-			defaultGrayProfile: {
-				arg: "-defaultgrayprofile",
-				type: "string",
-				minVersion: "21.01.0",
-			},
-			defaultRgbProfile: {
-				arg: "-defaultrgbprofile",
-				type: "string",
-				minVersion: "21.01.0",
-			},
-			duplex: { arg: "-duplex", type: "boolean" },
-			epsFile: { arg: "-eps", type: "boolean" },
-			fillPage: { arg: "-expand", type: "boolean" },
-			firstPageToConvert: { arg: "-f", type: "number" },
-			form: { arg: "-form", type: "boolean" },
-			lastPageToConvert: { arg: "-l", type: "number" },
-			level1: { arg: "-level1", type: "boolean" },
-			level1Sep: { arg: "-level1sep", type: "boolean" },
-			level2: { arg: "-level2", type: "boolean" },
-			level2Sep: { arg: "-level2sep", type: "boolean" },
-			level3: { arg: "-level3", type: "boolean" },
-			level3Sep: { arg: "-level3sep", type: "boolean" },
-			noCenter: { arg: "-nocenter", type: "boolean" },
-			noCrop: { arg: "-nocrop", type: "boolean" },
-			noEmbedCIDFonts: { arg: "-noembcidps", type: "boolean" },
-			noEmbedCIDTrueTypeFonts: {
-				arg: "-noembcidtt",
-				type: "boolean",
-			},
-			noEmbedTrueTypeFonts: { arg: "-noembtt", type: "boolean" },
-			noEmbedType1Fonts: { arg: "-noembt1", type: "boolean" },
-			noShrink: { arg: "-noshrink", type: "boolean" },
-			opi: { arg: "-opi", type: "boolean" },
-			optimizecolorspace: {
-				arg: "-optimizecolorspace",
-				type: "boolean",
-			},
-			originalPageSizes: { arg: "-origpagesizes", type: "boolean" },
-			overprint: { arg: "-overprint", type: "boolean" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			paperHeight: { arg: "-paperh", type: "number" },
-			paperSize: { arg: "-paper", type: "string" },
-			paperWidth: { arg: "-paperw", type: "number" },
-			passfonts: { arg: "-passfonts", type: "boolean" },
-			preload: { arg: "-preload", type: "boolean" },
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			processColorFormat: { arg: "-processcolorformat", type: "string" },
-			processColorProfile: {
-				arg: "-processcolorprofile",
-				type: "string",
-			},
-			quiet: { arg: "-q", type: "boolean" },
-			rasterize: {
-				arg: "-rasterize",
-				type: "string",
-				minVersion: "0.90.0",
-			},
-			resolutionXYAxis: { arg: "-r", type: "number" },
-			userPassword: { arg: "-upw", type: "string" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfToPs;
 		const versionInfo = await this.#getVersion(this.#pdfToPsBin);
-
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
 		return new Promise((resolve, reject) => {
@@ -1418,47 +1441,8 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToText(file, outputFile, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			boundingBoxXhtml: { arg: "-bbox", type: "boolean" },
-			boundingBoxXhtmlLayout: {
-				arg: "-bbox-layout",
-				type: "boolean",
-			},
-			cropBox: {
-				arg: "-cropbox",
-				type: "boolean",
-				minVersion: "21.03.0",
-			},
-			cropHeight: { arg: "-H", type: "number" },
-			cropWidth: { arg: "-W", type: "number" },
-			cropXAxis: { arg: "-x", type: "number" },
-			cropYAxis: { arg: "-y", type: "number" },
-			eolConvention: { arg: "-eol", type: "string" },
-			firstPageToConvert: { arg: "-f", type: "number" },
-			fixedWidthLayout: { arg: "-fixed", type: "number" },
-			generateHtmlMetaFile: { arg: "-htmlmeta", type: "boolean" },
-			generateTsvFile: { arg: "-tsv", type: "boolean" },
-			lastPageToConvert: { arg: "-l", type: "number" },
-			listEncodingOptions: { arg: "-listenc", type: "boolean" },
-			maintainLayout: { arg: "-layout", type: "boolean" },
-			noDiagonalText: {
-				arg: "-nodiag",
-				type: "boolean",
-				minVersion: "0.80.0",
-			},
-			noPageBreaks: { arg: "-nopgbrk", type: "boolean" },
-			outputEncoding: { arg: "-enc", type: "string" },
-			ownerPassword: { arg: "-opw", type: "string" },
-			printVersionInfo: { arg: "-v", type: "boolean" },
-			quiet: { arg: "-q", type: "boolean" },
-			rawLayout: { arg: "-raw", type: "boolean" },
-			resolution: { arg: "-r", type: "number" },
-			userPassword: { arg: "-upw", type: "string" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfToText;
 		const versionInfo = await this.#getVersion(this.#pdfToTextBin);
-
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
 		return new Promise((resolve, reject) => {
@@ -1517,13 +1501,8 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfUnite(files, outputFile, options = {}) {
-		/** @type {PopplerAcceptedOptions} */
-		const acceptedOptions = {
-			printVersionInfo: { arg: "-v", type: "boolean" },
-		};
-
+		const acceptedOptions = Poppler.#acceptedOptions.pdfUnite;
 		const versionInfo = await this.#getVersion(this.#pdfUniteBin);
-
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(...files, outputFile);
 

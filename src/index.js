@@ -975,66 +975,59 @@ class Poppler {
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToCairo(file, outputFile, options = {}) {
-		try {
-			const acceptedOptions = Poppler.#acceptedOptions.pdfToCairo;
-			const versionInfo = await this.#getVersion(this.#pdfToCairoBin);
-			const args = parseOptions(acceptedOptions, options, versionInfo);
+		const acceptedOptions = Poppler.#acceptedOptions.pdfToCairo;
+		const versionInfo = await this.#getVersion(this.#pdfToCairoBin);
+		const args = parseOptions(acceptedOptions, options, versionInfo);
 
-			return new Promise((resolve, reject) => {
-				args.push(
-					Buffer.isBuffer(file) ? "-" : file,
-					outputFile || "-"
-				);
+		return new Promise((resolve, reject) => {
+			args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-				const child = spawn(this.#pdfToCairoBin, args);
+			const child = spawn(this.#pdfToCairoBin, args);
 
-				if (
-					outputFile === undefined &&
-					args.some((arg) => ["-singlefile", "-pdf"].includes(arg))
-				) {
-					child.stdout.setEncoding("binary");
-				}
+			if (
+				outputFile === undefined &&
+				args.some((arg) => ["-singlefile", "-pdf"].includes(arg))
+			) {
+				child.stdout.setEncoding("binary");
+			}
 
-				if (Buffer.isBuffer(file)) {
-					child.stdin.write(file);
-					child.stdin.end();
-				}
+			if (Buffer.isBuffer(file)) {
+				child.stdin.write(file);
+				child.stdin.end();
+			}
 
-				let stdOut = "";
-				let stdErr = "";
+			let stdOut = "";
+			let stdErr = "";
 
-				child.stdout.on("data", (data) => {
-					stdOut += data;
-				});
-
-				child.stderr.on("data", (data) => {
-					stdErr += data;
-				});
-
-				child.on("close", (code) => {
-					/* istanbul ignore else */
-					if (stdOut !== "") {
-						resolve(stdOut.trim());
-					} else if (code === 0) {
-						resolve(ERROR_MSGS[code]);
-					} else if (stdErr !== "") {
-						reject(new Error(stdErr.trim()));
-					} else {
-						reject(
-							new Error(
-								// @ts-ignore: Second operand used if code is not in ERROR_MSGS
-								ERROR_MSGS[code] ||
-									`pdftocairo ${args.join(
-										" "
-									)} exited with code ${code}`
-							)
-						);
-					}
-				});
+			child.stdout.on("data", (data) => {
+				stdOut += data;
 			});
-		} catch (err) {
-			return Promise.reject(err);
-		}
+
+			child.stderr.on("data", (data) => {
+				stdErr += data;
+			});
+
+			child.on("close", (code) => {
+				/* istanbul ignore else */
+				if (stdOut !== "") {
+					resolve(stdOut.trim());
+				} else if (code === 0) {
+					resolve(ERROR_MSGS[code]);
+				} else if (stdErr !== "") {
+					reject(new Error(stdErr.trim()));
+				} else {
+					reject(
+						new Error(
+							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
+							ERROR_MSGS[code] ||
+								`pdftocairo ${args.join(
+									" "
+								)} exited with code ${code}`
+						)
+					);
+				}
+			});
+		});
 	}
 
 	/**

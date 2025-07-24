@@ -6,7 +6,7 @@
 
 const { execFile, spawnSync } = require("node:child_process");
 const { access, readFile, unlink } = require("node:fs/promises");
-const { join, normalize, sep } = require("node:path");
+const { join, normalize, posix, sep } = require("node:path");
 const { platform } = require("node:process");
 const { promisify } = require("node:util");
 const {
@@ -31,8 +31,9 @@ const IO_ERROR_REG = /^I\/O Error:/u;
 
 const testDirectory =
 	join(__dirname, "..", "test_resources", "test_files") + sep;
+const testDirectoryPosix =
+	posix.join(__dirname, "..", "test_resources", "test_files") + posix.sep;
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
-const whitespaceFile = `${testDirectory}pdf_1.7_whitespace_example.pdf`;
 
 /**
  * @description Returns the path to the poppler-util binaries based on the OS.
@@ -63,13 +64,13 @@ const testBinaryPath = getTestBinaryPath();
 describe("Node-Poppler module", () => {
 	afterEach(async () => {
 		// Remove leftover test files
-		const files = await glob(`${testDirectory}**/*`, {
+		const files = await glob(`${testDirectoryPosix}**/*`, {
 			ignore: [
-				`${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`,
-				`${testDirectory}pdf_1.3_NHS_Constitution.pdf`,
-				`${testDirectory}pdf_1.7_NHS_Constitution_Handbook.pdf`,
-				`${testDirectory}test.txt`,
-				whitespaceFile,
+				`${testDirectoryPosix}pdf_1.3_NHS_Constitution_attached_detach.pdf`,
+				`${testDirectoryPosix}pdf_1.3_NHS_Constitution.pdf`,
+				`${testDirectoryPosix}pdf_1.7_NHS_Constitution_Handbook.pdf`,
+				`${testDirectoryPosix}pdf_1.7_whitespace_example.pdf`,
+				`${testDirectoryPosix}test.txt`,
 			],
 		});
 
@@ -1230,7 +1231,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			const res = await poppler.pdfToText(
-				whitespaceFile,
+				`${testDirectory}pdf_1.7_whitespace_example.pdf`,
 				undefined,
 				options
 			);

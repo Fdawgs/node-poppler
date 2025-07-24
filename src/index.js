@@ -119,6 +119,8 @@ class Poppler {
 	#pdfToTextBin;
 	#pdfUniteBin;
 
+	#binVersions = new Map();
+
 	/**
 	 * @param {string} [binPath] - Path of poppler-utils binaries.
 	 * If not provided, the constructor will attempt to find the Poppler `pdfinfo` binary
@@ -182,6 +184,22 @@ class Poppler {
 	 */
 	get path() {
 		return this.#popplerPath;
+	}
+
+	/**
+	 * @author Frazer Smith
+	 * @description Returns the version of the specified Poppler binary.
+	 * @param {string} binary - The Poppler binary to get the version of.
+	 * @returns {Promise<string>} A promise that resolves with the version of the binary, or rejects with an `Error` object.
+	 */
+	async #getVersion(binary) {
+		if (!this.#binVersions.has(binary)) {
+			const { stderr } = await execFileAsync(binary, ["-v"]);
+			// @ts-ignore: parseOptions checks if falsy
+			const version = POPPLER_VERSION_REG.exec(stderr)[1];
+			this.#binVersions.set(binary, version);
+		}
+		return this.#binVersions.get(binary);
 	}
 
 	/**
@@ -378,10 +396,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(this.#pdfImagesBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+		const versionInfo = await this.#getVersion(this.#pdfImagesBin);
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -489,10 +504,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(this.#pdfInfoBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+		const versionInfo = await this.#getVersion(this.#pdfInfoBin);
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -596,10 +608,7 @@ class Poppler {
 			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
-		const { stderr } = await execFileAsync(this.#pdfSeparateBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+		const versionInfo = await this.#getVersion(this.#pdfSeparateBin);
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(file, outputPattern);
@@ -772,10 +781,7 @@ class Poppler {
 		};
 
 		try {
-			const { stderr } = await execFileAsync(this.#pdfToCairoBin, ["-v"]);
-
-			// @ts-ignore: parseOptions checks if falsy
-			const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+			const versionInfo = await this.#getVersion(this.#pdfToCairoBin);
 
 			const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -908,10 +914,7 @@ class Poppler {
 			zoom: { arg: "-zoom", type: "number" },
 		};
 
-		const { stderr } = await execFileAsync(this.#pdfToHtmlBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+		const versionInfo = await this.#getVersion(this.#pdfToHtmlBin);
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1097,10 +1100,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(this.#pdfToPpmBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+		const versionInfo = await this.#getVersion(this.#pdfToPpmBin);
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1321,10 +1321,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(this.#pdfToPsBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+		const versionInfo = await this.#getVersion(this.#pdfToPsBin);
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1460,10 +1457,7 @@ class Poppler {
 			userPassword: { arg: "-upw", type: "string" },
 		};
 
-		const { stderr } = await execFileAsync(this.#pdfToTextBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+		const versionInfo = await this.#getVersion(this.#pdfToTextBin);
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
@@ -1528,10 +1522,7 @@ class Poppler {
 			printVersionInfo: { arg: "-v", type: "boolean" },
 		};
 
-		const { stderr } = await execFileAsync(this.#pdfUniteBin, ["-v"]);
-
-		// @ts-ignore: parseOptions checks if falsy
-		const versionInfo = POPPLER_VERSION_REG.exec(stderr)[1];
+		const versionInfo = await this.#getVersion(this.#pdfUniteBin);
 
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(...files, outputFile);

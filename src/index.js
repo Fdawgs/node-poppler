@@ -1303,10 +1303,10 @@ class Poppler {
 
 			child.on("close", (code) => {
 				/* istanbul ignore else */
-				if (stdErr !== "") {
-					reject(new Error(stdErr.trim()));
-				} else if (code === 0) {
+				if (code === 0) {
 					resolve(ERROR_MSGS[code]);
+				} else if (stdErr !== "") {
+					reject(new Error(stdErr.trim()));
 				} else {
 					reject(
 						new Error(

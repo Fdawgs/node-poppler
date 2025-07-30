@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.4](https://github.com/Fdawgs/node-poppler/compare/v8.0.3...v8.0.4) (2025-07-24)
+
+
+### Continuous integration
+
+* **cd:** only scope package if it is not already ([#663](https://github.com/Fdawgs/node-poppler/issues/663)) ([f2d68c7](https://github.com/Fdawgs/node-poppler/commit/f2d68c7872b6aa1df16dcff7232f3f033a84ab98))
+
+
+### Improvements
+
+* **index:** cache `acceptedOptions` only on first call, not on init ([#671](https://github.com/Fdawgs/node-poppler/issues/671)) ([67b468e](https://github.com/Fdawgs/node-poppler/commit/67b468ebfa70bb568b2ade10bdd2dc87519519e2))
+* **index:** cache version info to stop repeated process spawning ([#667](https://github.com/Fdawgs/node-poppler/issues/667)) ([19a9f6b](https://github.com/Fdawgs/node-poppler/commit/19a9f6b51d443ee3c04084b68099db764ca42603))
+* **index:** resolve bins path once on init, not on every call ([#666](https://github.com/Fdawgs/node-poppler/issues/666)) ([41970e2](https://github.com/Fdawgs/node-poppler/commit/41970e29384e5e45c628d9bdaf0d1e3890a230ea))
+* **index:** stop `acceptedOptions` obj creation on every call ([#669](https://github.com/Fdawgs/node-poppler/issues/669)) ([b2910af](https://github.com/Fdawgs/node-poppler/commit/b2910af3b5cf1289a2abbde4a2354f541e043fef))
+* **index:** stop rethrowing errors in `pdfToCairo()` ([#670](https://github.com/Fdawgs/node-poppler/issues/670)) ([c262083](https://github.com/Fdawgs/node-poppler/commit/c2620838402734ec502142c77fd62e5f7ebf3375))
+
+
+### Tests
+
+* **index:** build test directory in cleaner fashion ([#665](https://github.com/Fdawgs/node-poppler/issues/665)) ([72d1861](https://github.com/Fdawgs/node-poppler/commit/72d186137e5162e50f234f806a7e8dfb521e2705))
+* **index:** use posix for globbing ([#668](https://github.com/Fdawgs/node-poppler/issues/668)) ([c83d1f0](https://github.com/Fdawgs/node-poppler/commit/c83d1f004fc70aac1b9ef9cdc029f24724dd70b9))
+
 ## [8.0.3](https://github.com/Fdawgs/node-poppler/compare/v8.0.2...v8.0.3) (2025-07-08)
 
 

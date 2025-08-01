@@ -102,7 +102,7 @@
 		"jsdoc-to-markdown": "^9.1.1",
 		"licensee": "^11.1.1",
 		"prettier": "^3.6.2",
-		"typescript": "~5.8.3"
+		"typescript": "~5.9.2"
 	},
 	"dependencies": {
 		"camelcase": "^6.3.0",

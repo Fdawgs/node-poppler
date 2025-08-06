@@ -51,4 +51,5 @@ jobs:
               uses: JustinBeckwith/linkinator-action@3d5ba091319fa7b0ac14703761eebb7d100e6f6d # v1.11.0
               with:
                   paths: "**/*.md"
+                  retry: true
                   skip: "https://(?:www.|)github.com/Fdawgs/.*/(?:commit|issues|compare)/, http://0.0.0.0"

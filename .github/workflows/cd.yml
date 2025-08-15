@@ -54,15 +54,14 @@ jobs:
                   registry-url: https://registry.npmjs.org
 
             - name: Publish to NPM
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
               # Build docs/definitions, and remove dev values
               # from package.json before publishing to reduce package size
               run: |
+                  npm i -g npm@latest
                   npm i --ignore-scripts
                   npm run build --if-present
                   npm pkg delete commitlint devDependencies jest scripts
-                  npm publish --access public --ignore-scripts --provenance
+                  npm publish --access public --ignore-scripts
 
     publish-ghp:
         name: Publish to GitHub Packages
@@ -103,7 +102,8 @@ jobs:
               # Build docs/definitions, and remove dev values
               # from package.json before publishing to reduce package size
               run: |
+                  npm i -g npm@latest
                   npm i --ignore-scripts
                   npm run build --if-present
-                  npm pkg delete commitlint devDependencies scripts
+                  npm pkg delete commitlint devDependencies jest scripts
                   npm publish --access public --ignore-scripts --provenance

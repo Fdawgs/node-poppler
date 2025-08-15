@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.5](https://github.com/Fdawgs/node-poppler/compare/v8.0.4...v8.0.5) (2025-08-15)
+
+
+### Continuous integration
+
+* **cd:** use oicd for publishing to npm ([#677](https://github.com/Fdawgs/node-poppler/issues/677)) ([bd65bd9](https://github.com/Fdawgs/node-poppler/commit/bd65bd96984a69985448846347769629bcf489fa))
+* **link-check:** retry on 429 response ([#675](https://github.com/Fdawgs/node-poppler/issues/675)) ([ad93f9d](https://github.com/Fdawgs/node-poppler/commit/ad93f9d0bf0753030d22e087a235e7b3fec1c86d))
+
+
+### Dependencies
+
+* **deps-dev:** bump typescript from 5.8.3 to 5.9.2 ([#674](https://github.com/Fdawgs/node-poppler/issues/674)) ([ac8b346](https://github.com/Fdawgs/node-poppler/commit/ac8b34602f3659bee445524326db5bed1fcb36a2))
+
 ## [8.0.4](https://github.com/Fdawgs/node-poppler/compare/v8.0.3...v8.0.4) (2025-07-24)
 
 

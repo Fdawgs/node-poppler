@@ -37,7 +37,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
               with:
                   persist-credentials: false
 
@@ -52,7 +52,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
               with:
                   persist-credentials: false
 
@@ -90,7 +90,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
               with:
                   fetch-depth: 0
                   persist-credentials: false
@@ -112,7 +112,7 @@ jobs:
             contents: read
         steps:
             - name: Check out repo
-              uses: actions/checkout@v4
+              uses: actions/checkout@v5
               with:
                   persist-credentials: false
 

@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.5](https://github.com/Fdawgs/node-poppler/compare/v8.0.4...v8.0.5) (2025-09-16)
+
+
+### Continuous integration
+
+* **cd:** use oicd for publishing to npm ([#677](https://github.com/Fdawgs/node-poppler/issues/677)) ([bd65bd9](https://github.com/Fdawgs/node-poppler/commit/bd65bd96984a69985448846347769629bcf489fa))
+* **deps:** bump actions/checkout from 4 to 5 ([#680](https://github.com/Fdawgs/node-poppler/issues/680)) ([ccf8a06](https://github.com/Fdawgs/node-poppler/commit/ccf8a0641f9b929a2c77c14150e8a21ad12ea78e))
+* **deps:** bump actions/dependency-review-action from 4.7.1 to 4.7.3 ([#679](https://github.com/Fdawgs/node-poppler/issues/679)) ([4c9b43c](https://github.com/Fdawgs/node-poppler/commit/4c9b43c5dc4ac74b77283f73f7c54b982673b470))
+* **deps:** bump googleapis/release-please-action from 4.2.0 to 4.3.0 ([#681](https://github.com/Fdawgs/node-poppler/issues/681)) ([3da146d](https://github.com/Fdawgs/node-poppler/commit/3da146dddbfc3a502fe85272165c6ba64f4ed568))
+* **link-check:** retry on 429 response ([#675](https://github.com/Fdawgs/node-poppler/issues/675)) ([ad93f9d](https://github.com/Fdawgs/node-poppler/commit/ad93f9d0bf0753030d22e087a235e7b3fec1c86d))
+
+
+### Dependencies
+
+* **dependabot:** add cooldowns ([#683](https://github.com/Fdawgs/node-poppler/issues/683)) ([0e7ab26](https://github.com/Fdawgs/node-poppler/commit/0e7ab2660bb3487d011fd2b03b82f65a4242c2a7))
+* **deps-dev:** bump typescript from 5.8.3 to 5.9.2 ([#674](https://github.com/Fdawgs/node-poppler/issues/674)) ([ac8b346](https://github.com/Fdawgs/node-poppler/commit/ac8b34602f3659bee445524326db5bed1fcb36a2))
+
+
+### Miscellaneous
+
+* add `.nvmrc` file ([#682](https://github.com/Fdawgs/node-poppler/issues/682)) ([bb38014](https://github.com/Fdawgs/node-poppler/commit/bb38014d7edfecb55e1ee7f5db454ac35841dcd4))
+
 ## [8.0.4](https://github.com/Fdawgs/node-poppler/compare/v8.0.3...v8.0.4) (2025-07-24)
 
 

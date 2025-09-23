@@ -25,9 +25,9 @@ const execFileAsync = promisify(execFile);
 const { Poppler } = require("./index");
 
 // Cache immutable regex as they are expensive to create and garbage collect
-const CMD_FAILED_REG = /^Command failed:/u;
-const SYNTAX_WARNING_REG = /^Syntax Warning:/u;
-const IO_ERROR_REG = /^I\/O Error:/u;
+const CMD_FAILED_REG = /^Command failed:/v;
+const SYNTAX_WARNING_REG = /^Syntax Warning:/v;
+const IO_ERROR_REG = /^I\/O Error:/v;
 
 const testDirectory =
 	join(__dirname, "..", "test_resources", "test_files") + sep;
@@ -43,7 +43,7 @@ function getTestBinaryPath() {
 	const which = spawnSync(platform === "win32" ? "where" : "which", [
 		"pdfinfo",
 	]).stdout.toString();
-	let popplerPath = /(.+)pdfinfo/u.exec(which)?.[1];
+	let popplerPath = /(.+)pdfinfo/v.exec(which)?.[1];
 
 	if (platform === "win32" && !popplerPath) {
 		popplerPath = join(
@@ -311,7 +311,7 @@ describe("Node-Poppler module", () => {
 			expect.assertions(1);
 			await poppler.pdfImages(undefined, "file_prefix").catch((err) => {
 				expect(err.message).toMatch(
-					/^I\/O Error: Couldn't open file 'undefined'/u
+					/^I\/O Error: Couldn't open file 'undefined'/v
 				);
 			});
 		});
@@ -947,7 +947,7 @@ describe("Node-Poppler module", () => {
 				["-v"]
 			);
 
-			version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u.exec(stderr)[1];
+			version = /(\d{1,2}\.\d{1,2}\.\d{1,2})/v.exec(stderr)[1];
 		});
 
 		it("Accepts options and only process 1 page of PDF file", async () => {
@@ -1146,8 +1146,8 @@ describe("Node-Poppler module", () => {
 				options
 			);
 
-			expect(res).toMatch(/^\s*/u);
-			expect(res).toMatch(/\s*$/u);
+			expect(res).toMatch(/^\s*/v);
+			expect(res).toMatch(/\s*$/v);
 		});
 
 		it("Accepts options and only process 2 pages of PDF file", async () => {

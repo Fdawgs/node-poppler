@@ -3,14 +3,15 @@
 	"compilerOptions": {
 		"allowJs": true,
 		"checkJs": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
+		"lib": ["ES2024"],
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
-		"outDir": "types",
+		"noEmit": true,
 		"resolveJsonModule": true,
+		"skipLibCheck": true,
 		"strict": true,
-		"target": "ES2023"
+		"target": "ES2024",
+		"types": ["node"]
 	},
-	"include": ["src/index.js"]
+	"exclude": ["dist", "node_modules"]
 }

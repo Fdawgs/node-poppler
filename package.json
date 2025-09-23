@@ -51,7 +51,7 @@
 	},
 	"scripts": {
 		"build:docs": "jsdoc2md src/index.js > API.md --EOL posix",
-		"build": "tsc",
+		"build": "tsc -p tsconfig.build.json",
 		"lint:fix": "npm run lint -- --fix",
 		"lint:licenses": "licensee --errors-only --production",
 		"lint:prettier:fix": "prettier . -w -u",

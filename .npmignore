@@ -5,3 +5,4 @@
 !src/index.js
 !src/lib/**
 !types/index.d.ts
+!types/index.d.ts.map

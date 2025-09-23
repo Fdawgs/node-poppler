@@ -29,9 +29,7 @@ permissions:
 jobs:
     dependency-review:
         name: Dependency Review
-        if: >
-            github.event.pull_request.draft == false &&
-            github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request'
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -46,7 +44,6 @@ jobs:
 
     lint:
         name: Lint Code
-        if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -83,8 +80,8 @@ jobs:
     commit-lint:
         name: Lint Commit Messages
         if: >
-            github.event.pull_request.draft == false &&
-            github.actor != 'dependabot[bot]'
+          github.event_name == 'push' ||
+          (github.event_name == 'pull_request' && github.event.pull_request.user.login != 'dependabot[bot]')
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -102,7 +99,6 @@ jobs:
 
     unit-tests:
         name: Unit Tests
-        if: github.event.pull_request.draft == false
         strategy:
             matrix:
                 node-version: [20, 22, 24]
@@ -153,9 +149,7 @@ jobs:
     coverage:
         name: Aggregate Coverage Calculations
         needs: unit-tests
-        if: >
-            github.event.pull_request.draft == false &&
-            github.repository == 'Fdawgs/node-poppler'
+        if: github.repository == 'Fdawgs/node-poppler'
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -168,10 +162,9 @@ jobs:
 
     automerge:
         name: Automerge Dependabot PRs
-        needs: unit-tests
+        needs: [dependency-review, lint, unit-tests]
         if: >
             github.event_name == 'pull_request' &&
-            github.event.pull_request.draft == false &&
             github.event.pull_request.head.repo.full_name == github.repository &&
             github.event.pull_request.user.login == 'dependabot[bot]'
         runs-on: ubuntu-latest

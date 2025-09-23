@@ -37,7 +37,6 @@ permissions:
 jobs:
     link-check:
         name: Link Check
-        if: github.event.pull_request.draft == false
         runs-on: ubuntu-latest
         permissions:
             contents: read

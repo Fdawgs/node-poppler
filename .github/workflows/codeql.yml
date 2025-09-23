@@ -27,7 +27,6 @@ permissions:
 jobs:
     build:
         name: CodeQL Analysis
-        if: github.event.pull_request.draft == false
         strategy:
             matrix:
                 languages: ["actions", "javascript-typescript"]

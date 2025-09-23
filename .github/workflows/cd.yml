@@ -51,6 +51,7 @@ jobs:
               with:
                   check-latest: true
                   node-version: lts/*
+                  package-manager-cache: false
                   registry-url: https://registry.npmjs.org
 
             - name: Publish to NPM
@@ -86,6 +87,7 @@ jobs:
               with:
                   check-latest: true
                   node-version: lts/*
+                  package-manager-cache: false
                   registry-url: https://npm.pkg.github.com
                   scope: ${{ env.SCOPE }}
 

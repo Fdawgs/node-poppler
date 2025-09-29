@@ -71,7 +71,7 @@ jobs:
             - name: Run Prettier
               run: npm run lint:prettier
 
-            - name: Run License Checker
+            - name: Run Licensee
               run: npm run lint:licenses
 
             - name: Run build

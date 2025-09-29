@@ -77,6 +77,9 @@ jobs:
             - name: Run build
               run: npm run build --if-present
 
+            - name: Run typecheck
+              run: npm run typecheck --if-present
+
     commit-lint:
         name: Lint Commit Messages
         if: >

@@ -71,11 +71,14 @@ jobs:
             - name: Run Prettier
               run: npm run lint:prettier
 
-            - name: Run License Checker
+            - name: Run Licensee
               run: npm run lint:licenses
 
             - name: Run build
               run: npm run build --if-present
+
+            - name: Run typecheck
+              run: npm run typecheck --if-present
 
     commit-lint:
         name: Lint Commit Messages

@@ -20,9 +20,9 @@ const ERROR_MSGS = {
 };
 
 // Cache immutable regex as they are expensive to create and garbage collect
-const POPPLER_VERSION_REG = /(\d{1,2}\.\d{1,2}\.\d{1,2})/v;
-const PDF_INFO_FILE_SIZES_REG = /(File\s+size:\s+)0(\s+)bytes/v;
-const PDF_INFO_PATH_REG = /(.+)pdfinfo/v;
+const POPPLER_VERSION_REG = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u;
+const PDF_INFO_FILE_SIZES_REG = /(File\s+size:\s+)0(\s+)bytes/u;
+const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
 
 /**
  * @typedef {object} OptionDetails

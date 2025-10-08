@@ -1,2 +1,2 @@
-npm run lint:licenses && npm test
+npm run lint:licenses && npm run lint:prettier && npm run lint
 npm run build:docs && git add API.md

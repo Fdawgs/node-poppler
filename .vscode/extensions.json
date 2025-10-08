@@ -6,6 +6,7 @@
 		"dbaeumer.vscode-eslint",
 		"eamodio.gitlens",
 		"esbenp.prettier-vscode",
+		"ms-vscode-remote.vscode-remote-extensionpack",
 		"redhat.vscode-yaml"
 	]
 }

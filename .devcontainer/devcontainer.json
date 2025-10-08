@@ -1,0 +1,41 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
+
+	"name": "Node.js",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+
+	"customizations": {
+		"vscode": {
+			// Devcontainers do not automatically install recommended extensions
+			// from .vscode/extensions.json
+			"extensions": [
+				"bierner.github-markdown-preview",
+				"dbaeumer.vscode-eslint",
+				"eamodio.gitlens",
+				"esbenp.prettier-vscode",
+				"redhat.vscode-yaml"
+			],
+			"settings": {
+				"extensions.ignoreRecommendations": true,
+				"gitlens.graph.statusBar.enabled": false,
+				"gitlens.hovers.avatars": false,
+				"gitlens.mode.statusBar.enabled": false,
+				"gitlens.showWhatsNewAfterUpgrades": false,
+				"gitlens.statusBar.enabled": false,
+				"gitlens.statusBar.pullRequests.enabled": false
+			}
+		}
+	},
+	// Features to add to the dev container. More info: https://containers.dev/features
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	// Change owner of the /workspaces folder to the non-root user to avoid permission issues
+	"onCreateCommand": "sudo apt-get -q update && sudo apt-get -y --no-install-recommends install poppler-data poppler-utils && sudo chown -R node:node /workspaces/",
+	// Use 'postCreateCommand' to run commands after the container is created
+	"postCreateCommand": "npm i && npm run prepare",
+	"remoteUser": "node"
+}

@@ -9,6 +9,7 @@ const { lt } = require("semver");
 
 const execFileAsync = promisify(execFile);
 
+/** @type {Record<string, string>} */
 const ERROR_MSGS = {
 	0: "No Error",
 	1: "Error opening a PDF file",
@@ -45,7 +46,7 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @param {Record<string, any>} options - Object containing options to pass to binary.
  * @param {string} [version] - Version of binary.
  * @returns {string[]} Array of CLI arguments.
- * @throws If invalid arguments provided.
+ * @throws {Error} If invalid arguments provided.
  */
 function parseOptions(acceptedOptions, options, version) {
 	/** @type {string[]} */
@@ -86,7 +87,6 @@ function parseOptions(acceptedOptions, options, version) {
 			if (
 				acceptedOption.minVersion &&
 				version &&
-				// @ts-ignore: type checking is done above
 				lt(version, acceptedOption.minVersion, { loose: true })
 			) {
 				invalidArgs.push(
@@ -128,6 +128,7 @@ class Poppler {
 	 * in the PATH environment variable and use that as the path for all binaries.
 	 * For `win32` the binaries are bundled with the package and will be used
 	 * if a local installation is not found.
+	 * @throws {Error} If the Poppler binaries cannot be found.
 	 */
 	constructor(binPath) {
 		this.#popplerPath = "";
@@ -732,8 +733,7 @@ class Poppler {
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
-							ERROR_MSGS[code] ||
+							ERROR_MSGS[code ?? -1] ||
 								`pdffonts ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -809,8 +809,7 @@ class Poppler {
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
-							ERROR_MSGS[code] ||
+							ERROR_MSGS[code ?? -1] ||
 								`pdfimages ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -923,8 +922,7 @@ class Poppler {
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
-							ERROR_MSGS[code] ||
+							ERROR_MSGS[code ?? -1] ||
 								`pdfinfo ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -1113,8 +1111,7 @@ class Poppler {
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
-							ERROR_MSGS[code] ||
+							ERROR_MSGS[code ?? -1] ||
 								`pdftocairo ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -1310,8 +1307,7 @@ class Poppler {
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
-							ERROR_MSGS[code] ||
+							ERROR_MSGS[code ?? -1] ||
 								`pdftoppm ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -1468,8 +1464,7 @@ class Poppler {
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
-							ERROR_MSGS[code] ||
+							ERROR_MSGS[code ?? -1] ||
 								`pdftops ${args.join(
 									" "
 								)} exited with code ${code}`
@@ -1565,8 +1560,7 @@ class Poppler {
 				} else {
 					reject(
 						new Error(
-							// @ts-ignore: Second operand used if code is not in ERROR_MSGS
-							ERROR_MSGS[code] ||
+							ERROR_MSGS[code ?? -1] ||
 								`pdftotext ${args.join(
 									" "
 								)} exited with code ${code}`

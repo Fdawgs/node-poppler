@@ -5,6 +5,13 @@
 <dd></dd>
 </dl>
 
+## Constants
+
+<dl>
+<dt><a href="#ERROR_MSGS">ERROR_MSGS</a> : <code>Record.&lt;string, string&gt;</code></dt>
+<dd></dd>
+</dl>
+
 ## Typedefs
 
 <dl>
@@ -41,6 +48,10 @@
 <a name="new_Poppler_new"></a>
 
 ### new Poppler([binPath])
+**Throws**:
+
+- <code>Error</code> If the Poppler binaries cannot be found.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -465,6 +476,10 @@ one PDF result file.
 
 ### Poppler.Poppler : <code>string</code> \| <code>undefined</code>
 **Kind**: static property of [<code>Poppler</code>](#Poppler)  
+<a name="ERROR_MSGS"></a>
+
+## ERROR\_MSGS : <code>Record.&lt;string, string&gt;</code>
+**Kind**: global constant  
 <a name="OptionDetails"></a>
 
 ## OptionDetails : <code>object</code>

@@ -9,7 +9,10 @@ const { lt } = require("semver");
 
 const execFileAsync = promisify(execFile);
 
-/** @type {Record<string, string>} */
+/**
+ * @type {Readonly<Record<string, string>>}
+ * @ignore
+ */
 const ERROR_MSGS = {
 	0: "No Error",
 	1: "Error opening a PDF file",

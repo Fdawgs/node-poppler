@@ -5,13 +5,6 @@
 <dd></dd>
 </dl>
 
-## Constants
-
-<dl>
-<dt><a href="#ERROR_MSGS">ERROR_MSGS</a> : <code>Record.&lt;string, string&gt;</code></dt>
-<dd></dd>
-</dl>
-
 ## Typedefs
 
 <dl>
@@ -476,10 +469,6 @@ one PDF result file.
 
 ### Poppler.Poppler : <code>string</code> \| <code>undefined</code>
 **Kind**: static property of [<code>Poppler</code>](#Poppler)  
-<a name="ERROR_MSGS"></a>
-
-## ERROR\_MSGS : <code>Record.&lt;string, string&gt;</code>
-**Kind**: global constant  
 <a name="OptionDetails"></a>
 
 ## OptionDetails : <code>object</code>

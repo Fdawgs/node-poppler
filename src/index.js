@@ -41,6 +41,12 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  */
 
 /**
+ * @typedef PdfAttachOptions
+ * @property {boolean} [printVersionInfo] Print copyright and version info.
+ * @property {boolean} [replace] Replace embedded file with same name (if it exists).
+ */
+
+/**
  * @typedef PdfToTextOptions
  * @property {boolean} [boundingBoxXhtml] Generate an XHTML file containing bounding
  * box information for each word in the file.
@@ -685,9 +691,7 @@ class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} fileToAttach - Filepath of the attachment to be embedded into the PDF file.
 	 * @param {string} outputFile - Filepath of the file to output the results to.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
-	 * @param {boolean} [options.replace] - Replace embedded file with same name (if it exists).
+	 * @param {PdfAttachOptions} [options] - Options to pass to pdfattach binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfAttach(file, fileToAttach, outputFile, options = {}) {
@@ -1533,7 +1537,7 @@ class Poppler {
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
-	 * @param {PdfToTextOptions} [options] - Object containing options to pass to pdftotext binary.
+	 * @param {PdfToTextOptions} [options] - Options to pass to pdftotext binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToText(file, outputFile, options = {}) {

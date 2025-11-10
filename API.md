@@ -12,6 +12,8 @@
 <dd></dd>
 <dt><a href="#PopplerAcceptedOptions">PopplerAcceptedOptions</a> : <code>Record.&lt;string, OptionDetails&gt;</code></dt>
 <dd></dd>
+<dt><a href="#PdfAttachOptions">PdfAttachOptions</a></dt>
+<dd></dd>
 <dt><a href="#PdfToTextOptions">PdfToTextOptions</a></dt>
 <dd></dd>
 <dt><a href="#PdfUniteOptions">PdfUniteOptions</a></dt>
@@ -75,9 +77,7 @@ Embeds files (attachments) into a PDF file.
 | file | <code>string</code> | Filepath of the PDF file to read. |
 | fileToAttach | <code>string</code> | Filepath of the attachment to be embedded into the PDF file. |
 | outputFile | <code>string</code> | Filepath of the file to output the results to. |
-| [options] | <code>object</code> | Object containing options to pass to binary. |
-| [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
-| [options.replace] | <code>boolean</code> | Replace embedded file with same name (if it exists). |
+| [options] | [<code>PdfAttachOptions</code>](#PdfAttachOptions) | Options to pass to pdfattach binary. |
 
 <a name="Poppler+pdfDetach"></a>
 
@@ -427,7 +427,7 @@ Converts a PDF file to TXT.
 | --- | --- | --- |
 | file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. |
-| [options] | [<code>PdfToTextOptions</code>](#PdfToTextOptions) | Object containing options to pass to pdftotext binary. |
+| [options] | [<code>PdfToTextOptions</code>](#PdfToTextOptions) | Options to pass to pdftotext binary. |
 
 <a name="Poppler+pdfUnite"></a>
 
@@ -466,6 +466,17 @@ one PDF result file.
 
 ## PopplerAcceptedOptions : <code>Record.&lt;string, OptionDetails&gt;</code>
 **Kind**: global typedef  
+<a name="PdfAttachOptions"></a>
+
+## PdfAttachOptions
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
+| [replace] | <code>boolean</code> | Replace embedded file with same name (if it exists). |
+
 <a name="PdfToTextOptions"></a>
 
 ## PdfToTextOptions

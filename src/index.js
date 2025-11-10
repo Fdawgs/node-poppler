@@ -1461,45 +1461,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-		return new Promise((resolve, reject) => {
-			const child = spawn(this.#pdfToPsBin, args);
-
-			if (Buffer.isBuffer(file)) {
-				child.stdin.write(file);
-				child.stdin.end();
-			}
-
-			let stdOut = "";
-			let stdErr = "";
-
-			child.stdout.on("data", (data) => {
-				stdOut += data;
-			});
-
-			child.stderr.on("data", (data) => {
-				stdErr += data;
-			});
-
-			child.on("close", (code) => {
-				/* istanbul ignore else */
-				if (stdOut !== "") {
-					resolve(stdOut.trim());
-				} else if (code === 0) {
-					resolve(ERROR_MSGS[code]);
-				} else if (stdErr !== "") {
-					reject(new Error(stdErr.trim()));
-				} else {
-					reject(
-						new Error(
-							ERROR_MSGS[code ?? -1] ||
-								`pdftops ${args.join(
-									" "
-								)} exited with code ${code}`
-						)
-					);
-				}
-			});
-		});
+		return executeBinary(this.#pdfToPsBin, args, file);
 	}
 
 	/**

@@ -14,6 +14,8 @@
 <dd></dd>
 <dt><a href="#PdfAttachOptions">PdfAttachOptions</a></dt>
 <dd></dd>
+<dt><a href="#PdfDetachOptions">PdfDetachOptions</a></dt>
+<dd></dd>
 <dt><a href="#PdfToTextOptions">PdfToTextOptions</a></dt>
 <dd></dd>
 <dt><a href="#PdfUniteOptions">PdfUniteOptions</a></dt>
@@ -91,16 +93,7 @@ Lists or extracts embedded files (attachments) from a PDF file.
 | Param | Type | Description |
 | --- | --- | --- |
 | file | <code>string</code> | Filepath of the PDF file to read. |
-| [options] | <code>object</code> | Object containing options to pass to binary. |
-| [options.listEmbedded] | <code>boolean</code> | List all of the embedded files in the PDF file. File names are converted to the text encoding specified by `options.outputEncoding`. |
-| [options.outputEncoding] | <code>string</code> | Sets the encoding to use for text output. This defaults to `UTF-8`. |
-| [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
-| [options.outputPath] | <code>string</code> | Set the file name used when saving an embedded file with the save option enabled, or the directory if `options.saveall` is used. |
-| [options.printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
-| [options.saveAllFiles] | <code>boolean</code> | Save all of the embedded files. This uses the file names associated with the embedded files (as printed by `options.listEmbedded`). By default, the files are saved in the current directory; this can be changed with `options.outputPath`. |
-| [options.saveFile] | <code>string</code> | Save the specified embedded file. By default, this uses the file name associated with the embedded file (as printed by `options.listEmbedded`); the file name can be changed with `options.outputPath`. |
-| [options.saveSpecificFile] | <code>number</code> | Save the specified embedded file. By default, this uses the file name associated with the embedded file (as printed by `options.listEmbedded`); the file name can be changed with `options.outputPath`. |
-| [options.userPassword] | <code>string</code> | User password (for encrypted files). |
+| [options] | [<code>PdfDetachOptions</code>](#PdfDetachOptions) | Options to pass to pdfdetach binary. |
 
 <a name="Poppler+pdfFonts"></a>
 
@@ -476,6 +469,24 @@ one PDF result file.
 | --- | --- | --- |
 | [printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
 | [replace] | <code>boolean</code> | Replace embedded file with same name (if it exists). |
+
+<a name="PdfDetachOptions"></a>
+
+## PdfDetachOptions
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [listEmbedded] | <code>boolean</code> | List all of the embedded files in the PDF file. File names are converted to the text encoding specified by `options.outputEncoding`. |
+| [outputEncoding] | <code>string</code> | Sets the encoding to use for text output. This defaults to `UTF-8`. |
+| [ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
+| [outputPath] | <code>string</code> | Set the file name used when saving an embedded file with the save option enabled, or the directory if `options.saveall` is used. |
+| [printVersionInfo] | <code>boolean</code> | Print copyright and version info. |
+| [saveAllFiles] | <code>boolean</code> | Save all of the embedded files. This uses the file names associated with the embedded files (as printed by `options.listEmbedded`). By default, the files are saved in the current directory; this can be changed with `options.outputPath`. |
+| [saveFile] | <code>string</code> | Save the specified embedded file. By default, this uses the file name associated with the embedded file (as printed by `options.listEmbedded`); the file name can be changed with `options.outputPath`. |
+| [saveSpecificFile] | <code>number</code> | Save the specified embedded file. By default, this uses the file name associated with the embedded file (as printed by `options.listEmbedded`); the file name can be changed with `options.outputPath`. |
+| [userPassword] | <code>string</code> | User password (for encrypted files). |
 
 <a name="PdfToTextOptions"></a>
 

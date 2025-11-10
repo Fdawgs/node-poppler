@@ -47,6 +47,29 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  */
 
 /**
+ * @typedef PdfDetachOptions
+ * @property {boolean} [listEmbedded] List all of the embedded files in the PDF file.
+ * File names are converted to the text encoding specified by `options.outputEncoding`.
+ * @property {string} [outputEncoding] Sets the encoding to use for text output.
+ * This defaults to `UTF-8`.
+ * @property {string} [ownerPassword] Owner password (for encrypted files).
+ * @property {string} [outputPath] Set the file name used when saving an embedded file with
+ * the save option enabled, or the directory if `options.saveall` is used.
+ * @property {boolean} [printVersionInfo] Print copyright and version info.
+ * @property {boolean} [saveAllFiles] Save all of the embedded files. This uses the file
+ * names associated with the embedded files (as printed by `options.listEmbedded`).
+ * By default, the files are saved in the current directory; this can be changed
+ * with `options.outputPath`.
+ * @property {string} [saveFile] Save the specified embedded file.
+ * By default, this uses the file name associated with the embedded file (as printed by
+ * `options.listEmbedded`); the file name can be changed with `options.outputPath`.
+ * @property {number} [saveSpecificFile] Save the specified embedded file.
+ * By default, this uses the file name associated with the embedded file (as printed by
+ * `options.listEmbedded`); the file name can be changed with `options.outputPath`.
+ * @property {string} [userPassword] User password (for encrypted files).
+ */
+
+/**
  * @typedef PdfToTextOptions
  * @property {boolean} [boundingBoxXhtml] Generate an XHTML file containing bounding
  * box information for each word in the file.
@@ -707,26 +730,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {boolean} [options.listEmbedded] - List all of the embedded files in the PDF file.
-	 * File names are converted to the text encoding specified by `options.outputEncoding`.
-	 * @param {string} [options.outputEncoding] - Sets the encoding to use for text output.
-	 * This defaults to `UTF-8`.
-	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
-	 * @param {string} [options.outputPath] - Set the file name used when saving an embedded file with
-	 * the save option enabled, or the directory if `options.saveall` is used.
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
-	 * @param {boolean} [options.saveAllFiles] - Save all of the embedded files. This uses the file
-	 * names associated with the embedded files (as printed by `options.listEmbedded`).
-	 * By default, the files are saved in the current directory; this can be changed
-	 * with `options.outputPath`.
-	 * @param {string} [options.saveFile] - Save the specified embedded file.
-	 * By default, this uses the file name associated with the embedded file (as printed by
-	 * `options.listEmbedded`); the file name can be changed with `options.outputPath`.
-	 * @param {number} [options.saveSpecificFile] - Save the specified embedded file.
-	 * By default, this uses the file name associated with the embedded file (as printed by
-	 * `options.listEmbedded`); the file name can be changed with `options.outputPath`.
-	 * @param {string} [options.userPassword] - User password (for encrypted files).
+	 * @param {PdfDetachOptions} [options] - Options to pass to pdfdetach binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfDetach(file, options = {}) {

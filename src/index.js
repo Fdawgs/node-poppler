@@ -1,7 +1,7 @@
 "use strict";
 
 const { execFile, spawn, spawnSync } = require("node:child_process");
-const { normalize, resolve: pathResolve } = require("node:path");
+const { basename, normalize, resolve: pathResolve } = require("node:path");
 const { platform } = require("node:process");
 const { promisify } = require("node:util");
 const camelCase = require("camelcase");
@@ -487,6 +487,62 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @typedef PdfUniteOptions
  * @property {boolean} [printVersionInfo] Print copyright and version information.
  */
+
+/**
+ * @author Frazer Smith
+ * @description Executes a Poppler binary with the provided arguments and file input.
+ * @ignore
+ * @param {string} binary - Path to the binary to execute.
+ * @param {string[]} args - Array of CLI arguments to pass to the binary.
+ * @param {Buffer|string} [file] - File input (Buffer or path).
+ * @param {object} [options] - Object containing execution options.
+ * @param {boolean} [options.binaryOutput] - Set binary encoding for stdout.
+ * @param {boolean} [options.preserveWhitespace] - If true, preserves leading and trailing whitespace in the output.
+ * @returns {Promise<string>} A promise that resolves with stdout, or rejects with an Error.
+ */
+function executeBinary(binary, args, file, options = {}) {
+	return new Promise((resolve, reject) => {
+		const child = spawn(binary, args);
+
+		if (options.binaryOutput) {
+			child.stdout.setEncoding("binary");
+		}
+
+		if (Buffer.isBuffer(file)) {
+			child.stdin.write(file);
+			child.stdin.end();
+		}
+
+		let stdOut = "";
+		let stdErr = "";
+
+		child.stdout.on("data", (data) => {
+			stdOut += data;
+		});
+
+		child.stderr.on("data", (data) => {
+			stdErr += data;
+		});
+
+		child.on("close", (code) => {
+			/* istanbul ignore else */
+			if (stdOut !== "") {
+				resolve(options.preserveWhitespace ? stdOut : stdOut.trim());
+			} else if (code === 0) {
+				resolve(ERROR_MSGS[code]);
+			} else if (stdErr !== "") {
+				reject(new Error(stdErr.trim()));
+			} else {
+				reject(
+					new Error(
+						ERROR_MSGS[code ?? -1] ||
+							`${basename(binary)} ${args.join(" ")} exited with code ${code}`
+					)
+				);
+			}
+		});
+	});
+}
 
 /**
  * @author Frazer Smith
@@ -1124,48 +1180,9 @@ class Poppler {
 		const acceptedOptions = this.#getAcceptedOptions("pdfFonts");
 		const versionInfo = await this.#getVersion(this.#pdfFontsBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
+		args.push(Buffer.isBuffer(file) ? "-" : file);
 
-		return new Promise((resolve, reject) => {
-			args.push(Buffer.isBuffer(file) ? "-" : file);
-
-			const child = spawn(this.#pdfFontsBin, args);
-
-			if (Buffer.isBuffer(file)) {
-				child.stdin.write(file);
-				child.stdin.end();
-			}
-
-			let stdOut = "";
-			let stdErr = "";
-
-			child.stdout.on("data", (data) => {
-				stdOut += data;
-			});
-
-			child.stderr.on("data", (data) => {
-				stdErr += data;
-			});
-
-			child.on("close", (code) => {
-				/* istanbul ignore else */
-				if (stdOut !== "") {
-					resolve(stdOut.trim());
-				} else if (code === 0) {
-					resolve(ERROR_MSGS[code]);
-				} else if (stdErr !== "") {
-					reject(new Error(stdErr.trim()));
-				} else {
-					reject(
-						new Error(
-							ERROR_MSGS[code ?? -1] ||
-								`pdffonts ${args.join(
-									" "
-								)} exited with code ${code}`
-						)
-					);
-				}
-			});
-		});
+		return executeBinary(this.#pdfFontsBin, args, file);
 	}
 
 	/**
@@ -1181,51 +1198,13 @@ class Poppler {
 		const versionInfo = await this.#getVersion(this.#pdfImagesBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
-		return new Promise((resolve, reject) => {
-			args.push(Buffer.isBuffer(file) ? "-" : file);
+		args.push(Buffer.isBuffer(file) ? "-" : file);
 
-			if (outputPrefix) {
-				args.push(outputPrefix);
-			}
+		if (outputPrefix) {
+			args.push(outputPrefix);
+		}
 
-			const child = spawn(this.#pdfImagesBin, args);
-
-			if (Buffer.isBuffer(file)) {
-				child.stdin.write(file);
-				child.stdin.end();
-			}
-
-			let stdOut = "";
-			let stdErr = "";
-
-			child.stdout.on("data", (data) => {
-				stdOut += data;
-			});
-
-			child.stderr.on("data", (data) => {
-				stdErr += data;
-			});
-
-			child.on("close", (code) => {
-				/* istanbul ignore else */
-				if (stdOut !== "") {
-					resolve(stdOut.trim());
-				} else if (code === 0) {
-					resolve(ERROR_MSGS[code]);
-				} else if (stdErr !== "") {
-					reject(new Error(stdErr.trim()));
-				} else {
-					reject(
-						new Error(
-							ERROR_MSGS[code ?? -1] ||
-								`pdfimages ${args.join(
-									" "
-								)} exited with code ${code}`
-						)
-					);
-				}
-			});
-		});
+		return executeBinary(this.#pdfImagesBin, args, file);
 	}
 
 	/**
@@ -1355,55 +1334,13 @@ class Poppler {
 		const acceptedOptions = this.#getAcceptedOptions("pdfToCairo");
 		const versionInfo = await this.#getVersion(this.#pdfToCairoBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
+		args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-		return new Promise((resolve, reject) => {
-			args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
+		const binaryOutput =
+			outputFile === undefined &&
+			args.some((arg) => ["-singlefile", "-pdf"].includes(arg));
 
-			const child = spawn(this.#pdfToCairoBin, args);
-
-			if (
-				outputFile === undefined &&
-				args.some((arg) => ["-singlefile", "-pdf"].includes(arg))
-			) {
-				child.stdout.setEncoding("binary");
-			}
-
-			if (Buffer.isBuffer(file)) {
-				child.stdin.write(file);
-				child.stdin.end();
-			}
-
-			let stdOut = "";
-			let stdErr = "";
-
-			child.stdout.on("data", (data) => {
-				stdOut += data;
-			});
-
-			child.stderr.on("data", (data) => {
-				stdErr += data;
-			});
-
-			child.on("close", (code) => {
-				/* istanbul ignore else */
-				if (stdOut !== "") {
-					resolve(stdOut.trim());
-				} else if (code === 0) {
-					resolve(ERROR_MSGS[code]);
-				} else if (stdErr !== "") {
-					reject(new Error(stdErr.trim()));
-				} else {
-					reject(
-						new Error(
-							ERROR_MSGS[code ?? -1] ||
-								`pdftocairo ${args.join(
-									" "
-								)} exited with code ${code}`
-						)
-					);
-				}
-			});
-		});
+		return executeBinary(this.#pdfToCairoBin, args, file, { binaryOutput });
 	}
 
 	/**
@@ -1473,10 +1410,9 @@ class Poppler {
 		const acceptedOptions = this.#getAcceptedOptions("pdfToPpm");
 		const versionInfo = await this.#getVersion(this.#pdfToPpmBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
+		args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
 
 		return new Promise((resolve, reject) => {
-			args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
-
 			const child = spawn(this.#pdfToPpmBin, args);
 
 			if (Buffer.isBuffer(file)) {
@@ -1523,10 +1459,9 @@ class Poppler {
 		const acceptedOptions = this.#getAcceptedOptions("pdfToPs");
 		const versionInfo = await this.#getVersion(this.#pdfToPsBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
+		args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
 		return new Promise((resolve, reject) => {
-			args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
-
 			const child = spawn(this.#pdfToPsBin, args);
 
 			if (Buffer.isBuffer(file)) {
@@ -1580,47 +1515,10 @@ class Poppler {
 		const acceptedOptions = this.#getAcceptedOptions("pdfToText");
 		const versionInfo = await this.#getVersion(this.#pdfToTextBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
+		args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-		return new Promise((resolve, reject) => {
-			args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
-
-			const child = spawn(this.#pdfToTextBin, args);
-
-			if (Buffer.isBuffer(file)) {
-				child.stdin.write(file);
-				child.stdin.end();
-			}
-
-			let stdOut = "";
-			let stdErr = "";
-
-			child.stdout.on("data", (data) => {
-				stdOut += data;
-			});
-
-			child.stderr.on("data", (data) => {
-				stdErr += data;
-			});
-
-			child.on("close", (code) => {
-				/* istanbul ignore else */
-				if (stdOut !== "") {
-					resolve(options.maintainLayout ? stdOut : stdOut.trim());
-				} else if (code === 0) {
-					resolve(ERROR_MSGS[code]);
-				} else if (stdErr !== "") {
-					reject(new Error(stdErr.trim()));
-				} else {
-					reject(
-						new Error(
-							ERROR_MSGS[code ?? -1] ||
-								`pdftotext ${args.join(
-									" "
-								)} exited with code ${code}`
-						)
-					);
-				}
-			});
+		return executeBinary(this.#pdfToTextBin, args, file, {
+			preserveWhitespace: options.maintainLayout,
 		});
 	}
 

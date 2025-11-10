@@ -1411,38 +1411,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
 
-		return new Promise((resolve, reject) => {
-			const child = spawn(this.#pdfToPpmBin, args);
-
-			if (Buffer.isBuffer(file)) {
-				child.stdin.write(file);
-				child.stdin.end();
-			}
-
-			let stdErr = "";
-
-			child.stderr.on("data", (data) => {
-				stdErr += data;
-			});
-
-			child.on("close", (code) => {
-				/* istanbul ignore else */
-				if (stdErr !== "") {
-					reject(new Error(stdErr.trim()));
-				} else if (code === 0) {
-					resolve(ERROR_MSGS[code]);
-				} else {
-					reject(
-						new Error(
-							ERROR_MSGS[code ?? -1] ||
-								`pdftoppm ${args.join(
-									" "
-								)} exited with code ${code}`
-						)
-					);
-				}
-			});
-		});
+		return executeBinary(this.#pdfToPpmBin, args, file);
 	}
 
 	/**

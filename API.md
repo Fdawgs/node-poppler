@@ -12,6 +12,8 @@
 <dd></dd>
 <dt><a href="#PopplerAcceptedOptions">PopplerAcceptedOptions</a> : <code>Record.&lt;string, OptionDetails&gt;</code></dt>
 <dd></dd>
+<dt><a href="#PdfToTextOptions">PdfToTextOptions</a></dt>
+<dd></dd>
 <dt><a href="#PdfUniteOptions">PdfUniteOptions</a></dt>
 <dd></dd>
 </dl>
@@ -425,30 +427,7 @@ Converts a PDF file to TXT.
 | --- | --- | --- |
 | file | <code>Buffer</code> \| <code>string</code> | PDF file as Buffer, or filepath of the PDF file to read. |
 | [outputFile] | <code>string</code> | Filepath of the file to output the results to. If `undefined` then will write output to stdout. |
-| [options] | <code>object</code> | Object containing options to pass to binary. |
-| [options.boundingBoxXhtml] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each word in the file. |
-| [options.boundingBoxXhtmlLayout] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each block, line, and word in the file. |
-| [options.cropBox] | <code>boolean</code> | Use the crop box rather than the media box with `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`. |
-| [options.cropHeight] | <code>number</code> | Specifies the height of crop area in pixels (image output) or points (vector output). |
-| [options.cropWidth] | <code>number</code> | Specifies the width of crop area in pixels (image output) or points (vector output). |
-| [options.cropXAxis] | <code>number</code> | Specifies the x-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |
-| [options.cropYAxis] | <code>number</code> | Specifies the y-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |
-| [options.eolConvention] | <code>&#x27;dos&#x27;</code> \| <code>&#x27;mac&#x27;</code> \| <code>&#x27;unix&#x27;</code> | Sets the end-of-line convention to use for text output: dos; mac; unix. |
-| [options.firstPageToConvert] | <code>number</code> | Specifies the first page to convert. |
-| [options.fixedWidthLayout] | <code>number</code> | Assume fixed-pitch (or tabular) text, with the specified character width (in points). This forces physical layout mode. |
-| [options.generateHtmlMetaFile] | <code>boolean</code> | Generate simple HTML file, including the meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers. |
-| [options.generateTsvFile] | <code>boolean</code> | Generate a TSV file containing the bounding box information for each block, line, and word in the file. |
-| [options.lastPageToConvert] | <code>number</code> | Specifies the last page to convert. |
-| [options.listEncodingOptions] | <code>boolean</code> | List the available encodings. |
-| [options.maintainLayout] | <code>boolean</code> | Maintain (as best as possible) the original physical layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and output the text in reading order. |
-| [options.noDiagonalText] | <code>boolean</code> | Discard diagonal text. |
-| [options.noPageBreaks] | <code>boolean</code> | Do not insert page breaks (form feed characters) between pages. |
-| [options.outputEncoding] | <code>string</code> | Sets the encoding to use for text output. This defaults to `UTF-8`. |
-| [options.ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
-| [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information. |
-| [options.quiet] | <code>boolean</code> | Do not print any messages or errors. |
-| [options.rawLayout] | <code>boolean</code> | Keep the text in content stream order. This is a hack which often undoes column formatting, etc. Use of raw mode is no longer recommended. |
-| [options.userPassword] | <code>string</code> | User password (for encrypted files). |
+| [options] | [<code>PdfToTextOptions</code>](#PdfToTextOptions) | Object containing options to pass to pdftotext binary. |
 
 <a name="Poppler+pdfUnite"></a>
 
@@ -487,6 +466,38 @@ one PDF result file.
 
 ## PopplerAcceptedOptions : <code>Record.&lt;string, OptionDetails&gt;</code>
 **Kind**: global typedef  
+<a name="PdfToTextOptions"></a>
+
+## PdfToTextOptions
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [boundingBoxXhtml] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each word in the file. |
+| [boundingBoxXhtmlLayout] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each block, line, and word in the file. |
+| [cropBox] | <code>boolean</code> | Use the crop box rather than the media box with `boundingBoxXhtml` and `boundingBoxXhtmlLayout`. |
+| [cropHeight] | <code>number</code> | Specifies the height of crop area in pixels (image output) or points (vector output). |
+| [cropWidth] | <code>number</code> | Specifies the width of crop area in pixels (image output) or points (vector output). |
+| [cropXAxis] | <code>number</code> | Specifies the x-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |
+| [cropYAxis] | <code>number</code> | Specifies the y-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |
+| [eolConvention] | <code>&#x27;dos&#x27;</code> \| <code>&#x27;mac&#x27;</code> \| <code>&#x27;unix&#x27;</code> | Sets the end-of-line convention to use for text output: dos; mac; unix. |
+| [firstPageToConvert] | <code>number</code> | Specifies the first page to convert. |
+| [fixedWidthLayout] | <code>number</code> | Assume fixed-pitch (or tabular) text, with the specified character width (in points). This forces physical layout mode. |
+| [generateHtmlMetaFile] | <code>boolean</code> | Generate simple HTML file, including the meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers. |
+| [generateTsvFile] | <code>boolean</code> | Generate a TSV file containing the bounding box information for each block, line, and word in the file. |
+| [lastPageToConvert] | <code>number</code> | Specifies the last page to convert. |
+| [listEncodingOptions] | <code>boolean</code> | List the available encodings. |
+| [maintainLayout] | <code>boolean</code> | Maintain (as best as possible) the original physical layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and output the text in reading order. |
+| [noDiagonalText] | <code>boolean</code> | Discard diagonal text. |
+| [noPageBreaks] | <code>boolean</code> | Do not insert page breaks (form feed characters) between pages. |
+| [outputEncoding] | <code>string</code> | Sets the encoding to use for text output. This defaults to `UTF-8`. |
+| [ownerPassword] | <code>string</code> | Owner password (for encrypted files). |
+| [printVersionInfo] | <code>boolean</code> | Print copyright and version information. |
+| [quiet] | <code>boolean</code> | Do not print any messages or errors. |
+| [rawLayout] | <code>boolean</code> | Keep the text in content stream order. This is a hack which often undoes column formatting, etc. Use of raw mode is no longer recommended. |
+| [userPassword] | <code>string</code> | User password (for encrypted files). |
+
 <a name="PdfUniteOptions"></a>
 
 ## PdfUniteOptions

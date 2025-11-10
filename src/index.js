@@ -41,6 +41,49 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  */
 
 /**
+ * @typedef PdfToTextOptions
+ * @property {boolean} [boundingBoxXhtml] Generate an XHTML file containing bounding
+ * box information for each word in the file.
+ * @property {boolean} [boundingBoxXhtmlLayout] Generate an XHTML file containing
+ * bounding box information for each block, line, and word in the file.
+ * @property {boolean} [cropBox] Use the crop box rather than the media box with
+ * `boundingBoxXhtml` and `boundingBoxXhtmlLayout`.
+ * @property {number} [cropHeight] Specifies the height of crop area in pixels
+ * (image output) or points (vector output).
+ * @property {number} [cropWidth] Specifies the width of crop area in pixels
+ * (image output) or points (vector output).
+ * @property {number} [cropXAxis] Specifies the x-coordinate of the crop area top left
+ * corner in pixels (image output) or points (vector output).
+ * @property {number} [cropYAxis] Specifies the y-coordinate of the crop area top left
+ * corner in pixels (image output) or points (vector output).
+ * @property {('dos'|'mac'|'unix')} [eolConvention] Sets the end-of-line convention to use for
+ * text output: dos; mac; unix.
+ * @property {number} [firstPageToConvert] Specifies the first page to convert.
+ * @property {number} [fixedWidthLayout] Assume fixed-pitch (or tabular) text, with the
+ * specified character width (in points). This forces physical layout mode.
+ * @property {boolean} [generateHtmlMetaFile] Generate simple HTML file, including the
+ * meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers.
+ * @property {boolean} [generateTsvFile] Generate a TSV file containing the bounding box
+ * information for each block, line, and word in the file.
+ * @property {number} [lastPageToConvert] Specifies the last page to convert.
+ * @property {boolean} [listEncodingOptions] List the available encodings.
+ * @property {boolean} [maintainLayout] Maintain (as best as possible) the original physical
+ * layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and
+ * output the text in reading order.
+ * @property {boolean} [noDiagonalText] Discard diagonal text.
+ * @property {boolean} [noPageBreaks] Do not insert page breaks (form feed characters)
+ * between pages.
+ * @property {string} [outputEncoding] Sets the encoding to use for text output.
+ * This defaults to `UTF-8`.
+ * @property {string} [ownerPassword] Owner password (for encrypted files).
+ * @property {boolean} [printVersionInfo] Print copyright and version information.
+ * @property {boolean} [quiet] Do not print any messages or errors.
+ * @property {boolean} [rawLayout] Keep the text in content stream order. This is a
+ * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
+ * @property {string} [userPassword] User password (for encrypted files).
+ */
+
+/**
  * @typedef PdfUniteOptions
  * @property {boolean} [printVersionInfo] Print copyright and version information.
  */
@@ -1490,46 +1533,7 @@ class Poppler {
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {boolean} [options.boundingBoxXhtml] - Generate an XHTML file containing bounding
-	 * box information for each word in the file.
-	 * @param {boolean} [options.boundingBoxXhtmlLayout] - Generate an XHTML file containing
-	 * bounding box information for each block, line, and word in the file.
-	 * @param {boolean} [options.cropBox] - Use the crop box rather than the media box with
-	 * `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`.
-	 * @param {number} [options.cropHeight] - Specifies the height of crop area in pixels
-	 * (image output) or points (vector output).
-	 * @param {number} [options.cropWidth] - Specifies the width of crop area in pixels
-	 * (image output) or points (vector output).
-	 * @param {number} [options.cropXAxis] - Specifies the x-coordinate of the crop area top left
-	 * corner in pixels (image output) or points (vector output).
-	 * @param {number} [options.cropYAxis] - Specifies the y-coordinate of the crop area top left
-	 * corner in pixels (image output) or points (vector output).
-	 * @param {('dos'|'mac'|'unix')} [options.eolConvention] - Sets the end-of-line convention to use for
-	 * text output: dos; mac; unix.
-	 * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
-	 * @param {number} [options.fixedWidthLayout] - Assume fixed-pitch (or tabular) text, with the
-	 * specified character width (in points). This forces physical layout mode.
-	 * @param {boolean} [options.generateHtmlMetaFile] - Generate simple HTML file, including the
-	 * meta information. This simply wraps the text in `<pre>` and `</pre>` and prepends the meta headers.
-	 * @param {boolean} [options.generateTsvFile] - Generate a TSV file containing the bounding box
-	 * information for each block, line, and word in the file.
-	 * @param {number} [options.lastPageToConvert] - Specifies the last page to convert.
-	 * @param {boolean} [options.listEncodingOptions] - List the available encodings.
-	 * @param {boolean} [options.maintainLayout] - Maintain (as best as possible) the original physical
-	 * layout of the text. The default is to undo physical layout (columns, hyphenation, etc.) and
-	 * output the text in reading order.
-	 * @param {boolean} [options.noDiagonalText] - Discard diagonal text.
-	 * @param {boolean} [options.noPageBreaks] - Do not insert page breaks (form feed characters)
-	 * between pages.
-	 * @param {string} [options.outputEncoding] - Sets the encoding to use for text output.
-	 * This defaults to `UTF-8`.
-	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version information.
-	 * @param {boolean} [options.quiet] - Do not print any messages or errors.
-	 * @param {boolean} [options.rawLayout] - Keep the text in content stream order. This is a
-	 * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
-	 * @param {string} [options.userPassword] - User password (for encrypted files).
+	 * @param {PdfToTextOptions} [options] - Object containing options to pass to pdftotext binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToText(file, outputFile, options = {}) {

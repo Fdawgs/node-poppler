@@ -70,6 +70,377 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  */
 
 /**
+ * @typedef PdfFontsOptions
+ * @property {number} [firstPageToExamine] Specifies the first page to examine.
+ * @property {number} [lastPageToExamine] Specifies the last page to examine.
+ * @property {boolean} [listSubstitutes] List the substitute fonts that poppler
+ * will use for non-embedded fonts.
+ * @property {string} [ownerPassword] Owner password (for encrypted files).
+ * @property {boolean} [printVersionInfo] Print copyright and version info.
+ * @property {string} [userPassword] User password (for encrypted files).
+ */
+
+/**
+ * @typedef PdfImagesOptions
+ * @property {boolean} [allFiles] Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
+ * CMYK files are written as TIFF files. All other images are written as PNG files.
+ * @property {boolean} [ccittFile] Generate CCITT images as CCITT files.
+ * @property {number} [firstPageToConvert] Specifies the first page to convert.
+ * @property {number} [lastPageToConvert] Specifies the last page to convert.
+ * @property {boolean} [jbig2File] Generate JBIG2 images as JBIG2 files.
+ * @property {boolean} [jpeg2000File] Generate JPEG2000 images at JP2 files.
+ * @property {boolean} [jpegFile] Generate JPEG images as JPEG files.
+ * @property {boolean} [list] Instead of writing the images, list the
+ * images along with various information for each image.
+ * NOTE: Do not specify the outputPrefix with this option.
+ * @property {string} [ownerPassword] Owner password (for encrypted files).
+ * @property {boolean} [pngFile] Change the default output format to PNG.
+ * @property {boolean} [printVersionInfo] Print copyright and version info.
+ * @property {boolean} [tiffFile] Change the default output format to TIFF.
+ * @property {string} [userPassword] Specify the user password for the PDF file.
+ */
+
+/**
+ * @typedef PdfInfoOptions
+ * @property {number} [firstPageToConvert] First page to print.
+ * @property {number} [lastPageToConvert] Last page to print.
+ * @property {boolean} [listEncodingOptions] List the available encodings.
+ * @property {string} [outputEncoding] Sets the encoding to use for text output.
+ * This defaults to `UTF-8`.
+ * @property {string} [ownerPassword] Owner password (for encrypted files).
+ * @property {boolean} [printAsJson] Print result as a JSON object.
+ * @property {boolean} [printBoundingBoxes] Prints the page box bounding boxes:
+ * MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.
+ * @property {boolean} [printDocStruct] Prints the logical document structure
+ * of a Tagged-PDF file.
+ * @property {boolean} [printDocStructText] Print the textual content along with the
+ * document structure of a Tagged-PDF file. Note that extracting text this way might be slow
+ * for big PDF files.
+ * @property {boolean} [printIsoDates] Prints dates in ISO-8601 format (including the time zone).
+ * @property {boolean} [printJS] Prints all JavaScript in the PDF file.
+ * @property {boolean} [printMetadata] Prints document-level metadata. (This is the `Metadata`
+ * stream from the PDF file's Catalog object).
+ * @property {boolean} [printNamedDests] Print a list of all named destinations. If a page range
+ * is specified using the `options.firstPageToConvert` and `options.lastPageToConvert` options, only destinations
+ * in the page range are listed.
+ * @property {boolean} [printRawDates] Prints the raw (undecoded) date strings, directly from the PDF file.
+ * @property {boolean} [printUrls] Print all URLs in the PDF; only URLs referenced by PDF objects
+ * such as Link Annotations are listed, not URL strings in the text content.
+ * @property {boolean} [printVersionInfo] Print copyright and version info.
+ * @property {string} [userPassword] User password (for encrypted files).
+ */
+
+/**
+ * @typedef PdfSeparateOptions
+ * @property {number} [firstPageToExtract] Specifies the first page to extract.
+ * This defaults to page 1.
+ * @property {number} [lastPageToExtract] Specifies the last page to extract.
+ * This defaults to the last page of the PDF file.
+ * @property {boolean} [printVersionInfo] Print copyright and version info.
+ */
+
+/**
+ * @typedef PdfToCairoOptions
+ * @property {('best'|'default'|'fast'|'good'|'gray'|'none'|'subpixel')} [antialias] Set the cairo
+ * antialias option used for text and drawing in image files (or rasterized regions in vector output).
+ * @property {boolean} [cropBox] Uses the crop box rather than media box when
+ * generating the files (PNG/JPEG/TIFF only).
+ * @property {number} [cropHeight] Specifies the height of crop area in pixels
+ * (image output) or points (vector output).
+ * @property {number} [cropSize] Specifies the size of crop square in pixels
+ * (image output) or points (vector output).
+ * @property {number} [cropWidth] Specifies the width of crop area in pixels
+ * (image output) or points (vector output).
+ * @property {number} [cropXAxis] Specifies the x-coordinate of the crop area top left
+ * corner in pixels (image output) or points (vector output).
+ * @property {number} [cropYAxis] Specifies the y-coordinate of the crop area top left
+ * corner in pixels (image output) or points (vector output).
+ * @property {boolean} [duplex] Adds the %%IncludeFeature: *Duplex DuplexNoTumble DSC
+ * comment to the PostScript file (PS only). This tells the print manager to enable duplexing.
+ * @property {boolean} [epsFile] Generate an EPS file. An EPS file contains a single image,
+ * so if you use this option with a multi-page PDF file, you must use `options.firstPageToConvert` and
+ * `options.lastPageToConvert` to specify a single page.
+ * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
+ * with this option.
+ * @property {boolean} [evenPagesOnly] Generates only the even numbered pages.
+ * @property {boolean} [fillPage] Expand PDF pages smaller than the paper to fill the
+ * paper (PS,PDF,SVG only). By default, these pages are not scaled.
+ * @property {number} [firstPageToConvert] Specifies the first page to convert.
+ * @property {boolean} [grayscaleFile] Generate grayscale file (PNG, JPEG, and TIFF only).
+ * @property {string} [iccFile] Use the specified ICC file as the output profile
+ * (PNG only). The profile will be embedded in the PNG file.
+ * @property {boolean} [jpegFile] Generate JPEG file(s).
+ * @property {string} [jpegOptions] When used with `options.jpegFile`, this option can
+ * be used to control the JPEG compression parameters. It takes a string of the form
+ * `"<opt>=<val>[,<opt>=<val>]"`. Currently available options are:
+ * - `quality` Selects the JPEG quality value. The value must be an integer between 0 and 100.
+ * - `progressive` Select progressive JPEG output. The possible values are "y", "n", indicating
+ * progressive (yes) or non-progressive (no), respectively.
+ * - `optimize` Sets whether to compute optimal Huffman coding tables for the JPEG output, which
+ * will create smaller files but make an extra pass over the data. The value must be "y" or "n",
+ * with "y" performing optimization, otherwise the default Huffman tables are used.
+ *
+ * Example: `"quality=95,optimize=y"`.
+ * @property {number} [lastPageToConvert] Specifies the last page to convert.
+ * @property {boolean} [monochromeFile] Generate monochrome file (PNG and TIFF only).
+ * @property {boolean} [noCenter] By default, PDF pages smaller than the paper
+ * (after any scaling) are centered on the paper. This option causes them to be aligned to
+ * the lower-left corner of the paper instead (PS,PDF,SVG only).
+ * @property {boolean} [noCrop] By default, printing output is cropped to the CropBox
+ * specified in the PDF file. This option disables cropping (PS, PDF, SVG only).
+ * @property {boolean} [noShrink] Do not scale PDF pages which are larger than the paper
+ * (PS,PDF,SVG only). By default, pages larger than the paper are shrunk to fit.
+ * @property {boolean} [oddPagesOnly] Generates only the odd numbered pages.
+ * @property {boolean} [originalPageSizes] Set the paper size of each page to match
+ * the size specified in the PDF file.
+ * @property {string} [ownerPassword] Specify the owner password for the PDF file.
+ * Providing this will bypass all security restrictions.
+ * @property {number} [paperHeight] Set the paper height, in points (PS, PDF, SVG only).
+ * @property {('A3'|'A4'|'legal'|'letter'|'match')} [paperSize] Set the paper size to one of `A3`, `A4`,
+ * `legal`, or `letter` (PS,PDF,SVG only). This can also be set to `match`, which will set the paper size
+ * of each page to match the size specified in the PDF file. If none of the paperSize,
+ * paperWidth, or paperHeight options are specified the default is to match the paper size.
+ * @property {number} [paperWidth] Set the paper width, in points (PS,PDF,SVG only).
+ * @property {boolean} [pdfFile] Generate PDF file.
+ * @property {boolean} [pngFile] Generate PNG file(s).
+ * @property {boolean} [printVersionInfo] Print copyright and version information.
+ * @property {boolean} [printDocStruct] If the input file contains structural information
+ * about the document's content, write this information to the output file (PDF only).
+ * @property {boolean} [psFile] Generate PS file.
+ * @property {boolean} [psLevel2] Generate Level 2 PostScript (PS only).
+ * @property {boolean} [psLevel3] Generate Level 3 PostScript (PS only). This enables all
+ * Level 2 features plus shading patterns and masked images. This is the default setting.
+ * @property {boolean} [quiet] Do not print any messages or errors.
+ * @property {number} [resolutionXAxis] Specifies the X resolution, in pixels per inch of
+ * image files (or rasterized regions in vector output). The default is 150 PPI.
+ * @property {number} [resolutionXYAxis] Specifies the X and Y resolution, in pixels per
+ * inch of image files (or rasterized regions in vector output). The default is 150 PPI.
+ * @property {number} [resolutionYAxis] Specifies the Y resolution, in pixels per inch of
+ * image files (or rasterized regions in vector output). The default is 150 PPI.
+ * @property {number} [scalePageTo] Scales the long side of each page (width for landscape
+ * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
+ * be determined by the aspect ratio of the page (PNG/JPEG/TIFF only).
+ * @property {number} [scalePageToXAxis] Scales each page horizontally to fit in scale-to-x
+ * pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of
+ * the page (PNG/JPEG/TIFF only).
+ * @property {number} [scalePageToYAxis] Scales each page vertically to fit in scale-to-y
+ * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
+ * the page (PNG/JPEG/TIFF only).
+ * @property {boolean} [singleFile] Writes only the first page and does not add digits.
+ * Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`.
+ * @property {boolean} [svgFile] Generate SVG (Scalable Vector Graphics) file.
+ * @property {('deflate'|'jpeg'|'lzw'|'none'|'packbits')} [tiffCompression] Set TIFF compression.
+ * @property {boolean} [tiffFile] Generate TIFF file(s).
+ * @property {boolean} [transparentPageColor] Use a transparent page color
+ * instead of white (PNG and TIFF only).
+ * @property {string} [userPassword] Specify the user password for the PDF file.
+ */
+
+/**
+ * @typedef PdfToHtmlOptions
+ * @property {boolean} [complexOutput] Generate complex output.
+ * @property {boolean} [dataUrls] Use data URLs instead of external images in HTML.
+ * @property {boolean} [exchangePdfLinks] Exchange .pdf links with .html.
+ * @property {boolean} [extractHidden] Force hidden text extraction.
+ * @property {number} [firstPageToConvert] First page to print.
+ * @property {boolean} [fontFullName] Outputs the font name without any substitutions.
+ * @property {boolean} [ignoreImages] Ignore images.
+ * @property {('JPG'|'PNG')} [imageFormat] Image file format for Splash output (JPG or PNG).
+ * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
+ * @property {number} [lastPageToConvert] Last page to print.
+ * @property {boolean} [noDrm] Override document DRM settings.
+ * @property {boolean} [noFrames] Generate no frames. Not supported in complex output mode.
+ * @property {boolean} [noMergeParagraph] Do not merge paragraphs.
+ * @property {boolean} [noRoundedCoordinates] Do not round coordinates
+ * (with XML output only).
+ * @property {string} [outputEncoding] Sets the encoding to use for text output.
+ * This defaults to `UTF-8`.
+ * @property {string} [ownerPassword] Owner password (for encrypted files).
+ * @property {boolean} [printVersionInfo] Print copyright and version info.
+ * @property {boolean} [quiet] Do not print any messages or errors.
+ * @property {boolean} [singlePage] Generate single HTML that includes all pages.
+ * @property {boolean} [stdout] Use standard output.
+ * @property {string} [userPassword] User password (for encrypted files).
+ * @property {number} [wordBreakThreshold] Adjust the word break threshold percent.
+ * Default is 10. Word break occurs when distance between two adjacent characters is greater
+ * than this percent of character height.
+ * @property {boolean} [xmlOutput] Output for XML post-processing.
+ * @property {number} [zoom] Zoom the PDF document (default 1.5).
+ */
+
+/**
+ * @typedef PdfToPpmOptions
+ * @property {('no'|'yes')} [antialiasFonts] Enable or disable font anti-aliasing.
+ * This defaults to `yes`.
+ * @property {('no'|'yes')} [antialiasVectors] Enable or disable vector anti-aliasing.
+ * This defaults to `yes`.
+ * @property {boolean} [cropBox] Uses the crop box rather than media box when
+ * generating the files (PNG/JPEG/TIFF only).
+ * @property {number} [cropHeight] Specifies the height of crop area in pixels
+ * (image output) or points (vector output).
+ * @property {number} [cropSize] Specifies the size of crop square in pixels
+ * (image output) or points (vector output).
+ * @property {number} [cropWidth] Specifies the width of crop area in pixels
+ * (image output) or points (vector output).
+ * @property {number} [cropXAxis] Specifies the x-coordinate of the crop area top left
+ * corner in pixels (image output) or points (vector output).
+ * @property {number} [cropYAxis] Specifies the y-coordinate of the crop area top left
+ * corner in pixels (image output) or points (vector output).
+ * @property {string} [defaultCmykProfile] If Poppler is compiled with colour management support, this option
+ * sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed.
+ * @property {string} [defaultGrayProfile] If Poppler is compiled with colour management support, this option
+ * sets the DefaultGray color space to the ICC profile stored in the display profile file passed.
+ * @property {string} [defaultRgbProfile] If Poppler is compiled with colour management support, this option
+ * sets the DefaultRGB color space to the ICC profile stored in the display profile file passed.
+ * @property {string} [displayProfile] If Poppler is compiled with colour management support, this option
+ * sets the display profile to the ICC profile stored in the display profile file passed.
+ * @property {boolean} [evenPagesOnly] Generates only the even numbered pages.
+ * @property {number} [firstPageToConvert] Specifies the first page to convert.
+ * @property {('no'|'yes')} [freetype] Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
+ * This defaults to `yes`.
+ * @property {boolean} [forcePageNumber] Force page number even if there is only one page.
+ * @property {boolean} [grayscaleFile] Generate grayscale PGM file (instead of a color PPM file).
+ * @property {boolean} [hideAnnotations] Hide annotations.
+ * @property {boolean} [jpegFile] Generate JPEG file instead a PPM file.
+ * @property {number} [lastPageToConvert] Specifies the last page to convert.
+ * @property {boolean} [monochromeFile] Generate monochrome PBM file (instead of a color PPM file).
+ * @property {boolean} [oddPagesOnly] Generates only the odd numbered pages.
+ * @property {string} [ownerPassword] Specify the owner password for the PDF file.
+ * Providing this will bypass all security restrictions.
+ * @property {boolean} [pngFile] Generate PNG file instead a PPM file.
+ * @property {boolean} [printProgress] Print progress info as each page is generated.
+ * Three space-separated fields are printed to STDERR: the number of the current page, the number
+ * of the last page that will be generated, and the path to the file written to.
+ * @property {boolean} [printVersionInfo] Print copyright and version information.
+ * @property {boolean} [quiet] Do not print any messages or errors.
+ * @property {number} [resolutionXAxis] Specifies the X resolution, in pixels per inch of
+ * image files (or rasterized regions in vector output). The default is 150 PPI.
+ * @property {number} [resolutionXYAxis] Specifies the X and Y resolution, in pixels per
+ * inch of image files (or rasterized regions in vector output). The default is 150 PPI.
+ * @property {number} [resolutionYAxis] Specifies the Y resolution, in pixels per inch of
+ * image files (or rasterized regions in vector output). The default is 150 PPI.
+ * @property {number} [scalePageTo] Scales the long side of each page (width for landscape
+ * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
+ * be determined by the aspect ratio of the page.
+ * @property {number} [scalePageToXAxis] Scales each page horizontally to fit in scale-to-x
+ * pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of
+ * the page.
+ * @property {number} [scalePageToYAxis] Scales each page vertically to fit in scale-to-y
+ * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
+ * the page.
+ * @property {string} [separator] Specify single character separator between name and page number.
+ * @property {boolean} [singleFile] Writes only the first page and does not add digits.
+ * @property {('none'|'shape'|'solid')} [thinLineMode] Specifies the thin line mode. This defaults to `none`.
+ * @property {('deflate'|'jpeg'|'lzw'|'none'|'packbits')} [tiffCompression] Set TIFF compression.
+ * @property {boolean} [tiffFile] Generate TIFF file instead a PPM file.
+ * @property {string} [userPassword] Specify the user password for the PDF file.
+ */
+
+/**
+ * @typedef PdfToPsOptions
+ * @property {('no'|'yes')} [antialias] Enable anti-aliasing on rasterization, accepts `no` or `yes`.
+ * @property {boolean} [binary] Write binary data in Level 1 PostScript. By default,
+ * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
+ * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
+ * only for its restricted use of PostScript operators.
+ * @property {string} [defaultCmykProfile] If Poppler is compiled with colour management support, this option
+ * sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed.
+ * @property {string} [defaultGrayProfile] If Poppler is compiled with colour management support, this option
+ * sets the DefaultGray color space to the ICC profile stored in the display profile file passed.
+ * @property {string} [defaultRgbProfile] If Poppler is compiled with colour management support, this option
+ * sets the DefaultRGB color space to the ICC profile stored in the display profile file passed.
+ * @property {boolean} [duplex] Set the Duplex pagedevice entry in the PostScript file.
+ * This tells duplex-capable printers to enable duplexing.
+ * @property {boolean} [epsFile] Generate an EPS file. An EPS file contains a single image,
+ * so if you use this option with a multi-page PDF file, you must use `options.firstPageToConvert` and
+ * `options.lastPageToConvert` to specify a single page.
+ * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
+ * with this option.
+ * @property {boolean} [fillPage] Expand PDF pages smaller than the paper to fill the
+ * paper. By default, these pages are not scaled.
+ * @property {number} [firstPageToConvert] Specifies the first page to convert.
+ * @property {number} [form] Generate PostScript form which can be imported by software
+ * that understands forms.
+ * A form contains a single page, so if you use this option with a multi-page PDF file,
+ * you must use `options.firstPageToConvert` and `options.lastPageToConvert` to specify a single page.
+ * The `options.level1` option cannot be used with `options.form`.
+ * No more than one of the mode options (`options.epsFile`, `options.form`) may be given.
+ * @property {number} [lastPageToConvert] Specifies the last page to convert.
+ * @property {boolean} [level1] Generate Level 1 PostScript. The resulting PostScript
+ * files will be significantly larger (if they contain images), but will print on Level 1 printers.
+ * This also converts all images to black and white.
+ * @property {boolean} [level1Sep] Generate Level 1 separable PostScript.
+ * All colors are converted to CMYK. Images are written with separate stream data for the four components.
+ * @property {boolean} [level2] Generate Level 2 PostScript.
+ * Level 2 supports color images and image compression. This is the default setting.
+ * @property {boolean} [level2Sep] Generate Level 2 separable PostScript. All colors are
+ * converted to CMYK. The PostScript separation convention operators are used to handle custom (spot) colors.
+ * @property {boolean} [level3] Generate Level 3 PostScript.
+ * This enables all Level 2 featuresplus CID font embedding.
+ * @property {boolean} [level3Sep] Generate Level 3 separable PostScript.
+ * The separation handling is the same as for `options.level2Sep`.
+ * @property {boolean} [noCenter] By default, PDF pages smaller than the paper
+ * (after any scaling) are centered on the paper. This option causes them to be aligned to
+ * the lower-left corner of the paper instead.
+ * @property {boolean} [noCrop] By default, printing output is cropped to the CropBox
+ * specified in the PDF file. This option disables cropping.
+ * @property {boolean} [noEmbedCIDFonts] By default, any CID PostScript fonts which are
+ * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
+ * No attempt is made to substitute for non-embedded CID PostScript fonts.
+ * @property {boolean} [noEmbedCIDTrueTypeFonts] By default, any CID TrueType fonts which are
+ * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
+ * No attempt is made to substitute for non-embedded CID TrueType fonts.
+ * @property {boolean} [noEmbedTrueTypeFonts] By default, any TrueType fonts which are embedded
+ * in the PDF file are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead.
+ * Embedded fonts make PostScript files larger, but may be necessary for readable output.
+ * Also, some PostScript interpreters do not have TrueType rasterizers.
+ * @property {boolean} [noEmbedType1Fonts] By default, any Type 1 fonts which are embedded in the PDF file
+ * are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead.
+ * Embedded fonts make PostScript files larger, but may be necessary for readable output.
+ * @property {boolean} [noShrink] Do not scale PDF pages which are larger than the paper.
+ * By default, pages larger than the paper are shrunk to fit.
+ * @property {boolean} [opi] Generate OPI comments for all images and forms which have OPI information.
+ * @property {boolean} [optimizecolorspace] By default, bitmap images in the PDF pass through to the
+ * output PostScript in their original color space, which produces predictable results.
+ * This option converts RGB and CMYK images into Gray images if every pixel of the image has equal components.
+ * This can fix problems when doing color separations of PDFs that contain embedded black and
+ * white images encoded as RGB.
+ * @property {boolean} [originalPageSizes] Set the paper size of each page to match
+ * the size specified in the PDF file.
+ * @property {boolean} [overprint] Enable overprinting.
+ * @property {string} [ownerPassword] Owner password (for encrypted files).
+ * @property {number} [paperHeight] Set the paper height, in points.
+ * @property {('A3'|'A4'|'legal'|'letter'|'match')} [paperSize] Set the paper size to one of `A3`, `A4`,
+ * `legal`, or `letter`. This can also be set to `match`, which will set the paper size
+ * of each page to match the size specified in the PDF file. If none of the paperSize,
+ * paperWidth, or paperHeight options are specified the default is to match the paper size.
+ * @property {number} [paperWidth] Set the paper width, in points.
+ * @property {boolean} [passfonts] By default, references to non-embedded 8-bit fonts
+ * in the PDF file are substituted with the closest `Helvetica`, `Times-Roman`, or `Courier` font.
+ * This option passes references to non-embedded fonts through to the PostScript file.
+ * @property {boolean} [preload] Preload images and forms.
+ * @property {boolean} [printVersionInfo] Print copyright and version information.
+ * @property {('CMYK8'|'MONO8'|'RGB8')} [processColorFormat] Sets the process color format as it is used
+ * during rasterization and transparency reduction.
+ *
+ * The default depends on the other settings: For `options.level1` the default is MONO8; for `options.level1Sep`,
+ * `options.level2Sep`, `options.level3Sep`, or `options.overprint` the default is CMYK8; in all other
+ * cases RGB8 is the default.
+ * If `option.processColorProfile` is set then `options.processColorFormat` is inferred from the specified ICC profile.
+ * @property {string} [processColorProfile] Sets the ICC profile that is assumed during
+ * rasterization and transparency reduction.
+ * @property {boolean} [quiet] Do not print any messages or errors.
+ * @property {('always'|'never'|'whenneeded')} [rasterize] By default, pdfToPs rasterizes pages as needed,
+ * for example, if they contain transparencies. To force rasterization, set `rasterize` to `always`.
+ * Use this to eliminate fonts.
+ * To prevent rasterization, set `rasterize` to `never`.
+ * This may produce files that display incorrectly.
+ * @property {number} [resolutionXYAxis] Specifies the X and Y resolution, in pixels per
+ * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
+ * @property {string} [userPassword] User password (for encrypted files).
+ */
+
+/**
  * @typedef PdfToTextOptions
  * @property {boolean} [boundingBoxXhtml] Generate an XHTML file containing bounding
  * box information for each word in the file.
@@ -746,14 +1117,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {number} [options.firstPageToExamine] - Specifies the first page to examine.
-	 * @param {number} [options.lastPageToExamine] - Specifies the last page to examine.
-	 * @param {boolean} [options.listSubstitutes] - List the substitute fonts that poppler
-	 * will use for non-embedded fonts.
-	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
-	 * @param {string} [options.userPassword] - User password (for encrypted files).
+	 * @param {PdfFontsOptions} [options] - Options to pass to pdffonts binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfFonts(file, options = {}) {
@@ -809,23 +1173,7 @@ class Poppler {
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputPrefix] - Filename prefix of output files.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {boolean} [options.allFiles] - Write JPEG, JPEG2000, JBIG2, and CCITT images in their native format.
-	 * CMYK files are written as TIFF files. All other images are written as PNG files.
-	 * @param {boolean} [options.ccittFile] - Generate CCITT images as CCITT files.
-	 * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
-	 * @param {number} [options.lastPageToConvert] - Specifies the last page to convert.
-	 * @param {boolean} [options.jbig2File] - Generate JBIG2 images as JBIG2 files.
-	 * @param {boolean} [options.jpeg2000File] - Generate JPEG2000 images at JP2 files.
-	 * @param {boolean} [options.jpegFile] - Generate JPEG images as JPEG files.
-	 * @param {boolean} [options.list] - Instead of writing the images, list the
-	 * images along with various information for each image.
-	 * NOTE: Do not specify the outputPrefix with this option.
-	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
-	 * @param {boolean} [options.pngFile] - Change the default output format to PNG.
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
-	 * @param {boolean} [options.tiffFile] - Change the default output format to TIFF.
-	 * @param {string} [options.userPassword] - Specify the user password for the PDF file.
+	 * @param {PdfImagesOptions} [options] - Options to pass to pdfimages binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfImages(file, outputPrefix, options = {}) {
@@ -884,33 +1232,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {number} [options.firstPageToConvert] - First page to print.
-	 * @param {number} [options.lastPageToConvert] - Last page to print.
-	 * @param {boolean} [options.listEncodingOptions] - List the available encodings.
-	 * @param {string} [options.outputEncoding] - Sets the encoding to use for text output.
-	 * This defaults to `UTF-8`.
-	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
-	 * @param {boolean} [options.printAsJson] - Print result as a JSON object.
-	 * @param {boolean} [options.printBoundingBoxes] - Prints the page box bounding boxes:
-	 * MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.
-	 * @param {boolean} [options.printDocStruct] - Prints the logical document structure
-	 * of a Tagged-PDF file.
-	 * @param {boolean} [options.printDocStructText] - Print the textual content along with the
-	 * document structure of a Tagged-PDF file. Note that extracting text this way might be slow
-	 * for big PDF files.
-	 * @param {boolean} [options.printIsoDates] - Prints dates in ISO-8601 format (including the time zone).
-	 * @param {boolean} [options.printJS] - Prints all JavaScript in the PDF file.
-	 * @param {boolean} [options.printMetadata] - Prints document-level metadata. (This is the `Metadata`
-	 * stream from the PDF file's Catalog object).
-	 * @param {boolean} [options.printNamedDests] - Print a list of all named destinations. If a page range
-	 * is specified using the `options.firstPageToConvert` and `options.lastPageToConvert` options, only destinations
-	 * in the page range are listed.
-	 * @param {boolean} [options.printRawDates] - Prints the raw (undecoded) date strings, directly from the PDF file.
-	 * @param {boolean} [options.printUrls] - Print all URLs in the PDF; only URLs referenced by PDF objects
-	 * such as Link Annotations are listed, not URL strings in the text content.
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
-	 * @param {string} [options.userPassword] - User password (for encrypted files).
+	 * @param {PdfInfoOptions} [options] - Options to pass to pdfinfo binary.
 	 * @returns {Promise<object|string>} A promise that resolves with a stdout string or JSON object if
 	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
 	 */
@@ -1002,12 +1324,7 @@ class Poppler {
 	 * @param {string} outputPattern - Should contain %d (or any variant respecting printf format),
 	 * since %d is replaced by the page number.
 	 * As an example, `sample-%d.pdf` will produce `sample-1.pdf` for a single page document.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {number} [options.firstPageToExtract] - Specifies the first page to extract.
-	 * This defaults to page 1.
-	 * @param {number} [options.lastPageToExtract] - Specifies the last page to extract.
-	 * This defaults to the last page of the PDF file.
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
+	 * @param {PdfSeparateOptions} [options] - Options to pass to pdfseparate binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfSeparate(file, outputPattern, options = {}) {
@@ -1031,100 +1348,7 @@ class Poppler {
 	 * Encoding is set to `binary` if used with `options.singleFile` or `options.pdfFile`.
 	 *
 	 * If not set then the output filename will be derived from the PDF file name.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {('best'|'default'|'fast'|'good'|'gray'|'none'|'subpixel')} [options.antialias] - Set the cairo
-	 * antialias option used for text and drawing in image files (or rasterized regions in vector output).
-	 * @param {boolean} [options.cropBox] - Uses the crop box rather than media box when
-	 * generating the files (PNG/JPEG/TIFF only).
-	 * @param {number} [options.cropHeight] - Specifies the height of crop area in pixels
-	 * (image output) or points (vector output).
-	 * @param {number} [options.cropSize] - Specifies the size of crop square in pixels
-	 * (image output) or points (vector output).
-	 * @param {number} [options.cropWidth] - Specifies the width of crop area in pixels
-	 * (image output) or points (vector output).
-	 * @param {number} [options.cropXAxis] - Specifies the x-coordinate of the crop area top left
-	 * corner in pixels (image output) or points (vector output).
-	 * @param {number} [options.cropYAxis] - Specifies the y-coordinate of the crop area top left
-	 * corner in pixels (image output) or points (vector output).
-	 * @param {boolean} [options.duplex] - Adds the %%IncludeFeature: *Duplex DuplexNoTumble DSC
-	 * comment to the PostScript file (PS only). This tells the print manager to enable duplexing.
-	 * @param {boolean} [options.epsFile] - Generate an EPS file. An EPS file contains a single image,
-	 * so if you use this option with a multi-page PDF file, you must use `options.firstPageToConvert` and
-	 * `options.lastPageToConvert` to specify a single page.
-	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
-	 * with this option.
-	 * @param {boolean} [options.evenPagesOnly] - Generates only the even numbered pages.
-	 * @param {boolean} [options.fillPage] - Expand PDF pages smaller than the paper to fill the
-	 * paper (PS,PDF,SVG only). By default, these pages are not scaled.
-	 * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
-	 * @param {boolean} [options.grayscaleFile] - Generate grayscale file (PNG, JPEG, and TIFF only).
-	 * @param {string} [options.iccFile] - Use the specified ICC file as the output profile
-	 * (PNG only). The profile will be embedded in the PNG file.
-	 * @param {boolean} [options.jpegFile] - Generate JPEG file(s).
-	 * @param {string} [options.jpegOptions] - When used with `options.jpegFile`, this option can
-	 * be used to control the JPEG compression parameters. It takes a string of the form
-	 * `"<opt>=<val>[,<opt>=<val>]"`. Currently available options are:
-	 * - `quality` Selects the JPEG quality value. The value must be an integer between 0 and 100.
-	 * - `progressive` Select progressive JPEG output. The possible values are "y", "n", indicating
-	 * progressive (yes) or non-progressive (no), respectively.
-	 * - `optimize` Sets whether to compute optimal Huffman coding tables for the JPEG output, which
-	 * will create smaller files but make an extra pass over the data. The value must be "y" or "n",
-	 * with "y" performing optimization, otherwise the default Huffman tables are used.
-	 *
-	 * Example: `"quality=95,optimize=y"`.
-	 * @param {number} [options.lastPageToConvert] - Specifies the last page to convert.
-	 * @param {boolean} [options.monochromeFile] - Generate monochrome file (PNG and TIFF only).
-	 * @param {boolean} [options.noCenter] - By default, PDF pages smaller than the paper
-	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
-	 * the lower-left corner of the paper instead (PS,PDF,SVG only).
-	 * @param {boolean} [options.noCrop] - By default, printing output is cropped to the CropBox
-	 * specified in the PDF file. This option disables cropping (PS, PDF, SVG only).
-	 * @param {boolean} [options.noShrink] - Do not scale PDF pages which are larger than the paper
-	 * (PS,PDF,SVG only). By default, pages larger than the paper are shrunk to fit.
-	 * @param {boolean} [options.oddPagesOnly] - Generates only the odd numbered pages.
-	 * @param {boolean} [options.originalPageSizes] - Set the paper size of each page to match
-	 * the size specified in the PDF file.
-	 * @param {string} [options.ownerPassword] - Specify the owner password for the PDF file.
-	 * Providing this will bypass all security restrictions.
-	 * @param {number} [options.paperHeight] - Set the paper height, in points (PS, PDF, SVG only).
-	 * @param {('A3'|'A4'|'legal'|'letter'|'match')} [options.paperSize] - Set the paper size to one of `A3`, `A4`,
-	 * `legal`, or `letter` (PS,PDF,SVG only). This can also be set to `match`, which will set the paper size
-	 * of each page to match the size specified in the PDF file. If none of the paperSize,
-	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
-	 * @param {number} [options.paperWidth] - Set the paper width, in points (PS,PDF,SVG only).
-	 * @param {boolean} [options.pdfFile] - Generate PDF file.
-	 * @param {boolean} [options.pngFile] - Generate PNG file(s).
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version information.
-	 * @param {boolean} [options.printDocStruct] - If the input file contains structural information
-	 * about the document's content, write this information to the output file (PDF only).
-	 * @param {boolean} [options.psFile] - Generate PS file.
-	 * @param {boolean} [options.psLevel2] - Generate Level 2 PostScript (PS only).
-	 * @param {boolean} [options.psLevel3] - Generate Level 3 PostScript (PS only). This enables all
-	 * Level 2 features plus shading patterns and masked images. This is the default setting.
-	 * @param {boolean} [options.quiet] - Do not print any messages or errors.
-	 * @param {number} [options.resolutionXAxis] - Specifies the X resolution, in pixels per inch of
-	 * image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {number} [options.resolutionXYAxis] - Specifies the X and Y resolution, in pixels per
-	 * inch of image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {number} [options.resolutionYAxis] - Specifies the Y resolution, in pixels per inch of
-	 * image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {number} [options.scalePageTo] - Scales the long side of each page (width for landscape
-	 * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
-	 * be determined by the aspect ratio of the page (PNG/JPEG/TIFF only).
-	 * @param {number} [options.scalePageToXAxis] - Scales each page horizontally to fit in scale-to-x
-	 * pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of
-	 * the page (PNG/JPEG/TIFF only).
-	 * @param {number} [options.scalePageToYAxis] - Scales each page vertically to fit in scale-to-y
-	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
-	 * the page (PNG/JPEG/TIFF only).
-	 * @param {boolean} [options.singleFile] - Writes only the first page and does not add digits.
-	 * Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`.
-	 * @param {boolean} [options.svgFile] - Generate SVG (Scalable Vector Graphics) file.
-	 * @param {('deflate'|'jpeg'|'lzw'|'none'|'packbits')} [options.tiffCompression] - Set TIFF compression.
-	 * @param {boolean} [options.tiffFile] - Generate TIFF file(s).
-	 * @param {boolean} [options.transparentPageColor] - Use a transparent page color
-	 * instead of white (PNG and TIFF only).
-	 * @param {string} [options.userPassword] - Specify the user password for the PDF file.
+	 * @param {PdfToCairoOptions} [options] - Options to pass to pdftocairo binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToCairo(file, outputFile, options = {}) {
@@ -1191,35 +1415,7 @@ class Poppler {
 	 * and create a new file, with `-html` appended to the end of the filename.
 	 *
 	 * Required if `file` is a Buffer.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {boolean} [options.complexOutput] - Generate complex output.
-	 * @param {boolean} [options.dataUrls] -  Use data URLs instead of external images in HTML.
-	 * @param {boolean} [options.exchangePdfLinks] - Exchange .pdf links with .html.
-	 * @param {boolean} [options.extractHidden] - Force hidden text extraction.
-	 * @param {number} [options.firstPageToConvert] - First page to print.
-	 * @param {boolean} [options.fontFullName] - Outputs the font name without any substitutions.
-	 * @param {boolean} [options.ignoreImages] - Ignore images.
-	 * @param {('JPG'|'PNG')} [options.imageFormat] - Image file format for Splash output (JPG or PNG).
-	 * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
-	 * @param {number} [options.lastPageToConvert] - Last page to print.
-	 * @param {boolean} [options.noDrm] - Override document DRM settings.
-	 * @param {boolean} [options.noFrames] - Generate no frames. Not supported in complex output mode.
-	 * @param {boolean} [options.noMergeParagraph] - Do not merge paragraphs.
-	 * @param {boolean} [options.noRoundedCoordinates] - Do not round coordinates
-	 * (with XML output only).
-	 * @param {string} [options.outputEncoding] - Sets the encoding to use for text output.
-	 * This defaults to `UTF-8`.
-	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version info.
-	 * @param {boolean} [options.quiet] - Do not print any messages or errors.
-	 * @param {boolean} [options.singlePage] - Generate single HTML that includes all pages.
-	 * @param {boolean} [options.stdout] - Use standard output.
-	 * @param {string} [options.userPassword] - User password (for encrypted files).
-	 * @param {number} [options.wordBreakThreshold] - Adjust the word break threshold percent.
-	 * Default is 10. Word break occurs when distance between two adjacent characters is greater
-	 * than this percent of character height.
-	 * @param {boolean} [options.xmlOutput] - Output for XML post-processing.
-	 * @param {number} [options.zoom] - Zoom the PDF document (default 1.5).
+	 * @param {PdfToHtmlOptions} [options] - Options to pass to pdftohtml binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToHtml(file, outputFile, options = {}) {
@@ -1270,71 +1466,7 @@ class Poppler {
 	 * in Portable Bitmap (PBM) format.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} outputPath - Filepath to output the results to.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {('no'|'yes')} [options.antialiasFonts] - Enable or disable font anti-aliasing.
-	 * This defaults to `yes`.
-	 * @param {('no'|'yes')} [options.antialiasVectors] - Enable or disable vector anti-aliasing.
-	 * This defaults to `yes`.
-	 * @param {boolean} [options.cropBox] - Uses the crop box rather than media box when
-	 * generating the files (PNG/JPEG/TIFF only).
-	 * @param {number} [options.cropHeight] - Specifies the height of crop area in pixels
-	 * (image output) or points (vector output).
-	 * @param {number} [options.cropSize] - Specifies the size of crop square in pixels
-	 * (image output) or points (vector output).
-	 * @param {number} [options.cropWidth] - Specifies the width of crop area in pixels
-	 * (image output) or points (vector output).
-	 * @param {number} [options.cropXAxis] - Specifies the x-coordinate of the crop area top left
-	 * corner in pixels (image output) or points (vector output).
-	 * @param {number} [options.cropYAxis] - Specifies the y-coordinate of the crop area top left
-	 * corner in pixels (image output) or points (vector output).
-	 * @param {string} [options.defaultCmykProfile] - If Poppler is compiled with colour management support, this option
-	 * sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed.
-	 * @param {string} [options.defaultGrayProfile] - If Poppler is compiled with colour management support, this option
-	 * sets the DefaultGray color space to the ICC profile stored in the display profile file passed.
-	 * @param {string} [options.defaultRgbProfile] - If Poppler is compiled with colour management support, this option
-	 * sets the DefaultRGB color space to the ICC profile stored in the display profile file passed.
-	 * @param {string} [options.displayProfile] - If Poppler is compiled with colour management support, this option
-	 * sets the display profile to the ICC profile stored in the display profile file passed.
-	 * @param {boolean} [options.evenPagesOnly] - Generates only the even numbered pages.
-	 * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
-	 * @param {('no'|'yes')} [options.freetype] - Enable or disable FreeType (a TrueType / Type 1 font rasterizer).
-	 * This defaults to `yes`.
-	 * @param {boolean} [options.forcePageNumber] - Force page number even if there is only one page.
-	 * @param {boolean} [options.grayscaleFile] - Generate grayscale PGM file (instead of a color PPM file).
-	 * @param {boolean} [options.hideAnnotations] - Hide annotations.
-	 * @param {boolean} [options.jpegFile] - Generate JPEG file instead a PPM file.
-	 * @param {number} [options.lastPageToConvert] - Specifies the last page to convert.
-	 * @param {boolean} [options.monochromeFile] - Generate monochrome PBM file (instead of a color PPM file).
-	 * @param {boolean} [options.oddPagesOnly] - Generates only the odd numbered pages.
-	 * @param {string} [options.ownerPassword] - Specify the owner password for the PDF file.
-	 * Providing this will bypass all security restrictions.
-	 * @param {boolean} [options.pngFile] - Generate PNG file instead a PPM file.
-	 * @param {boolean} [options.printProgress] - Print progress info as each page is generated.
-	 * Three space-separated fields are printed to STDERR: the number of the current page, the number
-	 * of the last page that will be generated, and the path to the file written to.
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version information.
-	 * @param {boolean} [options.quiet] - Do not print any messages or errors.
-	 * @param {number} [options.resolutionXAxis] - Specifies the X resolution, in pixels per inch of
-	 * image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {number} [options.resolutionXYAxis] - Specifies the X and Y resolution, in pixels per
-	 * inch of image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {number} [options.resolutionYAxis] - Specifies the Y resolution, in pixels per inch of
-	 * image files (or rasterized regions in vector output). The default is 150 PPI.
-	 * @param {number} [options.scalePageTo] - Scales the long side of each page (width for landscape
-	 * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
-	 * be determined by the aspect ratio of the page.
-	 * @param {number} [options.scalePageToXAxis] - Scales each page horizontally to fit in scale-to-x
-	 * pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of
-	 * the page.
-	 * @param {number} [options.scalePageToYAxis] - Scales each page vertically to fit in scale-to-y
-	 * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
-	 * the page.
-	 * @param {string} [options.separator] - Specify single character separator between name and page number.
-	 * @param {boolean} [options.singleFile] - Writes only the first page and does not add digits.
-	 * @param {('none'|'shape'|'solid')} [options.thinLineMode] - Specifies the thin line mode. This defaults to `none`.
-	 * @param {('deflate'|'jpeg'|'lzw'|'none'|'packbits')} [options.tiffCompression] - Set TIFF compression.
-	 * @param {boolean} [options.tiffFile] - Generate TIFF file instead a PPM file.
-	 * @param {string} [options.userPassword] - Specify the user password for the PDF file.
+	 * @param {PdfToPpmOptions} [options] - Options to pass to pdftoppm binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToPpm(file, outputPath, options = {}) {
@@ -1384,107 +1516,7 @@ class Poppler {
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {('no'|'yes')} [options.antialias] - Enable anti-aliasing on rasterization, accepts `no` or `yes`.
-	 * @param {boolean} [options.binary] - Write binary data in Level 1 PostScript. By default,
-	 * pdftops writes hex-encoded data in Level 1 PostScript. Binary data is non-standard in Level 1
-	 * PostScript but reduces the file size and can be useful when Level 1 PostScript is required
-	 * only for its restricted use of PostScript operators.
-	 * @param {string} [options.defaultCmykProfile] - If Poppler is compiled with colour management support, this option
-	 * sets the DefaultCMYK color space to the ICC profile stored in the display profile file passed.
-	 * @param {string} [options.defaultGrayProfile] - If Poppler is compiled with colour management support, this option
-	 * sets the DefaultGray color space to the ICC profile stored in the display profile file passed.
-	 * @param {string} [options.defaultRgbProfile] - If Poppler is compiled with colour management support, this option
-	 * sets the DefaultRGB color space to the ICC profile stored in the display profile file passed.
-	 * @param {boolean} [options.duplex] - Set the Duplex pagedevice entry in the PostScript file.
-	 * This tells duplex-capable printers to enable duplexing.
-	 * @param {boolean} [options.epsFile] - Generate an EPS file. An EPS file contains a single image,
-	 * so if you use this option with a multi-page PDF file, you must use `options.firstPageToConvert` and
-	 * `options.lastPageToConvert` to specify a single page.
-	 * The page size options (originalPageSizes, paperSize, paperWidth, paperHeight) can not be used
-	 * with this option.
-	 * @param {boolean} [options.fillPage] - Expand PDF pages smaller than the paper to fill the
-	 * paper. By default, these pages are not scaled.
-	 * @param {number} [options.firstPageToConvert] - Specifies the first page to convert.
-	 * @param {number} [options.form] - Generate PostScript form which can be imported by software
-	 * that understands forms.
-	 * A form contains a single page, so if you use this option with a multi-page PDF file,
-	 * you must use `options.firstPageToConvert` and `options.lastPageToConvert` to specify a single page.
-	 * The `options.level1` option cannot be used with `options.form`.
-	 * No more than one of the mode options (`options.epsFile`, `options.form`) may be given.
-	 * @param {number} [options.lastPageToConvert] - Specifies the last page to convert.
-	 * @param {boolean} [options.level1] - Generate Level 1 PostScript. The resulting PostScript
-	 * files will be significantly larger (if they contain images), but will print on Level 1 printers.
-	 * This also converts all images to black and white.
-	 * @param {boolean} [options.level1Sep] - Generate Level 1 separable PostScript.
-	 * All colors are converted to CMYK. Images are written with separate stream data for the four components.
-	 * @param {boolean} [options.level2] - Generate Level 2 PostScript.
-	 * Level 2 supports color images and image compression. This is the default setting.
-	 * @param {boolean} [options.level2Sep] - Generate Level 2 separable PostScript. All colors are
-	 * converted to CMYK. The PostScript separation convention operators are used to handle custom (spot) colors.
-	 * @param {boolean} [options.level3] - Generate Level 3 PostScript.
-	 * This enables all Level 2 featuresplus CID font embedding.
-	 * @param {boolean} [options.level3Sep] - Generate Level 3 separable PostScript.
-	 * The separation handling is the same as for `options.level2Sep`.
-	 * @param {boolean} [options.noCenter] - By default, PDF pages smaller than the paper
-	 * (after any scaling) are centered on the paper. This option causes them to be aligned to
-	 * the lower-left corner of the paper instead.
-	 * @param {boolean} [options.noCrop] - By default, printing output is cropped to the CropBox
-	 * specified in the PDF file. This option disables cropping.
-	 * @param {boolean} [options.noEmbedCIDFonts] - By default, any CID PostScript fonts which are
-	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
-	 * No attempt is made to substitute for non-embedded CID PostScript fonts.
-	 * @param {boolean} [options.noEmbedCIDTrueTypeFonts] - By default, any CID TrueType fonts which are
-	 * embedded in the PDF file are copied into the PostScript file. This option disables that embedding.
-	 * No attempt is made to substitute for non-embedded CID TrueType fonts.
-	 * @param {boolean} [options.noEmbedTrueTypeFonts] - By default, any TrueType fonts which are embedded
-	 * in the PDF file are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead.
-	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
-	 * Also, some PostScript interpreters do not have TrueType rasterizers.
-	 * @param {boolean} [options.noEmbedType1Fonts] - By default, any Type 1 fonts which are embedded in the PDF file
-	 * are copied into the PostScript file. This option causes pdfToPs to substitute base fonts instead.
-	 * Embedded fonts make PostScript files larger, but may be necessary for readable output.
-	 * @param {boolean} [options.noShrink] - Do not scale PDF pages which are larger than the paper.
-	 * By default, pages larger than the paper are shrunk to fit.
-	 * @param {boolean} [options.opi] - Generate OPI comments for all images and forms which have OPI information.
-	 * @param {boolean} [options.optimizecolorspace] - By default, bitmap images in the PDF pass through to the
-	 * output PostScript in their original color space, which produces predictable results.
-	 * This option converts RGB and CMYK images into Gray images if every pixel of the image has equal components.
-	 * This can fix problems when doing color separations of PDFs that contain embedded black and
-	 * white images encoded as RGB.
-	 * @param {boolean} [options.originalPageSizes] - Set the paper size of each page to match
-	 * the size specified in the PDF file.
-	 * @param {boolean} [options.overprint] - Enable overprinting.
-	 * @param {string} [options.ownerPassword] - Owner password (for encrypted files).
-	 * @param {number} [options.paperHeight] - Set the paper height, in points.
-	 * @param {('A3'|'A4'|'legal'|'letter'|'match')} [options.paperSize] - Set the paper size to one of `A3`, `A4`,
-	 * `legal`, or `letter`. This can also be set to `match`, which will set the paper size
-	 * of each page to match the size specified in the PDF file. If none of the paperSize,
-	 * paperWidth, or paperHeight options are specified the default is to match the paper size.
-	 * @param {number} [options.paperWidth] - Set the paper width, in points.
-	 * @param {boolean} [options.passfonts] - By default, references to non-embedded 8-bit fonts
-	 * in the PDF file are substituted with the closest `Helvetica`, `Times-Roman`, or `Courier` font.
-	 * This option passes references to non-embedded fonts through to the PostScript file.
-	 * @param {boolean} [options.preload] - Preload images and forms.
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version information.
-	 * @param {('CMYK8'|'MONO8'|'RGB8')} [options.processColorFormat] - Sets the process color format as it is used
-	 * during rasterization and transparency reduction.
-	 *
-	 * The default depends on the other settings: For `options.level1` the default is MONO8; for `options.level1Sep`,
-	 * `options.level2Sep`, `options.level3Sep`, or `options.overprint` the default is CMYK8; in all other
-	 * cases RGB8 is the default.
-	 * If `option.processColorProfile` is set then `options.processColorFormat` is inferred from the specified ICC profile.
-	 * @param {string} [options.processColorProfile] - Sets the ICC profile that is assumed during
-	 * rasterization and transparency reduction.
-	 * @param {boolean} [options.quiet] - Do not print any messages or errors.
-	 * @param {('always'|'never'|'whenneeded')} [options.rasterize] - By default, pdfToPs rasterizes pages as needed,
-	 * for example, if they contain transparencies. To force rasterization, set `rasterize` to `always`.
-	 * Use this to eliminate fonts.
-	 * To prevent rasterization, set `rasterize` to `never`.
-	 * This may produce files that display incorrectly.
-	 * @param {number} [options.resolutionXYAxis] - Specifies the X and Y resolution, in pixels per
-	 * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
-	 * @param {string} [options.userPassword] - User password (for encrypted files).
+	 * @param {PdfToPsOptions} [options] - Options to pass to pdftops binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfToPs(file, outputFile, options = {}) {

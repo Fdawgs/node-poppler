@@ -76,7 +76,7 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @property {boolean} [boundingBoxXhtmlLayout] Generate an XHTML file containing
  * bounding box information for each block, line, and word in the file.
  * @property {boolean} [cropBox] Use the crop box rather than the media box with
- * `boundingBoxXhtml` and `boundingBoxXhtmlLayout`.
+ * `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`.
  * @property {number} [cropHeight] Specifies the height of crop area in pixels
  * (image output) or points (vector output).
  * @property {number} [cropWidth] Specifies the width of crop area in pixels

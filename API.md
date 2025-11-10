@@ -498,7 +498,7 @@ one PDF result file.
 | --- | --- | --- |
 | [boundingBoxXhtml] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each word in the file. |
 | [boundingBoxXhtmlLayout] | <code>boolean</code> | Generate an XHTML file containing bounding box information for each block, line, and word in the file. |
-| [cropBox] | <code>boolean</code> | Use the crop box rather than the media box with `boundingBoxXhtml` and `boundingBoxXhtmlLayout`. |
+| [cropBox] | <code>boolean</code> | Use the crop box rather than the media box with `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`. |
 | [cropHeight] | <code>number</code> | Specifies the height of crop area in pixels (image output) or points (vector output). |
 | [cropWidth] | <code>number</code> | Specifies the width of crop area in pixels (image output) or points (vector output). |
 | [cropXAxis] | <code>number</code> | Specifies the x-coordinate of the crop area top left corner in pixels (image output) or points (vector output). |

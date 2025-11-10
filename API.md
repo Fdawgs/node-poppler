@@ -549,7 +549,7 @@ one PDF result file.
 | [level1Sep] | <code>boolean</code> | Generate Level 1 separable PostScript. All colors are converted to CMYK. Images are written with separate stream data for the four components. |
 | [level2] | <code>boolean</code> | Generate Level 2 PostScript. Level 2 supports color images and image compression. This is the default setting. |
 | [level2Sep] | <code>boolean</code> | Generate Level 2 separable PostScript. All colors are converted to CMYK. The PostScript separation convention operators are used to handle custom (spot) colors. |
-| [level3] | <code>boolean</code> | Generate Level 3 PostScript. This enables all Level 2 featuresplus CID font embedding. |
+| [level3] | <code>boolean</code> | Generate Level 3 PostScript. This enables all Level 2 features plus CID font embedding. |
 | [level3Sep] | <code>boolean</code> | Generate Level 3 separable PostScript. The separation handling is the same as for `options.level2Sep`. |
 | [noCenter] | <code>boolean</code> | By default, PDF pages smaller than the paper (after any scaling) are centered on the paper. This option causes them to be aligned to the lower-left corner of the paper instead. |
 | [noCrop] | <code>boolean</code> | By default, printing output is cropped to the CropBox specified in the PDF file. This option disables cropping. |

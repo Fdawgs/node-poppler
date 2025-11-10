@@ -376,7 +376,7 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @property {boolean} [level2Sep] Generate Level 2 separable PostScript. All colors are
  * converted to CMYK. The PostScript separation convention operators are used to handle custom (spot) colors.
  * @property {boolean} [level3] Generate Level 3 PostScript.
- * This enables all Level 2 featuresplus CID font embedding.
+ * This enables all Level 2 features plus CID font embedding.
  * @property {boolean} [level3Sep] Generate Level 3 separable PostScript.
  * The separation handling is the same as for `options.level2Sep`.
  * @property {boolean} [noCenter] By default, PDF pages smaller than the paper

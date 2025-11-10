@@ -2,6 +2,69 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.5](https://github.com/Fdawgs/node-poppler/compare/v8.0.4...v8.0.5) (2025-11-10)
+
+
+### Bug fixes
+
+* **index:** revert [#688](https://github.com/Fdawgs/node-poppler/issues/688) ([#694](https://github.com/Fdawgs/node-poppler/issues/694)) ([039f689](https://github.com/Fdawgs/node-poppler/commit/039f689e9fc1fe031f98855376264fcea17934d2))
+
+
+### Continuous integration
+
+* **cd:** protect against cache poisoning ([#690](https://github.com/Fdawgs/node-poppler/issues/690)) ([d97bc54](https://github.com/Fdawgs/node-poppler/commit/d97bc54513aa0bb1785c5e48ce6eebdc0d65e1b6))
+* **cd:** use oicd for publishing to npm ([#677](https://github.com/Fdawgs/node-poppler/issues/677)) ([bd65bd9](https://github.com/Fdawgs/node-poppler/commit/bd65bd96984a69985448846347769629bcf489fa))
+* **ci:** add typecheck to lint job ([#691](https://github.com/Fdawgs/node-poppler/issues/691)) ([9b5d06d](https://github.com/Fdawgs/node-poppler/commit/9b5d06d9ab3d05551a70c1bf2234485653a22197))
+* **ci:** check dependabot prs originate from repo ([#686](https://github.com/Fdawgs/node-poppler/issues/686)) ([e164a6d](https://github.com/Fdawgs/node-poppler/commit/e164a6d142515dee76f1bdeb06886742d8274591))
+* **ci:** ignore dependabot prs in coverage updates ([#698](https://github.com/Fdawgs/node-poppler/issues/698)) ([643f876](https://github.com/Fdawgs/node-poppler/commit/643f87617427e78930db5fbd5d2f23adca6257bc))
+* **ci:** only send coverage to coveralls on main ([#711](https://github.com/Fdawgs/node-poppler/issues/711)) ([f5e22d0](https://github.com/Fdawgs/node-poppler/commit/f5e22d0bd2da3e012dd7a4af116eff073cf68e89))
+* **deps:** bump actions/checkout from 4 to 5 ([#680](https://github.com/Fdawgs/node-poppler/issues/680)) ([ccf8a06](https://github.com/Fdawgs/node-poppler/commit/ccf8a0641f9b929a2c77c14150e8a21ad12ea78e))
+* **deps:** bump actions/dependency-review-action from 4.7.1 to 4.7.3 ([#679](https://github.com/Fdawgs/node-poppler/issues/679)) ([4c9b43c](https://github.com/Fdawgs/node-poppler/commit/4c9b43c5dc4ac74b77283f73f7c54b982673b470))
+* **deps:** bump actions/dependency-review-action from 4.7.3 to 4.8.0 ([#692](https://github.com/Fdawgs/node-poppler/issues/692)) ([82e2810](https://github.com/Fdawgs/node-poppler/commit/82e281036b2c07f7542d4365b1a218a9a75b649f))
+* **deps:** bump actions/dependency-review-action from 4.8.0 to 4.8.1 ([#703](https://github.com/Fdawgs/node-poppler/issues/703)) ([c67afeb](https://github.com/Fdawgs/node-poppler/commit/c67afeb59aab63ab0507854b9b765a88951258f2))
+* **deps:** bump actions/setup-node from 4 to 5 ([#684](https://github.com/Fdawgs/node-poppler/issues/684)) ([ee547d8](https://github.com/Fdawgs/node-poppler/commit/ee547d8122ca37033181ea47e42c6bc4e75bdcb5))
+* **deps:** bump actions/setup-node from 5 to 6 ([#707](https://github.com/Fdawgs/node-poppler/issues/707)) ([6ea83bb](https://github.com/Fdawgs/node-poppler/commit/6ea83bb899ce5768f19a1c2a3cf22e66ff25f63b))
+* **deps:** bump fastify/github-action-merge-dependabot ([#706](https://github.com/Fdawgs/node-poppler/issues/706)) ([f12be09](https://github.com/Fdawgs/node-poppler/commit/f12be09e710ec2300ebab7a2ee41895ec883f327))
+* **deps:** bump github/codeql-action from 3 to 4 ([#705](https://github.com/Fdawgs/node-poppler/issues/705)) ([ef7232f](https://github.com/Fdawgs/node-poppler/commit/ef7232fce4c0d5ab1db0f237a748a2211fe7c4cc))
+* **deps:** bump googleapis/release-please-action from 4.2.0 to 4.3.0 ([#681](https://github.com/Fdawgs/node-poppler/issues/681)) ([3da146d](https://github.com/Fdawgs/node-poppler/commit/3da146dddbfc3a502fe85272165c6ba64f4ed568))
+* **deps:** bump googleapis/release-please-action from 4.3.0 to 4.4.0 ([#702](https://github.com/Fdawgs/node-poppler/issues/702)) ([613acd6](https://github.com/Fdawgs/node-poppler/commit/613acd6949b62e0160caf8c3b83f2cc6111b3e01))
+* **deps:** bump JustinBeckwith/linkinator-action from 1.11.0 to 2.3 ([#704](https://github.com/Fdawgs/node-poppler/issues/704)) ([87b01c2](https://github.com/Fdawgs/node-poppler/commit/87b01c2ce5cb553bbbaa5bcc234859a4490e7952))
+* **link-check:** retry on 429 response ([#675](https://github.com/Fdawgs/node-poppler/issues/675)) ([ad93f9d](https://github.com/Fdawgs/node-poppler/commit/ad93f9d0bf0753030d22e087a235e7b3fec1c86d))
+* tidy conditional checks ([#687](https://github.com/Fdawgs/node-poppler/issues/687)) ([2b9ad2a](https://github.com/Fdawgs/node-poppler/commit/2b9ad2a3cd59f3c449bd1ddefa13324637fbf29a))
+* use `.nvmrc` for node-version ([#695](https://github.com/Fdawgs/node-poppler/issues/695)) ([f0e9064](https://github.com/Fdawgs/node-poppler/commit/f0e906489f527575e9ecddd076da91aef435cb58))
+
+
+### Dependencies
+
+* **dependabot:** add cooldowns ([#683](https://github.com/Fdawgs/node-poppler/issues/683)) ([0e7ab26](https://github.com/Fdawgs/node-poppler/commit/0e7ab2660bb3487d011fd2b03b82f65a4242c2a7))
+* **deps-dev:** bump @fdawgs/eslint-config in the eslint group ([#708](https://github.com/Fdawgs/node-poppler/issues/708)) ([7b97af6](https://github.com/Fdawgs/node-poppler/commit/7b97af670fa9dea627841e3d4b9ad7cd590ba71b))
+* **deps-dev:** bump the commitlint group with 2 updates ([#693](https://github.com/Fdawgs/node-poppler/issues/693)) ([6b8d34c](https://github.com/Fdawgs/node-poppler/commit/6b8d34cb13018142a0e440baf044077717d55821))
+* **deps-dev:** bump typescript from 5.8.3 to 5.9.2 ([#674](https://github.com/Fdawgs/node-poppler/issues/674)) ([ac8b346](https://github.com/Fdawgs/node-poppler/commit/ac8b34602f3659bee445524326db5bed1fcb36a2))
+* **tsconfig:** add typescript declaration map ([#689](https://github.com/Fdawgs/node-poppler/issues/689)) ([a085079](https://github.com/Fdawgs/node-poppler/commit/a08507902f7aa2af4dae7dfb6df030a4fe1dcec6))
+
+
+### Improvements
+
+* **index:** consolidate duplicate spawn executions ([#672](https://github.com/Fdawgs/node-poppler/issues/672)) ([30c49d6](https://github.com/Fdawgs/node-poppler/commit/30c49d64067dce29c39e8fb9b820a0d65ebb458a))
+* **index:** enable regex charset and unicode with `v` flag ([#688](https://github.com/Fdawgs/node-poppler/issues/688)) ([1d796d9](https://github.com/Fdawgs/node-poppler/commit/1d796d9c18f8e2c867ab479449bf57d8391b8cf3))
+* **index:** use `Object.keys` over `Object.entries` for opt parsing ([#709](https://github.com/Fdawgs/node-poppler/issues/709)) ([8ec701b](https://github.com/Fdawgs/node-poppler/commit/8ec701b9ce135716b8646f24ead87dec6836b0ee))
+
+
+### Miscellaneous
+
+* **.devcontainer:** add devcontainer ([#696](https://github.com/Fdawgs/node-poppler/issues/696)) ([19dbd61](https://github.com/Fdawgs/node-poppler/commit/19dbd617aead2beb312623daee1dc373b5a1c4f1))
+* **.npmrc:** ignore scripts ([#685](https://github.com/Fdawgs/node-poppler/issues/685)) ([5d2fba9](https://github.com/Fdawgs/node-poppler/commit/5d2fba968f3294ef411cc74c84203ee9e596e668))
+* add `.nvmrc` file ([#682](https://github.com/Fdawgs/node-poppler/issues/682)) ([bb38014](https://github.com/Fdawgs/node-poppler/commit/bb38014d7edfecb55e1ee7f5db454ac35841dcd4))
+* **index:** add throw jsdoc tags; add type guards to tests ([#697](https://github.com/Fdawgs/node-poppler/issues/697)) ([48ae117](https://github.com/Fdawgs/node-poppler/commit/48ae1171a4d2c5dad8156cd756499bed6893bbbf))
+* **index:** export options type definitions ([#710](https://github.com/Fdawgs/node-poppler/issues/710)) ([7a4736b](https://github.com/Fdawgs/node-poppler/commit/7a4736b5ab05efbc6a8acf92c78954b909125a2e))
+* **index:** hide global from api docs ([#700](https://github.com/Fdawgs/node-poppler/issues/700)) ([216677f](https://github.com/Fdawgs/node-poppler/commit/216677fec6c45ba8471c824e2b5a71e3f95e2f9a))
+* rename lint scripts to reflect use ([#701](https://github.com/Fdawgs/node-poppler/issues/701)) ([e88c93b](https://github.com/Fdawgs/node-poppler/commit/e88c93b9f35f17e5d3c95ae5d2611fd8db2d222b))
+
+
+### Tests
+
+* up coverage threshold ([#699](https://github.com/Fdawgs/node-poppler/issues/699)) ([704b014](https://github.com/Fdawgs/node-poppler/commit/704b014132c1dcb00e1424ba300a9820c2de4eef))
+
 ## [8.0.4](https://github.com/Fdawgs/node-poppler/compare/v8.0.3...v8.0.4) (2025-07-24)
 
 

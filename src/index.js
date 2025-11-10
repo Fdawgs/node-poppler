@@ -1224,14 +1224,14 @@ class Poppler {
 		/** @type {number} */
 		let fileSize;
 
-		return new Promise((resolve, reject) => {
-			if (Buffer.isBuffer(file)) {
-				args.push("-");
-				fileSize = file.length;
-			} else {
-				args.push(file);
-			}
+		if (Buffer.isBuffer(file)) {
+			args.push("-");
+			fileSize = file.length;
+		} else {
+			args.push(file);
+		}
 
+		return new Promise((resolve, reject) => {
 			const child = spawn(this.#pdfInfoBin, args);
 
 			if (Buffer.isBuffer(file)) {
@@ -1359,14 +1359,13 @@ class Poppler {
 		const acceptedOptions = this.#getAcceptedOptions("pdfToHtml");
 		const versionInfo = await this.#getVersion(this.#pdfToHtmlBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
+		args.push(Buffer.isBuffer(file) ? "-" : file);
+
+		if (outputFile) {
+			args.push(outputFile);
+		}
 
 		return new Promise((resolve, reject) => {
-			args.push(Buffer.isBuffer(file) ? "-" : file);
-
-			if (outputFile) {
-				args.push(outputFile);
-			}
-
 			const child = spawn(this.#pdfToHtmlBin, args);
 
 			if (Buffer.isBuffer(file)) {

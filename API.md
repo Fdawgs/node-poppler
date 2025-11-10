@@ -12,6 +12,8 @@
 <dd></dd>
 <dt><a href="#PopplerAcceptedOptions">PopplerAcceptedOptions</a> : <code>Record.&lt;string, OptionDetails&gt;</code></dt>
 <dd></dd>
+<dt><a href="#PdfUniteOptions">PdfUniteOptions</a></dt>
+<dd></dd>
 </dl>
 
 <a name="Poppler"></a>
@@ -462,8 +464,7 @@ one PDF result file.
 | --- | --- | --- |
 | files | <code>Array.&lt;string&gt;</code> | Filepaths of the PDF files to merge. An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`. |
 | outputFile | <code>string</code> | Filepath of the file to output the resulting merged PDF to. |
-| [options] | <code>object</code> | Object containing options to pass to binary. |
-| [options.printVersionInfo] | <code>boolean</code> | Print copyright and version information. |
+| [options] | [<code>PdfUniteOptions</code>](#PdfUniteOptions) | Options to pass to pdfunite binary. |
 
 <a name="Poppler.Poppler"></a>
 
@@ -486,3 +487,13 @@ one PDF result file.
 
 ## PopplerAcceptedOptions : <code>Record.&lt;string, OptionDetails&gt;</code>
 **Kind**: global typedef  
+<a name="PdfUniteOptions"></a>
+
+## PdfUniteOptions
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| [printVersionInfo] | <code>boolean</code> | Print copyright and version information. |
+

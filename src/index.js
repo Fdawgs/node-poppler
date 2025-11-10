@@ -41,6 +41,11 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  */
 
 /**
+ * @typedef PdfUniteOptions
+ * @property {boolean} [printVersionInfo] Print copyright and version information.
+ */
+
+/**
  * @author Frazer Smith
  * @description Checks each option provided is valid, of the correct type, and can be used by specified
  * version of binary.
@@ -1582,8 +1587,7 @@ class Poppler {
 	 * @param {string[]} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`.
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
-	 * @param {object} [options] - Object containing options to pass to binary.
-	 * @param {boolean} [options.printVersionInfo] - Print copyright and version information.
+	 * @param {PdfUniteOptions} [options] - Options to pass to pdfunite binary.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
 	async pdfUnite(files, outputFile, options = {}) {

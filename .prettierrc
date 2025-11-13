@@ -1,16 +1,12 @@
 {
 	"arrowParens": "always",
-	"endOfLine": "lf",
 	"semi": true,
-	"tabWidth": 4,
 	"trailingComma": "es5",
-	"useTabs": true,
 	"overrides": [
 		{
 			"files": ["*.css", "*.html", "*.scss"],
 			"options": {
-				"bracketSameLine": true,
-				"printWidth": 120
+				"bracketSameLine": true
 			}
 		}
 	]

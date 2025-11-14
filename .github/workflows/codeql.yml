@@ -18,7 +18,7 @@ on:
 
 # This allows a subsequently queued workflow run to interrupt previous runs
 concurrency:
-    group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+    group: "${{ github.workflow }}-${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
     cancel-in-progress: true
 
 permissions:
@@ -29,7 +29,7 @@ jobs:
         name: CodeQL Analysis
         strategy:
             matrix:
-                languages: ["actions", "javascript-typescript"]
+                language: ["actions", "javascript-typescript"]
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -45,9 +45,9 @@ jobs:
               uses: github/codeql-action/init@v4
               with:
                   config-file: ./.github/codeql-config.yml
-                  languages: ${{ matrix.languages }}
+                  languages: ${{ matrix.language }}
 
             - name: Perform CodeQL analysis
               uses: github/codeql-action/analyze@v4
               with:
-                  category: "/language:${{matrix.language}}"
+                  category: "/language:${{ matrix.language }}"

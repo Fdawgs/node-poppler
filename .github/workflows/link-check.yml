@@ -40,18 +40,6 @@ permissions:
 jobs:
     link-check:
         name: Link Check
-        runs-on: ubuntu-latest
         permissions:
             contents: read
-        steps:
-            - name: Check out repo
-              uses: actions/checkout@v5
-              with:
-                  persist-credentials: false
-
-            - name: Run Linkinator
-              uses: JustinBeckwith/linkinator-action@af984b9f30f63e796ae2ea5be5e07cb587f1bbd9 # v2.3
-              with:
-                  paths: "**/*.md"
-                  retry: true
-                  skip: "https://(?:www.|)github.com/Fdawgs/.*/(?:commit|issues|compare)/, http://0.0.0.0"
+        uses: fdawgs/workflows/.github/workflows/reusable-link-check.yml@v2

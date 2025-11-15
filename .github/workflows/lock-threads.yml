@@ -26,7 +26,8 @@ permissions:
 
 jobs:
     lock-threads:
+        name: Lock Threads
         permissions:
             issues: write
             pull-requests: write
-        uses: fdawgs/workflows/.github/workflows/shared-lock-threads.yml@v1
+        uses: fdawgs/workflows/.github/workflows/reusable-lock-threads.yml@v2

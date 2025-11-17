@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.6](https://github.com/Fdawgs/node-poppler/compare/v8.0.5...v8.0.6) (2025-11-17)
+
+
+### Bug fixes
+
+* **lib:** update poppler win32 binaries from 24.07.0 to 25.11.0 ([#719](https://github.com/Fdawgs/node-poppler/issues/719)) ([3f297cf](https://github.com/Fdawgs/node-poppler/commit/3f297cff05e426b05a8046d43839d8e9620c71eb))
+
+
+### Continuous integration
+
+* add lock-threads workflow; fix concurrency groups ([#716](https://github.com/Fdawgs/node-poppler/issues/716)) ([bb26c2c](https://github.com/Fdawgs/node-poppler/commit/bb26c2c48320114fdea692b91b7c393047b0546e))
+* **link-check:** use reusable workflow ([#718](https://github.com/Fdawgs/node-poppler/issues/718)) ([c8d0e8e](https://github.com/Fdawgs/node-poppler/commit/c8d0e8e30dfa42119cccc07bd9a5bc48daa0a9be))
+* **lock-threads:** set cron to every day ([#717](https://github.com/Fdawgs/node-poppler/issues/717)) ([80584ea](https://github.com/Fdawgs/node-poppler/commit/80584eac1765a22fb5f991c8a4c61694cdd352eb))
+
+
+### Miscellaneous
+
+* **.editorconfig:** add file to enforce consistent coding styles ([#712](https://github.com/Fdawgs/node-poppler/issues/712)) ([d138751](https://github.com/Fdawgs/node-poppler/commit/d1387511d73dd135cf0e4ff87e0d201ee0b71579))
+* **.editorconfig:** use spaces for yml file indentation ([#715](https://github.com/Fdawgs/node-poppler/issues/715)) ([50e5ca1](https://github.com/Fdawgs/node-poppler/commit/50e5ca11571cd8acee7d4ca28f4aa2936b564e73))
+* **eslint.config:** stop applying to jsx files ([#714](https://github.com/Fdawgs/node-poppler/issues/714)) ([b1b95df](https://github.com/Fdawgs/node-poppler/commit/b1b95df46c72502c1d89a414142a7dcd517d1083))
+
 ## [8.0.5](https://github.com/Fdawgs/node-poppler/compare/v8.0.4...v8.0.5) (2025-11-10)
 
 

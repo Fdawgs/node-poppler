@@ -24,7 +24,7 @@ npm i node-poppler
 
 ### Linux and macOS/Darwin support
 
-Windows binaries are provided via an optional dependency on the [`node-poppler-win32`](https://www.npmjs.com/package/node-poppler-win32) package.
+64-bit Windows binaries are provided via an optional dependency on the [`node-poppler-win32`](https://www.npmjs.com/package/node-poppler-win32) package.
 For Linux and Mac users, the `poppler-data` and `poppler-utils` binaries binary will need to be installed separately.
 
 An example of downloading the binaries on a Debian system:

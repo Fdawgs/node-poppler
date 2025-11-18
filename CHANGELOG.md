@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.0.0](https://github.com/Fdawgs/node-poppler/compare/v8.0.6...v9.0.0) (2025-11-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* moved windows binaries to optional dependency
+
+### Improvements
+
+* move windows binaries to optional dependency ([#720](https://github.com/Fdawgs/node-poppler/issues/720)) ([1c3adae](https://github.com/Fdawgs/node-poppler/commit/1c3adae32796a6c20bec4ee60c907d905e7b98db))
+
 ## [8.0.6](https://github.com/Fdawgs/node-poppler/compare/v8.0.5...v8.0.6) (2025-11-17)
 
 

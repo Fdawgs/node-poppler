@@ -24,7 +24,7 @@ npm i node-poppler
 
 ### Linux and macOS/Darwin support
 
-Windows binaries are provided with this repository.
+Windows binaries are provided via an optional dependency on the [`node-poppler-win32`](https://www.npmjs.com/package/node-poppler-win32) package.
 For Linux and Mac users, the `poppler-data` and `poppler-utils` binaries binary will need to be installed separately.
 
 An example of downloading the binaries on a Debian system:
@@ -169,11 +169,6 @@ Please adhere to this project's [Code of Conduct](https://github.com/Fdawgs/.git
 ## Acknowledgements
 
 - [**Albert Astals Cid**](https://github.com/albert-astals-cid-kdab) - [Poppler](https://poppler.freedesktop.org/) developer
-- [**Filipe Fernandes**](https://github.com/ocefpaf/) - [poppler-feedstock](https://github.com/conda-forge/poppler-feedstock) maintainer
-- [**Peter Williams**](https://github.com/pkgw/) - [poppler-feedstock](https://github.com/conda-forge/poppler-feedstock) maintainer
-- [**Owen Schwartz**](https://github.com/oschwartz10612) - [poppler-windows](https://github.com/oschwartz10612/poppler-windows) developer
-- [**Uwe Korn**](https://github.com/xhochy/) - [poppler-feedstock](https://github.com/conda-forge/poppler-feedstock) maintainer
-- [**Xylar Asay-Davis**](https://github.com/xylar/) - [poppler-feedstock](https://github.com/conda-forge/poppler-feedstock) maintainer
 
 ## License
 

@@ -571,7 +571,7 @@ function parseOptions(acceptedOptions, options, version) {
 			continue;
 		}
 
-		// @ts-ignore: keys are from options, TS cannot infer this
+		// @ts-ignore: Keys are from options, TS cannot infer this
 		const option = options[key];
 		const acceptedOption = acceptedOptions[key];
 
@@ -655,14 +655,13 @@ class Poppler {
 				this.#popplerPath = popplerPath;
 			}
 			if (platform === "win32" && !popplerPath) {
-				this.#popplerPath = pathResolve(
-					__dirname,
-					"lib",
-					"win32",
-					"poppler-25.11.0",
-					"Library",
-					"bin"
-				);
+				try {
+					// @ts-ignore: Optional dependency
+					// eslint-disable-next-line n/global-require -- Conditional require
+					this.#popplerPath = require("node-poppler-win32");
+				} catch {
+					// Leave #popplerPath empty; the generic "Unable to find ... binaries" error below will fire
+				}
 			}
 		}
 
@@ -1268,7 +1267,7 @@ class Poppler {
 							const line = stdOutLines[i];
 							const lines = line.split(": ");
 							if (lines.length > 1) {
-								// @ts-ignore: creating dynamic object keys
+								// @ts-ignore: Creating dynamic object keys
 								info[camelCase(lines[0])] = lines[1].trim();
 							}
 						}

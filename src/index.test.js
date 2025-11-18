@@ -47,14 +47,8 @@ function getTestBinaryPath() {
 	let popplerPath = /(.+)pdfinfo/u.exec(which)?.[1];
 
 	if (platform === "win32" && !popplerPath) {
-		popplerPath = join(
-			__dirname,
-			"lib",
-			"win32",
-			"poppler-25.11.0",
-			"Library",
-			"bin"
-		);
+		// @ts-ignore: Optional dependency
+		popplerPath = require("node-poppler-win32");
 	}
 
 	if (!popplerPath) {

@@ -60,7 +60,8 @@ jobs:
                   node-version-file: .nvmrc
 
             - name: Install
-              run: npm i --ignore-scripts
+              # Force install to bypass OS/CPU checks; this job only lints
+              run: npm i -f --ignore-scripts
 
             - name: Audit NPM package signatures and provenance attestations
               run: npm audit signatures

@@ -111,5 +111,8 @@
 	"dependencies": {
 		"camelcase": "^6.3.0",
 		"semver": "^7.7.2"
+	},
+	"optionalDependencies": {
+		"node-poppler-win32": "^1.0.1"
 	}
 }

@@ -5,8 +5,5 @@
 			"prefix": "node-poppler-win32"
 		}
 	],
-	"licenses": {
-		"blueOak": "bronze",
-		"spdx": ["CC-BY-3.0"]
-	}
+	"licenses": { "blueOak": "bronze", "spdx": ["CC-BY-3.0"] }
 }

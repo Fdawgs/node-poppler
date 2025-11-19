@@ -135,16 +135,16 @@ dist
 # Clinic.js
 .clinic
 
-# Auto generated files
+# Auto-generated files
 types/
 
-# lock files
+# Lockfiles
 bun.lockb
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
 
-# Converted test files
+# Test files
 test/files/*
 !test/files/pdf_1.3_NHS_Constitution.pdf
 !test/files/pdf_1.7_NHS_Constitution_Handbook.pdf

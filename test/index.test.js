@@ -29,7 +29,7 @@ const CMD_FAILED_REG = /^Command failed:/u;
 const SYNTAX_WARNING_REG = /^Syntax Warning:/u;
 const IO_ERROR_REG = /^I\/O Error:/u;
 
-const testDirectory = join(__dirname, "files") + sep;
+const testDirectory = join(__dirname, "fixtures") + sep;
 const testDirectoryPosix = testDirectory.split(sep).join(posix.sep);
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 

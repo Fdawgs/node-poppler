@@ -22,17 +22,15 @@ const { glob } = require("glob");
 const { lt } = require("semver");
 
 const execFileAsync = promisify(execFile);
-const { Poppler } = require("./index");
+const { Poppler } = require("../src/index");
 
 // Cache immutable regex as they are expensive to create and garbage collect
 const CMD_FAILED_REG = /^Command failed:/u;
 const SYNTAX_WARNING_REG = /^Syntax Warning:/u;
 const IO_ERROR_REG = /^I\/O Error:/u;
 
-const testDirectory =
-	join(__dirname, "..", "test_resources", "test_files") + sep;
-const testDirectoryPosix =
-	posix.join(__dirname, "..", "test_resources", "test_files") + posix.sep;
+const testDirectory = join(__dirname, "files") + sep;
+const testDirectoryPosix = testDirectory.split(sep).join(posix.sep);
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
 /**
@@ -105,7 +103,7 @@ describe("Node-Poppler module", () => {
 				})),
 			}));
 			require("node:child_process");
-			const { Poppler: PopplerMock } = require("./index");
+			const { Poppler: PopplerMock } = require("../src/index");
 
 			expect.assertions(1);
 			try {

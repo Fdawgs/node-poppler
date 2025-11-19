@@ -149,4 +149,4 @@ pnpm-lock.yaml
 yarn.lock
 
 # Converted test files
-test_files/*
+test/files/*

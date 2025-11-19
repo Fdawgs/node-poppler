@@ -50,7 +50,6 @@
 		"node": ">=20"
 	},
 	"scripts": {
-		"build:docs": "jsdoc2md src/index.js > API.md --EOL posix",
 		"build": "tsc -p tsconfig.build.json",
 		"lint:eslint:fix": "npm run lint:eslint -- --fix",
 		"lint:eslint": "eslint . --cache",
@@ -101,7 +100,6 @@
 		"eslint-plugin-jest": "^29.0.1",
 		"glob": "^11.0.3",
 		"jest": "^30.0.4",
-		"jsdoc-to-markdown": "^9.1.1",
 		"licensee": "^11.1.1",
 		"prettier": "^3.6.2",
 		"typescript": "~5.9.2"

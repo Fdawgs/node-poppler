@@ -39,11 +39,9 @@ For macOS users, the binaries can be installed with [Homebrew](https://brew.sh/)
 brew install poppler
 ```
 
-## API
-
-API documentation can be found [here](https://github.com/Fdawgs/node-poppler/blob/main/API.md).
-
 ## Example usage
+
+Please refer to the [JSDoc comments in the source code](./src/index.js) or the [generated type definitions](https://www.npmjs.com/package/node-poppler?activeTab=code) for information on the available options.
 
 ### poppler.pdfToCairo
 

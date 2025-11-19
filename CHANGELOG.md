@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.0.1](https://github.com/Fdawgs/node-poppler/compare/v9.0.0...v9.0.1) (2025-11-19)
+
+
+### Dependencies
+
+* **deps-dev:** remove husky ([#722](https://github.com/Fdawgs/node-poppler/issues/722)) ([c2aea46](https://github.com/Fdawgs/node-poppler/commit/c2aea467c0ce63206ae751569671784c99f316de))
+* **deps-dev:** remove type definition map and `API.md` ([#725](https://github.com/Fdawgs/node-poppler/issues/725)) ([4c2826c](https://github.com/Fdawgs/node-poppler/commit/4c2826c79c0306b92adad940b82af88feeb7edad))
+
+
+### Miscellaneous
+
+* move tests from src to test dir ([#724](https://github.com/Fdawgs/node-poppler/issues/724)) ([6669df4](https://github.com/Fdawgs/node-poppler/commit/6669df4248521a3f61da18162513c21df282ace4))
+
 ## [9.0.0](https://github.com/Fdawgs/node-poppler/compare/v8.0.6...v9.0.0) (2025-11-18)
 
 

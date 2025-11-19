@@ -16,3 +16,12 @@ max_line_length = 120
 
 [*.{yaml,yml}]
 indent_style = space
+
+[test/{fixtures,__snapshots__}/**]
+charset = unset
+end_of_line = unset
+indent_size = unset
+indent_style = unset
+insert_final_newline = unset
+max_line_length = unset
+trim_trailing_whitespace = unset

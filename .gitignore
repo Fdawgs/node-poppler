@@ -145,9 +145,9 @@ pnpm-lock.yaml
 yarn.lock
 
 # Converted test files
-test_resources/test_files/*
-!test_resources/test_files/pdf_1.3_NHS_Constitution.pdf
-!test_resources/test_files/pdf_1.7_NHS_Constitution_Handbook.pdf
-!test_resources/test_files/pdf_1.3_NHS_Constitution_attached_detach.pdf
-!test_resources/test_files/pdf_1.7_whitespace_example.pdf
-!test_resources/test_files/test.txt
+test/files/*
+!test/files/pdf_1.3_NHS_Constitution.pdf
+!test/files/pdf_1.7_NHS_Constitution_Handbook.pdf
+!test/files/pdf_1.3_NHS_Constitution_attached_detach.pdf
+!test/files/pdf_1.7_whitespace_example.pdf
+!test/files/test.txt

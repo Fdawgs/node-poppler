@@ -8,6 +8,9 @@ queries:
 
 # Limit the paths scanning takes place, improving speed of scan
 paths:
+    - "**/*.cjs"
     - "**/*.html"
     - "**/*.js"
+    - "**/*.mjs"
+    - "**/*.ts"
     - "**/*.yml"

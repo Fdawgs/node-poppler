@@ -11,8 +11,11 @@ on:
         branches:
             - main
         paths:
+            - "**/*.cjs"
             - "**/*.html"
             - "**/*.js"
+            - "**/*.mjs"
+            - "**/*.ts"
             - "**/*.yml"
         types: [opened, ready_for_review, reopened, synchronize]
 

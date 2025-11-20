@@ -13,7 +13,7 @@ const execFileAsync = promisify(execFile);
  * @type {Readonly<Record<string, string>>}
  * @ignore
  */
-const ERROR_MSGS = {
+const ERROR_MSGS = Object.freeze({
 	0: "No Error",
 	1: "Error opening a PDF file",
 	2: "Error opening an output file",
@@ -21,7 +21,7 @@ const ERROR_MSGS = {
 	4: "Error related to ICC profile",
 	99: "Other error",
 	3221226505: "Internal process error",
-};
+});
 
 // Cache immutable regex as they are expensive to create and garbage collect
 const POPPLER_VERSION_REG = /(\d{1,2}\.\d{1,2}\.\d{1,2})/u;

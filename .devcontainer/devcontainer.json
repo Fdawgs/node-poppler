@@ -36,6 +36,6 @@
 	// Change owner of the /workspaces folder to the non-root user to avoid permission issues
 	"onCreateCommand": "sudo apt-get -q update && sudo apt-get -y --no-install-recommends install poppler-data poppler-utils && sudo chown -R node:node /workspaces/",
 	// Use 'postCreateCommand' to run commands after the container is created
-	"postCreateCommand": "npm i && npm run prepare",
+	"postCreateCommand": "npm i",
 	"remoteUser": "node"
 }

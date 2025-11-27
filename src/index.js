@@ -500,7 +500,7 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @param {boolean} [options.preserveWhitespace] - If true, preserves leading and trailing whitespace in the output.
  * @returns {Promise<string>} A promise that resolves with stdout, or rejects with an Error.
  */
-function executeBinary(binary, args, file, options = {}) {
+function execBinary(binary, args, file, options = {}) {
 	return new Promise((resolve, reject) => {
 		const child = spawn(binary, args);
 
@@ -1181,7 +1181,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file);
 
-		return executeBinary(this.#pdfFontsBin, args, file);
+		return execBinary(this.#pdfFontsBin, args, file);
 	}
 
 	/**
@@ -1203,7 +1203,7 @@ class Poppler {
 			args.push(outputPrefix);
 		}
 
-		return executeBinary(this.#pdfImagesBin, args, file);
+		return execBinary(this.#pdfImagesBin, args, file);
 	}
 
 	/**
@@ -1339,7 +1339,7 @@ class Poppler {
 			outputFile === undefined &&
 			args.some((arg) => ["-singlefile", "-pdf"].includes(arg));
 
-		return executeBinary(this.#pdfToCairoBin, args, file, { binaryOutput });
+		return execBinary(this.#pdfToCairoBin, args, file, { binaryOutput });
 	}
 
 	/**
@@ -1410,7 +1410,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
 
-		return executeBinary(this.#pdfToPpmBin, args, file);
+		return execBinary(this.#pdfToPpmBin, args, file);
 	}
 
 	/**
@@ -1428,7 +1428,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-		return executeBinary(this.#pdfToPsBin, args, file);
+		return execBinary(this.#pdfToPsBin, args, file);
 	}
 
 	/**
@@ -1446,7 +1446,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-		return executeBinary(this.#pdfToTextBin, args, file, {
+		return execBinary(this.#pdfToTextBin, args, file, {
 			preserveWhitespace: options.maintainLayout,
 		});
 	}

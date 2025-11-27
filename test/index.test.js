@@ -33,6 +33,11 @@ const testDirectory = join(__dirname, "fixtures") + sep;
 const testDirectoryPosix = testDirectory.split(sep).join(posix.sep);
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
+/** @type {typeof import("node:child_process")} */
+const originalChildProcess = jest.requireActual("node:child_process");
+/** @type {typeof import("node:process")} */
+const originalProcess = jest.requireActual("node:process");
+
 /**
  * @description Returns the path to the poppler-util binaries based on the OS.
  * @returns {string} The path to the poppler-util binaries.
@@ -86,13 +91,10 @@ describe("Node-Poppler module", () => {
 
 		it("Throws an Error if the binary path is not found", () => {
 			jest.doMock("node:process", () => ({
+				...originalProcess,
 				platform: "mockOS",
 			}));
 			const { platform: mockPlatform } = require("node:process");
-
-			/** @type {typeof import("node:child_process")} */
-			const originalChildProcess =
-				jest.requireActual("node:child_process");
 
 			jest.doMock("node:child_process", () => ({
 				...originalChildProcess,
@@ -1154,6 +1156,10 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfToText function", () => {
+		beforeEach(() => {
+			jest.resetModules();
+		});
+
 		it("Converts PDF file to Text file and write to output file", async () => {
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.txt`;
 
@@ -1241,6 +1247,62 @@ describe("Node-Poppler module", () => {
 				poppler.pdfToText(file, undefined, options)
 			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
+
+		it.each([
+			{
+				testName: "a non-zero code and no output",
+				exitCode: 5,
+				expectedError: /exited with code 5/u,
+			},
+			{
+				testName: "an internal process error",
+				exitCode: 3221226505,
+				expectedError: "Internal process error",
+			},
+			{
+				testName: "a null code and no output",
+				exitCode: null,
+				expectedError: /exited with code null/u,
+			},
+		])(
+			"Rejects with an Error object if Poppler exits with $testName",
+			async ({ exitCode, expectedError }) => {
+				jest.doMock("node:child_process", () => {
+					const { EventEmitter } = require("node:events");
+					const { Readable } = require("node:stream");
+					return {
+						...originalChildProcess,
+						spawn: jest.fn(() => {
+							const emitter =
+								/** @type {import("node:child_process").ChildProcess} */ (
+									new EventEmitter()
+								);
+							emitter.stdout = new Readable({
+								read() {
+									this.push(null);
+								},
+							});
+							emitter.stderr = new Readable({
+								read() {
+									this.push(null);
+								},
+							});
+							setImmediate(() => emitter.emit("close", exitCode));
+							return emitter;
+						}),
+					};
+				});
+				require("node:child_process");
+				const { Poppler: PopplerMock } = require("../src/index");
+				const popplerMock = new PopplerMock(testBinaryPath);
+
+				await expect(
+					popplerMock.pdfToText(
+						`${testDirectory}pdf_1.7_whitespace_example.pdf`
+					)
+				).rejects.toThrow(expectedError);
+			}
+		);
 	});
 
 	describe("pdfUnite function", () => {

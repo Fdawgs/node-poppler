@@ -538,7 +538,6 @@ function execBinary(binary, args, file, options = {}) {
 				return;
 			}
 
-			/* istanbul ignore else */
 			if (stdOut !== "") {
 				resolve(options.preserveWhitespace ? stdOut : stdOut.trim());
 			} else if (code === 0) {

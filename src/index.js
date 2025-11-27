@@ -654,11 +654,11 @@ class Poppler {
 	constructor(binPath) {
 		this.#popplerPath = "";
 
-		/* istanbul ignore else: requires specific OS */
 		if (binPath) {
 			/** @type {string|undefined} */
 			this.#popplerPath = binPath;
 		} else {
+			/* istanbul ignore else: requires specific OS */
 			const which = spawnSync(platform === "win32" ? "where" : "which", [
 				"pdfinfo",
 			]).stdout.toString();
@@ -667,6 +667,8 @@ class Poppler {
 			if (popplerPath) {
 				this.#popplerPath = popplerPath;
 			}
+
+			/* istanbul ignore else: requires specific OS */
 			if (platform === "win32" && !popplerPath) {
 				try {
 					// @ts-ignore: Optional dependency
@@ -678,7 +680,6 @@ class Poppler {
 			}
 		}
 
-		/* istanbul ignore next: unable to test due to https://github.com/jestjs/jest/pull/14297 */
 		if (!this.#popplerPath) {
 			throw new Error(
 				`Unable to find ${platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`

@@ -653,11 +653,11 @@ class Poppler {
 	constructor(binPath) {
 		this.#popplerPath = "";
 
+		/* istanbul ignore else: requires specific OS */
 		if (binPath) {
 			/** @type {string|undefined} */
 			this.#popplerPath = binPath;
 		} else {
-			/* istanbul ignore next: requires specific OS */
 			const which = spawnSync(platform === "win32" ? "where" : "which", [
 				"pdfinfo",
 			]).stdout.toString();
@@ -667,7 +667,6 @@ class Poppler {
 				this.#popplerPath = popplerPath;
 			}
 
-			/* istanbul ignore next: requires specific OS */
 			if (platform === "win32" && !popplerPath) {
 				try {
 					// @ts-ignore: Optional dependency
@@ -1262,7 +1261,6 @@ class Poppler {
 			});
 
 			child.on("close", (code) => {
-				/* istanbul ignore else */
 				if (stdOut !== "") {
 					if (fileSize) {
 						stdOut = stdOut.replace(

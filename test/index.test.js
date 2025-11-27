@@ -144,7 +144,7 @@ describe("Node-Poppler module", () => {
 			expect.assertions(1);
 			// @ts-expect-error: Testing invalid parameters being passed
 			await poppler.pdfAttach(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(CMD_FAILED_REG);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -470,7 +470,7 @@ describe("Node-Poppler module", () => {
 			expect.assertions(1);
 			// @ts-expect-error: Testing invalid parameters being passed
 			await poppler.pdfSeparate(testTxtFile).catch((err) => {
-				expect(err.message).toMatch(CMD_FAILED_REG);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 
@@ -1266,7 +1266,7 @@ describe("Node-Poppler module", () => {
 			expect.assertions(1);
 			// @ts-expect-error: Testing invalid parameters being passed
 			await poppler.pdfUnite(files).catch((err) => {
-				expect(err.message).toMatch(CMD_FAILED_REG);
+				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
 		});
 

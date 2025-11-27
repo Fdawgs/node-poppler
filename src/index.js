@@ -1148,8 +1148,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options);
 		args.push(file, fileToAttach, outputFile);
 
-		const { stdout } = await execFileAsync(this.#pdfAttachBin, args);
-		return stdout;
+		return execBinary(this.#pdfAttachBin, args);
 	}
 
 	/**
@@ -1311,8 +1310,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(file, outputPattern);
 
-		const { stdout } = await execFileAsync(this.#pdfSeparateBin, args);
-		return stdout;
+		return execBinary(this.#pdfSeparateBin, args);
 	}
 
 	/**
@@ -1467,8 +1465,7 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(...files, outputFile);
 
-		const { stdout } = await execFileAsync(this.#pdfUniteBin, args);
-		return stdout;
+		return execBinary(this.#pdfUniteBin, args);
 	}
 }
 

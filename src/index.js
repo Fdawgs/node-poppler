@@ -658,7 +658,7 @@ class Poppler {
 			/** @type {string|undefined} */
 			this.#popplerPath = binPath;
 		} else {
-			/* istanbul ignore else: requires specific OS */
+			/* istanbul ignore next: requires specific OS */
 			const which = spawnSync(platform === "win32" ? "where" : "which", [
 				"pdfinfo",
 			]).stdout.toString();
@@ -668,7 +668,7 @@ class Poppler {
 				this.#popplerPath = popplerPath;
 			}
 
-			/* istanbul ignore else: requires specific OS */
+			/* istanbul ignore next: requires specific OS */
 			if (platform === "win32" && !popplerPath) {
 				try {
 					// @ts-ignore: Optional dependency

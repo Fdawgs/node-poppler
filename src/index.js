@@ -533,7 +533,7 @@ function execBinary(binary, args, file, options = {}) {
 						options.preserveWhitespace ? stdOut : stdOut.trim()
 					);
 				} else {
-					reject(new Error(stdErr ? stdErr.trim() : undefined));
+					reject(new Error(stdErr.trim()));
 				}
 				return;
 			}

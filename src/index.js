@@ -497,6 +497,7 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @param {Buffer|string} [file] - File input (Buffer or path).
  * @param {object} [options] - Object containing execution options.
  * @param {boolean} [options.binaryOutput] - Set binary encoding for stdout.
+ * @param {boolean} [options.ignoreExitCode] - If true, resolve based on stdout presence regardless of exit code.
  * @param {boolean} [options.preserveWhitespace] - If true, preserves leading and trailing whitespace in the output.
  * @returns {Promise<string>} A promise that resolves with stdout, or rejects with an Error.
  */
@@ -525,6 +526,18 @@ function execBinary(binary, args, file, options = {}) {
 		});
 
 		child.on("close", (code) => {
+			// For binaries without reliable exit codes, resolve based on stdout presence
+			if (options.ignoreExitCode) {
+				if (stdOut !== "") {
+					resolve(
+						options.preserveWhitespace ? stdOut : stdOut.trim()
+					);
+				} else {
+					reject(new Error(stdErr ? stdErr.trim() : undefined));
+				}
+				return;
+			}
+
 			/* istanbul ignore else */
 			if (stdOut !== "") {
 				resolve(options.preserveWhitespace ? stdOut : stdOut.trim());
@@ -1362,33 +1375,8 @@ class Poppler {
 			args.push(outputFile);
 		}
 
-		return new Promise((resolve, reject) => {
-			const child = spawn(this.#pdfToHtmlBin, args);
-
-			if (Buffer.isBuffer(file)) {
-				child.stdin.write(file);
-				child.stdin.end();
-			}
-
-			let stdOut = "";
-			let stdErr = "";
-
-			child.stdout.on("data", (data) => {
-				stdOut += data;
-			});
-
-			child.stderr.on("data", (data) => {
-				stdErr += data;
-			});
-
-			// PdfToHtml has no exit code; check output for success
-			child.on("close", () => {
-				if (stdOut !== "") {
-					resolve(stdOut.trim());
-				} else {
-					reject(new Error(stdErr ? stdErr.trim() : undefined));
-				}
-			});
+		return execBinary(this.#pdfToHtmlBin, args, file, {
+			ignoreExitCode: true,
 		});
 	}
 

@@ -33,6 +33,29 @@ const testDirectory = join(__dirname, "fixtures") + sep;
 const testDirectoryPosix = testDirectory.split(sep).join(posix.sep);
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
+/** @type {typeof import("node:child_process")} */
+const originalChildProcess = jest.requireActual("node:child_process");
+/** @type {typeof import("node:process")} */
+const originalProcess = jest.requireActual("node:process");
+
+const childProcessCloseTests = [
+	{
+		testName: "a non-zero code and no output",
+		exitCode: 5,
+		expectedError: /exited with code 5/u,
+	},
+	{
+		testName: "an internal process error",
+		exitCode: 3221226505,
+		expectedError: "Internal process error",
+	},
+	{
+		testName: "a null code and no output",
+		exitCode: null,
+		expectedError: /exited with code null/u,
+	},
+];
+
 /**
  * @description Returns the path to the poppler-util binaries based on the OS.
  * @returns {string} The path to the poppler-util binaries.
@@ -86,13 +109,10 @@ describe("Node-Poppler module", () => {
 
 		it("Throws an Error if the binary path is not found", () => {
 			jest.doMock("node:process", () => ({
+				...originalProcess,
 				platform: "mockOS",
 			}));
 			const { platform: mockPlatform } = require("node:process");
-
-			/** @type {typeof import("node:child_process")} */
-			const originalChildProcess =
-				jest.requireActual("node:child_process");
 
 			jest.doMock("node:child_process", () => ({
 				...originalChildProcess,
@@ -123,14 +143,10 @@ describe("Node-Poppler module", () => {
 
 	describe("pdfAttach function", () => {
 		it("Attachs file to PDF file", async () => {
-			const attachmentFile = `${testDirectory}test.txt`;
+			const inputFile = `${testDirectory}test.txt`;
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached.pdf`;
 
-			const res = await poppler.pdfAttach(
-				file,
-				attachmentFile,
-				outputFile
-			);
+			const res = await poppler.pdfAttach(file, inputFile, outputFile);
 
 			expect(typeof res).toBe("string");
 			await expect(
@@ -178,9 +194,9 @@ describe("Node-Poppler module", () => {
 			const options = {
 				listEmbedded: true,
 			};
-			const attachmentFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`;
+			const inputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_detach.pdf`;
 
-			const res = await poppler.pdfDetach(attachmentFile, options);
+			const res = await poppler.pdfDetach(inputFile, options);
 
 			expect(res).toMatch("1 embedded files");
 		});
@@ -229,13 +245,13 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Examines 3 pages of PDF file as Buffer", async () => {
-			const attachmentFile = await readFile(file);
+			const inputFile = await readFile(file);
 
 			const options = {
 				firstPageToExamine: 1,
 				lastPageToExamine: 3,
 			};
-			const res = await poppler.pdfFonts(attachmentFile, options);
+			const res = await poppler.pdfFonts(inputFile, options);
 
 			expect(res).toMatch("+Frutiger-");
 		});
@@ -294,16 +310,12 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Accepts options and list all images in PDF file as Buffer", async () => {
-			const attachmentFile = await readFile(file);
+			const inputFile = await readFile(file);
 			const options = {
 				list: true,
 			};
 
-			const res = await poppler.pdfImages(
-				attachmentFile,
-				undefined,
-				options
-			);
+			const res = await poppler.pdfImages(inputFile, undefined, options);
 
 			expect(res).toMatch("page");
 		});
@@ -369,6 +381,10 @@ describe("Node-Poppler module", () => {
 			userProperties: "no",
 		};
 
+		beforeEach(() => {
+			jest.resetModules();
+		});
+
 		it("Lists info of PDF file", async () => {
 			const res = await poppler.pdfInfo(file);
 
@@ -384,17 +400,25 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Lists info of PDF file as Buffer", async () => {
-			const attachmentFile = await readFile(file);
+			const inputFile = await readFile(file);
 
-			const res = await poppler.pdfInfo(attachmentFile);
+			const res = await poppler.pdfInfo(inputFile);
 
 			expect(res).toMatch("Pages:");
 		});
 
-		it("Lists info of PDF file as Buffer as a JSON object", async () => {
-			const attachmentFile = await readFile(file);
+		it("Returns 'No Error' when printJS option is set to true", async () => {
+			const res = await poppler.pdfInfo(file, {
+				printJS: true,
+			});
 
-			const res = await poppler.pdfInfo(attachmentFile, {
+			expect(res).toBe("No Error");
+		});
+
+		it("Lists info of PDF file as Buffer as a JSON object", async () => {
+			const inputFile = await readFile(file);
+
+			const res = await poppler.pdfInfo(inputFile, {
 				printAsJson: true,
 			});
 
@@ -439,6 +463,44 @@ describe("Node-Poppler module", () => {
 				"Invalid option provided 'wordFile'"
 			);
 		});
+
+		it.each(childProcessCloseTests)(
+			"Rejects with an Error object if Poppler exits with $testName",
+			async ({ exitCode, expectedError }) => {
+				jest.doMock("node:child_process", () => {
+					const { EventEmitter } = require("node:events");
+					const { Readable } = require("node:stream");
+					return {
+						...originalChildProcess,
+						spawn: jest.fn(() => {
+							const emitter =
+								/** @type {import("node:child_process").ChildProcess} */ (
+									new EventEmitter()
+								);
+							emitter.stdout = new Readable({
+								read() {
+									this.push(null);
+								},
+							});
+							emitter.stderr = new Readable({
+								read() {
+									this.push(null);
+								},
+							});
+							setImmediate(() => emitter.emit("close", exitCode));
+							return emitter;
+						}),
+					};
+				});
+				require("node:child_process");
+				const { Poppler: PopplerMock } = require("../src/index");
+				const popplerMock = new PopplerMock(testBinaryPath);
+
+				await expect(popplerMock.pdfInfo(file)).rejects.toThrow(
+					expectedError
+				);
+			}
+		);
 	});
 
 	describe("pdfSeparate function", () => {
@@ -528,7 +590,7 @@ describe("Node-Poppler module", () => {
 			});
 
 			it("Converts PDF file as Buffer to EPS file", async () => {
-				const attachmentFile = await readFile(file);
+				const inputFile = await readFile(file);
 				const options = {
 					epsFile: true,
 					firstPageToConvert: 1,
@@ -537,7 +599,7 @@ describe("Node-Poppler module", () => {
 				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.eps`;
 
 				const res = await poppler.pdfToCairo(
-					attachmentFile,
+					inputFile,
 					outputFile,
 					options
 				);
@@ -574,14 +636,14 @@ describe("Node-Poppler module", () => {
 			});
 
 			it("Converts PDF file as Buffer to JPG file", async () => {
-				const attachmentFile = await readFile(file);
+				const inputFile = await readFile(file);
 				const options = {
 					jpegFile: true,
 				};
 				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
 
 				const res = await poppler.pdfToCairo(
-					attachmentFile,
+					inputFile,
 					outputFile,
 					options
 				);
@@ -617,14 +679,14 @@ describe("Node-Poppler module", () => {
 			});
 
 			it("Converts PDF file as Buffer to PDF file", async () => {
-				const attachmentFile = await readFile(file);
+				const inputFile = await readFile(file);
 				const options = {
 					pdfFile: true,
 				};
 				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_cairo.pdf`;
 
 				const res = await poppler.pdfToCairo(
-					attachmentFile,
+					inputFile,
 					outputFile,
 					options
 				);
@@ -661,14 +723,14 @@ describe("Node-Poppler module", () => {
 			});
 
 			it("Converts PDF file as Buffer to PNG file", async () => {
-				const attachmentFile = await readFile(file);
+				const inputFile = await readFile(file);
 				const options = {
 					pngFile: true,
 				};
 				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
 
 				const res = await poppler.pdfToCairo(
-					attachmentFile,
+					inputFile,
 					outputFile,
 					options
 				);
@@ -704,14 +766,14 @@ describe("Node-Poppler module", () => {
 			});
 
 			it("Converts PDF file as Buffer to PS file", async () => {
-				const attachmentFile = await readFile(file);
+				const inputFile = await readFile(file);
 				const options = {
 					psFile: true,
 				};
 				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.ps`;
 
 				const res = await poppler.pdfToCairo(
-					attachmentFile,
+					inputFile,
 					outputFile,
 					options
 				);
@@ -745,14 +807,14 @@ describe("Node-Poppler module", () => {
 			});
 
 			it("Converts PDF file as Buffer to SVG file", async () => {
-				const attachmentFile = await readFile(file);
+				const inputFile = await readFile(file);
 				const options = {
 					svgFile: true,
 				};
 				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.svg`;
 
 				const res = await poppler.pdfToCairo(
-					attachmentFile,
+					inputFile,
 					outputFile,
 					options
 				);
@@ -789,14 +851,14 @@ describe("Node-Poppler module", () => {
 			});
 
 			it("Converts PDF file as Buffer to TIFF file", async () => {
-				const attachmentFile = await readFile(file);
+				const inputFile = await readFile(file);
 				const options = {
 					tiffFile: true,
 				};
 				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
 
 				const res = await poppler.pdfToCairo(
-					attachmentFile,
+					inputFile,
 					outputFile,
 					options
 				);
@@ -874,10 +936,10 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Converts PDF file to HTML file as Buffer", async () => {
-			const attachmentFile = await readFile(file);
+			const inputFile = await readFile(file);
 
 			const res = await poppler.pdfToHtml(
-				attachmentFile,
+				inputFile,
 				`${testDirectory}pdf_1.3_NHS_Constitution.html`
 			);
 
@@ -998,14 +1060,14 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Accepts options and only process 1 page of PDF file as Buffer", async () => {
-			const attachmentFile = await readFile(file);
+			const inputFile = await readFile(file);
 			const options = {
 				firstPageToConvert: 1,
 				lastPageToConvert: 1,
 			};
 
 			const res = await poppler.pdfToPpm(
-				attachmentFile,
+				inputFile,
 				`${testDirectory}pdf_1.3_NHS_Constitution`,
 				options
 			);
@@ -1089,9 +1151,9 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Converts PDF file as Buffer to PS file", async () => {
-			const attachmentFile = await readFile(file);
+			const inputFile = await readFile(file);
 
-			const res = await poppler.pdfToPs(attachmentFile);
+			const res = await poppler.pdfToPs(inputFile);
 
 			expect(typeof res).toBe("string");
 		});
@@ -1154,6 +1216,10 @@ describe("Node-Poppler module", () => {
 	});
 
 	describe("pdfToText function", () => {
+		beforeEach(() => {
+			jest.resetModules();
+		});
+
 		it("Converts PDF file to Text file and write to output file", async () => {
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution.txt`;
 
@@ -1164,9 +1230,9 @@ describe("Node-Poppler module", () => {
 		});
 
 		it("Converts PDF file as Buffer to Text file", async () => {
-			const attachmentFile = await readFile(file);
+			const inputFile = await readFile(file);
 
-			const res = await poppler.pdfToText(attachmentFile);
+			const res = await poppler.pdfToText(inputFile);
 
 			expect(res).toMatch("The NHS Constitution");
 		});
@@ -1241,6 +1307,46 @@ describe("Node-Poppler module", () => {
 				poppler.pdfToText(file, undefined, options)
 			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
+
+		it.each(childProcessCloseTests)(
+			"Rejects with an Error object if Poppler exits with $testName",
+			async ({ exitCode, expectedError }) => {
+				jest.doMock("node:child_process", () => {
+					const { EventEmitter } = require("node:events");
+					const { Readable } = require("node:stream");
+					return {
+						...originalChildProcess,
+						spawn: jest.fn(() => {
+							const emitter =
+								/** @type {import("node:child_process").ChildProcess} */ (
+									new EventEmitter()
+								);
+							emitter.stdout = new Readable({
+								read() {
+									this.push(null);
+								},
+							});
+							emitter.stderr = new Readable({
+								read() {
+									this.push(null);
+								},
+							});
+							setImmediate(() => emitter.emit("close", exitCode));
+							return emitter;
+						}),
+					};
+				});
+				require("node:child_process");
+				const { Poppler: PopplerMock } = require("../src/index");
+				const popplerMock = new PopplerMock(testBinaryPath);
+
+				await expect(
+					popplerMock.pdfToText(
+						`${testDirectory}pdf_1.7_whitespace_example.pdf`
+					)
+				).rejects.toThrow(expectedError);
+			}
+		);
 	});
 
 	describe("pdfUnite function", () => {

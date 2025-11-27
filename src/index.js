@@ -538,7 +538,6 @@ function execBinary(binary, args, file, options = {}) {
 				return;
 			}
 
-			/* istanbul ignore else */
 			if (stdOut !== "") {
 				resolve(options.preserveWhitespace ? stdOut : stdOut.trim());
 			} else if (code === 0) {
@@ -667,6 +666,7 @@ class Poppler {
 			if (popplerPath) {
 				this.#popplerPath = popplerPath;
 			}
+
 			if (platform === "win32" && !popplerPath) {
 				try {
 					// @ts-ignore: Optional dependency
@@ -678,7 +678,6 @@ class Poppler {
 			}
 		}
 
-		/* istanbul ignore next: unable to test due to https://github.com/jestjs/jest/pull/14297 */
 		if (!this.#popplerPath) {
 			throw new Error(
 				`Unable to find ${platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
@@ -1262,7 +1261,6 @@ class Poppler {
 			});
 
 			child.on("close", (code) => {
-				/* istanbul ignore else */
 				if (stdOut !== "") {
 					if (fileSize) {
 						stdOut = stdOut.replace(

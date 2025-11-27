@@ -78,10 +78,10 @@
 		],
 		"coverageThreshold": {
 			"global": {
-				"branches": 95,
+				"branches": 96,
 				"functions": 100,
-				"lines": 98,
-				"statements": 98
+				"lines": 99,
+				"statements": 99
 			}
 		},
 		"injectGlobals": false,

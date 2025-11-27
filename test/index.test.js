@@ -38,6 +38,24 @@ const originalChildProcess = jest.requireActual("node:child_process");
 /** @type {typeof import("node:process")} */
 const originalProcess = jest.requireActual("node:process");
 
+const childProcessCloseTests = [
+	{
+		testName: "a non-zero code and no output",
+		exitCode: 5,
+		expectedError: /exited with code 5/u,
+	},
+	{
+		testName: "an internal process error",
+		exitCode: 3221226505,
+		expectedError: "Internal process error",
+	},
+	{
+		testName: "a null code and no output",
+		exitCode: null,
+		expectedError: /exited with code null/u,
+	},
+];
+
 /**
  * @description Returns the path to the poppler-util binaries based on the OS.
  * @returns {string} The path to the poppler-util binaries.
@@ -446,23 +464,7 @@ describe("Node-Poppler module", () => {
 			);
 		});
 
-		it.each([
-			{
-				testName: "a non-zero code and no output",
-				exitCode: 5,
-				expectedError: /exited with code 5/u,
-			},
-			{
-				testName: "an internal process error",
-				exitCode: 3221226505,
-				expectedError: "Internal process error",
-			},
-			{
-				testName: "a null code and no output",
-				exitCode: null,
-				expectedError: /exited with code null/u,
-			},
-		])(
+		it.each(childProcessCloseTests)(
 			"Rejects with an Error object if Poppler exits with $testName",
 			async ({ exitCode, expectedError }) => {
 				jest.doMock("node:child_process", () => {
@@ -1306,23 +1308,7 @@ describe("Node-Poppler module", () => {
 			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
 
-		it.each([
-			{
-				testName: "a non-zero code and no output",
-				exitCode: 5,
-				expectedError: /exited with code 5/u,
-			},
-			{
-				testName: "an internal process error",
-				exitCode: 3221226505,
-				expectedError: "Internal process error",
-			},
-			{
-				testName: "a null code and no output",
-				exitCode: null,
-				expectedError: /exited with code null/u,
-			},
-		])(
+		it.each(childProcessCloseTests)(
 			"Rejects with an Error object if Poppler exits with $testName",
 			async ({ exitCode, expectedError }) => {
 				jest.doMock("node:child_process", () => {

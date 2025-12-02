@@ -106,6 +106,7 @@
 	},
 	"dependencies": {
 		"camelcase": "^6.3.0",
+		"ice-barrage": "^1.0.0",
 		"semver": "^7.7.2"
 	},
 	"optionalDependencies": {

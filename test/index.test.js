@@ -211,7 +211,7 @@ describe("Node-Poppler module", () => {
 				}
 
 				if (abortDuring) {
-					setTimeout(() => controller.abort(), 10);
+					setImmediate(() => controller.abort());
 				}
 
 				await expect(
@@ -586,7 +586,6 @@ describe("Node-Poppler module", () => {
 				}
 
 				if (abortDuring) {
-					// Use setImmediate to abort on next tick, ensuring spawn has time to start
 					setImmediate(() => controller.abort());
 				}
 

@@ -187,6 +187,69 @@ describe("Node-Poppler module", () => {
 				poppler.pdfAttach(file, undefined, undefined, options)
 			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});
+
+		it.each([
+			{
+				testName: "signal is already aborted before starting",
+				abortBefore: true,
+				abortDuring: false,
+			},
+			{
+				testName: "signal is aborted during conversion",
+				abortBefore: false,
+				abortDuring: true,
+			},
+		])(
+			"Rejects with an Error object if $testName",
+			async ({ abortBefore, abortDuring }) => {
+				const controller = new AbortController();
+				const inputFile = `${testDirectory}test.txt`;
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_abort.pdf`;
+
+				if (abortBefore) {
+					controller.abort();
+				}
+
+				if (abortDuring) {
+					setImmediate(() => controller.abort());
+				}
+
+				await expect(
+					poppler.pdfAttach(
+						file,
+						inputFile,
+						outputFile,
+						{},
+						{ signal: controller.signal }
+					)
+				).rejects.toThrow(
+					expect.objectContaining({
+						name: "AbortError",
+					})
+				);
+			}
+		);
+
+		it("Attaches file to PDF file with `signal` extra provided but never aborted", async () => {
+			const controller = new AbortController();
+			const inputFile = `${testDirectory}test.txt`;
+			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_signal.pdf`;
+
+			const res = await poppler.pdfAttach(
+				file,
+				inputFile,
+				outputFile,
+				{},
+				{ signal: controller.signal }
+			);
+
+			expect(typeof res).toBe("string");
+			await expect(
+				access(
+					`${testDirectory}pdf_1.3_NHS_Constitution_attached_signal.pdf`
+				)
+			).resolves.toBeUndefined();
+		});
 	});
 
 	describe("pdfDetach function", () => {
@@ -501,6 +564,52 @@ describe("Node-Poppler module", () => {
 				);
 			}
 		);
+
+		it.each([
+			{
+				testName: "signal is already aborted before starting",
+				abortBefore: true,
+				abortDuring: false,
+			},
+			{
+				testName: "signal is aborted during conversion",
+				abortBefore: false,
+				abortDuring: true,
+			},
+		])(
+			"Rejects with an Error object if $testName",
+			async ({ abortBefore, abortDuring }) => {
+				const controller = new AbortController();
+
+				if (abortBefore) {
+					controller.abort();
+				}
+
+				if (abortDuring) {
+					setImmediate(() => controller.abort());
+				}
+
+				await expect(
+					poppler.pdfInfo(file, {}, { signal: controller.signal })
+				).rejects.toThrow(
+					expect.objectContaining({
+						name: "AbortError",
+					})
+				);
+			}
+		);
+
+		it("Lists info of PDF file with `signal` extra provided but never aborted", async () => {
+			const controller = new AbortController();
+
+			const res = await poppler.pdfInfo(
+				file,
+				{},
+				{ signal: controller.signal }
+			);
+
+			expect(res).toMatch("Pages:");
+		});
 	});
 
 	describe("pdfSeparate function", () => {

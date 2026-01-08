@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.0](https://github.com/Fdawgs/node-poppler/compare/v9.0.1...v9.1.0) (2026-01-08)
+
+
+### Continuous integration
+
+* **codeql:** check cjs, mjs, and ts files ([#728](https://github.com/Fdawgs/node-poppler/issues/728)) ([54f106c](https://github.com/Fdawgs/node-poppler/commit/54f106cb924e3a404d08e38c97e164624e871490))
+* **deps:** bump actions/checkout from 5 to 6 ([#736](https://github.com/Fdawgs/node-poppler/issues/736)) ([e5790ea](https://github.com/Fdawgs/node-poppler/commit/e5790ea26841ee943389a1d7d297f3ff2c2ec74a))
+* **deps:** bump actions/dependency-review-action from 4.8.1 to 4.8.2 ([#738](https://github.com/Fdawgs/node-poppler/issues/738)) ([d6898ab](https://github.com/Fdawgs/node-poppler/commit/d6898ab4f50d95d81d48ed0145e76d92d23989c1))
+* **deps:** bump coverallsapp/github-action from 2.3.6 to 2.3.7 ([#737](https://github.com/Fdawgs/node-poppler/issues/737)) ([6db1617](https://github.com/Fdawgs/node-poppler/commit/6db161718f1cde6e1f6a732d6d17695361a1b83b))
+
+
+### Dependencies
+
+* **deps-dev:** bump @eslint/compat in the eslint group ([#734](https://github.com/Fdawgs/node-poppler/issues/734)) ([a250df1](https://github.com/Fdawgs/node-poppler/commit/a250df14e9b662191f1e90629a83f1b64fa9d8ea))
+* **deps-dev:** bump @types/node from 24.10.4 to 25.0.3 ([#740](https://github.com/Fdawgs/node-poppler/issues/740)) ([fb953a1](https://github.com/Fdawgs/node-poppler/commit/fb953a1219130e1cd1c99243f5cff0c11bb88bee))
+* **deps-dev:** bump glob from 11.1.0 to 13.0.0 ([#735](https://github.com/Fdawgs/node-poppler/issues/735)) ([a95455f](https://github.com/Fdawgs/node-poppler/commit/a95455f3e987085de3d32608f08b1227336faf55))
+
+
+### Features
+
+* add AbortSignal support to all `pdf*` functions ([#742](https://github.com/Fdawgs/node-poppler/issues/742)) ([58853a0](https://github.com/Fdawgs/node-poppler/commit/58853a0bd367ae28053c6d8977505bac31e7d152))
+
+
+### Improvements
+
+* **index:** freeze `#acceptedOptions` object ([#739](https://github.com/Fdawgs/node-poppler/issues/739)) ([ba5f382](https://github.com/Fdawgs/node-poppler/commit/ba5f382a215bd90815d01e9d61cb40b17041bd49))
+* **index:** freeze `ERROR_MSGS` object ([#729](https://github.com/Fdawgs/node-poppler/issues/729)) ([bb9be92](https://github.com/Fdawgs/node-poppler/commit/bb9be92ed58a658c23e3245d2573a06cf15b23b0))
+* **index:** use execBinary for attach, separate, unite, and html ([#733](https://github.com/Fdawgs/node-poppler/issues/733)) ([4abae6a](https://github.com/Fdawgs/node-poppler/commit/4abae6a199f89eca7005a2e4c6459ea53b2c85e7))
+
+
+### Miscellaneous
+
+* **.devcontainer:** remove prepare script call ([#730](https://github.com/Fdawgs/node-poppler/issues/730)) ([10bba99](https://github.com/Fdawgs/node-poppler/commit/10bba9907442661c2bacf3e50d9b6cf4d10f959e))
+* tidy dotfiles, remove redundant deps ([#726](https://github.com/Fdawgs/node-poppler/issues/726)) ([c2f8f23](https://github.com/Fdawgs/node-poppler/commit/c2f8f23ff1f98d715b22912fc70c15c6039cab1d))
+
+
+### Tests
+
+* **index:** cover spawn errors ([#732](https://github.com/Fdawgs/node-poppler/issues/732)) ([4194504](https://github.com/Fdawgs/node-poppler/commit/4194504e575c0a717c4472f44517484a90ffd314))
+
 ## [9.0.1](https://github.com/Fdawgs/node-poppler/compare/v9.0.0...v9.0.1) (2025-11-19)
 
 

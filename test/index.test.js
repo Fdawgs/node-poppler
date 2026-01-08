@@ -585,18 +585,14 @@ describe("Node-Poppler module", () => {
 					controller.abort();
 				}
 
-				const promise = poppler.pdfInfo(
-					file,
-					{},
-					{ signal: controller.signal }
-				);
-
 				if (abortDuring) {
-					// Abort immediately after starting the operation
-					controller.abort();
+					// Use setImmediate to abort on next tick, ensuring spawn has time to start
+					setImmediate(() => controller.abort());
 				}
 
-				await expect(promise).rejects.toThrow(
+				await expect(
+					poppler.pdfInfo(file, {}, { signal: controller.signal })
+				).rejects.toThrow(
 					expect.objectContaining({
 						name: "AbortError",
 					})

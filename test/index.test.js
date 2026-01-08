@@ -245,7 +245,9 @@ describe("Node-Poppler module", () => {
 
 			expect(typeof res).toBe("string");
 			await expect(
-				access(`${testDirectory}pdf_1.3_NHS_Constitution_attached_signal.pdf`)
+				access(
+					`${testDirectory}pdf_1.3_NHS_Constitution_attached_signal.pdf`
+				)
 			).resolves.toBeUndefined();
 		});
 	});

@@ -1257,7 +1257,9 @@ class Poppler {
 		const args = parseOptions(acceptedOptions, options);
 		args.push(file);
 
-		const { stdout } = await execFileAsync(this.#pdfDetachBin, args, { signal });
+		const { stdout } = await execFileAsync(this.#pdfDetachBin, args, {
+			signal,
+		});
 		return stdout;
 	}
 
@@ -1451,7 +1453,10 @@ class Poppler {
 			outputFile === undefined &&
 			args.some((arg) => ["-singlefile", "-pdf"].includes(arg));
 
-		return execBinary(this.#pdfToCairoBin, args, file, { binaryOutput, signal });
+		return execBinary(this.#pdfToCairoBin, args, file, {
+			binaryOutput,
+			signal,
+		});
 	}
 
 	/**

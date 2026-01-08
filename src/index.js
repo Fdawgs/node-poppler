@@ -490,6 +490,11 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  */
 
 /**
+ * @typedef {object} PopplerExtraOptions
+ * @property {AbortSignal} [signal] An `AbortSignal` that can be used to cancel the operation.
+ */
+
+/**
  * @author Frazer Smith
  * @description Executes a Poppler binary with the provided arguments and file input.
  * @ignore
@@ -500,11 +505,12 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @param {boolean} [options.binaryOutput] - Set binary encoding for stdout.
  * @param {boolean} [options.ignoreExitCode] - If true, resolve based on stdout presence regardless of exit code.
  * @param {boolean} [options.preserveWhitespace] - If true, preserves leading and trailing whitespace in the output.
+ * @param {AbortSignal} [options.signal] - An `AbortSignal` that can be used to cancel the operation.
  * @returns {Promise<string>} A promise that resolves with stdout, or rejects with an Error.
  */
 function execBinary(binary, args, file, options = {}) {
 	return new Promise((resolve, reject) => {
-		const child = spawn(binary, args);
+		const child = spawn(binary, args, { signal: options.signal });
 
 		if (options.binaryOutput) {
 			child.stdout.setEncoding("binary");
@@ -517,6 +523,7 @@ function execBinary(binary, args, file, options = {}) {
 
 		let stdOut = "";
 		let stdErr = "";
+		let errorHandled = false;
 
 		child.stdout.on("data", (data) => {
 			stdOut += data;
@@ -526,7 +533,17 @@ function execBinary(binary, args, file, options = {}) {
 			stdErr += data;
 		});
 
+		child.on("error", (err) => {
+			errorHandled = true;
+			reject(err);
+		});
+
 		child.on("close", (code) => {
+			// If an error was already emitted, don't process the close event
+			if (errorHandled) {
+				return;
+			}
+
 			// For binaries without reliable exit codes, resolve based on stdout presence
 			if (options.ignoreExitCode) {
 				if (stdOut !== "") {
@@ -1214,14 +1231,16 @@ class Poppler {
 	 * @param {string} fileToAttach - Filepath of the attachment to be embedded into the PDF file.
 	 * @param {string} outputFile - Filepath of the file to output the results to.
 	 * @param {PdfAttachOptions} [options] - Options to pass to pdfattach binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfAttach(file, fileToAttach, outputFile, options = {}) {
+	async pdfAttach(file, fileToAttach, outputFile, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfAttach");
 		const args = parseOptions(acceptedOptions, options);
 		args.push(file, fileToAttach, outputFile);
 
-		return execBinary(this.#pdfAttachBin, args);
+		return execBinary(this.#pdfAttachBin, args, undefined, { signal });
 	}
 
 	/**
@@ -1229,14 +1248,16 @@ class Poppler {
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {PdfDetachOptions} [options] - Options to pass to pdfdetach binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfDetach(file, options = {}) {
+	async pdfDetach(file, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfDetach");
 		const args = parseOptions(acceptedOptions, options);
 		args.push(file);
 
-		const { stdout } = await execFileAsync(this.#pdfDetachBin, args);
+		const { stdout } = await execFileAsync(this.#pdfDetachBin, args, { signal });
 		return stdout;
 	}
 
@@ -1245,15 +1266,17 @@ class Poppler {
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {PdfFontsOptions} [options] - Options to pass to pdffonts binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfFonts(file, options = {}) {
+	async pdfFonts(file, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfFonts");
 		const versionInfo = await this.#getVersion(this.#pdfFontsBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file);
 
-		return execBinary(this.#pdfFontsBin, args, file);
+		return execBinary(this.#pdfFontsBin, args, file, { signal });
 	}
 
 	/**
@@ -1262,9 +1285,11 @@ class Poppler {
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputPrefix] - Filename prefix of output files.
 	 * @param {PdfImagesOptions} [options] - Options to pass to pdfimages binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfImages(file, outputPrefix, options = {}) {
+	async pdfImages(file, outputPrefix, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfImages");
 		const versionInfo = await this.#getVersion(this.#pdfImagesBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1275,7 +1300,7 @@ class Poppler {
 			args.push(outputPrefix);
 		}
 
-		return execBinary(this.#pdfImagesBin, args, file);
+		return execBinary(this.#pdfImagesBin, args, file, { signal });
 	}
 
 	/**
@@ -1283,10 +1308,12 @@ class Poppler {
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {PdfInfoOptions} [options] - Options to pass to pdfinfo binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<object|string>} A promise that resolves with a stdout string or JSON object if
 	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
 	 */
-	async pdfInfo(file, options = {}) {
+	async pdfInfo(file, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfInfo");
 		const versionInfo = await this.#getVersion(this.#pdfInfoBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1303,7 +1330,7 @@ class Poppler {
 		}
 
 		return new Promise((resolve, reject) => {
-			const child = spawn(this.#pdfInfoBin, args);
+			const child = spawn(this.#pdfInfoBin, args, { signal });
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);
@@ -1312,6 +1339,7 @@ class Poppler {
 
 			let stdOut = "";
 			let stdErr = "";
+			let errorHandled = false;
 
 			child.stdout.on("data", (data) => {
 				stdOut += data;
@@ -1321,7 +1349,17 @@ class Poppler {
 				stdErr += data;
 			});
 
+			child.on("error", (err) => {
+				errorHandled = true;
+				reject(err);
+			});
+
 			child.on("close", (code) => {
+				// If an error was already emitted, don't process the close event
+				if (errorHandled) {
+					return;
+				}
+
 				if (stdOut !== "") {
 					if (fileSize) {
 						stdOut = stdOut.replace(
@@ -1374,15 +1412,17 @@ class Poppler {
 	 * since %d is replaced by the page number.
 	 * As an example, `sample-%d.pdf` will produce `sample-1.pdf` for a single page document.
 	 * @param {PdfSeparateOptions} [options] - Options to pass to pdfseparate binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfSeparate(file, outputPattern, options = {}) {
+	async pdfSeparate(file, outputPattern, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfSeparate");
 		const versionInfo = await this.#getVersion(this.#pdfSeparateBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(file, outputPattern);
 
-		return execBinary(this.#pdfSeparateBin, args);
+		return execBinary(this.#pdfSeparateBin, args, undefined, { signal });
 	}
 
 	/**
@@ -1397,9 +1437,11 @@ class Poppler {
 	 *
 	 * If not set then the output filename will be derived from the PDF file name.
 	 * @param {PdfToCairoOptions} [options] - Options to pass to pdftocairo binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfToCairo(file, outputFile, options = {}) {
+	async pdfToCairo(file, outputFile, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfToCairo");
 		const versionInfo = await this.#getVersion(this.#pdfToCairoBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1409,7 +1451,7 @@ class Poppler {
 			outputFile === undefined &&
 			args.some((arg) => ["-singlefile", "-pdf"].includes(arg));
 
-		return execBinary(this.#pdfToCairoBin, args, file, { binaryOutput });
+		return execBinary(this.#pdfToCairoBin, args, file, { binaryOutput, signal });
 	}
 
 	/**
@@ -1422,9 +1464,11 @@ class Poppler {
 	 *
 	 * Required if `file` is a Buffer.
 	 * @param {PdfToHtmlOptions} [options] - Options to pass to pdftohtml binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfToHtml(file, outputFile, options = {}) {
+	async pdfToHtml(file, outputFile, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfToHtml");
 		const versionInfo = await this.#getVersion(this.#pdfToHtmlBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1436,6 +1480,7 @@ class Poppler {
 
 		return execBinary(this.#pdfToHtmlBin, args, file, {
 			ignoreExitCode: true,
+			signal,
 		});
 	}
 
@@ -1447,15 +1492,17 @@ class Poppler {
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} outputPath - Filepath to output the results to.
 	 * @param {PdfToPpmOptions} [options] - Options to pass to pdftoppm binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfToPpm(file, outputPath, options = {}) {
+	async pdfToPpm(file, outputPath, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfToPpm");
 		const versionInfo = await this.#getVersion(this.#pdfToPpmBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file, outputPath);
 
-		return execBinary(this.#pdfToPpmBin, args, file);
+		return execBinary(this.#pdfToPpmBin, args, file, { signal });
 	}
 
 	/**
@@ -1465,15 +1512,17 @@ class Poppler {
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
 	 * @param {PdfToPsOptions} [options] - Options to pass to pdftops binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfToPs(file, outputFile, options = {}) {
+	async pdfToPs(file, outputFile, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfToPs");
 		const versionInfo = await this.#getVersion(this.#pdfToPsBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(Buffer.isBuffer(file) ? "-" : file, outputFile || "-");
 
-		return execBinary(this.#pdfToPsBin, args, file);
+		return execBinary(this.#pdfToPsBin, args, file, { signal });
 	}
 
 	/**
@@ -1483,9 +1532,11 @@ class Poppler {
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
 	 * @param {PdfToTextOptions} [options] - Options to pass to pdftotext binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfToText(file, outputFile, options = {}) {
+	async pdfToText(file, outputFile, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfToText");
 		const versionInfo = await this.#getVersion(this.#pdfToTextBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
@@ -1493,6 +1544,7 @@ class Poppler {
 
 		return execBinary(this.#pdfToTextBin, args, file, {
 			preserveWhitespace: options.maintainLayout,
+			signal,
 		});
 	}
 
@@ -1504,15 +1556,17 @@ class Poppler {
 	 * An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`.
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
 	 * @param {PdfUniteOptions} [options] - Options to pass to pdfunite binary.
+	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
-	async pdfUnite(files, outputFile, options = {}) {
+	async pdfUnite(files, outputFile, options = {}, extras = {}) {
+		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfUnite");
 		const versionInfo = await this.#getVersion(this.#pdfUniteBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(...files, outputFile);
 
-		return execBinary(this.#pdfUniteBin, args);
+		return execBinary(this.#pdfUniteBin, args, undefined, { signal });
 	}
 }
 

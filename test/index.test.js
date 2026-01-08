@@ -585,13 +585,18 @@ describe("Node-Poppler module", () => {
 					controller.abort();
 				}
 
+				const promise = poppler.pdfInfo(
+					file,
+					{},
+					{ signal: controller.signal }
+				);
+
 				if (abortDuring) {
-					setTimeout(() => controller.abort(), 10);
+					// Abort immediately after starting the operation
+					controller.abort();
 				}
 
-				await expect(
-					poppler.pdfInfo(file, {}, { signal: controller.signal })
-				).rejects.toThrow(
+				await expect(promise).rejects.toThrow(
 					expect.objectContaining({
 						name: "AbortError",
 					})

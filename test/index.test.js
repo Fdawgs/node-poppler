@@ -230,7 +230,7 @@ describe("Node-Poppler module", () => {
 			}
 		);
 
-		it("Attachs file to PDF file with `signal` extra provided but never aborted", async () => {
+		it("Attaches file to PDF file with `signal` extra provided but never aborted", async () => {
 			const controller = new AbortController();
 			const inputFile = `${testDirectory}test.txt`;
 			const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution_attached_signal.pdf`;

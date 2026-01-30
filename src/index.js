@@ -1379,7 +1379,6 @@ class Poppler {
 							const line = stdOutLines[i];
 							const lines = line.split(": ");
 							if (lines.length > 1) {
-								// @ts-ignore: Creating dynamic object keys
 								info[camelCase(lines[0])] = lines[1].trim();
 							}
 						}

@@ -1311,7 +1311,7 @@ class Poppler {
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {PdfInfoOptions} [options] - Options to pass to pdfinfo binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
-	 * @returns {Promise<object|string>} A promise that resolves with a stdout string or JSON object if
+	 * @returns {Promise<Record<string, string>|string>} A promise that resolves with a stdout string or JSON object if
 	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
 	 */
 	async pdfInfo(file, options = {}, extras = {}) {
@@ -1371,6 +1371,7 @@ class Poppler {
 					}
 
 					if (options.printAsJson === true) {
+						/** @type {Record<string, string>} */
 						const info = {};
 						const stdOutLines = stdOut.split("\n");
 						const stdOutLinesLength = stdOutLines.length;

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.1](https://github.com/Fdawgs/node-poppler/compare/v9.1.0...v9.1.1) (2026-01-30)
+
+
+### Miscellaneous
+
+* **index:** refine `pdfInfo` return type ([#743](https://github.com/Fdawgs/node-poppler/issues/743)) ([c682750](https://github.com/Fdawgs/node-poppler/commit/c68275050d488c71e0bb158235034efa64fa633d))
+
 ## [9.1.0](https://github.com/Fdawgs/node-poppler/compare/v9.0.1...v9.1.0) (2026-01-08)
 
 

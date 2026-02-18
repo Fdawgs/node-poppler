@@ -580,7 +580,8 @@ function execBinary(binary, args, file, options = {}) {
  * version of binary.
  * @ignore
  * @param {PopplerAcceptedOptions} acceptedOptions - Object containing accepted options.
- * @param {Record<string, any>} options - Object containing options to pass to binary.
+ * @param {(PdfAttachOptions|PdfDetachOptions|PdfFontsOptions|PdfImagesOptions|PdfInfoOptions|PdfSeparateOptions|PdfToCairoOptions|PdfToHtmlOptions|PdfToPpmOptions|PdfToPsOptions|PdfToTextOptions|PdfUniteOptions)} options
+ * - Object containing options to pass to binary.
  * @param {string} [version] - Version of binary.
  * @returns {string[]} Array of CLI arguments.
  * @throws {Error} If invalid arguments provided.

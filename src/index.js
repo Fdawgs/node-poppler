@@ -489,6 +489,8 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @property {boolean} [printVersionInfo] Print copyright and version information.
  */
 
+/** @typedef {(PdfAttachOptions|PdfDetachOptions|PdfFontsOptions|PdfImagesOptions|PdfInfoOptions|PdfSeparateOptions|PdfToCairoOptions|PdfToHtmlOptions|PdfToPpmOptions|PdfToPsOptions|PdfToTextOptions|PdfUniteOptions)} PopplerOptions */
+
 /**
  * @typedef {object} PopplerExtraOptions
  * @property {AbortSignal} [signal] An `AbortSignal` that can be used to cancel the operation.
@@ -580,7 +582,7 @@ function execBinary(binary, args, file, options = {}) {
  * version of binary.
  * @ignore
  * @param {PopplerAcceptedOptions} acceptedOptions - Object containing accepted options.
- * @param {Record<string, any>} options - Object containing options to pass to binary.
+ * @param {PopplerOptions} options - Object containing options to pass to binary.
  * @param {string} [version] - Version of binary.
  * @returns {string[]} Array of CLI arguments.
  * @throws {Error} If invalid arguments provided.

@@ -604,8 +604,9 @@ function parseOptions(acceptedOptions, options, version) {
 		// @ts-ignore: Keys are from options, TS cannot infer this
 		const option = options[key];
 		const acceptedOption = acceptedOptions[key];
+		const optionType = typeof option;
 
-		if (acceptedOption.type === typeof option) {
+		if (acceptedOption.type === optionType) {
 			// Skip boolean options if false
 			if (acceptedOption.type !== "boolean" || option) {
 				// Arg will be empty for some non-standard options
@@ -613,7 +614,7 @@ function parseOptions(acceptedOptions, options, version) {
 					args.push(acceptedOption.arg);
 				}
 
-				if (typeof option !== "boolean") {
+				if (optionType !== "boolean") {
 					args.push(option);
 				}
 			}
@@ -621,7 +622,7 @@ function parseOptions(acceptedOptions, options, version) {
 			invalidArgs.push(
 				`Invalid value type provided for option '${key}', expected ${
 					acceptedOption.type
-				} but received ${typeof option}`
+				} but received ${optionType}`
 			);
 		}
 

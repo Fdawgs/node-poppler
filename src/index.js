@@ -757,8 +757,16 @@ class Poppler {
 					this.#acceptedOptions.set(
 						"pdfAttach",
 						freeze({
-							printVersionInfo: { arg: "-v", type: "boolean" },
-							replace: { arg: "-replace", type: "boolean" },
+							printVersionInfo: {
+								arg: "-v",
+								type: "boolean",
+								minVersion: "0.75.0",
+							},
+							replace: {
+								arg: "-replace",
+								type: "boolean",
+								minVersion: "0.75.0",
+							},
 						})
 					);
 					break;

@@ -609,16 +609,18 @@ function parseOptions(acceptedOptions, options, version) {
 		const optionType = typeof option;
 
 		if (acceptedOption.type === optionType) {
-			// Skip boolean options if false
-			if (acceptedOption.type !== "boolean" || option) {
-				// Arg will be empty for some non-standard options
-				if (acceptedOption.arg !== "") {
-					args.push(acceptedOption.arg);
-				}
+			// Boolean options set to false won't be passed to the binary; skip arg and version checks
+			if (acceptedOption.type === "boolean" && !option) {
+				continue;
+			}
 
-				if (optionType !== "boolean") {
-					args.push(option);
-				}
+			// Arg will be empty for some non-standard options
+			if (acceptedOption.arg !== "") {
+				args.push(acceptedOption.arg);
+			}
+
+			if (optionType !== "boolean") {
+				args.push(option);
 			}
 		} else {
 			invalidArgs.push(

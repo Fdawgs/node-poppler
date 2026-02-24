@@ -1237,6 +1237,25 @@ describe("Node-Poppler module", () => {
 			}
 		});
 
+		it("Does not reject with an Error object if option provided is only available in a later version of the pdftoppm binary than what was provided, but is set to false", async () => {
+			const options = {
+				printProgress: false,
+			};
+
+			if (lt(version, "21.03.0", { loose: true })) {
+				const res = await poppler.pdfToPpm(
+					file,
+					`${testDirectory}pdf_1.3_NHS_Constitution`,
+					options
+				);
+
+				expect(res).toBe("No Error");
+				await expect(
+					access(`${testDirectory}pdf_1.3_NHS_Constitution-01.ppm`)
+				).resolves.toBeUndefined();
+			}
+		});
+
 		it("Rejects with an Error object if invalid option is passed to function", async () => {
 			const options = {
 				middlePageToConvert: "test",

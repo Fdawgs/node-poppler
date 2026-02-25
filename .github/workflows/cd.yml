@@ -63,7 +63,7 @@ jobs:
                   npm i -f --ignore-scripts
                   npm run build --if-present
                   npm pkg delete commitlint devDependencies jest scripts
-                  npm publish --access public --ignore-scripts
+                  npm publish --access public --ignore-scripts --provenance
 
     publish-ghp:
         name: Publish to GitHub Packages

@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.2](https://github.com/Fdawgs/node-poppler/compare/v9.1.1...v9.1.2) (2026-02-25)
+
+
+### Bug fixes
+
+* **index:** skip version checks for `false` boolean options ([#751](https://github.com/Fdawgs/node-poppler/issues/751)) ([f0e42f3](https://github.com/Fdawgs/node-poppler/commit/f0e42f34adbe90551d1d59a7d46e2cf2431fffba))
+
+
+### Continuous integration
+
+* **cd:** make provenance publishing explicit ([#753](https://github.com/Fdawgs/node-poppler/issues/753)) ([74696ed](https://github.com/Fdawgs/node-poppler/commit/74696ed3d9a3c844b0b0635c115c4de636c8d6e0))
+
+
+### Dependencies
+
+* **deps-dev:** bump licensee from 11.1.1 to 12.0.1 ([#745](https://github.com/Fdawgs/node-poppler/issues/745)) ([e9b855e](https://github.com/Fdawgs/node-poppler/commit/e9b855e2b393fb8a3e2dbf802687639d50e83fb2))
+
+
+### Improvements
+
+* **index:** cache typeof result in `parseOptions` ([#746](https://github.com/Fdawgs/node-poppler/issues/746)) ([b59f300](https://github.com/Fdawgs/node-poppler/commit/b59f300be5864e31660abccca1bc5430661a870d))
+
+
+### Miscellaneous
+
+* **index:** replace `any` type with union of poppler func typedefs ([#748](https://github.com/Fdawgs/node-poppler/issues/748)) ([1bff90d](https://github.com/Fdawgs/node-poppler/commit/1bff90d95e3f5d690a47a10704587174a834a752))
+* **license:** add contact email ([#749](https://github.com/Fdawgs/node-poppler/issues/749)) ([1378e0d](https://github.com/Fdawgs/node-poppler/commit/1378e0dc3ecdea3cd3b5b466948958d4a1703c72))
+* **package:** stop running `lint:prettier` twice on `test` call ([#752](https://github.com/Fdawgs/node-poppler/issues/752)) ([4806761](https://github.com/Fdawgs/node-poppler/commit/480676187bf923270d28c19d5f29490e9092507a))
+
 ## [9.1.1](https://github.com/Fdawgs/node-poppler/compare/v9.1.0...v9.1.1) (2026-01-30)
 
 

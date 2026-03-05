@@ -158,7 +158,7 @@ describe("Node-Poppler module", () => {
 			const testTxtFile = `${testDirectory}test.txt`;
 
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfAttach(testTxtFile).catch((err) => {
 				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
@@ -170,7 +170,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfAttach(file, undefined, undefined, options)
 			).rejects.toThrow(
 				"Invalid value type provided for option 'replace', expected boolean but received string"
@@ -183,7 +183,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfAttach(file, undefined, undefined, options)
 			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});
@@ -278,7 +278,7 @@ describe("Node-Poppler module", () => {
 				listEmbedded: "test",
 			};
 
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await expect(poppler.pdfDetach(file, options)).rejects.toThrow(
 				"Invalid value type provided for option 'listEmbedded', expected boolean but received string"
 			);
@@ -289,7 +289,7 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await expect(poppler.pdfDetach(file, options)).rejects.toThrow(
 				"Invalid option provided 'wordFile'"
 			);
@@ -333,7 +333,7 @@ describe("Node-Poppler module", () => {
 				firstPageToExamine: "test",
 			};
 
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await expect(poppler.pdfFonts(file, options)).rejects.toThrow(
 				"Invalid value type provided for option 'firstPageToExamine', expected number but received string"
 			);
@@ -344,7 +344,7 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await expect(poppler.pdfFonts(file, options)).rejects.toThrow(
 				"Invalid option provided 'wordFile'"
 			);
@@ -394,7 +394,7 @@ describe("Node-Poppler module", () => {
 
 		it("Rejects with an Error object if PDF file missing", async () => {
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfImages(undefined, "file_prefix").catch((err) => {
 				expect(err.message).toMatch(
 					/^I\/O Error: Couldn't open file 'undefined'/u
@@ -409,7 +409,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfImages(undefined, undefined, options)
 			).rejects.toThrow(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
@@ -422,7 +422,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfImages(undefined, undefined, options)
 			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
@@ -499,7 +499,7 @@ describe("Node-Poppler module", () => {
 
 		it("Rejects with an Error object if PDF file missing", async () => {
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfInfo().catch((err) => {
 				expect(err.message).toMatch(IO_ERROR_REG);
 			});
@@ -510,7 +510,7 @@ describe("Node-Poppler module", () => {
 				firstPageToConvert: "test",
 			};
 
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await expect(poppler.pdfInfo(file, options)).rejects.toThrow(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but received string"
 			);
@@ -521,7 +521,7 @@ describe("Node-Poppler module", () => {
 				wordFile: "test",
 			};
 
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await expect(poppler.pdfInfo(file, options)).rejects.toThrow(
 				"Invalid option provided 'wordFile'"
 			);
@@ -639,7 +639,7 @@ describe("Node-Poppler module", () => {
 			const testTxtFile = `${testDirectory}test.txt`;
 
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfSeparate(testTxtFile).catch((err) => {
 				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
@@ -651,7 +651,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfSeparate(file, undefined, options)
 			).rejects.toThrow(
 				"Invalid value type provided for option 'firstPageToExtract', expected number but received string"
@@ -664,7 +664,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfSeparate(file, undefined, options)
 			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});
@@ -1015,7 +1015,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfToCairo(file, undefined, options)
 			).rejects.toThrow(
 				"Invalid value type provided for option 'pdfFile', expected boolean but received string"
@@ -1028,7 +1028,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfToCairo(file, undefined, options)
 			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});
@@ -1101,7 +1101,7 @@ describe("Node-Poppler module", () => {
 
 		it("Rejects with an Error object if PDF file missing", async () => {
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfToHtml().catch((err) => {
 				expect(err.message).toMatch(IO_ERROR_REG);
 			});
@@ -1114,7 +1114,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfToHtml(file, undefined, options)
 			).rejects.toThrow(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
@@ -1127,7 +1127,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfToHtml(file, undefined, options)
 			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
@@ -1191,7 +1191,7 @@ describe("Node-Poppler module", () => {
 			const testTxtFile = `${testDirectory}test.txt`;
 
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await poppler.pdfToPpm(testTxtFile).catch((err) => {
 				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
@@ -1199,7 +1199,7 @@ describe("Node-Poppler module", () => {
 
 		it("Rejects with an Error object if PDF file missing", async () => {
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfToPpm().catch((err) => {
 				expect(err.message).toMatch(IO_ERROR_REG);
 			});
@@ -1212,7 +1212,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfToPpm(undefined, undefined, options)
 			).rejects.toThrow(
 				"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
@@ -1262,7 +1262,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfToPpm(undefined, undefined, options)
 			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
@@ -1310,7 +1310,7 @@ describe("Node-Poppler module", () => {
 
 		it("Rejects with an Error object if PDF file missing", async () => {
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfToPs().catch((err) => {
 				expect(err.message).toMatch(IO_ERROR_REG);
 			});
@@ -1323,7 +1323,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await poppler.pdfToPs(file, undefined, options).catch((err) => {
 				expect(err.message).toBe(
 					"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
@@ -1337,7 +1337,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfToPs(file, undefined, options)
 			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
@@ -1404,7 +1404,7 @@ describe("Node-Poppler module", () => {
 
 		it("Rejects with an Error object if PDF file missing", async () => {
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfToText().catch((err) => {
 				expect(err.message).toMatch(IO_ERROR_REG);
 			});
@@ -1417,7 +1417,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument values
 			await poppler.pdfToText(file, undefined, options).catch((err) => {
 				expect(err.message).toBe(
 					"Invalid value type provided for option 'firstPageToConvert', expected number but received string; Invalid value type provided for option 'lastPageToConvert', expected number but received string"
@@ -1431,7 +1431,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfToText(file, undefined, options)
 			).rejects.toThrow("Invalid option provided 'middlePageToConvert'");
 		});
@@ -1498,7 +1498,7 @@ describe("Node-Poppler module", () => {
 			];
 
 			expect.assertions(1);
-			// @ts-expect-error: Testing invalid parameters being passed
+			// @ts-expect-error: Testing invalid argument
 			await poppler.pdfUnite(files).catch((err) => {
 				expect(err.message).toMatch(SYNTAX_WARNING_REG);
 			});
@@ -1514,7 +1514,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfUnite(files, undefined, options)
 			).rejects.toThrow(
 				"Invalid value type provided for option 'printVersionInfo', expected boolean but received string"
@@ -1531,7 +1531,7 @@ describe("Node-Poppler module", () => {
 			};
 
 			await expect(
-				// @ts-expect-error: Testing invalid parameters being passed
+				// @ts-expect-error: Testing invalid argument values
 				poppler.pdfUnite(files, undefined, options)
 			).rejects.toThrow("Invalid option provided 'wordFile'");
 		});

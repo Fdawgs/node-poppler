@@ -603,7 +603,7 @@ function parseOptions(acceptedOptions, options, version) {
 			continue;
 		}
 
-		// @ts-ignore: Keys are from options, TS cannot infer this
+		// @ts-expect-error: Keys are from options, TS cannot infer this
 		const option = options[key];
 		const acceptedOption = acceptedOptions[key];
 		const optionType = typeof option;
@@ -739,7 +739,7 @@ class Poppler {
 	async #getVersion(binary) {
 		if (!this.#binVersions.has(binary)) {
 			const { stderr } = await execFileAsync(binary, ["-v"]);
-			// @ts-ignore: parseOptions checks if falsy
+			// @ts-expect-error: parseOptions checks if falsy
 			const version = POPPLER_VERSION_REG.exec(stderr)[1];
 			this.#binVersions.set(binary, version);
 		}

@@ -682,6 +682,7 @@ class Poppler {
 			/** @type {string|undefined} */
 			this.#popplerPath = binPath;
 		} else {
+			// Use regex over dirname as `where` on Windows returns a newline-delimited list
 			const which = spawnSync(platform === "win32" ? "where" : "which", [
 				"pdfinfo",
 			]).stdout.toString();

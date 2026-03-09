@@ -57,9 +57,9 @@ const childProcessCloseTests = [
 ];
 
 /**
- * @description Returns the path to the poppler-util binaries based on the OS.
- * @returns {string} The path to the poppler-util binaries.
- * @throws {Error} If the OS is not supported or the binaries are not found.
+ * @description Returns the path of the Poppler binaries' directory based on OS.
+ * @returns {string} Path of the Poppler binaries' directory.
+ * @throws {Error} If the OS is not supported or the Poppler binaries cannot be found.
  */
 function getTestBinaryPath() {
 	const which = spawnSync(platform === "win32" ? "where" : "which", [
@@ -132,7 +132,7 @@ describe("Node-Poppler module", () => {
 			} catch (err) {
 				if (err instanceof Error) {
 					expect(err.message).toBe(
-						`Unable to find ${mockPlatform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
+						`Unable to find ${mockPlatform} Poppler binaries, please pass the path to the binaries' directory as an argument to the Poppler constructor.`
 					);
 				}
 			}

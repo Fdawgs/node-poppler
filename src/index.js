@@ -34,7 +34,7 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @property {string} arg The argument to pass to the binary.
  * @property {('boolean'|'number'|'string')} type The type of the option.
  * @property {string} [minVersion] The minimum version of the binary that supports this option.
- * @property {string} [maxVersion] The maximum version of the binary that supports this option (optional).
+ * @property {string} [maxVersion] The maximum version of the binary that supports this option.
  */
 
 /**
@@ -578,12 +578,13 @@ function execBinary(binary, args, file, options = {}) {
 
 /**
  * @author Frazer Smith
- * @description Checks each option provided is valid, of the correct type, and can be used by specified
- * version of binary.
+ * @description Checks each option provided is valid, of the correct type, and can be used by the
+ * specified version of the binary.
+ * @ignore
  * @ignore
  * @param {PopplerAcceptedOptions} acceptedOptions - Object containing accepted options.
- * @param {PopplerOptions} options - Object containing options to pass to binary.
- * @param {string} [version] - Version of binary.
+ * @param {PopplerOptions} options - Object containing options to pass to the binary.
+ * @param {string} [version] - Semantic version of the binary.
  * @returns {string[]} Array of CLI arguments.
  * @throws {Error} If invalid arguments provided.
  */
@@ -666,11 +667,11 @@ class Poppler {
 	#acceptedOptions = new Map();
 
 	/**
-	 * @param {string} [binPath] - Path of poppler-utils binaries.
+	 * @param {string} [binPath] - Path to the directory containing the poppler-utils binaries.
 	 * If not provided, the constructor will attempt to find the Poppler `pdfinfo` binary
 	 * in the PATH environment variable and use that as the path for all binaries.
 	 * For `win32` the binaries are bundled with the package and will be used
-	 * if a local installation is not found.
+	 * if local binaries cannot be found.
 	 * @throws {Error} If the Poppler binaries cannot be found.
 	 */
 	constructor(binPath) {
@@ -703,7 +704,7 @@ class Poppler {
 
 		if (!this.#popplerPath) {
 			throw new Error(
-				`Unable to find ${platform} Poppler binaries, please pass the installation directory as a parameter to the Poppler instance.`
+				`Unable to find ${platform} Poppler binaries, please pass the path to the binaries' directory as an argument to the Poppler constructor.`
 			);
 		}
 		this.#popplerPath = normalize(this.#popplerPath);
@@ -724,7 +725,7 @@ class Poppler {
 
 	/**
 	 * @description Returns the path of the Poppler binaries.
-	 * @returns {string} Path of Poppler binaries.
+	 * @returns {string} Path of the Poppler binaries' directory.
 	 */
 	get path() {
 		return this.#popplerPath;
@@ -1235,7 +1236,7 @@ class Poppler {
 	 * @param {string} file - Filepath of the PDF file to read.
 	 * @param {string} fileToAttach - Filepath of the attachment to be embedded into the PDF file.
 	 * @param {string} outputFile - Filepath of the file to output the results to.
-	 * @param {PdfAttachOptions} [options] - Options to pass to pdfattach binary.
+	 * @param {PdfAttachOptions} [options] - Options to pass to the pdfattach binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1252,7 +1253,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists or extracts embedded files (attachments) from a PDF file.
 	 * @param {string} file - Filepath of the PDF file to read.
-	 * @param {PdfDetachOptions} [options] - Options to pass to pdfdetach binary.
+	 * @param {PdfDetachOptions} [options] - Options to pass to the pdfdetach binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1272,7 +1273,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Lists the fonts used in a PDF file along with various information for each font.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
-	 * @param {PdfFontsOptions} [options] - Options to pass to pdffonts binary.
+	 * @param {PdfFontsOptions} [options] - Options to pass to the pdffonts binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1291,7 +1292,7 @@ class Poppler {
 	 * @description Saves images from a PDF file as PPM, PBM, PNG, TIFF, JPEG, JPEG2000, or JBIG2 files.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputPrefix] - Filename prefix of output files.
-	 * @param {PdfImagesOptions} [options] - Options to pass to pdfimages binary.
+	 * @param {PdfImagesOptions} [options] - Options to pass to the pdfimages binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1314,7 +1315,7 @@ class Poppler {
 	 * @author Frazer Smith
 	 * @description Prints the contents of the `Info` dictionary from a PDF file.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
-	 * @param {PdfInfoOptions} [options] - Options to pass to pdfinfo binary.
+	 * @param {PdfInfoOptions} [options] - Options to pass to the pdfinfo binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<Record<string, string>|string>} A promise that resolves with a stdout string or JSON object if
 	 * `options.printAsJson` is `true`, or rejects with an `Error` object.
@@ -1418,7 +1419,7 @@ class Poppler {
 	 * @param {string} outputPattern - Should contain %d (or any variant respecting printf format),
 	 * since %d is replaced by the page number.
 	 * As an example, `sample-%d.pdf` will produce `sample-1.pdf` for a single page document.
-	 * @param {PdfSeparateOptions} [options] - Options to pass to pdfseparate binary.
+	 * @param {PdfSeparateOptions} [options] - Options to pass to the pdfseparate binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1443,7 +1444,7 @@ class Poppler {
 	 * Encoding is set to `binary` if used with `options.singleFile` or `options.pdfFile`.
 	 *
 	 * If not set then the output filename will be derived from the PDF file name.
-	 * @param {PdfToCairoOptions} [options] - Options to pass to pdftocairo binary.
+	 * @param {PdfToCairoOptions} [options] - Options to pass to the pdftocairo binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1473,7 +1474,7 @@ class Poppler {
 	 * and create a new file, with `-html` appended to the end of the filename.
 	 *
 	 * Required if `file` is a Buffer.
-	 * @param {PdfToHtmlOptions} [options] - Options to pass to pdftohtml binary.
+	 * @param {PdfToHtmlOptions} [options] - Options to pass to the pdftohtml binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1501,7 +1502,7 @@ class Poppler {
 	 * in Portable Bitmap (PBM) format.
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} outputPath - Filepath to output the results to.
-	 * @param {PdfToPpmOptions} [options] - Options to pass to pdftoppm binary.
+	 * @param {PdfToPpmOptions} [options] - Options to pass to the pdftoppm binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1521,7 +1522,7 @@ class Poppler {
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
-	 * @param {PdfToPsOptions} [options] - Options to pass to pdftops binary.
+	 * @param {PdfToPsOptions} [options] - Options to pass to the pdftops binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1541,7 +1542,7 @@ class Poppler {
 	 * @param {(Buffer|string)} file - PDF file as Buffer, or filepath of the PDF file to read.
 	 * @param {string} [outputFile] - Filepath of the file to output the results to.
 	 * If `undefined` then will write output to stdout.
-	 * @param {PdfToTextOptions} [options] - Options to pass to pdftotext binary.
+	 * @param {PdfToTextOptions} [options] - Options to pass to the pdftotext binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */
@@ -1565,7 +1566,7 @@ class Poppler {
 	 * @param {string[]} files - Filepaths of the PDF files to merge.
 	 * An entire directory of PDF files can be merged like so: `path/to/directory/*.pdf`.
 	 * @param {string} outputFile - Filepath of the file to output the resulting merged PDF to.
-	 * @param {PdfUniteOptions} [options] - Options to pass to pdfunite binary.
+	 * @param {PdfUniteOptions} [options] - Options to pass to the pdfunite binary.
 	 * @param {PopplerExtraOptions} [extras] - Extra options.
 	 * @returns {Promise<string>} A promise that resolves with a stdout string, or rejects with an `Error` object.
 	 */

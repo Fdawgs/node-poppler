@@ -822,12 +822,36 @@ class Poppler {
 					this.#acceptedOptions.set(
 						"pdfFonts",
 						freeze({
-							firstPageToExamine: { arg: "-f", type: "number" },
-							lastPageToExamine: { arg: "-l", type: "number" },
-							listSubstitutes: { arg: "-subst", type: "boolean" },
-							ownerPassword: { arg: "-opw", type: "string" },
-							printVersionInfo: { arg: "-v", type: "boolean" },
-							userPassword: { arg: "-upw", type: "string" },
+							firstPageToExamine: {
+								arg: "-f",
+								type: "number",
+								minVersion: "0.1.0",
+							},
+							lastPageToExamine: {
+								arg: "-l",
+								type: "number",
+								minVersion: "0.1.0",
+							},
+							listSubstitutes: {
+								arg: "-subst",
+								type: "boolean",
+								minVersion: "0.19.0",
+							},
+							ownerPassword: {
+								arg: "-opw",
+								type: "string",
+								minVersion: "0.1.0",
+							},
+							printVersionInfo: {
+								arg: "-v",
+								type: "boolean",
+								minVersion: "0.1.0",
+							},
+							userPassword: {
+								arg: "-upw",
+								type: "string",
+								minVersion: "0.1.0",
+							},
 						})
 					);
 					break;

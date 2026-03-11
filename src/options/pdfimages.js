@@ -20,7 +20,7 @@
  * @property {string} [userPassword] Specify the user password for the PDF file.
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfImagesOptions, import("../index").OptionDetails>} */
 module.exports = {
 	allFiles: { arg: "-all", type: "boolean" },
 	ccittFile: { arg: "-ccitt", type: "boolean" },

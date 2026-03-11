@@ -9,7 +9,7 @@
  * @property {boolean} [printVersionInfo] Print copyright and version info.
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfSeparateOptions, import("../index").OptionDetails>} */
 module.exports = {
 	firstPageToExtract: { arg: "-f", type: "number" },
 	lastPageToExtract: { arg: "-l", type: "number" },

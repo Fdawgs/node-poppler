@@ -5,7 +5,7 @@
  * @property {boolean} [printVersionInfo] Print copyright and version information.
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfUniteOptions, import("../index").OptionDetails>} */
 module.exports = {
 	printVersionInfo: { arg: "-v", type: "boolean" },
 };

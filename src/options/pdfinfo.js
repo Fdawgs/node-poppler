@@ -30,7 +30,7 @@
  * @property {string} [userPassword] User password (for encrypted files).
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfInfoOptions, import("../index").OptionDetails>} */
 module.exports = {
 	firstPageToConvert: { arg: "-f", type: "number" },
 	lastPageToConvert: { arg: "-l", type: "number" },

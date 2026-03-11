@@ -11,6 +11,7 @@
  * @property {string} [userPassword] User password (for encrypted files).
  */
 
+/** @type {Record<keyof PdfFontsOptions, import("../index").OptionDetails>} */
 module.exports = {
 	firstPageToExamine: { arg: "-f", type: "number" },
 	lastPageToExamine: { arg: "-l", type: "number" },

@@ -32,7 +32,7 @@
  * @property {number} [zoom] Zoom the PDF document (default 1.5).
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfToHtmlOptions, import("../index").OptionDetails>} */
 module.exports = {
 	complexOutput: { arg: "-c", type: "boolean" },
 	dataUrls: {

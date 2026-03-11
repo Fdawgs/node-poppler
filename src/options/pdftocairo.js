@@ -97,7 +97,7 @@
  * @property {string} [userPassword] Specify the user password for the PDF file.
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfToCairoOptions, import("../index").OptionDetails>} */
 module.exports = {
 	antialias: { arg: "-antialias", type: "string" },
 	cropBox: { arg: "-cropbox", type: "boolean" },

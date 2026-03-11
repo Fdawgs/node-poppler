@@ -104,6 +104,7 @@
  * @property {string} [userPassword] User password (for encrypted files).
  */
 
+/** @type {Record<keyof PdfToPsOptions, import("../index").OptionDetails>} */
 module.exports = {
 	antialias: { arg: "-aaRaster", type: "string" },
 	binary: { arg: "-binary", type: "boolean" },

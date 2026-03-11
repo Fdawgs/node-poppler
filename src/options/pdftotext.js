@@ -43,7 +43,7 @@
  * @property {string} [userPassword] User password (for encrypted files).
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfToTextOptions, import("../index").OptionDetails>} */
 module.exports = {
 	boundingBoxXhtml: { arg: "-bbox", type: "boolean" },
 	boundingBoxXhtmlLayout: {

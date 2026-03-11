@@ -23,7 +23,7 @@
  * @property {string} [userPassword] User password (for encrypted files).
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfDetachOptions, import("../index").OptionDetails>} */
 module.exports = {
 	listEmbedded: { arg: "-list", type: "boolean" },
 	outputEncoding: { arg: "-enc", type: "string" },

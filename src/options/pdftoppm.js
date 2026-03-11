@@ -68,7 +68,7 @@
  * @property {string} [userPassword] Specify the user password for the PDF file.
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfToPpmOptions, import("../index").OptionDetails>} */
 module.exports = {
 	antialiasFonts: { arg: "-aa", type: "string" },
 	antialiasVectors: {

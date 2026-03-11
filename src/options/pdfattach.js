@@ -6,7 +6,7 @@
  * @property {boolean} [replace] Replace embedded file with same name (if it exists).
  */
 
-/** @type {import("../index").PopplerAcceptedOptions} */
+/** @type {Record<keyof PdfAttachOptions, import("../index").OptionDetails>} */
 module.exports = {
 	printVersionInfo: { arg: "-v", type: "boolean" },
 	replace: { arg: "-replace", type: "boolean" },

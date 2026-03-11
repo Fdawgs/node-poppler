@@ -770,19 +770,51 @@ class Poppler {
 					this.#acceptedOptions.set(
 						"pdfDetach",
 						freeze({
-							listEmbedded: { arg: "-list", type: "boolean" },
-							outputEncoding: { arg: "-enc", type: "string" },
-							outputPath: { arg: "-o", type: "string" },
-							ownerPassword: { arg: "-opw", type: "string" },
-							printVersionInfo: { arg: "-v", type: "boolean" },
-							saveAllFiles: { arg: "-saveall", type: "boolean" },
+							listEmbedded: {
+								arg: "-list",
+								type: "boolean",
+								minVersion: "0.1.0",
+							},
+							outputEncoding: {
+								arg: "-enc",
+								type: "string",
+								minVersion: "0.1.0",
+							},
+							outputPath: {
+								arg: "-o",
+								type: "string",
+								minVersion: "0.1.0",
+							},
+							ownerPassword: {
+								arg: "-opw",
+								type: "string",
+								minVersion: "0.1.0",
+							},
+							printVersionInfo: {
+								arg: "-v",
+								type: "boolean",
+								minVersion: "0.1.0",
+							},
+							saveAllFiles: {
+								arg: "-saveall",
+								type: "boolean",
+								minVersion: "0.1.0",
+							},
 							saveFile: {
 								arg: "-savefile",
 								type: "string",
 								minVersion: "0.86.0",
 							},
-							saveSpecificFile: { arg: "-save", type: "number" },
-							userPassword: { arg: "-upw", type: "string" },
+							saveSpecificFile: {
+								arg: "-save",
+								type: "number",
+								minVersion: "0.1.0",
+							},
+							userPassword: {
+								arg: "-upw",
+								type: "string",
+								minVersion: "0.1.0",
+							},
 						})
 					);
 					break;

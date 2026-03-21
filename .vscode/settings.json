@@ -7,8 +7,9 @@
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"javascript.updateImportsOnFileMove.enabled": "always",
+	"js/ts.updateImportsOnFileMove.enabled": "always",
 	"npm.packageManager": "npm",
 	"prettier.prettierPath": "./node_modules/prettier/index.cjs",
-	"redhat.telemetry.enabled": false
+	"redhat.telemetry.enabled": false,
+	"telemetry.feedback.enabled": false
 }

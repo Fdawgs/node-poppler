@@ -849,6 +849,19 @@ describe("Node-Poppler module", () => {
 					access(`${outputFile}-01.png`)
 				).resolves.toBeUndefined();
 			});
+
+			it("Supports options being undefined", async () => {
+				const options = {
+					pngFile: true,
+					scalePageTo: undefined,
+				};
+				const outputFile = `${testDirectory}pdf_1.3_NHS_Constitution`;
+				const res = await poppler.pdfToCairo(file, outputFile, options);
+				expect(res).toBe("No Error");
+				await expect(
+					access(`${outputFile}-01.png`)
+				).resolves.toBeUndefined();
+			});
 		});
 
 		describe("PDF-to-PS option", () => {

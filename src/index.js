@@ -765,8 +765,16 @@ class Poppler {
 					this.#acceptedOptions.set(
 						"pdfAttach",
 						freeze({
-							printVersionInfo: { arg: "-v", type: "boolean" },
-							replace: { arg: "-replace", type: "boolean" },
+							printVersionInfo: {
+								arg: "-v",
+								type: "boolean",
+								minVersion: "0.75.0",
+							},
+							replace: {
+								arg: "-replace",
+								type: "boolean",
+								minVersion: "0.75.0",
+							},
 						})
 					);
 					break;
@@ -1248,7 +1256,8 @@ class Poppler {
 	async pdfAttach(file, fileToAttach, outputFile, options = {}, extras = {}) {
 		const { signal } = extras;
 		const acceptedOptions = this.#getAcceptedOptions("pdfAttach");
-		const args = parseOptions(acceptedOptions, options);
+		const versionInfo = await this.#getVersion(this.#pdfAttachBin);
+		const args = parseOptions(acceptedOptions, options, versionInfo);
 		args.push(file, fileToAttach, outputFile);
 
 		return execBinary(this.#pdfAttachBin, args, undefined, { signal });

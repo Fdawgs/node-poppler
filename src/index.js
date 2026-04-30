@@ -609,6 +609,10 @@ function parseOptions(acceptedOptions, options, version) {
 		const acceptedOption = acceptedOptions[key];
 		const optionType = typeof option;
 
+		if (optionType === "undefined") {
+			continue;
+		}
+
 		if (acceptedOption.type === optionType) {
 			// Boolean options set to false won't be passed to the binary; skip arg and version checks
 			if (acceptedOption.type === "boolean" && !option) {

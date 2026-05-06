@@ -5,7 +5,8 @@
 		"declaration": true,
 		"emitDeclarationOnly": true,
 		"noEmit": false,
-		"outDir": "types"
+		"outDir": "types",
+		"rootDir": "src"
 	},
 	"include": ["src/index.js"]
 }

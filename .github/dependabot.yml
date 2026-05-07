@@ -21,7 +21,7 @@ updates:
           prefix: build
       cooldown:
           include:
-                - "*"
+              - "*"
           semver-major-days: 60
           semver-minor-days: 21
           semver-patch-days: 7

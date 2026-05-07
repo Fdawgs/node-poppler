@@ -40,7 +40,7 @@ updates:
           # in their next major version so they cannot be updated
           - dependency-name: camelcase
             update-types:
-              - "version-update:semver-major"
+                - "version-update:semver-major"
       open-pull-requests-limit: 20
       schedule:
           interval: monthly

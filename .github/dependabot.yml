@@ -5,6 +5,12 @@ updates:
           include: scope
           prefix: ci
       directory: /
+      groups:
+          github-owned:
+              patterns:
+                  - "actions/*"
+                  - "github/*"
+                  - "octokit/*"
       open-pull-requests-limit: 20
       schedule:
           interval: monthly
@@ -14,7 +20,8 @@ updates:
           include: scope
           prefix: build
       cooldown:
-          include: ["*"]
+          include:
+              - "*"
           semver-major-days: 60
           semver-minor-days: 21
           semver-patch-days: 7
@@ -32,7 +39,8 @@ updates:
           # Below are dependencies that have migrated to ESM
           # in their next major version so they cannot be updated
           - dependency-name: camelcase
-            update-types: ["version-update:semver-major"]
+            update-types:
+                - "version-update:semver-major"
       open-pull-requests-limit: 20
       schedule:
           interval: monthly

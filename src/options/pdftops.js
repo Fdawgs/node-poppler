@@ -90,7 +90,7 @@
  * The default depends on the other settings: For `options.level1` the default is MONO8; for `options.level1Sep`,
  * `options.level2Sep`, `options.level3Sep`, or `options.overprint` the default is CMYK8; in all other
  * cases RGB8 is the default.
- * If `option.processColorProfile` is set then `options.processColorFormat` is inferred from the specified ICC profile.
+ * If `options.processColorProfile` is set then `options.processColorFormat` is inferred from the specified ICC profile.
  * @property {string} [processColorProfile] Sets the ICC profile that is assumed during
  * rasterization and transparency reduction.
  * @property {boolean} [quiet] Do not print any messages or errors.

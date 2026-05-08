@@ -40,6 +40,7 @@
  * @property {boolean} [quiet] Do not print any messages or errors.
  * @property {boolean} [rawLayout] Keep the text in content stream order. This is a
  * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
+ * @property {number} [resolution] Specifies the resolution in DPI. Default is 72.
  * @property {string} [userPassword] User password (for encrypted files).
  */
 

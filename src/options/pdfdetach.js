@@ -8,7 +8,7 @@
  * This defaults to `UTF-8`.
  * @property {string} [ownerPassword] Owner password (for encrypted files).
  * @property {string} [outputPath] Set the file name used when saving an embedded file with
- * the save option enabled, or the directory if `options.saveall` is used.
+ * the save option enabled, or the directory if `options.saveAllFiles` is used.
  * @property {boolean} [printVersionInfo] Print copyright and version info.
  * @property {boolean} [saveAllFiles] Save all of the embedded files. This uses the file
  * names associated with the embedded files (as printed by `options.listEmbedded`).

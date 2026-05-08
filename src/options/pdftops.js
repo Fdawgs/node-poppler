@@ -64,7 +64,7 @@
  * @property {boolean} [noShrink] Do not scale PDF pages which are larger than the paper.
  * By default, pages larger than the paper are shrunk to fit.
  * @property {boolean} [opi] Generate OPI comments for all images and forms which have OPI information.
- * @property {boolean} [optimizecolorspace] By default, bitmap images in the PDF pass through to the
+ * @property {boolean} [optimizeColorSpace] By default, bitmap images in the PDF pass through to the
  * output PostScript in their original color space, which produces predictable results.
  * This option converts RGB and CMYK images into Gray images if every pixel of the image has equal components.
  * This can fix problems when doing color separations of PDFs that contain embedded black and
@@ -156,7 +156,7 @@ module.exports = {
 	},
 	noShrink: { arg: "-noshrink", type: "boolean" },
 	opi: { arg: "-opi", type: "boolean" },
-	optimizecolorspace: {
+	optimizeColorSpace: {
 		arg: "-optimizecolorspace",
 		type: "boolean",
 	},

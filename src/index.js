@@ -1,3 +1,4 @@
+/* eslint-disable n/global-require -- Conditional requires. */
 "use strict";
 
 const { execFile, spawn, spawnSync } = require("node:child_process");
@@ -262,7 +263,6 @@ class Poppler {
 			if (platform === "win32" && !popplerPath) {
 				try {
 					// @ts-ignore: Optional dependency
-					// eslint-disable-next-line n/global-require -- Conditional require
 					this.#popplerPath = require("node-poppler-win32");
 				} catch {
 					// Leave #popplerPath empty; the generic "Unable to find ... binaries" error below will fire

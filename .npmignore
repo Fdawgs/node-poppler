@@ -4,3 +4,4 @@
 *
 !src/**
 !types/index.d.ts
+!types/options/*.d.ts

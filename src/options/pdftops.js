@@ -23,7 +23,7 @@
  * @property {boolean} [fillPage] Expand PDF pages smaller than the paper to fill the
  * paper. By default, these pages are not scaled.
  * @property {number} [firstPageToConvert] Specifies the first page to convert.
- * @property {number} [form] Generate PostScript form which can be imported by software
+ * @property {boolean} [form] Generate PostScript form which can be imported by software
  * that understands forms.
  * A form contains a single page, so if you use this option with a multi-page PDF file,
  * you must use `options.firstPageToConvert` and `options.lastPageToConvert` to specify a single page.

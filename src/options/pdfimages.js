@@ -8,7 +8,7 @@
  * @property {number} [firstPageToConvert] Specifies the first page to convert.
  * @property {number} [lastPageToConvert] Specifies the last page to convert.
  * @property {boolean} [jbig2File] Generate JBIG2 images as JBIG2 files.
- * @property {boolean} [jpeg2000File] Generate JPEG2000 images at JP2 files.
+ * @property {boolean} [jpeg2000File] Generate JPEG2000 images as JP2 files.
  * @property {boolean} [jpegFile] Generate JPEG images as JPEG files.
  * @property {boolean} [list] Instead of writing the images, list the
  * images along with various information for each image.

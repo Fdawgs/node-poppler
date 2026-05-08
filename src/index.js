@@ -145,7 +145,6 @@ function execBinary(binary, args, file, options = {}) {
  * @description Checks each option provided is valid, of the correct type, and can be used by the
  * specified version of the binary.
  * @ignore
- * @ignore
  * @param {PopplerAcceptedOptions} acceptedOptions - Object containing accepted options.
  * @param {PopplerOptions} options - Object containing options to pass to the binary.
  * @param {string} [version] - Semantic version of the binary.

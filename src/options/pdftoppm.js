@@ -33,13 +33,13 @@
  * @property {boolean} [forcePageNumber] Force page number even if there is only one page.
  * @property {boolean} [grayscaleFile] Generate grayscale PGM file (instead of a color PPM file).
  * @property {boolean} [hideAnnotations] Hide annotations.
- * @property {boolean} [jpegFile] Generate JPEG file instead a PPM file.
+ * @property {boolean} [jpegFile] Generate JPEG file instead of a PPM file.
  * @property {number} [lastPageToConvert] Specifies the last page to convert.
  * @property {boolean} [monochromeFile] Generate monochrome PBM file (instead of a color PPM file).
  * @property {boolean} [oddPagesOnly] Generates only the odd numbered pages.
  * @property {string} [ownerPassword] Specify the owner password for the PDF file.
  * Providing this will bypass all security restrictions.
- * @property {boolean} [pngFile] Generate PNG file instead a PPM file.
+ * @property {boolean} [pngFile] Generate PNG file instead of a PPM file.
  * @property {boolean} [printProgress] Print progress info as each page is generated.
  * Three space-separated fields are printed to STDERR: the number of the current page, the number
  * of the last page that will be generated, and the path to the file written to.
@@ -55,16 +55,16 @@
  * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
  * be determined by the aspect ratio of the page.
  * @property {number} [scalePageToXAxis] Scales each page horizontally to fit in scale-to-x
- * pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of
+ * pixels. If scale-to-y is set to -1, the vertical size will be determined by the aspect ratio of
  * the page.
  * @property {number} [scalePageToYAxis] Scales each page vertically to fit in scale-to-y
- * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
+ * pixels. If scale-to-x is set to -1, the horizontal size will be determined by the aspect ratio of
  * the page.
  * @property {string} [separator] Specify single character separator between name and page number.
  * @property {boolean} [singleFile] Writes only the first page and does not add digits.
  * @property {('none'|'shape'|'solid')} [thinLineMode] Specifies the thin line mode. This defaults to `none`.
  * @property {('deflate'|'jpeg'|'lzw'|'none'|'packbits')} [tiffCompression] Set TIFF compression.
- * @property {boolean} [tiffFile] Generate TIFF file instead a PPM file.
+ * @property {boolean} [tiffFile] Generate TIFF file instead of a PPM file.
  * @property {string} [userPassword] Specify the user password for the PDF file.
  */
 

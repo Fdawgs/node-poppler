@@ -11,7 +11,7 @@
 
 /** @type {Record<keyof PdfSeparateOptions, import("../index").OptionDetails>} */
 module.exports = {
-	firstPageToExtract: { arg: "-f", type: "number" },
-	lastPageToExtract: { arg: "-l", type: "number" },
-	printVersionInfo: { arg: "-v", type: "boolean" },
+	firstPageToExtract: { arg: "-f", type: "number", minVersion: "0.18.0" },
+	lastPageToExtract: { arg: "-l", type: "number", minVersion: "0.18.0" },
+	printVersionInfo: { arg: "-v", type: "boolean", minVersion: "0.18.0" },
 };

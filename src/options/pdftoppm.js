@@ -45,6 +45,7 @@
  * @property {boolean} [oddPagesOnly] Generates only the odd numbered pages.
  * @property {string} [ownerPassword] Specify the owner password for the PDF file.
  * Providing this will bypass all security restrictions.
+ * @property {boolean} [overprint] Enable overprint emulation during rasterization.
  * @property {boolean} [pngFile] Generate PNG file instead of a PPM file.
  * @property {boolean} [printProgress] Print progress info as each page is generated.
  * Three space-separated fields are printed to STDERR: the number of the current page, the number
@@ -125,6 +126,7 @@ module.exports = {
 	lastPageToConvert: { arg: "-l", type: "number", minVersion: "0.1.0" },
 	monochromeFile: { arg: "-mono", type: "boolean", minVersion: "0.1.0" },
 	oddPagesOnly: { arg: "-o", type: "boolean", minVersion: "0.13.3" },
+	overprint: { arg: "-overprint", type: "boolean", minVersion: "0.1.0" },
 	ownerPassword: { arg: "-opw", type: "string", minVersion: "0.1.0" },
 	pngFile: { arg: "-png", type: "boolean", minVersion: "0.11.3" },
 	printProgress: { arg: "-progress", type: "boolean", minVersion: "21.03.0" },

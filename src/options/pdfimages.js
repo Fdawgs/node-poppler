@@ -13,26 +13,36 @@
  * @property {boolean} [list] Instead of writing the images, list the
  * images along with various information for each image.
  * NOTE: Do not specify the outputPrefix with this option.
+ * @property {boolean} [outputPageNumbers] Include page numbers in output file names.
  * @property {string} [ownerPassword] Owner password (for encrypted files).
  * @property {boolean} [pngFile] Change the default output format to PNG.
+ * @property {boolean} [printFilenames] Print image filenames to stdout.
  * @property {boolean} [printVersionInfo] Print copyright and version info.
+ * @property {boolean} [quiet] Do not print any messages or errors.
  * @property {boolean} [tiffFile] Change the default output format to TIFF.
  * @property {string} [userPassword] Specify the user password for the PDF file.
  */
 
 /** @type {Record<keyof PdfImagesOptions, import("../index").OptionDetails>} */
 module.exports = {
-	allFiles: { arg: "-all", type: "boolean" },
-	ccittFile: { arg: "-ccitt", type: "boolean" },
-	firstPageToConvert: { arg: "-f", type: "number" },
-	lastPageToConvert: { arg: "-l", type: "number" },
-	jbig2File: { arg: "-jbig2", type: "boolean" },
-	jpeg2000File: { arg: "-jp2", type: "boolean" },
-	jpegFile: { arg: "-j", type: "boolean" },
-	list: { arg: "-list", type: "boolean" },
-	ownerPassword: { arg: "-opw", type: "string" },
-	pngFile: { arg: "-png", type: "boolean" },
-	printVersionInfo: { arg: "-v", type: "boolean" },
-	tiffFile: { arg: "-tiff", type: "boolean" },
-	userPassword: { arg: "-upw", type: "string" },
+	allFiles: { arg: "-all", type: "boolean", minVersion: "0.1.0" },
+	ccittFile: { arg: "-ccitt", type: "boolean", minVersion: "0.1.0" },
+	firstPageToConvert: { arg: "-f", type: "number", minVersion: "0.1.0" },
+	lastPageToConvert: { arg: "-l", type: "number", minVersion: "0.1.0" },
+	jbig2File: { arg: "-jbig2", type: "boolean", minVersion: "0.1.0" },
+	jpeg2000File: { arg: "-jp2", type: "boolean", minVersion: "0.1.0" },
+	jpegFile: { arg: "-j", type: "boolean", minVersion: "0.1.0" },
+	list: { arg: "-list", type: "boolean", minVersion: "0.19.0" },
+	outputPageNumbers: { arg: "-p", type: "boolean", minVersion: "0.15.2" },
+	ownerPassword: { arg: "-opw", type: "string", minVersion: "0.1.0" },
+	pngFile: { arg: "-png", type: "boolean", minVersion: "0.1.0" },
+	printFilenames: {
+		arg: "-print-filenames",
+		type: "boolean",
+		minVersion: "24.03.0",
+	},
+	printVersionInfo: { arg: "-v", type: "boolean", minVersion: "0.1.0" },
+	quiet: { arg: "-q", type: "boolean", minVersion: "0.1.0" },
+	tiffFile: { arg: "-tiff", type: "boolean", minVersion: "0.53.0" },
+	userPassword: { arg: "-upw", type: "string", minVersion: "0.1.0" },
 };

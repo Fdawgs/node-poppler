@@ -71,7 +71,8 @@
  * white images encoded as RGB.
  * @property {boolean} [originalPageSizes] Set the paper size of each page to match
  * the size specified in the PDF file.
- * @property {boolean} [overprint] Enable overprinting.
+ * @property {boolean} [overprint] Enable overprint emulation during rasterization.
+ * This option requires `options.processColorFormat` to be CMYK8.
  * @property {string} [ownerPassword] Owner password (for encrypted files).
  * @property {number} [paperHeight] Set the paper height, in points.
  * @property {('A3'|'A4'|'legal'|'letter'|'match')} [paperSize] Set the paper size to one of `A3`, `A4`,

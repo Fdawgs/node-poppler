@@ -18,7 +18,7 @@
  * @property {boolean} [pngFile] Change the default output format to PNG.
  * @property {boolean} [printFilenames] Print image filenames to stdout.
  * @property {boolean} [printVersionInfo] Print copyright and version info.
- * @property {boolean} [quiet] Don't print any messages or errors.
+ * @property {boolean} [quiet] Do not print any messages or errors.
  * @property {boolean} [tiffFile] Change the default output format to TIFF.
  * @property {string} [userPassword] Specify the user password for the PDF file.
  */

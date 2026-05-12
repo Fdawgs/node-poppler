@@ -6,6 +6,9 @@
  * box information for each word in the file.
  * @property {boolean} [boundingBoxXhtmlLayout] Generate an XHTML file containing
  * bounding box information for each block, line, and word in the file.
+ * @property {number} [columnSpacing] Specifies how much spacing to allow after a word
+ * before considering adjacent text to be a new column, measured as a fraction
+ * of the font size. Default is 0.7.
  * @property {boolean} [cropBox] Use the crop box rather than the media box with
  * `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`.
  * @property {number} [cropHeight] Specifies the height of crop area in pixels
@@ -46,45 +49,41 @@
 
 /** @type {Record<keyof PdfToTextOptions, import("../index").OptionDetails>} */
 module.exports = {
-	boundingBoxXhtml: { arg: "-bbox", type: "boolean" },
+	boundingBoxXhtml: { arg: "-bbox", type: "boolean", minVersion: "0.15.1" },
 	boundingBoxXhtmlLayout: {
 		arg: "-bbox-layout",
 		type: "boolean",
+		minVersion: "0.36.0",
 	},
-	cropBox: {
-		arg: "-cropbox",
-		type: "boolean",
-		minVersion: "21.03.0",
-	},
-	cropHeight: { arg: "-H", type: "number" },
-	cropWidth: { arg: "-W", type: "number" },
-	cropXAxis: { arg: "-x", type: "number" },
-	cropYAxis: { arg: "-y", type: "number" },
-	eolConvention: { arg: "-eol", type: "string" },
-	firstPageToConvert: { arg: "-f", type: "number" },
-	fixedWidthLayout: { arg: "-fixed", type: "number" },
+	columnSpacing: { arg: "-colspacing", type: "number", minVersion: "0.1.0" },
+	cropBox: { arg: "-cropbox", type: "boolean", minVersion: "21.03.0" },
+	cropHeight: { arg: "-H", type: "number", minVersion: "0.11.0" },
+	cropWidth: { arg: "-W", type: "number", minVersion: "0.11.0" },
+	cropXAxis: { arg: "-x", type: "number", minVersion: "0.11.0" },
+	cropYAxis: { arg: "-y", type: "number", minVersion: "0.11.0" },
+	eolConvention: { arg: "-eol", type: "string", minVersion: "0.1.0" },
+	firstPageToConvert: { arg: "-f", type: "number", minVersion: "0.1.0" },
+	fixedWidthLayout: { arg: "-fixed", type: "number", minVersion: "0.1.0" },
 	generateHtmlMetaFile: {
 		arg: "-htmlmeta",
 		type: "boolean",
+		minVersion: "0.1.0",
 	},
-	generateTsvFile: { arg: "-tsv", type: "boolean" },
-	lastPageToConvert: { arg: "-l", type: "number" },
+	generateTsvFile: { arg: "-tsv", type: "boolean", minVersion: "22.05.0" },
+	lastPageToConvert: { arg: "-l", type: "number", minVersion: "0.1.0" },
 	listEncodingOptions: {
 		arg: "-listenc",
 		type: "boolean",
+		minVersion: "0.9.0",
 	},
-	maintainLayout: { arg: "-layout", type: "boolean" },
-	noDiagonalText: {
-		arg: "-nodiag",
-		type: "boolean",
-		minVersion: "0.80.0",
-	},
-	noPageBreaks: { arg: "-nopgbrk", type: "boolean" },
-	outputEncoding: { arg: "-enc", type: "string" },
-	ownerPassword: { arg: "-opw", type: "string" },
-	printVersionInfo: { arg: "-v", type: "boolean" },
-	quiet: { arg: "-q", type: "boolean" },
-	rawLayout: { arg: "-raw", type: "boolean" },
-	resolution: { arg: "-r", type: "number" },
-	userPassword: { arg: "-upw", type: "string" },
+	maintainLayout: { arg: "-layout", type: "boolean", minVersion: "0.1.0" },
+	noDiagonalText: { arg: "-nodiag", type: "boolean", minVersion: "0.80.0" },
+	noPageBreaks: { arg: "-nopgbrk", type: "boolean", minVersion: "0.1.0" },
+	outputEncoding: { arg: "-enc", type: "string", minVersion: "0.1.0" },
+	ownerPassword: { arg: "-opw", type: "string", minVersion: "0.1.0" },
+	printVersionInfo: { arg: "-v", type: "boolean", minVersion: "0.1.0" },
+	quiet: { arg: "-q", type: "boolean", minVersion: "0.1.0" },
+	rawLayout: { arg: "-raw", type: "boolean", minVersion: "0.1.0" },
+	resolution: { arg: "-r", type: "number", minVersion: "0.1.0" },
+	userPassword: { arg: "-upw", type: "string", minVersion: "0.1.0" },
 };

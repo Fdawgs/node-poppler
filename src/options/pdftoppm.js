@@ -58,7 +58,7 @@
  * @property {number} [resolutionYAxis] Specifies the Y resolution, in pixels per inch of
  * image files (or rasterized regions in vector output). The default is 150 PPI.
  * @property {boolean} [scaleDimensionBeforeRotation] Swaps horizontal and vertical size for
- * a rotated (landscape) pdf before scaling instead of after.
+ * a rotated (landscape) PDF before scaling instead of after.
  * @property {number} [scalePageTo] Scales the long side of each page (width for landscape
  * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
  * be determined by the aspect ratio of the page.

@@ -159,6 +159,7 @@ module.exports = {
 	optimizeColorSpace: {
 		arg: "-optimizecolorspace",
 		type: "boolean",
+		minVersion: "0.32.0",
 	},
 	originalPageSizes: {
 		arg: "-origpagesizes",

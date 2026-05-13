@@ -185,7 +185,7 @@ module.exports = {
 	rasterize: {
 		arg: "-rasterize",
 		type: "string",
-		minVersion: "0.90.0",
+		minVersion: "0.32.0",
 	},
 	resolutionXYAxis: { arg: "-r", type: "number" },
 	userPassword: { arg: "-upw", type: "string" },

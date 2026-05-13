@@ -13,10 +13,10 @@
 
 /** @type {Record<keyof PdfFontsOptions, import("../index").OptionDetails>} */
 module.exports = {
-	firstPageToExamine: { arg: "-f", type: "number", minVersion: "0.1.0" },
-	lastPageToExamine: { arg: "-l", type: "number", minVersion: "0.1.0" },
+	firstPageToExamine: { arg: "-f", type: "number", minVersion: undefined },
+	lastPageToExamine: { arg: "-l", type: "number", minVersion: undefined },
 	listSubstitutes: { arg: "-subst", type: "boolean", minVersion: "0.19.0" },
-	ownerPassword: { arg: "-opw", type: "string", minVersion: "0.1.0" },
-	printVersionInfo: { arg: "-v", type: "boolean", minVersion: "0.1.0" },
-	userPassword: { arg: "-upw", type: "string", minVersion: "0.1.0" },
+	ownerPassword: { arg: "-opw", type: "string", minVersion: undefined },
+	printVersionInfo: { arg: "-v", type: "boolean", minVersion: undefined },
+	userPassword: { arg: "-upw", type: "string", minVersion: undefined },
 };

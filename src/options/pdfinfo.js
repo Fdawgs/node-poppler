@@ -11,6 +11,7 @@
  * @property {boolean} [printAsJson] Print result as a JSON object.
  * @property {boolean} [printBoundingBoxes] Prints the page box bounding boxes:
  * MediaBox, CropBox, BleedBox, TrimBox, and ArtBox.
+ * @property {boolean} [printCustomMetadata] Print both custom and standard metadata.
  * @property {boolean} [printDocStruct] Prints the logical document structure
  * of a Tagged-PDF file.
  * @property {boolean} [printDocStructText] Print the textual content along with the
@@ -37,35 +38,28 @@ module.exports = {
 	listEncodingOptions: {
 		arg: "-listenc",
 		type: "boolean",
+		minVersion: "0.9.0",
 	},
 	outputEncoding: { arg: "-enc", type: "string" },
 	ownerPassword: { arg: "-opw", type: "string" },
 	printAsJson: { arg: "", type: "boolean" },
-	printBoundingBoxes: {
-		arg: "-box",
+	printBoundingBoxes: { arg: "-box", type: "boolean" },
+	printCustomMetadata: {
+		arg: "-custom",
 		type: "boolean",
+		minVersion: "21.10.0",
 	},
 	printDocStruct: { arg: "-struct", type: "boolean" },
 	printDocStructText: {
 		arg: "-struct-text",
 		type: "boolean",
 	},
-	printIsoDates: {
-		arg: "-isodates",
-		type: "boolean",
-	},
-	printJS: { arg: "-js", type: "boolean" },
+	printIsoDates: { arg: "-isodates", type: "boolean", minVersion: "0.45.0" },
+	printJS: { arg: "-js", type: "boolean", minVersion: "0.25.0" },
 	printMetadata: { arg: "-meta", type: "boolean" },
-	printNamedDests: { arg: "-dests", type: "boolean" },
-	printRawDates: {
-		arg: "-rawdates",
-		type: "boolean",
-	},
-	printUrls: {
-		arg: "-url",
-		type: "boolean",
-		minVersion: "21.11.0",
-	},
+	printNamedDests: { arg: "-dests", type: "boolean", minVersion: "0.58.0" },
+	printRawDates: { arg: "-rawdates", type: "boolean" },
+	printUrls: { arg: "-url", type: "boolean", minVersion: "21.11.0" },
 	printVersionInfo: { arg: "-v", type: "boolean" },
 	userPassword: { arg: "-upw", type: "string" },
 };

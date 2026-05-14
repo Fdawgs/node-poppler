@@ -34,34 +34,34 @@
  * @property {string} [jpegOptions] When used with `options.jpegFile`, this option can
  * be used to control the JPEG compression parameters. It takes a string of the form
  * `"<opt>=<val>[,<opt>=<val>]"`. Currently available options are:
- * - `quality` Selects the JPEG quality value. The value must be an integer between 0 and 100.
- * - `progressive` Select progressive JPEG output. The possible values are "y", "n", indicating
- * progressive (yes) or non-progressive (no), respectively.
+ * - `quality` Selects the JPEG quality value. The value must be an integer between 0 and 100
+ * - `progressive` Select progressive JPEG output. The possible values are `"y"`, `"n"`, indicating
+ * progressive (yes) or non-progressive (no), respectively
  * - `optimize` Sets whether to compute optimal Huffman coding tables for the JPEG output, which
- * will create smaller files but make an extra pass over the data. The value must be "y" or "n",
- * with "y" performing optimization, otherwise the default Huffman tables are used.
+ * will create smaller files but make an extra pass over the data. The value must be `"y"` or `"n"`,
+ * with `"y"` performing optimization, otherwise the default Huffman tables are used
  *
  * Example: `"quality=95,optimize=y"`.
  * @property {number} [lastPageToConvert] Specifies the last page to convert.
  * @property {boolean} [monochromeFile] Generate monochrome file (PNG and TIFF only).
  * @property {boolean} [noCenter] By default, PDF pages smaller than the paper
  * (after any scaling) are centered on the paper. This option causes them to be aligned to
- * the lower-left corner of the paper instead (PS,PDF,SVG only).
+ * the lower-left corner of the paper instead (PS, PDF, and SVG only).
  * @property {boolean} [noCrop] By default, printing output is cropped to the CropBox
- * specified in the PDF file. This option disables cropping (PS, PDF, SVG only).
+ * specified in the PDF file. This option disables cropping (PS, PDF, and SVG only).
  * @property {boolean} [noShrink] Do not scale PDF pages which are larger than the paper
- * (PS,PDF,SVG only). By default, pages larger than the paper are shrunk to fit.
+ * (PS, PDF, SVG only). By default, pages larger than the paper are shrunk to fit.
  * @property {boolean} [oddPagesOnly] Generates only the odd numbered pages.
  * @property {boolean} [originalPageSizes] Set the paper size of each page to match
  * the size specified in the PDF file.
  * @property {string} [ownerPassword] Specify the owner password for the PDF file.
  * Providing this will bypass all security restrictions.
- * @property {number} [paperHeight] Set the paper height, in points (PS, PDF, SVG only).
- * @property {('A3'|'A4'|'legal'|'letter'|'match')} [paperSize] Set the paper size to one of `A3`, `A4`,
- * `legal`, or `letter` (PS,PDF,SVG only). This can also be set to `match`, which will set the paper size
- * of each page to match the size specified in the PDF file. If none of the paperSize,
- * paperWidth, or paperHeight options are specified the default is to match the paper size.
- * @property {number} [paperWidth] Set the paper width, in points (PS,PDF,SVG only).
+ * @property {number} [paperHeight] Set the paper height, in points (PS, PDF, and SVG only).
+ * @property {('A3'|'A4'|'legal'|'letter'|'match')} [paperSize] Set the paper size to one of `'A3'`, `'A4'`,
+ * `'legal'`, or `'letter'` (PS, PDF, and SVG only). This can also be set to `'match'`, which will set the
+ * paper size of each page to match the size specified in the PDF file. If none of `options.paperSize`,
+ * `options.paperWidth`, or `options.paperHeight` is specified the default is to match the paper size.
+ * @property {number} [paperWidth] Set the paper width, in points (PS, PDF, and SVG only).
  * @property {boolean} [pdfFile] Generate PDF file.
  * @property {boolean} [pngFile] Generate PNG file(s).
  * @property {boolean} [printVersionInfo] Print copyright and version information.
@@ -73,19 +73,19 @@
  * Level 2 features plus shading patterns and masked images. This is the default setting.
  * @property {boolean} [quiet] Do not print any messages or errors.
  * @property {number} [resolutionXAxis] Specifies the X resolution, in pixels per inch of
- * image files (or rasterized regions in vector output). The default is 150 PPI.
+ * image files (or rasterized regions in vector output). The default is `150` PPI.
  * @property {number} [resolutionXYAxis] Specifies the X and Y resolution, in pixels per
- * inch of image files (or rasterized regions in vector output). The default is 150 PPI.
+ * inch of image files (or rasterized regions in vector output). The default is `150` PPI.
  * @property {number} [resolutionYAxis] Specifies the Y resolution, in pixels per inch of
- * image files (or rasterized regions in vector output). The default is 150 PPI.
+ * image files (or rasterized regions in vector output). The default is `150` PPI.
  * @property {number} [scalePageTo] Scales the long side of each page (width for landscape
  * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
  * be determined by the aspect ratio of the page (PNG/JPEG/TIFF only).
  * @property {number} [scalePageToXAxis] Scales each page horizontally to fit in scale-to-x
- * pixels. If scale-to-y is set to -1, the vertical size will determined by the aspect ratio of
+ * pixels. If scale-to-y is set to `-1`, the vertical size will determined by the aspect ratio of
  * the page (PNG/JPEG/TIFF only).
  * @property {number} [scalePageToYAxis] Scales each page vertically to fit in scale-to-y
- * pixels. If scale-to-x is set to -1, the horizontal size will determined by the aspect ratio of
+ * pixels. If scale-to-x is set to `-1`, the horizontal size will determined by the aspect ratio of
  * the page (PNG/JPEG/TIFF only).
  * @property {boolean} [singleFile] Writes only the first page and does not add digits.
  * Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`.

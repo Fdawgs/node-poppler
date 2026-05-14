@@ -75,13 +75,13 @@
  * This option requires `options.processColorFormat` to be CMYK8.
  * @property {string} [ownerPassword] Owner password (for encrypted files).
  * @property {number} [paperHeight] Set the paper height, in points.
- * @property {('A3'|'A4'|'legal'|'letter'|'match')} [paperSize] Set the paper size to one of `A3`, `A4`,
- * `legal`, or `letter`. This can also be set to `match`, which will set the paper size
+ * @property {('A3'|'A4'|'legal'|'letter'|'match')} [paperSize] Set the paper size to one of `'A3'`, `'A4'`,
+ * `'legal'`, or `'letter'`. This can also be set to `'match'`, which will set the paper size
  * of each page to match the size specified in the PDF file. If none of the paperSize,
  * paperWidth, or paperHeight options are specified the default is to match the paper size.
  * @property {number} [paperWidth] Set the paper width, in points.
  * @property {boolean} [passFonts] By default, references to non-embedded 8-bit fonts
- * in the PDF file are substituted with the closest `Helvetica`, `Times-Roman`, or `Courier` font.
+ * in the PDF file are substituted with the closest Helvetica, Times-Roman, or Courier font.
  * This option passes references to non-embedded fonts through to the PostScript file.
  * @property {boolean} [passLevel1CustomColor] When generating Level 1 separable PostScript,
  * preserve custom colors instead of converting them to CMYK.
@@ -91,20 +91,20 @@
  * @property {('CMYK8'|'MONO8'|'RGB8')} [processColorFormat] Sets the process color format as it is used
  * during rasterization and transparency reduction.
  *
- * The default depends on the other settings: For `options.level1` the default is MONO8; for `options.level1Sep`,
- * `options.level2Sep`, `options.level3Sep`, or `options.overprint` the default is CMYK8; in all other
- * cases RGB8 is the default.
+ * The default depends on the other settings: For `options.level1` the default is `'MONO8'`; for `options.level1Sep`,
+ * `options.level2Sep`, `options.level3Sep`, or `options.overprint` the default is `'CMYK8'`; in all other
+ * cases `'RGB8'` is the default.
  * If `options.processColorProfile` is set then `options.processColorFormat` is inferred from the specified ICC profile.
  * @property {string} [processColorProfile] Sets the ICC profile that is assumed during
  * rasterization and transparency reduction.
  * @property {boolean} [quiet] Do not print any messages or errors.
  * @property {('always'|'never'|'whenneeded')} [rasterize] By default, pdfToPs rasterizes pages as needed,
- * for example, if they contain transparencies. To force rasterization, set `rasterize` to `always`.
+ * for example, if they contain transparencies. To force rasterization, set `rasterize` to `'always'`.
  * Use this to eliminate fonts.
- * To prevent rasterization, set `rasterize` to `never`.
+ * To prevent rasterization, set `rasterize` to `'never'`.
  * This may produce files that display incorrectly.
  * @property {number} [resolutionXYAxis] Specifies the X and Y resolution, in pixels per
- * inch of image files (or rasterized regions in vector output). The default is 300 PPI.
+ * inch of image files (or rasterized regions in vector output). The default is `300` PPI.
  * @property {string} [userPassword] User password (for encrypted files).
  */
 

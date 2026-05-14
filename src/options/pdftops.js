@@ -83,6 +83,9 @@
  * @property {boolean} [passFonts] By default, references to non-embedded 8-bit fonts
  * in the PDF file are substituted with the closest `Helvetica`, `Times-Roman`, or `Courier` font.
  * This option passes references to non-embedded fonts through to the PostScript file.
+ * @property {boolean} [passLevel1CustomColor] When generating Level 1 separable PostScript,
+ * preserve custom colors instead of converting them to CMYK.
+ * Has no effect if `options.level1Sep` is not set.
  * @property {boolean} [preload] Preload images and forms.
  * @property {boolean} [printVersionInfo] Print copyright and version information.
  * @property {('CMYK8'|'MONO8'|'RGB8')} [processColorFormat] Sets the process color format as it is used
@@ -171,6 +174,7 @@ module.exports = {
 	paperSize: { arg: "-paper", type: "string" },
 	paperWidth: { arg: "-paperw", type: "number" },
 	passFonts: { arg: "-passfonts", type: "boolean" },
+	passLevel1CustomColor: { arg: "-passlevel1customcolor", type: "boolean" },
 	preload: { arg: "-preload", type: "boolean" },
 	printVersionInfo: { arg: "-v", type: "boolean" },
 	processColorFormat: {

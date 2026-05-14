@@ -45,13 +45,13 @@
  * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
  * @property {('all'|'none'|'soft')} [removeHyphens] Controls end-of-line hyphen handling:
  * - `'all'` removes end-of-line hyphens (U+002D, U+2010, U+FE63, U+FF0D) and Unicode
- *   soft hyphens (U+00AD), merging words across lines (default).
+ * soft hyphens (U+00AD), merging words across lines (default).
  * - `'none'` keeps all end-of-line hyphens and line breaks unchanged.
  * - `'soft'` removes only Unicode soft hyphens (U+00AD), merging words across lines.
- *   ASCII and other hyphens characters are preserved.
+ * ASCII and other hyphen characters are preserved.
  *
- * This option has no effect when `options.rawLayout` or `options.maintainLayout
- *  are set to `true`.
+ * This option has no effect when `options.rawLayout` or `options.maintainLayout`
+ * are set to `true`.
  * @property {number} [resolution] Specifies the resolution in DPI. Default is 72.
  * @property {string} [userPassword] User password (for encrypted files).
  */

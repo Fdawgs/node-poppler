@@ -80,7 +80,7 @@
  * of each page to match the size specified in the PDF file. If none of the paperSize,
  * paperWidth, or paperHeight options are specified the default is to match the paper size.
  * @property {number} [paperWidth] Set the paper width, in points.
- * @property {boolean} [passfonts] By default, references to non-embedded 8-bit fonts
+ * @property {boolean} [passFonts] By default, references to non-embedded 8-bit fonts
  * in the PDF file are substituted with the closest `Helvetica`, `Times-Roman`, or `Courier` font.
  * This option passes references to non-embedded fonts through to the PostScript file.
  * @property {boolean} [preload] Preload images and forms.
@@ -170,7 +170,7 @@ module.exports = {
 	paperHeight: { arg: "-paperh", type: "number" },
 	paperSize: { arg: "-paper", type: "string" },
 	paperWidth: { arg: "-paperw", type: "number" },
-	passfonts: { arg: "-passfonts", type: "boolean" },
+	passFonts: { arg: "-passfonts", type: "boolean" },
 	preload: { arg: "-preload", type: "boolean" },
 	printVersionInfo: { arg: "-v", type: "boolean" },
 	processColorFormat: {

@@ -33,6 +33,7 @@
  * @property {boolean} [forcePageNumber] Force page number even if there is only one page.
  * @property {boolean} [grayscaleFile] Generate grayscale PGM file (instead of a color PPM file).
  * @property {boolean} [hideAnnotations] Hide annotations.
+ * @property {boolean} [jpegCmyk] generate a CMYK JPEG file.
  * @property {boolean} [jpegFile] Generate JPEG file instead of a PPM file.
  * @property {string} [jpegOptions] When used with `options.jpegFile`, this option can
  * be used to control the JPEG compression parameters. It takes a string of the form
@@ -124,6 +125,7 @@ module.exports = {
 		type: "boolean",
 		minVersion: "0.84.0",
 	},
+	jpegCmyk: { arg: "-jpegcmyk", type: "boolean" },
 	jpegFile: { arg: "-jpeg", type: "boolean", minVersion: "0.13.0" },
 	jpegOptions: { arg: "-jpegopt", type: "string", minVersion: "0.58.0" },
 	lastPageToConvert: { arg: "-l", type: "number" },

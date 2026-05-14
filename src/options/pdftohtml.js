@@ -10,7 +10,7 @@
  * @property {boolean} [fontFullName] Outputs the font name without any substitutions.
  * @property {boolean} [ignoreImages] Ignore images.
  * @property {('JPG'|'PNG')} [imageFormat] Image file format for Splash output (JPG or PNG).
- * If complexOutput is selected, but imageFormat is not specified, PNG will be assumed.
+ * If `options.complexOutput` is enabled, but `options.imageFormat` is not specified, PNG will be assumed.
  * @property {number} [lastPageToConvert] Last page to print.
  * @property {boolean} [noDrm] Override document DRM settings.
  * @property {boolean} [noFrames] Generate no frames. Not supported in complex output mode.
@@ -18,7 +18,7 @@
  * @property {boolean} [noRoundedCoordinates] Do not round coordinates
  * (with XML output only).
  * @property {string} [outputEncoding] Sets the encoding to use for text output.
- * This defaults to `UTF-8`.
+ * This defaults to `'UTF-8'`.
  * @property {string} [ownerPassword] Owner password (for encrypted files).
  * @property {boolean} [printVersionInfo] Print copyright and version info.
  * @property {boolean} [quiet] Do not print any messages or errors.
@@ -26,10 +26,10 @@
  * @property {boolean} [stdout] Use standard output.
  * @property {string} [userPassword] User password (for encrypted files).
  * @property {number} [wordBreakThreshold] Adjust the word break threshold percent.
- * Default is 10. Word break occurs when distance between two adjacent characters is greater
+ * Default is `10`. Word break occurs when distance between two adjacent characters is greater
  * than this percent of character height.
  * @property {boolean} [xmlOutput] Output for XML post-processing.
- * @property {number} [zoom] Zoom the PDF document (default 1.5).
+ * @property {number} [zoom] Zoom the PDF document (default `1.5`).
  */
 
 /** @type {Record<keyof PdfToHtmlOptions, import("../index").OptionDetails>} */

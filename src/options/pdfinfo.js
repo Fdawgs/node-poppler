@@ -6,7 +6,7 @@
  * @property {number} [lastPageToConvert] Last page to print.
  * @property {boolean} [listEncodingOptions] List the available encodings.
  * @property {string} [outputEncoding] Sets the encoding to use for text output.
- * This defaults to `UTF-8`.
+ * This defaults to `'UTF-8'`.
  * @property {string} [ownerPassword] Owner password (for encrypted files).
  * @property {boolean} [printAsJson] Print result as a JSON object.
  * @property {boolean} [printBoundingBoxes] Prints the page box bounding boxes:

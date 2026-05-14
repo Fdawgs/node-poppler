@@ -8,7 +8,7 @@
  * bounding box information for each block, line, and word in the file.
  * @property {number} [columnSpacing] Specifies how much spacing to allow after a word
  * before considering adjacent text to be a new column, measured as a fraction
- * of the font size. Default is 0.7.
+ * of the font size. Default is `0.7`.
  * @property {boolean} [cropBox] Use the crop box rather than the media box with
  * `options.boundingBoxXhtml` and `options.boundingBoxXhtmlLayout`.
  * @property {number} [cropHeight] Specifies the height of crop area in pixels
@@ -37,7 +37,7 @@
  * @property {boolean} [noPageBreaks] Do not insert page breaks (form feed characters)
  * between pages.
  * @property {string} [outputEncoding] Sets the encoding to use for text output.
- * This defaults to `UTF-8`.
+ * This defaults to `'UTF-8'`.
  * @property {string} [ownerPassword] Owner password (for encrypted files).
  * @property {boolean} [printVersionInfo] Print copyright and version information.
  * @property {boolean} [quiet] Do not print any messages or errors.
@@ -45,14 +45,14 @@
  * hack which often undoes column formatting, etc. Use of raw mode is no longer recommended.
  * @property {('all'|'none'|'soft')} [removeHyphens] Controls end-of-line hyphen handling:
  * - `'all'` removes end-of-line hyphens (U+002D, U+2010, U+FE63, U+FF0D) and Unicode
- * soft hyphens (U+00AD), merging words across lines (default).
- * - `'none'` keeps all end-of-line hyphens and line breaks unchanged.
+ * soft hyphens (U+00AD), merging words across lines (default)
+ * - `'none'` keeps all end-of-line hyphens and line breaks unchanged
  * - `'soft'` removes only Unicode soft hyphens (U+00AD), merging words across lines.
- * ASCII and other hyphen characters are preserved.
+ * ASCII and other hyphen characters are preserved
  *
  * This option has no effect when `options.rawLayout` or `options.maintainLayout`
  * are set to `true`.
- * @property {number} [resolution] Specifies the resolution in DPI. Default is 72.
+ * @property {number} [resolution] Specifies the resolution in DPI. Default is `72`.
  * @property {string} [userPassword] User password (for encrypted files).
  */
 

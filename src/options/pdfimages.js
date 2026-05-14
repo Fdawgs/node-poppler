@@ -12,7 +12,7 @@
  * @property {boolean} [jpegFile] Generate JPEG images as JPEG files.
  * @property {boolean} [list] Instead of writing the images, list the
  * images along with various information for each image.
- * NOTE: Do not specify the outputPrefix with this option.
+ * NOTE: Do not specify the `outputPrefix` with this option.
  * @property {boolean} [outputPageNumbers] Include page numbers in output file names.
  * @property {string} [ownerPassword] Owner password (for encrypted files).
  * @property {boolean} [pngFile] Change the default output format to PNG.

@@ -82,10 +82,10 @@
  * pages, height for portrait pages) to fit in scale-to pixels. The size of the short side will
  * be determined by the aspect ratio of the page (PNG/JPEG/TIFF only).
  * @property {number} [scalePageToXAxis] Scales each page horizontally to fit in scale-to-x
- * pixels. If scale-to-y is set to `-1`, the vertical size will determined by the aspect ratio of
+ * pixels. If scale-to-y is set to `-1`, the vertical size will be determined by the aspect ratio of
  * the page (PNG/JPEG/TIFF only).
  * @property {number} [scalePageToYAxis] Scales each page vertically to fit in scale-to-y
- * pixels. If scale-to-x is set to `-1`, the horizontal size will determined by the aspect ratio of
+ * pixels. If scale-to-x is set to `-1`, the horizontal size will be determined by the aspect ratio of
  * the page (PNG/JPEG/TIFF only).
  * @property {boolean} [singleFile] Writes only the first page and does not add digits.
  * Can only be used with `options.jpegFile`, `options.pngFile`, and `options.tiffFile`.

@@ -4,7 +4,7 @@
 	"$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
 
 	"name": "Node.js",
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:22",
 
 	"customizations": {
 		"vscode": {

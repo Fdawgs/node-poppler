@@ -40,7 +40,7 @@ jobs:
         name: Unit Tests
         strategy:
             matrix:
-                node-version: [20, 22, 24]
+                node-version: [22, 24]
                 os: [macos-latest, ubuntu-latest, windows-latest]
         runs-on: ${{ matrix.os }}
         permissions:

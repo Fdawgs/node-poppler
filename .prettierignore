@@ -1,4 +1,5 @@
 # Auto-generated files
+.devcontainer/devcontainer-lock.json
 .github/release-please/manifest.json
 CHANGELOG.md
 package.json

@@ -4,7 +4,7 @@
 	"$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
 
 	"name": "Node.js",
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:20-bookworm",
 
 	"customizations": {
 		"vscode": {
@@ -30,7 +30,6 @@
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features
 	"features": {
-		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
 	// Change owner of the /workspaces folder to the non-root user to avoid permission issues

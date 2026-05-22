@@ -1,5 +1,18 @@
 version: 2
 updates:
+    - package-ecosystem: devcontainers
+      commit-message:
+          include: scope
+          prefix: build
+      directory: /
+      groups:
+          devcontainers:
+              patterns:
+                  - "ghcr.io/devcontainers/features/*"
+      open-pull-requests-limit: 20
+      schedule:
+          interval: monthly
+
     - package-ecosystem: github-actions
       commit-message:
           include: scope

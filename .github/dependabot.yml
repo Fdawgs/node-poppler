@@ -29,7 +29,6 @@ updates:
       groups:
           fdawgs-owned:
               patterns:
-                  - "@fdawgs/*"
                   - "fdawgs/*"
           github-owned:
               patterns:

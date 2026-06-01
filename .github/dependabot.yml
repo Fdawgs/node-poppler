@@ -5,9 +5,9 @@ updates:
           include: scope
           prefix: build
       cooldown:
+          default-days: 7
           include:
               - "*"
-          default-days: 7
       directory: /
       groups:
           devcontainers:
@@ -22,9 +22,9 @@ updates:
           include: scope
           prefix: ci
       cooldown:
+          default-days: 7
           include:
               - "*"
-          default-days: 7
       directory: /
       groups:
           fdawgs-owned:

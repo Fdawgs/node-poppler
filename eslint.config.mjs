@@ -1,6 +1,5 @@
 import { fileURLToPath, URL } from "node:url";
-import { includeIgnoreFile } from "@eslint/compat";
-import { defineConfig } from "eslint/config";
+import { defineConfig, includeIgnoreFile } from "eslint/config";
 
 // Configs
 import fdawgs from "@fdawgs/eslint-config";

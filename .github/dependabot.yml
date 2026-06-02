@@ -4,6 +4,10 @@ updates:
       commit-message:
           include: scope
           prefix: build
+      cooldown:
+          default-days: 7
+          include:
+              - "*"
       directory: /
       groups:
           devcontainers:
@@ -17,8 +21,15 @@ updates:
       commit-message:
           include: scope
           prefix: ci
+      cooldown:
+          default-days: 7
+          include:
+              - "*"
       directory: /
       groups:
+          fdawgs-owned:
+              patterns:
+                  - "fdawgs/*"
           github-owned:
               patterns:
                   - "actions/*"

@@ -4,9 +4,6 @@
 	"eslint.useFlatConfig": true,
 	"files.eol": "\n",
 	"gitlens.telemetry.enabled": false,
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
 	"js/ts.updateImportsOnFileMove.enabled": "always",
 	"npm.packageManager": "npm",
 	"prettier.prettierPath": "./node_modules/prettier/index.cjs",

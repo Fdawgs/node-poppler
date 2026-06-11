@@ -42,4 +42,4 @@ jobs:
         name: Link Check
         permissions:
             contents: read
-        uses: fdawgs/workflows/.github/workflows/reusable-link-check.yml@d1e4b4f907d13700a600837a18e8d01c56b179bd # v2.1.0
+        uses: fdawgs/workflows/.github/workflows/reusable-link-check.yml@157c20f8c0ef03c36f2bdf7c53f76bed063f55b8 # v2.1.2

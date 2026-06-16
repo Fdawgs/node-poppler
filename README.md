@@ -5,6 +5,7 @@
 [![CI](https://github.com/Fdawgs/node-poppler/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Fdawgs/node-poppler/actions/workflows/ci.yml)
 [![Coverage status](https://coveralls.io/repos/github/Fdawgs/node-poppler/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/node-poppler?branch=main)
 [![code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
+[![OSSF Scorecard](https://api.scorecard.dev/projects/github.com/Fdawgs/node-poppler/badge)](https://scorecard.dev/viewer/?uri=github.com/Fdawgs/node-poppler)
 
 > Asynchronous Node.js wrapper for the Poppler PDF rendering utilities
 

@@ -19,7 +19,6 @@ updates:
 
     - package-ecosystem: github-actions
       commit-message:
-          include: scope
           prefix: ci
       cooldown:
           default-days: 7

@@ -2,6 +2,81 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.0](https://github.com/Fdawgs/node-poppler/compare/v9.1.2...v10.0.0) (2026-06-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **pdftops:** `passfonts` renamed to `passFonts` for pdfToPs function
+* **options/pdftops:** `optimizecolorspace` renamed to `optimizeColorSpace` for pdfToPs function
+
+### Bug fixes
+
+* **options/pdffonts:** add `minVersion` properties ([#775](https://github.com/Fdawgs/node-poppler/issues/775)) ([e9005b1](https://github.com/Fdawgs/node-poppler/commit/e9005b1499fa69453eb07080387274b840a52d0d))
+* **options/pdfseparate:** add `minVersion` properties ([#776](https://github.com/Fdawgs/node-poppler/issues/776)) ([4867242](https://github.com/Fdawgs/node-poppler/commit/4867242aff01fa7afbc23aa35b502d1fa1fc3def))
+* **options/pdftocairo:** add missing `minVersion` properties ([#781](https://github.com/Fdawgs/node-poppler/issues/781)) ([565bcb3](https://github.com/Fdawgs/node-poppler/commit/565bcb30fabce8462b7be494727ce412c24aba48))
+* **options/pdftohtml:** add missing `minVersion` properties ([#777](https://github.com/Fdawgs/node-poppler/issues/777)) ([85edeb0](https://github.com/Fdawgs/node-poppler/commit/85edeb051fa4e5aa20a7deb7bd193114bd0bc86a))
+* **options/pdftops:** use camelcase for `optimizecolorspace` ([#773](https://github.com/Fdawgs/node-poppler/issues/773)) ([a8635dd](https://github.com/Fdawgs/node-poppler/commit/a8635dd4d31cc2f6dea0cdb6f46a5f1f86909eab))
+* **pdftops:** use camelcase for `passfonts` ([#791](https://github.com/Fdawgs/node-poppler/issues/791)) ([5f93a9e](https://github.com/Fdawgs/node-poppler/commit/5f93a9ef26092e6ea8b9db6c1047b55e2d4dc7a6))
+
+
+### Continuous integration
+
+* add ossf scorecard workflow ([#807](https://github.com/Fdawgs/node-poppler/issues/807)) ([34f4f70](https://github.com/Fdawgs/node-poppler/commit/34f4f70dc46d9ca30113eb2ead04193f5add0dfc))
+* **ci:** add node 26 to test matrix ([#795](https://github.com/Fdawgs/node-poppler/issues/795)) ([8691a65](https://github.com/Fdawgs/node-poppler/commit/8691a654d50b907a3839b5f79963a30ff0b956f6))
+* **ci:** use reusable code quality workflow ([#770](https://github.com/Fdawgs/node-poppler/issues/770)) ([d251d06](https://github.com/Fdawgs/node-poppler/commit/d251d066b83cb87db6f038ca4243bd435a640cbc))
+* **deps:** bump fastify/github-action-merge-dependabot ([#766](https://github.com/Fdawgs/node-poppler/issues/766)) ([eac7759](https://github.com/Fdawgs/node-poppler/commit/eac77592bdab50e8c6d1fbae453ef86b26d8a453))
+* **deps:** bump github/codeql-action in the github-owned group ([#802](https://github.com/Fdawgs/node-poppler/issues/802)) ([70a3875](https://github.com/Fdawgs/node-poppler/commit/70a3875ce303c9458bef35732802913d05b5bc1d))
+* **deps:** bump googleapis/release-please-action from 4.4.0 to 5.0.0 ([#765](https://github.com/Fdawgs/node-poppler/issues/765)) ([63efdf7](https://github.com/Fdawgs/node-poppler/commit/63efdf79ffb2a78376dc6432a96b2d0ab5ed7235))
+* **deps:** bump the fdawgs-owned group with 3 updates ([#805](https://github.com/Fdawgs/node-poppler/issues/805)) ([d721413](https://github.com/Fdawgs/node-poppler/commit/d721413ef55332905567dddb37dd34faf70ffa98))
+* **link-check:** use sha instead of tag ([#771](https://github.com/Fdawgs/node-poppler/issues/771)) ([dae3876](https://github.com/Fdawgs/node-poppler/commit/dae3876d56d380121ad13fbde33e420a2f40c943))
+* **lock-threads:** reduce frequency from daily to monthly ([#774](https://github.com/Fdawgs/node-poppler/issues/774)) ([c72b38e](https://github.com/Fdawgs/node-poppler/commit/c72b38efc74219bbb6f245a88a2b0145eae60aec))
+* use full-length commit sha for github owned actions ([#797](https://github.com/Fdawgs/node-poppler/issues/797)) ([f0dec9b](https://github.com/Fdawgs/node-poppler/commit/f0dec9b8859f930945516c44c833986171c3f477))
+
+
+### Dependencies
+
+* **.devcontainer:** add lockfile; use bookworm for base image ([#798](https://github.com/Fdawgs/node-poppler/issues/798)) ([eac382b](https://github.com/Fdawgs/node-poppler/commit/eac382bddbaed7a391a05e46bde145ca883ce1e1))
+* **dependabot:** add cooldown for actions and devcontainers ([#801](https://github.com/Fdawgs/node-poppler/issues/801)) ([1aea74c](https://github.com/Fdawgs/node-poppler/commit/1aea74c8d7f00da20ab5c862dc5543ed423631e5))
+* **dependabot:** group github-owned updates ([#772](https://github.com/Fdawgs/node-poppler/issues/772)) ([63a2e3a](https://github.com/Fdawgs/node-poppler/commit/63a2e3a113af4bd8359ddf72e574c0b1818f624c))
+* **deps-dev:** bump the eslint group across 1 directory with 2 updates ([#800](https://github.com/Fdawgs/node-poppler/issues/800)) ([8fae244](https://github.com/Fdawgs/node-poppler/commit/8fae2446d29aba73e92820999b10a118d2489f9b))
+* **deps-dev:** bump typescript from 5.9.3 to 6.0.3 ([#767](https://github.com/Fdawgs/node-poppler/issues/767)) ([9720dc2](https://github.com/Fdawgs/node-poppler/commit/9720dc2af6c08b112f743b11ed566d90dd745399))
+* **deps-dev:** pin prettier ([#809](https://github.com/Fdawgs/node-poppler/issues/809)) ([c24946b](https://github.com/Fdawgs/node-poppler/commit/c24946b9259c76b4dbf665a72783382833d64c9e))
+
+
+### Documentation
+
+* fix broken links ([#811](https://github.com/Fdawgs/node-poppler/issues/811)) ([d589988](https://github.com/Fdawgs/node-poppler/commit/d58998876ec6d962ba7aa0ecf7138cfea7d55c83))
+
+
+### Features
+
+* **pdfimages:** add missing options ([#784](https://github.com/Fdawgs/node-poppler/issues/784)) ([f2e0d06](https://github.com/Fdawgs/node-poppler/commit/f2e0d06205dedf1f0b21aef66ae44afd3d1cc129))
+* **pdfinfo:** add `printCustomMetadata` option ([#785](https://github.com/Fdawgs/node-poppler/issues/785)) ([59647ce](https://github.com/Fdawgs/node-poppler/commit/59647cec3a4fc6f49fe302eff742b21d65f49078))
+* **pdftoppm:** add `jpegCmyk` option ([#790](https://github.com/Fdawgs/node-poppler/issues/790)) ([c444e9d](https://github.com/Fdawgs/node-poppler/commit/c444e9dcf4a536c335ddcfadaab891f461f82011))
+* **pdftoppm:** add `jpegOptions` and `scaleDimensionBeforeRotation` opt ([#780](https://github.com/Fdawgs/node-poppler/issues/780)) ([c4319e5](https://github.com/Fdawgs/node-poppler/commit/c4319e501dae0bfc0a12a8766b35170860bdb4d2))
+* **pdftoppm:** add `overprint` opt ([#783](https://github.com/Fdawgs/node-poppler/issues/783)) ([d2e1cf7](https://github.com/Fdawgs/node-poppler/commit/d2e1cf7e51c3384aca508a2b5f059f8713d73d30))
+* **pdftops:** add `passLevel1CustomColor` option ([#792](https://github.com/Fdawgs/node-poppler/issues/792)) ([60b252a](https://github.com/Fdawgs/node-poppler/commit/60b252a04aad32e3ff547a2215393c3a5fe8068a))
+* **pdftotext:** add `columnSpacing` opt ([#782](https://github.com/Fdawgs/node-poppler/issues/782)) ([ed717a5](https://github.com/Fdawgs/node-poppler/commit/ed717a5d5eebfd0fc21613527e9db1b2f6d7e0da))
+* **pdftotext:** add `removeHyphens` option ([#789](https://github.com/Fdawgs/node-poppler/issues/789)) ([ee999e6](https://github.com/Fdawgs/node-poppler/commit/ee999e6a850995a07bb14969a27c36d2552158a5))
+
+
+### Improvements
+
+* **index:** move option objects to own files ([#764](https://github.com/Fdawgs/node-poppler/issues/764)) ([2d4e000](https://github.com/Fdawgs/node-poppler/commit/2d4e000cf195f6d87b03f0ef114df38db5768fde))
+* **options:** remove unknown min versions ([#786](https://github.com/Fdawgs/node-poppler/issues/786)) ([7788e69](https://github.com/Fdawgs/node-poppler/commit/7788e69374ba6cadce57dc1c8b03702be17add0b))
+
+
+### Miscellaneous
+
+* **.npmrc:** add min-release-age ([#768](https://github.com/Fdawgs/node-poppler/issues/768)) ([19facc5](https://github.com/Fdawgs/node-poppler/commit/19facc5ae63139ec0b76e4910138941aaf9d63f8))
+* **.nvmrc:** remove redundant prefix ([#794](https://github.com/Fdawgs/node-poppler/issues/794)) ([3f7c8bf](https://github.com/Fdawgs/node-poppler/commit/3f7c8bf410614e966730ec8ce28ab826af6e7351))
+* **.vscode:** remove redundant javascript default formatter ([#804](https://github.com/Fdawgs/node-poppler/issues/804)) ([f64eae5](https://github.com/Fdawgs/node-poppler/commit/f64eae57368cca2d362ac1010050bd332d96b135))
+* align editorconfig and prettier ignore rules ([#808](https://github.com/Fdawgs/node-poppler/issues/808)) ([70e4754](https://github.com/Fdawgs/node-poppler/commit/70e4754e2640850ce82114b06deb97f62564b506))
+* **eslint.config:** `includeIgnoreFile` from `eslint/config` ([#803](https://github.com/Fdawgs/node-poppler/issues/803)) ([f16acd5](https://github.com/Fdawgs/node-poppler/commit/f16acd5a828788edcf676979d41c6815bd723d21))
+* **options:** fix jsdoc backtick usage ([#793](https://github.com/Fdawgs/node-poppler/issues/793)) ([a4e0e2d](https://github.com/Fdawgs/node-poppler/commit/a4e0e2d28f2999323a69f61201f6d4bb0403f3c9))
+* replace http links with https ([#812](https://github.com/Fdawgs/node-poppler/issues/812)) ([0dd051d](https://github.com/Fdawgs/node-poppler/commit/0dd051d2ba898e07369e68d5b83efe97b02d851f))
+
 ## [9.1.2](https://github.com/Fdawgs/node-poppler/compare/v9.1.1...v9.1.2) (2026-04-30)
 
 

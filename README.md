@@ -1,17 +1,17 @@
 # node-poppler
 
-[![GitHub release](https://img.shields.io/github/release/Fdawgs/node-poppler.svg)](https://github.com/Fdawgs/node-poppler/releases/latest/)
-[![npm version](https://img.shields.io/npm/v/node-poppler)](https://npmjs.com/package/node-poppler)
+[![GitHub release](https://img.shields.io/github/v/release/Fdawgs/node-poppler)](https://github.com/Fdawgs/node-poppler/releases/latest)
+[![npm version](https://img.shields.io/npm/v/node-poppler)](https://www.npmjs.com/package/node-poppler)
 [![CI](https://github.com/Fdawgs/node-poppler/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Fdawgs/node-poppler/actions/workflows/ci.yml)
 [![Coverage status](https://coveralls.io/repos/github/Fdawgs/node-poppler/badge.svg?branch=main)](https://coveralls.io/github/Fdawgs/node-poppler?branch=main)
-[![code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
+[![code style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4?style=flat)](https://github.com/prettier/prettier)
 [![OSSF Scorecard](https://api.scorecard.dev/projects/github.com/Fdawgs/node-poppler/badge)](https://scorecard.dev/viewer/?uri=github.com/Fdawgs/node-poppler)
 
 > Asynchronous Node.js wrapper for the Poppler PDF rendering utilities
 
 ## Overview
 
-[Poppler](https://poppler.freedesktop.org/) is a PDF rendering library that also includes a collection of utilities, which allows for the manipulation and extraction of data from PDF documents such as converting PDF files to HTML, TXT, or PostScript.
+[Poppler](https://poppler.freedesktop.org) is a PDF rendering library that also includes a collection of utilities, which allows for the manipulation and extraction of data from PDF documents such as converting PDF files to HTML, TXT, or PostScript.
 
 The `node-poppler` module provides an asynchronous Node.js wrapper around said binaries for easier use.
 
@@ -34,7 +34,7 @@ An example of downloading the binaries on a Debian system:
 sudo apt-get install poppler-data poppler-utils
 ```
 
-For macOS users, the binaries can be installed with [Homebrew](https://brew.sh/):
+For macOS users, the binaries can be installed with [Homebrew](https://brew.sh):
 
 ```sh
 brew install poppler
@@ -167,7 +167,7 @@ Please adhere to this project's [Code of Conduct](https://github.com/Fdawgs/.git
 
 ## Acknowledgements
 
-- [**Albert Astals Cid**](https://github.com/albert-astals-cid-kdab) - [Poppler](https://poppler.freedesktop.org/) developer
+- [**Albert Astals Cid**](https://github.com/albert-astals-cid-kdab) - [Poppler](https://poppler.freedesktop.org) developer
 
 ## License
 

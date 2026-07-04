@@ -49,7 +49,7 @@ Please refer to the [JSDoc comments in the source code](./src/index.js) or the [
 Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first and second page of a PDF file to PNG:
 
 ```js
-const { Poppler } = require("node-poppler");
+import { Poppler } from "node-poppler";
 
 const file = "test_document.pdf";
 const poppler = new Poppler();
@@ -58,7 +58,7 @@ const options = {
 	lastPageToConvert: 2,
 	pngFile: true,
 };
-const outputFile = `test_document.png`;
+const outputFile = "test_document.png";
 
 const res = await poppler.pdfToCairo(file, outputFile, options);
 console.log(res);
@@ -68,8 +68,8 @@ Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only th
 PDF file using stdout:
 
 ```js
-const { writeFile } = require("node:fs/promises");
-const { Poppler } = require("node-poppler");
+import { writeFile } from "node:fs/promises";
+import { Poppler } from "node-poppler";
 
 const file = "test_document.pdf";
 const poppler = new Poppler();
@@ -88,6 +88,8 @@ await writeFile("new_file.pdf", res, { encoding: "binary", flush: true });
 Example of calling `poppler.pdfToHtml()` with a promise chain:
 
 ```js
+"use strict";
+
 const { Poppler } = require("node-poppler");
 
 const file = "test_document.pdf";
@@ -111,6 +113,8 @@ poppler
 Example of calling `poppler.pdfToHtml()` with a promise chain, providing a Buffer as an input:
 
 ```js
+"use strict";
+
 const { readFileSync } = require("node:fs");
 const { Poppler } = require("node-poppler");
 
@@ -137,6 +141,8 @@ poppler
 Example of calling `poppler.pdfToText()` with a promise chain:
 
 ```js
+"use strict";
+
 const { Poppler } = require("node-poppler");
 
 const file = "test_document.pdf";

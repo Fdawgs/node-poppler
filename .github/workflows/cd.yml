@@ -59,7 +59,7 @@ jobs:
               # from package.json before publishing to reduce package size.
               # Force install to bypass OS/CPU checks; does not impact published package
               run: |
-                  npm i -g npm@11 --ignore-scripts
+                  npm i -g npm@11.18.0 --ignore-scripts
                   npm i -f --ignore-scripts
                   npm run build --if-present
                   npm pkg delete commitlint devDependencies jest scripts
@@ -106,7 +106,7 @@ jobs:
               # from package.json before publishing to reduce package size.
               # Force install to bypass OS/CPU checks; does not impact published package
               run: |
-                  npm i -g npm@11 --ignore-scripts
+                  npm i -g npm@11.18.0 --ignore-scripts
                   npm i -f --ignore-scripts
                   npm run build --if-present
                   npm pkg delete commitlint devDependencies jest scripts

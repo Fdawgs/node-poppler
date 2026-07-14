@@ -11,9 +11,9 @@
 
 ## Overview
 
-[Poppler](https://poppler.freedesktop.org) is a PDF rendering library that also includes a collection of utilities, which allows for the manipulation and extraction of data from PDF documents such as converting PDF files to HTML, TXT, or PostScript.
+[Poppler](https://poppler.freedesktop.org) is a PDF rendering library that also includes a collection of utilities, which provide functionality for manipulating PDF documents and extracting data from them, including converting PDF files to HTML, TXT, or PostScript.
 
-The `node-poppler` module provides an asynchronous Node.js wrapper around said binaries for easier use.
+The `node-poppler` module provides an asynchronous Node.js wrapper around these utilities for easier use.
 
 ## Installation
 
@@ -26,7 +26,7 @@ npm i node-poppler
 ### Linux and macOS/Darwin support
 
 64-bit Windows binaries are provided via an optional dependency on the [`node-poppler-win32`](https://www.npmjs.com/package/node-poppler-win32) package.
-For Linux and Mac users, the `poppler-data` and `poppler-utils` binaries will need to be installed separately.
+For Linux and macOS users, the `poppler-data` and `poppler-utils` binaries will need to be installed separately.
 
 An example of downloading the binaries on a Debian system:
 
@@ -46,7 +46,7 @@ Please refer to the [JSDoc comments in the source code](./src/index.js) or the [
 
 ### poppler.pdfToCairo
 
-Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first and second page of a PDF file to PNG, using ESM syntax:
+Example of an `async`/`await` call to `poppler.pdfToCairo()` to convert the first two pages of a PDF file to PNG using ESM syntax:
 
 ```js
 import { Poppler } from "node-poppler";
@@ -64,8 +64,7 @@ const res = await poppler.pdfToCairo(file, outputFile, options);
 console.log(res);
 ```
 
-Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first page of a PDF file to a new
-PDF file using stdout, using ESM syntax:
+Example of an `async`/`await` call to `poppler.pdfToCairo()` to convert the first page of a PDF file to a new PDF file via stdout using ESM syntax:
 
 ```js
 import { writeFile } from "node:fs/promises";
@@ -85,7 +84,7 @@ await writeFile("new_file.pdf", res, { encoding: "binary", flush: true });
 
 ### poppler.pdfToHtml
 
-Example of calling `poppler.pdfToHtml()` with a promise chain, using CJS syntax:
+Example of calling `poppler.pdfToHtml()` with a promise chain using CJS syntax:
 
 ```js
 "use strict";
@@ -110,7 +109,7 @@ poppler
 	});
 ```
 
-Example of calling `poppler.pdfToHtml()` with a promise chain, providing a Buffer as an input, using CJS syntax:
+Example of calling `poppler.pdfToHtml()` with a promise chain using CJS syntax and a `Buffer` as input:
 
 ```js
 "use strict";
@@ -138,7 +137,7 @@ poppler
 
 ### poppler.pdfToText
 
-Example of calling `poppler.pdfToText()` with a promise chain, using CJS syntax:
+Example of calling `poppler.pdfToText()` with a promise chain using CJS syntax:
 
 ```js
 "use strict";

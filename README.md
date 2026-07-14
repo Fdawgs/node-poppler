@@ -26,7 +26,7 @@ npm i node-poppler
 ### Linux and macOS/Darwin support
 
 64-bit Windows binaries are provided via an optional dependency on the [`node-poppler-win32`](https://www.npmjs.com/package/node-poppler-win32) package.
-For Linux and macOS users, the `poppler-data` and `poppler-utils` binaries will need to be installed separately.
+For Linux and macOS users, the `poppler-data` package and `poppler-utils` binaries will need to be installed separately.
 
 An example of downloading the binaries on a Debian system:
 
@@ -58,7 +58,7 @@ const options = {
 	lastPageToConvert: 2,
 	pngFile: true,
 };
-const outputFile = "test_document.png";
+const outputFile = "test_document";
 
 const res = await poppler.pdfToCairo(file, outputFile, options);
 console.log(res);

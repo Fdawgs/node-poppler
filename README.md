@@ -46,7 +46,7 @@ Please refer to the [JSDoc comments in the source code](./src/index.js) or the [
 
 ### poppler.pdfToCairo
 
-Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first and second page of a PDF file to PNG:
+Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first and second page of a PDF file to PNG, using ESM syntax:
 
 ```js
 import { Poppler } from "node-poppler";
@@ -65,7 +65,7 @@ console.log(res);
 ```
 
 Example of an `async` `await` call to `poppler.pdfToCairo()`, to convert only the first page of a PDF file to a new
-PDF file using stdout:
+PDF file using stdout, using ESM syntax:
 
 ```js
 import { writeFile } from "node:fs/promises";
@@ -85,7 +85,7 @@ await writeFile("new_file.pdf", res, { encoding: "binary", flush: true });
 
 ### poppler.pdfToHtml
 
-Example of calling `poppler.pdfToHtml()` with a promise chain:
+Example of calling `poppler.pdfToHtml()` with a promise chain, using CJS syntax:
 
 ```js
 "use strict";
@@ -110,7 +110,7 @@ poppler
 	});
 ```
 
-Example of calling `poppler.pdfToHtml()` with a promise chain, providing a Buffer as an input:
+Example of calling `poppler.pdfToHtml()` with a promise chain, providing a Buffer as an input, using CJS syntax:
 
 ```js
 "use strict";
@@ -138,7 +138,7 @@ poppler
 
 ### poppler.pdfToText
 
-Example of calling `poppler.pdfToText()` with a promise chain:
+Example of calling `poppler.pdfToText()` with a promise chain, using CJS syntax:
 
 ```js
 "use strict";

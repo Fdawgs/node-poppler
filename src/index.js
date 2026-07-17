@@ -12,6 +12,14 @@ const { lt } = require("semver");
 const execFileAsync = promisify(execFile);
 
 /**
+ * @type {Readonly<import("node:child_process").CommonOptions>}
+ * @ignore
+ */
+const CHILD_PROCESS_OPTS = Object.freeze({
+	windowsHide: true,
+});
+
+/**
  * @type {Readonly<Record<string, string>>}
  * @ignore
  */
@@ -76,7 +84,10 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  */
 function execBinary(binary, args, file, options = {}) {
 	return new Promise((resolve, reject) => {
-		const child = spawn(binary, args, { signal: options.signal });
+		const child = spawn(binary, args, {
+			...CHILD_PROCESS_OPTS,
+			signal: options.signal,
+		});
 
 		if (options.binaryOutput) {
 			child.stdout.setEncoding("binary");
@@ -250,9 +261,11 @@ class Poppler {
 			this.#popplerPath = binPath;
 		} else {
 			// Use regex over dirname as `where` on Windows returns a newline-delimited list
-			const which = spawnSync(platform === "win32" ? "where" : "which", [
-				"pdfinfo",
-			]).stdout.toString();
+			const which = spawnSync(
+				platform === "win32" ? "where" : "which",
+				["pdfinfo"],
+				CHILD_PROCESS_OPTS
+			).stdout.toString();
 			const popplerPath = PDF_INFO_PATH_REG.exec(which)?.[1];
 
 			if (popplerPath) {
@@ -306,7 +319,11 @@ class Poppler {
 	 */
 	async #getVersion(binary) {
 		if (!this.#binVersions.has(binary)) {
-			const { stderr } = await execFileAsync(binary, ["-v"]);
+			const { stderr } = await execFileAsync(
+				binary,
+				["-v"],
+				CHILD_PROCESS_OPTS
+			);
 			// @ts-expect-error: parseOptions checks if falsy
 			const version = POPPLER_VERSION_REG.exec(stderr)[1];
 			this.#binVersions.set(binary, version);
@@ -435,6 +452,7 @@ class Poppler {
 		args.push(file);
 
 		const { stdout } = await execFileAsync(this.#pdfDetachBin, args, {
+			...CHILD_PROCESS_OPTS,
 			signal,
 		});
 		return stdout;
@@ -509,7 +527,10 @@ class Poppler {
 		}
 
 		return new Promise((resolve, reject) => {
-			const child = spawn(this.#pdfInfoBin, args, { signal });
+			const child = spawn(this.#pdfInfoBin, args, {
+				...CHILD_PROCESS_OPTS,
+				signal,
+			});
 
 			if (Buffer.isBuffer(file)) {
 				child.stdin.write(file);

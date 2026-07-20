@@ -89,25 +89,27 @@ function execBinary(binary, args, file, options = {}) {
 			signal: options.signal,
 		});
 
-		if (options.binaryOutput) {
-			child.stdout.setEncoding("binary");
-		}
-
 		if (Buffer.isBuffer(file)) {
 			child.stdin.write(file);
 			child.stdin.end();
 		}
 
-		let stdOut = "";
-		let stdErr = "";
+		/** @type {Buffer[]} */
+		const stdOutChunks = [];
+		/** @type {Buffer[]} */
+		const stdErrChunks = [];
+		let stdOutLength = 0;
+		let stdErrLength = 0;
 		let errorHandled = false;
 
-		child.stdout.on("data", (data) => {
-			stdOut += data;
+		child.stdout.on("data", (chunk) => {
+			stdOutChunks.push(chunk);
+			stdOutLength += chunk.length;
 		});
 
-		child.stderr.on("data", (data) => {
-			stdErr += data;
+		child.stderr.on("data", (chunk) => {
+			stdErrChunks.push(chunk);
+			stdErrLength += chunk.length;
 		});
 
 		child.on("error", (err) => {
@@ -121,9 +123,17 @@ function execBinary(binary, args, file, options = {}) {
 				return;
 			}
 
+			const stdOutEncoding = options.binaryOutput ? "binary" : "utf8";
+			const stdOut = Buffer.concat(stdOutChunks, stdOutLength).toString(
+				stdOutEncoding
+			);
+			const stdErr = Buffer.concat(stdErrChunks, stdErrLength).toString(
+				"utf8"
+			);
+
 			// For binaries without reliable exit codes, resolve based on stdout presence
 			if (options.ignoreExitCode) {
-				if (stdOut !== "") {
+				if (stdOutLength > 0) {
 					resolve(
 						options.preserveWhitespace ? stdOut : stdOut.trim()
 					);
@@ -133,11 +143,11 @@ function execBinary(binary, args, file, options = {}) {
 				return;
 			}
 
-			if (stdOut !== "") {
+			if (stdOutLength > 0) {
 				resolve(options.preserveWhitespace ? stdOut : stdOut.trim());
 			} else if (code === 0) {
 				resolve(ERROR_MSGS[code]);
-			} else if (stdErr !== "") {
+			} else if (stdErrLength > 0) {
 				reject(new Error(stdErr.trim()));
 			} else {
 				reject(
@@ -515,10 +525,7 @@ class Poppler {
 		const versionInfo = await this.#getVersion(this.#pdfInfoBin);
 		const args = parseOptions(acceptedOptions, options, versionInfo);
 
-		// Fetch file size if stdin input is a Buffer, as Poppler omits it
-		/** @type {number} */
 		let fileSize;
-
 		if (Buffer.isBuffer(file)) {
 			args.push("-");
 			fileSize = file.length;
@@ -526,80 +533,35 @@ class Poppler {
 			args.push(file);
 		}
 
-		return new Promise((resolve, reject) => {
-			const child = spawn(this.#pdfInfoBin, args, {
-				...CHILD_PROCESS_OPTS,
-				signal,
-			});
+		let stdOut = await execBinary(this.#pdfInfoBin, args, file, { signal });
 
-			if (Buffer.isBuffer(file)) {
-				child.stdin.write(file);
-				child.stdin.end();
+		if (stdOut === ERROR_MSGS[0]) {
+			return stdOut;
+		}
+
+		if (fileSize) {
+			stdOut = stdOut.replace(
+				PDF_INFO_FILE_SIZES_REG,
+				`$1${fileSize}$2bytes`
+			);
+		}
+
+		if (options.printAsJson === true) {
+			/** @type {Record<string, string>} */
+			const info = {};
+			const stdOutLines = stdOut.split("\n");
+			const stdOutLinesLength = stdOutLines.length;
+			for (let i = 0; i < stdOutLinesLength; i += 1) {
+				const line = stdOutLines[i];
+				const lines = line.split(": ");
+				if (lines.length > 1) {
+					info[camelCase(lines[0])] = lines[1].trim();
+				}
 			}
+			return info;
+		}
 
-			let stdOut = "";
-			let stdErr = "";
-			let errorHandled = false;
-
-			child.stdout.on("data", (data) => {
-				stdOut += data;
-			});
-
-			child.stderr.on("data", (data) => {
-				stdErr += data;
-			});
-
-			child.on("error", (err) => {
-				errorHandled = true;
-				reject(err);
-			});
-
-			child.on("close", (code) => {
-				// If an error was already emitted, don't process the close event
-				if (errorHandled) {
-					return;
-				}
-
-				if (stdOut !== "") {
-					if (fileSize) {
-						stdOut = stdOut.replace(
-							PDF_INFO_FILE_SIZES_REG,
-							`$1${fileSize}$2bytes`
-						);
-					}
-
-					if (options.printAsJson === true) {
-						/** @type {Record<string, string>} */
-						const info = {};
-						const stdOutLines = stdOut.split("\n");
-						const stdOutLinesLength = stdOutLines.length;
-						for (let i = 0; i < stdOutLinesLength; i += 1) {
-							const line = stdOutLines[i];
-							const lines = line.split(": ");
-							if (lines.length > 1) {
-								info[camelCase(lines[0])] = lines[1].trim();
-							}
-						}
-						resolve(info);
-					} else {
-						resolve(stdOut.trim());
-					}
-				} else if (code === 0) {
-					resolve(ERROR_MSGS[code]);
-				} else if (stdErr !== "") {
-					reject(new Error(stdErr.trim()));
-				} else {
-					reject(
-						new Error(
-							ERROR_MSGS[code ?? -1] ||
-								`pdfinfo ${args.join(
-									" "
-								)} exited with code ${code}`
-						)
-					);
-				}
-			});
-		});
+		return stdOut;
 	}
 
 	/**

@@ -4,10 +4,12 @@
 
 "use strict";
 
+const { EventEmitter } = require("node:events");
 const { execFile, spawnSync } = require("node:child_process");
 const { access, readFile, unlink } = require("node:fs/promises");
 const { join, normalize, posix, sep } = require("node:path");
 const { platform } = require("node:process");
+const { Readable } = require("node:stream");
 const { promisify } = require("node:util");
 const {
 	afterEach,
@@ -530,31 +532,27 @@ describe("Node-Poppler module", () => {
 		it.each(childProcessCloseTests)(
 			"Rejects with an Error object if Poppler exits with $testName",
 			async ({ exitCode, expectedError }) => {
-				jest.doMock("node:child_process", () => {
-					const { EventEmitter } = require("node:events");
-					const { Readable } = require("node:stream");
-					return {
-						...originalChildProcess,
-						spawn: jest.fn(() => {
-							const emitter =
-								/** @type {import("node:child_process").ChildProcess} */ (
-									new EventEmitter()
-								);
-							emitter.stdout = new Readable({
-								read() {
-									this.push(null);
-								},
-							});
-							emitter.stderr = new Readable({
-								read() {
-									this.push(null);
-								},
-							});
-							setImmediate(() => emitter.emit("close", exitCode));
-							return emitter;
-						}),
-					};
-				});
+				jest.doMock("node:child_process", () => ({
+					...originalChildProcess,
+					spawn: jest.fn(() => {
+						const emitter =
+							/** @type {import("node:child_process").ChildProcess} */ (
+								new EventEmitter()
+							);
+						emitter.stdout = new Readable({
+							read() {
+								this.push(null);
+							},
+						});
+						emitter.stderr = new Readable({
+							read() {
+								this.push(null);
+							},
+						});
+						setImmediate(() => emitter.emit("close", exitCode));
+						return emitter;
+					}),
+				}));
 				require("node:child_process");
 				const { Poppler: PopplerMock } = require("../src/index");
 				const popplerMock = new PopplerMock(testBinaryPath);
@@ -1406,6 +1404,67 @@ describe("Node-Poppler module", () => {
 			await expect(access(outputFile)).resolves.toBeUndefined();
 		});
 
+		it.each([
+			{
+				testName: "2-byte character (£) is split across boundary",
+				chunks: [
+					Buffer.from([0xc2]), // first byte of £
+					Buffer.from([0xa3, 0x21]), // last byte of £ + '!'
+				],
+				expected: "£!",
+			},
+			{
+				testName: "3-byte character (€) is split across boundary",
+				chunks: [
+					Buffer.from([0xe2, 0x82]), // first 2 bytes of €
+					Buffer.from([0xac, 0x21]), // last byte of € + '!'
+				],
+				expected: "€!",
+			},
+			{
+				testName: "4-byte character (𝄞) is split across boundary",
+				chunks: [
+					Buffer.from([0xf0, 0x9d]), // first 2 bytes of 𝄞
+					Buffer.from([0x84, 0x9e, 0x21]), // last 2 bytes of 𝄞 + '!'
+				],
+				expected: "𝄞!",
+			},
+		])(
+			"Correctly decodes stdout when $testName",
+			async ({ chunks, expected }) => {
+				jest.doMock("node:child_process", () => ({
+					...originalChildProcess,
+					spawn: jest.fn(() => {
+						const emitter =
+							/** @type {import("node:child_process").ChildProcess} */ (
+								new EventEmitter()
+							);
+						emitter.stdout = Readable.from(chunks);
+						emitter.stderr = new Readable({
+							read() {
+								this.push(null);
+							},
+						});
+						emitter.stdout.on("end", () => {
+							setImmediate(() => emitter.emit("close", 0));
+						});
+						return emitter;
+					}),
+				}));
+				require("node:child_process");
+				const { Poppler: PopplerMock } = require("../src/index");
+				const popplerMock = new PopplerMock(testBinaryPath);
+
+				const result = await popplerMock.pdfToText(file, undefined, {
+					firstPageToConvert: 1,
+					lastPageToConvert: 2,
+				});
+
+				expect(result).toBe(expected);
+				expect(result).not.toContain("\uFFFD");
+			}
+		);
+
 		it("Rejects with an Error object if file passed not PDF format", async () => {
 			const testTxtFile = `${testDirectory}test.txt`;
 
@@ -1452,31 +1511,27 @@ describe("Node-Poppler module", () => {
 		it.each(childProcessCloseTests)(
 			"Rejects with an Error object if Poppler exits with $testName",
 			async ({ exitCode, expectedError }) => {
-				jest.doMock("node:child_process", () => {
-					const { EventEmitter } = require("node:events");
-					const { Readable } = require("node:stream");
-					return {
-						...originalChildProcess,
-						spawn: jest.fn(() => {
-							const emitter =
-								/** @type {import("node:child_process").ChildProcess} */ (
-									new EventEmitter()
-								);
-							emitter.stdout = new Readable({
-								read() {
-									this.push(null);
-								},
-							});
-							emitter.stderr = new Readable({
-								read() {
-									this.push(null);
-								},
-							});
-							setImmediate(() => emitter.emit("close", exitCode));
-							return emitter;
-						}),
-					};
-				});
+				jest.doMock("node:child_process", () => ({
+					...originalChildProcess,
+					spawn: jest.fn(() => {
+						const emitter =
+							/** @type {import("node:child_process").ChildProcess} */ (
+								new EventEmitter()
+							);
+						emitter.stdout = new Readable({
+							read() {
+								this.push(null);
+							},
+						});
+						emitter.stderr = new Readable({
+							read() {
+								this.push(null);
+							},
+						});
+						setImmediate(() => emitter.emit("close", exitCode));
+						return emitter;
+					}),
+				}));
 				require("node:child_process");
 				const { Poppler: PopplerMock } = require("../src/index");
 				const popplerMock = new PopplerMock(testBinaryPath);

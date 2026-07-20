@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.1](https://github.com/Fdawgs/node-poppler/compare/v10.0.0...v10.0.1) (2026-07-20)
+
+
+### Bug fixes
+
+* **index:** decode child stdout/stderr as one contiguous buffer ([#827](https://github.com/Fdawgs/node-poppler/issues/827)) ([3bd132f](https://github.com/Fdawgs/node-poppler/commit/3bd132f7a4459aeef92125c64d134a96e0f8574e))
+* **index:** hide spawned console window on windows ([#825](https://github.com/Fdawgs/node-poppler/issues/825)) ([ad2dc81](https://github.com/Fdawgs/node-poppler/commit/ad2dc81ef9e399ada9bcd69727b1a88fec5de1de))
+
 ## [10.0.0](https://github.com/Fdawgs/node-poppler/compare/v9.1.2...v10.0.0) (2026-07-14)
 
 

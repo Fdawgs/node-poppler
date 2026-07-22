@@ -110,7 +110,11 @@ async function execBinary(binary, args, file, options = {}) {
 		once(child, "close"),
 	]);
 
-	const stdout = options.preserveWhitespace ? stdoutRaw : stdoutRaw.trim();
+	// Do not trim binary output
+	const stdout =
+		options.binaryOutput || options.preserveWhitespace
+			? stdoutRaw
+			: stdoutRaw.trim();
 	const stderr = stderrRaw.trim();
 
 	// For binaries without reliable exit codes, resolve based on stdout presence

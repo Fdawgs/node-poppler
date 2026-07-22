@@ -2,8 +2,13 @@
 "use strict";
 
 const { execFile, spawn, spawnSync } = require("node:child_process");
+const { once } = require("node:events");
 const { basename, normalize, resolve: pathResolve } = require("node:path");
 const { platform } = require("node:process");
+const {
+	buffer: streamToBuffer,
+	text: streamToText,
+} = require("node:stream/consumers");
 const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const freeze = require("ice-barrage");
@@ -82,85 +87,58 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @param {AbortSignal} [options.signal] - An `AbortSignal` that can be used to cancel the operation.
  * @returns {Promise<string>} A promise that resolves with stdout, or rejects with an Error.
  */
-function execBinary(binary, args, file, options = {}) {
-	return new Promise((resolve, reject) => {
-		const child = spawn(binary, args, {
-			...CHILD_PROCESS_OPTS,
-			signal: options.signal,
-		});
-
-		if (Buffer.isBuffer(file)) {
-			child.stdin.write(file);
-			child.stdin.end();
-		}
-
-		/** @type {Buffer[]} */
-		const stdOutChunks = [];
-		/** @type {Buffer[]} */
-		const stdErrChunks = [];
-		let stdOutLength = 0;
-		let stdErrLength = 0;
-		let errorHandled = false;
-
-		child.stdout.on("data", (chunk) => {
-			stdOutChunks.push(chunk);
-			stdOutLength += chunk.length;
-		});
-
-		child.stderr.on("data", (chunk) => {
-			stdErrChunks.push(chunk);
-			stdErrLength += chunk.length;
-		});
-
-		child.on("error", (err) => {
-			errorHandled = true;
-			reject(err);
-		});
-
-		child.on("close", (code) => {
-			// If an error was already emitted, don't process the close event
-			if (errorHandled) {
-				return;
-			}
-
-			const stdOutEncoding = options.binaryOutput ? "binary" : "utf8";
-			const stdOut = Buffer.concat(stdOutChunks, stdOutLength).toString(
-				stdOutEncoding
-			);
-			const stdErr = Buffer.concat(stdErrChunks, stdErrLength).toString(
-				"utf8"
-			);
-
-			// For binaries without reliable exit codes, resolve based on stdout presence
-			if (options.ignoreExitCode) {
-				if (stdOutLength > 0) {
-					resolve(
-						options.preserveWhitespace ? stdOut : stdOut.trim()
-					);
-				} else {
-					reject(new Error(stdErr.trim()));
-				}
-				return;
-			}
-
-			if (stdOutLength > 0) {
-				resolve(options.preserveWhitespace ? stdOut : stdOut.trim());
-			} else if (code === 0) {
-				resolve(ERROR_MSGS[code]);
-			} else if (stdErrLength > 0) {
-				reject(new Error(stdErr.trim()));
-			} else {
-				reject(
-					new Error(
-						ERROR_MSGS[code ?? -1] ||
-							`${basename(binary)} ${args.join(" ")} exited with code ${code}`
-					)
-				);
-			}
-		});
+async function execBinary(binary, args, file, options = {}) {
+	const child = spawn(binary, args, {
+		...CHILD_PROCESS_OPTS,
+		signal: options.signal,
 	});
-}
 
+	if (Buffer.isBuffer(file)) {
+		child.stdin.end(file);
+	}
+
+	// Collect stdout as Buffer when binary output is requested to avoid
+	// UTF-8 corruption, otherwise decode directly as text for efficiency.
+	const stdoutP = options.binaryOutput
+		? // eslint-disable-next-line promise/prefer-await-to-then -- Assigning to variable before awaiting
+			streamToBuffer(child.stdout).then((b) => b.toString("binary"))
+		: streamToText(child.stdout);
+
+	const [stdoutRaw, stderrRaw, [code]] = await Promise.all([
+		stdoutP,
+		streamToText(child.stderr),
+		once(child, "close"),
+	]);
+
+	// Do not trim binary output
+	const stdout =
+		options.binaryOutput || options.preserveWhitespace
+			? stdoutRaw
+			: stdoutRaw.trim();
+	const stderr = stderrRaw.trim();
+
+	// For binaries without reliable exit codes, resolve based on stdout presence
+	if (options.ignoreExitCode) {
+		if (stdout.length > 0) {
+			return stdout;
+		}
+		throw new Error(stderr);
+	}
+
+	if (stdout.length > 0) {
+		return stdout;
+	}
+	if (code === 0) {
+		return ERROR_MSGS[0];
+	}
+	if (stderr.length > 0) {
+		throw new Error(stderr);
+	}
+	throw new Error(
+		ERROR_MSGS[code ?? -1] ||
+			`${basename(binary)} ${args.join(" ")} exited with code ${code}`
+	);
+}
 /**
  * @author Frazer Smith
  * @description Checks each option provided is valid, of the correct type, and can be used by the

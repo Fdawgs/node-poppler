@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [10.0.2](https://github.com/Fdawgs/node-poppler/compare/v10.0.1...v10.0.2) (2026-07-25)
+
+
+### Improvements
+
+* **index:** use native stream consumer and events ([#828](https://github.com/Fdawgs/node-poppler/issues/828)) ([7f0254f](https://github.com/Fdawgs/node-poppler/commit/7f0254fdea373f290d1293cfdb52ee0beff8601d))
+
 ## [10.0.1](https://github.com/Fdawgs/node-poppler/compare/v10.0.0...v10.0.1) (2026-07-20)
 
 

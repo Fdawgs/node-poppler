@@ -29,7 +29,7 @@ permissions:
 jobs:
     code-quality:
         name: Code Quality
-        uses: fdawgs/workflows/.github/workflows/reusable-code-quality.yml@15c09545397588f9a2ac47db6c6269520ebc983a # v2.2.0
+        uses: fdawgs/workflows/.github/workflows/reusable-code-quality.yml@7e86269d8d77ca42d9fc9ccd6f5f156e98715254 # v2.2.1
         permissions:
             contents: read
         with:

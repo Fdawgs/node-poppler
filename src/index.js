@@ -265,7 +265,7 @@ class Poppler {
 					// @ts-ignore: Optional dependency
 					this.#popplerPath = require("node-poppler-win32");
 				} catch {
-					// Leave #popplerPath empty; the generic "Unable to find ... binaries" error below will fire
+					// Leave #popplerPath empty; the generic 'Unable to find ... binaries' error below will fire
 				}
 			}
 		}

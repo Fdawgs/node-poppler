@@ -37,9 +37,9 @@
  * @property {boolean} [jpegFile] Generate JPEG file instead of a PPM file.
  * @property {string} [jpegOptions] When used with `options.jpegFile`, this option can
  * be used to control the JPEG compression parameters. It takes a string of the form
- * `"<opt>=<val>[,<opt>=<val>]"`. Currently available options are:
+ * `'<opt>=<val>[,<opt>=<val>]'`. Currently available options are:
  * - `quality` Selects the JPEG quality value. The value must be an integer between 0 and 100
- * - `progressive` Select progressive JPEG output. The possible values are `"y"`, `"n"`, indicating
+ * - `progressive` Select progressive JPEG output. The possible values are `'y'`, `'n'`, indicating
  * progressive (yes) or non-progressive (no), respectively
  * @property {number} [lastPageToConvert] Specifies the last page to convert.
  * @property {boolean} [monochromeFile] Generate monochrome PBM file (instead of a color PPM file).

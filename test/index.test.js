@@ -6,7 +6,8 @@
 
 const { EventEmitter } = require("node:events");
 const { execFile, spawnSync } = require("node:child_process");
-const { access, readFile, unlink } = require("node:fs/promises");
+// eslint-disable-next-line n/no-unsupported-features/node-builtins -- Tests, not in distributed code
+const { access, glob, readFile, unlink } = require("node:fs/promises");
 const { join, normalize, posix, sep } = require("node:path");
 const { platform } = require("node:process");
 const { Readable } = require("node:stream");
@@ -20,7 +21,6 @@ const {
 	it,
 	jest,
 } = require("@jest/globals");
-const { glob } = require("glob");
 const { lt } = require("semver");
 
 const execFileAsync = promisify(execFile);
@@ -33,6 +33,13 @@ const IO_ERROR_REG = /^I\/O Error:/u;
 
 const testDirectory = join(__dirname, "fixtures") + sep;
 const testDirectoryPosix = testDirectory.split(sep).join(posix.sep);
+const testDirectoryGlobExclusions = [
+	`${testDirectoryPosix}pdf_1.3_NHS_Constitution_attached_detach.pdf`,
+	`${testDirectoryPosix}pdf_1.3_NHS_Constitution.pdf`,
+	`${testDirectoryPosix}pdf_1.7_NHS_Constitution_Handbook.pdf`,
+	`${testDirectoryPosix}pdf_1.7_whitespace_example.pdf`,
+	`${testDirectoryPosix}test.txt`,
+];
 const file = `${testDirectory}pdf_1.3_NHS_Constitution.pdf`;
 
 /** @type {typeof import("node:child_process")} */
@@ -86,17 +93,13 @@ const testBinaryPath = getTestBinaryPath();
 describe("Node-Poppler module", () => {
 	afterEach(async () => {
 		// Remove leftover test files
-		const files = await glob(`${testDirectoryPosix}**/*`, {
-			ignore: [
-				`${testDirectoryPosix}pdf_1.3_NHS_Constitution_attached_detach.pdf`,
-				`${testDirectoryPosix}pdf_1.3_NHS_Constitution.pdf`,
-				`${testDirectoryPosix}pdf_1.7_NHS_Constitution_Handbook.pdf`,
-				`${testDirectoryPosix}pdf_1.7_whitespace_example.pdf`,
-				`${testDirectoryPosix}test.txt`,
-			],
-		});
-
-		await Promise.all(files.map((filed) => unlink(filed)));
+		const files = [];
+		for await (const filePath of glob(`${testDirectoryPosix}**/*`, {
+			exclude: testDirectoryGlobExclusions,
+		})) {
+			files.push(filePath);
+		}
+		await Promise.all(files.map((filePath) => unlink(filePath)));
 	});
 
 	describe("Constructor", () => {

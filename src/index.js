@@ -17,16 +17,16 @@ const { lt } = require("semver");
 const execFileAsync = promisify(execFile);
 
 /**
- * @type {Readonly<import("node:child_process").CommonOptions>}
  * @ignore
+ * @type {Readonly<import("node:child_process").CommonOptions>}
  */
 const CHILD_PROCESS_OPTS = Object.freeze({
 	windowsHide: true,
 });
 
 /**
- * @type {Readonly<Record<string, string>>}
  * @ignore
+ * @type {Readonly<Record<string, string>>}
  */
 // @ts-expect-error -- TS cannot infer that __proto__ is a special property and not part of the record type
 const ERROR_MSGS = Object.freeze({

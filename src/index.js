@@ -535,6 +535,11 @@ class Poppler {
 				const line = stdOutLines[i];
 				// Use the first colon as the separator to preserve colons in values
 				const separatorIndex = line.indexOf(":");
+				// Defensive, should never happen as pdfinfo output is `key: value`
+				if (separatorIndex === -1) {
+					continue;
+				}
+
 				const key = camelCase(line.slice(0, separatorIndex));
 				info[key] = line.slice(separatorIndex + 1).trim();
 			}

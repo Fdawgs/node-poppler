@@ -12,7 +12,7 @@ const {
 const { promisify } = require("node:util");
 const camelCase = require("camelcase");
 const freeze = require("ice-barrage");
-const { lt } = require("semver");
+const lt = require("semver/functions/lt");
 
 const execFileAsync = promisify(execFile);
 

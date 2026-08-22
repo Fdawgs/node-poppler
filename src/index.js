@@ -533,10 +533,10 @@ class Poppler {
 			const stdOutLinesLength = stdOutLines.length;
 			for (let i = 0; i < stdOutLinesLength; i += 1) {
 				const line = stdOutLines[i];
-				const lines = line.split(": ");
-				if (lines.length > 1) {
-					info[camelCase(lines[0])] = lines[1].trim();
-				}
+				// Use the first colon as the separator to preserve colons in values
+				const separatorIndex = line.indexOf(":");
+				const key = camelCase(line.slice(0, separatorIndex));
+				info[key] = line.slice(separatorIndex + 1).trim();
 			}
 			return info;
 		}

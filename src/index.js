@@ -149,7 +149,7 @@ async function execBinary(binary, args, file, options = {}) {
  * @param {PopplerAcceptedOptions} acceptedOptions - Object containing accepted options.
  * @param {PopplerOptions} options - Object containing options to pass to the binary.
  * @param {string} [version] - Semantic version of the binary.
- * @returns {string[]} Array of CLI arguments.
+ * @returns {string[]} Array of CLI arguments, terminated with an end-of-options marker (`--`).
  * @throws {Error} If invalid arguments provided.
  */
 function parseOptions(acceptedOptions, options, version) {
@@ -210,6 +210,8 @@ function parseOptions(acceptedOptions, options, version) {
 		}
 	}
 	if (invalidArgs.length === 0) {
+		// End-of-options marker to ensure that any file paths starting with a hyphen are not treated as options
+		args.push("--");
 		return args;
 	}
 	throw new Error(invalidArgs.join("; "));

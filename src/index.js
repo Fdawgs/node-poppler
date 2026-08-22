@@ -591,7 +591,7 @@ class Poppler {
 
 		const binaryOutput =
 			outputFile === undefined &&
-			args.some((arg) => ["-singlefile", "-pdf"].includes(arg));
+			(options.singleFile === true || options.pdfFile === true);
 
 		return execBinary(this.#pdfToCairoBin, args, file, {
 			binaryOutput,

@@ -467,6 +467,56 @@ describe("Node-Poppler module", () => {
 			expect(res).toMatchObject(pdfInfoObject);
 		});
 
+		it.each([
+			{
+				testName: "a value contains additional colons",
+				stdout: "Title: Report: Q3\nPages: 1",
+				expected: {
+					title: "Report: Q3",
+					pages: "1",
+				},
+			},
+			{
+				testName: "a line has no colon separator",
+				stdout: "Malformed output line\nPages: 1",
+				expected: {
+					pages: "1",
+				},
+			},
+		])(
+			"Lists info as a JSON object when $testName",
+			async ({ stdout, expected }) => {
+				jest.doMock("node:child_process", () => ({
+					...originalChildProcess,
+					spawn: jest.fn(() => {
+						const emitter =
+							/** @type {import("node:child_process").ChildProcess} */ (
+								new EventEmitter()
+							);
+						emitter.stdout = Readable.from([stdout]);
+						emitter.stderr = new Readable({
+							read() {
+								this.push(null);
+							},
+						});
+						emitter.stdout.on("end", () => {
+							setImmediate(() => emitter.emit("close", 0));
+						});
+						return emitter;
+					}),
+				}));
+				require("node:child_process");
+				const { Poppler: PopplerMock } = require("../src/index");
+				const popplerMock = new PopplerMock(testBinaryPath);
+
+				const res = await popplerMock.pdfInfo(file, {
+					printAsJson: true,
+				});
+
+				expect(res).toStrictEqual(expected);
+			}
+		);
+
 		it("Lists info of PDF file as Buffer", async () => {
 			const inputFile = await readFile(file);
 

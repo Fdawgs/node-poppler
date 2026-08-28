@@ -106,8 +106,7 @@ async function execBinary(binary, args, file, options = {}) {
 		});
 	}
 
-	// Collect stdout as Buffer when binary output is requested to avoid
-	// UTF-8 corruption, otherwise decode directly as text for efficiency.
+	// Collect stdout as Buffer when binary output is requested to avoid UTF-8 corruption
 	const stdoutP = options.binaryOutput
 		? // eslint-disable-next-line promise/prefer-await-to-then -- Assigning to variable before awaiting
 			streamToBuffer(child.stdout).then((b) => b.toString("binary"))

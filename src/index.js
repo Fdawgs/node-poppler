@@ -16,13 +16,13 @@ const lt = require("semver/functions/lt");
 
 const execFileAsync = promisify(execFile);
 
-/**
- * @ignore
- * @type {Readonly<import("node:child_process").CommonOptions>}
- */
-const CHILD_PROCESS_OPTS = Object.freeze({
-	windowsHide: true,
-});
+/** @ignore */
+const CHILD_PROCESS_OPTS = Object.freeze(
+	/** @type {import("node:child_process").SpawnOptionsWithStdioTuple<"ignore", "pipe", "pipe">} */ ({
+		stdio: ["ignore", "pipe", "pipe"],
+		windowsHide: true,
+	})
+);
 
 /**
  * @ignore
@@ -90,13 +90,20 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @returns {Promise<string>} A promise that resolves with stdout, or rejects with an Error.
  */
 async function execBinary(binary, args, file, options = {}) {
-	const child = spawn(binary, args, {
-		...CHILD_PROCESS_OPTS,
-		signal: options.signal,
-	});
-
+	// Only pipe stdin for a Buffer, else a `-` filepath blocks awaiting EOF
+	let child;
 	if (Buffer.isBuffer(file)) {
+		child = spawn(binary, args, {
+			...CHILD_PROCESS_OPTS,
+			stdio: ["pipe", "pipe", "pipe"],
+			signal: options.signal,
+		});
 		child.stdin.end(file);
+	} else {
+		child = spawn(binary, args, {
+			...CHILD_PROCESS_OPTS,
+			signal: options.signal,
+		});
 	}
 
 	// Collect stdout as Buffer when binary output is requested to avoid

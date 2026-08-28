@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file.
 
+## [11.0.0](https://github.com/Fdawgs/node-poppler/compare/v10.0.1...v11.0.0) (2026-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* minimum supported version bumped from node 20 to 22
+
+### Bug fixes
+
+* **index:** derive `pdfToCairo` binary output from options ([#843](https://github.com/Fdawgs/node-poppler/issues/843)) ([641f833](https://github.com/Fdawgs/node-poppler/commit/641f833725a2dda25217e5711799d6c844437933))
+* **index:** only pipe stdin for buffers ([#846](https://github.com/Fdawgs/node-poppler/issues/846)) ([7485e1e](https://github.com/Fdawgs/node-poppler/commit/7485e1e60a41d2645ea5689012052db8040c175a))
+* **index:** preserve colons in pdfinfo `printAsJson` output ([#841](https://github.com/Fdawgs/node-poppler/issues/841)) ([875d2b8](https://github.com/Fdawgs/node-poppler/commit/875d2b842c213a30f4983f0504415260d3b55f17))
+* **index:** terminate option parsing before positional filepaths ([#842](https://github.com/Fdawgs/node-poppler/issues/842)) ([4a9c5fe](https://github.com/Fdawgs/node-poppler/commit/4a9c5fe7384dd9df1af24773365a6c97ae2a7f88))
+
+
+### Continuous integration
+
+* **deps:** bump coverallsapp/github-action from 2.3.7 to 2.3.8 ([#839](https://github.com/Fdawgs/node-poppler/issues/839)) ([6262dfd](https://github.com/Fdawgs/node-poppler/commit/6262dfd614687bf9d728747b23602db509ba4b38))
+* **deps:** bump the fdawgs-owned group with 4 updates ([#830](https://github.com/Fdawgs/node-poppler/issues/830)) ([47ac066](https://github.com/Fdawgs/node-poppler/commit/47ac066d8a1ee28d435d0b11bc14eaffde8a0b0f))
+* **deps:** bump the github-owned group across 1 directory with 4 updates ([#833](https://github.com/Fdawgs/node-poppler/issues/833)) ([53bb710](https://github.com/Fdawgs/node-poppler/commit/53bb7109a4024a624644b864935f9df3faa33464))
+
+
+### Dependencies
+
+* **deps-dev:** bump prettier from 3.8.5 to 3.9.5 ([#831](https://github.com/Fdawgs/node-poppler/issues/831)) ([51410bf](https://github.com/Fdawgs/node-poppler/commit/51410bf7984710bb032b8336c4c3b3f53cd14a13))
+* **deps-dev:** bump prettier from 3.9.5 to 3.9.6 ([#840](https://github.com/Fdawgs/node-poppler/issues/840)) ([ef3a0fb](https://github.com/Fdawgs/node-poppler/commit/ef3a0fb5a7408b162fb7f28c04db28e785c4e282))
+* **deps-dev:** bump the commitlint group across 1 directory with 2 updates ([#799](https://github.com/Fdawgs/node-poppler/issues/799)) ([56f8351](https://github.com/Fdawgs/node-poppler/commit/56f8351b39800dc5178dd4bc57902a8a2c1d922a))
+* **deps-dev:** bump typescript from 6.0.3 to 7.0.2 ([#832](https://github.com/Fdawgs/node-poppler/issues/832)) ([81b5d24](https://github.com/Fdawgs/node-poppler/commit/81b5d24bab8ac7a2e16c051216d614d913fe19fa))
+* **deps-dev:** replace glob with native glob ([#796](https://github.com/Fdawgs/node-poppler/issues/796)) ([4f33f2b](https://github.com/Fdawgs/node-poppler/commit/4f33f2b634cc349d717dd351e6c6b040471e87a8))
+* **deps:** bump ghcr.io/devcontainers/features/github-cli ([#838](https://github.com/Fdawgs/node-poppler/issues/838)) ([0ed2ad0](https://github.com/Fdawgs/node-poppler/commit/0ed2ad05cf69911adaf3a7053e5b27df02567ac3))
+
+
+### Improvements
+
+* **index:** import semver lt from its subpath ([#844](https://github.com/Fdawgs/node-poppler/issues/844)) ([977865b](https://github.com/Fdawgs/node-poppler/commit/977865bf260d64037a6cfce38a3c6a3e59a48870))
+* **index:** use native stream consumer and events ([#828](https://github.com/Fdawgs/node-poppler/issues/828)) ([7f0254f](https://github.com/Fdawgs/node-poppler/commit/7f0254fdea373f290d1293cfdb52ee0beff8601d))
+* **index:** use null prototype for faster property lookup ([#837](https://github.com/Fdawgs/node-poppler/issues/837)) ([b155189](https://github.com/Fdawgs/node-poppler/commit/b155189a0d1ee4fa07f4828a8cd2d2c08c8bd778))
+
+
+### Miscellaneous
+
+* **.gitignore:** correct test fixture dir ([#834](https://github.com/Fdawgs/node-poppler/issues/834)) ([7a014c2](https://github.com/Fdawgs/node-poppler/commit/7a014c27d6b31e22b46c591d52d7444877bcb3fe))
+* consistent quotation style ([#835](https://github.com/Fdawgs/node-poppler/issues/835)) ([8395f9d](https://github.com/Fdawgs/node-poppler/commit/8395f9d90dc41c1fdfc57040b3195acaec1868a9))
+* drop support for node 20 ([#836](https://github.com/Fdawgs/node-poppler/issues/836)) ([9d3c5de](https://github.com/Fdawgs/node-poppler/commit/9d3c5de2d4498ce7679027ac4f1cfda41d34780e))
+* **index:** standardise jsdoc tag order for `ignore` ([#845](https://github.com/Fdawgs/node-poppler/issues/845)) ([0822b27](https://github.com/Fdawgs/node-poppler/commit/0822b27965134fe27886c16aabfee083998947cf))
+
 ## [10.0.1](https://github.com/Fdawgs/node-poppler/compare/v10.0.0...v10.0.1) (2026-07-20)
 
 

@@ -108,6 +108,6 @@
 		"semver": "^7.7.2"
 	},
 	"optionalDependencies": {
-		"node-poppler-win32": "^1.0.1"
+		"node-poppler-win32": "^2.0.0"
 	}
 }

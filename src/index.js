@@ -90,6 +90,13 @@ const PDF_INFO_PATH_REG = /(.+)pdfinfo/u;
  * @returns {Promise<string>} A promise that resolves with stdout, or rejects with an Error.
  */
 async function execBinary(binary, args, file, options = {}) {
+	// Defense-in-depth: reject file paths containing null bytes, which can be
+	// used to truncate/inject unexpected arguments when passed to the
+	// underlying Poppler binary via `spawn()`
+	if (typeof file === "string" && file.includes("\0")) {
+		throw new Error("File path must not contain null bytes");
+	}
+
 	// Only pipe stdin for a Buffer, else a `-` filepath blocks awaiting EOF
 	let child;
 	if (Buffer.isBuffer(file)) {
